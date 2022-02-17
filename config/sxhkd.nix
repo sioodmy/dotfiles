@@ -17,9 +17,9 @@ super + shift + o
 super + Return
 	urxvtc
 
-# Launch dmenu
+# Launch rofi
 super + @space
-    dmenu_run
+    rofi -show drun
 #          rofi -modi drun -show drun
 
 Print
