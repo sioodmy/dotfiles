@@ -1,4 +1,6 @@
-{ config, pkgs, ... }:
+{ config, pkgs, lib, ... }:
+
+with lib;
 
 {
     environment.variables = {
@@ -23,7 +25,7 @@
         '';
     };
 
-    
+
     environment.defaultPackages = [ ];
     nixpkgs.config.allowUnfree = true;
   
@@ -132,6 +134,55 @@
                 ip46tables -t raw -D nixos-fw-rpfilter -p udp -m udp --dport 44857 -j RETURN || true
             '';
         };
+    };
+
+    # Security 
+    boot.blacklistedKernelModules = [
+        # Obscure network protocols
+        "ax25"
+        "netrom"
+        "rose"
+        # Old or rare or insufficiently audited filesystems
+        "adfs"
+        "affs"
+        "bfs"
+        "befs"
+        "cramfs"
+        "efs"
+        "erofs"
+        "exofs"
+        "freevxfs"
+        "f2fs"
+        "hfs"
+        "hpfs"
+        "jfs"
+        "minix"
+        "nilfs2"
+        "omfs"
+        "qnx4"
+        "qnx6"
+        "sysv"
+        "ufs"
+    ]; 
+
+    boot.kernel.sysctl = {
+        "kernel.yama.ptrace_scope" = mkOverride 500 1;
+        "kernel.kptr_restrict" = mkOverride 500 2;
+        "net.core.bpf_jit_enable" = mkDefault false;
+        "kernel.ftrace_enabled" = mkDefault false;
+        "net.ipv4.conf.all.log_martians" = mkDefault true;
+        "net.ipv4.conf.all.rp_filter" = mkDefault "1";
+        "net.ipv4.conf.default.log_martians" = mkDefault true;
+        "net.ipv4.conf.default.rp_filter" = mkDefault "1";
+        "net.ipv4.icmp_echo_ignore_broadcasts" = mkDefault true;
+        "net.ipv4.conf.all.accept_redirects" = mkDefault false;
+        "net.ipv4.conf.all.secure_redirects" = mkDefault false;
+        "net.ipv4.conf.default.accept_redirects" = mkDefault false;
+        "net.ipv4.conf.default.secure_redirects" = mkDefault false;
+        "net.ipv6.conf.all.accept_redirects" = mkDefault false;
+        "net.ipv6.conf.default.accept_redirects" = mkDefault false;
+        "net.ipv4.conf.all.send_redirects" = mkDefault false;
+        "net.ipv4.conf.default.send_redirects" = mkDefault false;
     };
 
     # enable and secure ssh
