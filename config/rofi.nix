@@ -14,7 +14,7 @@
             disable-history = false;
             hide-scrollbar = true;
             display-drun = "   Run ";
-            display-window = " 﩯  window";
+            display-window = " 﩯 Wwindow";
             display-calc = "  Calc";
             sidebar-mode = true;
 
@@ -48,9 +48,10 @@
 
             "window" = {
                 height = mkLiteral "360px";
-                border = mkLiteral "3px";
-                border-color = mkLiteral "@border-color";
+#                border = mkLiteral "3px";
+#                border-color = mkLiteral "@border-color";
                 background-color = mkLiteral "@bg-col";
+                border-radius = mkLiteral "5px";
             };
         
             "mainbox, message" = {
