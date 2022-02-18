@@ -63,6 +63,10 @@
                                     src = picom-ibhagwan;
                                 });
                             })
+                            (final : prev: {
+                              bspswallow = prev.callPackage ./overlays/bspswallow.nix { };
+                            })
+
                             nur.overlay
                         ];
                     }

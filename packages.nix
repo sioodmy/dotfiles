@@ -5,7 +5,7 @@
     environment.systemPackages = with pkgs; [
 
         # desktop
-        bspwm sxhkd feh rofi dunst
+        bspwm sxhkd feh rofi dunst bspswallow
         # cli tools
         exa fzf ffmpeg unzip xclip bat pfetch
         libnotify gnupg update-nix-fetchgit yt-dlp
@@ -13,7 +13,7 @@
         scrot maim lolcat
         # gui apps
         ungoogled-chromium obs-studio mpv sxiv 
-        qbittorrent 
+        qbittorrent pavucontrol
         # unfree apps 
         discord minecraft
         # dev tools
