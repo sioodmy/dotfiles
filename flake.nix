@@ -1,5 +1,5 @@
 {
-    description = "A very basic flake";
+    description = "My NixOS configuration";
 
     inputs = {
         nixpkgs.url = "nixpkgs/nixos-21.11";
@@ -30,7 +30,7 @@
                 inherit system;
 
                 modules = [
-                    ./configuration.nix ./packages.nix
+                    ./configuration.nix ./packages.nix 
                     home-manager.nixosModules.home-manager {
                         home-manager = {
                             useGlobalPkgs = true;
