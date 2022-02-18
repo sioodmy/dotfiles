@@ -13,13 +13,11 @@
         config = {
             "bar/top" = {
                 monitor = "\${env:MONITOR}";
-                width = "80%";
-                offset-x = "10%";
-                offset-y = "10";
+                width = "98%";
+                offset-x = "1%";
+                offset-y = "1%";
                 height = 30;
                 radius = 0;
-              #  module-margin-left = 2;
-               # module-margin-right = 2;
                 modules-left = "date";
                 modules-center = "bspwm";
                 modules-right = "volume memory cpu";
@@ -77,6 +75,7 @@
                 label-muted-foreground = "#D9E0EE";
 
             };
+
         };
     };
 
