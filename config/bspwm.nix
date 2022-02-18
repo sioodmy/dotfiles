@@ -18,7 +18,7 @@
         remove_disabled_monitors = true;
         remove_unplugged_monitors = true;
         border_width = 0;
-        window_gap = 28;
+        window_gap = 19;
       };
       monitors = {
           "focused" = [ "1" "2" "3" "4" "5" "6" "7"];
