@@ -22,7 +22,9 @@
             experimental-features = nix-command flakes
         '';
     };
- 
+
+    
+    environment.defaultPackages = [ ];
     nixpkgs.config.allowUnfree = true;
   
     boot = {
@@ -55,6 +57,23 @@
             displayManager.lightdm.greeters.mini = {
                 enable = true;
                 user = "sioodmy";
+                extraConfig = ''
+                    [greeter]
+                    show-password-label = false
+                    invalid-password-text = Access Denied
+                    show-input-cursor = true
+                    password-alignment = left
+                    [greeter-theme]
+                    font-size = 1em
+                    background-image = ""
+                    background-color = "#1E1E2E"
+                    window-color = "#1E1E2E"
+                    password-border-radius = 10px
+                    password-border-width = 3px
+                    password-border-color = "#ABE9B3"
+                    password-background-color = "#1E1E2E"
+                    border-width = 0px
+                '';
             };
             windowManager.bspwm.enable = true;
         
