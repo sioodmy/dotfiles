@@ -3,7 +3,7 @@
     programs.rofi = {
         enable = true;
         extraConfig = {
-            modi = "run,drun,window";
+            modi = "drun,window,calc";
             lines = 5;
             font = "JetBrainsMono Nerd Font 14";
             show-icons = true;
@@ -13,13 +13,16 @@
             location = 0;
             disable-history = false;
             hide-scrollbar = true;
-            display-drun = "   Apps ";
-            display-run = "   Run ";
+            display-drun = "   Run ";
             display-window = " 﩯  window";
-            display-Network = " 󰤨  Network";
+            display-calc = "  Calc";
             sidebar-mode = true;
 
         };
+
+        plugins = [
+          pkgs.rofi-calc
+        ];
 
         theme = 
             let 
@@ -50,7 +53,7 @@
                 background-color = mkLiteral "@bg-col";
             };
         
-            "mainbox" = {
+            "mainbox, message" = {
                 background-color = mkLiteral "@bg-col";
             };
 
@@ -103,6 +106,11 @@
             "element selected" = {
               background-color = mkLiteral "@selected-col";
               text-color = mkLiteral "@fg-col2";
+            };
+
+            "textbox" = {
+              background-color = mkLiteral "@bg-col";
+              text-color = mkLiteral "@fg-col";
             };
 
             "mode-switcher" = {
