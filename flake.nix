@@ -52,6 +52,9 @@
                                    ./config/zathura.nix
                                    ./config/rofi.nix
                                    ./config/polybar.nix
+                                   ./config/cursor.nix
+                                   ./config/chromium.nix
+                                   ./config/gtk.nix
                                 ];
                             };
                         };
@@ -65,6 +68,7 @@
                             })
                             (final : prev: {
                               bspswallow = prev.callPackage ./overlays/bspswallow.nix { };
+                              catppuccin-gtk = prev.callPackage ./overlays/catppuccin-gtk.nix { };
                             })
 
                             nur.overlay

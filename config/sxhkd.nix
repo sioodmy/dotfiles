@@ -15,13 +15,14 @@ super + shift + o
 
 # Spawn a new terminal
 super + Return
-	urxvtc
+	urxvt
 
-# Launch rofi
+# Launcher
 super + @space
     rofi -show drun
-#          rofi -modi drun -show drun
 
+super + c
+    rofi -show calc            
 Print
     maim -s /tmp/ss.png && curl -F'file=@/tmp/ss.png' http://0x0.st | xclip -selection clipboard && notify-send "Link copied to clipboard!"
 
