@@ -8,10 +8,6 @@ with lib;
         NIXOS_CONFIG_DIR="$HOME/.config/nixos/";
         EDITOR="nvim";
     };
-    imports =
-    [ # Include the results of the hardware scan.
-      ./hardware-configuration.nix
-    ];
     nix = {
         autoOptimiseStore = true;
         allowedUsers = [ "sioodmy" ];
@@ -53,9 +49,8 @@ with lib;
    
     services.xserver = {
         layout = "pl";
+        videoDrivers = [ "nvidia" ];
         enable = true;
-	    videoDrivers = [ "nvidia" ];
-#            displayManager.lightdm.enable = true;
             displayManager.lightdm.greeters.mini = {
                 enable = true;
                 user = "sioodmy";
