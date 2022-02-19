@@ -7,14 +7,14 @@
             lines = 5;
             font = "JetBrainsMono Nerd Font 14";
             show-icons = true;
-            icon-theme = "Oranchelo";
+            icon-theme = "Papirus";
             terminal = "urxvt";
             drun-display-format = "{icon} {name}";
             location = 0;
             disable-history = false;
             hide-scrollbar = true;
             display-drun = "   Run ";
-            display-window = " 﩯 Wwindow";
+            display-window = "﩯  Window";
             display-calc = "  Calc";
             sidebar-mode = true;
 
