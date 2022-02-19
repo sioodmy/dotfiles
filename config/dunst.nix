@@ -5,12 +5,13 @@
         settings = {
             global = {
                 geometry = "512x15-8+31";
-                frame_width = "3";
+                frame_width = "2";
                 padding = "8";
                 max_icon_size = "32";
                 min_icon_size = "32";
-                font = "JetBrainsMonoMedium Nerd Fonti 13";
-                corner_radius = "10";
+                font = "JetBrains Mono 13";
+                corner_radius = "5";
+                alignment = "right";
             }; 
             urgency_low = {
                 background = "#1E1E2E";
