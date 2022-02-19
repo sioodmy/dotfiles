@@ -11,7 +11,7 @@
             round-borders = 1;
         '';
         fadeExclude = [
-          "class_g = 'Rofi'"
+         # "class_g = 'Rofi'"
           "class_g = 'slop'"
         ];
         shadowExclude = [
