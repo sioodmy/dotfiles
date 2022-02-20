@@ -5,6 +5,7 @@
         enable = true;
         package = pkgs.polybar.override {
             pulseSupport = true;
+            mpdSupport = true;
         };
 
         script = ''
@@ -20,7 +21,7 @@
                 radius = 0;
                 modules-left = "date";
                 modules-center = "bspwm";
-                modules-right = "volume memory cpu";
+                modules-right = "mpd volume memory cpu";
                 font-0 = "JetBrainsMono Nerd Font:style=Medium:pixelsize=14;3";
                 font-1 = "unifont:fontformat=truetype:size=14:antialias=false;3";
                 background = "#1E1E2E";
@@ -31,7 +32,7 @@
                 internal = 5;
                 date = "%d.%m.%y";
                 time = "%H:%M";
-                label = "%{F#96CDFB}%{F-} %time%  %{F#89DCEB}%{F-} %date%"; 
+                label = "%{A1:dunstify \"Calendar\" \"AS\":}%{F#96CDFB}%{F-} %time%  %{F#89DCEB}%{F-} %date%%{A}"; 
                 label-margin = 2;
             };
 
@@ -39,9 +40,10 @@
                 type = "internal/bspwm";
                 label-focused = "";
                 label-focused-padding = "1.5";
+                label-focused-foreground = "#ABE9B3";
                 label-foreground = "#D9E0EE";
 
-                label-occupied = "";
+                label-occupied = "";
                 label-occupied-padding = "1.5";
 
                 label-empty = "";
@@ -70,9 +72,22 @@
                 type = "internal/pulseaudio";
                 format-volume = "<label-volume>";
                 label-volume-foreground = "#D9E0EE";
-                label-volume = "%{F#FAE3B0}墳 %{F-}%percentage:02%%";
-                label-muted = "%{F#FAE3B0}婢 %{F-} 0%";
+                label-volume = "%{F#F8BD96}墳 %{F-}%percentage:02%%";
+                label-muted = "%{F#F8BD96}婢 %{F-} 0%";
                 label-muted-foreground = "#D9E0EE";
+
+            };
+
+            "module/mpd" = {
+              type = "internal/mpd";
+              host = "127.0.0.1";
+              port = "6600";
+              internal = 2;
+              format-online = "%{F#F8BD96}<toggle>%{F}";
+              label-song = "%artist% - %title%";
+              icon-play = " ";
+              icon-pause = " ";
+
 
             };
 

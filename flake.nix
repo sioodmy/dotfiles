@@ -55,6 +55,9 @@
                                    ./config/cursor.nix
                                    ./config/chromium.nix
                                    ./config/gtk.nix
+                                   ./config/firefox.nix
+                                   ./config/betterlockscreen.nix
+                                   ./config/music.nix
                                 ];
                             };
                         };
