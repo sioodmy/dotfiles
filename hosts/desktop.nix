@@ -12,7 +12,6 @@
   boot.initrd.kernelModules = [ ];
   boot.kernelModules = [ "kvm-amd" ];
   boot.extraModulePackages = [ ];
-  services.xserver.videoDrivers = [ "nvidia "]; 
 
   fileSystems."/" =
     { device = "/dev/disk/by-uuid/8a216227-fc28-4bea-87d9-5b6c73aead3a";

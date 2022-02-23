@@ -92,6 +92,8 @@ with lib;
         };
         pulse.enable = true;
     };
+    environment.systemPackages = with pkgs; [ pulseaudio ]; # for some reason this is required     
+
 
     users.users.sioodmy = {
         isNormalUser = true;

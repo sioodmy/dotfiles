@@ -21,11 +21,17 @@ super + Return
 super + @space
     rofi -show drun
 
+super + e
+    pcmanfm
+
 super + c
     rofi -show calc            
 Print
-    maim -s /tmp/ss.png && curl -F'file=@/tmp/ss.png' http://0x0.st | xclip -selection clipboard && notify-send "Link copied to clipboard!"
+    flameshot gui
 
+# Lock screen
+super + shift + p
+    betterlockscreen -l blur
 # Volume buttons
 XF86AudioRaiseVolume
     pactl set-sink-volume 0 +5%
@@ -40,11 +46,13 @@ super + XF86AudioRaiseVolume
 super + XF86AudioLowerVolume
 	mpc volume -5
 XF86AudioPrev
-	mpc prev
+	playerctl previous
 XF86AudioNext
-	mpc next
+	playerctl next
 XF86AudioPlay
-	mpc toggle
+	playerctl play-pause
+XF86AudioPause
+	playerctl play-pause
 
 
 # quit/restart bspwm

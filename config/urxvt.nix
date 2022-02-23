@@ -10,7 +10,7 @@
             scrollOnKeystroke = true;
             scrollOnOutput = false;
         };
-
+        shading = 88;
         extraConfig = {
             "internalBorder" = 24;
         };

@@ -14,7 +14,10 @@
     
     shellAliases = {
         h = "$EDITOR ~/.config/nixpkgs/home.nix";
-        hs = "home-manager switch";
+        ytmp3 = "yt-dlp -f \"bestaudio\" --continue --no-overwrites --ignore-errors --extract-audio --audio-format mp3 -o \"~/music/%(title)s.%(ext)s\"";
+        cat = "bat --style=plain";
+        grep = "rg";
+        htop = "btm";
         m = "mkdir -p";
         fcd = "cd $(find -type d | fzf)";
         ls = "exa --icons";

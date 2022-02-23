@@ -3,7 +3,7 @@
 {
   services.betterlockscreen = {
     enable = true;
-    arguments = [];
+    arguments = [ "--off 5" "blur" ];
 
   };
 }
