@@ -4,14 +4,14 @@
         enable = true;
         settings = {
             global = {
-                geometry = "512x15-8+31";
-                frame_width = "2";
+                geometry = "512x15-19+31";
+                frame_width = "1";
                 padding = "8";
                 max_icon_size = "32";
-                min_icon_size = "32";
+                min_icon_size = "0";
                 font = "JetBrains Mono 13";
                 corner_radius = "5";
-                alignment = "right";
+                alignment = "left";
             }; 
             urgency_low = {
                 background = "#1E1E2E";

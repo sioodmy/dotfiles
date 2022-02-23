@@ -34,6 +34,9 @@
         "Pavuconrtol" = {
           state = "floating";
         };
+        "Pcmanfm" = {
+          state = "floating";
+        };
       };
     };
   };

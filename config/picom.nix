@@ -8,7 +8,7 @@
         extraOptions = ''
             shadow-radius = 10;
             corner-radius = 5;
-            round-borders = 1;
+            round-borders = 5;
         '';
         fadeExclude = [
          # "class_g = 'Rofi'"
@@ -17,6 +17,7 @@
         shadowExclude = [
           "class_g = 'slop'"
         ];
+
 
         fade = true;
         fadeDelta = 4;
