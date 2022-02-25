@@ -26,60 +26,60 @@
 
     in {
         nixosConfigurations = {
-            desktop = lib.nixosSystem {
-                inherit system;
+          graphene = lib.nixosSystem {
+            inherit system;
 
-                modules = [
-                    ./configuration.nix ./packages.nix ./hosts/desktop.nix
-                    home-manager.nixosModules.home-manager {
-                        home-manager = {
-                            useGlobalPkgs = true;
-                            useUserPackages = true;
-                            users.sioodmy = {
-                            
-                                imports = [
-                                   ./config/bspwm.nix
-                                   ./config/sxhkd.nix
-                                   ./config/dunst.nix
-                                   ./config/urxvt.nix
-                                   ./config/picom.nix
-                                   ./config/nvim.nix
-                                   ./config/zsh.nix
-                                   ./config/xresources.nix
-                                   ./config/xdg.nix
-                                   ./config/bat.nix
-                                   ./config/git.nix
-                                   ./config/zathura.nix
-                                   ./config/rofi.nix
-                                   ./config/polybar.nix
-                                   ./config/cursor.nix
-                                   ./config/chromium.nix
-                                   ./config/gtk.nix
-                                   ./config/betterlockscreen.nix
-                                   ./config/music.nix
-                                   ./config/udiskie.nix
-                                   ./config/flameshot.nix
-                                ];
-                            };
-                        };
-                      
+            modules = [
+              ./system/config.nix ./system/hosts/graphene.nix ./packages.nix 
+              home-manager.nixosModules.home-manager {
+                home-manager = {
+                  useGlobalPkgs = true;
+                  useUserPackages = true;
+                  users.sioodmy = {
 
-                        nixpkgs.overlays = [
-                            (final: prev: {
-                                picom = prev.picom.overrideAttrs (o: {
-                                    src = picom-ibhagwan;
-                                });
-                            })
-                            (final : prev: {
-                              bspswallow = prev.callPackage ./overlays/bspswallow.nix { };
-                              catppuccin-gtk = prev.callPackage ./overlays/catppuccin-gtk.nix { };
-                            })
+                    imports = [
+                      ./config/bspwm.nix
+                      ./config/sxhkd.nix
+                      ./config/dunst.nix
+                      ./config/urxvt.nix
+                      ./config/picom.nix
+                      ./config/nvim.nix
+                      ./config/zsh.nix
+                      ./config/xresources.nix
+                      ./config/xdg.nix
+                      ./config/bat.nix
+                      ./config/git.nix
+                      ./config/zathura.nix
+                      ./config/rofi.nix
+                      ./config/polybar.nix
+                      ./config/cursor.nix
+                      ./config/chromium.nix
+                      ./config/gtk.nix
+                      ./config/betterlockscreen.nix
+                      ./config/music.nix
+                      ./config/udiskie.nix
+                      ./config/flameshot.nix
+                    ];
+                  };
+                };
 
-                            nur.overlay
-                        ];
-                    }
+
+                nixpkgs.overlays = [
+                  (final: prev: {
+                    picom = prev.picom.overrideAttrs (o: {
+                      src = picom-ibhagwan;
+                    });
+                  })
+                  (final : prev: {
+                    bspswallow = prev.callPackage ./overlays/bspswallow.nix { };
+                    catppuccin-gtk = prev.callPackage ./overlays/catppuccin-gtk.nix { };
+                  })
+
+                  nur.overlay
                 ];
-            };
+              }
+            ];
+          };
         };
-    };
-}
+      };
+    }
