@@ -1,0 +1,4 @@
+{ pkgs, ...}: 
+{
+  networking.hostName = "graphene";
+}
