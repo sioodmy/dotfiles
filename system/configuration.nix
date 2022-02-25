@@ -3,9 +3,6 @@
 with lib;
 
 {
-  imports = [
-    ./hardware-configuration.nix
-  ];
     environment.variables = {
         NIXOS_CONFIG="$HOME/.config/nixos/configuration.nix";
         NIXOS_CONFIG_DIR="$HOME/.config/nixos/";
@@ -100,7 +97,7 @@ with lib;
 
     users.users.sioodmy = {
         isNormalUser = true;
-        extraGroups = [ "wheel" "audio" "video" "networkmanager"]; # Enable ‘sudo’ for the user.
+        extraGroups = [ "wheel" ]; # Enable ‘sudo’ for the user.
         shell = pkgs.zsh;
     };
 
@@ -112,6 +109,28 @@ with lib;
 
     system.autoUpgrade.enable = true;
     system.autoUpgrade.allowReboot = false;
+
+    networking = {
+        networkmanager.enable = true;
+        interfaces = {
+            enp24s0.useDHCP = true;
+        };
+        firewall = {
+            enable = true;
+            allowedTCPPorts = [ 443 80 ];
+            allowedUDPPorts = [ 443 80 44857 ];
+            allowPing = false;
+            logReversePathDrops = true;
+            extraCommands = ''
+                ip46tables -t raw -I nixos-fw-rpfilter -p udp -m udp --sport 44857 -j RETURN
+                ip46tables -t raw -I nixos-fw-rpfilter -p udp -m udp --dport 44857 -j RETURN
+            '';
+            extraStopCommands = ''
+                ip46tables -t raw -D nixos-fw-rpfilter -p udp -m udp --sport 44857 -j RETURN || true
+                ip46tables -t raw -D nixos-fw-rpfilter -p udp -m udp --dport 44857 -j RETURN || true
+            '';
+        };
+    };
 
     # Security 
     boot.blacklistedKernelModules = [
