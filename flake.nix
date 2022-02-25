@@ -38,27 +38,26 @@
                   users.sioodmy = {
 
                     imports = [
-                      ./config/bspwm.nix
-                      ./config/sxhkd.nix
-                      ./config/dunst.nix
-                      ./config/urxvt.nix
-                      ./config/picom.nix
-                      ./config/nvim.nix
-                      ./config/zsh.nix
-                      ./config/xresources.nix
-                      ./config/xdg.nix
-                      ./config/bat.nix
-                      ./config/git.nix
-                      ./config/zathura.nix
-                      ./config/rofi.nix
-                      ./config/polybar.nix
-                      ./config/cursor.nix
-                      ./config/chromium.nix
-                      ./config/gtk.nix
-                      ./config/betterlockscreen.nix
-                      ./config/music.nix
-                      ./config/udiskie.nix
-                      ./config/flameshot.nix
+                      ./config/bspwm
+                      ./config/sxhkd
+                      ./config/dunst
+                      ./config/urxvt
+                      ./config/picom
+                      ./config/nvim
+                      ./config/zsh
+                      ./config/xresources
+                      ./config/xdg
+                      ./config/bat
+                      ./config/git
+                      ./config/zathura
+                      ./config/rofi
+                      ./config/polybar
+                      ./config/chromium
+                      ./config/gtk
+                      ./config/betterlockscreen
+                      ./config/music
+                      ./config/udiskie
+                      ./config/flameshot
                     ];
                   };
                 };
