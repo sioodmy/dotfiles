@@ -1,85 +1,84 @@
 {
-    description = "My NixOS configuration";
+  description = "My NixOS configuration";
 
-    inputs = {
-        nixpkgs.url = "nixpkgs/nixos-21.11";
-        home-manager = {
-            url = "github:nix-community/home-manager";
-            inputs.nixpkgs.follows = "nixpkgs";
-        };
-
-        nur = {
-            url = "github:nix-community/NUR";
-            inputs.nixpkgs.follows = "nixpkgs";
-        };
-
-        picom-ibhagwan = {
-            url = "github:ibhagwan/picom";
-            flake = false;
-        };
+  inputs = {
+    nixpkgs.url = "nixpkgs/nixos-21.11";
+    home-manager = {
+      url = "github:nix-community/home-manager";
+      inputs.nixpkgs.follows = "nixpkgs";
     };
-    outputs = { nixpkgs, home-manager, nur, picom-ibhagwan, ...}: 
-    let 
-        system = "x86_64-linux";
 
-        lib = nixpkgs.lib; 
+    nur = {
+      url = "github:nix-community/NUR";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
 
-    in {
-        nixosConfigurations = {
-            desktop = lib.nixosSystem {
-                inherit system;
+    picom-ibhagwan = {
+      url = "github:ibhagwan/picom";
+      flake = false;
+    };
+  };
+  outputs = { nixpkgs, home-manager, nur, picom-ibhagwan, ...}: 
+  let 
+    system = "x86_64-linux";
 
-                modules = [
-                    ./configuration.nix ./packages.nix ./hosts/desktop.nix
-                    home-manager.nixosModules.home-manager {
-                        home-manager = {
-                            useGlobalPkgs = true;
-                            useUserPackages = true;
-                            users.sioodmy = {
-                            
-                                imports = [
-                                   ./config/bspwm.nix
-                                   ./config/sxhkd.nix
-                                   ./config/dunst.nix
-                                   ./config/urxvt.nix
-                                   ./config/picom.nix
-                                   ./config/nvim.nix
-                                   ./config/zsh.nix
-                                   ./config/xresources.nix
-                                   ./config/xdg.nix
-                                   ./config/bat.nix
-                                   ./config/git.nix
-                                   ./config/zathura.nix
-                                   ./config/rofi.nix
-                                   ./config/polybar.nix
-                                   ./config/cursor.nix
-                                   ./config/chromium.nix
-                                   ./config/gtk.nix
-                                   ./config/betterlockscreen.nix
-                                   ./config/music.nix
-                                   ./config/udiskie.nix
-                                   ./config/flameshot.nix
-                                ];
-                            };
-                        };
-                      
+    lib = nixpkgs.lib; 
 
-                        nixpkgs.overlays = [
-                            (final: prev: {
-                                picom = prev.picom.overrideAttrs (o: {
-                                    src = picom-ibhagwan;
-                                });
-                            })
-                            (final : prev: {
-                              bspswallow = prev.callPackage ./overlays/bspswallow.nix { };
-                              catppuccin-gtk = prev.callPackage ./overlays/catppuccin-gtk.nix { };
-                            })
+  in {
+    nixosConfigurations = {
+      graphene = lib.nixosSystem {
+        inherit system;
 
-                            nur.overlay
-                        ];
-                    }
+        modules = [
+          ./packages.nix ./system/configuration.nix ./system/hardware-configuration.nix ./system/hosts/graphene.nix
+          home-manager.nixosModules.home-manager {
+            home-manager = {
+              useGlobalPkgs = true;
+              useUserPackages = true;
+              users.sioodmy = {
+
+                imports = [
+                  ./config/bspwm
+                  ./config/sxhkd
+                  ./config/dunst
+                  ./config/urxvt
+                  ./config/picom
+                  ./config/nvim
+                  ./config/zsh
+                  ./config/xresources
+                  ./config/xdg
+                  ./config/bat
+                  ./config/git
+                  ./config/zathura
+                  ./config/rofi
+                  ./config/polybar
+                  ./config/chromium
+                  ./config/gtk
+                  ./config/betterlockscreen
+                  ./config/music
+                  ./config/udiskie
+                  ./config/flameshot
                 ];
+              };
             };
-        };
+
+
+            nixpkgs.overlays = [
+              (final: prev: {
+                picom = prev.picom.overrideAttrs (o: {
+                  src = picom-ibhagwan;
+                });
+              })
+              (final : prev: {
+                bspswallow = prev.callPackage ./overlays/bspswallow.nix { };
+                catppuccin-gtk = prev.callPackage ./overlays/catppuccin-gtk.nix { };
+              })
+
+              nur.overlay
+            ];
+          }
+        ];
+      };
     };
+  };
 }

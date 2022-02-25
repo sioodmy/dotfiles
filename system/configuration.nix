@@ -111,7 +111,6 @@ with lib;
     system.autoUpgrade.allowReboot = false;
 
     networking = {
-        hostName = "nixos";
         networkmanager.enable = true;
         interfaces = {
             enp24s0.useDHCP = true;
