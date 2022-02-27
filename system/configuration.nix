@@ -110,27 +110,6 @@ with lib;
     system.autoUpgrade.enable = true;
     system.autoUpgrade.allowReboot = false;
 
-    networking = {
-        networkmanager.enable = true;
-        interfaces = {
-            enp24s0.useDHCP = true;
-        };
-        firewall = {
-            enable = true;
-            allowedTCPPorts = [ 443 80 ];
-            allowedUDPPorts = [ 443 80 44857 ];
-            allowPing = false;
-            logReversePathDrops = true;
-            extraCommands = ''
-                ip46tables -t raw -I nixos-fw-rpfilter -p udp -m udp --sport 44857 -j RETURN
-                ip46tables -t raw -I nixos-fw-rpfilter -p udp -m udp --dport 44857 -j RETURN
-            '';
-            extraStopCommands = ''
-                ip46tables -t raw -D nixos-fw-rpfilter -p udp -m udp --sport 44857 -j RETURN || true
-                ip46tables -t raw -D nixos-fw-rpfilter -p udp -m udp --dport 44857 -j RETURN || true
-            '';
-        };
-    };
 
     # Security 
     boot.blacklistedKernelModules = [
@@ -159,9 +138,9 @@ with lib;
         "qnx6"
         "sysv"
         "ufs"
-    ]; 
+      ]; 
 
-    boot.kernel.sysctl = {
+      boot.kernel.sysctl = {
         "kernel.yama.ptrace_scope" = mkOverride 500 1;
         "kernel.kptr_restrict" = mkOverride 500 2;
         "net.core.bpf_jit_enable" = mkDefault false;
@@ -179,17 +158,17 @@ with lib;
         "net.ipv6.conf.default.accept_redirects" = mkDefault false;
         "net.ipv4.conf.all.send_redirects" = mkDefault false;
         "net.ipv4.conf.default.send_redirects" = mkDefault false;
-    };
+      };
 
     # enable and secure ssh
     services.openssh = { 
-        enable = true;
-        permitRootLogin = "no";
-        passwordAuthentication = false;
+      enable = true;
+      permitRootLogin = "no";
+      passwordAuthentication = false;
     };
 
     security.protectKernelImage = true;
     system.stateVersion = "21.11"; # DONT TOUCH THIS 
 
-}
+  }
 
