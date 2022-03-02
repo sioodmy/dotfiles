@@ -3,6 +3,8 @@
 
   inputs = {
     nixpkgs.url = "nixpkgs/nixos-21.11";
+    unstable.url = "github:nixos/nixpkgs/nixos-unstable";
+    
     home-manager = {
       url = "github:nix-community/home-manager";
       inputs.nixpkgs.follows = "nixpkgs";
@@ -17,8 +19,16 @@
       url = "github:ibhagwan/picom";
       flake = false;
     };
+    discord-overlay = {
+      url = "github:InternetUnexplorer/discord-overlay";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+    discocss = {
+      url = "github:mlvzk/discocss/flake";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
   };
-  outputs = { nixpkgs, home-manager, nur, picom-ibhagwan, ...}: 
+  outputs = inputs@{ self, nixpkgs, home-manager, nur, unstable, picom-ibhagwan, discord-overlay, discocss, ...}: 
   let 
     system = "x86_64-linux";
 
@@ -35,6 +45,21 @@
             home-manager = {
               useGlobalPkgs = true;
               useUserPackages = true;
+              extraSpecialArgs = {
+                inherit inputs;
+                theme = import ./theme;
+              };
+              sharedModules = [
+                discocss.hmModule
+                {
+                  nixpkgs.overlays = [
+                    nur.overlay
+                    (final: prev: {
+                      unstable = unstable.legacyPackages.${prev.system};
+                    })
+                  ];
+                }
+              ];
               users.sioodmy = {
 
                 imports = [
@@ -58,6 +83,7 @@
                   ./config/music
                   ./config/udiskie
                   ./config/flameshot
+                  ./config/qutebrowser
                 ];
               };
             };
@@ -72,9 +98,10 @@
               (final : prev: {
                 bspswallow = prev.callPackage ./overlays/bspswallow.nix { };
                 catppuccin-gtk = prev.callPackage ./overlays/catppuccin-gtk.nix { };
+#                discord = prev.callPackage ./overlays/discord.nix { };
               })
-
               nur.overlay
+              discord-overlay.overlay
             ];
           }
         ];
