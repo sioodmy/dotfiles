@@ -88,7 +88,6 @@
               };
             };
 
-
             nixpkgs.overlays = [
               (final: prev: {
                 picom = prev.picom.overrideAttrs (o: {
