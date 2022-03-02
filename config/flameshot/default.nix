@@ -1,17 +1,16 @@
-{ pkgs, config, ...}:
+{ pkgs, config, theme, ...}:
 
 {
-  services.flameshot = {
+  services.flameshot = with theme.colors; {
     enable = true;
     settings = {
       General = {
         showStartupLaunchMessage = false;
-        uiColor = "#ABE9B3";
-        contrastUiColor = "#B5E8E0";
-        drawColor = "#ABE9B3";
+        uiColor = "${ac}";
+        contrastUiColor = "${fg}";
+        drawColor = "${c1}";
         showHelp = false;
         showSidePanelButton = false;
-
       };
     };
   };

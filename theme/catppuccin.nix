@@ -1,6 +1,10 @@
 rec {
+  font = "JetBrainsMono Nerd Font Mono";
+
   bg = "#1E1E2E";
+  ba = "#302D41";
   fg = "#D9E0EE";
+  ac = "#ABE9B3";
 
   # gray
   c0 = "#6E6C7E";
@@ -16,7 +20,7 @@ rec {
 
   # yellow
   c3  = "#FAE3B0";
-  c11 = "#FAE3B0";
+  c11 = "#F8BD96";
 
   # blue
   c4  = "#96CDFB";
@@ -33,4 +37,5 @@ rec {
   # white
   c7  = "#C3BAC6";
   c15 = "#D9E0EE";
+
 }

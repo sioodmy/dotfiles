@@ -1,8 +1,8 @@
-{ config, pkgs, ... }:
+{ config, pkgs, theme, ... }:
 {
     services.dunst = {
         enable = true;
-        settings = {
+        settings = with theme.colors; {
             global = {
                 geometry = "512x15-19+31";
                 frame_width = "1";
@@ -14,21 +14,21 @@
                 alignment = "left";
             }; 
             urgency_low = {
-                background = "#1E1E2E";
-                foreground = "#D9E0EE";
-                frame_color = "#D9E0EE";
+                background = "${bg}";
+                foreground = "${fg}";
+                frame_color = "${fg}";
                 timeout = "5";
             };
             urgency_normal = {
-                background = "#1E1E2E";
-                foreground = "#D9E0EE";
-                frame_color = "#ABE9B3";
+                background = "${bg}";
+                foreground = "${fg}";
+                frame_color = "${c2}";
                 timeout = "10";
             };
             urgency_critical = {
-                background = "#1E1E2E";
-                foreground = "#D9E0EE";
-                frame_color = "#F28FAD";
+                background = "${bg}";
+                foreground = "${fg}";
+                frame_color = "${c1}";
                 timeout = "15";
             };
         };

@@ -1,52 +1,52 @@
-{ pkgs, config, ...}:
+{ pkgs, config, theme, ...}:
 
 {
     programs.zathura = {
         enable = true;
-        options = {
+        options = with theme.colors; {
             font = "JetBrains Mono 13";
 
-            default-fg = "#d9e0ee";
-            default-bg = "#1e1d2f";
+            default-fg = "${fg}";
+            default-bg = "${bg}";
 
-            completion-bg = "#302d41";
-            completion-fg = "#d9e0ee";
-            completion-highlight-bg = "#575268";
-            completion-highlight-fg = "#d9e0ee"; 
-            completion-group-bg = "#302d41";
-            completion-group-fg = "#96cdfb";
+            completion-bg = "${bg}";
+            completion-fg = "${fg}";
+            completion-highlight-bg = "${bg}";
+            completion-highlight-fg = "${fg}"; 
+            completion-group-bg = "${bg}";
+            completion-group-fg = "${ac}";
 
-            statusbar-fg = "#d9e0ee";
-            statusbar-bg = "#302d41";
+            statusbar-fg = "${fg}";
+            statusbar-bg = "${bg}";
             statusbar-h-padding = 10;
             statusbar-v-padding = 10;
 
-            notification-bg = "#302d41";
-            notification-fg = "#d9e0ee";
-            notification-error-bg = "#302d41";
-            notification-error-fg = "#f28fad";
-            notification-warning-bg = "#302d41";
-            notification-warning-fg = "#fae3b0";
+            notification-bg = "${bg}";
+            notification-fg = "${fg}";
+            notification-error-bg = "${bg}";
+            notification-error-fg = "${c1}";
+            notification-warning-bg = "${bg}";
+            notification-warning-fg = "${c11}";
             selection-notification = true;
 
-            inputbar-fg = "#d9e0ee";
-            inputbar-bg = "#302d41";
+            inputbar-fg = "${fg}";
+            inputbar-bg = "${bg}";
 
             recolor = true;
-            recolor-lightcolor = "#1e1d2f"; 
-            recolor-darkcolor = "#d9e0ee";
+            recolor-lightcolor = "${bg}"; 
+            recolor-darkcolor = "${fg}";
 
-            index-fg = "#d9e0ee";
-            index-bg = "#1e1d2f";
-            index-active-fg = "#d9e0ee";
-            index-active-bg = "#302d41";
+            index-fg = "${fg}";
+            index-bg = "${bg}";
+            index-active-fg = "${fg}";
+            index-active-bg = "${bg}";
 
-            render-loading-bg = "#1e1d2f";
-            render-loading-fg = "#d9e0ee";
+            render-loading-bg = "${bg}";
+            render-loading-fg = "${fg}";
 
-            highlight-color = "#575268";
-            highlight-active-color = "#f5c2e7";
-            highlight-fg = "#f5c2e7";
+            highlight-color = "${c8}";
+            highlight-active-color = "${c6}";
+            highlight-fg = "${c6}";
 
             selection-clipboard = "clipboard";
             adjust-open = "best-fit";
