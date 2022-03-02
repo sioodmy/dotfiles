@@ -1,4 +1,4 @@
-{ pkgs, config, ...}:
+{ pkgs, config, theme, ...}:
 
 {
     services.polybar = {
@@ -11,7 +11,7 @@
         script = ''
           polybar top &
         '';
-        config = {
+        config = with theme.colors; {
             "bar/top" = {
                 monitor = "\${env:MONITOR}";
                 width = "98%";
@@ -22,9 +22,10 @@
                 modules-left = "date";
                 modules-center = "bspwm";
                 modules-right = "mpd volume memory cpu";
-                font-0 = "JetBrainsMono Nerd Font:style=Medium:pixelsize=14;3";
+                font-0 = "${font}:style=Medium:pixelsize=14;3";
                 font-1 = "unifont:fontformat=truetype:size=14:antialias=false;3";
-                background = "#1E1E2E";
+                font-2 = "Twitter Color Emoji:pixelsize=14;3";
+                background = "${bg}";
             };
 
             "module/date" = {
@@ -32,7 +33,7 @@
                 internal = 5;
                 date = "%d.%m.%y";
                 time = "%H:%M";
-                label = "%{A1:dunstify \"Calendar\" \"AS\":}%{F#96CDFB}%{F-} %time%  %{F#89DCEB}%{F-} %date%%{A}"; 
+                label = "%{A1:dunstify \"Calendar\" \"AS\":}%{F${ac}}%{F-} %time%  %{F${ac}}%{F-} %date%%{A}"; 
                 label-margin = 2;
             };
 
@@ -40,8 +41,8 @@
                 type = "internal/bspwm";
                 label-focused = "";
                 label-focused-padding = "1.5";
-                label-focused-foreground = "#ABE9B3";
-                label-foreground = "#D9E0EE";
+                label-focused-foreground = "${ac}";
+                label-foreground = "${fg}";
 
                 label-occupied = "";
                 label-occupied-padding = "1.5";
@@ -56,14 +57,14 @@
             "module/cpu" = {
                 type = "internal/cpu";
                 interval = 2;
-                label = "%{F#ABE9B3}%{F-} %percentage:02%%";
+                label = "%{F${ac}}%{F-} %percentage:02%%";
                 label-margin-right = 2;
             };
 
             "module/memory" = {
                 type = "internal/memory";
                 interval = 2;
-                label = "%{F#B5E8E0}%{F-} %percentage_used:02%%";
+                label = "%{F${ac}}%{F-} %percentage_used:02%%";
                 label-margin = 2;
     
             };
@@ -72,8 +73,8 @@
                 type = "internal/pulseaudio";
                 format-volume = "<label-volume>";
                 label-volume-foreground = "#D9E0EE";
-                label-volume = "%{F#F8BD96}墳 %{F-}%percentage:02%%";
-                label-muted = "%{F#F8BD96}婢 %{F-} 0%";
+                label-volume = "%{F${ac}}墳 %{F-}%percentage:02%%";
+                label-muted = "%{F${ac}}婢 %{F-} 0%";
                 label-muted-foreground = "#D9E0EE";
 
             };
@@ -83,7 +84,7 @@
               host = "127.0.0.1";
               port = "6600";
               internal = 2;
-              format-online = "%{F#F8BD96}<toggle>%{F}";
+              format-online = "%{F${ac}}<toggle>%{F}";
               label-song = "%artist% - %title%";
               icon-play = " ";
               icon-pause = " ";

@@ -21,6 +21,10 @@ with lib;
         '';
     };
 
+    hardware = {
+      opengl.driSupport32Bit = true;
+      pulseaudio.support32Bit = true;
+    };
 
     environment.defaultPackages = [ ];
     nixpkgs.config.allowUnfree = true;
@@ -91,6 +95,7 @@ with lib;
             support32Bit = true;
         };
         pulse.enable = true;
+        jack.enable = true;
     };
     environment.systemPackages = with pkgs; [ pulseaudio ]; # for some reason this is required     
 
@@ -104,6 +109,8 @@ with lib;
     fonts.fonts = with pkgs; [
         jetbrains-mono 
         roboto
+        source-sans
+        twemoji-color-font
         (nerdfonts.override { fonts = [ "JetBrainsMono" ]; })
     ];
 

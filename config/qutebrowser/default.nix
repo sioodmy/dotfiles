@@ -1,4 +1,4 @@
-{ pkgs, config, ... }:
+{ pkgs, config, theme, ... }:
 
 {
   programs.qutebrowser = {
@@ -10,8 +10,8 @@
       y = "https://www.youtube.com/results?search_query={}";
     };
 
-    settings = {
-      hints.border = "1px solid #D9E0EE";
+    settings = with theme.colors; {
+      hints.border = "1px solid ${fg}";
       fonts = {
         default_family = "JetBrains Mono";
         default_size = "12pt";
@@ -20,111 +20,111 @@
         webpage.darkmode.enabled = true;
         completion = {
           category = {
-            bg = "#1E1E2E";
-            fg = "#D9E0EE";
-            border.bottom = "#302D41";
-            border.top = "#302D41";
+            bg = "${bg}";
+            fg = "${fg}";
+            border.bottom = "${bg}";
+            border.top = "${bg}";
           };
-          even.bg = "#1E1E2E";
-          odd.bg = "#1E1E2E";
-          fg = "#D9E0EE";
+          even.bg = "${bg}";
+          odd.bg = "${bg}";
+          fg = "${fg}";
           item.selected = {
-            bg = "#302D41";
-            fg = "#D9E0EE";
-            border.bottom = "#ABE9B3";
-            border.top = "#ABE9B3";
+            bg = "${c0}";
+            fg = "${fg}";
+            border.bottom = "${ac}";
+            border.top = "${ac}";
           };
-          match.fg = "#F8BD96";
-          scrollbar.bg = "#1E1E2E";
-          scrollbar.fg = "#D9E0EE";
+          match.fg = "${c11}";
+          scrollbar.bg = "${bg}";
+          scrollbar.fg = "${fg}";
         };
         downloads = {
-          bar.bg = "#1E1E2E";
-          error.bg = "#1E1E2E";
-          error.fg = "#F28FAD";
-          stop.bg = "#1E1E2E";
+          bar.bg = "${bg}";
+          error.bg = "${bg}";
+          error.fg = "${c1}";
+          stop.bg = "${bg}";
           system.bg = "none";
         };
         hints = {
-          bg = "#1E1E2E";
-          fg = "#D9E0EE";
-          match.fg = "#C3BAC6";
+          bg = "${bg}";
+          fg = "${fg}";
+          match.fg = "${c0}";
         };
         keyhint = {
-          bg = "#1E1E2E";
-          fg = "#ABE9B3";
-          suffix.fg = "#F8BD96";
+          bg = "${bg}";
+          fg = "${ac}";
+          suffix.fg = "${c11}";
         };
         messages = {
-          error.bg = "#1E1E2E";
-          error.border = "#302D41";
-          error.fg = "#F28FAD";
-          info.bg = "#1E1E2E";
-          info.fg = "#C3BAC6";
-          warning.bg = "#1E1E2E";
-          warning.border = "#302D41";
-          warning.fg = "#F28FAD";
+          error.bg = "${bg}";
+          error.border = "${c7}";
+          error.fg = "${c1}";
+          info.bg = "${bg}";
+          info.fg = "${c7}";
+          warning.bg = "${bg}";
+          warning.border = "${c7}";
+          warning.fg = "${c1}";
         };
         prompts = {
-          border = "1px solid #302D41";
-          fg = "#ABE9B3";
-          selected.bg = "#96CDFB";
+          border = "1px solid ${c7}";
+          fg = "${ac}";
+          selected.bg = "${ac}";
         };
         statusbar = {
           caret = {
-            bg = "#1E1E2E";
-            fg = "#D9E0EE";
-            selection.bg = "#1E1E2E";
-            selection.fg = "#ABE9B3";
+            bg = "${bg}";
+            fg = "${fg}";
+            selection.bg = "${bg}";
+            selection.fg = "${ac}";
           };
           command = {
-            bg = "#1E1E2E";
-            fg = "#ABE9B3";
+            bg = "${bg}";
+            fg = "${ac}";
 
           };
           insert = {
-            fg = "#D9E0EE";
-            bg = "#1E1E2E";
+            fg = "${fg}";
+            bg = "${bg}";
           };
           normal = {
-            bg = "#1E1E2E";
-            fg = "#D9E0EE";
+            bg = "${bg}";
+            fg = "${fg}";
           };
           passthrough = {
-            bg = "#1E1E2E";
-            fg = "#D9E0EE";
+            bg = "${bg}";
+            fg = "${fg}";
           };
           private = {
-            bg = "#1E1E2E";
-            fg = "#D9E0EE";
+            bg = "${bg}";
+            fg = "${fg}";
           };
-          progress.bg = "#1E1E2E";
+          progress.bg = "${bg}";
           url = {
-            error.fg = "#F28FAD";
-            fg = "#D9E0EE";
-            hover.fg = "#ABE9B3";
-            success.https.fg = "#ABE9B3";
-            success.http.fg = "#ABE9B3";
-            warn.fg = "#FAE3B0";
+            error.fg = "${c1}";
+            fg = "${fg}";
+            hover.fg = "${ac}";
+            success.https.fg = "${ac}";
+            success.http.fg = "${ac}";
+            warn.fg = "${c1}";
           };
         };
         tabs = {
-          bar.bg = "#1E1E2E";
-          even.bg = "#1E1E2E";
-          even.fg = "#D9E0EE";
+          bar.bg = "${bg}";
+          even.bg = "${bg}";
+          even.fg = "${fg}";
           indicator = {
-            error = "#F28FAD";
-            start = "#F8BD96";
-            stop = "#ABE9B3";
+            error = "${c1}";
+            start = "${c11}";
+            stop = "${ac}";
             system = "none";
           };
-          odd.fg = "#D9E0EE";
-          odd.bg = "#1E1E2E";
+          odd.fg = "${fg}";
+          odd.bg = "${bg}";
           selected = {
-            even.fg = "#D9E0EE";
-            even.bg = "#1E1E2E";
-            odd.fg = "#D9E0EE";
-            odd.bg = "#1E1E2E";
+            even.fg = "${fg}";
+            even.bg = "${bg}";
+            odd.fg = "${fg}";
+            odd.bg = "${bg}";
           };
         };
       };
@@ -147,6 +147,7 @@
     extraConfig = ''
     config.set('tabs.padding', {"top": 5, "bottom": 5, "left": 5, "right": 5})
     config.set('statusbar.padding', {"top": 5, "bottom": 5, "left": 5, "right": 5})
+    c.content.blocking.adblock.lists = ['https://easylist.to/easylist/easylist.txt', 'https://easylist.to/easylist/easyprivacy.txt', 'https://easylist-downloads.adblockplus.org/easylistdutch.txt', 'https://easylist-downloads.adblockplus.org/abp-filters-anti-cv.txt', 'https://www.i-dont-care-about-cookies.eu/abp/', 'https://secure.fanboy.co.nz/fanboy-cookiemonster.txt']
       '';
   };
 }

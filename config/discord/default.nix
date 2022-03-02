@@ -17,7 +17,7 @@
     enable = true;
     discord = pkgs.discord-css;
     discordAlias = false; # Doesn't work so I manually symlink it in the overlay
-    css = builtins readFile ./theme.css;
+    css = "asd";
   };
   home.packages = [ pkgs.discord-css ];
 }

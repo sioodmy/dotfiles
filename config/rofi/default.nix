@@ -1,4 +1,4 @@
-{ pkgs, config, lib, ...}:
+{ pkgs, config, lib, theme, ...}:
 {
     programs.rofi = {
         enable = true;
@@ -24,20 +24,20 @@
           pkgs.rofi-calc
         ];
 
-        theme = 
+        theme =
             let 
               inherit (config.lib.formats.rasi) mkLiteral;
-            in
+            in with theme.colors;
             {
             "*" = {
-              bg-col = mkLiteral "#1E1E2E";
-              bg-col-light = mkLiteral "#1E1D2F";
-              border-col = mkLiteral "#1E1D2F";
-              selected-col = mkLiteral "#1E1D2F";
-              blue = mkLiteral "#7aa2f7";
-              fg-col = mkLiteral "#D9E0EE";
-              fg-col2 = mkLiteral "#F28FAD";
-              grey = mkLiteral "#D9E0EE";
+              bg-col = mkLiteral "${bg}";
+              bg-col-light = mkLiteral "${bg}";
+              border-col = mkLiteral "${bg}";
+              selected-col = mkLiteral "${bg}";
+              accent = mkLiteral "${ac}";
+              fg-col = mkLiteral "${fg}";
+              fg-col2 = mkLiteral "${c1}";
+              grey = mkLiteral "${fg}";
               width = 600;
             };
 
@@ -66,7 +66,7 @@
             };
             
             "prompt" = {
-              background-color = mkLiteral "@blue";
+              background-color = mkLiteral "@accent";
               padding = mkLiteral "6px";
               text-color = mkLiteral "@bg-col";
               border-radius = mkLiteral "3px";
@@ -128,7 +128,7 @@
 
             "button selected" = {
               background-color = mkLiteral "@bg-col";
-              text-color = mkLiteral "@blue";
+              text-color = mkLiteral "@accent";
             };
 
 

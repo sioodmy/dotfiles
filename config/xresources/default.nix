@@ -1,41 +1,41 @@
-{ config, pkgs, ... }:
+{ config, pkgs, theme, ... }:
 
 {
-    xresources.extraConfig = ''
-        *background: #1E1E2E
-        *foreground: #D9E0EE 
-        ! Gray
-        *color0: #6E6C7E
-        *color8: #988BA2
+    xresources.extraConfig = with theme.colors; "
+        *background: ${bg}
+        *foreground: ${fg} 
+        !! Gray
+        *color0: ${c0}
+        *color8: ${c8}
 
-        ! Red
-        *color1: #F28FAD
-        *color9: #F28FAD
+        !! Red
+        *color1: ${c1}
+        *color9: ${c9}
 
-        ! Green
-        *color2: #ABE9B3
-        *color10: #ABE9B3
+        !! Green
+        *color2: ${c2}
+        *color10: ${c10}
 
-        ! Yellow
-        *color3: #FAE3B0
-        *color11:  #FAE3B0
+        !! Yellow
+        *color3: ${c3}
+        *color11:  ${c11}
 
-        ! Blue
-        *color4: #96CDFB
-        *color12: #96CDFB
+        !! Blue
+        *color4: ${c4}
+        *color12: ${c12}
 
-        ! Maguve
-        *color5: #DDB6F2
-        *color13: #DDB6F2
+        !! Maguve
+        *color5: ${c5}
+        *color13: ${c13}
 
-        ! Pink
-        *color6: #F5C2E7
-        *color14: #F5C2E7
+        !! Pink
+        *color6: ${c6}
+        *color14: ${c14}
 
-        ! Whites
-        *color7: #C3BAC6
-        *color15: #D9E0EE
-    '';
+        !! Whites
+        *color7: ${c7}
+        *color15: ${c15}
+    ";
 
 
 }
