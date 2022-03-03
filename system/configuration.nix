@@ -111,6 +111,7 @@ with lib;
         roboto
         source-sans
         twemoji-color-font
+        inter
         (nerdfonts.override { fonts = [ "JetBrainsMono" ]; })
     ];
 

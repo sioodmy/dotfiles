@@ -13,8 +13,8 @@
       package = pkgs.papirus-icon-theme;
     };
     font = {
-      name = "Source Sans 3";
-      size = 13;
+      name = "Inter";
+      size = 12;
     };
   };
 }
