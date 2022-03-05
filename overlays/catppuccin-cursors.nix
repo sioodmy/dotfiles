@@ -1,4 +1,4 @@
-{ lib, stdenv, fetchTarball, ... }:
+{ lib, stdenv, ... }:
 
 stdenv.mkDerivation rec {
   pname = "cattpuccin-cursors";
@@ -6,7 +6,7 @@ stdenv.mkDerivation rec {
 
   src = fetchTarball {
     url = "https://github.com/catppuccin/cursors/raw/e5a04bcdd953f8cc9fdc9909da24d63319fa252d/cursors/Catppuccin-Dark-Cursors.tar.gz";
-    sha256 = "92a3267a120da3b378d443641526d78f87e86d19be8af6ca97c2e4161a04a111";
+    sha256 = "0jnjr0g7j7nwbbf961x5y1s1n2d79f8q8w2qsmn2xm1p1qyay0vd";
   };
 
   installPhase = ''

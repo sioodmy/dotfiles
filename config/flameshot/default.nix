@@ -6,9 +6,9 @@
     settings = {
       General = {
         showStartupLaunchMessage = false;
-        uiColor = "${ac}";
-        contrastUiColor = "${fg}";
-        drawColor = "${c1}";
+        uiColor = "#${ac}";
+        contrastUiColor = "#${fg}";
+        drawColor = "#${c1}";
         showHelp = false;
         showSidePanelButton = false;
       };
