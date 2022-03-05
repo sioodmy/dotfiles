@@ -5,7 +5,7 @@
         extraConfig = {
             modi = "drun,window,calc";
             lines = 5;
-            font = "JetBrainsMono Nerd Font 14";
+            font = "${theme.colors.font} 14";
             show-icons = true;
             icon-theme = "Papirus";
             terminal = "urxvt";
@@ -30,14 +30,14 @@
             in with theme.colors;
             {
             "*" = {
-              bg-col = mkLiteral "${bg}";
-              bg-col-light = mkLiteral "${bg}";
-              border-col = mkLiteral "${bg}";
-              selected-col = mkLiteral "${bg}";
-              accent = mkLiteral "${ac}";
-              fg-col = mkLiteral "${fg}";
-              fg-col2 = mkLiteral "${c1}";
-              grey = mkLiteral "${fg}";
+              bg-col = mkLiteral "#${bg}";
+              bg-col-light = mkLiteral "#${bg}";
+              border-col = mkLiteral "#${bg}";
+              selected-col = mkLiteral "#${bg}";
+              accent = mkLiteral "#${ac}";
+              fg-col = mkLiteral "#${fg}";
+              fg-col2 = mkLiteral "#${c1}";
+              grey = mkLiteral "#${fg}";
               width = 600;
             };
 

@@ -1,4 +1,4 @@
-{ pkgs, config, ... }:
+{ pkgs, config, theme, ... }:
 
 {
     programs.zsh = {
@@ -6,7 +6,7 @@
       enableCompletion = true;
       enableAutosuggestions = true;
       enableSyntaxHighlighting = true;
-      localVariables = {
+      localVariables = with theme.colors; {
         PROMPT = "%F{yellow} %~ %B%F{blue}%f%b ";
         LC_ALL = "en_US.UTF-8";
       };
@@ -23,6 +23,7 @@
         cat = "bat --style=plain";
         grep = "rg";
         htop = "btm";
+        neofetch = "rxfetch";
         m = "mkdir -p";
         fcd = "cd $(find -type d | fzf)";
         ls = "exa --icons";

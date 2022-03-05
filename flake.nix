@@ -66,7 +66,6 @@
                   ./config/bspwm
                   ./config/sxhkd
                   ./config/dunst
-                  ./config/urxvt
                   ./config/picom
                   ./config/nvim
                   ./config/zsh
@@ -84,6 +83,8 @@
                   ./config/udiskie
                   ./config/flameshot
                   ./config/qutebrowser
+                  ./config/alacritty
+                  ./config/fzf
                 ];
               };
             };
@@ -97,6 +98,7 @@
               (final : prev: {
                 bspswallow = prev.callPackage ./overlays/bspswallow.nix { };
                 catppuccin-gtk = prev.callPackage ./overlays/catppuccin-gtk.nix { };
+                catppuccin-cursors = prev.callPackage ./overlays/catppuccin-cursors.nix { };
 #                discord = prev.callPackage ./overlays/discord.nix { };
               })
               nur.overlay

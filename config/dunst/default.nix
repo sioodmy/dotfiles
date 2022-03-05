@@ -14,21 +14,21 @@
                 alignment = "left";
             }; 
             urgency_low = {
-                background = "${bg}";
-                foreground = "${fg}";
-                frame_color = "${fg}";
+                background = "#${bg}";
+                foreground = "#${fg}";
+                frame_color = "#${fg}";
                 timeout = "5";
             };
             urgency_normal = {
-                background = "${bg}";
-                foreground = "${fg}";
-                frame_color = "${c2}";
+                background = "#${bg}";
+                foreground = "#${fg}";
+                frame_color = "#${c2}";
                 timeout = "10";
             };
             urgency_critical = {
-                background = "${bg}";
-                foreground = "${fg}";
-                frame_color = "${c1}";
+                background = "#${bg}";
+                foreground = "#${fg}";
+                frame_color = "#${c1}";
                 timeout = "15";
             };
         };

@@ -15,7 +15,7 @@ super + shift + o
 
 # Spawn a new terminal
 super + Return
-	urxvt
+	alacritty
 
 # Launcher
 super + @space

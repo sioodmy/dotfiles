@@ -4,20 +4,50 @@
   programs.alacritty = {
     enable = true;
     settings = with theme.colors; {
-      window.dimensions ={
-        columns = 100;
-        lines = 85;
-      };
-      padding = {
-        x = 26;
-        y = 26;
+      key_bindings = [
+        {
+          key = "C";
+          mods = "Control|Alt";
+          action = "Copy";
+        }
+        {
+          key = "V";
+          mods = "Control|Alt";
+          action = "Paste";
+        }
+        {
+          key = "Equals";
+          mods = "Command";
+          action = "IncreaseFontSize";
+        }
+        {
+          key = "Minus";
+          mods = "Command";
+          action = "DecreaseFontSize";
+        }
+        {
+          key = "Minus";
+          mods = "Command|Shift";
+          action = "ResetFontSize";
+        }
+      ];
+
+      window = {
+        dimensions ={
+          columns = 100;
+          lines = 25;
+        }; 
+        padding = {
+          x = 26;
+          y = 26;
+        };
       };
       scrolling = {
         history = 38;
         multiplier = 3;
       };
       font = {
-        size = 14;
+        size = 15;
         normal = {
           family = "${font}";
           style = "Medium";
@@ -30,7 +60,13 @@
           family = "${font}";
           style = "Light italic";
         };
+        offset = {
+          x = 0;
+          y = 0;
+        };
       };
+
+      mouse.hide_when_typing = true;
 
       colors = {
         primary = {
