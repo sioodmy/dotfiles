@@ -1,6 +1,11 @@
 { config, pkgs, ...}:
 
 {
+  home.packages = with pkgs; [
+    mpc_cli 
+    playerctl
+  ];
+
   services.mpd = {
     enable = true;
    # dataDir = "/home/sioodmy/.config/mpd";

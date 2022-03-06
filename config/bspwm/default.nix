@@ -1,6 +1,10 @@
 { config, pkgs, ... }:
 
 {
+  home.packages = with pkgs; [
+    feh
+    bspswallow
+  ];
   xsession = {
     enable = true;
     pointerCursor = {
