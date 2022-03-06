@@ -10,6 +10,7 @@ let
             sha256 = "17b07krgc9pzqhmwls2d50xbiqs4fgzmdi61qrz1v5n0bgs011mr";
         };
     };
+
 in
 {
 
@@ -19,8 +20,8 @@ in
     pyright 
     rust-analyzer 
     gopls
-    emacs27Packages.lsp-dart 
     sumneko-lua-language-server
+    dart
     nodePackages.typescript-language-server 
     nodePackages.vscode-langservers-extracted
     nodePackages.bash-language-server
@@ -36,8 +37,83 @@ in
       {
         plugin = telescope-nvim;
         config = ''
-        map <C-f> :Telescope find_files <C
+        map <C-f> :Telescope find_files <CR>
         map <C-n> :Telescope live_grep <CR>
+        lua << EOF
+local present, telescope = pcall(require, "telescope")
+
+if not present then
+   return
+end
+
+local default = {
+   defaults = {
+      vimgrep_arguments = {
+         "rg",
+         "--color=never",
+         "--no-heading",
+         "--with-filename",
+         "--line-number",
+         "--column",
+         "--smart-case",
+      },
+      prompt_prefix = "   ",
+      selection_caret = "  ",
+      entry_prefix = "  ",
+      initial_mode = "insert",
+      selection_strategy = "reset",
+      sorting_strategy = "ascending",
+      layout_strategy = "horizontal",
+      layout_config = {
+         horizontal = {
+            prompt_position = "top",
+            preview_width = 0.55,
+            results_width = 0.8,
+         },
+         vertical = {
+            mirror = false,
+         },
+         width = 0.87,
+         height = 0.80,
+         preview_cutoff = 120,
+      },
+      file_sorter = require("telescope.sorters").get_fuzzy_file,
+      file_ignore_patterns = { "node_modules" },
+      generic_sorter = require("telescope.sorters").get_generic_fuzzy_sorter,
+      path_display = { "truncate" },
+      winblend = 0,
+      border = {},
+      borderchars = { "─", "│", "─", "│", "╭", "╮", "╯", "╰" },
+      color_devicons = true,
+      use_less = true,
+      set_env = { ["COLORTERM"] = "truecolor" }, -- default = nil,
+      file_previewer = require("telescope.previewers").vim_buffer_cat.new,
+      grep_previewer = require("telescope.previewers").vim_buffer_vimgrep.new,
+      qflist_previewer = require("telescope.previewers").vim_buffer_qflist.new,
+      -- Developer configurations: Not meant for general override
+      buffer_previewer_maker = require("telescope.previewers").buffer_previewer_maker,
+   },
+}
+
+local M = {}
+M.setup = function(override_flag)
+   if override_flag then
+      default = require("core.utils").tbl_override_req("telescope", default)
+   end
+
+   telescope.setup(default)
+
+   local extensions = { "themes", "terms" }
+
+   pcall(function()
+      for _, ext in ipairs(extensions) do
+         telescope.load_extension(ext)
+      end
+   end)
+end
+
+return M
+EOF
         '';
       }
       {
@@ -49,76 +125,90 @@ in
       {
         plugin = nvim-tree-lua;
         config = ''
+          map <C-y> :NvimTreeToggle <CR>
         lua << EOF
-        require'nvim-tree'.setup {
-          disable_netrw        = true,
-          hijack_netrw         = true,
-          open_on_setup        = false,
-          ignore_ft_on_setup   = {},
-          auto_close           = false,
-          auto_reload_on_write = true,
-          open_on_tab          = false,
-          hijack_cursor        = false,
-          update_cwd           = false,
-          hijack_directories   = {
-            enable = true,
-            auto_open = true,
-          },
-          diagnostics = {
-            enable = false,
-            icons = {
-              hint = "",
-              info = "",
-              warning = "",
-              error = "",
-            }
-          },
-          update_focused_file = {
-            enable      = false,
-            update_cwd  = false,
-            ignore_list = {}
-          },
-          system_open = {
-            cmd  = nil,
-            args = {}
-          },
-          filters = {
-            dotfiles = false,
-            custom = {}
-          },
-          git = {
-            enable = true,
-            ignore = true,
-            timeout = 500,
-          },
-          view = {
-            width = 30,
-            height = 30,
-            hide_root_folder = false,
-            side = 'left',
-            auto_resize = false,
-            mappings = {
-              custom_only = false,
-              list = {}
-            },
-            number = false,
-            relativenumber = false,
-            signcolumn = "yes"
-          },
-          trash = {
-            cmd = "trash",
-            require_confirm = true
-          },
-          actions = {
-            change_dir = {
-              global = false,
-            },
-            open_file = {
-              quit_on_open = false,
-            }
-          }
-        }
-        EOF
+          require'nvim-tree'.setup {}
+          local present, nvimtree = pcall(require, "nvim-tree")
+
+if not present then
+   return
+end
+
+local g = vim.g
+
+g.nvim_tree_add_trailing = 0 -- append a trailing slash to folder names
+g.nvim_tree_git_hl = 0
+g.nvim_tree_highlight_opened_files = 0
+g.nvim_tree_indent_markers = 1
+g.nvim_tree_root_folder_modifier = table.concat { ":t:gs?$?/..", string.rep(" ", 1000), "?:gs?^??" }
+
+g.nvim_tree_show_icons = {
+   folders = 1,
+   files = 1,
+   git = 1,
+}
+
+g.nvim_tree_icons = {
+   default = "",
+   symlink = "",
+   git = {
+      deleted = "",
+      ignored = "◌",
+      renamed = "➜",
+      staged = "✓",
+      unmerged = "",
+      unstaged = "✗",
+      untracked = "★",
+   },
+   folder = {
+      default = "",
+      empty = "",
+      empty_open = "",
+      open = "",
+      symlink = "",
+      symlink_open = "",
+   },
+}
+
+local default = {
+   filters = {
+      dotfiles = false,
+   },
+   disable_netrw = true,
+   hijack_netrw = true,
+   ignore_ft_on_setup = { "dashboard" },
+   auto_close = true,
+   open_on_tab = false,
+   hijack_cursor = true,
+   hijack_unnamed_buffer_when_opening = false,
+   update_cwd = true,
+   update_focused_file = {
+      enable = true,
+      update_cwd = false,
+   },
+   view = {
+      allow_resize = false,
+      side = "left",
+      width = 25,
+      hide_root_folder = true,
+   },
+   git = {
+      enable = false,
+      ignore = false,
+   },
+}
+
+local M = {}
+
+M.setup = function(override_flag)
+   if override_flag then
+      default = require("core.utils").tbl_override_req("nvim_tree", default)
+   end
+   nvimtree.setup(default)
+end
+
+return M
+EOF
         '';
       }
       {
@@ -163,6 +253,7 @@ in
             max_kind_width = 100;
             max_menu_width = 100;
             documentation = false;
+
             source = {
             path = true;
             buffer = true;
@@ -229,7 +320,25 @@ in
       {
         plugin = pears-nvim;
         config = ''
-                lua require "pears".setup()
+                lua << EOF
+                local M = {}
+
+M.autopairs = function(override_flag)
+   local present1, autopairs = pcall(require, "nvim-autopairs")
+   local present2, cmp_autopairs = pcall(require, "nvim-autopairs.completion.cmp")
+
+   if present1 and present2 then
+      local default = { fast_wrap = {} }
+      if override_flag then
+         default = require("core.utils").tbl_override_req("nvim_autopairs", default)
+      end
+      autopairs.setup(default)
+
+      local cmp = require "cmp"
+      cmp.event:on("confirm_done", cmp_autopairs.on_confirm_done())
+   end
+end
+EOF
         '';
       }
       {
@@ -246,6 +355,44 @@ in
       }
       {
         plugin = emmet-vim;
+      }
+      {
+        plugin = lspkind-nvim;
+        config = ''
+lua << EOF
+          require('lspkind').init({
+          mode = 'symbol',
+
+            symbolmap = {
+              Text = "",
+              Method = "",
+          Function = "",
+          Constructor = "",
+          Field = "ﰠ",
+          Variable = "",
+          Class = "ﴯ",
+          Interface = "",
+          Module = "",
+          Property = "ﰠ",
+          Unit = "塞",
+          Value = "",
+          Enum = "",
+          Keyword = "",
+          Snippet = "",
+          Color = "",
+          File = "",
+          Reference = "",
+          Folder = "",
+          EnumMember = "",
+          Constant = "",
+          Struct = "פּ",
+          Event = "",
+          Operator = "",
+          TypeParameter = ""
+        },
+          })
+EOF
+        '';
       }
       {
         plugin = lualine-nvim;
@@ -293,56 +440,56 @@ in
     ];
 
     extraConfig = ''
-    lua << EOF
-    local opt = vim.opt
-    opt.lazyredraw = true;
-    opt.shell = "zsh"
-    opt.shadafile = "NONE"
+      lua << EOF
+      local opt = vim.opt
+      opt.lazyredraw = true;
+      opt.shell = "zsh"
+      opt.shadafile = "NONE"
 
-    -- Colors
-    opt.termguicolors = true
+      -- Colors
+      opt.termguicolors = true
 
-    -- Undo files
-    opt.undofile = true
+      -- Undo files
+      opt.undofile = true
 
-    -- Indentation
-    opt.smartindent = true
-    opt.tabstop = 4
-    opt.softtabstop = 4
-    opt.shiftwidth = 4
-    opt.shiftround = true
-    opt.expandtab = true
-    opt.scrolloff = 3
+      -- Indentation
+      opt.smartindent = true
+      opt.tabstop = 4
+      opt.softtabstop = 4
+      opt.shiftwidth = 4
+      opt.shiftround = true
+      opt.expandtab = true
+      opt.scrolloff = 3
 
-    -- Set clipboard to use system clipboard
-    opt.clipboard = "unnamedplus"
+      -- Set clipboard to use system clipboard
+      opt.clipboard = "unnamedplus"
 
-    -- Use mouse
-    opt.mouse = "a"
+      -- Use mouse
+      opt.mouse = "a"
 
-    -- Nicer UI settings
-    opt.cursorline = true
-    opt.relativenumber = true
-    opt.number = true
+      -- Nicer UI settings
+      opt.cursorline = true
+      opt.relativenumber = true
+      opt.number = true
 
-    -- Get rid of annoying viminfo file
-    opt.viminfo = ""
-    opt.viminfofile = "NONE"
+      -- Get rid of annoying viminfo file
+      opt.viminfo = ""
+      opt.viminfofile = "NONE"
 
-    -- Miscellaneous quality of life
-    opt.ignorecase = true
-    opt.ttimeoutlen = 5
-    opt.compatible = false
-    opt.hidden = true
-    opt.shortmess = "atI"
-    opt.wrap = true
-    opt.backup = false
-    opt.writebackup = false
-    opt.errorbells = false
-    opt.swapfile = false
-    opt.showmode = false
-    opt.spell = false
-    EOF
+      -- Miscellaneous quality of life
+      opt.ignorecase = true
+      opt.ttimeoutlen = 5
+      opt.compatible = false
+      opt.hidden = true
+      opt.shortmess = "atI"
+      opt.wrap = true
+      opt.backup = false
+      opt.writebackup = false
+      opt.errorbells = false
+      opt.swapfile = false
+      opt.showmode = false
+      opt.spell = false
+      EOF
     '';
-      };
-      }
+  };
+}
