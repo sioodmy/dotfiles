@@ -4,7 +4,6 @@
   programs.alacritty = {
     enable = true;
     settings = with theme.colors; {
-      background_opacity = 0.95;
       key_bindings = [
         {
           key = "C";
@@ -33,7 +32,7 @@
         }
       ];
 
-      dynamic_padding = false;
+      dynamic_padding = true;
 
       window = {
         dimensions ={
