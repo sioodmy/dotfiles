@@ -1,26 +1,21 @@
 { pkgs, config, ... }:
 
 {
-    nixpkgs.config.allowUnfree = true;
-    environment.systemPackages = with pkgs; [
+  nixpkgs.config.allowUnfree = true;
+  environment.systemPackages = with pkgs; [
 
-        # desktop
-        feh bspswallow 
-        # cli tools
-        exa ffmpeg unzip xclip pfetch
-        libnotify gnupg update-nix-fetchgit yt-dlp
-        ripgrep rsync mpc_cli imagemagick
-        scrot maim bottom playerctl newsboat
-        tealdeer cava killall onefetch
-        # gui apps
-        ungoogled-chromium obs-studio mpv sxiv 
-        transmission-gtk pavucontrol pcmanfm
-        # unfree apps (sorry daddy stallman)
-        discord minecraft steam
-        # dev tools
-        python3 git jdk dconf gcc
-        # language servers for nvim
-        rnix-lsp
-
-    ];
+    # cli tools
+    exa ffmpeg unzip xclip pfetch
+    libnotify gnupg update-nix-fetchgit yt-dlp
+    ripgrep rsync imagemagick
+    scrot bottom newsboat
+    tealdeer cava killall onefetch
+    # gui apps
+    obs-studio mpv sxiv 
+    transmission-gtk pavucontrol pcmanfm
+    # unfree apps (sorry daddy stallman)
+    discord minecraft steam
+    # dev tools
+    python3 git jdk dconf gcc rustc rustfmt cargo
+  ];
 }
