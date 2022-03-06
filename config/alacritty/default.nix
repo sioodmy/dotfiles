@@ -4,6 +4,7 @@
   programs.alacritty = {
     enable = true;
     settings = with theme.colors; {
+      background_opacity = 0.95;
       key_bindings = [
         {
           key = "C";
@@ -31,6 +32,8 @@
           action = "ResetFontSize";
         }
       ];
+
+      dynamic_padding = false;
 
       window = {
         dimensions ={
@@ -60,10 +63,7 @@
           family = "${font}";
           style = "Light italic";
         };
-        offset = {
-          x = 0;
-          y = 0;
-        };
+        use_thin_strokes = true;
       };
 
       mouse.hide_when_typing = true;
