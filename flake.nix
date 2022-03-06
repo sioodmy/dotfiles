@@ -77,6 +77,8 @@
                   ./config/rofi
                   ./config/polybar
                   ./config/chromium
+                  ./config/firefox
+                  ./config/gpg
                   ./config/gtk
                   ./config/betterlockscreen
                   ./config/music

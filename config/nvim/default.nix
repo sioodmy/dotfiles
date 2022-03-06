@@ -112,6 +112,7 @@ EOF
             plugin = nvim-lspconfig;
             config = ''
                 lua require'lspconfig'.rnix.setup{}
+
             '';
         }
         {
@@ -174,7 +175,13 @@ EOF
             '';
         }
         {
+          plugin = vim-flutter;
+        }
+        {
             plugin = indent-blankline-nvim;
+        }
+        {
+            plugin = emmet-vim;
         }
         {
             plugin = lualine-nvim;

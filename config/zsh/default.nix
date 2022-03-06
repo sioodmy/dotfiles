@@ -27,6 +27,7 @@
         m = "mkdir -p";
         fcd = "cd $(find -type d | fzf)";
         ls = "exa --icons";
+        sl = "ls";
         v = "nvim";
         g = "git";
         tree = "exa --tree --icons";

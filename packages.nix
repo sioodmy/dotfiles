@@ -7,7 +7,7 @@
         # desktop
         feh bspswallow 
         # cli tools
-        exa ffmpeg unzip xclip bat pfetch
+        exa ffmpeg unzip xclip pfetch
         libnotify gnupg update-nix-fetchgit yt-dlp
         ripgrep rsync mpc_cli imagemagick
         scrot maim bottom playerctl newsboat
@@ -18,7 +18,7 @@
         # unfree apps (sorry daddy stallman)
         discord minecraft steam
         # dev tools
-        python3 rustup git jdk dconf gcc
+        python3 git jdk dconf gcc
         # language servers for nvim
         rnix-lsp
 
