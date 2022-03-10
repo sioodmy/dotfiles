@@ -9,7 +9,7 @@
   programs.rofi = {
     enable = true;
     extraConfig = {
-      modi = "drun,window,calc";
+      modi = "drun,window,calc,emoji";
       lines = 5;
       font = "${theme.colors.font} 14";
       show-icons = true;
@@ -20,14 +20,16 @@
       disable-history = false;
       hide-scrollbar = true;
       display-drun = "   Run ";
-      display-window = "﩯  Window";
-      display-calc = "  Calc";
+      display-window = " 﩯  Window ";
+      display-calc = "  Calc ";
+      display-emoji = "  Emoji ";
       sidebar-mode = true;
 
     };
 
-    plugins = [
-      pkgs.rofi-calc
+    plugins = with pkgs; [
+      rofi-calc
+      rofi-emoji
     ];
 
     theme =
