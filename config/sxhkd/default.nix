@@ -26,6 +26,9 @@ super + e
 
 super + c
     rofi -show calc            
+super + period
+    rofi -show emoji
+
 Print
     flameshot gui
 
