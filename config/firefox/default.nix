@@ -6,11 +6,12 @@
     extensions = with pkgs.nur.repos.rycee.firefox-addons; [
       ublock-origin
       sponsorblock
-      darkreader
       h264ify
     ];
     profiles.default = {
       settings = {
+        "extensions.webextensions.ExtensionStorageIDB.migrated.uBlock0@raymondhill.net" = true;
+        "extensions.webextensions.ExtensionStorageIDB.migrated.sponsorBlocker@ajay.app" = true;
         "fission.autostart" = true;
         "geo.enabled" = false;
         "browser.toolbars.bookmarks.visibility" = "never";
@@ -35,15 +36,15 @@
         "network.connectivity-service.enabled" = false;
         "network.dns.disableIPv6" = true;
         "browser.places.speculativeConnect.enabled" = false;
-"keyword.enabled" = false;
-"browser.urlbar.trimURLs" = false;
-"browser.search.suggest.enabled" = true;
-"browser.urlbar.suggest.searches" = false;
-"browser.urlbar.speculativeConnect.enabled" = false;
-"browser.urlbar.suggest.quicksuggest.nonsponsored" = false;
-"browser.urlbar.suggest.quicksuggest.sponsored" = false;
-"signon.autofillForms" = false;
-"signon.formlessCapture.enabled" = false;
+        "keyword.enabled" = true;
+        "browser.urlbar.trimURLs" = false;
+        "browser.search.suggest.enabled" = true;
+        "browser.urlbar.suggest.searches" = false;
+        "browser.urlbar.speculativeConnect.enabled" = false;
+        "browser.urlbar.suggest.quicksuggest.nonsponsored" = false;
+        "browser.urlbar.suggest.quicksuggest.sponsored" = false;
+        "signon.autofillForms" = false;
+        "signon.formlessCapture.enabled" = false;
 "browser.cache.disk.enable" = false;
 "browser.privatebrowsing.forceMediaMemoryCache" = true;
 "media.memory_cache_max_size" = 65536;
@@ -68,9 +69,9 @@
 "network.http.referer.XOriginTrimmingPolicy" = 2;
 "privacy.userContext.enabled" = true;
 "privacy.userContext.ui.enabled" = true;
-"media.peerconnection.ice.proxy_only_if_behind_proxy" = true;
-"media.peerconnection.ice.default_address_only" = true;
-"media.eme.enabled" = false;
+"media.peerconnection.ice.proxy_only_if_behind_proxy" = false;
+"media.peerconnection.ice.default_address_only" = false;
+"media.eme.enabled" = true;
 "media.autoplay.blocking_policy" = 2;
 "dom.disable_beforeunload" = true;
 "dom.disable_window_move_resize" = true;
@@ -114,11 +115,11 @@
 "privacy.resistFingerprinting" = true;
 "privacy.resistFingerprinting.block_mozAddonManager" = true;
 "privacy.resistFingerprinting.letterboxing" = false;
-"browser.startup.blankWindow" = false;
+"browser.startup.blankWindow" = true;
 "widget.non-native-theme.enabled" = true;
 "browser.link.open_newwindow" = 3;
 "browser.link.open_newwindow.restriction" = 0;
-"webgl.disabled" = true;
+"webgl.disabled" = false;
 
 "browser.newtabpage.activity-stream.feeds.discoverystreamfeed" = false;
 "browser.newtabpage.activity-stream.feeds.section.topstories" = false;

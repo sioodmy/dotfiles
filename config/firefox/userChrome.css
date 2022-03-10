@@ -122,7 +122,9 @@
     
 }
 
-
+.urlbarView {
+  display: none !important;
+}
 
 
 
