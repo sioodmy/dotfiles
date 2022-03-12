@@ -76,7 +76,6 @@
                   ./config/zathura
                   ./config/rofi
                   ./config/polybar
-                  ./config/chromium
                   ./config/firefox
                   ./config/gpg
                   ./config/gtk
@@ -84,7 +83,6 @@
                   ./config/music
                   ./config/udiskie
                   ./config/flameshot
-                  ./config/qutebrowser
                   ./config/alacritty
                   ./config/fzf
                 ];

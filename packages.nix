@@ -8,10 +8,10 @@
     exa ffmpeg unzip xclip pfetch
     libnotify gnupg update-nix-fetchgit yt-dlp
     ripgrep rsync imagemagick
-    scrot bottom newsboat
+    scrot bottom newsboat unrar
     tealdeer cava killall onefetch
     # gui apps
-    obs-studio mpv sxiv 
+    obs-studio mpv sxiv tdesktop
     transmission-gtk pavucontrol pcmanfm
     # unfree apps (sorry daddy stallman)
     discord minecraft steam

@@ -1,7 +1,10 @@
-{ config, pkgs, lib, ... }:
+{ config, pkgs, lib, theme, ... }:
 
 with lib;
 
+let 
+  theme = import ../theme;
+in
 {
     environment.variables = {
         NIXOS_CONFIG="$HOME/.config/nixos/configuration.nix";
@@ -52,34 +55,45 @@ with lib;
         keyMap = "pl";
       };
 
-      services.cron = {
-        enable = true;
-      };
+      services.cron.enable = true;
+      
+      services.printing.enable = true;
 
       services.xserver = {
         layout = "pl";
         videoDrivers = [ "nvidia" ];
         enable = true;
-        displayManager.lightdm.greeters.mini = {
+        enableTCP = false;
+        exportConfiguration = false;
+        desktopManager = {
+          xterm.enable = false;
+          xfce.enable = false;
+        };
+        displayManager.lightdm.greeters.mini = with theme.colors; {
           enable = true;
           user = "sioodmy";
-          extraConfig = ''
-                    [greeter]
-                    show-password-label = false
-                    invalid-password-text = Access Denied
-                    show-input-cursor = true
-                    password-alignment = left
-                    [greeter-theme]
-                    font-size = 1em
-                    background-image = ""
-                    background-color = "#1E1E2E"
-                    window-color = "#1E1E2E"
-                    password-border-radius = 10px
-                    password-border-width = 3px
-                    password-border-color = "#ABE9B3"
-                    password-background-color = "#1E1E2E"
-                    border-width = 0px
-          '';
+          extraConfig = "
+          [greeter]
+          show-password-label = false
+          invalid-password-text = Access Denied
+          show-input-cursor = true
+          password-alignment = left
+          [greeter-hotkeys]
+          mod-key = meta
+          shutdown-key = s
+          [greeter-theme]
+          font-size = 1em
+          font = \"${font}\";
+          background-image = \"\"
+          background-color = \"#${bg}\"
+          window-color = \"#${bg}\"
+          password-border-radius = 10px
+          password-border-width = 3px
+          password-border-color = \"#${ac}\"
+          password-background-color = \"#${bg}\"
+          border-width = 0px
+          text-color = \"#${ac}\"
+          ";
         };
         windowManager.bspwm.enable = true;
 
@@ -119,14 +133,15 @@ with lib;
       inter
       iosevka
       (nerdfonts.override { fonts = [ "JetBrainsMono" "Iosevka" ]; })
-      ];
+    ];
 
-      system.autoUpgrade.enable = true;
-      system.autoUpgrade.allowReboot = false;
+    system.autoUpgrade.enable = true;
+    system.autoUpgrade.allowReboot = false;
 
 
     # Security 
-    boot.blacklistedKernelModules = [
+
+      boot.blacklistedKernelModules = [
         # Obscure network protocols
         "ax25"
         "netrom"
@@ -152,9 +167,9 @@ with lib;
         "qnx6"
         "sysv"
         "ufs"
-        ]; 
+      ]; 
 
-        boot.kernel.sysctl = {
+      boot.kernel.sysctl = {
         "kernel.yama.ptrace_scope" = mkOverride 500 1;
         "kernel.kptr_restrict" = mkOverride 500 2;
         "net.core.bpf_jit_enable" = mkDefault false;
@@ -172,17 +187,17 @@ with lib;
         "net.ipv6.conf.default.accept_redirects" = mkDefault false;
         "net.ipv4.conf.all.send_redirects" = mkDefault false;
         "net.ipv4.conf.default.send_redirects" = mkDefault false;
-        };
+      };
 
     # enable and secure ssh
     services.openssh = { 
-    enable = true;
-    permitRootLogin = "no";
-    passwordAuthentication = false;
+      enable = true;
+      permitRootLogin = "no";
+      passwordAuthentication = false;
     };
 
     security.protectKernelImage = true;
     system.stateVersion = "21.11"; # DONT TOUCH THIS 
 
-    }
+  }
 
