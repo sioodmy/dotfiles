@@ -9,8 +9,9 @@
     enable = true;
     pointerCursor = {
       package = pkgs.catppuccin-cursors;
-      name = "Catppuccin Dark";
-      size = 32;
+      name = "Catppuccin-Dark-Cursors";
+#      name = "Catppuccin Dark";
+      size = 24;
     };
     windowManager.bspwm = {
       enable = true;
@@ -26,10 +27,10 @@
         remove_disabled_monitors = true;
         remove_unplugged_monitors = true;
         border_width = 0;
-        window_gap = 19;
+        window_gap = 12;
       };
       monitors = {
-          "focused" = [ "1" "2" "3" "4" "5" "6" "7"];
+          "focused" = [ "1" "2" "3" "4" "5" ];
       };
 
       rules = {
@@ -41,6 +42,25 @@
         };
         "Pcmanfm" = {
           state = "floating";
+        };
+        "pavucontrol" = {
+          state = "floating";
+        };
+        "transmission-gtk" = {
+          state = "floating";
+        };
+
+        "Firefox" = {
+          desktop = "^2";
+          follow = true;
+        };
+        "Discord" = {
+          desktop = "^3";
+          follow = true;
+        };
+        "telegram-desktop" = {
+          desktop = "^3";
+          follow = true;
         };
       };
     };

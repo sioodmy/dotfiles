@@ -7,6 +7,7 @@
       ublock-origin
       sponsorblock
       h264ify
+      darkreader
     ];
     profiles.default = {
       settings = {

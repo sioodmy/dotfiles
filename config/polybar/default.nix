@@ -14,17 +14,17 @@
         config = with theme.colors; {
             "bar/top" = {
                 monitor = "\${env:MONITOR}";
-                width = "98%";
-                offset-x = "1%";
-                offset-y = "1%";
+                width = "98.75%";
+                offset-x = "0.625%";
+                offset-y = "0.625%";
                 wm-restack = "bspwm";
                 height = 30;
                 radius = 0;
                 modules-left = "date";
                 modules-center = "bspwm";
                 modules-right = "mpd volume memory cpu";
-                font-0 = "${font}:style=Medium:pixelsize=14;3";
-                font-1 = "unifont:fontformat=truetype:size=14:antialias=false;3";
+                font-0 = "${font}:style=Medium:pixelsize=13;3";
+                font-1 = "unifont:fontformat=truetype:size=13:antialias=false;3";
 #                font-2 = "Twitter Color Emoji:pixelsize=14;3";
                 background = "#${bg}";
             };
@@ -48,10 +48,12 @@
                 label-occupied = "";
                 label-occupied-padding = "1.5";
 
-                label-empty = "";
+                label-empty = "";
+                label-empty-foreground = "#${c0}";
                 label-empty-padding = "1.5";
 
-                label-urgent = "";
+                label-urgent = "";
+                label-urgent-foreground = "#${c1}";
                 label-urgent-padding = "1.5";
             };
 
@@ -96,26 +98,4 @@
         };
     };
 
-    home.file = {
-      ".local/bin/micmute" ={
-          executable = true;
-          text = ''
-#!/bin/sh
-
-if [ "$1" = "toggle" ]; then
-    pactl set-source-mute @DEFAULT_SOURCE@ toggle
-    polybar-msg hook mic 1
-else
-
-    mute="$(pactl get-source-mute @DEFAULT_SOURCE@)"
-    if [ "$mute" = "Mute: yes" ]; then
-        printf ""
-    else
-        printf ""
-    fi
-fi
-          '';
-      };
-
-    };
 }

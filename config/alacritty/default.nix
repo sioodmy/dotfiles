@@ -49,7 +49,7 @@
         multiplier = 3;
       };
       font = {
-        size = 15;
+        size = 12;
         normal = {
           family = "${font}";
           style = "Medium";

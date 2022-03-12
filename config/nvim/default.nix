@@ -13,18 +13,18 @@ let
 
 in
 {
-
   # Language servers
   home.packages = with pkgs; [ 
-    rnix-lsp 
-    pyright 
-    rust-analyzer 
-    gopls
-    sumneko-lua-language-server
-    dart
-    nodePackages.typescript-language-server 
-    nodePackages.vscode-langservers-extracted
-    nodePackages.bash-language-server
+    rnix-lsp # Nix
+    pyright # Python
+    rust-analyzer # Rust
+    gopls # Go
+    sumneko-lua-language-server # Lua
+    dart # Dart
+    nodePackages.typescript-language-server # Typescript
+    nodePackages.vscode-langservers-extracted # HTML, CSS, JavaScript
+    nodePackages.bash-language-server # Bash
+    ccls cmake # C/C++
   ];
 
   programs.neovim = {
@@ -121,6 +121,12 @@ EOF
         config = ''
         colorscheme catppuccin
         '';
+      }
+      {
+        plugin = rust-tools-nvim;
+        config = ''
+          lua require('rust-tools').setup({})
+          '';
       }
       {
         plugin = nvim-tree-lua;
@@ -221,8 +227,10 @@ EOF
                 require'lspconfig'.tsserver.setup{}
                 require'lspconfig'.rust_analyzer.setup{}
                 require'lspconfig'.gopls.setup{}
+                require'lspconfig'.ccls.setup{}
                 require'lspconfig'.bashls.setup{}
                 require'lspconfig'.sumneko_lua.setup{}
+                require'lspconfig'.cmake.setup{}
                 local capabilities = vim.lsp.protocol.make_client_capabilities()
           capabilities.textDocument.completion.completionItem.snippetSupport = true
 
@@ -320,25 +328,7 @@ EOF
       {
         plugin = pears-nvim;
         config = ''
-                lua << EOF
-                local M = {}
-
-M.autopairs = function(override_flag)
-   local present1, autopairs = pcall(require, "nvim-autopairs")
-   local present2, cmp_autopairs = pcall(require, "nvim-autopairs.completion.cmp")
-
-   if present1 and present2 then
-      local default = { fast_wrap = {} }
-      if override_flag then
-         default = require("core.utils").tbl_override_req("nvim_autopairs", default)
-      end
-      autopairs.setup(default)
-
-      local cmp = require "cmp"
-      cmp.event:on("confirm_done", cmp_autopairs.on_confirm_done())
-   end
-end
-EOF
+                lua require "pears".setup()
         '';
       }
       {
@@ -352,6 +342,9 @@ EOF
       }
       {
         plugin = indent-blankline-nvim;
+      }
+      {
+        plugin = vim-toml;
       }
       {
         plugin = emmet-vim;
