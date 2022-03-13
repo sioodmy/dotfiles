@@ -20,7 +20,9 @@ super + Return
 # Launcher
 super + @space
     rofi -show drun
-
+# Window switcher
+alt + Tab
+    rofi -show window
 super + e
     pcmanfm
 
