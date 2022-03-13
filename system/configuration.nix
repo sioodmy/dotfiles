@@ -40,9 +40,21 @@ in
         consoleLogLevel = 0;
         initrd.verbose = false;
         loader = {
-          systemd-boot.enable = true;
-          systemd-boot.editor = false;
+          systemd-boot.enable = false;
           efi.canTouchEfiVariables = true;
+          grub = {
+            enable = true;
+            useOSProber = true;
+            efiSupport = true;
+            device = "nodev";
+            theme = pkgs.fetchFromGitHub {
+              owner = "catppuccin";
+              repo = "grub";
+              rev = "07af16ddc63de0a420445d590f85c96cec893350";
+              sha256 = "CMqMh9t4QLKPxBu/7U1EdT0n17QrEx/K7ufkML9qdWE=";
+            } + "/catppuccin-grub-theme";
+
+          };
         };
       };
 
@@ -56,7 +68,7 @@ in
       };
 
       services.cron.enable = true;
-      
+
       services.printing.enable = true;
 
       services.xserver = {
@@ -141,7 +153,7 @@ in
 
     # Security 
 
-      boot.blacklistedKernelModules = [
+    boot.blacklistedKernelModules = [
         # Obscure network protocols
         "ax25"
         "netrom"
