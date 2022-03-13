@@ -1,4 +1,4 @@
-{ config, pkgs, ... }:
+{ config, pkgs, theme, ... }:
 
 {
   home.packages = with pkgs; [
@@ -23,11 +23,14 @@
           "pgrep bspswallow || bspswallow" 
           "xsetroot -cursor_name left_ptr"
       ];
-      settings = {
+      settings = with theme.colors; {
         remove_disabled_monitors = true;
         remove_unplugged_monitors = true;
-        border_width = 0;
+        border_width = 2;
         window_gap = 12;
+        focused_border_color = "#${ac}";
+        urgent_border_color = "#${c3}";
+        normal_border_color = "#${bg}";
       };
       monitors = {
           "focused" = [ "1" "2" "3" "4" "5" ];
