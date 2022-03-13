@@ -30,9 +30,6 @@ nixos-rebuild switch --flake .#graphene                 # You can replace graphe
 
 # Usage 
 
-|  ⌨️ Keybinds                          |
------------------------------------------
-| <kbd>Ctrl</kbd> + <kbd>Alt</kbd> + <kbd>Space</kbd | asdads 
   
 | Key | Action |
 |---|---|
@@ -48,13 +45,16 @@ nixos-rebuild switch --flake .#graphene                 # You can replace graphe
 | <kbd>Super</kbd> + <kbd>Volume up</kbd> | Increase mpd volume |
 | <kbd>Super</kbd> + <kbd>Volume down</kbd> | Decrease mpd volume |
 | <kbd>Super</kbd> + <kbd>Alt</kbd> + <kbd>R</kbd> | Restart bspwm |
-| <kbd>Alt</kbd> + <kbd>Control</kbd> + <kbd>Shift</kbd> + <kbd>h, j, k, l</kbd> | Resize focused window |
+| <kbd>Alt</kbd> + <kbd>Control</kbd> + <kbd>Shift</kbd> + <kbd>H, J, K, L</kbd> | Resize focused window |
 | <kbd>Super</kbd> + <kbd>W</kbd> | Close focused window |
 | <kbd>Super</kbd> + <kbd>Shift</kbd> + <kbd>W</kbd> | Kill focused window |
 | <kbd>Super</kbd> + <kbd>M</kbd> | Alternate between the tiled and monocle layout |
 | <kbd>Super</kbd> + <kbd>Y</kbd> | Send the newest marked node to the newest preselected node |
 | <kbd>Super</kbd> + <kbd>h</kbd> | Swap the current node and the biggest window |
 | <kbd>Super</kbd> + <kbd>T</kbd> | Tiled layout |
-| <kbd>Super</kbd> + <kbd>Shift</kbd> + <kbd>T</kbd | Pseudo-tiled layout | 
+| <kbd>Super</kbd> + <kbd>Shift</kbd> + <kbd>T</kbd> | Pseudo-tiled layout | 
 | <kbd>Super</kbd> + <kbd>S</kbd> | Floating mode |
 | <kbd>Super</kbd> + <kbd>F</kbd> | Fullscreen mode |
+| <kbd>Super</kbd> + <kbd>Control</kbd> + <kbd>Y</kbd> | Sticky flag |
+| <kbd>Super</kbd> + <kbd>Shift</kbd> + <kbd>H, J, K, L</kbd> | Move window |
+| <kbd>Super</kbd> + <kbd>H, J, K, L</kbd> | Focus window |
