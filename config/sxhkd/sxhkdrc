@@ -17,6 +17,8 @@ super + @space
 # Window switcher
 alt + Tab
     rofi -show window
+alt + grave
+    tdrop -ma -y 50% -x 25% -w 50% alacritty
 super + e
     pcmanfm
 
@@ -26,7 +28,7 @@ super + period
     rofi -show emoji
 
 Print
-    flameshot gui
+   flameshot gui
 
 # Lock screen
 super + shift + p
@@ -60,10 +62,10 @@ super + alt + {q,r}
 
 # resize window
 alt + control + shift + {h,j,k,l}
-  bspc node -z {left -20 0 || bspc node -z right -20 0, \
-                bottom 0 20 || bspc node -z top 0 20,\
-                top 0 -20 || bspc node -z bottom 0 -20,\
-                right 20 0 || bspc node -z left 20 0}
+  bspc node -z {left -30 0 || bspc node -z right -30 0, \
+                bottom 0 20 || bspc node -z top 0 30,\
+                top 0 -30 || bspc node -z bottom 0 -30,\
+                right 30 0 || bspc node -z left 30 0}
 # close and kill
 super + {_,shift + }w
 	bspc node -{c,k}
