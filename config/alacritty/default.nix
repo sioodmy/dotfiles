@@ -1,6 +1,7 @@
 { pkgs, config, theme, ...}:
 
 {
+  home.packages = [ pkgs.tdrop ];
   programs.alacritty = {
     enable = true;
     settings = with theme.colors; {
