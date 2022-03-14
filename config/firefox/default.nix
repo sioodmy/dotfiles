@@ -8,11 +8,10 @@
       sponsorblock
       h264ify
       darkreader
+      vimium
     ];
     profiles.default = {
       settings = {
-        "extensions.webextensions.ExtensionStorageIDB.migrated.uBlock0@raymondhill.net" = true;
-        "extensions.webextensions.ExtensionStorageIDB.migrated.sponsorBlocker@ajay.app" = true;
         "fission.autostart" = true;
         "geo.enabled" = false;
         "browser.toolbars.bookmarks.visibility" = "never";
