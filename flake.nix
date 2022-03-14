@@ -99,6 +99,7 @@
                 bspswallow = prev.callPackage ./overlays/bspswallow.nix { };
                 catppuccin-gtk = prev.callPackage ./overlays/catppuccin-gtk.nix { };
                 catppuccin-cursors = prev.callPackage ./overlays/catppuccin-cursors.nix { };
+                catppuccin-grub = prev.callPackage ./overlays/catppuccin-grub.nix { };
 #                discord = prev.callPackage ./overlays/discord.nix { };
               })
               nur.overlay

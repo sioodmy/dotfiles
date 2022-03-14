@@ -1,4 +1,4 @@
-{ config, pkgs, lib, theme, ... }:
+{ config, pkgs, lib, theme,  ... }:
 
 with lib;
 
@@ -10,6 +10,8 @@ in
         NIXOS_CONFIG="$HOME/.config/nixos/configuration.nix";
         NIXOS_CONFIG_DIR="$HOME/.config/nixos/";
         EDITOR="nvim";
+        TERMINAL="alacritty";
+        BROWSER="firefox";
     };
     nix = {
         autoOptimiseStore = true;
@@ -27,96 +29,105 @@ in
     hardware = {
       opengl.driSupport32Bit = true;
       pulseaudio.support32Bit = true;
+      nvidia.modesetting.enable = true;
+
     };
 
     environment.defaultPackages = [ ];
     nixpkgs.config.allowUnfree = true;
-  
+
     boot = {
-        cleanTmpDir = true;
-        plymouth.enable = true;
-        kernelParams = [ "quiet" "splash" "rd.systemd.show_status=false" "rd.udev.log_level=3" "udev.log_priority=3" ];
-        kernelPackages = pkgs.linuxPackages_latest;
-        consoleLogLevel = 0;
-        initrd.verbose = false;
-        loader = {
-          systemd-boot.enable = false;
-          efi.canTouchEfiVariables = true;
-          grub = {
-            enable = true;
-            useOSProber = true;
-            efiSupport = true;
-            device = "nodev";
-            theme = pkgs.fetchFromGitHub {
-              owner = "catppuccin";
-              repo = "grub";
-              rev = "07af16ddc63de0a420445d590f85c96cec893350";
-              sha256 = "CMqMh9t4QLKPxBu/7U1EdT0n17QrEx/K7ufkML9qdWE=";
-            } + "/catppuccin-grub-theme";
+      cleanTmpDir = true;
+      plymouth.enable = true;
+      kernelParams = [ "quiet" "splash" "rd.systemd.show_status=false" "rd.udev.log_level=3" "udev.log_priority=3" ];
+      kernelPackages = pkgs.linuxPackages_latest;
+#      kernelPackages = pkgs.linuxPackages_xanmod;
+      consoleLogLevel = 0;
+      initrd.verbose = false;
+      loader = {
+        systemd-boot.enable = false;
+        efi.canTouchEfiVariables = true;
+        grub = {
+          enable = true;
+          useOSProber = true;
+          efiSupport = true;
+          device = "nodev";
+          theme = pkgs.fetchFromGitHub {
+            owner = "catppuccin";
+            repo = "grubb";
+            rev = "3f62cd4174465631b40269a7c5631e5ee86dec45";
+            sha256 = "d15FS7R78kdUKqC7EAei5Pe0Vuj2boVnm4WZYQdPURo=";
+          } + "/catppuccin-grub-theme";
 
-          };
+
         };
       };
+    };
 
-      time.timeZone = "Europe/Warsaw";
+    time.timeZone = "Europe/Warsaw";
 
-      i18n.defaultLocale = "en_US.UTF-8";
+    i18n.defaultLocale = "en_US.UTF-8";
 
-      console = {
-        font = "Lat2-Terminus16";
-        keyMap = "pl";
+    console = {
+      font = "Lat2-Terminus16";
+      keyMap = "pl";
+    };
+
+    services.cron = {
+      enable = true;
+      systemCronJobs = [
+        "@weekly      root    tldr --update"
+      ];
+    };
+
+    services.printing.enable = true;
+
+    services.xserver = {
+      layout = "pl";
+      videoDrivers = [ "nvidia" ];
+      enable = true;
+      enableTCP = false;
+      exportConfiguration = false;
+      desktopManager = {
+        xterm.enable = false;
+        xfce.enable = false;
       };
-
-      services.cron.enable = true;
-
-      services.printing.enable = true;
-
-      services.xserver = {
-        layout = "pl";
-        videoDrivers = [ "nvidia" ];
+      displayManager.lightdm.greeters.mini = with theme.colors; {
         enable = true;
-        enableTCP = false;
-        exportConfiguration = false;
-        desktopManager = {
-          xterm.enable = false;
-          xfce.enable = false;
-        };
-        displayManager.lightdm.greeters.mini = with theme.colors; {
-          enable = true;
-          user = "sioodmy";
-          extraConfig = "
-          [greeter]
-          show-password-label = false
-          invalid-password-text = Access Denied
-          show-input-cursor = true
-          password-alignment = left
-          [greeter-hotkeys]
-          mod-key = meta
-          shutdown-key = s
-          [greeter-theme]
-          font-size = 1em
-          font = \"${font}\";
-          background-image = \"\"
-          background-color = \"#${bg}\"
-          window-color = \"#${bg}\"
-          password-border-radius = 10px
-          password-border-width = 3px
-          password-border-color = \"#${ac}\"
-          password-background-color = \"#${bg}\"
-          border-width = 0px
-          text-color = \"#${ac}\"
-          ";
-        };
-        windowManager.bspwm.enable = true;
-
-        libinput = {
-          enable = true;
-          touchpad.naturalScrolling = false;
-        };
+        user = "sioodmy";
+        extraConfig = "
+        [greeter]
+        show-password-label = false
+        invalid-password-text = Access Denied
+        show-input-cursor = true
+        password-alignment = left
+        [greeter-hotkeys]
+        mod-key = meta
+        shutdown-key = s
+        [greeter-theme]
+        font-size = 1em
+        font = \"${font}\";
+        background-image = \"\"
+        background-color = \"#${bg}\"
+        window-color = \"#${bg}\"
+        password-border-radius = 10px
+        password-border-width = 3px
+        password-border-color = \"#${ac}\"
+        password-background-color = \"#${bg}\"
+        border-width = 0px
+        text-color = \"#${ac}\"
+        ";
       };
+      windowManager.bspwm.enable = true;
+
+      libinput = {
+        enable = true;
+        touchpad.naturalScrolling = false;
+      };
+    };
 
 
-      sound.enable = true;
+    sound.enable = true;
 
     # Use pipewire instead of soyaudio
     services.pipewire = {
@@ -141,7 +152,7 @@ in
       jetbrains-mono 
       roboto
       source-sans
-      twemoji-color-font
+      twitter-color-emoji
       inter
       iosevka
       (nerdfonts.override { fonts = [ "JetBrainsMono" "Iosevka" ]; })
