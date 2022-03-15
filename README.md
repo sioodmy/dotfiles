@@ -16,9 +16,10 @@ $ nix-shell -p git nixFlakes
 $nixos-rebuild switch --flake github:sioodmy/nixdots
 ```
 ## 🧹 Clean
-1. [Download](https://nixos.org/download.html#download-nix) NixOS ISO
-2. [Partition, format and mount your drive](https://nixos.org/manual/nixos/stable/index.html#sec-installation-partitioning)
 
+* 💿 [Download](https://nixos.org/download.html#download-nix) NixOS ISO
+* 💾 [Partition, format and mount your drive](https://nixos.org/manual/nixos/stable/index.html#sec-installation-partitioning)
+* ❄️ Install flake using following commands
 ``` 
 $ nix-shell -p git nixFlakes
 $ nixos-install --flake github:sioodmy/nixdots
@@ -36,7 +37,7 @@ Aformentioned error means that you need to specify your hostname
 # For example:
 
 $ nixos-install --flake github:sioodmy/nixdots#graphene
-$nixos-rebuild switch --flake github:sioodmy/nixdots#graphene
+$ nixos-rebuild switch --flake github:sioodmy/nixdots#graphene
 ```
 
 # Usage 
