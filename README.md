@@ -20,6 +20,8 @@ $nixos-rebuild switch --flake github:sioodmy/nixdots
 * 💿 [Download](https://nixos.org/download.html#download-nix) NixOS ISO
 * 💾 [Partition, format and mount your drive](https://nixos.org/manual/nixos/stable/index.html#sec-installation-partitioning)
 * ❄️ Install flake using following commands
+* 🔒Change default root and user password from `nixos`!
+
 ``` 
 $ nix-shell -p git nixFlakes
 $ nixos-install --flake github:sioodmy/nixdots
