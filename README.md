@@ -12,21 +12,32 @@ This is my NixOS configuration, which I use as my daily driver. It aims to be fa
 ## ❄️ Already running NixOS system
 
 ``` 
-$ git clone https://github.com/sioodmy/nixdots && cd nixdots
-$ nix-shell
-$ nixos-rebuild switch --flake .#
+$ nix-shell -p git nixFlakes
+$nixos-rebuild switch --flake github:sioodmy/nixdots
 ```
-Aforementioned command will automatically install appropriate configuration for your host, however you may need to use 
-
-```
-nixos-rebuild switch --flake .#graphene                 # You can replace graphene with other predefined hostname
-```
-
-
 ## 🧹 Clean
 1. [Download](https://nixos.org/download.html#download-nix) NixOS ISO
 2. [Partition, format and mount your drive](https://nixos.org/manual/nixos/stable/index.html#sec-installation-partitioning)
-3. Install flake `nixos-install --flake github:sioodmy/nixdots`
+
+``` 
+$ nix-shell -p git nixFlakes
+$ nixos-install --flake github:sioodmy/nixdots
+```
+
+## 💡 Tip
+```
+building the system configuration...
+error: flake 'github:sioodmy/nixdots' does not provide attribute 'packages.x86_64-linux.nixosConfigurations."nixos".config.system.build.toplevel', 'legacyPackages.x86_64-linux.nixosConfigurations."nixos".config.system.build.toplevel' or 'nixosConfigurations."nixos".config.system.build.toplevel'
+```
+
+Aformentioned error means that you need to specify your hostname
+
+```
+# For example:
+
+$ nixos-install --flake github:sioodmy/nixdots#graphene
+$nixos-rebuild switch --flake github:sioodmy/nixdots#graphene
+```
 
 # Usage 
 
