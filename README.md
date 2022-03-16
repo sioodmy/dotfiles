@@ -13,11 +13,11 @@ This is my NixOS configuration, which I use as my daily driver. It aims to be fa
 
 ``` 
 $ nix-shell -p git nixFlakes
-$nixos-rebuild switch --flake github:sioodmy/nixdots
+$ nixos-rebuild switch --flake github:sioodmy/nixdots
 ```
 ## 🧹 Clean
 
-* 💿 [Download](https://nixos.org/download.html#download-nix) NixOS ISO
+* 💿 [Download](https://nixos.org/download.html#download-nix) NixOS ISO and boot from it `cp nixos.iso /dev/sdX`
 * 💾 [Partition, format and mount your drive](https://nixos.org/manual/nixos/stable/index.html#sec-installation-partitioning)
 * ❄️ Install flake using following commands
 
