@@ -19,16 +19,13 @@
       url = "github:ibhagwan/picom";
       flake = false;
     };
+
     discord-overlay = {
       url = "github:InternetUnexplorer/discord-overlay";
       inputs.nixpkgs.follows = "nixpkgs";
     };
-    discocss = {
-      url = "github:mlvzk/discocss/flake";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
   };
-  outputs = inputs@{ self, nixpkgs, home-manager, nur, unstable, picom-ibhagwan, discord-overlay, discocss, ...}: 
+  outputs = inputs@{ self, nixpkgs, home-manager, nur, unstable, picom-ibhagwan, discord-overlay, ...}: 
   let 
     system = "x86_64-linux";
 
@@ -49,17 +46,6 @@
                 inherit inputs;
                 theme = import ./theme;
               };
-              sharedModules = [
-                discocss.hmModule
-                {
-                  nixpkgs.overlays = [
-                    nur.overlay
-                    (final: prev: {
-                      unstable = unstable.legacyPackages.${prev.system};
-                    })
-                  ];
-                }
-              ];
               users.sioodmy = {
 
                 imports = [
@@ -100,7 +86,6 @@
                 catppuccin-gtk = prev.callPackage ./overlays/catppuccin-gtk.nix { };
                 catppuccin-cursors = prev.callPackage ./overlays/catppuccin-cursors.nix { };
                 catppuccin-grub = prev.callPackage ./overlays/catppuccin-grub.nix { };
-#                discord = prev.callPackage ./overlays/discord.nix { };
               })
               nur.overlay
               discord-overlay.overlay
