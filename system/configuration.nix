@@ -148,6 +148,16 @@ in
         libinput = {
           enable = true;
           touchpad.naturalScrolling = false;
+          mouse = {
+            accelProfile = "flat";
+            accelSpeed = "0";
+            middleEmulation = false;
+          };
+
+          touchpad = {
+            accelProfile = "flat";
+            accelSpeed = "0";
+          };
         };
       };
 
