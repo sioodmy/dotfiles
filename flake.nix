@@ -46,33 +46,7 @@
                 inherit inputs;
                 theme = import ./theme;
               };
-              users.sioodmy = {
-
-                imports = [
-                  ./config/bspwm
-                  ./config/sxhkd
-                  ./config/dunst
-                  ./config/picom
-                  ./config/nvim
-                  ./config/zsh
-                  ./config/xresources
-                  ./config/xdg
-                  ./config/bat
-                  ./config/git
-                  ./config/zathura
-                  ./config/rofi
-                  ./config/polybar
-                  ./config/firefox
-                  ./config/gpg
-                  ./config/gtk
-                  ./config/betterlockscreen
-                  ./config/music
-                  ./config/udiskie
-                  ./config/flameshot
-                  ./config/alacritty
-                  ./config/fzf
-                ];
-              };
+              users.sioodmy = import ./home;
             };
 
             nixpkgs.overlays = [

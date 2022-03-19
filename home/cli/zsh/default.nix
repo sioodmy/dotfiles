@@ -18,12 +18,13 @@
       };
 
       shellAliases = {
-        h = "$EDITOR ~/.config/nixpkgs/home.nix";
+        rebuild = "sudo nixos-rebuild switch --flake .# --upgrade";
+        cleanup = "sudo nix-collect-garbage --delete-older-than 7d";
+        need = "nix-shell -p";
         ytmp3 = "yt-dlp -f \"bestaudio\" --continue --no-overwrites --ignore-errors --extract-audio --audio-format mp3 -o \"~/music/%(title)s.%(ext)s\"";
         cat = "bat --style=plain";
         grep = "rg";
         htop = "btm";
-        neofetch = "rxfetch";
         m = "mkdir -p";
         fcd = "cd $(find -type d | fzf)";
         ls = "exa --icons";

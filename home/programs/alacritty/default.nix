@@ -41,8 +41,8 @@
           lines = 25;
         }; 
         padding = {
-          x = 26;
-          y = 26;
+          x = 24;
+          y = 24;
         };
       };
       scrolling = {
@@ -52,15 +52,15 @@
       font = {
         size = 12;
         normal = {
-          family = "${font}";
+          family = "monospace";
           style = "Medium";
         };
         bold = {
-          family = "${font}";
+          family = "monospace";
           style = "Bold";
         };
         italic = {
-          family = "${font}";
+          family = "monospace";
           style = "Light italic";
         };
         use_thin_strokes = true;

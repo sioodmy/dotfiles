@@ -5,6 +5,7 @@
     feh
     bspswallow
   ];
+
   xsession = {
     enable = true;
     pointerCursor = {
