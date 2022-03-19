@@ -109,6 +109,7 @@ in
 
       xserver = {
         layout = "pl";
+        xkbOptions = "caps:swapescape";
         videoDrivers = [ "nvidia" ];
         enable = true;
         enableTCP = false;
@@ -186,15 +187,26 @@ in
       shell = pkgs.zsh;
     };
 
-    fonts.fonts = with pkgs; [
-      jetbrains-mono 
-      roboto
-      source-sans
-      twitter-color-emoji
-      inter
-      iosevka
-      (nerdfonts.override { fonts = [ "JetBrainsMono" "Iosevka" ]; })
-    ];
+    fonts = {
+      fonts = with pkgs; [
+        jetbrains-mono 
+        roboto
+        source-sans
+        twemoji-color-font
+        inter
+        iosevka
+        lato
+        (nerdfonts.override { fonts = [ "JetBrainsMono" "Iosevka" ]; })
+      ];
+      fontconfig = with theme.colors; {
+        defaultFonts = {
+          monospace = [ "${font}" ];
+          sansSerif = [ "Lato" ];
+          serif = [ "${font}" ];
+          emoji = [ "Twitter Color Emoji" ];
+        };
+      };
+    };
 
     system.autoUpgrade = {
       enable = true;

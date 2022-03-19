@@ -14,6 +14,7 @@
         config = with theme.colors; {
             "bar/top" = {
                 monitor = "\${env:MONITOR}";
+#                width = "100%";
                 width = "98.75%";
                 offset-x = "0.625%";
                 offset-y = "0.625%";

@@ -1,4 +1,5 @@
 rec {
+
   font = "JetBrainsMono Nerd Font";
 
   bg = "1E1E2E";
