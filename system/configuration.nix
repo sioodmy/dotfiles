@@ -187,6 +187,8 @@ in
       shell = pkgs.zsh;
     };
 
+    programs.zsh.enable = true; # This will enable zsh nix completions
+
     fonts = {
       fonts = with pkgs; [
         jetbrains-mono 
