@@ -1,10 +1,12 @@
-{ config, pkgs, theme, ... }:
+{ config, pkgs, theme, fetchurl, ... }:
 
 {
   home.packages = with pkgs; [
     feh
     bspswallow
   ];
+
+  home.file.".local/backgrounds/wallpaper.png".source = ../../../theme/wallpaper.png;
 
   xsession = {
     enable = true;
@@ -16,7 +18,7 @@
     windowManager.bspwm = {
       enable = true;
       startupPrograms = [
-          "feh --bg-fill ~/.local/backgrounds/* --randomize"
+          "feh --bg-fill ~/.local/backgrounds/wallpaper.png" 
           "xrandr --output DP-0 --mode 1920x1080 --rate 150"
           "pgrep bspswallow || bspswallow" 
           "xsetroot -cursor_name left_ptr"
