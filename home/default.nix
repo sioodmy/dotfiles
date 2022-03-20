@@ -28,5 +28,6 @@
     ./programs/zathura
 
     ./services/udiskie
+    ./services/redshift
   ];
 }
