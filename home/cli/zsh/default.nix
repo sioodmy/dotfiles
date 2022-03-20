@@ -21,7 +21,7 @@
         rebuild = "sudo nixos-rebuild switch --flake .# --upgrade";
         cleanup = "sudo nix-collect-garbage --delete-older-than 7d";
         need = "nix-shell -p";
-        ytmp3 = "yt-dlp -f \"bestaudio\" --continue --no-overwrites --ignore-errors --extract-audio --audio-format mp3 -o \"~/music/%(title)s.%(ext)s\"";
+        ytmp3 = "yt-dlp -x --continue --add-metadata --embed-thumbnail --audio-format mp3 --audio-quality 0 --metadata-from-title=\"%(artist)s - %(title)s\" --prefer-ffmpeg -o \"%(title)s.%(ext)s\"";
         cat = "bat --style=plain";
         grep = "rg";
         htop = "btm";
