@@ -26,6 +26,7 @@
     ./programs/flameshot
     ./programs/rofi
     ./programs/zathura
+    ./programs/discocss
 
     ./services/udiskie
     ./services/redshift
