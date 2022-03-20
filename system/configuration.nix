@@ -192,20 +192,27 @@ in
     fonts = {
       fonts = with pkgs; [
         jetbrains-mono 
+        material-design-icons
         roboto
         source-sans
         twemoji-color-font
         inter
         iosevka
         lato
+        noto-fonts
+        noto-fonts-cjk
+        noto-fonts-emoji
         (nerdfonts.override { fonts = [ "JetBrainsMono" "Iosevka" ]; })
       ];
+
+      enableDefaultFonts = false;
+
       fontconfig = with theme.colors; {
         defaultFonts = {
-          monospace = [ "${font}" ];
-          sansSerif = [ "Lato" ];
-          serif = [ "${font}" ];
-          emoji = [ "Twitter Color Emoji" ];
+          monospace = [ "${font}" "Noto Color Emoji"];
+          sansSerif = [ "Lato" "Noto Color Emoji"];
+          serif = [ "${font}" "Noto Color Emoji"];
+          emoji = [ "Noto Color Emoji" ];
         };
       };
     };
