@@ -24,8 +24,13 @@
       url = "github:InternetUnexplorer/discord-overlay";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+
+    discocss = {
+      url = "github:mlvzk/discocss/flake";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
   };
-  outputs = inputs@{ self, nixpkgs, home-manager, nur, unstable, picom-ibhagwan, discord-overlay, ...}: 
+  outputs = inputs@{ self, nixpkgs, home-manager, nur, unstable, picom-ibhagwan, discord-overlay, discocss, ...}: 
   let 
     system = "x86_64-linux";
 
@@ -42,6 +47,7 @@
             home-manager = {
               useGlobalPkgs = true;
               useUserPackages = true;
+              sharedModules = [ discocss.hmModule ];
               extraSpecialArgs = {
                 inherit inputs;
                 theme = import ./theme;
