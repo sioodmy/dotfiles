@@ -136,18 +136,14 @@
     };
 
     keyBindings = {
-      normal = {
-        "<Ctrl-v>" = "spawn mpv {url}";
-      };
-      prompt = {
-        "<Ctrl-y>" = "prompt-yes";
-      };
+      normal = { "<Ctrl-v>" = "spawn mpv {url}"; };
+      prompt = { "<Ctrl-y>" = "prompt-yes"; };
     };
 
     extraConfig = ''
-    config.set('tabs.padding', {"top": 5, "bottom": 5, "left": 5, "right": 5})
-    config.set('statusbar.padding', {"top": 5, "bottom": 5, "left": 5, "right": 5})
-    c.content.blocking.adblock.lists = ['https://easylist.to/easylist/easylist.txt', 'https://easylist.to/easylist/easyprivacy.txt', 'https://easylist-downloads.adblockplus.org/easylistdutch.txt', 'https://easylist-downloads.adblockplus.org/abp-filters-anti-cv.txt', 'https://www.i-dont-care-about-cookies.eu/abp/', 'https://secure.fanboy.co.nz/fanboy-cookiemonster.txt']
-      '';
+      config.set('tabs.padding', {"top": 5, "bottom": 5, "left": 5, "right": 5})
+      config.set('statusbar.padding', {"top": 5, "bottom": 5, "left": 5, "right": 5})
+      c.content.blocking.adblock.lists = ['https://easylist.to/easylist/easylist.txt', 'https://easylist.to/easylist/easyprivacy.txt', 'https://easylist-downloads.adblockplus.org/easylistdutch.txt', 'https://easylist-downloads.adblockplus.org/abp-filters-anti-cv.txt', 'https://www.i-dont-care-about-cookies.eu/abp/', 'https://secure.fanboy.co.nz/fanboy-cookiemonster.txt']
+        '';
   };
 }

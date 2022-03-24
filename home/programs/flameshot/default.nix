@@ -1,4 +1,4 @@
-{ pkgs, config, theme, ...}:
+{ pkgs, config, theme, ... }:
 
 {
   services.flameshot = with theme.colors; {

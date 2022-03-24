@@ -1,12 +1,10 @@
 { config, pkgs, theme, fetchurl, ... }:
 
 {
-  home.packages = with pkgs; [
-    feh
-    bspswallow
-  ];
+  home.packages = with pkgs; [ feh bspswallow ];
 
-  home.file.".local/backgrounds/wallpaper.png".source = ../../../theme/wallpaper.png;
+  home.file.".local/backgrounds/wallpaper.png".source =
+    ../../../theme/wallpaper.png;
 
   xsession = {
     enable = true;
@@ -18,10 +16,10 @@
     windowManager.bspwm = {
       enable = true;
       startupPrograms = [
-          "feh --bg-fill ~/.local/backgrounds/wallpaper.png" 
-          "xrandr --output DP-0 --mode 1920x1080 --rate 150"
-          "pgrep bspswallow || bspswallow" 
-          "xsetroot -cursor_name left_ptr"
+        "feh --bg-fill ~/.local/backgrounds/wallpaper.png"
+        "xrandr --output DP-0 --mode 1920x1080 --rate 150"
+        "pgrep bspswallow || bspswallow"
+        "xsetroot -cursor_name left_ptr"
       ];
       settings = with theme.colors; {
         remove_disabled_monitors = true;
@@ -35,26 +33,14 @@
         normal_border_color = "#${bg}";
         presel_feedback_color = "#${ac}";
       };
-      monitors = {
-          "focused" = [ "1" "2" "3" "4" "5" ];
-      };
+      monitors = { "focused" = [ "1" "2" "3" "4" "5" ]; };
 
       rules = {
-        "Zathura" = {
-          state = "tiled";
-        };
-        "Pavucontrol" = {
-          state = "floating";
-        };
-        "Pcmanfm" = {
-          state = "floating";
-        };
-        "pavucontrol" = {
-          state = "floating";
-        };
-        "transmission-gtk" = {
-          state = "floating";
-        };
+        "Zathura" = { state = "tiled"; };
+        "Pavucontrol" = { state = "floating"; };
+        "Pcmanfm" = { state = "floating"; };
+        "pavucontrol" = { state = "floating"; };
+        "transmission-gtk" = { state = "floating"; };
 
         "Firefox" = {
           desktop = "^2";

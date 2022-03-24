@@ -1,12 +1,12 @@
-{ pkgs, config, ...}:
+{ pkgs, config, ... }:
 
 {
-    programs.bat = {
-        enable = true;
-        config = {
-            paging = "never";
-            style = "numbers";
-            theme = "base16";
-        };
+  programs.bat = {
+    enable = true;
+    config = {
+      paging = "never";
+      style = "numbers";
+      theme = "base16";
     };
+  };
 }

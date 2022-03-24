@@ -1,19 +1,16 @@
-{ config, pkgs, ...}:
+{ config, pkgs, ... }:
 
 {
-  home.packages = with pkgs; [
-    mpc_cli 
-    playerctl
-  ];
+  home.packages = with pkgs; [ mpc_cli playerctl ];
 
   services.mpd = {
     enable = true;
-   # dataDir = "/home/sioodmy/.config/mpd";
+    # dataDir = "/home/sioodmy/.config/mpd";
     network = {
       listenAddress = "any";
       port = 6600;
     };
-    extraConfig = ''     
+    extraConfig = ''
       audio_output {
         type    "pipewire"
         name    "pipewire"
@@ -37,7 +34,8 @@
       screen_switcher_mode = "playlist, media_library";
       song_columns_list_format = "(50)[]{t|fr:Title} (0)[magenta]{a}";
       song_list_format = " {%t $R   $8%a$8}|{%f $R   $8%l$8} $8";
-      song_status_format = "$b$6$7[$8      $7]$6 $2 $7{$8 %b }|{$8 %t }|{$8 %f }$7 $8";
+      song_status_format =
+        "$b$6$7[$8      $7]$6 $2 $7{$8 %b }|{$8 %t }|{$8 %f }$7 $8";
       song_window_title_format = "Now Playing ..";
       now_playing_prefix = "$b$2$7 ";
       now_playing_suffix = "  $/b$8";
@@ -69,8 +67,6 @@
       external_editor = "nvim";
       main_window_color = "default";
       startup_screen = "playlist";
-
-
 
     };
   };

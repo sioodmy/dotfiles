@@ -1,4 +1,4 @@
-{ pkgs, config, ...}:
+{ pkgs, config, ... }:
 
 {
   programs.chromium = {
@@ -10,7 +10,8 @@
       { id = "eneajgkmdhmjmloiabgkpkiooaejmlpk"; } # copy as plain text
       { id = "aleakchihdccplidncghkekgioiakgal"; } # h264ify
       { id = "eimadpbcbfnmbkopoojfekhnkhdbieeh"; } # dark reader
-      { id = "dpgfbfopkfdfmlfdpmoanamopdnibhkl"; } # anti-testportal 
+      { id = "dpgfbfopkfdfmlfdpmoanamopdnibhkl"; } # anti-testportal
+      { id = "cmpdlhmnmjhihmcfnigoememnffkimlk"; } # catpuccin theme
     ];
   };
 }

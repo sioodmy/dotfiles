@@ -1,4 +1,4 @@
-{ config, pkgs, theme, ...}:
+{ config, pkgs, theme, ... }:
 
 {
   programs.firefox = {
@@ -10,211 +10,73 @@
       darkreader
       vimium
     ];
-    profiles.default = {
+    profiles.sioodmy = {
       settings = {
-        "fission.autostart" = true;
-        "geo.enabled" = false;
-        "browser.toolbars.bookmarks.visibility" = "never";
-        "toolkit.legacyUserProfileCustomizations.stylesheets" = true;
-        "dom.security.https_only_mode_ever_enabled" = true;
+        "browser.send_pings" = false;
+        "browser.urlbar.speculativeConnect.enabled" = false;
+        "dom.event.clipboardevents.enabled" = true;
+        "media.navigator.enabled" = false;
+        #        "network.cookie.cookieBehavior" = 1;
+        "network.http.referer.XOriginPolicy" = 2;
+        "network.http.referer.XOriginTrimmingPolicy" = 2;
+        "beacon.enabled" = false;
+        "browser.safebrowsing.downloads.remote.enabled" = false;
+        "network.IDN_show_punycode" = true;
+        "extensions.activeThemeID" = "firefox-compact-dark@mozilla.org";
         "app.shield.optoutstudies.enabled" = false;
+        "dom.security.https_only_mode_ever_enabled" = true;
+        "toolkit.legacyUserProfileCustomizations.stylesheets" = true;
+        "browser.toolbars.bookmarks.visibility" = "never";
+        "geo.enabled" = false;
+
+        # Disable telemetry
+        "browser.newtabpage.activity-stream.feeds.telemetry" = false;
         "browser.ping-centre.telemetry" = false;
         "browser.tabs.crashReporting.sendReport" = false;
         "devtools.onboarding.telemetry.logged" = false;
         "toolkit.telemetry.enabled" = false;
         "toolkit.telemetry.unified" = false;
         "toolkit.telemetry.server" = "";
-        "toolkit.telemetry.archive.enabled" = false;
-        "toolkit.coverage.opt-out" = true;
-        "toolkit.coverage.endpoint.base" = " ";
-        "toolkit.telemetry.firstShutdownPing.enabled" = false;
-        "toolkit.telemetry.newProfilePing.enabled" = false;
-        "app.normandy.enabled" = false;
-        "app.normandy.api_url" = "";
-        "captivedetect.canonicalURL" = "";
-        "network.captive-portal-service.enabled" = false;
-        "network.connectivity-service.enabled" = false;
-        "network.dns.disableIPv6" = true;
-        "browser.places.speculativeConnect.enabled" = false;
-        "keyword.enabled" = true;
-        "browser.urlbar.trimURLs" = false;
-        "browser.search.suggest.enabled" = true;
-        "browser.urlbar.suggest.searches" = false;
-        "browser.urlbar.speculativeConnect.enabled" = false;
-        "browser.urlbar.suggest.quicksuggest.nonsponsored" = false;
-        "browser.urlbar.suggest.quicksuggest.sponsored" = false;
-        "signon.autofillForms" = false;
-        "signon.formlessCapture.enabled" = false;
-"browser.cache.disk.enable" = false;
-"browser.privatebrowsing.forceMediaMemoryCache" = true;
-"media.memory_cache_max_size" = 65536;
-"browser.sessionstore.privacy_level" = 2;
-"browser.sessionstore.interval" = 30000;
-"toolkit.winRegisterApplicationRestart" = false;
-"browser.shell.shortcutFavicons" = false;
-"security.ssl.require_safe_negotiation" = true;
-"security.tls.enable_0rtt_data" = false;
-"security.OCSP.enabled" = 1;
-"security.OCSP.require" = true;
-"security.pki.sha1_enforcement_level" = 1;
-"security.family_safety.mode" = 0;
-"security.cert_pinning.enforcement_level" = 2;
-"security.pki.crlite_mode" = 2;
-"dom.security.https_only_mode" = true;
-"dom.security.https_only_mode_send_http_background_request" = false;
-"security.ssl.treat_unsafe_negotiation_as_broken" = true;
-"browser.ssl_override_behavior" = 1;
-"browser.xul.error_pages.expert_bad_cert"= true;
-"network.http.referer.XOriginPolicy" = 2;
-"network.http.referer.XOriginTrimmingPolicy" = 2;
-"privacy.userContext.enabled" = true;
-"privacy.userContext.ui.enabled" = true;
-"media.peerconnection.ice.proxy_only_if_behind_proxy" = false;
-"media.peerconnection.ice.default_address_only" = false;
-"media.eme.enabled" = true;
-"media.autoplay.blocking_policy" = 2;
-"dom.disable_beforeunload" = true;
-"dom.disable_window_move_resize" = true;
-"dom.disable_open_during_load" = true;
-"dom.popup_allowed_events" = "click dblclick mousedown pointerdown";
-"accessibility.force_disabled" = 1;
-"beacon.enabled" = false;
-"browser.helperApps.deleteTempFileOnExit" = true;
-"browser.pagethumbnails.capturing_disabled" = true;
-"browser.uitour.enabled" = false;
-"browser.uitour.url" = "";
-"devtools.debugger.remote-enabled" = false;
-"middlemouse.contentLoadURL" = false;
-"permissions.manager.defaultsUrl" = "";
-"webchannel.allowObject.urlWhitelist" = "";
-"network.IDN_show_punycode" = true;
-"permissions.delegation.enabled" = false;
-"extensions.postDownloadThirdPartyPrompt" = false;
-"extensions.autoDisableScopes" = 15;
-"extensions.enabledScopes" = 5;
-"browser.contentblocking.category" = "strict";
-"privacy.partition.serviceWorkers" = true;
-"network.cookie.lifetimePolicy" = 2;
-"network.cookie.thirdparty.sessionOnly" = true;
-"network.cookie.thirdparty.nonsecureSessionOnly" = true;
-"privacy.sanitize.sanitizeOnShutdown" = true;
-"privacy.clearOnShutdown.cache" = true;
-"privacy.clearOnShutdown.downloads" = true;
-"privacy.clearOnShutdown.formdata" = true;
-"privacy.clearOnShutdown.history" = true;
-"privacy.clearOnShutdown.sessions" = true;
-"privacy.clearOnShutdown.offlineApps" = false;
-"privacy.clearOnShutdown.cookies" = false;
-"privacy.cpd.cache" = true;
-"privacy.cpd.formdata" = true;
-"privacy.cpd.history" = true;
-"privacy.cpd.offlineApps" = false;
-"privacy.cpd.cookies" = false;
-"privacy.cpd.sessions" = true;
-"privacy.sanitize.timeSpan" = 0;
-"privacy.resistFingerprinting" = true;
-"privacy.resistFingerprinting.block_mozAddonManager" = true;
-"privacy.resistFingerprinting.letterboxing" = false;
-"browser.startup.blankWindow" = true;
-"widget.non-native-theme.enabled" = true;
-"browser.link.open_newwindow" = 3;
-"browser.link.open_newwindow.restriction" = 0;
-"webgl.disabled" = false;
 
-"browser.newtabpage.activity-stream.feeds.discoverystreamfeed" = false;
-"browser.newtabpage.activity-stream.feeds.section.topstories" = false;
-"browser.newtabpage.activity-stream.section.highlights.includePocket" = false;
-"browser.newtabpage.activity-stream.showSponsored" = false;
-"extensions.pocket.enabled" = false;
-"pdfjs.enableScripting" = false;
-"identity.fxaccounts.enabled" = false;
-"browser.urlbar.shortcuts.bookmarks" = true;
-"browser.urlbar.shortcuts.history" = true;
-"browser.urlbar.shortcuts.tabs" = true;
-"browser.urlbar.suggest.bookmark" = false;
-"browser.urlbar.suggest.engines" = false;
-"browser.urlbar.suggest.history" = false;
-"browser.urlbar.suggest.openpage" = false;
-"browser.urlbar.suggest.topsites" = false;
-"browser.newtabpage.activity-stream.feeds.telemetry" = false;
-"browser.newtabpage.activity-stream.telemetry" = false;
-"browser.newtabpage.activity-stream.default.sites" = " ";
-"geo.provider.network.url" = "https://location.services.mozilla.com/v1/geolocate?key=%MOZILLA_API_KEY%";
-"geo.provider.use_gpsd" = false;
-"javascript.use_us_english_locale" = true;
-"extensions.getAddons.showPane" = false;
-"extensions.htmlaboutaddons.recommendations.enabled" = false;
-"browser.discovery.enabled" = false;
-"datareporting.policy.dataSubmissionEnabled" = false;
-"datareporting.healthreport.uploadEnabled" = false;       
-"browser.uidensity" = 1;
-"media.autoplay.enabled" = false;
-"toolkit.zoomManager.zoomValues" = ".8,.90,.95,1,1.1,1.2";
+        # Disable Pocket
+        "browser.newtabpage.activity-stream.feeds.discoverystreamfeed" = false;
+        "browser.newtabpage.activity-stream.feeds.section.topstories" = false;
+        "browser.newtabpage.activity-stream.section.highlights.includePocket" =
+          false;
+        "browser.newtabpage.activity-stream.showSponsored" = false;
+        "extensions.pocket.enabled" = false;
 
-"privacy.firstparty.isolate" = true;
-"network.http.sendRefererHeader" = 0;
-        };
+        # Disable prefetching
+        "network.dns.disablePrefetch" = true;
+        "network.prefetch-next" = false;
 
-        userChrome = with theme.colors; "
-        :root {
+        # Disable JS in PDFs
+        "pdfjs.enableScripting" = false;
 
-        /*---+---+---+---+---+---+---+
-        | C | O | L | O | U | R | S |
-        +---+---+---+---+---+---+---*/
+        # Harden SSL 
+        "security.ssl.require_safe_negotiation" = true;
 
+        # Extra
+        "identity.fxaccounts.enabled" = false;
+        "browser.search.suggest.enabled" = false;
+        "browser.urlbar.shortcuts.bookmarks" = false;
+        "browser.urlbar.shortcuts.history" = false;
+        "browser.urlbar.shortcuts.tabs" = false;
+        "browser.urlbar.suggest.bookmark" = false;
+        "browser.urlbar.suggest.engines" = false;
+        "browser.urlbar.suggest.history" = false;
+        "browser.urlbar.suggest.openpage" = false;
+        "browser.urlbar.suggest.topsites" = false;
+        "browser.uidensity" = 1;
+        "toolkit.zoomManager.zoomValues" = ".8,.90,.95,1,1.1,1.2";
 
-        /* Comment this block out if you want to keep the default theme colour. */
-        /* This will also work with custom colours from color.firefox.com. */
+        "privacy.firstparty.isolate" = true;
+        "network.http.sendRefererHeader" = 0;
+      };
 
-        /* Theme Colour Suggestions
-        *                              Dark        Light   */
-        --window-colour:               #${bg}; /* #${fg}; */
-        --secondary-colour:            #${ba}; /* #${fg}; */
-        --inverted-colour:             #${c0}; /* #${bg}; */
-
-
-        /* Containter Tab Colours */
-        --uc-identity-color-blue:      #${c4};
-        --uc-identity-color-turquoise: #${c5};
-        --uc-identity-color-green:     #${c2};
-        --uc-identity-color-yellow:    #${c3};
-        --uc-identity-color-orange:    #${c11};
-        --uc-identity-color-red:       #${c1};
-        --uc-identity-color-pink:      #${c6};
-        --uc-identity-color-purple:    #${c5};
-
-
-        /* URL colour in URL bar suggestions */
-        --urlbar-popup-url-color: var(--uc-identity-color-purple) !important;
-
-
-
-        /*---+---+---+---+---+---+---+
-        | V | I | S | U | A | L | S |
-        +---+---+---+---+---+---+---*/
-
-        /* global border radius */
-        --uc-border-radius: 0;
-
-        /* dynamic url bar width settings */
-        --uc-urlbar-width: clamp(200px, 40vw, 500px);
-
-        /* dynamic tab width settings */
-        --uc-active-tab-width:   clamp(100px, 20vw, 300px);
-        --uc-inactive-tab-width: clamp( 50px, 15vw, 200px);
-
-        /* if active always shows the tab close button */
-        --show-tab-close-button: none; /* DEFAULT: -moz-inline-box; */ 
-
-        /* if active only shows the tab close button on hover*/
-        --show-tab-close-button-hover: none; /* DEFAULT: -moz-inline-box; */
-
-        /* adds left and right margin to the container-tabs indicator */
-        --container-tabs-indicator-margin: 10px;
-
-        }
-
-" + builtins.readFile ./userChrome.css;
-};
-};
+      userChrome = with theme.colors;
+        "\n        :root {\n\n        /*---+---+---+---+---+---+---+\n        | C | O | L | O | U | R | S |\n        +---+---+---+---+---+---+---*/\n\n\n        /* Comment this block out if you want to keep the default theme colour. */\n        /* This will also work with custom colours from color.firefox.com. */\n\n        /* Theme Colour Suggestions\n        *                              Dark        Light   */\n        --window-colour:               #${bg}; /* #${fg}; */\n        --secondary-colour:            #${ba}; /* #${fg}; */\n        --inverted-colour:             #${c0}; /* #${bg}; */\n\n\n        /* Containter Tab Colours */\n        --uc-identity-color-blue:      #${c4};\n        --uc-identity-color-turquoise: #${c5};\n        --uc-identity-color-green:     #${c2};\n        --uc-identity-color-yellow:    #${c3};\n        --uc-identity-color-orange:    #${c11};\n        --uc-identity-color-red:       #${c1};\n        --uc-identity-color-pink:      #${c6};\n        --uc-identity-color-purple:    #${c5};\n\n\n        /* URL colour in URL bar suggestions */\n        --urlbar-popup-url-color: var(--uc-identity-color-purple) !important;\n\n\n\n        /*---+---+---+---+---+---+---+\n        | V | I | S | U | A | L | S |\n        +---+---+---+---+---+---+---*/\n\n        /* global border radius */\n        --uc-border-radius: 0;\n\n        /* dynamic url bar width settings */\n        --uc-urlbar-width: clamp(200px, 40vw, 500px);\n\n        /* dynamic tab width settings */\n        --uc-active-tab-width:   clamp(100px, 20vw, 300px);\n        --uc-inactive-tab-width: clamp( 50px, 15vw, 200px);\n\n        /* if active always shows the tab close button */\n        --show-tab-close-button: none; /* DEFAULT: -moz-inline-box; */ \n\n        /* if active only shows the tab close button on hover*/\n        --show-tab-close-button-hover: none; /* DEFAULT: -moz-inline-box; */\n\n        /* adds left and right margin to the container-tabs indicator */\n        --container-tabs-indicator-margin: 10px;\n\n        }\n\n"
+        + builtins.readFile ./userChrome.css;
+    };
+  };
 }

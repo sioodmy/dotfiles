@@ -1,5 +1,4 @@
-{ pkgs, config, theme, ...}:
-{
+{ pkgs, config, theme, ... }: {
   programs.kitty = {
     enable = true;
     settings = with theme.colors; {

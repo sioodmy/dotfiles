@@ -1,20 +1,14 @@
-{ pkgs, config, ...}:
+{ pkgs, config, ... }:
 
 {
-  programs.gpg = {
-    enable = true;
-  };
+  programs.gpg = { enable = true; };
 
-  programs.password-store = {
-    enable = true;
-  };
+  programs.password-store = { enable = true; };
 
   services.gpg-agent = {
     enable = true;
     pinentryFlavor = "gtk2";
   };
 
-  programs.rofi.pass = {
-    enable = true;
-  };
+  programs.rofi.pass = { enable = true; };
 }
