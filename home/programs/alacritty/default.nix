@@ -1,4 +1,4 @@
-{ pkgs, config, theme, ...}:
+{ pkgs, config, theme, ... }:
 
 {
   home.packages = [ pkgs.tdrop ];
@@ -36,10 +36,10 @@
       dynamic_padding = true;
 
       window = {
-        dimensions ={
+        dimensions = {
           columns = 100;
           lines = 25;
-        }; 
+        };
         padding = {
           x = 24;
           y = 24;
@@ -99,7 +99,6 @@
           cyan = "0x${c13}";
           white = "0x${fg}";
         };
-
 
       };
     };

@@ -2,7 +2,6 @@
 
 {
   imports = [
-    ./desktop/betterlockscreen
     ./desktop/bspwm
     ./desktop/gtk
     ./desktop/picom
@@ -23,6 +22,7 @@
     ./programs/alacritty
     ./programs/dunst
     ./programs/firefox
+    ./programs/chromium
     ./programs/flameshot
     ./programs/rofi
     ./programs/zathura
