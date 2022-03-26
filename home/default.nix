@@ -8,6 +8,7 @@
     ./desktop/polybar
     ./desktop/sxhkd
     ./desktop/xresources
+    ./desktop/lockscreen
 
     ./cli/bat
     ./cli/fzf

@@ -14,10 +14,13 @@
     config = with theme.colors; {
       "bar/top" = {
         monitor = "\${env:MONITOR}";
-        #                width = "100%";
-        width = "98.75%";
-        offset-x = "0.625%";
-        offset-y = "0.625%";
+#        width = "100%";
+        width = "99.375%";
+        #width = "98.75%";
+        offset-x = "0.3125%";
+        offset-y = "0.3125%";
+        #offset-x = "0.625%";
+        #offset-y = "0.625%";
         wm-restack = "bspwm";
         height = 30;
         radius = 0;

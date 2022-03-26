@@ -27,7 +27,7 @@
         ignore_ewmh_focus = true;
         focus_follows_pointer = true;
         border_width = 2;
-        window_gap = 12;
+        window_gap = 6;
         focused_border_color = "#${ac}";
         urgent_border_color = "#${c3}";
         normal_border_color = "#${bg}";
@@ -55,6 +55,12 @@
           desktop = "^4";
           follow = false;
           state = "floating";
+        };
+        "minecraft-launcher" = {
+          desktop = "^4";
+          follow = true;
+          state = "floating";
+          center = true;
         };
         "Discord" = {
           desktop = "^3";

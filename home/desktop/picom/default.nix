@@ -9,9 +9,9 @@
                   shadow-radius = 10;
                   corner-radius = 5;
                   round-borders = 5;
-      #            rounded-corners-exclude = [
-       #             "window_type = 'dock'"
-        #          ];
+#                  rounded-corners-exclude = [
+ #                  "window_type = 'dock'"
+  #                ];
               '';
     fadeExclude = [
       # "class_g = 'Rofi'"

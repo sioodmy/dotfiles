@@ -41,8 +41,8 @@
           lines = 25;
         };
         padding = {
-          x = 24;
-          y = 24;
+          x = 16;
+          y = 16;
         };
       };
       scrolling = {
