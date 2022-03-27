@@ -297,6 +297,13 @@ in {
           local default = {
           ensure_installed = {
           "lua",
+          "rust",
+          "c",
+          "python",
+          "html",
+          "css",
+          "nix",
+          "javascript",
           "vim",
           },
           highlight = {

@@ -13,7 +13,7 @@
     settings = with theme.colors; {
       hints.border = "1px solid #${fg}";
       fonts = {
-        default_family = "${font}";
+        default_family = "monospace";
         default_size = "12pt";
       };
       colors = {

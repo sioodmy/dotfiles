@@ -3,7 +3,7 @@
     enable = true;
     settings = with theme.colors; {
 
-      font_family = "${font}";
+      font_family = "monospace";
       font_size = 15;
 
       window_padding_width = 26;

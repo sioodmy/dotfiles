@@ -3,6 +3,7 @@
 {
   imports = [
     ./desktop/bspwm
+#    ./desktop/awesome
     ./desktop/gtk
     ./desktop/picom
     ./desktop/polybar
