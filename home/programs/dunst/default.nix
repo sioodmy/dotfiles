@@ -8,7 +8,7 @@
         padding = "8";
         max_icon_size = "32";
         min_icon_size = "0";
-        font = "JetBrains Mono 13";
+        font = "monospace 13";
         corner_radius = "5";
         alignment = "left";
       };

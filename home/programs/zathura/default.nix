@@ -4,7 +4,7 @@
   programs.zathura = {
     enable = true;
     options = with theme.colors; {
-      font = "${font} 13";
+      font = "monospace 13";
 
       default-fg = "#${fg}";
       default-bg = "#${bg}";

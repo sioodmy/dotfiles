@@ -25,6 +25,7 @@
         yt-dlp -x --continue --add-metadata --embed-thumbnail --audio-format mp3 --audio-quality 0 --metadata-from-title="%(artist)s - %(title)s" --prefer-ffmpeg -o "%(title)s.%(ext)s"'';
       cat = "bat --style=plain";
       grep = "rg";
+      neofetch = "fetch";
       htop = "btm";
       m = "mkdir -p";
       fcd = "cd $(find -type d | fzf)";

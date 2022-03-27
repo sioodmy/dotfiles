@@ -10,7 +10,7 @@
     extraConfig = {
       modi = "drun,window,calc,emoji";
       lines = 5;
-      font = "${theme.colors.font} 14";
+      font = "monospace 14";
       show-icons = true;
       icon-theme = "Papirus";
       terminal = "urxvt";

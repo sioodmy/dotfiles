@@ -27,7 +27,7 @@
         modules-left = "date";
         modules-center = "bspwm";
         modules-right = "mpd volume memory cpu";
-        font-0 = "${font}:style=Medium:pixelsize=13;3";
+        font-0 = "monospace:style=Medium:pixelsize=13;3";
         font-1 = "unifont:fontformat=truetype:size=13:antialias=false;3";
         #                font-2 = "Twitter Color Emoji:pixelsize=14;3";
         background = "#${bg}";
