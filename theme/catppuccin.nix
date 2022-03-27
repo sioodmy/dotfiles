@@ -1,7 +1,5 @@
 rec {
 
-  font = "JetBrainsMono Nerd Font";
-
   bg = "1E1E2E";
   ba = "302D41";
   fg = "D9E0EE";
