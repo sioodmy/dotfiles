@@ -20,6 +20,7 @@
         "xrandr --output DP-0 --mode 1920x1080 --rate 150"
         "pgrep bspswallow || bspswallow"
         "xsetroot -cursor_name left_ptr"
+        "eww daemon && eww open bar"
       ];
       settings = with theme.colors; {
         remove_disabled_monitors = true;
@@ -28,6 +29,7 @@
         focus_follows_pointer = true;
         border_width = 2;
         window_gap = 6;
+        top_padding = 50;
         focused_border_color = "#${ac}";
         urgent_border_color = "#${c3}";
         normal_border_color = "#${bg}";

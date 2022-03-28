@@ -6,7 +6,6 @@
 #    ./desktop/awesome
     ./desktop/gtk
     ./desktop/picom
-    ./desktop/polybar
     ./desktop/sxhkd
     ./desktop/xresources
     ./desktop/lockscreen
