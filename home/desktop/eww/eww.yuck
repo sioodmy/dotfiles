@@ -1,0 +1,225 @@
+(defwidget bar []
+    (centerbox
+        (box :space-evenly false
+        (volume :onchange "pamixer --set-volume $(echo {} | sed 's/\\..*//g')")
+        (micvolume :onchange "pamixer --default-source --set-volume $(echo {} | sed 's/\\..*//g')")
+        (brightness :onchange "xrandr --output DP-0 --brightness {}")
+        (music)
+        )
+        
+          (workspaces :halign "center" :hexpand "true")
+
+        (box :halign "end" :hexpand true :orientation "h" :space-evenly false
+          (mem)
+          (weather)
+          (time)
+          (power)
+        ))
+    )
+
+;; Variables
+(defpoll currentmicVolume :interval "20s" "pamixer --default-source --get-volume")
+(defpoll micicon :interval "1s" "pamixer --default-source --get-mute > /dev/null && echo \"\" || echo \"\"")
+
+(defpoll currentBrightness :interval "50s" "scripts/brightness")
+(defpoll temperature :interval "15s" "curl -s 'wttr.in/?format=%c%f'")
+(defpoll weatherstats :interval "5m" "curl -s 'wttr.in/?format=%P+%w+%p+%h'")
+
+(defpoll cover_art :interval "2s"  "./scripts/music.sh --cover")
+(defpoll song :interval "2s"  "./scripts/music.sh --song")
+(defpoll song_status :interval "2s" "./scripts/music.sh --status")
+(defpoll current_status :interval "1s"  "./scripts/music.sh --time")
+(defpoll timeVar :interval "10s" "date '+%H:%M'")
+(defpoll dateVar :interval "600s" "date '+%A %d.%m.%y'")
+(deflisten workspaces_listen "./scripts/workspaces.sh")
+(defpoll memory :interval "15s" "./scripts/memory.sh")
+(defpoll cpu :interval "15s" "grep 'cpu ' /proc/stat | awk '{print ($2+$4)*100/($2+$4+$5) }'")
+(defpoll currentVolume :interval "20s" "pamixer --get-volume")
+
+(defvar volum false)
+(defvar micvolum false)
+(defvar bright false)
+(defvar power false)
+(defvar weather false)
+(defvar music false)
+(defvar search false)
+(defvar time false)
+(defvar cal false)
+
+;; Widgets
+
+(defwidget volume [onchange]
+  (eventbox :tooltip "Volume: ${currentVolume}%" :onhover "eww update volum=true"   
+    :onhoverlost "eww update volum=false"
+    (box :orientation "h" :space-evenly false 
+        (button :class "volumeLabel label" 
+          :onclick "pavucontrol &" "墳 ")
+        (revealer :transition "slideleft" 
+			  :reveal volum 
+			  :duration "500ms"
+        (scale :class "volumeBar"
+            :min 0
+            :max 101
+            :active {onchange != ""}
+            :value "${currentVolume}" 
+            :onchange onchange)
+))))
+
+
+(defwidget micvolume [onchange]
+  (eventbox :tooltip "Volume: ${currentmicVolume}% ${micicon}" :onhover "eww update micvolum=true"   
+    :onhoverlost "eww update micvolum=false"
+    (box :orientation "h" :space-evenly false 
+        (button :class "volumemicLabel label" :onclick "pamixer --default-source -t" "${micicon} ")
+        (revealer :transition "slideleft" 
+			  :reveal micvolum 
+			  :duration "500ms"
+        (scale :class "volumemicBar"
+            :min 0
+            :max 101
+            :active {onchange != ""}
+            :value "${currentmicVolume}" 
+            :onchange onchange)
+))))
+
+(defwidget brightness [onchange]
+  (eventbox :tooltip "Brightness: ${currentBrightness}" :onhover "eww update bright=true"   
+  	:onhoverlost "eww update bright=false"
+    (box :orientation "h" :space-evenly false 
+        (box :class "brightnessLabel label" " ")
+	        (revealer :transition "slideleft" 
+			    :reveal bright        
+			    :duration "500ms"
+            (scale :class "brightnessBar"
+                :min 0
+                :max 2
+                :active {onchange != ""}
+                :value "${currentBrightness}" 
+                :onchange onchange)))))
+
+(defwidget mem []
+  (box :vexpand "false" :hexpand "false"
+  (circular-progress  :value "${memory}"
+    :class "membar"
+    :start-angle 0
+    :thickness 4
+    (button 
+                :class "iconmem"
+                :limit-width 2
+                :tooltip "Using ${memory}% ram"
+                :show_truncated false
+                :wrap false
+                "")
+    ))             
+  )
+
+(defwidget power []
+	(eventbox   :hexpand false 
+                :onhover "eww update power=true"	
+				:onhoverlost "eww update power=false" 
+	(box		:orientation "h"					
+				:space-evenly "false" 	 
+                :class "powerLabel label"
+
+	(button		:class "button-off"					
+				:tooltip "Shutdown"		 
+				:onclick "shutdown now"	" ")
+	(revealer	:transition "slideright"				
+				:reveal power			 
+				:duration "250ms"
+    (box        :space-evenly true
+  	(button		:class "button-reb"					
+	  			:tooltip "Reboot"
+				:onclick "reboot" "勒")
+  	(button		:class "button-lock"					
+	  			:tooltip "Lockscreen"
+				:onclick "dm-tool lock" " ")
+  	(button		:class "button-sleep"					
+	  			:tooltip "Sleep"
+				:onclick "systemctl suspend" ""))
+    ))))
+
+
+(defwidget weather []
+	(eventbox   :hexpand false 
+                :onhover "eww update weather=true"	
+				:onhoverlost "eww update weather=false" 
+	(box		:orientation "h"					
+				:space-evenly "false" 	 
+                :class "weather"
+
+	(label		:class "weather"					
+				:tooltip "Weather"		 
+                :limit-width "10"
+                :wrap false
+				:text "${temperature}")
+	(revealer	:transition "slideright"				
+				:reveal weather			 
+				:duration "250ms"
+  	(label		:class "weather-details"					
+	  			:tooltip "Weather"
+                :limit-width "30"
+                :wrap false
+				:text "${weatherstats}")))))
+
+
+
+(defwidget time []
+
+	(button		:class "date"					
+				:tooltip "${dateVar}"		 
+				:onclick "eww open --toggle calendar"	"${timeVar}")
+	)
+
+
+
+(defwidget music []
+	(eventbox   :hexpand false 
+                :onhover "eww update music=true"	
+				:onhoverlost "eww update music=false" 
+	(box		:orientation "h"					
+				:space-evenly "false" 	 
+                :class "musiclabel"
+
+    (box :class "song_cover_art" :vexpand "false" :hexpand "false" :style "background-image: url('${cover_art}');")
+    (label      :text "${song}"
+                :limit-width 30
+                :wrap false)
+	(revealer	:transition "slideright"				
+				:reveal music			 
+                :expand true
+				:duration "300ms"
+    (box :space-evenly false
+  	(button		:class "button-music"					
+	  			:tooltip "Previous"
+				:onclick "./scripts/music.sh --prev" "")
+  	(button		:class "button-music button-pause"					
+	  			:tooltip "Toggle"
+				:onclick "./scripts/music.sh --toggle " "${song_status}")
+  	(button		:class "button-music"					
+	  			:tooltip "Next"
+				:onclick "./scripts/music.sh --next" "")
+
+(scale :class "musicBar" :onscroll "mpc -q seek {}" :min 0 :active "true" :max 100 :value current_status)
+    )
+))))
+
+(defwidget workspaces []
+  (literal :content workspaces_listen))
+
+(defwindow calendar
+	:geometry (geometry :x "-20px" 
+		:y "7%" 
+		:width "270px" 
+		:height "60px"
+        :anchor "top right")
+    (calendar :class "cal")
+)
+
+(defwindow bar 
+    :monitor 0
+    :wm-ignore false
+    :geometry (geometry :width "100%"
+        :height "20px"
+        :anchor "top left")
+    (bar))
