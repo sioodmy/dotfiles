@@ -1,14 +1,16 @@
-{ pkgs, config, ... }:
+{ inputs, pkgs, config, ... }:
 
 {
   imports = [
+    ./packages.nix
+
     ./desktop/bspwm
-#    ./desktop/awesome
     ./desktop/gtk
     ./desktop/picom
     ./desktop/sxhkd
     ./desktop/xresources
     ./desktop/lockscreen
+    ./desktop/eww
 
     ./cli/bat
     ./cli/fzf
@@ -20,7 +22,7 @@
     ./cli/xdg
     ./cli/zsh
 
-    ./programs/alacritty
+    ./programs/kitty
     ./programs/dunst
     ./programs/firefox
     ./programs/chromium

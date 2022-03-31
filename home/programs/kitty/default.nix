@@ -2,12 +2,25 @@
   programs.kitty = {
     enable = true;
     settings = with theme.colors; {
-
       font_family = "monospace";
-      font_size = 15;
+      font_size = 13;
+      cursor_blink_interval = "0.5";
+      cursor_stop_blinking_after = "15.0";
+      scrollback_lines = 2000;
+      click_interval = "0.5";
+      select_by_word_characters = ":@-./_~?&=%+#";
+      remember_window_size = "no";
+      initial_window_width = 640;
+      initial_window_height = 400;
+      repaint_delay = 15;
+      input_delay = 3;
+      visual_bell_duration = "0.0";
+      open_url_with = "default";
 
-      window_padding_width = 26;
+      enable_audio_bell = "no";
 
+      window_padding_width = 15;
+      disable_ligatures = "always";
       foreground = "#${fg}";
       background = "#${bg}";
 
@@ -41,7 +54,16 @@
       color13 = "#${c13}";
       color14 = "#${c14}";
       color15 = "#${c15}";
+    };
 
+    keybindings = {
+      "ctrl+c" = "copy_or_interrupt";
+      "ctrl+shift+up" = "increase_font_size";
+      "ctrl+shift+down" = "decrease_font_size";
+      "ctrl+shift+backspace" = "restore_font_size";
+      "ctrl+alt+c" = "copy_to_clipboard";
+      "ctrl+alt+v" = "paste_from_clipboard";
+      "ctrl+v" = "paste_from_clipboard";
     };
   };
 }
