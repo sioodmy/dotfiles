@@ -1,0 +1,173 @@
+* {
+  all: unset; //Unsets everything so you can style everything from scratch
+ font-family: monospace;
+}
+
+.bar{
+    background-color: $background;
+    padding: 0 0.6rem;
+}
+
+scale trough highlight {
+    all: unset;
+    background-color: $black;
+    min-height: 10px;
+    min-width: 16px;
+    border-radius: 8px;
+}
+
+scale trough {
+    all: unset;
+    background-color: $black;
+    border-radius: 8px;
+    min-height: 10px;
+    min-width: 80px;
+    margin: 0.6rem;
+}
+
+.membar {
+      color: $accent;
+    background-color: $black;
+  border-radius: 10px;
+}
+.iconmem {
+    color: $background;
+    margin: 0.6rem;
+    font-size: 0.5rem;
+}
+.workspaces {
+   // font-size: 24px;
+    border-radius: 15px;
+}
+.workspace-focused {
+    color: $accent;
+}
+.workspace-empty {
+    color: $black;
+}
+.workspace-occupied {
+    color: $white;
+}
+.button-off { color: $red;}
+.button-search { margin: 0 0.6rem;color: $blue}
+.button-esearch {
+    margin: 0.6rem 0.6rem;
+    color: $blue;
+}
+.button-reb, .button-lock, .button-sleep {
+    margin: 0 0.6rem;
+}
+.button-reb { 
+    color: $magenta;
+}
+.button-lock {
+    color: $green;
+}
+.button-sleep {
+    color: $yellow;
+}
+.weather-details { 
+    margin: 0 0.6rem; 
+    color: $magenta;
+}
+
+.button-music {
+    color: $magenta;
+   margin: 0 0.7rem;
+}
+.button-pause {
+    font-size: 1.5rem;
+}
+.musiclabel {
+    margin: 0 1rem;
+}
+.song_cover_art {
+    color: $yellow;
+    background-size: cover;	
+	background-position: center;
+    min-height: 24px;
+	min-width: 24px;
+	margin: 10px;
+	border-radius: 100px;
+}
+.brightnessBar trough highlight {
+    background-color: $yellow;
+}
+
+.brightnessLabel {
+    color: $yellow;
+}
+
+.volumemicBar trough highlight {
+    background-color: $blue;
+}
+.volumeBar trough highlight {
+    background-color: $green;
+}
+.musicBar trough highlight {
+    background-color: $magenta;
+}
+
+.volumeLabel {
+    color: $green;
+}
+.volumemicLabel {
+    color: $blue;
+
+    font-size: 1rem;
+}
+
+.label {
+ //   font-size: 2rem;
+    margin: 0rem 0rem 0rem 0.6rem;
+}
+.weather, .time, .button-off{
+    margin: 0rem 0.6rem;
+}
+
+
+.cal {
+  background-color: $background;
+  font-size: 18px;
+  font-weight: normal;
+
+.cal-in {
+    padding: 0px 10px 0px 10px;
+
+.cal {
+     &.highlight {
+          padding: 20px;
+      }
+
+      padding: 5px 5px 5px 5px;
+      margin-left: 10px;
+    }
+  }
+}
+
+
+calender {
+    color: $foreground;
+}
+calendar:selected {
+  color: $accent;
+}
+
+calendar.header {
+color: $foreground;
+font-weight: bold;
+}
+
+calendar.button {
+color: $accent;
+}
+
+calendar.highlight {
+color: $accent;
+font-weight: bold;
+}
+
+calendar:indeterminate {
+color: $black;
+}
+
