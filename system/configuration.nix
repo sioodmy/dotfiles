@@ -10,7 +10,7 @@ in
       NIXOS_CONFIG="$HOME/.config/nixos/configuration.nix";
       NIXOS_CONFIG_DIR="$HOME/.config/nixos/";
       EDITOR="nvim";
-      TERMINAL="alacritty";
+      TERMINAL="kitty";
       BROWSER="firefox";
     };
 
@@ -20,6 +20,7 @@ in
       gc = {
         automatic = true;
         dates = "daily";
+        options = "--delete-older-than 4d";
       };
       package = pkgs.nixUnstable;
       extraOptions = ''
@@ -39,9 +40,8 @@ in
     boot = {
       cleanTmpDir = true;
       plymouth.enable = true;
-      kernelParams = [ "quiet" "rd.systemd.show_status=false" "rd.udev.log_level=3" "udev.log_priority=3" ];
-      #kernelPackages = pkgs.linuxPackages_latest;
-      kernelPackages = pkgs.linuxPackages_xanmod;
+      kernelParams = [ "quiet" "rd.systemd.show_status=false" "rd.udev.log_level=3" "udev.log_priority=3" "nmi_watchdog=0"];
+      kernelPackages = pkgs.linuxPackages_latest;
       consoleLogLevel = 0;
       initrd.verbose = false;
       loader = {
@@ -76,7 +76,10 @@ in
       gesture swipe left 3 bspc desktop -f prev.local
     '';
 
-    sound.enable = true;
+    sound = {
+      enable = true;
+      mediaKeys.enable = true;
+    };
 
     services = {
       logind = {
@@ -106,6 +109,7 @@ in
       };
 
       printing.enable = true;
+      fstrim.enable = true;
 
       xserver = {
         layout = "pl";
@@ -132,7 +136,7 @@ in
           shutdown-key = s
           [greeter-theme]
           font-size = 1em
-          font = \"${font}\";
+          font = \"monospace\";
           background-image = \"\"
           background-color = \"#${bg}\"
           window-color = \"#${bg}\"
@@ -148,7 +152,6 @@ in
 
         libinput = {
           enable = true;
-          touchpad.naturalScrolling = false;
           mouse = {
             accelProfile = "flat";
             accelSpeed = "0";
@@ -156,8 +159,10 @@ in
           };
 
           touchpad = {
+            disableWhileTyping = true;
             accelProfile = "flat";
             accelSpeed = "0";
+            naturalScrolling = false;
           };
         };
       };
@@ -183,7 +188,9 @@ in
 
     users.users.sioodmy = {
       isNormalUser = true;
-      extraGroups = [ "wheel" ]; # Enable ‘sudo’ for the user.
+      # Enable ‘sudo’ for the user.
+      extraGroups = [ "wheel" ] ++ optionals config.services.xserver.enable ["audio" "video" "lp" "networkmanager"];
+      uid = 1000;
       shell = pkgs.zsh;
     };
 
@@ -209,9 +216,9 @@ in
 
       fontconfig = with theme.colors; {
         defaultFonts = {
-          monospace = [ "${font}" "Noto Color Emoji"];
+          monospace = [ "JetBrainsMono Nerd Font" "Noto Color Emoji"];
           sansSerif = [ "Lato" "Noto Color Emoji"];
-          serif = [ "${font}" "Noto Color Emoji"];
+          serif = [ "JetBrainsMono Nerd Font" "Noto Color Emoji"];
           emoji = [ "Noto Color Emoji" ];
         };
       };
@@ -251,6 +258,15 @@ in
       "sysv"
       "ufs"
     ]; 
+
+    security = {
+      rtkit.enable = true;
+      apparmor = {
+        enable = true;
+        packages =  [ pkgs.apparmor-profiles ];
+      };
+      pam.services.login.enableGnomeKeyring = true;
+    };
 
     boot.kernel.sysctl = {
       "kernel.yama.ptrace_scope" = mkOverride 500 1;

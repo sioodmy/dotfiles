@@ -9,7 +9,7 @@ super + shift + o
 
 # Spawn a new terminal
 super + Return
-	alacritty
+	kitty --single-instance
 
 # Launcher
 super + @space
@@ -18,7 +18,7 @@ super + @space
 alt + Tab
     rofi -show window
 alt + grave
-    tdrop -ma -y 50% -x 25% -w 50% alacritty
+    tdrop -ma -y 50% -x 25% -w 50% kitty --single-instance
 super + e
     pcmanfm
 
