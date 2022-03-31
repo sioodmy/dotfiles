@@ -1,4 +1,5 @@
 { pkgs, config, theme, ... }: {
+  home.packages = [ pkgs.tdrop ];
   programs.kitty = {
     enable = true;
     settings = with theme.colors; {
