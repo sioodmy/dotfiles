@@ -3,12 +3,14 @@
 {
   nixpkgs.config.allowUnfree = true;
   environment.systemPackages = with pkgs; [
+    eww wezterm
     # cli tools
-    exa ffmpeg unzip xclip pfetch
+    exa ffmpeg unzip xclip fetch
     libnotify gnupg update-nix-fetchgit yt-dlp ytmdl
     ripgrep rsync imagemagick
     scrot bottom newsboat unrar
     tealdeer cava killall onefetch
+    todo du-dust
     # gui apps
     obs-studio mpv sxiv tdesktop
     transmission-gtk pavucontrol pcmanfm
