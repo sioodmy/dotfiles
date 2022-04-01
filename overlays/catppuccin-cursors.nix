@@ -5,7 +5,8 @@ stdenv.mkDerivation rec {
   version = "0.1.3";
 
   src = fetchTarball {
-    url = "https://github.com/catppuccin/cursors/raw/e5a04bcdd953f8cc9fdc9909da24d63319fa252d/cursors/Catppuccin-Dark-Cursors.tar.gz";
+    url =
+      "https://github.com/catppuccin/cursors/raw/e5a04bcdd953f8cc9fdc9909da24d63319fa252d/cursors/Catppuccin-Dark-Cursors.tar.gz";
     sha256 = "0jnjr0g7j7nwbbf961x5y1s1n2d79f8q8w2qsmn2xm1p1qyay0vd";
   };
 

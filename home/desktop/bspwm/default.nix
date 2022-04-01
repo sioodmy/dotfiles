@@ -77,7 +77,8 @@
   };
 
   # Needed for bspswallow to work.
-  home.file.".config/bspwm/terminals".text = "Alacritty
-  kitty";
+  home.file.".config/bspwm/terminals".text = ''
+    Alacritty
+      kitty'';
   home.file.".config/bspwm/noswallow".text = "xev";
 }

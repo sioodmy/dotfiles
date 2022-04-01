@@ -1,4 +1,4 @@
-{ inputs, config, theme, pkgs, ...}:
+{ inputs, config, theme, pkgs, ... }:
 
 {
   # eww package
@@ -8,18 +8,20 @@
   home.file.".config/eww/eww.yuck".source = ./eww.yuck;
 
   # color definitions
-  home.file.".config/eww/eww.scss".text = with theme.colors; "
-$accent: #${ac};
-$background: #${bg};
-$foreground: #${fg};
+  home.file.".config/eww/eww.scss".text = with theme.colors;
+    ''
 
-$black: #${ba};
-$red: #${c1};
-$green: #${c2};
-$yellow: #${c3};
-$blue: #${c4};
-$magenta: #${c5};
-$white: $foreground;" + builtins.readFile ./eww.scss;
+      $accent: #${ac};
+      $background: #${bg};
+      $foreground: #${fg};
+
+      $black: #${ba};
+      $red: #${c1};
+      $green: #${c2};
+      $yellow: #${c3};
+      $blue: #${c4};
+      $magenta: #${c5};
+      $white: $foreground;'' + builtins.readFile ./eww.scss;
 
   # scripts
   home.file.".config/eww/scripts/memory.sh" = {
