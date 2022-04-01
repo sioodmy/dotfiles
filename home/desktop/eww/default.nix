@@ -29,6 +29,11 @@
     executable = true;
   };
 
+  home.file.".config/eww/scripts/cpu.sh" = {
+    source = ./scripts/cpu.sh;
+    executable = true;
+  };
+
   home.file.".config/eww/scripts/music.sh" = {
     source = ./scripts/music.sh;
     executable = true;
