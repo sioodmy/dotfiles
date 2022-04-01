@@ -26,10 +26,13 @@
 (defpoll temperature :interval "20m" "curl -s 'wttr.in/?format=%c%f'")
 (defpoll weatherstats :interval "30m" "curl -s 'wttr.in/?format=%P+%w+%p+%h'")
 
-(defpoll cover_art :interval "2s"  "./scripts/music.sh --cover")
-(defpoll song :interval "2s"  "./scripts/music.sh --song")
-(defpoll song_status :interval "2s" "./scripts/music.sh --status")
+(deflisten cover_art "./scripts/music.sh --cover")
+(deflisten song "./scripts/music.sh --song")
+(deflisten song_status "./scripts/music.sh --status")
 (defpoll current_status :interval "1s"  "./scripts/music.sh --time")
+
+(defpoll ctime :interval "1s"  "./scripts/music.sh --ctime")
+(defpoll ttime :interval "1s"  "./scripts/music.sh --ttime")
 (defpoll timeVar :interval "10s" "date '+%H:%M'")
 (defpoll dateVar :interval "600s" "date '+%A %d.%m.%y'")
 (deflisten workspaces_listen "./scripts/workspaces.sh")
@@ -214,7 +217,7 @@
 	  			:tooltip "Next"
 				:onclick "./scripts/music.sh --next" "")
 
-(scale :class "musicBar" :onscroll "mpc -q seek {}" :min 0 :active "true" :max 100 :value "${current_status}")
+(scale :class "musicBar" :onscroll "mpc -q seek {}" :min 0 :active "true" :max 100 :value "${current_status}" :tooltip "${ctime}/${ttime}")
     )
 ))))
 
