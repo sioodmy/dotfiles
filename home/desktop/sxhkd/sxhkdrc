@@ -67,7 +67,7 @@ alt + control + shift + {h,j,k,l}
                 top 0 -30 || bspc node -z bottom 0 -30,\
                 right 30 0 || bspc node -z left 30 0}
 # close and kill
-super + {_,shift + }w
+super + {_,shift + }minus
 	bspc node -{c,k}
 
 # alternate between the tiled and monocle layout
