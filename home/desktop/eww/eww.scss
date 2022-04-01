@@ -27,6 +27,12 @@ scale trough {
     margin: 0.6rem;
 }
 
+.cpubar {
+      color: $blue;
+    background-color: $black;
+  border-radius: 10px;
+    margin: 0.6rem;
+}
 .membar {
       color: $accent;
     background-color: $black;

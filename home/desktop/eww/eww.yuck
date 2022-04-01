@@ -10,6 +10,7 @@
           (workspaces :halign "center" :hexpand "true")
 
         (box :halign "end" :hexpand true :orientation "h" :space-evenly false
+          (cpu)
           (mem)
           (weather)
           (time)
@@ -22,8 +23,8 @@
 (defpoll micicon :interval "1s" "pamixer --default-source --get-mute > /dev/null && echo \"\" || echo \"\"")
 
 (defpoll currentBrightness :interval "50s" "scripts/brightness")
-(defpoll temperature :interval "15s" "curl -s 'wttr.in/?format=%c%f'")
-(defpoll weatherstats :interval "5m" "curl -s 'wttr.in/?format=%P+%w+%p+%h'")
+(defpoll temperature :interval "20m" "curl -s 'wttr.in/?format=%c%f'")
+(defpoll weatherstats :interval "30m" "curl -s 'wttr.in/?format=%P+%w+%p+%h'")
 
 (defpoll cover_art :interval "2s"  "./scripts/music.sh --cover")
 (defpoll song :interval "2s"  "./scripts/music.sh --song")
@@ -33,7 +34,7 @@
 (defpoll dateVar :interval "600s" "date '+%A %d.%m.%y'")
 (deflisten workspaces_listen "./scripts/workspaces.sh")
 (defpoll memory :interval "15s" "./scripts/memory.sh")
-(defpoll cpu :interval "15s" "grep 'cpu ' /proc/stat | awk '{print ($2+$4)*100/($2+$4+$5) }'")
+(defpoll cpu :interval "15s" "./scripts/cpu.sh")
 (defpoll currentVolume :interval "20s" "pamixer --get-volume")
 
 (defvar volum false)
@@ -113,6 +114,21 @@
     ))             
   )
 
+(defwidget cpu []
+  (box :vexpand "false" :hexpand "false"
+  (circular-progress  :value "${cpu}"
+    :class "cpubar"
+    :start-angle 0
+    :thickness 4
+    (button 
+                :class "iconmem"
+                :limit-width 2
+                :tooltip "Using ${cpu}% CPU"
+                :show_truncated false
+                :wrap false
+                "")
+    ))             
+  )
 (defwidget power []
 	(eventbox   :hexpand false 
                 :onhover "eww update power=true"	
