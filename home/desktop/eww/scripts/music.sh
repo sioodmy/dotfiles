@@ -2,13 +2,12 @@
 # scripts by adi1090x
 
 ## Get data
-STATUS="$(mpc status)"
 COVER="/tmp/music_cover.png"
 MUSIC_DIR="$HOME/music"
 
 ## Get status
 get_status() {
-	if [[ $STATUS == *"[playing]"* ]]; then
+	if [[ "$(mpc status)" == *"[playing]"* ]]; then
 		echo ""
 	else
 		echo "奈"
@@ -76,11 +75,17 @@ get_cover() {
 
 ## Execute accordingly
 if [[ "$1" == "--song" ]]; then
-	get_song
+    get_song
+    mpc idleloop | while read -r _; do
+    	get_song
+    done
 elif [[ "$1" == "--artist" ]]; then
 	get_artist
 elif [[ "$1" == "--status" ]]; then
-	get_status
+    get_status
+    mpc idleloop | while read -r _; do
+    	get_status
+    done
 elif [[ "$1" == "--time" ]]; then
 	get_time
 elif [[ "$1" == "--ctime" ]]; then
@@ -89,6 +94,9 @@ elif [[ "$1" == "--ttime" ]]; then
 	get_ttime
 elif [[ "$1" == "--cover" ]]; then
 	get_cover
+    mpc idleloop | while read -r _; do
+	    get_cover
+    done
 elif [[ "$1" == "--toggle" ]]; then
 	mpc -q toggle
 elif [[ "$1" == "--next" ]]; then
