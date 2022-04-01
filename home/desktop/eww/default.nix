@@ -11,6 +11,7 @@
   home.file.".config/eww/eww.scss".text = with theme.colors; "
 $accent: #${ac};
 $background: #${bg};
+$foreground: #${fg};
 
 $black: #${ba};
 $red: #${c1};
@@ -18,8 +19,7 @@ $green: #${c2};
 $yellow: #${c3};
 $blue: #${c4};
 $magenta: #${c5};
-$white: $foreground;
-  " + builtins.readFile ./eww.scss;
+$white: $foreground;" + builtins.readFile ./eww.scss;
 
   # scripts
   home.file.".config/eww/scripts/memory.sh" = {
