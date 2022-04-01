@@ -1,3 +1,1 @@
-rec { 
-  colors = import ./catppuccin.nix; 
-}
+rec { colors = import ./catppuccin.nix; }

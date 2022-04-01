@@ -6,14 +6,14 @@
     shadow = true;
     shadowOpacity = "0.2";
     extraOptions = ''
-                  shadow-radius = 10;
-                  corner-radius = 5;
-                  round-borders = 5;
-                  rounded-corners-exclude = [
-                #   "window_type = 'dock'",
-                   "class_g = 'eww-bar'"
-                ];
-              '';
+        shadow-radius = 10;
+        corner-radius = 5;
+        round-borders = 5;
+        rounded-corners-exclude = [
+      #   "window_type = 'dock'",
+         "class_g = 'eww-bar'"
+      ];
+    '';
     fadeExclude = [
       # "class_g = 'Rofi'"
       "class_g = 'slop'"

@@ -5,8 +5,9 @@ stdenv.mkDerivation rec {
   version = "0.1.3";
 
   src = fetchzip {
-      url = "https://github.com/catppuccin/gtk/releases/download/update_27_01_22/Catppuccin-green-dark-compact.zip";
-      sha256 = "Ubdn6UlIdsa+ugVejzOjSFudH/yKzJFu/ebUh5Ify2A=";
+    url =
+      "https://github.com/catppuccin/gtk/releases/download/update_27_01_22/Catppuccin-green-dark-compact.zip";
+    sha256 = "Ubdn6UlIdsa+ugVejzOjSFudH/yKzJFu/ebUh5Ify2A=";
   };
 
   installPhase = ''
