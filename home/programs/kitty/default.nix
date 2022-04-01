@@ -10,7 +10,8 @@
       scrollback_lines = 2000;
       click_interval = "0.5";
       select_by_word_characters = ":@-./_~?&=%+#";
-      remember_window_size = "no";
+      remember_window_size = false;
+      allow_remote_control = true;
       initial_window_width = 640;
       initial_window_height = 400;
       repaint_delay = 15;
@@ -18,7 +19,7 @@
       visual_bell_duration = "0.0";
       open_url_with = "default";
 
-      enable_audio_bell = "no";
+      enable_audio_bell = false;
 
       window_padding_width = 15;
       disable_ligatures = "always";
