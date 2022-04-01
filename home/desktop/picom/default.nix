@@ -10,9 +10,9 @@
                   corner-radius = 5;
                   round-borders = 5;
                   rounded-corners-exclude = [
-  #                 "window_type = 'dock'"
-                    "class_g = 'eww-bar'" 
-                 ];
+                #   "window_type = 'dock'",
+                   "class_g = 'eww-bar'"
+                ];
               '';
     fadeExclude = [
       # "class_g = 'Rofi'"
