@@ -24,15 +24,6 @@
       $white: $foreground;'' + builtins.readFile ./eww.scss;
 
   # scripts
-  home.file.".config/eww/scripts/memory.sh" = {
-    source = ./scripts/memory.sh;
-    executable = true;
-  };
-
-  home.file.".config/eww/scripts/cpu.sh" = {
-    source = ./scripts/cpu.sh;
-    executable = true;
-  };
 
   home.file.".config/eww/scripts/music.sh" = {
     source = ./scripts/music.sh;
