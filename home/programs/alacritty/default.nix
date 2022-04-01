@@ -64,6 +64,14 @@
           style = "Light italic";
         };
         use_thin_strokes = true;
+        offset = {
+          x = 0;
+          y = 0;
+        };
+        glyph_offset = {
+          x = 0;
+          y = 0;
+        };
       };
 
       mouse.hide_when_typing = true;
