@@ -27,8 +27,11 @@ super + c
 super + period
     rofi -show emoji
 
-Print
+super + shift + s
    flameshot gui
+
+Print
+    maim /tmp/screenshot.png && xclip -sel clip -t image/png /tmp/screenshot.png && dunstify -r 69 -i /tmp/screenshot.png "Screenshot" "Screenshot copied to clipboard"
 
 # Lock screen
 super + shift + p

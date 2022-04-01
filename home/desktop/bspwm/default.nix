@@ -27,7 +27,7 @@
         remove_unplugged_monitors = true;
         ignore_ewmh_focus = true;
         focus_follows_pointer = true;
-        border_width = 2;
+        border_width = 1;
         window_gap = 6;
         top_padding = 50;
         focused_border_color = "#${ac}";
