@@ -33,8 +33,6 @@
 (defpoll timeVar :interval "10s" "date '+%H:%M'")
 (defpoll dateVar :interval "600s" "date '+%A %d.%m.%y'")
 (deflisten workspaces_listen "./scripts/workspaces.sh")
-(defpoll memory :interval "15s" "./scripts/memory.sh")
-(defpoll cpu :interval "15s" "./scripts/cpu.sh")
 (defpoll currentVolume :interval "20s" "pamixer --get-volume")
 
 (defvar volum false)
@@ -100,14 +98,14 @@
 
 (defwidget mem []
   (box :vexpand "false" :hexpand "false"
-  (circular-progress  :value "${memory}"
+  (circular-progress  :value {EWW_RAM.used_mem_perc}
     :class "membar"
     :start-angle 0
     :thickness 4
     (button 
                 :class "iconmem"
                 :limit-width 2
-                :tooltip "Using ${memory}% ram"
+                :tooltip "Using ${round(EWW_RAM.used_mem_perc,1)}% RAM"
                 :show_truncated false
                 :wrap false
                 "")
@@ -116,14 +114,14 @@
 
 (defwidget cpu []
   (box :vexpand "false" :hexpand "false"
-  (circular-progress  :value "${cpu}"
+  (circular-progress  :value {EWW_CPU.avg}
     :class "cpubar"
     :start-angle 0
     :thickness 4
     (button 
                 :class "iconmem"
                 :limit-width 2
-                :tooltip "Using ${cpu}% CPU"
+                :tooltip "Using ${round(EWW_CPU.avg,1)}% CPU"
                 :show_truncated false
                 :wrap false
                 "")
@@ -216,7 +214,7 @@
 	  			:tooltip "Next"
 				:onclick "./scripts/music.sh --next" "")
 
-(scale :class "musicBar" :onscroll "mpc -q seek {}" :min 0 :active "true" :max 100 :value current_status)
+(scale :class "musicBar" :onscroll "mpc -q seek {}" :min 0 :active "true" :max 100 :value "${current_status}")
     )
 ))))
 
