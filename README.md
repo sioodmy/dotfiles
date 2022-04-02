@@ -1,4 +1,4 @@
-![screenshot](assets/screenshot.png)
+![screenshot](assets/bar.gif)
 
 # ❄️ NixOS configuration
 
