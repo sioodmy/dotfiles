@@ -2,7 +2,8 @@
 
 {
   # eww package
-  home.packages = [ inputs.eww.packages."x86_64-linux".eww pkgs.pamixer ];
+  home.packages =
+    [ inputs.eww.packages."x86_64-linux".eww pkgs.pamixer pkgs.tdrop ];
 
   # configuration
   home.file.".config/eww/eww.yuck".source = ./eww.yuck;

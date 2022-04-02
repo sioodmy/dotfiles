@@ -20,7 +20,7 @@ get_song() {
 	if [[ -z "$song" ]]; then
 		echo "Offline"
 	else
-		echo "$song"
+		echo "$song" | awk '{gsub("[(][^)]*[)]","")}1' | cut -c-30
 	fi	
 }
 

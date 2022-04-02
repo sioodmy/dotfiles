@@ -195,13 +195,19 @@
                 :onhover "eww update music=true"	
 				:onhoverlost "eww update music=false" 
 	(box		:orientation "h"					
-				:space-evenly "false" 	 
+				:space-evenly false 	 
                 :class "musiclabel"
 
+    (button      
+                :onclick "tdrop -ma -y 55 -x 7 -w 30% -h 40% kitty -e ncmpcpp" 
+    (box        :space-evenly false
+                :orientation "h"
     (box :class "song_cover_art" :vexpand "false" :hexpand "false" :style "background-image: url('${cover_art}');")
     (label      :text "${song}"
                 :limit-width 30
                 :wrap false)
+      )
+                )
 	(revealer	:transition "slideright"				
 				:reveal music			 
                 :expand true
