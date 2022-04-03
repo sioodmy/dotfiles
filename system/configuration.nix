@@ -190,6 +190,7 @@ in {
       roboto
       source-sans
       twemoji-color-font
+      comfortaa
       inter
       iosevka
       lato
