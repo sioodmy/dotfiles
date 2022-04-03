@@ -30,15 +30,37 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
-    eww = { url = "github:elkowar/eww"; };
+    eww.url = "github:elkowar/eww";
+    neovim-nightly-overlay.url = "github:nix-community/neovim-nightly-overlay";
 
   };
   outputs = inputs@{ self, nixpkgs, home-manager, nur, unstable, picom-ibhagwan
-    , eww, discord-overlay, discocss, ... }:
+    , eww, discord-overlay, discocss, neovim-nightly-overlay, ... }:
     let
       system = "x86_64-linux";
 
       lib = nixpkgs.lib;
+
+      overlays = [
+        (final: prev: {
+          picom =
+            prev.picom.overrideAttrs (o: { src = picom-ibhagwan; });
+          })
+          (final: prev: {
+            bspswallow = prev.callPackage ./overlays/bspswallow.nix { };
+            catppuccin-gtk =
+              prev.callPackage ./overlays/catppuccin-gtk.nix { };
+              catppuccin-cursors =
+                prev.callPackage ./overlays/catppuccin-cursors.nix { };
+                catppuccin-grub =
+                  prev.callPackage ./overlays/catppuccin-grub.nix { };
+                  fetch = prev.callPackage ./overlays/fetch.nix { };
+                  todo = prev.callPackage ./overlays/todo.nix { };
+                })
+                nur.overlay
+                discord-overlay.overlay
+                neovim-nightly-overlay.overlay
+              ];
 
     in {
       nixosConfigurations = {
@@ -63,28 +85,10 @@
                 users.sioodmy = import ./home;
               };
 
-              nixpkgs.overlays = [
-                (final: prev: {
-                  picom =
-                    prev.picom.overrideAttrs (o: { src = picom-ibhagwan; });
-                })
-                (final: prev: {
-                  bspswallow = prev.callPackage ./overlays/bspswallow.nix { };
-                  catppuccin-gtk =
-                    prev.callPackage ./overlays/catppuccin-gtk.nix { };
-                  catppuccin-cursors =
-                    prev.callPackage ./overlays/catppuccin-cursors.nix { };
-                  catppuccin-grub =
-                    prev.callPackage ./overlays/catppuccin-grub.nix { };
-                  fetch = prev.callPackage ./overlays/fetch.nix { };
-                  todo = prev.callPackage ./overlays/todo.nix { };
-                })
-                nur.overlay
-                discord-overlay.overlay
-              ];
+              nixpkgs.overlays = overlays;
             }
           ];
         };
       };
     };
-}
+  }
