@@ -21,6 +21,12 @@ let
     };
   };
 
+  tex = (pkgs.texlive.combine {
+    inherit (pkgs.texlive)
+      scheme-small dvisvgm dvipng wrapfig amsmath ulem hyperref capt-of booktabs
+      etoolbox polski xcolor xetex fontspec euenc unicode-math;
+  });
+
 in {
   # Language servers
   home.packages = with pkgs; [
@@ -30,6 +36,9 @@ in {
     gopls # Go
     sumneko-lua-language-server # Lua
     dart # Dart
+    tex
+    pandoc # For notes
+    texlab # LaTeX
     nodePackages.typescript-language-server # Typescript
     nodePackages.vscode-langservers-extracted # HTML, CSS, JavaScript
     nodePackages.bash-language-server # Bash
@@ -37,13 +46,31 @@ in {
     cmake # C/C++
   ];
 
+  #  home.file.".config/nvim/snips/tex.snippets"
   programs.neovim = {
     enable = true;
 
     viAlias = true;
     vimAlias = true;
 
+    package = pkgs.neovim-nightly;
+
     plugins = with pkgs.vimPlugins; [
+      vim-flutter
+      indent-blankline-nvim
+      emmet-vim
+      yuck-nvim
+      vim-pandoc-syntax
+      vim-pandoc
+      {
+        plugin = ultisnips;
+        config = ''
+          let g:UltiSnipsExpandTrigger = '<s-tab>'
+          let g:UltiSnipsJumpForwardTrigger = '<tab>'
+          let g:UltiSnipsJumpBackwardTrigger = '<s-tab>'
+          let g:UltiSnipsSnippetDirectories=["UltiSnips", "snips"]
+        '';
+      }
       {
         plugin = telescope-nvim;
         config = ''
@@ -124,7 +151,7 @@ in {
 
           return M
           EOF
-                  '';
+        '';
       }
       {
         plugin = catppuccin-nvim;
@@ -225,7 +252,7 @@ in {
 
           return M
           EOF
-                  '';
+        '';
       }
       {
         plugin = nvim-lspconfig;
@@ -244,6 +271,9 @@ in {
                 local capabilities = vim.lsp.protocol.make_client_capabilities()
           capabilities.textDocument.completion.completionItem.snippetSupport = true
 
+          require'lspconfig'.texlab.setup{
+          filetypes = {"tex", "bib", "markdown"},
+          }
           require'lspconfig'.html.setup {
           capabilities = capabilities,
           }
@@ -352,11 +382,6 @@ in {
           lua require "colorizer".setup()
         '';
       }
-      { plugin = vim-flutter; }
-      { plugin = indent-blankline-nvim; }
-      { plugin = vim-toml; }
-      { plugin = emmet-vim; }
-      { plugin = yuck-nvim; }
       {
         plugin = lspkind-nvim;
         config = ''
@@ -393,7 +418,7 @@ in {
                   },
                     })
           EOF
-                  '';
+        '';
       }
       {
         plugin = lualine-nvim;
@@ -441,6 +466,8 @@ in {
     ];
 
     extraConfig = ''
+      map I :! pandoc --pdf-engine xelatex  -V geometry=margin=1in -V mainfont="Comfortaa" % -o $(echo % \| sed 's/md$/pdf/g') <CR><CR>
+      map S :! zathura $(echo % \| sed 's/md$/pdf/') & disown <CR><CR>
       lua << EOF
       local opt = vim.opt
       opt.lazyredraw = true;
