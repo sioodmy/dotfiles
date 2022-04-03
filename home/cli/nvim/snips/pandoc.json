@@ -1,0 +1,41 @@
+{
+    "Fraction": {
+        "prefix": ["//"],
+        "body": [
+            "\\frac{$1}{$2}$0"
+        ],
+        "description": "Fraction"
+    },
+
+    "Square root": {
+        "prefix": ["sqrt"],
+        "body": [
+            "\\sqrt[$1]{$2}$0"
+        ],
+        "description": "Square root"
+    },
+
+    "Image": {
+        "prefix": ["image"],
+        "body": [
+            "![${1:alttext}](${2:link})$0"
+        ],
+        "description": "Image"
+    },
+
+    "Link": {
+        "prefix": ["link"],
+        "body": [
+            "[${1:text}](${2:link})"
+        ],
+        "description": "Image"
+    },
+
+    "Numbers": {
+        "prefix": ["numbers"],
+        "body": [
+            "number-sections: true"
+        ],
+        "description": "numbers"
+    }
+}

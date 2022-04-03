@@ -46,7 +46,11 @@ in {
     cmake # C/C++
   ];
 
-  #  home.file.".config/nvim/snips/tex.snippets"
+  # Snippets 
+  home.file.".vsnip/rust.json".source = ./snips/rust.json;
+
+  home.file.".vsnip/pandoc.json".source = ./snips/pandoc.json;
+
   programs.neovim = {
     enable = true;
 
@@ -62,18 +66,27 @@ in {
       yuck-nvim
       vim-pandoc-syntax
       vim-pandoc
-      {
-        plugin = ultisnips;
-        config = ''
-          let g:UltiSnipsExpandTrigger = '<s-tab>'
-          let g:UltiSnipsJumpForwardTrigger = '<tab>'
-          let g:UltiSnipsJumpBackwardTrigger = '<s-tab>'
-          let g:UltiSnipsSnippetDirectories=["UltiSnips", "snips"]
-        '';
-      }
-      {
-        plugin = telescope-nvim;
-        config = ''
+    {
+      plugin = vim-vsnip;
+      config = ''
+        imap <expr> <C-j>   vsnip#expandable()  ? '<Plug>(vsnip-expand)'         : '<C-j>'
+        smap <expr> <C-j>   vsnip#expandable()  ? '<Plug>(vsnip-expand)'         : '<C-j>'
+        imap <expr> <C-l>   vsnip#available(1)  ? '<Plug>(vsnip-expand-or-jump)' : '<C-l>'
+        smap <expr> <C-l>   vsnip#available(1)  ? '<Plug>(vsnip-expand-or-jump)' : '<C-l>'
+        imap <expr> <Tab>   vsnip#jumpable(1)   ? '<Plug>(vsnip-jump-next)'      : '<Tab>'
+        smap <expr> <Tab>   vsnip#jumpable(1)   ? '<Plug>(vsnip-jump-next)'      : '<Tab>'
+        imap <expr> <S-Tab> vsnip#jumpable(-1)  ? '<Plug>(vsnip-jump-prev)'      : '<S-Tab>'
+        smap <expr> <S-Tab> vsnip#jumpable(-1)  ? '<Plug>(vsnip-jump-prev)'      : '<S-Tab>'
+        nmap        s   <Plug>(vsnip-select-text)
+        xmap        s   <Plug>(vsnip-select-text)
+        nmap        S   <Plug>(vsnip-cut-text)
+        xmap        S   <Plug>(vsnip-cut-text)
+
+      '';
+    }
+    {
+      plugin = telescope-nvim;
+      config = ''
                   map <C-f> :Telescope find_files <CR>
                   map <C-n> :Telescope live_grep <CR>
                   lua << EOF
@@ -151,23 +164,23 @@ in {
 
           return M
           EOF
-        '';
-      }
-      {
-        plugin = catppuccin-nvim;
-        config = ''
+      '';
+    }
+    {
+      plugin = catppuccin-nvim;
+      config = ''
           colorscheme catppuccin
-        '';
-      }
-      {
-        plugin = rust-tools-nvim;
-        config = ''
+      '';
+    }
+    {
+      plugin = rust-tools-nvim;
+      config = ''
           lua require('rust-tools').setup({})
-        '';
-      }
-      {
-        plugin = nvim-tree-lua;
-        config = ''
+      '';
+    }
+    {
+      plugin = nvim-tree-lua;
+      config = ''
                     map <C-y> :NvimTreeToggle <CR>
                   lua << EOF
                     require'nvim-tree'.setup {}
@@ -252,11 +265,11 @@ in {
 
           return M
           EOF
-        '';
-      }
-      {
-        plugin = nvim-lspconfig;
-        config = ''
+      '';
+    }
+    {
+      plugin = nvim-lspconfig;
+      config = ''
               lua << EOF
                 require'lspconfig'.rnix.setup {}
                 require'lspconfig'.pyright.setup {}
@@ -279,12 +292,12 @@ in {
           }
           EOF
 
-        '';
-      }
-      { plugin = nvim-web-devicons; }
-      {
-        plugin = nvim-compe;
-        config = ''
+      '';
+    }
+    { plugin = nvim-web-devicons; }
+    {
+      plugin = nvim-compe;
+      config = ''
           lua << EOF
           require'compe'.setup {
           enabled = true;
@@ -322,11 +335,11 @@ in {
           vim.api.nvim_set_keymap("i", "<Tab>", "v:lua.tab_complete()", {expr = true})
           vim.api.nvim_set_keymap("s", "<Tab>", "v:lua.tab_complete()", {expr = true})
           EOF
-        '';
-      }
-      {
-        plugin = nvim-treesitter;
-        config = ''
+      '';
+    }
+    {
+      plugin = nvim-treesitter;
+      config = ''
             lua << EOF
             local present, ts_config = pcall(require, "nvim-treesitter.configs")
 
@@ -362,29 +375,29 @@ in {
 
             return M
           EOF
-        '';
-      }
-      {
-        plugin = bufferline-nvim;
-        config = ''
+      '';
+    }
+    {
+      plugin = bufferline-nvim;
+      config = ''
           lua require('bufferline').setup{}
-        '';
-      }
-      {
-        plugin = pears-nvim;
-        config = ''
+      '';
+    }
+    {
+      plugin = pears-nvim;
+      config = ''
           lua require "pears".setup()
-        '';
-      }
-      {
-        plugin = nvim-colorizer-lua;
-        config = ''
+      '';
+    }
+    {
+      plugin = nvim-colorizer-lua;
+      config = ''
           lua require "colorizer".setup()
-        '';
-      }
-      {
-        plugin = lspkind-nvim;
-        config = ''
+      '';
+    }
+    {
+      plugin = lspkind-nvim;
+      config = ''
           lua << EOF
                     require('lspkind').init({
                     mode = 'symbol',
@@ -418,11 +431,11 @@ in {
                   },
                     })
           EOF
-        '';
-      }
-      {
-        plugin = lualine-nvim;
-        config = ''
+      '';
+    }
+    {
+      plugin = lualine-nvim;
+      config = ''
           lua << EOF
           require('lualine').setup {
           options = {
@@ -453,71 +466,71 @@ in {
           extensions = {}
           }
           EOF
-        '';
+      '';
 
-      }
-      {
-        plugin = suda-vim;
-        config = ''
+    }
+    {
+      plugin = suda-vim;
+      config = ''
           let g:suda_smart_edit = 1
-        '';
-      }
-      vim-nix
-    ];
+      '';
+    }
+    vim-nix
+  ];
 
-    extraConfig = ''
-      map I :! pandoc --pdf-engine xelatex  -V geometry=margin=1in -V mainfont="Comfortaa" % -o $(echo % \| sed 's/md$/pdf/g') <CR><CR>
-      map S :! zathura $(echo % \| sed 's/md$/pdf/') & disown <CR><CR>
-      lua << EOF
-      local opt = vim.opt
-      opt.lazyredraw = true;
-      opt.shell = "zsh"
-      opt.shadafile = "NONE"
+  extraConfig = ''
+    map I :! pandoc --pdf-engine xelatex  -V geometry=margin=1in -V fontsize=12pt -V mainfont="Comfortaa" % -o $(echo % \| sed 's/md$/pdf/g') & disown <CR><CR>
+    map S :! zathura $(echo % \| sed 's/md$/pdf/') & disown <CR><CR>
+    lua << EOF
+    local opt = vim.opt
+    opt.lazyredraw = true;
+    opt.shell = "zsh"
+    opt.shadafile = "NONE"
 
-      -- Colors
-      opt.termguicolors = true
+    -- Colors
+    opt.termguicolors = true
 
-      -- Undo files
-      opt.undofile = true
+    -- Undo files
+    opt.undofile = true
 
-      -- Indentation
-      opt.smartindent = true
-      opt.tabstop = 4
-      opt.softtabstop = 4
-      opt.shiftwidth = 4
-      opt.shiftround = true
-      opt.expandtab = true
-      opt.scrolloff = 3
+    -- Indentation
+    opt.smartindent = true
+    opt.tabstop = 4
+    opt.softtabstop = 4
+    opt.shiftwidth = 4
+    opt.shiftround = true
+    opt.expandtab = true
+    opt.scrolloff = 3
 
-      -- Set clipboard to use system clipboard
-      opt.clipboard = "unnamedplus"
+    -- Set clipboard to use system clipboard
+    opt.clipboard = "unnamedplus"
 
-      -- Use mouse
-      opt.mouse = "a"
+    -- Use mouse
+    opt.mouse = "a"
 
-      -- Nicer UI settings
-      opt.cursorline = true
-      opt.relativenumber = true
-      opt.number = true
+    -- Nicer UI settings
+    opt.cursorline = true
+    opt.relativenumber = true
+    opt.number = true
 
-      -- Get rid of annoying viminfo file
-      opt.viminfo = ""
-      opt.viminfofile = "NONE"
+    -- Get rid of annoying viminfo file
+    opt.viminfo = ""
+    opt.viminfofile = "NONE"
 
-      -- Miscellaneous quality of life
-      opt.ignorecase = true
-      opt.ttimeoutlen = 5
-      opt.compatible = false
-      opt.hidden = true
-      opt.shortmess = "atI"
-      opt.wrap = true
-      opt.backup = false
-      opt.writebackup = false
-      opt.errorbells = false
-      opt.swapfile = false
-      opt.showmode = false
-      opt.spell = false
-      EOF
-    '';
-  };
+    -- Miscellaneous quality of life
+    opt.ignorecase = true
+    opt.ttimeoutlen = 5
+    opt.compatible = false
+    opt.hidden = true
+    opt.shortmess = "atI"
+    opt.wrap = true
+    opt.backup = false
+    opt.writebackup = false
+    opt.errorbells = false
+    opt.swapfile = false
+    opt.showmode = false
+    opt.spell = false
+    EOF
+  '';
+};
 }
