@@ -18,7 +18,7 @@ super + @space
 alt + Tab
     rofi -show window
 alt + grave
-    tdrop -ma -y 50% -x 25% -w 50% kitty --single-instance
+    tdrop -ma -y 50% -x 25% -w 50% -n dropdownterminal kitty
 super + e
     pcmanfm
 

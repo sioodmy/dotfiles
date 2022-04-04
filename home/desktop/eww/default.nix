@@ -17,6 +17,7 @@
       $foreground: #${fg};
 
       $black: #${ba};
+      $gray: #${c0};
       $red: #${c1};
       $green: #${c2};
       $yellow: #${c3};
