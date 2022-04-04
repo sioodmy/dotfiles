@@ -33,6 +33,12 @@ scale trough {
   border-radius: 10px;
     margin: 0.6rem;
 }
+
+.diskbar {
+      color: $yellow;
+    background-color: $black;
+  border-radius: 10px;
+}
 .membar {
       color: $accent;
     background-color: $black;
@@ -43,15 +49,11 @@ scale trough {
     margin: 0.6rem;
     font-size: 0.5rem;
 }
-.workspaces {
-   // font-size: 24px;
-    border-radius: 15px;
-}
 .workspace-focused {
     color: $accent;
 }
 .workspace-empty {
-    color: $black;
+    color: $gray;
 }
 .workspace-occupied {
     color: $white;

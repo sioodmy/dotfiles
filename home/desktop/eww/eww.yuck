@@ -10,6 +10,7 @@
           (workspaces :halign "center" :hexpand "true")
 
         (box :halign "end" :hexpand true :orientation "h" :space-evenly false
+          (disk)
           (cpu)
           (mem)
           (weather)
@@ -54,8 +55,8 @@
   (eventbox :tooltip "Volume: ${currentVolume}%" :onhover "eww update volum=true"   
     :onhoverlost "eww update volum=false"
     (box :orientation "h" :space-evenly false 
-        (button :class "volumeLabel label" 
-          :onclick "pavucontrol &" "墳 ")
+        (eventbox :cursor "hand"(button :class "volumeLabel label" 
+          :onclick "tdrop -ma -y 55 -x 7 -w 35% -h 40% pavucontrol" "墳 "))
         (revealer :transition "slideleft" 
 			  :reveal volum 
 			  :duration "500ms"
@@ -72,7 +73,7 @@
   (eventbox :tooltip "Volume: ${currentmicVolume}% ${micicon}" :onhover "eww update micvolum=true"   
     :onhoverlost "eww update micvolum=false"
     (box :orientation "h" :space-evenly false 
-        (button :class "volumemicLabel label" :onclick "pamixer --default-source -t" "${micicon} ")
+        (eventbox :cursor "hand"(button :class "volumemicLabel label" :onclick "pamixer --default-source -t" "${micicon} "))
         (revealer :transition "slideleft" 
 			  :reveal micvolum 
 			  :duration "500ms"
@@ -130,10 +131,28 @@
                 "")
     ))             
   )
+
+
+(defwidget disk []
+  (box :vexpand "false" :hexpand "false"
+  (circular-progress  :value {EWW_DISK["/"].used_perc}
+    :class "diskbar"
+    :start-angle 0
+    :thickness 4
+    (button 
+                :class "iconmem"
+                :limit-width 2
+                :tooltip "Using ${round(EWW_DISK["/"].used_perc,1)}% of root partition"
+                :show_truncated false
+                :wrap false
+                "")
+    ))             
+  )
 (defwidget power []
 	(eventbox   :hexpand false 
                 :onhover "eww update power=true"	
 				:onhoverlost "eww update power=false" 
+                :cursor "hand"
 	(box		:orientation "h"					
 				:space-evenly "false" 	 
                 :class "powerLabel label"
@@ -182,10 +201,10 @@
 
 
 (defwidget time []
-
+    (eventbox :cursor "hand"
 	(button		:class "date"					
 				:tooltip "${dateVar}"		 
-				:onclick "eww open --toggle calendar"	"${timeVar}")
+				:onclick "eww open --toggle calendar"	"${timeVar}"))
 	)
 
 
@@ -193,13 +212,14 @@
 (defwidget music []
 	(eventbox   :hexpand false 
                 :onhover "eww update music=true"	
+                :cursor "hand"
 				:onhoverlost "eww update music=false" 
 	(box		:orientation "h"					
 				:space-evenly false 	 
                 :class "musiclabel"
 
     (button      
-                :onclick "tdrop -ma -y 55 -x 7 -w 30% -h 40% kitty -e ncmpcpp" 
+                :onclick "tdrop -ma -y 55 -x 7 -w 30% -h 40% -n musicplayer kitty -e ncmpcpp" 
     (box        :space-evenly false
                 :orientation "h"
     (box :class "song_cover_art" :vexpand "false" :hexpand "false" :style "background-image: url('${cover_art}');")
