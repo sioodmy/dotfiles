@@ -27,8 +27,8 @@
         remove_unplugged_monitors = true;
         ignore_ewmh_focus = true;
         focus_follows_pointer = true;
-        border_width = 1;
-        window_gap = 6;
+        border_width = 2;
+        window_gap = 12;
         top_padding = 50;
         focused_border_color = "#${ac}";
         urgent_border_color = "#${c3}";
@@ -77,8 +77,6 @@
   };
 
   # Needed for bspswallow to work.
-  home.file.".config/bspwm/terminals".text = ''
-    Alacritty
-      kitty'';
+  home.file.".config/bspwm/terminals".text = "Kitty";
   home.file.".config/bspwm/noswallow".text = "xev";
 }

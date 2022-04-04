@@ -7,8 +7,8 @@
     shadowOpacity = "0.2";
     extraOptions = ''
         shadow-radius = 10;
-        corner-radius = 5;
-        round-borders = 5;
+        corner-radius = 10;
+        round-borders = 10;
         rounded-corners-exclude = [
       #   "window_type = 'dock'",
          "class_g = 'eww-bar'"
