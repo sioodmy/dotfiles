@@ -4,12 +4,12 @@
     settings = with theme.colors; {
       global = {
         geometry = "512x15-19+31";
-        frame_width = "1";
+        frame_width = "2";
         padding = "8";
-        max_icon_size = "32";
-        min_icon_size = "0";
+        max_icon_size = "128";
+        min_icon_size = "64";
         font = "monospace 13";
-        corner_radius = "5";
+        corner_radius = "10";
         alignment = "left";
       };
       urgency_low = {
