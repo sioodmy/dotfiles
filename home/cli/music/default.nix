@@ -26,7 +26,7 @@
       ncmpcpp_directory = "/home/sioodmy/.config/ncmpcpp";
       mpd_crossfade_time = 2;
       lyrics_directory = "/home/sioodmy/.cache/lyrics";
-      progressbar_look = "━━━";
+      progressbar_look = "▃▃▃";
       progressbar_elapsed_color = 5;
       progressbar_color = "black";
       media_library_primary_tag = "album_artist";
@@ -45,7 +45,7 @@
       color1 = "white";
       color2 = "blue";
       header_visibility = "no";
-      statusbar_visibility = "yes";
+      statusbar_visibility = "no";
       titles_visibility = "no";
       enable_window_title = "yes";
       cyclic_scrolling = "yes";
@@ -70,7 +70,6 @@
       visualizer_data_source = "/tmp/mpd.fifo";
       visualizer_output_name = "Visualizer";
       visualizer_in_stereo = "no";
-      visualizer_sync_interval = "30";
       visualizer_type = "ellipse";
       visualizer_fps = "60";
       visualizer_look = "●▮";
