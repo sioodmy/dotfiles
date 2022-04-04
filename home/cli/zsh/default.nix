@@ -1,13 +1,24 @@
 { pkgs, config, theme, ... }:
 
 {
+  programs.starship = {
+    enable = true;
+    settings = {
+      add_newline = false;
+      scan_timeout = 10;
+      character = {
+        success_symbol = "[](bold purple)";
+        error_symbol = "[](bold red)";
+      };
+    };
+  };
+
   programs.zsh = {
     enable = true;
     enableCompletion = true;
     enableAutosuggestions = true;
     enableSyntaxHighlighting = true;
     localVariables = with theme.colors; {
-      PROMPT = "%F{yellow} %~ %B%F{blue}%f%b ";
       LC_ALL = "en_US.UTF-8";
     };
     history = {
@@ -23,22 +34,29 @@
       need = "nix-shell -p";
       ytmp3 = ''
         yt-dlp -x --continue --add-metadata --embed-thumbnail --audio-format mp3 --audio-quality 0 --metadata-from-title="%(artist)s - %(title)s" --prefer-ffmpeg -o "%(title)s.%(ext)s"'';
-      cat = "bat --style=plain";
-      grep = "rg";
-      du = "dust";
-      ps = "procs";
-      neofetch = "fetch";
-      htop = "btm";
-      m = "mkdir -p";
-      fcd = "cd $(find -type d | fzf)";
-      ls = "exa --icons";
-      sl = "ls";
-      v = "nvim";
+        cat = "bat --style=plain";
+        grep = "rg";
+        du = "dust";
+        ps = "procs";
+        neofetch = "fetch";
+        htop = "btm";
+        m = "mkdir -p";
+        fcd = "cd $(find -type d | fzf)";
+        ls = "exa --icons";
+        sl = "ls";
+        v = "nvim";
+        tree = "exa --tree --icons";
+        rm = "rm -i";
+        cp = "cp -i";
+        mv = "mv -i";
+
+      # Git aliases
       g = "git";
-      tree = "exa --tree --icons";
-      rm = "rm -i";
-      cp = "cp -i";
-      mv = "mv -i";
+      gs = "git status";
+      gc = "git commit -m";
+      gp = "git push";
+      ga = "git add";
+
     };
 
     plugins = with pkgs; [
@@ -57,12 +75,12 @@
         src = pkgs.zsh-history-substring-search;
         file =
           "share/zsh-history-substring-search/zsh-history-substring-search.zsh";
-      }
-      {
-        name = "zsh-nix-shell";
-        src = pkgs.zsh-nix-shell;
-        file = "share/zsh-nix-shell/nix-shell.plugin.zsh";
-      }
-    ];
-  };
-}
+        }
+        {
+          name = "zsh-nix-shell";
+          src = pkgs.zsh-nix-shell;
+          file = "share/zsh-nix-shell/nix-shell.plugin.zsh";
+        }
+      ];
+    };
+  }
