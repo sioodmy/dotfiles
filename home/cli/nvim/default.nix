@@ -48,8 +48,11 @@ in {
 
   # Snippets 
   home.file.".vsnip/rust.json".source = ./snips/rust.json;
-
   home.file.".vsnip/pandoc.json".source = ./snips/pandoc.json;
+  home.file.".vsnip/c.json".source = ./snips/c.json;
+  home.file.".vsnip/cpp.json".source = ./snips/cpp.json;
+  home.file.".vsnip/lua.json".source = ./snips/lua.json;
+  home.file.".vsnip/shell.json".source = ./snips/shell.json;
 
   programs.neovim = {
     enable = true;
@@ -285,7 +288,7 @@ in {
           capabilities.textDocument.completion.completionItem.snippetSupport = true
 
           require'lspconfig'.texlab.setup{
-          filetypes = {"tex", "bib", "markdown"},
+          filetypes = {"tex", "bib", "markdown", "pandoc"},
           }
           require'lspconfig'.html.setup {
           capabilities = capabilities,
