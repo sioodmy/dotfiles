@@ -2,6 +2,8 @@
 
 {
   imports = [
+    ./packages.nix
+
     ./desktop/bspwm
     ./desktop/gtk
     ./desktop/picom
