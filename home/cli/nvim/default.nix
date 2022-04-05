@@ -46,6 +46,9 @@ in {
     cmake # C/C++
   ];
 
+  # Ascii art
+  home.file.".config/nvim/asciiart".source = ./asciiart;
+
   # Snippets 
   home.file.".vsnip/rust.json".source = ./snips/rust.json;
   home.file.".vsnip/pandoc.json".source = ./snips/pandoc.json;
@@ -69,6 +72,17 @@ in {
       yuck-nvim
       vim-pandoc-syntax
       vim-pandoc
+    {
+      plugin = dashboard-nvim;
+      config = ''
+        let g:dashboard_default_executive = 'telescope'
+        let g:dashboard_preview_file = "~/.config/nvim/asciiart"
+        let g:dashboard_preview_command = 'cat'
+        let g:dashboard_preview_file_height = 5
+        let g:dashboard_preview_file_width = 43
+        let g:indentLine_fileTypeExclude = ['dashboard']
+        '';
+    }
     {
       plugin = vim-vsnip;
       config = ''
