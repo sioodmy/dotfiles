@@ -32,6 +32,7 @@
 
     eww.url = "github:elkowar/eww";
     neovim-nightly-overlay.url = "github:nix-community/neovim-nightly-overlay";
+    todo.url = "github:sioodmy/todo";
 
   };
   outputs = inputs@{ self, nixpkgs, home-manager, nur, unstable, picom-ibhagwan
@@ -55,7 +56,6 @@
                 catppuccin-grub =
                   prev.callPackage ./overlays/catppuccin-grub.nix { };
                   fetch = prev.callPackage ./overlays/fetch.nix { };
-                  todo = prev.callPackage ./overlays/todo.nix { };
                 })
                 nur.overlay
                 discord-overlay.overlay
@@ -68,7 +68,6 @@
           inherit system;
 
           modules = [
-            ./packages.nix
             ./system/configuration.nix
             ./system/hardware-configuration.nix
             ./system/hosts/graphene.nix
