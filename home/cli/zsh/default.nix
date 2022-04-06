@@ -31,6 +31,13 @@
       todo
     '';
 
+    dirHashes = {
+      docs = "$HOME/docs";
+      dl = "$HOME/download";
+      vids = "$HOME/vids";
+      music = "$HOME/music";
+    };
+
     shellAliases = {
       rebuild = "sudo nixos-rebuild switch --flake .# --upgrade";
       cleanup = "sudo nix-collect-garbage --delete-older-than 7d";
