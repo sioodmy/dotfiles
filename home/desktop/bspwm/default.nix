@@ -30,10 +30,11 @@
         border_width = 2;
         window_gap = 12;
         top_padding = 50;
-        focused_border_color = "#${ac}";
+        focused_border_color = "#${c6}";
+        split_ratio = 0.618;
         urgent_border_color = "#${c3}";
         normal_border_color = "#${bg}";
-        presel_feedback_color = "#${ac}";
+        presel_feedback_color = "#${c6}";
       };
       monitors = { "focused" = [ "1" "2" "3" "4" "5" ]; };
 
