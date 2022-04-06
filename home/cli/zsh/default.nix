@@ -18,15 +18,17 @@
     enableCompletion = true;
     enableAutosuggestions = true;
     enableSyntaxHighlighting = true;
-    localVariables = with theme.colors; {
-      LC_ALL = "en_US.UTF-8";
-    };
+    localVariables = with theme.colors; { LC_ALL = "en_US.UTF-8"; };
     history = {
       save = 1000;
       size = 1000;
       expireDuplicatesFirst = true;
+      ignoreDups = true;
       path = "$HOME/.cache/.zsh_hist";
     };
+    initExtra = ''
+      todo
+    '';
 
     shellAliases = {
       rebuild = "sudo nixos-rebuild switch --flake .# --upgrade";
@@ -34,21 +36,21 @@
       need = "nix-shell -p";
       ytmp3 = ''
         yt-dlp -x --continue --add-metadata --embed-thumbnail --audio-format mp3 --audio-quality 0 --metadata-from-title="%(artist)s - %(title)s" --prefer-ffmpeg -o "%(title)s.%(ext)s"'';
-        cat = "bat --style=plain";
-        grep = "rg";
-        du = "dust";
-        ps = "procs";
-        neofetch = "fetch";
-        htop = "btm";
-        m = "mkdir -p";
-        fcd = "cd $(find -type d | fzf)";
-        ls = "exa --icons";
-        sl = "ls";
-        v = "nvim";
-        tree = "exa --tree --icons";
-        rm = "rm -i";
-        cp = "cp -i";
-        mv = "mv -i";
+      cat = "bat --style=plain";
+      grep = "rg";
+      du = "dust";
+      ps = "procs";
+      neofetch = "fetch";
+      htop = "btm";
+      m = "mkdir -p";
+      fcd = "cd $(find -type d | fzf)";
+      ls = "exa --icons";
+      sl = "ls";
+      v = "nvim";
+      tree = "exa --tree --icons";
+      rm = "rm -i";
+      cp = "cp -i";
+      mv = "mv -i";
 
       # Git aliases
       g = "git";
@@ -66,6 +68,21 @@
         file = "share/fzf-tab/fzf-tab.plugin.zsh";
       }
       {
+        name = "bd";
+        src = pkgs.zsh-bd;
+        file = "share/bd/bd.plugin.zsh";
+      }
+      {
+        name = "you-should-use";
+        src = pkgs.zsh-you-should-use;
+        file = "share/you-should-use/you-should-use.plugin.zsh";
+      }
+      {
+        name = "autopair";
+        src = pkgs.zsh-autopair;
+        file = "share/autopair/autopair.zsh";
+      }
+      {
         name = "zsh-vi-mode";
         src = pkgs.zsh-vi-mode;
         file = "share/zsh-vi-mode/zsh-vi-mode.plugin.zsh";
@@ -75,12 +92,12 @@
         src = pkgs.zsh-history-substring-search;
         file =
           "share/zsh-history-substring-search/zsh-history-substring-search.zsh";
-        }
-        {
-          name = "zsh-nix-shell";
-          src = pkgs.zsh-nix-shell;
-          file = "share/zsh-nix-shell/nix-shell.plugin.zsh";
-        }
-      ];
-    };
-  }
+      }
+      {
+        name = "zsh-nix-shell";
+        src = pkgs.zsh-nix-shell;
+        file = "share/zsh-nix-shell/nix-shell.plugin.zsh";
+      }
+    ];
+  };
+}
