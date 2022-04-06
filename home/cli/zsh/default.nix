@@ -24,6 +24,7 @@
       size = 1000;
       expireDuplicatesFirst = true;
       ignoreDups = true;
+      ignoreSpace = true;
       path = "$HOME/.cache/.zsh_hist";
     };
     initExtra = ''
