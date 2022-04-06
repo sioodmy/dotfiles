@@ -72,6 +72,7 @@ in {
       yuck-nvim
       vim-pandoc-syntax
       vim-pandoc
+      vim-vsnip-integ
     {
       plugin = dashboard-nvim;
       config = ''
@@ -81,7 +82,8 @@ in {
         let g:dashboard_preview_file_height = 5
         let g:dashboard_preview_file_width = 43
         let g:indentLine_fileTypeExclude = ['dashboard']
-        '';
+
+      '';
     }
     {
       plugin = vim-vsnip;
@@ -496,7 +498,7 @@ in {
   ];
 
   extraConfig = ''
-    map I :! pandoc --pdf-engine xelatex  -V geometry=margin=1in -V fontsize=12pt -V mainfont="Comfortaa" % -o $(echo % \| sed 's/md$/pdf/g') & disown <CR><CR>
+    map I :! pandoc --pdf-engine xelatex  -V geometry=margin=1in -V fontsize=12pt -V mainfont="Comfortaa" -V monofont="JetBrains Mono NL" % -o $(echo % \| sed 's/md$/pdf/g') & disown <CR><CR>
     map S :! zathura $(echo % \| sed 's/md$/pdf/') & disown <CR><CR>
     lua << EOF
     local opt = vim.opt
