@@ -36,9 +36,8 @@ in {
     gopls # Go
     sumneko-lua-language-server # Lua
     dart # Dart
-    tex
     pandoc # For notes
-    texlab # LaTeX
+    texlab tex # LaTeX
     nodePackages.typescript-language-server # Typescript
     nodePackages.vscode-langservers-extracted # HTML, CSS, JavaScript
     nodePackages.bash-language-server # Bash
