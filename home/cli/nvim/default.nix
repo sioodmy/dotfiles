@@ -37,7 +37,8 @@ in {
     sumneko-lua-language-server # Lua
     dart # Dart
     pandoc # For notes
-    texlab tex # LaTeX
+    tex # LaTeX
+    texlab # LaTeX language server
     nodePackages.typescript-language-server # Typescript
     nodePackages.vscode-langservers-extracted # HTML, CSS, JavaScript
     nodePackages.bash-language-server # Bash
@@ -404,7 +405,12 @@ in {
     {
       plugin = pears-nvim;
       config = ''
-          lua require "pears".setup()
+          lua << EOF
+          require "pears".setup(function(conf)
+            conf.remove_pair_on_inner_backspace(false)
+            conf.remove_pair_on_outer_backspace(false)
+          end)
+          EOF
       '';
     }
     {
@@ -457,10 +463,11 @@ in {
           lua << EOF
           require('lualine').setup {
           options = {
+          disabled_filetypes = {'dashboard'},
           icons_enabled = true,
           theme = 'auto',
-          component_separators = { left = '', right = ''},
-          section_separators = { left = '', right = ''},
+          section_separators = { left = '', right = '' },
+          component_separators = { left = '', right = '' },
           disabled_filetypes = {},
           always_divide_middle = true,
           },
