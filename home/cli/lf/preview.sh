@@ -1,12 +1,8 @@
 #!/bin/sh
 
 image() {
-	if [ -n "$DISPLAY" ] && [ -z "$WAYLAND_DISPLAY" ]; then
-		printf '{"action": "add", "identifier": "PREVIEW", "x": "%s", "y": "%s", "width": "%s", "height": "%s", "scaler": "contain", "path": "%s"}\n' "$4" "$5" "$(($2-1))" "$(($3-1))" "$1" > "$FIFO_UEBERZUG"
+        kitty +icat --silent --transfer-mode file --place "${2}x${3}@${4}x${5}" "$1"
 		exit 1
-	else
-		chafa "$1" -s "$4x"
-	fi
 }
 
 batorcat() {
@@ -43,7 +39,9 @@ case "$(printf "%s\n" "$(readlink -f "$1")" | awk '{print tolower($0)}')" in
 		ssconvert --export-type=Gnumeric_stf:stf_csv "$1" "fd://1" | batorcat --language=csv
 		;;
 	*.wav|*.mp3|*.flac|*.m4a|*.wma|*.ape|*.ac3|*.og[agx]|*.spx|*.opus|*.as[fx]|*.mka)
-		exiftool "$1"
+		[ ! -f "${CACHE}.png" ] && \
+            ffmpeg -i "$1" "${CACHE}.png" -y &> /dev/null
+		image "${CACHE}.png" "$2" "$3" "$4" "$5"
 		;;
 	*.pdf)
 		[ ! -f "${CACHE}.jpg" ] && \
