@@ -1,13 +1,9 @@
 { config, pkgs, ... }: 
-let 
-  lfrun = pkgs.writeShellScriptBin "lfrun" (builtins.readFile ./lfrun);
-in
 {
   home.packages = with pkgs; [
     ffmpegthumbnailer
     poppler_utils
     bat
-    ueberzug
     p7zip
     unzip
     catdoc
@@ -17,7 +13,6 @@ in
     odt2txt
     wkhtmltopdf
     imagemagick
-    lfrun
   ];
   home.file.".config/lf/cleaner.sh" = {
     source = ./cleaner.sh;
