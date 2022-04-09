@@ -1,7 +1,7 @@
 { config, pkgs, theme, fetchurl, ... }:
 
 {
-  home.packages = with pkgs; [ feh bspswallow ];
+  home.packages = with pkgs; [ feh ];
 
   home.file.".local/backgrounds/wallpaper.png".source =
     ../../../theme/wallpaper.png;
@@ -77,7 +77,4 @@
     };
   };
 
-  # Needed for bspswallow to work.
-  home.file.".config/bspwm/terminals".text = "Kitty";
-  home.file.".config/bspwm/noswallow".text = "xev";
 }

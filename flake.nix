@@ -48,7 +48,6 @@
             prev.picom.overrideAttrs (o: { src = picom-ibhagwan; });
           })
           (final: prev: {
-            bspswallow = prev.callPackage ./overlays/bspswallow.nix { };
             catppuccin-gtk =
               prev.callPackage ./overlays/catppuccin-gtk.nix { };
               catppuccin-cursors =
