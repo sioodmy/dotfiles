@@ -1,0 +1,17 @@
+#!/bin/bash
+
+case $(file --mime-type "$@" -bL) in
+    video/* | audio/* | image/gif)
+        exec devour mpv "$@"
+        ;;
+    application/pdf | application/postscript)
+        exec devour zathura "$@"
+        ;;
+    image/*)
+        exec devour feh "$@"
+        ;;
+    text/*|application/json|inode/x-empty) 
+        $EDITOR "$@"
+    ;;
+        *) exit 1 ;;
+    esac
