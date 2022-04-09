@@ -18,7 +18,11 @@
     enableCompletion = true;
     enableAutosuggestions = true;
     enableSyntaxHighlighting = true;
-    localVariables = with theme.colors; { LC_ALL = "en_US.UTF-8"; };
+    sessionVariables = { 
+      LC_ALL = "en_US.UTF-8"; 
+
+      LF_ICONS= import ./LF_ICONS.nix;
+    };
     history = {
       save = 1000;
       size = 1000;
@@ -27,9 +31,6 @@
       ignoreSpace = true;
       path = "$HOME/.cache/.zsh_hist";
     };
-    initExtra = ''
-      todo
-    '';
 
     dirHashes = {
       docs = "$HOME/docs";

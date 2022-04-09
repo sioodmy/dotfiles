@@ -63,14 +63,9 @@ case "$(printf "%s\n" "$(readlink -f "$1")" | awk '{print tolower($0)}')" in
 			ffmpegthumbnailer -i "$1" -o "${CACHE}.jpg" -s 0 -q 5
 		image "${CACHE}.jpg" "$2" "$3" "$4" "$5"
 		;;
-	*.bmp|*.jpg|*.jpeg|*.png|*.xpm|*.webp|*.gif|*.jfif)
+	*.bmp|*.jpg|*.jpeg|*.png|*.xpm|*.webp|*.jfif|*.svg)
 		image "$1" "$2" "$3" "$4" "$5"
 		;;
-  *.svg)
-    [ ! -f "${CACHE}.jpg" ] && \
-      convert "$1" "${CACHE}.jpg"
-    image "${CACHE}.jpg" "$2" "$3" "$4" "$5"
-    ;;
 	*.ino)
 		batorcat --language=cpp "$1"
 		;;

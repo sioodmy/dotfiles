@@ -1,16 +1,4 @@
-
-cmd unarchive $\{{
-    case "$f" in
-        *.zip) unzip "$f" ;;
-        *.tar.gz) tar -xzvf "$f" ;;
-        *.tar.bz2) tar -xjvf "$f" ;;
-        *.tar) tar -xvf "$f" ;;
-        *) echo "Unsupported format" ;;
-        esac
-}}
-
-
-cmd open ${{
+${{
     case $(file --mime-type "$(readlink -f $f)" -b) in
 	application/vnd.openxmlformats-officedocument.spreadsheetml.sheet) localc $fx ;;
 	image/vnd.djvu|application/pdf|application/octet-stream|application/postscript) setsid -f zathura $fx >/dev/null 2>&1 ;;
