@@ -16,7 +16,7 @@
     ./cli/fzf
     ./cli/git
     ./cli/gpg
-    ./cli/nnn
+    ./cli/lf
     ./cli/cava
     ./cli/music
     ./cli/nvim
