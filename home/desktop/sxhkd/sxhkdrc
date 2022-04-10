@@ -38,11 +38,11 @@ super + shift + p
     betterlockscreen -l blur
 # Volume buttons
 XF86AudioRaiseVolume
-    pactl set-sink-volume 0 +5%
+    eww update volumepoll="$(~/.config/eww/scripts/volume.sh up)"
 XF86AudioLowerVolume
-    pactl set-sink-volume 0 -5%
+    eww update volumepoll="$(~/.config/eww/scripts/volume.sh down)"
 XF86AudioMute
-    pactl set-sink-mute 0 toggle
+    eww update volumepoll="$(~/.config/eww/scripts/volume.sh toggle)"
 
 # Just for mpd
 super + XF86AudioRaiseVolume

@@ -118,9 +118,14 @@ scale trough {
     background-color: $magenta;
 }
 
-.volumeLabel {
+.muted {
+    color: $red;
+}
+
+.nomuted {
     color: $green;
 }
+
 .volumemicLabel {
     color: $blue;
 

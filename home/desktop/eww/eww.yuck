@@ -37,7 +37,7 @@
 (defpoll timeVar :interval "10s" "date '+%H:%M'")
 (defpoll dateVar :interval "600s" "date '+%A %d.%m.%y'")
 (deflisten workspaces_listen "./scripts/workspaces.sh")
-(defpoll currentVolume :interval "20s" "pamixer --get-volume")
+(defpoll volumepoll :interval "999s" "./scripts/volume.sh")
 
 (defvar volum false)
 (defvar micvolum false)
@@ -52,11 +52,11 @@
 ;; Widgets
 
 (defwidget volume [onchange]
-  (eventbox :tooltip "Volume: ${currentVolume}%" :onhover "eww update volum=true"   
+  (eventbox :tooltip "Volume: ${volumepoll.content}%" :onhover "eww update volum=true && eww update currentVolume=$(pamixer --get-volume)"   
     :onhoverlost "eww update volum=false"
     (box :orientation "h" :space-evenly false 
-        (eventbox :cursor "hand"(button :class "volumeLabel label" 
-          :onclick "tdrop -ma -y 55 -x 7 -w 35% -h 40% pavucontrol" "墳 "))
+        (eventbox :cursor "hand"(button :class "${volumepoll.class} label" 
+          :onclick "tdrop -ma -y 55 -x 7 -w 35% -h 40% pavucontrol" "${volumepoll.icon} "))
         (revealer :transition "slideleft" 
 			  :reveal volum 
 			  :duration "500ms"
@@ -64,8 +64,8 @@
             :min 0
             :max 101
             :active {onchange != ""}
-            :value "${currentVolume}" 
-            :onchange onchange)
+            :onchange `eww update volumepoll="$(./scripts/volume.sh {})"`
+            :value "${volumepoll.content}" )
 ))))
 
 
