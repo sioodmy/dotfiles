@@ -6,6 +6,11 @@
   home.file.".local/backgrounds/wallpaper.png".source =
     ../../../theme/wallpaper.png;
 
+  home.keyboard = {
+    layout = "pl";
+    options = [ "caps:swapescape" ];
+  };
+
   xsession = {
     enable = true;
     pointerCursor = {
