@@ -16,15 +16,15 @@ esac
 mute=$(pamixer --default-source --get-mute)
 volume="$(pamixer --default-source --get-volume)"
 if [ "$mute" = "true" ]; then
-      icon=" "
-      class="micmuted"
+    icon=" "
+    class="micmuted"
 else 
-      volume="$volume"
-      class="micnomuted"
-      icon=" "
-      if [[ "$volume" -lt 1 ]]; then
+    volume="$volume"
+    class="micnomuted"
+    icon=" "
+    if [[ "$volume" -lt 1 ]]; then
         icon=" "
-      fi
+    fi
 fi
 
 echo "{\"content\": \"$volume\", \"icon\": \"$icon\", \"class\": \"$class\"}"
