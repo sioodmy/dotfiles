@@ -1,0 +1,13 @@
+diff --git a/Makefile b/Makefile
+index 377fffc..596614a 100644
+--- a/Makefile
++++ b/Makefile
+@@ -3,7 +3,7 @@ DESTDIR ?=
+ INSTALL_DIR ?= $(DESTDIR)$(PREFIX)/share/themes/phocus
+ 
+ all:
+-	npm install && npm run build
++	npm run build
+ 
+ install:
+ 	@install -v -d "$(INSTALL_DIR)"

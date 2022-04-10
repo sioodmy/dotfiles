@@ -458,6 +458,22 @@
         "type": "github"
       }
     },
+    "phocus": {
+      "flake": false,
+      "locked": {
+        "lastModified": 1645598271,
+        "narHash": "sha256-yqqB9R08dnXPOUjKNrUAzHa/XskgZm55RsS0QsHwj7Y=",
+        "owner": "Tanish2002",
+        "repo": "gtk",
+        "rev": "dfbd24e631f0681153bbb1784fe29d7915fc5470",
+        "type": "github"
+      },
+      "original": {
+        "owner": "Tanish2002",
+        "repo": "gtk",
+        "type": "github"
+      }
+    },
     "picom-ibhagwan": {
       "flake": false,
       "locked": {
@@ -483,6 +499,7 @@
         "neovim-nightly-overlay": "neovim-nightly-overlay",
         "nixpkgs": "nixpkgs_6",
         "nur": "nur",
+        "phocus": "phocus",
         "picom-ibhagwan": "picom-ibhagwan",
         "todo": "todo",
         "unstable": "unstable"

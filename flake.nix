@@ -25,6 +25,11 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
+    phocus = {
+      url = "github:Tanish2002/gtk";
+      flake = false;
+    };
+
     discocss = {
       url = "github:mlvzk/discocss/flake";
       inputs.nixpkgs.follows = "nixpkgs";
