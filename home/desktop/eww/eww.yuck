@@ -1,13 +1,11 @@
 (defwidget bar []
     (centerbox
         (box :space-evenly false
-        (volume :onchange "pamixer --set-volume $(echo {} | sed 's/\\..*//g')")
-        (micvolume :onchange "pamixer --default-source --set-volume $(echo {} | sed 's/\\..*//g')")
-        (brightness :onchange "xrandr --output DP-0 --brightness {}")
-        (music)
-        )
+        (volume)
+        (micvolume)
+        (music))
         
-          (workspaces :halign "center" :hexpand "true")
+        (workspaces :halign "center" :hexpand "true")
 
         (box :halign "end" :hexpand true :orientation "h" :space-evenly false
           (disk)
@@ -20,7 +18,6 @@
     )
 
 ;; Variables
-(defpoll currentBrightness :interval "50s" "scripts/brightness")
 (defpoll temperature :interval "20m" "curl -s 'wttr.in/?format=%c%f'")
 (defpoll weatherstats :interval "30m" "curl -s 'wttr.in/?format=%P+%w+%p+%h'")
 
@@ -49,7 +46,7 @@
 
 ;; Widgets
 
-(defwidget volume [onchange]
+(defwidget volume []
   (eventbox :tooltip "Volume: ${volumepoll.content}%" :onhover "eww update volum=true && eww update currentVolume=$(pamixer --get-volume)"   
     :onhoverlost "eww update volum=false"
     (box :orientation "h" :space-evenly false 
@@ -61,7 +58,6 @@
         (scale :class "volumeBar"
             :min 0
             :max 101
-            :active {onchange != ""}
             :onchange `eww update volumepoll="$(./scripts/volume.sh {})"` 
             :value "${volumepoll.content}" )
 ))))
@@ -78,26 +74,10 @@
         (scale :class "volumemicBar"
             :min 0
             :max 101
-            :active {onchange != ""}
             :onchange `eww update micvolumepoll="$(./scripts/micvolume.sh {})"` 
             :value "${micvolumepoll.content}")
             
 ))))
-
-(defwidget brightness [onchange]
-  (eventbox :tooltip "Brightness: ${currentBrightness}" :onhover "eww update bright=true"   
-  	:onhoverlost "eww update bright=false"
-    (box :orientation "h" :space-evenly false 
-        (box :class "brightnessLabel label" " ")
-	        (revealer :transition "slideleft" 
-			    :reveal bright        
-			    :duration "500ms"
-            (scale :class "brightnessBar"
-                :min 0
-                :max 2
-                :active {onchange != ""}
-                :value "${currentBrightness}" 
-                :onchange onchange)))))
 
 (defwidget mem []
   (box :vexpand "false" :hexpand "false"
@@ -108,7 +88,7 @@
     (button 
                 :class "iconmem"
                 :limit-width 2
-                :tooltip "Using ${round(EWW_RAM.used_mem_perc,1)}% RAM"
+                :tooltip " ${round(EWW_RAM.used_mem_perc,1)}%"
                 :show_truncated false
                 :wrap false
                 "")
@@ -124,7 +104,7 @@
     (button 
                 :class "iconmem"
                 :limit-width 2
-                :tooltip "Using ${round(EWW_CPU.avg,1)}% CPU"
+                :tooltip " ${round(EWW_CPU.avg,1)}%"
                 :show_truncated false
                 :wrap false
                 "")
@@ -141,7 +121,7 @@
     (button 
                 :class "iconmem"
                 :limit-width 2
-                :tooltip "Using ${round(EWW_DISK["/"].used_perc,1)}% of root partition"
+                :tooltip " ${round(EWW_DISK["/"].used_perc,1)}%"
                 :show_truncated false
                 :wrap false
                 "")
