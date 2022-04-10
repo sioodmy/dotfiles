@@ -1,6 +1,8 @@
 { pkgs, config, theme, ... }:
 
 {
+  home.packages = [ pkgs.devour ]; # for swallowing
+
   programs.starship = {
     enable = true;
     settings = {
@@ -57,6 +59,9 @@
       sl = "ls";
       v = "nvim";
       tree = "exa --tree --icons";
+      sxiv = "devour sxiv";
+      mpv = "devour mpv";
+      zathura = "devour zathura";
       rm = "rm -i";
       cp = "cp -i";
       mv = "mv -i";
