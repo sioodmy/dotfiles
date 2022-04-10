@@ -20,7 +20,12 @@ if [ "$mute" = "true" ]; then
       icon="婢"
       class="muted"
 else 
-      if [[ "$volume" -gt 66 ]]; then
+      volume="$volume"
+      class="nomuted"
+      if [[ "$volume" -gt 100 ]]; then
+            class="loud"
+            icon="墳"
+      elif [[ "$volume" -gt 66 ]]; then
             icon="墳"
       elif [[ "$volume" -gt 33 ]]; then
             icon="奔"
@@ -29,8 +34,6 @@ else
       else 
             icon="婢"
       fi
-      volume="$volume"
-      class="nomuted"
 fi
 
 echo "{\"content\": \"$volume\", \"icon\": \"$icon\", \"class\": \"$class\"}"

@@ -20,9 +20,6 @@
     )
 
 ;; Variables
-(defpoll currentmicVolume :interval "20s" "pamixer --default-source --get-volume")
-(defpoll micicon :interval "1s" "pamixer --default-source --get-mute > /dev/null && echo \"\" || echo \"\"")
-
 (defpoll currentBrightness :interval "50s" "scripts/brightness")
 (defpoll temperature :interval "20m" "curl -s 'wttr.in/?format=%c%f'")
 (defpoll weatherstats :interval "30m" "curl -s 'wttr.in/?format=%P+%w+%p+%h'")
@@ -38,6 +35,7 @@
 (defpoll dateVar :interval "600s" "date '+%A %d.%m.%y'")
 (deflisten workspaces_listen "./scripts/workspaces.sh")
 (defpoll volumepoll :interval "999s" "./scripts/volume.sh")
+(defpoll micvolumepoll :interval "999s" "./scripts/micvolume.sh")
 
 (defvar volum false)
 (defvar micvolum false)
@@ -64,16 +62,16 @@
             :min 0
             :max 101
             :active {onchange != ""}
-            :onchange `eww update volumepoll="$(./scripts/volume.sh {})"`
+            :onchange `eww update volumepoll="$(./scripts/volume.sh {})"` 
             :value "${volumepoll.content}" )
 ))))
 
 
-(defwidget micvolume [onchange]
-  (eventbox :tooltip "Volume: ${currentmicVolume}% ${micicon}" :onhover "eww update micvolum=true"   
+(defwidget micvolume []
+  (eventbox :tooltip "Volume: ${micvolumepoll.content}% ${micvolumepoll.icon}" :onhover "eww update micvolum=true"   
     :onhoverlost "eww update micvolum=false"
     (box :orientation "h" :space-evenly false 
-        (eventbox :cursor "hand"(button :class "volumemicLabel label" :onclick "pamixer --default-source -t" "${micicon} "))
+        (eventbox :cursor "hand"(button :class "${micvolumepoll.class} label" :onclick `eww update micvolumepoll="$(./scripts/micvolume.sh toggle)"` "${micvolumepoll.icon} "))
         (revealer :transition "slideleft" 
 			  :reveal micvolum 
 			  :duration "500ms"
@@ -81,8 +79,9 @@
             :min 0
             :max 101
             :active {onchange != ""}
-            :value "${currentmicVolume}" 
-            :onchange onchange)
+            :onchange `eww update micvolumepoll="$(./scripts/micvolume.sh {})"` 
+            :value "${micvolumepoll.content}")
+            
 ))))
 
 (defwidget brightness [onchange]

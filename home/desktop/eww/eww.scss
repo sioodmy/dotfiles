@@ -126,10 +126,16 @@ scale trough {
     color: $green;
 }
 
-.volumemicLabel {
-    color: $blue;
+.loud {
+    color: $yellow;
+}
 
-    font-size: 1rem;
+.micnomuted {
+    color: $blue;
+}
+
+.micmuted {
+    color: $red;
 }
 
 .label {
