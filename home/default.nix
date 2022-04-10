@@ -21,6 +21,7 @@
     ./cli/music
     ./cli/nvim
     ./cli/pass
+    ./cli/direnv
     ./cli/xdg
     ./cli/zsh
 
