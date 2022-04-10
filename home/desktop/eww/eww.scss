@@ -59,11 +59,6 @@ scale trough {
     color: $white;
 }
 .button-off { color: $red;}
-.button-search { margin: 0 0.6rem;color: $blue}
-.button-esearch {
-    margin: 0.6rem 0.6rem;
-    color: $blue;
-}
 .button-reb, .button-lock, .button-sleep {
     margin: 0 0.6rem;
 }
@@ -88,9 +83,6 @@ scale trough {
 .button-pause {
     font-size: 1.5rem;
 }
-.musiclabel {
-    margin: 0 1rem;
-}
 .song_cover_art {
     color: $yellow;
     background-size: cover;	
@@ -99,13 +91,6 @@ scale trough {
 	min-width: 24px;
 	margin: 10px;
 	border-radius: 100px;
-}
-.brightnessBar trough highlight {
-    background-color: $yellow;
-}
-
-.brightnessLabel {
-    color: $yellow;
 }
 
 .volumemicBar trough highlight {
