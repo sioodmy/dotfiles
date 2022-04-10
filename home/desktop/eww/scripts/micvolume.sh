@@ -22,6 +22,9 @@ else
       volume="$volume"
       class="micnomuted"
       icon=" "
+      if [[ "$volume" -lt 1 ]]; then
+        icon=" "
+      fi
 fi
 
 echo "{\"content\": \"$volume\", \"icon\": \"$icon\", \"class\": \"$class\"}"
