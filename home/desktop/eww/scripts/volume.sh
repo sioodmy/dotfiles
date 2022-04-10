@@ -17,23 +17,23 @@ esac
 mute=$(pamixer --get-mute)
 volume="$(pamixer --get-volume)"
 if [ "$mute" = "true" ]; then
-      icon="婢"
-      class="muted"
+    icon="婢"
+    class="muted"
 else 
-      volume="$volume"
-      class="nomuted"
-      if [[ "$volume" -gt 100 ]]; then
-            class="loud"
-            icon="墳"
-      elif [[ "$volume" -gt 66 ]]; then
-            icon="墳"
-      elif [[ "$volume" -gt 33 ]]; then
-            icon="奔"
-      elif [[ "$volume" -gt 0 ]]; then 
-            icon="奄"
-      else 
-            icon="婢"
-      fi
+    volume="$volume"
+    class="nomuted"
+    if [[ "$volume" -gt 100 ]]; then
+        class="loud"
+        icon="墳"
+    elif [[ "$volume" -gt 66 ]]; then
+        icon="墳"
+    elif [[ "$volume" -gt 33 ]]; then
+        icon="奔"
+    elif [[ "$volume" -gt 0 ]]; then 
+        icon="奄"
+    else 
+        icon="婢"
+    fi
 fi
 
 echo "{\"content\": \"$volume\", \"icon\": \"$icon\", \"class\": \"$class\"}"
