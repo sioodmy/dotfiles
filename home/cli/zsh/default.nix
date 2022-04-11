@@ -9,8 +9,17 @@
       add_newline = false;
       scan_timeout = 10;
       character = {
-        success_symbol = "[](bold purple)";
-        error_symbol = "[](bold red)";
+        error_symbol = "[](bold red)";
+        success_symbol = "[](bold green)";
+        vicmd_symbol = "[](bold yellow)";
+        format = "$symbol [|](bold bright-black) ";
+      };
+      line_break.disabled = false;
+      lua.symbol = "[](blue) ";
+      hostname = {
+        ssh_only = true;
+        format = "[$hostname](bold blue) ";
+        disabled = false;
       };
     };
   };
