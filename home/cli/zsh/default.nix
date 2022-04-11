@@ -3,6 +3,11 @@
 {
   home.packages = [ pkgs.devour ]; # for swallowing
 
+  programs.nix-index = {
+    enable = true;
+    enableZshIntegration = true;
+  };
+
   programs.starship = {
     enable = true;
     settings = {
