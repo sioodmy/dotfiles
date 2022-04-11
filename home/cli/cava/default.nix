@@ -11,6 +11,7 @@
 
     [color]
     gradient = 1
+    gradient_count = 8
     gradient_color_1 = '#B5E8E0'
     gradient_color_2 = '#89DCEB'
     gradient_color_3 = '#96CDFB'
