@@ -22,6 +22,9 @@ alt + grave
 super + e
     pcmanfm
 
+super + b
+    eww open --toggle bar
+
 super + c
     rofi -show calc            
 super + period
