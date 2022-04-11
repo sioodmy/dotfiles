@@ -37,5 +37,62 @@
             "number-sections: true"
         ],
         "description": "numbers"
+    },
+
+    "esa": {
+        "prefix": ["esa"],
+        "body": [
+            "á"
+        ],
+        "description": "Spanish symbol"
+    },
+    "ese": {
+        "prefix": ["ese"],
+        "body": [
+            "é"
+        ],
+        "description": "Spanish symbol"
+    },
+    "esi": {
+        "prefix": ["esi"],
+        "body": [
+            "í"
+        ],
+        "description": "Spanish symbol"
+    },
+    "eso": {
+        "prefix": ["eso"],
+        "body": [
+            "ó"
+        ],
+        "description": "Spanish symbol"
+    },
+    "esu": {
+        "prefix": ["esu"],
+        "body": [
+            "ú"
+        ],
+        "description": "Spanish symbol"
+    },
+    "esn": {
+        "prefix": ["esn"],
+        "body": [
+            "ñ"
+        ],
+        "description": "Spanish symbol"
+    },
+    "esq": {
+        "prefix": ["esq"],
+        "body": [
+            "¿"
+        ],
+        "description": "Spanish symbol"
+    },
+    "esem": {
+        "prefix": ["esem"],
+        "body": [
+            "¡"
+        ],
+        "description": "Spanish symbol"
     }
 }
