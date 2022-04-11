@@ -70,6 +70,7 @@ in {
       indent-blankline-nvim
       emmet-vim
       yuck-nvim
+      stabilize-nvim
       vim-pandoc-syntax
       vim-pandoc
       vim-vsnip-integ
