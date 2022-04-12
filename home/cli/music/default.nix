@@ -31,6 +31,8 @@
       progressbar_color = "black";
       media_library_primary_tag = "album_artist";
       follow_now_playing_lyrics = "yes";
+      connected_message_on_startup = "no";
+      ignore_leading_the = "yes";
       screen_switcher_mode = "playlist, media_library";
       song_columns_list_format = "(50)[]{t|fr:Title} (0)[magenta]{a}";
       song_list_format = "$8%a - %t$R  %l";
