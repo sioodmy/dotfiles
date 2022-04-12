@@ -75,6 +75,12 @@ in {
       vim-pandoc
       vim-vsnip-integ
     {
+      plugin = vim-signify;
+      config = ''
+      set updatetime=100
+      '';
+    }
+    {
       plugin = dashboard-nvim;
       config = ''
         let g:dashboard_default_executive = 'telescope'
