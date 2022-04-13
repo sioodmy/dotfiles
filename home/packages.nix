@@ -9,7 +9,7 @@
     exa ffmpeg unzip xclip fetch
     libnotify gnupg update-nix-fetchgit yt-dlp ytmdl
     ripgrep rsync imagemagick
-    scrot bottom newsboat unrar
+    scrot newsboat unrar
     tealdeer killall onefetch
     du-dust 
     # gui apps
