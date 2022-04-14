@@ -19,6 +19,7 @@
     ./cli/lf
     ./cli/cava
     ./cli/music
+    ./cli/btm
     ./cli/nvim
     ./cli/pass
     ./cli/direnv
