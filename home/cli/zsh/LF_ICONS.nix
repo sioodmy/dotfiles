@@ -1,5 +1,12 @@
 ''
 di=:\
+~/music=:\
+~/download=:\
+~/notes=:\
+~/docs=:\
+~/vids=:\
+~/other=:\
+~/projects=:\
 fi=:\
 ln=:\
 or=:\
