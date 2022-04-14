@@ -5,7 +5,7 @@
  font-family: monospace;
 }
 
-.bar{
+.bar, .screenshot, .screenshottool{
     background-color: $background;
     padding: 0 0.6rem;
 }
@@ -27,6 +27,34 @@ scale trough {
     margin: 0.6rem;
 }
 
+.screenshot, .screenshottool{
+    border: 2px solid $accent;
+    border-radius: 10px;
+}
+.sspreview {
+    border-radius: 10px;
+    border: 2px solid $black;
+    background-size: contain;	
+    background-repeat: no-repeat;
+	background-position: center;
+    margin: 1rem;
+}
+.ss {
+    background-color: $black;
+    border-radius: 100px;
+    padding: 0.6rem;
+    margin: 1rem;
+    font-size: 2rem;
+}
+.ss-text {
+    font-size: 2rem;
+}
+.ss:hover {
+    color: $accent;
+}
+.ss-close:hover {
+    color: $red;
+}
 .cpubar {
       color: $blue;
     background-color: $black;

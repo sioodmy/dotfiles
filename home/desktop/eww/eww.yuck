@@ -17,6 +17,12 @@
         ))
     )
 
+(defwidget screenshot []
+  (box
+    (screenshotmenu)
+  )
+)
+
 ;; Variables
 (defpoll temperature :interval "20m" "curl -s 'wttr.in/?format=%c%f'")
 (defpoll weatherstats :interval "30m" "curl -s 'wttr.in/?format=%P+%w+%p+%h'")
@@ -33,9 +39,11 @@
 (deflisten workspaces_listen "./scripts/workspaces.sh")
 (defpoll volumepoll :interval "999s" "./scripts/volume.sh")
 (defpoll micvolumepoll :interval "999s" "./scripts/micvolume.sh")
+(defvar screenshotpath "/tmp/screenshot.png")
 
 (defvar volum false)
 (defvar micvolum false)
+(defvar screenshot false)
 (defvar bright false)
 (defvar power false)
 (defvar weather false)
@@ -229,6 +237,47 @@
 (defwidget workspaces []
   (literal :content workspaces_listen))
 
+(defwidget screenshotpreview []
+  (box :class "sspreview" :hexpand true :vexpand true :style "background-image: url('${screenshotpath}');")
+)
+(defwidget screenshotmenu []
+  (box :orientation "v"
+  (box :vexpand true :hexpand true :orientation "h"
+    (label :text "Screenshot taken!" :class "ss-text")
+  )
+  (box :orientation "h"
+  (button       :class "ss-upload ss"
+                :tooltip "Upload screenshot"
+                :onclick "./scripts/ss.sh upload &" "")
+  (button       :class "ss-win ss"
+                :tooltip "Save screenshot"
+                :onclick "./scripts/ss.sh save &" "")
+  (button       :class "ss-copy ss"
+                :tooltip "Copy screenshot"
+                :onclick "./scripts/ss.sh copy &" "")
+  (button       :class "ss-discard ss"
+                :tooltip "Discard screenshot"
+                :onclick "./scripts/ss.sh discard &" "")
+  ))
+)
+
+(defwidget screenshottool []
+  (box 
+  (button       :class "ss-area ss"
+                :tooltip "Select area"
+                :onclick "./scripts/ss.sh area &" "")
+  (button       :class "ss-screen ss"
+                :tooltip "Whole screen"
+                :onclick "./scripts/ss.sh screen &" "")
+  (button       :class "ss-win ss"
+                :tooltip "Window"
+                :onclick "./scripts/ss.sh window &" "")
+  (button       :class "ss-cancel ss"
+                :tooltip "Cancel"
+                :onclick "eww close screenshottool &" "")
+  )
+)
+
 (defwindow calendar
 	:geometry (geometry :x "-20px" 
 		:y "7%" 
@@ -237,6 +286,24 @@
         :anchor "top right")
     (calendar :class "cal")
 )
+(defwindow screenshot
+	:geometry (geometry :x "-50px" :y "-50px"
+		:width "500px" 
+		:height "400px"
+        :anchor "bottom right")
+    (box :space-evenly false :orientation "v"
+      (screenshot)
+      (screenshotpreview)
+))
+
+(defwindow screenshottool
+	:geometry (geometry :x "-50px" :y "-50px"
+		:width "500px" 
+		:height "60"
+        :anchor "bottom right")
+    (box :space-evenly false :orientation "v"
+      (screenshottool)
+))
 
 (defwindow bar 
     :monitor 0
