@@ -4,9 +4,10 @@
   nixpkgs.config.allowUnfree = true;
   home.packages = with pkgs; [
     inputs.todo.packages."${system}".todo
+    inputs.fetch.packages."${system}".fetch
     maim 
     # cli tools
-    exa ffmpeg unzip xclip fetch
+    exa ffmpeg unzip xclip 
     libnotify gnupg update-nix-fetchgit yt-dlp ytmdl
     ripgrep rsync imagemagick
     scrot newsboat unrar
