@@ -24,25 +24,9 @@
         vicmd_symbol = "[](bold yellow)";
         format = "$symbol [|](bold bright-black) ";
       };
-      git_status = {
-        format = ''([\[$all_status$ahead_behind\]]($style) )'';
-        style = "bold cyan";
-        conflicted = "= ";
-        ahead = "⇡ $\{count} ";
-        behind = "⇣ $\{count} ";
-        diverged = "⇕ ";
-        up_to_date = "";
-        untracked = "? ";
-        stashed = "\$ ";
-        modified = "! ";
-        staged = ''[++\($count\)](green)'';
-        renamed = "» ";
-        deleted = " ";
-      };
       git_commit = {
         commit_hash_length = 4;
       };
-      git_state.format = ''[\($state( $progress_current of $progress_total)\)]($style) '';
       line_break.disabled = false;
       lua.symbol = "[](blue) ";
       hostname = {
@@ -77,6 +61,7 @@
       dl = "$HOME/download";
       vids = "$HOME/vids";
       music = "$HOME/music";
+      media = "/run/media/$USER";
     };
 
     shellAliases = {
