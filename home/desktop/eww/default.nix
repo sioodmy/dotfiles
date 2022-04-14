@@ -42,6 +42,11 @@
     executable = true;
   };
 
+  home.file.".config/eww/scripts/ss.sh" = {
+    source = ./scripts/ss.sh;
+    executable = true;
+  };
+
   home.file.".config/eww/scripts/workspaces.sh" = {
     source = ./scripts/workspaces.sh;
     executable = true;
