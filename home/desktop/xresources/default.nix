@@ -1,7 +1,48 @@
-{ config, pkgs, theme, ... }:
+{ config, lib, pkgs, theme, ... }:
+with lib;
+let cfg = config.modules.desktop.xresources;
+in {
+  options.modules.desktop.xresources = {
+    enable = mkEnableOption "xresources";
+  };
 
-{
-  xresources.extraConfig = with theme.colors;
-    "\n        *background: #${bg}\n        *foreground: #${fg} \n        !! Gray\n        *color0: #${c0}\n        *color8: #${c8}\n\n        !! Red\n        *color1: #${c1}\n        *color9: #${c9}\n\n        !! Green\n        *color2: #${c2}\n        *color10: #${c10}\n\n        !! Yellow\n        *color3: #${c3}\n        *color11:  #${c11}\n\n        !! Blue\n        *color4: #${c4}\n        *color12: #${c12}\n\n        !! Maguve\n        *color5: #${c5}\n        *color13: #${c13}\n\n        !! Pink\n        *color6: #${c6}\n        *color14: #${c14}\n\n        !! Whites\n        *color7: #${c7}\n        *color15: #${c15}\n    ";
+  config = mkIf cfg.enable {
+    xresources.extraConfig = with theme.colors; ''
 
+      *background: #${bg}
+      *foreground: #${fg} 
+      !! Gray
+      *color0: #${c0}
+      *color8: #${c8}
+
+      !! Red
+      *color1: #${c1}
+      *color9: #${c9}
+
+      !! Green
+      *color2: #${c2}
+      *color10: #${c10}
+
+      !! Yellow
+      *color3: #${c3}
+      *color11:  #${c11}
+
+      !! Blue
+      *color4: #${c4}
+      *color12: #${c12}
+
+      !! Maguve
+      *color5: #${c5}
+      *color13: #${c13}
+
+      !! Pink
+      *color6: #${c6}
+      *color14: #${c14}
+
+      !! Whites
+      *color7: #${c7}
+      *color15: #${c15}
+          '';
+
+  };
 }
