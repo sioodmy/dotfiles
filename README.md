@@ -50,7 +50,7 @@ GALLERY
 ```
 </div>
 
-<img src="assets/bar.gif" width="49%" align="right" />
-<img src="assets/ss.gif" width="49%" />
+<img src="assets/bar.gif" width="46%" align="right" />
+<img src="assets/ss.gif" width="46%" />
 
   
