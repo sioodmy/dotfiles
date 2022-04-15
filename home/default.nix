@@ -7,9 +7,7 @@
     ./desktop/bspwm
     ./desktop/gtk
     ./desktop/picom
-    ./desktop/sxhkd
     ./desktop/xresources
-    ./desktop/lockscreen
     ./desktop/eww
 
     ./cli/bat
@@ -21,21 +19,24 @@
     ./cli/music
     ./cli/btm
     ./cli/nvim
-    ./cli/pass
-    ./cli/direnv
     ./cli/xdg
     ./cli/zsh
 
     ./programs/kitty
     ./programs/dunst
     ./programs/firefox
-    ./programs/chromium
     ./programs/flameshot
+    ./programs/alacritty
+    ./programs/qutebrowser
+    ./programs/urxvt
     ./programs/rofi
     ./programs/zathura
     ./programs/discocss
 
     ./services/udiskie
+    ./services/sxhkd
     ./services/redshift
   ];
+
+
 }
