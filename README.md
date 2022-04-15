@@ -21,7 +21,8 @@ SIOODMY'S NIXOS CONFIGURATION
 
 # Hi there!
    Welcome to me NixOS configuration. 
-   Feel free to steal anything from here but don't
+   Feel free to steal anything from here 
+   but don't
    forget to give me credits.
    Remember that this configuration is made
    specifically for my hardware and
@@ -31,7 +32,8 @@ SIOODMY'S NIXOS CONFIGURATION
 # Installation
    1) fork this repo
    2) customize configs to your likings
-   3) run nixos-rebuild switch --flake .# in your forked repo
+   3) run nixos-rebuild switch --flake .# 
+   in your forked repo
 </pre>
 <pre>
 # How do I install it on Arch Loonix?
