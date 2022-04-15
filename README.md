@@ -14,7 +14,7 @@ SIOODMY'S NIXOS CONFIGURATION
 
 
 <a href="#octocat--hi-there-thanks-for-dropping-by">
-  <img alt="" align="right" width="400px" src="assets/fetch.png"/>
+  <img alt="" align="right" width="40%" src="assets/fetch.png"/>
 </a>
 
 <pre>
@@ -50,7 +50,7 @@ GALLERY
 ```
 </div>
 
-<img src="assets/bar.gif" width="46%" align="right" />
-<img src="assets/ss.gif" width="46%" />
+<img src="assets/bar.gif" width="47%" align="right" />
+<img src="assets/ss.gif" width="47%" />
 
   
