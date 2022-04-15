@@ -1,8 +1,12 @@
-{ config, pkgs, ...}:
+{ config, pkgs, lib, ... }:
+with lib;
+let cfg = config.modules.cli.btm;
+in {
+  options.modules.cli.btm = { enable = mkEnableOption "btm"; };
 
-{
-  home.packages = [ pkgs.bottom ];
-  home.file.".config/bottom/bottom.toml".text = ''
+  config = mkIf cfg.enable {
+    home.packages = [ pkgs.bottom ];
+    home.file.".config/bottom/bottom.toml".text = ''
       [flags]
       dot_marker = true
       group_processes = true
@@ -47,5 +51,6 @@
        [[row.child]]
          type="proc"
          default=true
-  '';
+    '';
+  };
 }

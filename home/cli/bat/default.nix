@@ -1,12 +1,17 @@
-{ pkgs, config, ... }:
+{ pkgs, lib, config, ... }:
 
-{
-  programs.bat = {
-    enable = true;
-    config = {
-      paging = "never";
-      style = "numbers";
-      theme = "base16";
+with lib;
+let cfg = config.modules.cli.bat;
+in {
+  options.modules.cli.bat = { enable = mkEnableOption "bat"; };
+  config = mkIf cfg.enable {
+    programs.bat = {
+      enable = true;
+      config = {
+        paging = "never";
+        style = "numbers";
+        theme = "base16";
+      };
     };
   };
 }
