@@ -14,7 +14,7 @@ SIOODMY'S NIXOS CONFIGURATION
 
 
 <a href="#octocat--hi-there-thanks-for-dropping-by">
-  <img alt="" align="right" width="50%" src="assets/fetch.png"/>
+  <img alt="" align="right" width="50%" src="../assets/fetch.png"/>
 </a>
 
 <pre>
@@ -29,6 +29,7 @@ SIOODMY'S NIXOS CONFIGURATION
    it may not work for yours!
 </pre>
 <pre>
+
 # Installation
    1) fork this repo
    2) customize configs to your likings
@@ -36,6 +37,7 @@ SIOODMY'S NIXOS CONFIGURATION
    in your forked repo
 </pre>
 <pre>
+
 # How do I install it on Arch Loonix?
    That' the neat part, you don't!
    
@@ -51,7 +53,8 @@ GALLERY
 ```
 </div>
 
-<img src="assets/bar.gif" width="47%" align="right" />
-<img src="assets/ss.gif" width="47%" />
+<img src="../assets/bar.gif" width="47%" align="right" />
+<img src="../assets/ss.gif" width="47%" />
 
   
+
