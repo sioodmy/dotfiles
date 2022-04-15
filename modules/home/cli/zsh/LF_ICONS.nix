@@ -6,6 +6,7 @@ di=:\
 ~/docs=:\
 ~/vids=:\
 ~/other=:\
+~/pics=:\
 ~/projects=:\
 fi=:\
 ln=:\
