@@ -1,16 +1,21 @@
-{ pkgs, config, theme, ... }:
+{ pkgs, lib, config, theme, ... }:
+with lib;
+let cfg = config.modules.programs.flameshot;
+in {
+  options.modules.programs.flameshot = { enable = mkEnableOption "flameshot"; };
 
-{
-  services.flameshot = with theme.colors; {
-    enable = true;
-    settings = {
-      General = {
-        showStartupLaunchMessage = false;
-        uiColor = "#${ac}";
-        contrastUiColor = "#${fg}";
-        drawColor = "#${c1}";
-        showHelp = false;
-        showSidePanelButton = false;
+  config = mkIf cfg.enable {
+    services.flameshot = with theme.colors; {
+      enable = true;
+      settings = {
+        General = {
+          showStartupLaunchMessage = false;
+          uiColor = "#${ac}";
+          contrastUiColor = "#${fg}";
+          drawColor = "#${c1}";
+          showHelp = false;
+          showSidePanelButton = false;
+        };
       };
     };
   };
