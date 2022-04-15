@@ -8,7 +8,7 @@
     maim 
     # cli tools
     exa ffmpeg unzip xclip 
-    libnotify gnupg update-nix-fetchgit yt-dlp ytmdl
+    libnotify gnupg yt-dlp 
     ripgrep rsync imagemagick
     scrot newsboat unrar
     tealdeer killall onefetch
