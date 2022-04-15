@@ -1,7 +1,7 @@
 { config, lib, inputs, ...}:
 
 {
-  import = ../../home;
+  imports = [ ../../home/default.nix ];
   config.modules = {
     desktop = {
       bspwm.enable = true;
@@ -13,12 +13,9 @@
     programs = {
       discocss.enable = true;
       firefox.enable = true;
-      flameshot.enable = true;
-      qutebrowser.enable = true;
       kitty.enable = true;
       zathura.enable = true;
       dunst.enable = true;
-      alacritty.enable = true;
       rofi.enable = true;
     };
     services = {
