@@ -42,7 +42,6 @@ SIOODMY'S NIXOS CONFIGURATION
    
    
    
-   
 </pre>
 
 <div align="center">
