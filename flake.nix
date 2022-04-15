@@ -69,7 +69,7 @@
           modules = [
             ./system/configuration.nix
             ./system/hardware-configuration.nix
-            ./system/hosts/graphene.nix
+            ./hosts/graphene/system.nix
             home-manager.nixosModules.home-manager
             {
               home-manager = {
@@ -80,7 +80,7 @@
                   inherit inputs;
                   theme = import ./theme;
                 };
-                users.sioodmy = import ./home;
+                users.sioodmy = import ./hosts/graphene/user.nix;
               };
 
               nixpkgs.overlays = overlays;
