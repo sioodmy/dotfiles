@@ -1,8 +1,13 @@
-{ pkgs, config, ... }:
+{ pkgs, lib, config, ... }:
+with lib;
+let cfg = config.modules.services.sxhkd;
+in {
+  options.modules.services.sxhkd = { enable = mkEnableOption "sxhkd"; };
 
-{
-  services.sxhkd = {
-    enable = true;
-    extraConfig = builtins.readFile ./sxhkdrc;
+  config = mkIf cfg.enable {
+    services.sxhkd = {
+      enable = true;
+      extraConfig = builtins.readFile ./sxhkdrc;
+    };
   };
 }
