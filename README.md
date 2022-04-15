@@ -1,76 +1,56 @@
-![screenshot](assets/bar.gif)
 
-# ❄️ NixOS configuration
 
-This is my NixOS configuration, which I use as my daily driver. It aims to be fast and lightweight without any weirdo-cockless type compromises (like no scrolling in terminal bruh)
+<p align="center">
+  <img src="https://camo.githubusercontent.com/8c73ac68e6db84a5c58eef328946ba571a92829b3baaa155b7ca5b3521388cc9/68747470733a2f2f692e696d6775722e636f6d2f367146436c41312e706e67" width="200px" /> <br>
+  
+</p>
 
-> ⚠️ Note that since this configuration is designed just for me and my hardware, you may need to change some things to make it work on your device
-> If you really want to use it on your machine, I recomend forking this repo.
+<div align="center">
 
-# Installation 
-
-## ❄️ Already running NixOS system
-
-``` 
-$ nix-shell -p git nixFlakes
-$ nixos-rebuild switch --flake github:sioodmy/nixdots
+```ocaml
+SIOODMY'S NIXOS CONFIGURATION
 ```
-## 🧹 Clean
+</div>
 
-* 💿 [Download](https://nixos.org/download.html#download-nix) NixOS ISO and boot from it `cp nixos.iso /dev/sdX`
-* 💾 [Partition, format and mount your drive](https://nixos.org/manual/nixos/stable/index.html#sec-installation-partitioning)
-* ❄️ Install flake using following commands
 
-``` 
-$ nix-shell -p git nixFlakes
-$ nixos-install --flake github:sioodmy/nixdots
+<a href="#octocat--hi-there-thanks-for-dropping-by">
+  <img alt="" align="right" width="400px" src="assets/fetch.png"/>
+</a>
+
+<pre>
+
+# Hi there!
+   Welcome to me NixOS configuration. 
+   Feel free to steal anything from here but don't
+   forget to give me credits.
+   Remember that this configuration is made
+   specifically for my hardware and
+   it may not work for yours!
+</pre>
+<pre>
+# Installation
+   1) fork this repo
+   2) customize configs to your likings
+   3) run nixos-rebuild switch --flake .# in your forked repo
+</pre>
+<pre>
+# How do I install it on Arch Loonix?
+   That' the neat part, you don't!
+   
+   
+   
+   
+   
+</pre>
+
+<div align="center">
+
+```ocaml
+GALLERY
 ```
+</div>
 
-* 🔒 Change default root and user password from `nixos`!
-
-
-## 💡 Tip
-```
-building the system configuration...
-error: flake 'github:sioodmy/nixdots' does not provide attribute 'packages.x86_64-linux.nixosConfigurations."nixos".config.system.build.toplevel', 'legacyPackages.x86_64-linux.nixosConfigurations."nixos".config.system.build.toplevel' or 'nixosConfigurations."nixos".config.system.build.toplevel'
-```
-
-Aformentioned error means that you need to specify your hostname
-
-```
-# For example:
-
-$ nixos-install --flake github:sioodmy/nixdots#graphene
-$ nixos-rebuild switch --flake github:sioodmy/nixdots#graphene
-```
-
-# Usage 
+<img src="assets/bar.gif" width="49%" align="right" />
+<img src="assets/ss.gif" width="49%" />
 
   
-| Key | Action |
-|---|---|
-| <kbd>Super</kbd> + <kbd>Enter</kbd> | Open terminal |
-| <kbd>Alt</kbd> + <kbd>Grave</kbd> | Dropdown terminal |
-| <kbd>Super</kbd> + <kbd>Space</kbd> | Application luncher |
-| <kbd>Alt</kbd> + <kbd>Tab</kbd> | Window switcher |
-| <kbd>Super</kbd> + <kbd>E</kbd> | File manager |
-| <kbd>Super</kbd> + <kbd>C</kbd> | Quick calculator |
-| <kbd>Super</kbd> + <kbd>period</kbd> | Emoji picker |
-| <kbd>Prtscr</kbd> | Screenshot tool |
-| <kbd>Super</kbd> + <kbd>Shift</kbd> + <kbd>P</kbd> | Lock screen |
-| <kbd>Super</kbd> + <kbd>Volume up</kbd> | Increase mpd volume |
-| <kbd>Super</kbd> + <kbd>Volume down</kbd> | Decrease mpd volume |
-| <kbd>Super</kbd> + <kbd>Alt</kbd> + <kbd>R</kbd> | Restart bspwm |
-| <kbd>Alt</kbd> + <kbd>Control</kbd> + <kbd>Shift</kbd> + <kbd>H, J, K, L</kbd> | Resize focused window |
-| <kbd>Super</kbd> + <kbd>W</kbd> | Close focused window |
-| <kbd>Super</kbd> + <kbd>Shift</kbd> + <kbd>W</kbd> | Kill focused window |
-| <kbd>Super</kbd> + <kbd>M</kbd> | Alternate between the tiled and monocle layout |
-| <kbd>Super</kbd> + <kbd>Y</kbd> | Send the newest marked node to the newest preselected node |
-| <kbd>Super</kbd> + <kbd>h</kbd> | Swap the current node and the biggest window |
-| <kbd>Super</kbd> + <kbd>T</kbd> | Tiled layout |
-| <kbd>Super</kbd> + <kbd>Shift</kbd> + <kbd>T</kbd> | Pseudo-tiled layout | 
-| <kbd>Super</kbd> + <kbd>S</kbd> | Floating mode |
-| <kbd>Super</kbd> + <kbd>F</kbd> | Fullscreen mode |
-| <kbd>Super</kbd> + <kbd>Control</kbd> + <kbd>Y</kbd> | Sticky flag |
-| <kbd>Super</kbd> + <kbd>Shift</kbd> + <kbd>H, J, K, L</kbd> | Move window |
-| <kbd>Super</kbd> + <kbd>H, J, K, L</kbd> | Focus window |
