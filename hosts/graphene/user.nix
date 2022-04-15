@@ -1,7 +1,7 @@
 { config, lib, inputs, ...}:
 
 {
-  imports = [ ../../home/default.nix ];
+  imports = [ ../../modules/home/default.nix ];
   config.modules = {
     desktop = {
       bspwm.enable = true;

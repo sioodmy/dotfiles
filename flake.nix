@@ -67,8 +67,8 @@
           inherit system;
 
           modules = [
-            ./system/configuration.nix
-            ./system/hardware-configuration.nix
+            ./modules/system/configuration.nix
+            ./hosts/graphene/hardware-configuration.nix
             ./hosts/graphene/system.nix
             home-manager.nixosModules.home-manager
             {
@@ -78,7 +78,7 @@
                 sharedModules = [ discocss.hmModule ];
                 extraSpecialArgs = {
                   inherit inputs;
-                  theme = import ./theme;
+                  theme = import ./modules/theme;
                 };
                 users.sioodmy = import ./hosts/graphene/user.nix;
               };
