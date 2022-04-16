@@ -14,6 +14,7 @@ in {
           shadow-radius = 10;
           corner-radius = 10;
           round-borders = 10;
+          detect-client-opacity = true;
           rounded-corners-exclude = [
         #   "window_type = 'dock'",
            "class_g = 'eww-bar'"
