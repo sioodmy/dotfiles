@@ -77,6 +77,16 @@ in {
 
   options.modules.desktop.lockscreen = {
     enable = mkEnableOption "lockscreen";
+    autolock = mkOption {
+      type = types.bool;
+      default = true;
+      description = "Enable XAutolock";
+    };
+    time = mkOption {
+      type = types.ints.unsigned;
+      default = 10;
+      description = "Autolock timer";
+    };
   };
 
   config = mkIf cfg.enable {
@@ -84,8 +94,8 @@ in {
 
     services.screen-locker = {
       enable = true;
-      inactiveInterval = 10;
-      xautolock.enable = true;
+      inactiveInterval = config.modules.desktop.lockscreen.time;
+      xautolock.enable = config.modules.desktop.lockscreen.autolock;
       xautolock.extraOptions = [
         "-corners '--00'"
         "-cornersize 20"
