@@ -32,9 +32,6 @@ super + period
 
 Print 
     ~/.config/eww/scripts/ss.sh menu
-# Lock screen
-super + shift + p
-    betterlockscreen -l blur
 # Volume buttons
 XF86AudioRaiseVolume
     eww update volumepoll="$(~/.config/eww/scripts/volume.sh up)"
