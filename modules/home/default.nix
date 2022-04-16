@@ -9,6 +9,7 @@
     ./desktop/picom
     ./desktop/xresources
     ./desktop/eww
+    ./desktop/lockscreen
 
     ./cli/bat
     ./cli/fzf
