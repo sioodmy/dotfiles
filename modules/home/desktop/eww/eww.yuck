@@ -307,11 +307,12 @@
 
 (defwindow bar 
     :monitor 0
-    :wm-ignore false
     :reserve (struts :distance "50px" :side "top")
-    :windowtype "dock"
-    :stacking "bg"
     :geometry (geometry :width "100%"
         :height "20px"
         :anchor "top left")
+    :hexpand false
+    :stacking "bg"
+    :vexpand false
+    :wm-ignore false
     (bar))
