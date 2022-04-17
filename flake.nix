@@ -49,6 +49,9 @@
             prev.picom.overrideAttrs (o: { src = picom-ibhagwan; });
           })
           (final: prev: {
+            discocss = prev.discocss.overrideAttrs (oldAttrs: rec {
+              patches = (oldAttrs.patches or [ ]) ++ [ ./overlays/discocss-no-launch.patch ];
+            });
             catppuccin-gtk =
               prev.callPackage ./overlays/catppuccin-gtk.nix { };
               catppuccin-cursors =
@@ -73,20 +76,21 @@
             home-manager.nixosModules.home-manager
             {
               home-manager = {
-                useGlobalPkgs = true;
                 useUserPackages = true;
-                sharedModules = [ discocss.hmModule ];
-                extraSpecialArgs = {
-                  inherit inputs;
-                  theme = import ./modules/theme;
-                };
-                users.sioodmy = import ./hosts/graphene/user.nix;
+                useGlobalPkgs = true;
+                sharedModules = [ discocss.hmModule 
+              ];
+              extraSpecialArgs = {
+                inherit inputs;
+                theme = import ./modules/theme;
               };
+              users.sioodmy = import ./hosts/graphene/user.nix;
+            };
 
-              nixpkgs.overlays = overlays;
-            }
-          ];
-        };
+            nixpkgs.overlays = overlays;
+          }
+        ];
       };
     };
-  }
+  };
+}
