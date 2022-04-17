@@ -7,6 +7,8 @@ in {
   };
 
   config = mkIf cfg.enable {
+    home.packages = [ pkgs.python39Packages.adblock ];
+
     programs.qutebrowser = {
       enable = true;
       searchEngines = {
@@ -19,6 +21,13 @@ in {
 
       settings = with theme.colors; {
         hints.border = "1px solid #${fg}";
+        content = {
+          blocking.method = "both";
+          headers = {
+            user_agent = "Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:98.0) Gecko/20100101 Firefox/98.0";
+            accept_language = "en-US,en;q=0.5";
+          };
+        };
         fonts = {
           default_family = "monospace";
           default_size = "12pt";
@@ -150,7 +159,27 @@ in {
       extraConfig = ''
         config.set('tabs.padding', {"top": 5, "bottom": 5, "left": 5, "right": 5})
         config.set('statusbar.padding', {"top": 5, "bottom": 5, "left": 5, "right": 5})
-        c.content.blocking.adblock.lists = ['https://easylist.to/easylist/easylist.txt', 'https://easylist.to/easylist/easyprivacy.txt', 'https://easylist-downloads.adblockplus.org/easylistdutch.txt', 'https://easylist-downloads.adblockplus.org/abp-filters-anti-cv.txt', 'https://www.i-dont-care-about-cookies.eu/abp/', 'https://secure.fanboy.co.nz/fanboy-cookiemonster.txt']
+        c.content.blocking.adblock.lists = [ \
+        "https://easylist.to/easylist/easylist.txt", \
+        "https://easylist.to/easylist/easyprivacy.txt", \
+        "https://secure.fanboy.co.nz/fanboy-cookiemonster.txt", \
+        "https://easylist.to/easylist/fanboy-annoyance.txt", \
+        "https://secure.fanboy.co.nz/fanboy-annoyance.txt", \
+        "https://github.com/uBlockOrigin/uAssets/raw/master/filters/annoyances.txt", \
+        "https://github.com/uBlockOrigin/uAssets/raw/master/filters/filters-2020.txt", \
+        "https://github.com/uBlockOrigin/uAssets/raw/master/filters/unbreak.txt", \
+        "https://github.com/uBlockOrigin/uAssets/raw/master/filters/resource-abuse.txt", \
+        "https://github.com/uBlockOrigin/uAssets/raw/master/filters/privacy.txt", \
+        "https://github.com/uBlockOrigin/uAssets/raw/master/filters/filters.txt", \
+        "https://raw.githubusercontent.com/MajkiIT/polish-ads-filter/master/polish-adblock-filters/adblock.txt", \
+        "https://raw.githubusercontent.com/MajkiIT/polish-ads-filter/master/adblock_social_filters/adblock_social_list.txt", \
+        "https://raw.githubusercontent.com/MajkiIT/polish-ads-filter/master/cookies_filters/adblock_cookies.txt", \
+        "https://raw.githubusercontent.com/FiltersHeroes/PolishAnnoyanceFilters/master/PPB.txt", \
+        "https://raw.githubusercontent.com/FiltersHeroes/PolishAntiAnnoyingSpecialSupplement/master/polish_rss_filters.txt", \
+        "https://raw.githubusercontent.com/FiltersHeroes/KAD/master/KAD.txt", \
+        "https://alleblock.pl/alleblock/alleblock.txt", \
+        "https://raw.githubusercontent.com/olegwukr/polish-privacy-filters/master/anti-adblock.txt",
+        ]
           '';
     };
   };
