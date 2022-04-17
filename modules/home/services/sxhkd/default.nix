@@ -7,7 +7,9 @@ in {
   config = mkIf cfg.enable {
     services.sxhkd = {
       enable = true;
-      extraConfig = builtins.readFile ./sxhkdrc;
+      keybindings = {
+       "super + shift + Escape" = "pkill -USR1 -x sxhkd; notify-send 'sxhkd' 'Reloaded config'";
+      };
     };
   };
 }

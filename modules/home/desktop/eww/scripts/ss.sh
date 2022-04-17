@@ -15,6 +15,7 @@ area () {
 
 wscreen () {
     eww close screenshottool
+    sleep 0.6;
     maim $screenshot
 }
 

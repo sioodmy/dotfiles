@@ -76,5 +76,10 @@ in {
         "ctrl+v" = "paste_from_clipboard";
       };
     };
+
+    services.sxhkd.keybindings = {
+      "super + Return" = "kitty --single-instance";
+      "alt + grave" = "tdrop -ma -y 50% -x 25% -w 50% -n dropdownterminal kitty";
+    };
   };
 }
