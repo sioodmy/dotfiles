@@ -100,5 +100,14 @@ in {
         }
       ];
     };
+
+    services.sxhkd.keybindings = {
+      "super + XF86AudioRaiseVolume" = "mpc volume +5";
+      "super + XF86AudioLowerVolume" = "mpc volume -5";
+      "XF86AudioPrev" = "playerctl previous";
+      "XF86AudioNext" = "playerctl next";
+      "XF86AudioPlay" = "playerctl play-pause";
+      "XF86AudioPause" = "playerctl play-pause";
+    };
   };
 }

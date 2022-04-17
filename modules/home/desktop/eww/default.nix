@@ -60,5 +60,13 @@ in {
       source = ./scripts/microphone_icon.sh;
       executable = true;
     };
+
+    services.sxhkd.keybindings = {
+      "XF86AudioRaiseVolume" = "eww update volumepoll=\"$(~/.config/eww/scripts/volume.sh up)\"";
+      "XF86AudioLowerVolume" = "eww update volumepoll=\"$(~/.config/eww/scripts/volume.sh down)\"";
+      "XF86AudioMute" = "eww update volumepoll=\"$(~/.config/eww/scripts/volume.sh toggle)\"";
+      "super + b" = "eww open --toggle bar";
+      "Print" = "~/.config/eww/scripts/ss.sh menu";
+    };
   };
 }
