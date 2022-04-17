@@ -181,7 +181,10 @@ in {
     shell = pkgs.zsh;
   };
 
-  programs.zsh.enable = true; # This will enable zsh nix completions
+  programs.zsh = {
+    enable = true;
+    enableGlobalCompInit = false;
+  };
 
   fonts = {
     fonts = with pkgs; [
