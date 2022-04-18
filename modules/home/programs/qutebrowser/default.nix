@@ -152,7 +152,9 @@ in {
       };
 
       keyBindings = {
-        normal = { "<Ctrl-v>" = "spawn mpv {url}"; };
+        normal = { 
+          "<Ctrl-v>" = "spawn mpv {url}"; 
+        };
         prompt = { "<Ctrl-y>" = "prompt-yes"; };
       };
 
@@ -167,9 +169,20 @@ in {
         "https://secure.fanboy.co.nz/fanboy-annoyance.txt", \
         "https://github.com/uBlockOrigin/uAssets/raw/master/filters/annoyances.txt", \
         "https://github.com/uBlockOrigin/uAssets/raw/master/filters/filters-2020.txt", \
+        "https://raw.githubusercontent.com/uBlockOrigin/uAssets/master/filters/filters-2022.txt", \
+        "https://raw.githubusercontent.com/uBlockOrigin/uAssets/master/filters/filters-2021.txt", \
+        "https://github.com/uBlockOrigin/uAssets/raw/master/filters/badware.txt", \
+        "https://github.com/uBlockOrigin/uAssets/raw/master/filters/legacy.txt", \
+        "https://secure.fanboy.co.nz/fanboy-cookiemonster.txt", \
+        "https://pgl.yoyo.org/adservers/serverlist.php?showintro=0;hostformat=hosts", \
+        "https://raw.githubusercontent.com/brave/adblock-lists/master/coin-miners.txt", \
+        "https://raw.githubusercontent.com/brave/adblock-lists/master/brave-unbreak.txt", \
+        "https://raw.githubusercontent.com/brave/adblock-lists/master/brave-lists/brave-social.txt", \
         "https://github.com/uBlockOrigin/uAssets/raw/master/filters/unbreak.txt", \
         "https://github.com/uBlockOrigin/uAssets/raw/master/filters/resource-abuse.txt", \
         "https://github.com/uBlockOrigin/uAssets/raw/master/filters/privacy.txt", \
+        "https://github.com/uBlockOrigin/uAssets/raw/master/filters/unbreak.txt", \
+        "https://www.i-dont-care-about-cookies.eu/abp/", \
         "https://github.com/uBlockOrigin/uAssets/raw/master/filters/filters.txt", \
         "https://raw.githubusercontent.com/MajkiIT/polish-ads-filter/master/polish-adblock-filters/adblock.txt", \
         "https://raw.githubusercontent.com/MajkiIT/polish-ads-filter/master/adblock_social_filters/adblock_social_list.txt", \
