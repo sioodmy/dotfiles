@@ -51,8 +51,9 @@ copy () {
 }
 
 menu () {
+    eww close screenshottool || \
     eww windows | rg -q "\*screenshot" || \
-        eww open screenshottool
+        eww open screenshottool 
 }
 
 case $1 in
