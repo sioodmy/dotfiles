@@ -1,8 +1,8 @@
 
 
 * {
-  all: unset; //Unsets everything so you can style everything from scratch
- font-family: monospace;
+    all: unset; //Unsets everything so you can style everything from scratch
+    font-family: monospace;
 }
 
 .bar, .screenshot, .screenshottool{
@@ -45,7 +45,7 @@ scale trough {
     border: 2px solid $black;
     background-size: contain;	
     background-repeat: no-repeat;
-	background-position: center;
+    background-position: center;
     margin: 1rem;
 }
 .ss {
@@ -65,21 +65,21 @@ scale trough {
     color: $red;
 }
 .cpubar {
-      color: $blue;
+    color: $blue;
     background-color: $black;
-  border-radius: 10px;
+    border-radius: 10px;
     margin: 0.6rem;
 }
 
 .diskbar {
-      color: $yellow;
+    color: $yellow;
     background-color: $black;
-  border-radius: 10px;
+    border-radius: 10px;
 }
 .membar {
-      color: $green;
+    color: $green;
     background-color: $black;
-  border-radius: 10px;
+    border-radius: 10px;
 }
 .iconmem {
     color: $background;
@@ -115,7 +115,7 @@ scale trough {
 
 .button-music {
     color: $magenta;
-   margin: 0 0.7rem;
+    margin: 0 0.7rem;
 }
 .button-pause {
     font-size: 1.5rem;
@@ -123,11 +123,11 @@ scale trough {
 .song_cover_art {
     color: $yellow;
     background-size: cover;	
-	background-position: center;
+    background-position: center;
     min-height: 24px;
-	min-width: 24px;
-	margin: 10px;
-	border-radius: 100px;
+    min-width: 24px;
+    margin: 10px;
+    border-radius: 100px;
 }
 
 .volumemicBar trough highlight {
@@ -161,7 +161,7 @@ scale trough {
 }
 
 .label {
- //   font-size: 2rem;
+    //   font-size: 2rem;
     margin: 0rem 0rem 0rem 0.6rem;
 }
 .weather, .time, .button-off{
@@ -170,22 +170,22 @@ scale trough {
 
 
 .cal {
-  background-color: $background;
-  font-size: 18px;
-  font-weight: normal;
+    background-color: $background;
+    font-size: 18px;
+    font-weight: normal;
 
-.cal-in {
-    padding: 0px 10px 0px 10px;
+    .cal-in {
+        padding: 0px 10px 0px 10px;
 
-.cal {
-     &.highlight {
-          padding: 20px;
-      }
+        .cal {
+            &.highlight {
+                padding: 20px;
+            }
 
-      padding: 5px 5px 5px 5px;
-      margin-left: 10px;
+            padding: 5px 5px 5px 5px;
+            margin-left: 10px;
+        }
     }
-  }
 }
 
 
@@ -193,24 +193,24 @@ calender {
     color: $foreground;
 }
 calendar:selected {
-  color: $accent;
+    color: $accent;
 }
 
 calendar.header {
-color: $foreground;
-font-weight: bold;
+    color: $foreground;
+    font-weight: bold;
 }
 
 calendar.button {
-color: $accent;
+    color: $accent;
 }
 
 calendar.highlight {
-color: $accent;
-font-weight: bold;
+    color: $accent;
+    font-weight: bold;
 }
 
 calendar:indeterminate {
-color: $black;
+    color: $black;
 }
 
