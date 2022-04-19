@@ -14,9 +14,9 @@
     programs = {
       discocss.enable = true;
       firefox.enable = true;
+      qutebrowser.enable = true;
       kitty.enable = true;
       zathura.enable = true;
-      dunst.enable = true;
       rofi.enable = true;
     };
     services = {
