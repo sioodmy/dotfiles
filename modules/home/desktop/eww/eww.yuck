@@ -1,28 +1,28 @@
 (defwidget bar []
-    (centerbox
-        (box :space-evenly false
-        (volume)
-        (micvolume)
-        (music)
-        (notification))
-        
-        (workspaces :halign "center" :hexpand "true")
+  (centerbox
+    (box :space-evenly false
+      (volume)
+      (micvolume)
+      (music)
+      (notification))
 
-        (box :halign "end" :hexpand true :orientation "h" :space-evenly false
-          (disk)
-          (cpu)
-          (mem)
-          (weather)
-          (time)
-          (power)
-        ))
-    )
+    (workspaces :halign "center" :hexpand "true")
+
+    (box :halign "end" :hexpand true :orientation "h" :space-evenly false
+      (disk)
+      (cpu)
+      (mem)
+      (weather)
+      (time)
+      (power)
+      ))
+  )
 
 (defwidget screenshot []
   (box
     (screenshotmenu)
+    )
   )
-)
 
 ;; Variables
 (defpoll temperature :interval "20m" "curl -s 'wttr.in/?format=%c%f'")
@@ -59,277 +59,277 @@
 
 (defwidget volume []
   (eventbox :tooltip "Volume: ${volumepoll.content}%" :onhover "eww update volum=true && eww update currentVolume=$(pamixer --get-volume)"   
-    :onhoverlost "eww update volum=false"
+            :onhoverlost "eww update volum=false"
     (box :orientation "h" :space-evenly false 
-        (eventbox :cursor "hand"(button :class "${volumepoll.class} label" 
-          :onclick "tdrop -ma -y 55 -x 7 -w 35% -h 40% pavucontrol" "${volumepoll.icon} "))
-        (revealer :transition "slideleft" 
-			  :reveal volum 
-			  :duration "500ms"
+      (eventbox :cursor "hand"(button :class "${volumepoll.class} label" 
+                :onclick "tdrop -ma -y 55 -x 7 -w 35% -h 40% pavucontrol" "${volumepoll.icon} "))
+      (revealer :transition "slideleft" 
+                :reveal volum 
+                :duration "500ms"
         (scale :class "volumeBar"
-            :min 0
-            :max 101
-            :onchange `eww update volumepoll="$(./scripts/volume.sh {})"` 
-            :value "${volumepoll.content}" )
-))))
+               :min 0
+               :max 101
+               :onchange `eww update volumepoll="$(./scripts/volume.sh {})"` 
+               :value "${volumepoll.content}" )
+        ))))
 
 
 (defwidget micvolume []
   (eventbox :tooltip "Volume: ${micvolumepoll.content}% ${micvolumepoll.icon}" :onhover "eww update micvolum=true"   
-    :onhoverlost "eww update micvolum=false"
+            :onhoverlost "eww update micvolum=false"
     (box :orientation "h" :space-evenly false 
-        (eventbox :cursor "hand"(button :class "${micvolumepoll.class} label" :onclick `eww update micvolumepoll="$(./scripts/micvolume.sh toggle)"` "${micvolumepoll.icon} "))
-        (revealer :transition "slideleft" 
-			  :reveal micvolum 
-			  :duration "500ms"
+      (eventbox :cursor "hand"(button :class "${micvolumepoll.class} label" :onclick `eww update micvolumepoll="$(./scripts/micvolume.sh toggle)"` "${micvolumepoll.icon} "))
+      (revealer :transition "slideleft" 
+                :reveal micvolum 
+                :duration "500ms"
         (scale :class "volumemicBar"
-            :min 0
-            :max 101
-            :onchange `eww update micvolumepoll="$(./scripts/micvolume.sh {})"` 
-            :value "${micvolumepoll.content}")
-            
-))))
+               :min 0
+               :max 101
+               :onchange `eww update micvolumepoll="$(./scripts/micvolume.sh {})"` 
+               :value "${micvolumepoll.content}")
+
+        ))))
 
 (defwidget notification []
   (eventbox :onhover "eww update noti=true" :onhoverlost "eww update noti=false"
-  (box :space-evenly false 
-    (label :text " " :visible {notify.show} :class "bell label")
-  
-    (revealer :transition "slideleft"
-      :reveal noti
-      :duration "500ms"
-      (label :text {notify.content} :limit-width 30 :class "noticontent")
+    (box :space-evenly false 
+      (label :text " " :visible {notify.show} :class "bell label")
+
+      (revealer :transition "slideleft"
+                :reveal noti
+                :duration "500ms"
+        (label :text {notify.content} :limit-width 12 :class "noticontent")
+        )
       )
     )
-    )
-)
+  )
 
 (defwidget mem []
   (box :vexpand "false" :hexpand "false"
-  (circular-progress  :value {EWW_RAM.used_mem_perc}
-    :class "membar"
-    :start-angle 0
-    :thickness 4
-    (button 
-                :class "iconmem"
-                :limit-width 2
-                :tooltip " ${round(EWW_RAM.used_mem_perc,1)}%"
-                :show_truncated false
-                :wrap false
-                "")
-    ))             
+    (circular-progress  :value {EWW_RAM.used_mem_perc}
+                        :class "membar"
+                        :start-angle 0
+                        :thickness 4
+      (button 
+        :class "iconmem"
+        :limit-width 2
+        :tooltip " ${round(EWW_RAM.used_mem_perc,1)}%"
+        :show_truncated false
+        :wrap false
+        "")
+      ))             
   )
 
 (defwidget cpu []
   (box :vexpand "false" :hexpand "false"
-  (circular-progress  :value {EWW_CPU.avg}
-    :class "cpubar"
-    :start-angle 0
-    :thickness 4
-    (button 
-                :class "iconmem"
-                :limit-width 2
-                :tooltip " ${round(EWW_CPU.avg,1)}%"
-                :show_truncated false
-                :wrap false
-                "")
-    ))             
+    (circular-progress  :value {EWW_CPU.avg}
+                        :class "cpubar"
+                        :start-angle 0
+                        :thickness 4
+      (button 
+        :class "iconmem"
+        :limit-width 2
+        :tooltip " ${round(EWW_CPU.avg,1)}%"
+        :show_truncated false
+        :wrap false
+        "")
+      ))             
   )
 
 
 (defwidget disk []
   (box :vexpand "false" :hexpand "false"
-  (circular-progress  :value {EWW_DISK["/"].used_perc}
-    :class "diskbar"
-    :start-angle 0
-    :thickness 4
-    (button 
-                :class "iconmem"
-                :limit-width 2
-                :tooltip " ${round(EWW_DISK["/"].used_perc,1)}%"
-                :show_truncated false
-                :wrap false
-                "")
-    ))             
+    (circular-progress  :value {EWW_DISK["/"].used_perc}
+                        :class "diskbar"
+                        :start-angle 0
+                        :thickness 4
+      (button 
+        :class "iconmem"
+        :limit-width 2
+        :tooltip " ${round(EWW_DISK["/"].used_perc,1)}%"
+        :show_truncated false
+        :wrap false
+        "")
+      ))             
   )
 (defwidget power []
-	(eventbox   :hexpand false 
-                :onhover "eww update power=true"	
-				:onhoverlost "eww update power=false" 
-                :cursor "hand"
-	(box		:orientation "h"					
-				:space-evenly "false" 	 
+  (eventbox   :hexpand false 
+              :onhover "eww update power=true"	
+              :onhoverlost "eww update power=false" 
+              :cursor "hand"
+    (box		:orientation "h"					
+                :space-evenly "false" 	 
                 :class "powerLabel label"
 
-	(button		:class "button-off"					
-				:tooltip "Shutdown"		 
-				:onclick "shutdown now"	" ")
-	(revealer	:transition "slideright"				
-				:reveal power			 
-				:duration "250ms"
-    (box        :space-evenly true
-  	(button		:class "button-reb"					
-	  			:tooltip "Reboot"
-				:onclick "reboot" "勒")
-  	(button		:class "button-lock"					
-	  			:tooltip "Lockscreen"
-				:onclick "dm-tool lock" " ")
-  	(button		:class "button-sleep"					
-	  			:tooltip "Sleep"
-				:onclick "systemctl suspend" ""))
-    ))))
+      (button		:class "button-off"					
+                    :tooltip "Shutdown"		 
+                    :onclick "shutdown now"	" ")
+      (revealer	:transition "slideright"				
+                :reveal power			 
+                :duration "250ms"
+        (box        :space-evenly true
+          (button		:class "button-reb"					
+                        :tooltip "Reboot"
+                        :onclick "reboot" "勒")
+          (button		:class "button-lock"					
+                        :tooltip "Lockscreen"
+                        :onclick "dm-tool lock" " ")
+          (button		:class "button-sleep"					
+                        :tooltip "Sleep"
+                        :onclick "systemctl suspend" ""))
+        ))))
 
 
 (defwidget weather []
-	(eventbox   :hexpand false 
-                :onhover "eww update weather=true"	
-				:onhoverlost "eww update weather=false" 
-	(box		:orientation "h"					
-				:space-evenly "false" 	 
+  (eventbox   :hexpand false 
+              :onhover "eww update weather=true"	
+              :onhoverlost "eww update weather=false" 
+    (box		:orientation "h"					
+                :space-evenly "false" 	 
                 :class "weather"
 
-	(label		:class "weather"					
-				:tooltip "Weather"		 
-                :limit-width "10"
-                :wrap false
-				:text "${temperature}")
-	(revealer	:transition "slideright"				
-				:reveal weather			 
-				:duration "250ms"
-  	(label		:class "weather-details"					
-	  			:tooltip "Weather"
-                :limit-width "30"
-                :wrap false
-				:text "${weatherstats}")))))
+      (label		:class "weather"					
+                    :tooltip "Weather"		 
+                    :limit-width "10"
+                    :wrap false
+                    :text "${temperature}")
+      (revealer	:transition "slideright"				
+                :reveal weather			 
+                :duration "250ms"
+        (label		:class "weather-details"					
+                    :tooltip "Weather"
+                    :limit-width "30"
+                    :wrap false
+                    :text "${weatherstats}")))))
 
 
 
 (defwidget time []
-    (eventbox :cursor "hand"
-	(button		:class "date"					
-				:tooltip "${dateVar}"		 
-				:onclick "eww open --toggle calendar"	"${timeVar}"))
-	)
+  (eventbox :cursor "hand"
+    (button		:class "date"					
+                :tooltip "${dateVar}"		 
+                :onclick "eww open --toggle calendar"	"${timeVar}"))
+  )
 
 
 
 (defwidget music []
-	(eventbox   :hexpand false 
-                :onhover "eww update music=true"	
-                :cursor "hand"
-				:onhoverlost "eww update music=false" 
-	(box		:orientation "h"					
-				:space-evenly false 	 
+  (eventbox   :hexpand false 
+              :onhover "eww update music=true"	
+              :cursor "hand"
+              :onhoverlost "eww update music=false" 
+    (box		:orientation "h"					
+                :space-evenly false 	 
                 :class "musiclabel"
 
-    (button      
-                :onclick "tdrop -ma -y 55 -x 7 -w 30% -h 40% -n musicplayer kitty -e ncmpcpp" 
-    (box        :space-evenly false
-                :orientation "h"
-    (box :class "song_cover_art" :vexpand "false" :hexpand "false" :style "background-image: url('${cover_art}');")
-    (label      :text "${song}"
-                :limit-width 30
-                :wrap false)
-      )
-                )
-	(revealer	:transition "slideright"				
-				:reveal music			 
+      (button      
+        :onclick "tdrop -ma -y 55 -x 7 -w 30% -h 40% -n musicplayer kitty -e ncmpcpp" 
+        (box        :space-evenly false
+                    :orientation "h"
+          (box :class "song_cover_art" :vexpand "false" :hexpand "false" :style "background-image: url('${cover_art}');")
+          (label      :text "${song}"
+                      :limit-width 30
+                      :wrap false)
+          )
+        )
+      (revealer	:transition "slideright"				
+                :reveal music			 
                 :expand true
-				:duration "300ms"
-    (box :space-evenly false
-  	(button		:class "button-music"					
-	  			:tooltip "Previous"
-				:onclick "./scripts/music.sh --prev" "")
-  	(button		:class "button-music button-pause"					
-	  			:tooltip "Toggle"
-				:onclick "./scripts/music.sh --toggle " "${song_status}")
-  	(button		:class "button-music"					
-	  			:tooltip "Next"
-				:onclick "./scripts/music.sh --next" "")
+                :duration "300ms"
+        (box :space-evenly false
+          (button		:class "button-music"					
+                        :tooltip "Previous"
+                        :onclick "./scripts/music.sh --prev" "")
+          (button		:class "button-music button-pause"					
+                        :tooltip "Toggle"
+                        :onclick "./scripts/music.sh --toggle " "${song_status}")
+          (button		:class "button-music"					
+                        :tooltip "Next"
+                        :onclick "./scripts/music.sh --next" "")
 
-(scale :class "musicBar" :onscroll "mpc -q seek {}" :min 0 :active "true" :max 100 :value "${current_status}" :tooltip "${ctime}/${ttime}")
-    )
-))))
+          (scale :class "musicBar" :onscroll "mpc -q seek {}" :min 0 :active "true" :max 100 :value "${current_status}" :tooltip "${ctime}/${ttime}")
+          )
+        ))))
 
 (defwidget workspaces []
   (literal :content workspaces_listen))
 
 (defwidget screenshotpreview []
   (box :class "sspreview" :hexpand true :vexpand true :style "background-image: url('${screenshotpath}');")
-)
+  )
 (defwidget screenshotmenu []
   (box :orientation "v"
-  (box :vexpand true :hexpand true :orientation "h"
-    (label :text "Screenshot taken!" :class "ss-text")
+    (box :vexpand true :hexpand true :orientation "h"
+      (label :text "Screenshot taken!" :class "ss-text")
+      )
+    (box :orientation "h"
+      (button       :class "ss-upload ss"
+                    :tooltip "Upload screenshot"
+                    :onclick "./scripts/ss.sh upload &" "")
+      (button       :class "ss-win ss"
+                    :tooltip "Save screenshot"
+                    :onclick "./scripts/ss.sh save &" "")
+      (button       :class "ss-copy ss"
+                    :tooltip "Copy screenshot"
+                    :onclick "./scripts/ss.sh copy &" "")
+      (button       :class "ss-discard ss"
+                    :tooltip "Discard screenshot"
+                    :onclick "./scripts/ss.sh discard &" "")
+      ))
   )
-  (box :orientation "h"
-  (button       :class "ss-upload ss"
-                :tooltip "Upload screenshot"
-                :onclick "./scripts/ss.sh upload &" "")
-  (button       :class "ss-win ss"
-                :tooltip "Save screenshot"
-                :onclick "./scripts/ss.sh save &" "")
-  (button       :class "ss-copy ss"
-                :tooltip "Copy screenshot"
-                :onclick "./scripts/ss.sh copy &" "")
-  (button       :class "ss-discard ss"
-                :tooltip "Discard screenshot"
-                :onclick "./scripts/ss.sh discard &" "")
-  ))
-)
 
 (defwidget screenshottool []
   (box 
-  (button       :class "ss-area ss"
-                :tooltip "Select area"
-                :onclick "./scripts/ss.sh area &" "")
-  (button       :class "ss-screen ss"
-                :tooltip "Whole screen"
-                :onclick "./scripts/ss.sh screen &" "")
-  (button       :class "ss-win ss"
-                :tooltip "Window"
-                :onclick "./scripts/ss.sh window &" "")
-  (button       :class "ss-cancel ss"
-                :tooltip "Cancel"
-                :onclick "eww close screenshottool &" "")
+    (button       :class "ss-area ss"
+                  :tooltip "Select area"
+                  :onclick "./scripts/ss.sh area &" "")
+    (button       :class "ss-screen ss"
+                  :tooltip "Whole screen"
+                  :onclick "./scripts/ss.sh screen &" "")
+    (button       :class "ss-win ss"
+                  :tooltip "Window"
+                  :onclick "./scripts/ss.sh window &" "")
+    (button       :class "ss-cancel ss"
+                  :tooltip "Cancel"
+                  :onclick "eww close screenshottool &" "")
+    )
   )
-)
 
 (defwindow calendar
-	:geometry (geometry :x "-20px" 
-		:y "7%" 
-		:width "270px" 
-		:height "60px"
-        :anchor "top right")
-    (calendar :class "cal")
-)
+  :geometry (geometry :x "-20px" 
+  :y "7%" 
+  :width "270px" 
+  :height "60px"
+  :anchor "top right")
+  (calendar :class "cal")
+  )
 (defwindow screenshot
-	:geometry (geometry :x "-50px" :y "-50px"
-		:width "500px" 
-		:height "400px"
-        :anchor "bottom right")
-    (box :space-evenly false :orientation "v"
-      (screenshot)
-      (screenshotpreview)
-))
+  :geometry (geometry :x "-50px" :y "-50px"
+  :width "500px" 
+  :height "400px"
+  :anchor "bottom right")
+  (box :space-evenly false :orientation "v"
+    (screenshot)
+    (screenshotpreview)
+    ))
 
 (defwindow screenshottool
-	:geometry (geometry :x "-50px" :y "-50px"
-		:width "500px" 
-		:height "60"
-        :anchor "bottom right")
-    (box :space-evenly false :orientation "v"
-      (screenshottool)
-))
+  :geometry (geometry :x "-50px" :y "-50px"
+  :width "500px" 
+  :height "60"
+  :anchor "bottom right")
+  (box :space-evenly false :orientation "v"
+    (screenshottool)
+    ))
 
 (defwindow bar 
-    :monitor 0
-    :reserve (struts :distance "50px" :side "top")
-    :geometry (geometry :width "100%"
-        :height "20px"
-        :anchor "top left")
-    :hexpand false
-    :stacking "bg"
-    :vexpand false
-    :wm-ignore false
-    (bar))
+  :monitor 0
+  :reserve (struts :distance "50px" :side "top")
+  :geometry (geometry :width "100%"
+  :height "20px"
+  :anchor "top left")
+  :hexpand false
+  :stacking "bg"
+  :vexpand false
+  :wm-ignore false
+  (bar))
