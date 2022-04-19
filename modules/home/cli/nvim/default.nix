@@ -88,12 +88,47 @@ in {
         {
           plugin = dashboard-nvim;
           config = ''
-            let g:dashboard_default_executive = 'telescope'
-            let g:dashboard_preview_file = "~/.config/nvim/asciiart"
-            let g:dashboard_preview_command = 'cat'
-            let g:dashboard_preview_file_height = 5
-            let g:dashboard_preview_file_width = 43
-            let g:indentLine_fileTypeExclude = ['dashboard']
+            lua << EOF
+
+            local g = vim.g
+            g.indentLine_fileTypeExclude = { 'dashboard' }
+            g.dashboard_session_directory = '~/.config/nvim/.sessions'
+            g.dashboard_default_executive ='telescope'
+            g.dashboard_custom_section = {
+            a = {description = {"  Find File                 leader f f"}, command = "Telescope find_files"},
+            b = {description = {"  Recents                   leader f h"}, command = "Telescope oldfiles"},
+            c = {description = {"  Find Word                 leader f g"}, command = "Telescope live_grep"},
+            d = {description = {"  New File                  leader e n"}, command = "DashboardNewFile"},
+            e = {description = {"  Bookmarks                 leader m  "}, command = "Telescope marks"},
+            i = {description = {"  Exit                      leader q  "}, command = "exit"}
+            }
+
+            g.dashboard_custom_footer = {'Coding is hard'}
+            g.dashboard_custom_header =  {
+            "   ⣴⣶⣤⡤⠦⣤⣀⣤⠆     ⣈⣭⣿⣶⣿⣦⣼⣆          ",
+            "    ⠉⠻⢿⣿⠿⣿⣿⣶⣦⠤⠄⡠⢾⣿⣿⡿⠋⠉⠉⠻⣿⣿⡛⣦       ",
+            "          ⠈⢿⣿⣟⠦ ⣾⣿⣿⣷    ⠻⠿⢿⣿⣧⣄     ",
+            "           ⣸⣿⣿⢧ ⢻⠻⣿⣿⣷⣄⣀⠄⠢⣀⡀⠈⠙⠿⠄    ",
+            "          ⢠⣿⣿⣿⠈    ⣻⣿⣿⣿⣿⣿⣿⣿⣛⣳⣤⣀⣀   ",
+            "   ⢠⣧⣶⣥⡤⢄ ⣸⣿⣿⠘  ⢀⣴⣿⣿⡿⠛⣿⣿⣧⠈⢿⠿⠟⠛⠻⠿⠄  ",
+            "  ⣰⣿⣿⠛⠻⣿⣿⡦⢹⣿⣷   ⢊⣿⣿⡏  ⢸⣿⣿⡇ ⢀⣠⣄⣾⠄   ",
+            " ⣠⣿⠿⠛ ⢀⣿⣿⣷⠘⢿⣿⣦⡀ ⢸⢿⣿⣿⣄ ⣸⣿⣿⡇⣪⣿⡿⠿⣿⣷⡄  ",
+            " ⠙⠃   ⣼⣿⡟  ⠈⠻⣿⣿⣦⣌⡇⠻⣿⣿⣷⣿⣿⣿ ⣿⣿⡇ ⠛⠻⢷⣄ ",
+            "      ⢻⣿⣿⣄   ⠈⠻⣿⣿⣿⣷⣿⣿⣿⣿⣿⡟ ⠫⢿⣿⡆     ",
+            "       ⠻⣿⣿⣿⣿⣶⣶⣾⣿⣿⣿⣿⣿⣿⣿⣿⡟⢀⣀⣤⣾⡿⠃     ",
+            }
+
+            vim.cmd [[
+            augroup dashboard_au
+            autocmd! * <buffer>
+            autocmd User dashboardReady let &l:stl = 'Dashboard'
+            autocmd User dashboardReady nnoremap <buffer> <leader>q <cmd>exit<CR>
+            autocmd User dashboardReady nnoremap <buffer> <leader>u <cmd>PackerUpdate<CR>
+            autocmd User dashboardReady nnoremap <buffer> <leader>l <cmd>SessionLoad<CR>
+            augroup END
+            ]]
+
+            EOF
 
           '';
         }
@@ -207,6 +242,24 @@ in {
           plugin = rust-tools-nvim;
           config = ''
             lua require('rust-tools').setup({})
+          '';
+        }
+        {
+          plugin = auto-session;
+          config = ''
+            lua << EOF
+            require('auto-session').setup({
+                log_level = 'info',
+                auto_session_enable_last_session = true,
+                auto_session_root_dir = vim.fn.stdpath('data').."/sessions/",
+                auto_session_enabled = true,
+                auto_save_enabled = true,
+                auto_restore_enabled = false,
+                auto_session_suppress_dirs = nil,
+                auto_session_use_git_branch = nil,
+                bypass_session_save_file_types = nil
+            })
+            EOF
           '';
         }
         {
