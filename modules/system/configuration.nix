@@ -200,6 +200,20 @@ in {
       noto-fonts
       noto-fonts-cjk
       noto-fonts-emoji
+      (pkgs.iosevka.override {
+        privateBuildPlan = ''
+          [buildPlans.iosevka-custom]
+          family = "Iosevka Custom"
+          spacing = "normal"
+          serifs = "sans"
+          no-cv-ss = true
+          no-ligation = true
+
+          [buildPlans.iosevka-custom.variants]
+          inherits = "ss14"
+        '';
+        set = "custom";
+      })
       (nerdfonts.override { fonts = [ "JetBrainsMono" "Iosevka" ]; })
     ];
 
@@ -207,7 +221,7 @@ in {
 
     fontconfig = with theme.colors; {
       defaultFonts = {
-        monospace = [ "JetBrainsMono Nerd Font" "Noto Color Emoji" ];
+        monospace = [ "Iosevka Custom" "Noto Color Emoji" "Iosevka Nerd Font"];
         sansSerif = [ "Lato" "Noto Color Emoji" ];
         serif = [ "JetBrainsMono Nerd Font" "Noto Color Emoji" ];
         emoji = [ "Noto Color Emoji" ];
