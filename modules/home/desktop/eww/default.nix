@@ -7,7 +7,7 @@ in {
   config = mkIf cfg.enable {
     # eww package
     home.packages =
-      [ inputs.eww.packages."x86_64-linux".eww pkgs.pamixer pkgs.tdrop ];
+      [ inputs.eww.packages."x86_64-linux".eww pkgs.pamixer pkgs.tdrop pkgs.libcanberra-gtk3 pkgs.tiramisu];
 
     # configuration
     home.file.".config/eww/eww.yuck".source = ./eww.yuck;
@@ -33,6 +33,11 @@ in {
 
     home.file.".config/eww/scripts/music.sh" = {
       source = ./scripts/music.sh;
+      executable = true;
+    };
+
+    home.file.".config/eww/scripts/notify.sh" = {
+      source = ./scripts/notify.sh;
       executable = true;
     };
 

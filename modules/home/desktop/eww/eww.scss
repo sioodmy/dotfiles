@@ -31,6 +31,15 @@ scale trough {
     border: 2px solid $accent;
     border-radius: 10px;
 }
+
+.bell {
+    color: $yellow;
+    font-size: 1.5rem;
+}
+.noticontent {
+    color: $white;
+}
+
 .sspreview {
     border-radius: 10px;
     border: 2px solid $black;
