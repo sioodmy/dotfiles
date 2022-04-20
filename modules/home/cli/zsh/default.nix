@@ -81,7 +81,6 @@ in {
         grep = "rg";
         du = "dust";
         ps = "procs";
-        neofetch = "fetch";
         htop = "btm";
         m = "mkdir -p";
         fcd = "cd $(find -type d | fzf)";
