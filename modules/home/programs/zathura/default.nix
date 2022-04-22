@@ -59,6 +59,7 @@ in {
         scroll-full-overlap = "0.01";
         scroll-step = "50";
         zoom-min = "10";
+        guioptions = "none";
 
       };
     };
