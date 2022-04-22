@@ -89,18 +89,17 @@ in {
           plugin = dashboard-nvim;
           config = ''
             lua << EOF
-
             local g = vim.g
             g.indentLine_fileTypeExclude = { 'dashboard' }
             g.dashboard_session_directory = '~/.config/nvim/.sessions'
             g.dashboard_default_executive ='telescope'
             g.dashboard_custom_section = {
-            a = {description = {"  Find File                 leader f f"}, command = "Telescope find_files"},
-            b = {description = {"  Recents                   leader f h"}, command = "Telescope oldfiles"},
-            c = {description = {"  Find Word                 leader f g"}, command = "Telescope live_grep"},
-            d = {description = {"  New File                  leader e n"}, command = "DashboardNewFile"},
-            e = {description = {"  Bookmarks                 leader m  "}, command = "Telescope marks"},
-            i = {description = {"  Exit                      leader q  "}, command = "exit"}
+            a = {description = {"  Find File"}, command = "Telescope find_files"},
+            b = {description = {"  Recents"}, command = "Telescope oldfiles"},
+            c = {description = {"  Find Word"}, command = "Telescope live_grep"},
+            d = {description = {"  New File"}, command = "DashboardNewFile"},
+            e = {description = {"  Bookmarks"}, command = "Telescope marks"},
+            i = {description = {"  Exit"}, command = "exit"}
             }
 
             g.dashboard_custom_footer = {'Coding is hard'}
@@ -122,12 +121,8 @@ in {
             augroup dashboard_au
             autocmd! * <buffer>
             autocmd User dashboardReady let &l:stl = 'Dashboard'
-            autocmd User dashboardReady nnoremap <buffer> <leader>q <cmd>exit<CR>
-            autocmd User dashboardReady nnoremap <buffer> <leader>u <cmd>PackerUpdate<CR>
-            autocmd User dashboardReady nnoremap <buffer> <leader>l <cmd>SessionLoad<CR>
             augroup END
             ]]
-
             EOF
 
           '';
@@ -135,6 +130,9 @@ in {
         {
           plugin = vim-vsnip;
           config = ''
+            lua << EOF
+            vim.defer_fn(function()
+            vim.cmd [[
             imap <expr> <C-j>   vsnip#expandable()  ? '<Plug>(vsnip-expand)'         : '<C-j>'
             smap <expr> <C-j>   vsnip#expandable()  ? '<Plug>(vsnip-expand)'         : '<C-j>'
             imap <expr> <C-l>   vsnip#available(1)  ? '<Plug>(vsnip-expand-or-jump)' : '<C-l>'
@@ -147,15 +145,21 @@ in {
             xmap        s   <Plug>(vsnip-select-text)
             nmap        S   <Plug>(vsnip-cut-text)
             xmap        S   <Plug>(vsnip-cut-text)
+            ]]
+            end, 70)
+            EOF
 
           '';
         }
         {
           plugin = telescope-nvim;
           config = ''
+                    lua << EOF
+                    vim.cmd [[
                     map <C-f> :Telescope find_files <CR>
                     map <C-n> :Telescope live_grep <CR>
-                    lua << EOF
+                    ]]
+                    vim.defer_fn(function()
             local present, telescope = pcall(require, "telescope")
 
             if not present then
@@ -229,6 +233,7 @@ in {
             end
 
             return M
+            end, 70)
             EOF
           '';
         }
@@ -248,6 +253,7 @@ in {
           plugin = auto-session;
           config = ''
             lua << EOF
+            vim.defer_fn(function()
             require('auto-session').setup({
                 log_level = 'info',
                 auto_session_enable_last_session = true,
@@ -259,6 +265,7 @@ in {
                 auto_session_use_git_branch = nil,
                 bypass_session_save_file_types = nil
             })
+            end, 70)
             EOF
           '';
         }
@@ -267,87 +274,118 @@ in {
           config = ''
                       map <C-y> :NvimTreeToggle <CR>
                     lua << EOF
-                      require'nvim-tree'.setup {}
-                      local present, nvimtree = pcall(require, "nvim-tree")
-
-            if not present then
-               return
-            end
-
-            local g = vim.g
-
-            g.nvim_tree_add_trailing = 0 -- append a trailing slash to folder names
-            g.nvim_tree_git_hl = 0
-            g.nvim_tree_highlight_opened_files = 0
-            g.nvim_tree_indent_markers = 1
-            g.nvim_tree_root_folder_modifier = table.concat { ":t:gs?$?/..", string.rep(" ", 1000), "?:gs?^??" }
-
-            g.nvim_tree_show_icons = {
-               folders = 1,
-               files = 1,
-               git = 1,
-            }
-
-            g.nvim_tree_icons = {
-               default = "",
-               symlink = "",
-               git = {
-                  deleted = "",
-                  ignored = "◌",
-                  renamed = "➜",
-                  staged = "✓",
-                  unmerged = "",
-                  unstaged = "✗",
-                  untracked = "★",
-               },
-               folder = {
-                  default = "",
-                  empty = "",
-                  empty_open = "",
-                  open = "",
-                  symlink = "",
-                  symlink_open = "",
-               },
-            }
-
-            local default = {
-               filters = {
-                  dotfiles = false,
-               },
-               disable_netrw = true,
-               hijack_netrw = true,
-               ignore_ft_on_setup = { "dashboard" },
-               auto_close = true,
-               open_on_tab = false,
-               hijack_cursor = true,
-               hijack_unnamed_buffer_when_opening = false,
-               update_cwd = true,
-               update_focused_file = {
-                  enable = true,
-                  update_cwd = false,
-               },
-               view = {
-                  allow_resize = false,
-                  side = "left",
-                  width = 25,
-                  hide_root_folder = true,
-               },
-               git = {
-                  enable = false,
-                  ignore = false,
-               },
-            }
-
-            local M = {}
-
-            M.setup = function(override_flag)
-               if override_flag then
-                  default = require("core.utils").tbl_override_req("nvim_tree", default)
-               end
-               nvimtree.setup(default)
-            end
-
-            return M
+            vim.defer_fn(function()
+            require'nvim-tree'.setup { -- BEGIN_DEFAULT_OPTS
+              auto_reload_on_write = true,
+              disable_netrw = false,
+              hide_root_folder = false,
+              hijack_cursor = true,
+              hijack_netrw = true,
+              hijack_unnamed_buffer_when_opening = false,
+              ignore_buffer_on_setup = false,
+              open_on_setup = false,
+              open_on_setup_file = false,
+              open_on_tab = false,
+              sort_by = "name",
+              update_cwd = false,
+              view = {
+              width = 30,
+                height = 30,
+                side = "left",
+                preserve_window_proportions = false,
+                number = false,
+                relativenumber = false,
+                signcolumn = "yes",
+              mappings = {
+                custom_only = false,
+                list = {
+                },
+            },
+            },
+            renderer = {
+              indent_markers = {
+               enable = false,
+               icons = {
+                corner = "└ ",
+                edge = "│ ",
+                none = "  ",
+                },
+            },
+            icons = {
+              webdev_colors = true,
+            },
+            },
+            hijack_directories = {
+            enable = true,
+            auto_open = true,
+            },
+            update_focused_file = {
+            enable = false,
+            update_cwd = false,
+            ignore_list = {},
+            },
+            ignore_ft_on_setup = {},
+            system_open = {
+            cmd = nil,
+            args = {},
+            },
+            diagnostics = {
+            enable = false,
+            show_on_dirs = false,
+            icons = {
+            hint = "",
+            info = "",
+            warning = "",
+            error = "",
+            },
+            },
+            filters = {
+            dotfiles = false,
+            custom = {},
+            exclude = {},
+            },
+            git = {
+            enable = true,
+            ignore = true,
+            timeout = 400,
+            },
+            actions = {
+            use_system_clipboard = true,
+            change_dir = {
+            enable = true,
+            global = false,
+            },
+            open_file = {
+            quit_on_open = false,
+            resize_window = true,
+            window_picker = {
+            enable = true,
+            chars = "ABCDEFGHIJKLMNOPQRSTUVWXYZ1234567890",
+            exclude = {
+            filetype = { "notify", "packer", "qf", "diff", "fugitive", "fugitiveblame" },
+            buftype = { "nofile", "terminal", "help" },
+            },
+            },
+            },
+            },
+            trash = {
+            cmd = "trash",
+            require_confirm = true,
+            },
+            log = {
+            enable = false,
+            truncate = false,
+            types = {
+            all = false,
+            config = false,
+            copy_paste = false,
+            diagnostics = false,
+            git = false,
+            profile = false,
+            },
+            },
+            } -- END
+            end, 70)
             EOF
           '';
         }
@@ -355,6 +393,7 @@ in {
           plugin = nvim-lspconfig;
           config = ''
                 lua << EOF
+                vim.defer_fn(function()
                   require'lspconfig'.rnix.setup {}
                   require'lspconfig'.pyright.setup {}
                   require'lspconfig'.dartls.setup{}
@@ -374,6 +413,7 @@ in {
             require'lspconfig'.html.setup {
             capabilities = capabilities,
             }
+            end, 70)
             EOF
 
           '';
@@ -383,6 +423,7 @@ in {
           plugin = nvim-compe;
           config = ''
             lua << EOF
+            vim.defer_fn(function()
             require'compe'.setup {
             enabled = true;
             autocomplete = true;
@@ -418,6 +459,7 @@ in {
 
             vim.api.nvim_set_keymap("i", "<Tab>", "v:lua.tab_complete()", {expr = true})
             vim.api.nvim_set_keymap("s", "<Tab>", "v:lua.tab_complete()", {expr = true})
+            end, 70)
             EOF
           '';
         }
@@ -471,23 +513,23 @@ in {
           plugin = pears-nvim;
           config = ''
             lua << EOF
+            vim.defer_fn(function()
             require "pears".setup(function(conf)
               conf.remove_pair_on_inner_backspace(false)
               conf.remove_pair_on_outer_backspace(false)
             end)
+            end, 70)
             EOF
           '';
         }
         {
           plugin = nvim-colorizer-lua;
-          config = ''
-            lua require "colorizer".setup()
-          '';
         }
         {
           plugin = lspkind-nvim;
           config = ''
             lua << EOF
+            vim.defer_fn(function()
                       require('lspkind').init({
                       mode = 'symbol',
 
@@ -519,6 +561,7 @@ in {
                       TypeParameter = ""
                     },
                       })
+              end, 70)
             EOF
           '';
         }
@@ -569,10 +612,17 @@ in {
       ];
 
       extraConfig = ''
-        map I :! pandoc --pdf-engine xelatex  -V geometry=margin=1in -V fontsize=12pt -V mainfont="Comfortaa" -V monofont="JetBrains Mono NL" % -o $(echo % \| sed 's/md$/pdf/g') & disown <CR><CR>
-        map S :! zathura $(echo % \| sed 's/md$/pdf/') & disown <CR><CR>
         lua << EOF
         local opt = vim.opt
+        opt.cursorline = true
+        opt.relativenumber = true
+        opt.number = true
+
+        vim.defer_fn(function()
+        vim.cmd [[
+        map I :! pandoc --pdf-engine xelatex  -V geometry=margin=1in -V fontsize=12pt -V mainfont="Comfortaa" -V monofont="JetBrains Mono NL" % -o $(echo % \| sed 's/md$/pdf/g') & disown <CR><CR>
+        map S :! zathura $(echo % \| sed 's/md$/pdf/') & disown <CR><CR>
+        ]]
         opt.lazyredraw = true;
         opt.shell = "zsh"
         opt.shadafile = "NONE"
@@ -599,13 +649,6 @@ in {
         opt.mouse = "a"
 
         -- Nicer UI settings
-        opt.cursorline = true
-        opt.relativenumber = true
-        opt.number = true
-
-        -- Get rid of annoying viminfo file
-        opt.viminfo = ""
-        opt.viminfofile = "NONE"
 
         -- Miscellaneous quality of life
         opt.ignorecase = true
@@ -620,6 +663,7 @@ in {
         opt.swapfile = false
         opt.showmode = false
         opt.spell = false
+        end, 70)
         EOF
       '';
     };
