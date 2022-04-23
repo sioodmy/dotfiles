@@ -43,30 +43,13 @@
       pkgs = inputs.nixpkgs.legacyPackages.x86_64-linux;
       lib = nixpkgs.lib;
 
-      overlays = [
-        (final: prev: {
-          picom = prev.picom.overrideAttrs (o: { src = picom-ibhagwan; });
-        })
-        (final: prev: {
-          discocss = prev.discocss.overrideAttrs (oldAttrs: rec {
-            patches = (oldAttrs.patches or [ ])
-              ++ [ ./overlays/discocss-no-launch.patch ];
-          });
-          catppuccin-gtk = prev.callPackage ./overlays/catppuccin-gtk.nix { };
-          catppuccin-cursors =
-            prev.callPackage ./overlays/catppuccin-cursors.nix { };
-          catppuccin-grub = prev.callPackage ./overlays/catppuccin-grub.nix { };
-        })
-        nur.overlay
-        discord-overlay.overlay
-        neovim-nightly-overlay.overlay
-      ];
-
       mkSystem = pkgs: system: hostname:
         pkgs.lib.nixosSystem {
           system = system;
           modules = [
+            { networking.hostName = hostname; }
             (./. + "/hosts/${hostname}/system.nix")
+            (./. + "/hosts/${hostname}/hardware-configuration.nix")
             ./modules/system/configuration.nix
             home-manager.nixosModules.home-manager
             {
@@ -78,9 +61,29 @@
                   inherit inputs;
                   theme = import ./modules/theme;
                 };
-                users.sioodmy = import "./hosts/${hostname}/user.nix";
+                users.sioodmy = (./. + "/hosts/${hostname}/user.nix");
               };
-              nixpkgs.overlays = overlays;
+              nixpkgs.overlays = [
+                (final: prev: {
+                  picom =
+                    prev.picom.overrideAttrs (o: { src = picom-ibhagwan; });
+                })
+                (final: prev: {
+                  discocss = prev.discocss.overrideAttrs (oldAttrs: rec {
+                    patches = (oldAttrs.patches or [ ])
+                      ++ [ ./overlays/discocss-no-launch.patch ];
+                  });
+                  catppuccin-gtk =
+                    prev.callPackage ./overlays/catppuccin-gtk.nix { };
+                  catppuccin-cursors =
+                    prev.callPackage ./overlays/catppuccin-cursors.nix { };
+                  catppuccin-grub =
+                    prev.callPackage ./overlays/catppuccin-grub.nix { };
+                })
+                nur.overlay
+                discord-overlay.overlay
+                neovim-nightly-overlay.overlay
+              ];
             }
 
           ];
