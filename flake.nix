@@ -40,57 +40,57 @@
     , eww, discord-overlay, discocss, neovim-nightly-overlay, ... }:
     let
       system = "x86_64-linux";
-
+      pkgs = inputs.nixpkgs.legacyPackages.x86_64-linux;
       lib = nixpkgs.lib;
 
       overlays = [
         (final: prev: {
-          picom =
-            prev.picom.overrideAttrs (o: { src = picom-ibhagwan; });
-          })
-          (final: prev: {
-            discocss = prev.discocss.overrideAttrs (oldAttrs: rec {
-              patches = (oldAttrs.patches or [ ]) ++ [ ./overlays/discocss-no-launch.patch ];
-            });
-            catppuccin-gtk =
-              prev.callPackage ./overlays/catppuccin-gtk.nix { };
-              catppuccin-cursors =
-                prev.callPackage ./overlays/catppuccin-cursors.nix { };
-                catppuccin-grub =
-                  prev.callPackage ./overlays/catppuccin-grub.nix { };
-                })
-                nur.overlay
-                discord-overlay.overlay
-                neovim-nightly-overlay.overlay
-              ];
+          picom = prev.picom.overrideAttrs (o: { src = picom-ibhagwan; });
+        })
+        (final: prev: {
+          discocss = prev.discocss.overrideAttrs (oldAttrs: rec {
+            patches = (oldAttrs.patches or [ ])
+              ++ [ ./overlays/discocss-no-launch.patch ];
+          });
+          catppuccin-gtk = prev.callPackage ./overlays/catppuccin-gtk.nix { };
+          catppuccin-cursors =
+            prev.callPackage ./overlays/catppuccin-cursors.nix { };
+          catppuccin-grub = prev.callPackage ./overlays/catppuccin-grub.nix { };
+        })
+        nur.overlay
+        discord-overlay.overlay
+        neovim-nightly-overlay.overlay
+      ];
 
-    in {
-      nixosConfigurations = {
-        graphene = lib.nixosSystem {
-          inherit system;
-
+      mkSystem = pkgs: system: hostname:
+        pkgs.lib.nixosSystem {
+          system = system;
           modules = [
+            (./. + "/hosts/${hostname}/system.nix")
             ./modules/system/configuration.nix
-            ./hosts/graphene/hardware-configuration.nix
-            ./hosts/graphene/system.nix
             home-manager.nixosModules.home-manager
             {
               home-manager = {
                 useUserPackages = true;
                 useGlobalPkgs = true;
-                sharedModules = [ discocss.hmModule 
-              ];
-              extraSpecialArgs = {
-                inherit inputs;
-                theme = import ./modules/theme;
+                sharedModules = [ discocss.hmModule ];
+                extraSpecialArgs = {
+                  inherit inputs;
+                  theme = import ./modules/theme;
+                };
+                users.sioodmy = import "./hosts/${hostname}/user.nix";
               };
-              users.sioodmy = import ./hosts/graphene/user.nix;
-            };
+              nixpkgs.overlays = overlays;
+            }
 
-            nixpkgs.overlays = overlays;
-          }
-        ];
+          ];
+          specialArgs = { inherit inputs; };
+        };
+    in {
+      nixosConfigurations = {
+        graphene = mkSystem inputs.nixpkgs "x86_64-linux" "graphene";
       };
+
+      devShell.x86_64-linux = pkgs.mkShell { packages = [ pkgs.nixfmt ]; };
     };
-  };
 }
