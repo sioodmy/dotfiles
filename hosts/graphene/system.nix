@@ -1,6 +1,8 @@
-{ pkgs, ... }: {
+{ pkgs, system, config, ... }: {
+  hardware.nvidia.modesetting.enable = true;
+  services.xserver.videoDrivers = [ "nvidia" ];
+
   networking = {
-    hostName = "graphene";
     networkmanager.enable = true;
     interfaces = { enp24s0.useDHCP = true; };
     firewall = {
