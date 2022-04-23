@@ -92,6 +92,7 @@
     in {
       nixosConfigurations = {
         graphene = mkSystem inputs.nixpkgs "x86_64-linux" "graphene";
+        thinkpad = mkSystem inputs.nixpkgs "x86_64-linux" "thinkpad";
       };
 
       devShell.x86_64-linux = pkgs.mkShell { packages = [ pkgs.nixfmt ]; };
