@@ -29,7 +29,6 @@ in {
   hardware = {
     opengl.driSupport32Bit = true;
     pulseaudio.support32Bit = true;
-    nvidia.modesetting.enable = true;
   };
 
   environment.defaultPackages = [ ];
@@ -116,7 +115,6 @@ in {
     xserver = {
       layout = "pl";
       xkbOptions = "caps:swapescape";
-      videoDrivers = [ "nvidia" ];
       enable = true;
       enableTCP = false;
       exportConfiguration = false;
