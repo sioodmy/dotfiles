@@ -1,13 +1,5 @@
 { pkgs, ... }: {
 
-
-  # sudo cryptsetup config /dev/sda2 --label cryptroot
-  boot.initrd.luks.devices.luksroot = {
-    device = "/dev/disk/by-label/cryptroot";
-    preLVM = true;
-    allowDiscards = true;
-  };
-
   networking = {
     wireless.iwd.enable = true;
     firewall = {
