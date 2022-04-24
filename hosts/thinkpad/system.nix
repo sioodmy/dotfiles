@@ -1,10 +1,7 @@
-{ pkgs, system, config, ... }: {
-  hardware.nvidia.modesetting.enable = true;
-  services.xserver.videoDrivers = [ "nvidia" ];
+{ pkgs, ... }: {
 
   networking = {
-    networkmanager.enable = true;
-    interfaces = { enp24s0.useDHCP = true; };
+    wireless.iwd.enable = true;
     firewall = {
       enable = true;
       allowedTCPPorts = [ 443 80 25565 ];
