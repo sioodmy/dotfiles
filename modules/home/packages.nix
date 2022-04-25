@@ -17,7 +17,7 @@
     obs-studio mpv sxiv tdesktop
     transmission-gtk pavucontrol pcmanfm
     # unfree apps (sorry daddy stallman)
-    minecraft steam
+    minecraft 
     # dev tools
     python3 git jdk dconf gcc rustc rustfmt cargo
   ];
