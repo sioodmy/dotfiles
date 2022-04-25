@@ -2,14 +2,18 @@
 
 {
   imports = [ ../../modules/home/default.nix ];
+
   config.modules = {
     desktop = {
       bspwm.enable = true;
-      eww.enable = true;
       gtk.enable = true;
       picom.enable = true;
       xresources.enable = true;
       lockscreen.enable = true;
+      eww = {
+        enable = true;
+        laptop = true;
+      };
     };
     programs = {
       discocss.enable = true;
