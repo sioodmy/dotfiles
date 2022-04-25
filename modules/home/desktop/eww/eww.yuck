@@ -1,28 +1,10 @@
-(defwidget bar []
-  (centerbox
-    (box :space-evenly false
-      (volume)
-      (micvolume)
-      (music)
-      (notification))
-
-    (workspaces :halign "center" :hexpand "true")
-
-    (box :halign "end" :hexpand true :orientation "h" :space-evenly false
-      (disk)
-      (cpu)
-      (mem)
-      (weather)
-      (time)
-      (power)
-      ))
-  )
 
 (defwidget screenshot []
   (box
     (screenshotmenu)
     )
   )
+
 
 ;; Variables
 (defpoll temperature :interval "20m" "curl -s 'wttr.in/?format=%c%f'")
@@ -35,7 +17,6 @@
 
 (defpoll ctime :interval "1s"  "./scripts/music.sh --ctime")
 (defpoll ttime :interval "1s"  "./scripts/music.sh --ttime")
-(defpoll battery :interval "2s" "./scripts/battery.sh")
 (defpoll timeVar :interval "10s" "date '+%H:%M'")
 (defpoll dateVar :interval "600s" "date '+%A %d.%m.%y'")
 (deflisten workspaces_listen "./scripts/workspaces.sh")
@@ -47,7 +28,6 @@
 (defvar volum false)
 (defvar micvolum false)
 (defvar screenshot false)
-(defvar bright false)
 (defvar power false)
 (defvar weather false)
 (defvar music false)
@@ -59,7 +39,7 @@
 ;; Widgets
 
 (defwidget volume []
-  (eventbox :tooltip "Volume: ${volumepoll.content}%" :onhover "eww update volum=true && eww update currentVolume=$(pamixer --get-volume)"   
+  (eventbox :tooltip "Volume: ${volumepoll.content}%" :onhover "eww update volum=true && eww update currentVolume=$(pamixer --get-volume)tter"   
             :onhoverlost "eww update volum=false"
     (box :orientation "h" :space-evenly false 
       (eventbox :cursor "hand"(button :class "${volumepoll.class} label" 
@@ -74,11 +54,6 @@
                :value "${volumepoll.content}" )
         ))))
 
-(defwidget battery []
-    (box
-        (label :text {battery.icon} :class {battery.class} :limit-width 10
-        )
-  )
 
 (defwidget micvolume []
   (eventbox :tooltip "Volume: ${micvolumepoll.content}% ${micvolumepoll.icon}" :onhover "eww update micvolum=true"   
