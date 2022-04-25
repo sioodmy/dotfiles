@@ -137,6 +137,7 @@ in {
 
     services.sxhkd.keybindings = {
       "super + space" = "rofi -show drun";
+      "XF86Search" = "rofi -show drun";
       "super + c" = "rofi -show calc";
       "super + period" = "rofi -show emoji";
       "alt + Tab" = "rofi -show window";
