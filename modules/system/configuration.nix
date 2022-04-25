@@ -92,18 +92,6 @@ in {
       '';
     };
 
-    tlp = {
-      enable = true;
-      settings = {
-        DEVICES_TO_DISABLE_ON_LAN_CONNECT = "wifi wwan";
-        DEVICES_TO_DISABLE_ON_WIFI_CONNECT = "wwan";
-        DEVICES_TO_DISABLE_ON_WWAN_CONNECT = "wifi";
-        DEVICES_TO_ENABLE_ON_LAN_DISCONNECT = "wifi wwan";
-        DEVICES_TO_ENABLE_ON_WIFI_DISCONNECT = "";
-        DEVICES_TO_ENABLE_ON_WWAN_DISCONNECT = "";
-      };
-    };
-
     cron = {
       enable = true;
       systemCronJobs = [ "@weekly      root    tldr --update" ];
@@ -141,8 +129,8 @@ in {
         touchpad = {
           disableWhileTyping = true;
           accelProfile = "flat";
-          accelSpeed = "0";
-          naturalScrolling = false;
+          accelSpeed = "0.6";
+          naturalScrolling = true;
         };
       };
     };
@@ -172,6 +160,7 @@ in {
     extraGroups = [ "wheel" ] ++ optionals config.services.xserver.enable [
       "audio"
       "video"
+      "input"
       "lp"
       "networkmanager"
     ];
