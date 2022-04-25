@@ -1,0 +1,24 @@
+;;
+
+(defwidget bar []
+  (centerbox
+    (box :space-evenly false
+      (volume)
+      (micvolume)
+      (music)
+      (notification))
+
+    (workspaces :halign "center" :hexpand "true")
+
+    (box :halign "end" :hexpand true :orientation "h" :space-evenly false
+      (disk)
+      (cpu)
+      (mem)
+      (weather)
+      (time)
+      (power)
+      ))
+  )
+;;
+
+

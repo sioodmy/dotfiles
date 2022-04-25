@@ -78,6 +78,7 @@ in {
         stabilize-nvim
         vim-pandoc-syntax
         vim-pandoc
+        vim-nix
         vim-vsnip-integ
         {
           plugin = vim-signify;
@@ -274,7 +275,6 @@ in {
           config = ''
                       map <C-y> :NvimTreeToggle <CR>
                     lua << EOF
-            vim.defer_fn(function()
             require'nvim-tree'.setup { -- BEGIN_DEFAULT_OPTS
               auto_reload_on_write = true,
               disable_netrw = false,
@@ -385,7 +385,6 @@ in {
             },
             },
             } -- END
-            end, 70)
             EOF
           '';
         }
@@ -393,7 +392,6 @@ in {
           plugin = nvim-lspconfig;
           config = ''
                 lua << EOF
-                vim.defer_fn(function()
                   require'lspconfig'.rnix.setup {}
                   require'lspconfig'.pyright.setup {}
                   require'lspconfig'.dartls.setup{}
@@ -413,7 +411,6 @@ in {
             require'lspconfig'.html.setup {
             capabilities = capabilities,
             }
-            end, 70)
             EOF
 
           '';
@@ -608,7 +605,6 @@ in {
             let g:suda_smart_edit = 1
           '';
         }
-        vim-nix
       ];
 
       extraConfig = ''
@@ -618,7 +614,6 @@ in {
         opt.relativenumber = true
         opt.number = true
 
-        vim.defer_fn(function()
         vim.cmd [[
         map I :! pandoc --pdf-engine xelatex  -V geometry=margin=1in -V fontsize=12pt -V mainfont="Comfortaa" -V monofont="JetBrains Mono NL" % -o $(echo % \| sed 's/md$/pdf/g') & disown <CR><CR>
         map S :! zathura $(echo % \| sed 's/md$/pdf/') & disown <CR><CR>
@@ -663,7 +658,6 @@ in {
         opt.swapfile = false
         opt.showmode = false
         opt.spell = false
-        end, 70)
         EOF
       '';
     };

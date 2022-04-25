@@ -108,6 +108,9 @@ scale trough {
 .button-sleep {
     color: $yellow;
 }
+.weather {
+    margin: 0 0.6rem;
+}
 .weather-details { 
     margin: 0 0.6rem; 
     color: $magenta;
@@ -136,6 +139,28 @@ scale trough {
 .volumeBar trough highlight {
     background-color: $green;
 }
+.batteryBar trough highlight {
+    background-color: $green;
+}
+.Charging trough highlight {
+    background-color: $blue;
+    min-height: 15px;
+}
+.Discharging trough highlight {
+    background-color: $green;
+    min-height: 15px;
+}
+.Not trough highlight {
+    background-color: $yellow;
+    min-height: 15px;
+}
+.brightnessBar trough highlight {
+    background-color: $yellow;
+}
+.brightness {
+    color: $yellow;
+    margin: 0 0.6rem;
+}
 .musicBar trough highlight {
     background-color: $magenta;
 }
@@ -163,9 +188,6 @@ scale trough {
 .label {
     //   font-size: 2rem;
     margin: 0rem 0rem 0rem 0.6rem;
-}
-.weather, .time, .button-off{
-    margin: 0rem 0.6rem;
 }
 
 
