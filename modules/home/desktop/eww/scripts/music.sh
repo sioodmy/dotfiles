@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/bin/sh
 # scripts by adi1090x
 
 ## Get data

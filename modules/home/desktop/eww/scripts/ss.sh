@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/bin/sh
 
 screenshot=/tmp/screenshot.png
 sspath=~/pics/ss
