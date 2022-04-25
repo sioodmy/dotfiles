@@ -36,6 +36,11 @@ in {
       executable = true;
     };
 
+    home.file.".config/eww/scripts/battery.sh" = {
+      source = ./scripts/battery.sh;
+      executable = true;
+    };
+
     home.file.".config/eww/scripts/notify.sh" = {
       source = ./scripts/notify.sh;
       executable = true;

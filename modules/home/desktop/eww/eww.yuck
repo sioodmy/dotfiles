@@ -35,6 +35,7 @@
 
 (defpoll ctime :interval "1s"  "./scripts/music.sh --ctime")
 (defpoll ttime :interval "1s"  "./scripts/music.sh --ttime")
+(defpoll battery :interval "2s" "./scripts/battery.sh")
 (defpoll timeVar :interval "10s" "date '+%H:%M'")
 (defpoll dateVar :interval "600s" "date '+%A %d.%m.%y'")
 (deflisten workspaces_listen "./scripts/workspaces.sh")
@@ -73,6 +74,11 @@
                :value "${volumepoll.content}" )
         ))))
 
+(defwidget battery []
+    (box
+        (label :text {battery.icon} :class {battery.class} :limit-width 10
+        )
+  )
 
 (defwidget micvolume []
   (eventbox :tooltip "Volume: ${micvolumepoll.content}% ${micvolumepoll.icon}" :onhover "eww update micvolum=true"   
