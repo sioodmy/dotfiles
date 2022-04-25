@@ -1,6 +1,7 @@
 { pkgs, system, config, ... }: {
   hardware.nvidia.modesetting.enable = true;
   services.xserver.videoDrivers = [ "nvidia" ];
+  programs.steam.enable = true;
 
   networking = {
     networkmanager.enable = true;
