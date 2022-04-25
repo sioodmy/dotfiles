@@ -2,15 +2,31 @@
 with lib;
 let cfg = config.modules.desktop.eww;
 in {
-  options.modules.desktop.eww = { enable = mkEnableOption "eww"; };
+  options.modules.desktop.eww = {
+    enable = mkEnableOption "eww";
+    laptop = mkOption {
+      type = types.bool;
+      default = false;
+      description = "Add battery and brightness modules to the bar";
+    };
+  };
 
   config = mkIf cfg.enable {
     # eww package
-    home.packages =
-      [ inputs.eww.packages."x86_64-linux".eww pkgs.pamixer pkgs.tdrop pkgs.libcanberra-gtk3 pkgs.tiramisu];
+    home.packages = [
+      inputs.eww.packages."x86_64-linux".eww
+      pkgs.pamixer
+      pkgs.tdrop
+      pkgs.libcanberra-gtk3
+      pkgs.tiramisu
+      pkgs.brightnessctl
+    ];
 
     # configuration
-    home.file.".config/eww/eww.yuck".source = ./eww.yuck;
+    home.file.".config/eww/eww.yuck".text = (if cfg.laptop then
+      builtins.readFile ./laptop.yuck # Same as a desktop bar + battery and brightness widgets
+    else
+      builtins.readFile ./desktop.yuck) + builtins.readFile ./eww.yuck;
 
     # color definitions
     home.file.".config/eww/eww.scss".text = with theme.colors;
@@ -56,6 +72,10 @@ in {
       executable = true;
     };
 
+    home.file.".config/eww/scripts/brightness.sh" = {
+      source = ./scripts/brightness.sh;
+      executable = true;
+    };
     home.file.".config/eww/scripts/ss.sh" = {
       source = ./scripts/ss.sh;
       executable = true;
@@ -72,9 +92,18 @@ in {
     };
 
     services.sxhkd.keybindings = {
-      "XF86AudioRaiseVolume" = "eww update volumepoll=\"$(~/.config/eww/scripts/volume.sh up)\"";
-      "XF86AudioLowerVolume" = "eww update volumepoll=\"$(~/.config/eww/scripts/volume.sh down)\"";
-      "XF86AudioMute" = "eww update volumepoll=\"$(~/.config/eww/scripts/volume.sh toggle)\"";
+      "XF86AudioRaiseVolume" =
+        ''eww update volumepoll="$(~/.config/eww/scripts/volume.sh up)"'';
+      "XF86AudioLowerVolume" =
+        ''eww update volumepoll="$(~/.config/eww/scripts/volume.sh down)"'';
+      "XF86AudioMicMute" = ''
+        eww update micvolumepoll="$(~/.config/eww/scripts/micvolume.sh toggle)"'';
+      "XF86AudioMute" =
+        ''eww update volumepoll="$(~/.config/eww/scripts/volume.sh toggle)"'';
+      "XF86MonBrightnessUp" =
+        "eww update brightnesspoll=$(~/.config/eww/scripts/brightness.sh up)";
+      "XF86MonBrightnessDown" =
+        "eww update brightnesspoll=$(~/.config/eww/scripts/brightness.sh down)";
       "super + b" = "eww open --toggle bar";
       "Print" = "~/.config/eww/scripts/ss.sh menu";
     };

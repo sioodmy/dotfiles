@@ -40,7 +40,7 @@ else
 fi
 
 if [ $(cat "$bat/status") = "Charging" ]; then
-    class="battery-charging"
+    charging="ﮣ"
 fi
 
-echo "{\"percent\": \"$per\", \"icon\": \"$icon\", \"class\": \"$class\"}"
+echo "{\"percent\": \"$per\", \"icon\": \"$icon\", \"charging\": \"$charging\", \"class\": \"$class\"}"

@@ -1,0 +1,56 @@
+;;
+(defwidget bar []
+  (centerbox
+    (box :space-evenly false
+      (volume)
+      (micvolume)
+      (brightness)
+      (music)
+      (notification))
+
+    (workspaces :halign "center" :hexpand "true")
+
+    (box :halign "end" :hexpand true :orientation "h" :space-evenly false
+      (battery)
+      (disk)
+      (cpu)
+      (mem)
+      (weather)
+      (time)
+      (power)
+      ))
+  )
+
+(defpoll battery :interval "2s" "./scripts/battery.sh")
+(defpoll brightnesspoll :interval "999s" "./scripts/brightness.sh")
+(defvar bright false)
+
+(defwidget brightness []
+  (eventbox :tooltip "Brightness ${volumepoll.content}%" :onhover "eww update bright=true && eww update currentBrightness=$(pamixer --get-volume)"   
+            :onhoverlost "eww update bright=false"
+    (box :orientation "h" :space-evenly false 
+      (eventbox :cursor "hand"(button :class "brightness label" 
+                :onclick "tdrop -ma -y 55 -x 7 -w 35% -h 40% pavucontrol" " "))
+      (revealer :transition "slideleft" 
+                :reveal bright 
+                :duration "500ms"
+        (scale :class "brightnessBar"
+               :min 1
+               :max 100
+               :onchange `eww update brightnesspoll"$(./scripts/brightness.sh {})"` 
+               :value brightnesspoll )
+        ))))
+
+(defwidget battery []
+    (box :tooltip "${round(EWW_BATTERY["BAT0"].capacity, 0)}% ${EWW_BATTERY["BAT0"].status}" :space-evenly false
+(scale :class "${EWW_BATTERY["BAT0"].status}"
+               :min 0
+               :max 101
+                :active false
+               :value "${EWW_BATTERY["BAT0"].capacity}"
+    )
+        
+  ))
+;;
+
+
