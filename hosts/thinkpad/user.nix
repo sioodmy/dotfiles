@@ -26,6 +26,7 @@
     services = {
       sxhkd.enable = true;
       redshift.enable = true;
+      fusuma.enable = true;
       udiskie.enable = true;
     };
     cli = {
