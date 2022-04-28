@@ -36,6 +36,7 @@
 
     ./services/udiskie
     ./services/sxhkd
+    ./services/fusuma
     ./services/redshift
   ];
 
