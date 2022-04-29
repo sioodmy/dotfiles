@@ -644,6 +644,7 @@ in {
         opt.mouse = "a"
 
         -- Nicer UI settings
+        opt.laststatus = 3
 
         -- Miscellaneous quality of life
         opt.ignorecase = true
