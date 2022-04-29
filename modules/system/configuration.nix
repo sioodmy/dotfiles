@@ -2,7 +2,9 @@
 
 with lib;
 
-let theme = import ../theme;
+let
+  theme = import ../theme;
+  encrypted = config.boot.initrd.luks.devices.luksroot.preLVM;
 in {
   environment.variables = {
     NIXOS_CONFIG = "$HOME/.config/nixos/configuration.nix";
@@ -129,11 +131,38 @@ in {
         xterm.enable = false;
         xfce.enable = false;
       };
-      displayManager.lightdm.greeters.mini = with theme.colors; {
-        enable = true;
-        user = "sioodmy";
-        extraConfig =
-          "\n          [greeter]\n          show-password-label = false\n          invalid-password-text = Access Denied\n          show-input-cursor = true\n          password-alignment = left\n          [greeter-hotkeys]\n          mod-key = meta\n          shutdown-key = s\n          [greeter-theme]\n          font-size = 1em\n          font = \"monospace\";\n          background-image = \"\"\n          background-color = \"#${bg}\"\n          window-color = \"#${bg}\"\n          password-border-radius = 10px\n          password-border-width = 3px\n          password-border-color = \"#${ac}\"\n          password-background-color = \"#${bg}\"\n          border-width = 0px\n          text-color = \"#${ac}\"\n          ";
+      displayManager = {
+        autoLogin = mkIf encrypted {
+          enable = true;
+          user = "sioodmy";
+        };
+        lightdm.greeters.mini = with theme.colors; {
+          enable = true;
+          user = "sioodmy";
+          extraConfig =
+            ''
+            [greeter]
+            show-password-label = false
+            invalid-password-text = Access Denied
+            show-input-cursor = true
+            password-alignment = left
+            [greeter-hotkeys]
+            mod-key = meta
+            shutdown-key = s
+            [greeter-theme]
+            font-size = 1em
+            font = "monospace";
+            background-image = ""
+            background-color = "#${bg}"
+            window-color = "#${bg}"
+            password-border-radius = 10px
+            password-border-width = 3px
+            password-border-color = "#${ac}"
+            password-background-color = "#${bg}"
+            border-width = 0px
+            text-color = "#${ac}"
+            '';
+        };
       };
       windowManager.bspwm.enable = true;
 
@@ -227,7 +256,7 @@ in {
 
     fontconfig = with theme.colors; {
       defaultFonts = {
-        monospace = [ "Iosevka Custom" "Noto Color Emoji" "Iosevka Nerd Font"];
+        monospace = [ "Iosevka Custom" "Noto Color Emoji" "Iosevka Nerd Font" ];
         sansSerif = [ "Lato" "Noto Color Emoji" ];
         serif = [ "JetBrainsMono Nerd Font" "Noto Color Emoji" ];
         emoji = [ "Noto Color Emoji" ];
@@ -289,8 +318,8 @@ in {
     };
     pam.services.login.enableGnomeKeyring = true;
     sudo.extraConfig = ''
-    Defaults    lecture = always
-    Defaults    lecture_file = /run/current-system/etc/sudo_lecture
+      Defaults    lecture = always
+      Defaults    lecture_file = /run/current-system/etc/sudo_lecture
     '';
   };
 
