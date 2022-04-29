@@ -1,10 +1,5 @@
-{ pkgs, lib, ... }: {
+{ pkgs, ... }: {
 
-  # enable autologin
-  services.xserver.displayManager.autoLogin = lib.mkOverride {
-    enable = true;
-    user = "sioodmy";
-  };
   # undervolting and power saving stuff
   services.tlp = {
     enable = true;
