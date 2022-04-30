@@ -14,7 +14,7 @@
 (deflisten song "./scripts/music.sh --song")
 (deflisten song_status "./scripts/music.sh --status")
 (defpoll current_status :interval "1s"  "./scripts/music.sh --time")
-
+(defpoll wifi :interval "3s" "./scripts/wifi.sh")
 (defpoll ctime :interval "1s"  "./scripts/music.sh --ctime")
 (defpoll ttime :interval "1s"  "./scripts/music.sh --ttime")
 (defpoll timeVar :interval "10s" "date '+%H:%M'")
@@ -117,6 +117,15 @@
       ))             
   )
 
+(defwidget wifi [] 
+ (box :vexpand false :hexpand false
+   (label :text {wifi.icon} 
+          :limit-width 10 
+          :tooltip {wifi.status}
+          :class "label wifi")
+
+   )
+)
 
 (defwidget disk []
   (box :vexpand "false" :hexpand "false"
