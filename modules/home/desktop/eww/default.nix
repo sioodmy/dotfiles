@@ -33,7 +33,7 @@ in {
       ''
 
         $accent: #${ac};
-        $background: #${bg};
+        $background: #${b0};
         $foreground: #${fg};
 
         $black: #${ba};
@@ -88,6 +88,11 @@ in {
 
     home.file.".config/eww/scripts/microphone_icon.sh" = {
       source = ./scripts/microphone_icon.sh;
+      executable = true;
+    };
+
+    home.file.".config/eww/scripts/wifi.sh" = {
+      source = ./scripts/wifi.sh;
       executable = true;
     };
 
