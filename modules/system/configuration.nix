@@ -4,7 +4,6 @@ with lib;
 
 let
   theme = import ../theme;
-  encrypted = config.boot.initrd.luks.devices.luksroot.preLVM;
 in {
   environment.variables = {
     NIXOS_CONFIG = "$HOME/.config/nixos/configuration.nix";
@@ -132,7 +131,7 @@ in {
         xfce.enable = false;
       };
       displayManager = {
-        autoLogin = mkIf encrypted {
+        autoLogin = {
           enable = true;
           user = "sioodmy";
         };
