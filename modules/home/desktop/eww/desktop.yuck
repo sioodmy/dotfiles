@@ -11,6 +11,7 @@
     (workspaces :halign "center" :hexpand "true")
 
     (box :halign "end" :hexpand true :orientation "h" :space-evenly false
+      (wifi)
       (disk)
       (cpu)
       (mem)
