@@ -186,7 +186,7 @@ in {
     openssh = {
       enable = true;
       permitRootLogin = "no";
-      passwordAuthentication = false;
+      passwordAuthentication = true;
     };
 
     # Use pipewire instead of soyaudio
@@ -213,6 +213,7 @@ in {
     ];
     uid = 1000;
     shell = pkgs.zsh;
+
   };
 
   programs.zsh = {
