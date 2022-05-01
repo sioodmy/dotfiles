@@ -39,7 +39,7 @@ SIOODMY'S NIXOS CONFIGURATION
 <pre>
 
 # How do I install it on Arch Loonix?
-   That' the neat part, you don't!
+   That's the neat part, you don't!
    
    
    
