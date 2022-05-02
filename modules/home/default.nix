@@ -19,6 +19,7 @@
     ./cli/cava
     ./cli/music
     ./cli/btm
+    ./cli/helix
     ./cli/nvim
     ./cli/xdg
     ./cli/zsh
