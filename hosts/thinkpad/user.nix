@@ -31,6 +31,7 @@
     };
     cli = {
       nvim.enable = true;
+      helix.enable = true;
       bat.enable = true;
       btm.enable = true;
       cava.enable = true;
