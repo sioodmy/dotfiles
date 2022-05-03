@@ -1,4 +1,4 @@
-{ pkgs, lib, config, ... }:
+{ pkgs, lib, config, theme,... }:
 
 with lib;
 let
@@ -25,8 +25,8 @@ let
 
   tex = (pkgs.texlive.combine {
     inherit (pkgs.texlive)
-      scheme-small dvisvgm dvipng wrapfig amsmath ulem hyperref capt-of booktabs
-      etoolbox polski xcolor xetex fontspec euenc unicode-math;
+    scheme-small dvisvgm dvipng wrapfig amsmath ulem hyperref capt-of booktabs
+    etoolbox polski xcolor xetex fontspec euenc unicode-math;
   });
 
 in {
@@ -80,10 +80,80 @@ in {
         vim-pandoc
         vim-nix
         vim-vsnip-integ
+        vim-commentary
+        null-ls-nvim
         {
-          plugin = vim-signify;
+          plugin = neoscroll-nvim;
           config = ''
-            set updatetime=100
+            lua require("neoscroll").setup{}
+          '';
+        }
+        {
+          plugin = which-key-nvim;
+          config = ''
+            lua << EOF
+            require("which-key").setup {
+            plugins = {
+            marks = true,
+            registers = true,
+            spelling = {
+            enabled = true,
+            suggestions = 20,
+            },
+            presets = {
+            operators = false,
+            motions = true,
+            text_objects = true,
+            windows = true,
+            nav = true,
+            z = true,
+            g = true,
+            },
+            },
+            icons = {
+            breadcrumb = "»",
+            separator = "➜",
+            group = "+",
+            },
+            popup_mappings = {
+            scroll_down = "<c-d>",
+            scroll_up = "<c-u>",
+            },
+            window = {
+            border = "rounded",
+            position = "bottom",
+            margin = { 1, 0, 1, 0 },
+            padding = { 2, 2, 2, 2 },
+            winblend = 0,
+            },
+            layout = {
+            height = { min = 4, max = 25 },
+            width = { min = 20, max = 50 },
+            spacing = 3,
+            align = "left",
+            },
+            ignore_missing = true,
+            hidden = { "<silent>", "<cmd>", "<Cmd>", "<CR>", "call", "lua", "^:", "^ " },
+            show_help = true,
+            triggers = "auto",
+            triggers_blacklist = {
+            i = { "j", "k" },
+            v = { "j", "k" },
+            },
+            }
+
+
+            EOF
+          '';
+        }
+        {
+          plugin = gitsigns-nvim;
+          config = ''
+            lua << EOF
+            require('gitsigns').setup{
+              max_file_length = 4000,
+            }
+            EOF
           '';
         }
         {
@@ -91,7 +161,7 @@ in {
           config = ''
             lua << EOF
             local g = vim.g
-            g.indentLine_fileTypeExclude = { 'dashboard' }
+            g.indentLine_fileTypeExclude = { 'dashboard', 'toggleterm'}
             g.dashboard_session_directory = '~/.config/nvim/.sessions'
             g.dashboard_default_executive ='telescope'
             g.dashboard_custom_section = {
@@ -153,6 +223,33 @@ in {
           '';
         }
         {
+          plugin = toggleterm-nvim;
+          config = ''
+            lua << EOF
+            function _G.set_terminal_keymaps()
+            local opts = {noremap = true}
+            vim.api.nvim_buf_set_keymap(0, 't', '<esc>', [[<C-\><C-n>]], opts)
+            vim.api.nvim_buf_set_keymap(0, 't', 'jk', [[<C-\><C-n>]], opts)
+            vim.api.nvim_buf_set_keymap(0, 't', '<C-h>', [[<C-\><C-n><C-W>h]], opts)
+            vim.api.nvim_buf_set_keymap(0, 't', '<C-j>', [[<C-\><C-n><C-W>j]], opts)
+            vim.api.nvim_buf_set_keymap(0, 't', '<C-k>', [[<C-\><C-n><C-W>k]], opts)
+            vim.api.nvim_buf_set_keymap(0, 't', '<C-l>', [[<C-\><C-n><C-W>l]], opts)
+            end
+
+            -- if you only want these mappings for toggle term use term://*toggleterm#* instead
+            vim.cmd('autocmd! TermOpen term://* lua set_terminal_keymaps()')
+            require("toggleterm").setup{
+            open_mapping = [[<c-\>]],
+            hide_numbers = true,
+            shade_terminals = true,
+            shading_factor = '2',
+            start_in_insert = true,
+            start_in_insert = true,
+            }
+            EOF
+          '';
+        }
+        {
           plugin = telescope-nvim;
           config = ''
                     lua << EOF
@@ -160,7 +257,6 @@ in {
                     map <C-f> :Telescope find_files <CR>
                     map <C-n> :Telescope live_grep <CR>
                     ]]
-                    vim.defer_fn(function()
             local present, telescope = pcall(require, "telescope")
 
             if not present then
@@ -234,7 +330,6 @@ in {
             end
 
             return M
-            end, 70)
             EOF
           '';
         }
@@ -254,7 +349,6 @@ in {
           plugin = auto-session;
           config = ''
             lua << EOF
-            vim.defer_fn(function()
             require('auto-session').setup({
                 log_level = 'info',
                 auto_session_enable_last_session = true,
@@ -266,16 +360,15 @@ in {
                 auto_session_use_git_branch = nil,
                 bypass_session_save_file_types = nil
             })
-            end, 70)
             EOF
           '';
         }
         {
           plugin = nvim-tree-lua;
           config = ''
-                      map <C-y> :NvimTreeToggle <CR>
+              map <C-y> :NvimTreeToggle <CR> <CR>
                     lua << EOF
-            require'nvim-tree'.setup { -- BEGIN_DEFAULT_OPTS
+              require'nvim-tree'.setup { -- BEGIN_DEFAULT_OPTS
               auto_reload_on_write = true,
               disable_netrw = false,
               hide_root_folder = false,
@@ -295,7 +388,7 @@ in {
                 preserve_window_proportions = false,
                 number = false,
                 relativenumber = false,
-                signcolumn = "yes",
+                signcolumn = "no",
               mappings = {
                 custom_only = false,
                 list = {
@@ -415,7 +508,28 @@ in {
 
           '';
         }
-        { plugin = nvim-web-devicons; }
+        { 
+          plugin = nvim-web-devicons; 
+          config = ''
+            lua << EOF
+            require("nvim-web-devicons").set_icon {
+            deb = { icon = "", name = "Deb", color = "#d70a53" },
+            envrc = { icon = "", name = "Deb", color = "#346eeb" },
+            lock = { icon = "", name = "Lock", color = "#346eeb" },
+            mp3 = { icon = "", name = "Mp3", color = "#762dba" },
+            mp4 = { icon = "", name = "Mp4", color = "#762dba" },
+            out = { icon = "", name = "Out", color = "#37bf45" },
+            ["robots.txt"] = { icon = "ﮧ", name = "Robots", color = "#cf8621" },
+            ttf = { icon = "", name = "TrueTypeFont", color = "#f2f2f2" },
+            rpm = { icon = "", name = "Rpm", color = "#d42f42" },
+            woff = { icon = "", name = "WebOpenFontFormat", color = "#f2f2f2" },
+            woff2 = { icon = "", name = "WebOpenFontFormat2", color = "#f2f2f2" },
+            xz = { icon = "", name = "Xz", color = "#f4f74f" },
+            zip = { icon = "", name = "Zip", color = "#f4f74f" },
+            }
+            EOF
+          '';
+        }
         {
           plugin = nvim-compe;
           config = ''
@@ -507,20 +621,61 @@ in {
           '';
         }
         {
-          plugin = pears-nvim;
+          
+          plugin = nvim-autopairs;
           config = ''
             lua << EOF
-            vim.defer_fn(function()
-            require "pears".setup(function(conf)
-              conf.remove_pair_on_inner_backspace(false)
-              conf.remove_pair_on_outer_backspace(false)
-            end)
-            end, 70)
+            local M = {}
+
+            function M.config()
+            local status_ok, npairs = pcall(require, "nvim-autopairs")
+            if status_ok then
+            npairs.setup(require("core.utils").user_plugin_opts("plugins.nvim-autopairs", {
+            check_ts = true,
+            ts_config = {
+            lua = { "string", "source" },
+            javascript = { "string", "template_string" },
+            java = false,
+            },
+            disable_filetype = { "TelescopePrompt", "spectre_panel" },
+            fast_wrap = {
+            map = "<M-e>",
+            chars = { "{", "[", "(", '"', "'" },
+            pattern = string.gsub([[ [%'%"%)%>%]%)%}%,] ]], "%s+", ""),
+            offset = 0,
+            end_key = "$",
+            keys = "qwertyuiopzxcvbnmasdfghjkl",
+            check_comma = true,
+            highlight = "PmenuSel",
+            highlight_grey = "LineNr",
+            },
+            }))
+
+            local cmp_autopairs = require "nvim-autopairs.completion.cmp"
+            local cmp_status_ok, cmp = pcall(require, "cmp")
+            if not cmp_status_ok then
+            return
+            end
+            cmp.event:on("confirm_done", cmp_autopairs.on_confirm_done { map_char = { tex = "" } })
+            end
+            end
+
+            return M
             EOF
           '';
         }
         {
           plugin = nvim-colorizer-lua;
+          config = ''
+            lua << EOF
+            require 'colorizer'.setup {
+            '*'; -- Highlight all files, but customize some others.
+            css = { rgb_fn = true; }; -- Enable parsing rgb(...) functions in css.
+            html = { names = false; } -- Disable parsing "names" like Blue or Gray
+            }
+
+            EOF
+          '';
         }
         {
           plugin = lspkind-nvim;
@@ -563,43 +718,6 @@ in {
           '';
         }
         {
-          plugin = lualine-nvim;
-          config = ''
-            lua << EOF
-            require('lualine').setup {
-            options = {
-            disabled_filetypes = {'dashboard'},
-            icons_enabled = true,
-            theme = 'auto',
-            section_separators = { left = '', right = '' },
-            component_separators = { left = '', right = '' },
-            disabled_filetypes = {},
-            always_divide_middle = true,
-            },
-            sections = {
-            lualine_a = {'mode'},
-            lualine_b = {'branch', 'diff', 'diagnostics'},
-            lualine_c = {'filename'},
-            lualine_x = {'encoding', 'filetype'},
-            lualine_y = {'progress'},
-            lualine_z = {'location'}
-            },
-            inactive_sections = {
-            lualine_a = {},
-            lualine_b = {},
-            lualine_c = {'filename'},
-            lualine_x = {'location'},
-            lualine_y = {},
-            lualine_z = {}
-            },
-            tabline = {},
-            extensions = {}
-            }
-            EOF
-          '';
-
-        }
-        {
           plugin = suda-vim;
           config = ''
             let g:suda_smart_edit = 1
@@ -610,6 +728,7 @@ in {
       extraConfig = ''
         lua << EOF
         local opt = vim.opt
+        vim.g.mapleader = "<Space>"
         opt.cursorline = true
         opt.relativenumber = true
         opt.number = true
