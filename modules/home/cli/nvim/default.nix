@@ -81,6 +81,7 @@ in {
         vim-nix
         vim-vsnip-integ
         vim-commentary
+        null-ls-nvim
         {
           plugin = gitsigns-nvim;
           config = ''
@@ -443,7 +444,28 @@ in {
 
           '';
         }
-        { plugin = nvim-web-devicons; }
+        { 
+          plugin = nvim-web-devicons; 
+          config = ''
+            lua << EOF
+            require("nvim-web-devicons").set_icon {
+            deb = { icon = "", name = "Deb", color = "#d70a53" },
+            envrc = { icon = "", name = "Deb", color = "#346eeb" },
+            lock = { icon = "", name = "Lock", color = "#346eeb" },
+            mp3 = { icon = "", name = "Mp3", color = "#762dba" },
+            mp4 = { icon = "", name = "Mp4", color = "#762dba" },
+            out = { icon = "", name = "Out", color = "#37bf45" },
+            ["robots.txt"] = { icon = "ﮧ", name = "Robots", color = "#cf8621" },
+            ttf = { icon = "", name = "TrueTypeFont", color = "#f2f2f2" },
+            rpm = { icon = "", name = "Rpm", color = "#d42f42" },
+            woff = { icon = "", name = "WebOpenFontFormat", color = "#f2f2f2" },
+            woff2 = { icon = "", name = "WebOpenFontFormat2", color = "#f2f2f2" },
+            xz = { icon = "", name = "Xz", color = "#f4f74f" },
+            zip = { icon = "", name = "Zip", color = "#f4f74f" },
+            }
+            EOF
+          '';
+        }
         {
           plugin = nvim-compe;
           config = ''
@@ -535,18 +557,61 @@ in {
           '';
         }
         {
-          plugin = pears-nvim;
+          
+          plugin = nvim-autopairs;
           config = ''
             lua << EOF
-            require "pears".setup(function(conf)
-              conf.remove_pair_on_inner_backspace(false)
-              conf.remove_pair_on_outer_backspace(false)
-            end)
+            local M = {}
+
+            function M.config()
+            local status_ok, npairs = pcall(require, "nvim-autopairs")
+            if status_ok then
+            npairs.setup(require("core.utils").user_plugin_opts("plugins.nvim-autopairs", {
+            check_ts = true,
+            ts_config = {
+            lua = { "string", "source" },
+            javascript = { "string", "template_string" },
+            java = false,
+            },
+            disable_filetype = { "TelescopePrompt", "spectre_panel" },
+            fast_wrap = {
+            map = "<M-e>",
+            chars = { "{", "[", "(", '"', "'" },
+            pattern = string.gsub([[ [%'%"%)%>%]%)%}%,] ]], "%s+", ""),
+            offset = 0,
+            end_key = "$",
+            keys = "qwertyuiopzxcvbnmasdfghjkl",
+            check_comma = true,
+            highlight = "PmenuSel",
+            highlight_grey = "LineNr",
+            },
+            }))
+
+            local cmp_autopairs = require "nvim-autopairs.completion.cmp"
+            local cmp_status_ok, cmp = pcall(require, "cmp")
+            if not cmp_status_ok then
+            return
+            end
+            cmp.event:on("confirm_done", cmp_autopairs.on_confirm_done { map_char = { tex = "" } })
+            end
+            end
+
+            return M
             EOF
           '';
         }
         {
           plugin = nvim-colorizer-lua;
+          config = ''
+            lua << EOF
+            require 'colorizer'.setup {
+            '*'; -- Highlight all files, but customize some others.
+            css = { rgb_fn = true; }; -- Enable parsing rgb(...) functions in css.
+            html = { names = false; } -- Disable parsing "names" like Blue or Gray
+            }
+
+            EOF
+          '';
         }
         {
           plugin = lspkind-nvim;
