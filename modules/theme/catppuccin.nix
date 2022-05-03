@@ -13,7 +13,7 @@ rec {
 
   # red
   c1 = "F28FAD";
-  c9 = "F28FAD";
+  c9 = "E8A2AF";
 
   # green
   c2 = "ABE9B3";
@@ -25,7 +25,7 @@ rec {
 
   # blue
   c4 = "96CDFB";
-  c12 = "96CDFB";
+  c12 = "89DCEB";
 
   # mauve
   c5 = "DDB6F2";
