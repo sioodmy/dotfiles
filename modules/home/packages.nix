@@ -4,7 +4,6 @@
   nixpkgs.config.allowUnfree = true;
   home.packages = with pkgs; [
     inputs.todo.packages."${system}".todo
-    inputs.fetch.packages."${system}".fetch
     maim 
     # cli tools
     exa ffmpeg unzip xclip 
