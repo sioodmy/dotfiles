@@ -1,6 +1,8 @@
-{ pkgs, ... }: {
+{ pkgs, lib, ... }: {
 
   # undervolting and power saving stuff
+  services.thermald.enable = true;
+  powerManagement.cpuFreqGovernor = lib.mkDefault "powersave";
   services.tlp = {
     enable = true;
     settings = {
