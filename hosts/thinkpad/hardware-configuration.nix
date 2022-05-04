@@ -14,8 +14,11 @@
 
   boot.initrd.availableKernelModules = [ "xhci_pci" "ehci_pci" "ahci" "sd_mod" "sr_mod" "rtsx_pci_sdmmc" ];
   boot.initrd.kernelModules = [ "dm-snapshot" ];
-  boot.kernelModules = [ ];
+  boot.kernelModules = [ "tpm-rng" ];
   boot.extraModulePackages = [ ];
+  boot.extraModprobeConfig = lib.mkDefault ''
+    options bbswitch use_acpi_to_detect_card_state=1
+  '';
 
   fileSystems."/" =
     { device = "/dev/disk/by-label/root";
