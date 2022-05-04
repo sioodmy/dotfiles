@@ -72,7 +72,7 @@ in {
       };
 
       shellAliases = {
-        rebuild = "sudo nixos-rebuild switch --flake .# --upgrade";
+        rebuild = "nixos-rebuild switch --flake .# --use-remote-sudo";
         cleanup = "sudo nix-collect-garbage --delete-older-than 7d";
         need = "nix-shell -p";
         ytmp3 = ''
