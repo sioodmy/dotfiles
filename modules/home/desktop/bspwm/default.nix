@@ -16,13 +16,14 @@ in {
       options = [ "caps:escape" ];
     };
 
-    xsession = {
-      enable = true;
-      pointerCursor = {
+    home.pointerCursor = {
         package = pkgs.catppuccin-cursors;
         name = "Catppuccin-Dark-Cursors";
-        size = 24;
-      };
+        size = 32;
+    };
+
+    xsession = {
+      enable = true;
       windowManager.bspwm = {
         enable = true;
         startupPrograms = [
