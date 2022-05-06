@@ -223,7 +223,6 @@ in {
 
   fonts = {
     fonts = with pkgs; [
-      jetbrains-mono
       material-design-icons
       roboto
       source-sans
@@ -249,7 +248,7 @@ in {
         '';
         set = "custom";
       })
-      (nerdfonts.override { fonts = [ "JetBrainsMono" "Iosevka" ]; })
+      (nerdfonts.override { fonts = [ "Iosevka" ]; })
     ];
 
     enableDefaultFonts = false;
