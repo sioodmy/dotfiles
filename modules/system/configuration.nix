@@ -178,6 +178,7 @@ in {
           accelProfile = "flat";
           accelSpeed = "0.6";
           naturalScrolling = true;
+          tapping = true;
         };
       };
     };
