@@ -11,7 +11,7 @@ in {
         global = {
           geometry = "512x15-19+31";
           frame_width = "2";
-          padding = "8";
+          padding = "24";
           max_icon_size = "128";
           min_icon_size = "64";
           font = "monospace 13";
