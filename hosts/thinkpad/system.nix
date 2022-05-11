@@ -3,7 +3,6 @@
   # undervolting and power saving stuff
   services.thermald.enable = true;
   powerManagement.cpuFreqGovernor = lib.mkDefault "powersave";
-  boot.loader.grub.efiSupport = lib.mkOverride false;
   services.tlp = {
     enable = true;
     settings = {
