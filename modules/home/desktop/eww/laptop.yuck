@@ -6,7 +6,7 @@
       (micvolume)
       (brightness)
       (music)
-      (notification))
+      )
 
     (workspaces :halign "center" :hexpand "true")
 
