@@ -7,13 +7,28 @@ in {
   config = mkIf cfg.enable {
     services.dunst = {
       enable = true;
+      iconTheme = {
+        package = pkgs.papirus-icon-theme;
+        name = "Papirus";
+      };
       settings = with theme.colors; {
         global = {
-          geometry = "512x15-19+31";
-          frame_width = "2";
-          padding = "24";
+          geometry = "350x50-12+31";
+          shrink = false;
+          transparency = "5";
+          line_height = "4";
+          word_wrap = true;
+          ignore_newline = false;
+          indicate_hidden = true;
+          stack_duplicates = false;
+          hide_duplicate_count = true;
+          show_indicators = true;
+          separator_height = "10";
+          frame_width = "0";
+          padding = "10";
           max_icon_size = "128";
-          min_icon_size = "64";
+          min_icon_size = "90";
+          enable_recursive_icon_lookup = true;
           font = "monospace 13";
           corner_radius = "10";
           alignment = "left";
@@ -36,6 +51,10 @@ in {
           frame_color = "#${c1}";
           timeout = "15";
         };
+        notify_send = {
+          appname = "notify-send";
+          new_icon = "bell";
+        };  
       };
     };
   };
