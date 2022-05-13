@@ -32,6 +32,8 @@ in {
           font = "monospace 13";
           corner_radius = "10";
           alignment = "left";
+          sticky_history = true;
+          history_length = "50";
         };
         urgency_low = {
           background = "#${bg}";
