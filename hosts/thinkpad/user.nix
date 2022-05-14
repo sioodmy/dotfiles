@@ -22,6 +22,7 @@
       kitty.enable = true;
       zathura.enable = true;
       rofi.enable = true;
+      dunst.enable = true;
     };
     services = {
       sxhkd.enable = true;
