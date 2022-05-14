@@ -73,7 +73,6 @@ in {
       plugins = with pkgs.vimPlugins; [
         vim-flutter
         indent-blankline-nvim
-        emmet-vim
         yuck-nvim
         stabilize-nvim
         vim-pandoc-syntax
@@ -82,6 +81,12 @@ in {
         vim-vsnip-integ
         vim-commentary
         null-ls-nvim
+        {
+          plugin = emmet-vim;
+          config = ''
+            let g:user_emmet_leader_key=','
+          '';
+        }
         {
           plugin = neoscroll-nvim;
           config = ''
@@ -308,7 +313,7 @@ in {
         {
           plugin = nvim-tree-lua;
           config = ''
-              map <C-y> :NvimTreeToggle <CR> <CR>
+              map <C-q> :NvimTreeToggle <CR> <CR>
                     lua << EOF
               require'nvim-tree'.setup { -- BEGIN_DEFAULT_OPTS
               auto_reload_on_write = true,
