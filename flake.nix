@@ -2,8 +2,7 @@
   description = "My NixOS configuration";
 
   inputs = {
-    nixpkgs.url = "nixpkgs/nixos-21.11";
-    unstable.url = "github:nixos/nixpkgs/nixos-unstable";
+    nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
 
     home-manager = {
       url = "github:nix-community/home-manager";
@@ -36,7 +35,7 @@
     fetch.url = "github:sioodmy/fetch";
 
   };
-  outputs = inputs@{ self, nixpkgs, home-manager, nur, unstable, picom-ibhagwan
+  outputs = inputs@{ self, nixpkgs, home-manager, nur, picom-ibhagwan
     , eww, discord-overlay, discocss, neovim-nightly-overlay, ... }:
     let
       system = "x86_64-linux";

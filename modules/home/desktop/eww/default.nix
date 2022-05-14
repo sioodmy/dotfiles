@@ -57,11 +57,6 @@ in {
       executable = true;
     };
 
-    home.file.".config/eww/scripts/notify.sh" = {
-      source = ./scripts/notify.sh;
-      executable = true;
-    };
-
     home.file.".config/eww/scripts/volume.sh" = {
       source = ./scripts/volume.sh;
       executable = true;

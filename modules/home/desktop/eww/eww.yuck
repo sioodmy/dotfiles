@@ -23,7 +23,6 @@
 (defpoll volumepoll :interval "999s" "./scripts/volume.sh")
 (defpoll micvolumepoll :interval "999s" "./scripts/micvolume.sh")
 (defvar screenshotpath "/tmp/screenshot.png")
-(deflisten notify :initial '{"show": "no", "content": ""}' "./scripts/notify.sh")
 
 (defvar volum false)
 (defvar micvolum false)
@@ -34,7 +33,6 @@
 (defvar search false)
 (defvar time false)
 (defvar cal false)
-(defvar noti false)
 
 ;; Widgets
 
@@ -70,20 +68,6 @@
                :value "${micvolumepoll.content}")
 
         ))))
-
-(defwidget notification []
-  (eventbox :onhover "eww update noti=true" :onhoverlost "eww update noti=false"
-    (box :space-evenly false 
-      (label :text " " :visible {notify.show} :class "bell label")
-
-      (revealer :transition "slideleft"
-                :reveal noti
-                :duration "500ms"
-        (label :text {notify.content} :limit-width 12 :class "noticontent")
-        )
-      )
-    )
-  )
 
 (defwidget mem []
   (box :vexpand "false" :hexpand "false"
