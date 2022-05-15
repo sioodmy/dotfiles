@@ -11,9 +11,9 @@
     ripgrep rsync imagemagick
     scrot newsboat unrar
     tealdeer killall onefetch
-    du-dust 
+    du-dust pfetch
     # gui apps
-    obs-studio mpv sxiv tdesktop
+    obs-studio mpv nsxiv tdesktop
     transmission-gtk pavucontrol pcmanfm
     # unfree apps (sorry daddy stallman)
     minecraft 
