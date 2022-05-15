@@ -54,6 +54,18 @@ in {
 
         LF_ICONS = import ./LF_ICONS.nix;
       };
+      completionInit = ''
+        autoload -U compinit
+        zstyle ':completion:*' menu select
+        zmodload zsh/complist
+        compinit
+        _comp_options+=(globdots)
+        bindkey -M menuselect 'h' vi-backward-char
+        bindkey -M menuselect 'k' vi-up-line-or-history
+        bindkey -M menuselect 'l' vi-forward-char
+        bindkey -M menuselect 'j' vi-down-line-or-history
+        bindkey -v '^?' backward-delete-char
+      '';
       history = {
         save = 1000;
         size = 1000;
@@ -105,11 +117,6 @@ in {
       };
 
       plugins = with pkgs; [
-        {
-          name = "fzf-tab";
-          src = pkgs.zsh-fzf-tab;
-          file = "share/fzf-tab/fzf-tab.plugin.zsh";
-        }
         {
           name = "bd";
           src = pkgs.zsh-bd;
