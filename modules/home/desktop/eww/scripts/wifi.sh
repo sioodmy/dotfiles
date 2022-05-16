@@ -1,7 +1,7 @@
 #!/bin/sh
 
 if nmcli g | rg -q "\bconnected\b"; then
-    icon="󰤨 "
+    icon="󰤨"
     ssid=$(nmcli -t -f name connection show --active)
     if echo $ssid | rg -q "Wired"; then
         status="Connected via cable" 
@@ -9,7 +9,7 @@ if nmcli g | rg -q "\bconnected\b"; then
         status="Connected to ${ssid}"
     fi
 else
-    icon="󰤭 "
+    icon="󰤭"
     status="offline"
 fi
 
