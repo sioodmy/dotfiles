@@ -29,6 +29,11 @@ in {
       executable = true;
     };
 
+    home.file.".config/eww/scripts/wifi.sh" = {
+      source = ./scripts/wifi.sh;
+      executable = true;
+    };
+
     home.file.".config/eww/scripts/volume.sh" = {
       source = ./scripts/volume.sh;
       executable = true;
