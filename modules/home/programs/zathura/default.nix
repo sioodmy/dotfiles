@@ -1,4 +1,4 @@
-{ pkgs, lib, config, theme, ... }:
+{ pkgs, lib, config, ... }:
 with lib;
 let cfg = config.modules.programs.zathura;
 in {
@@ -7,7 +7,7 @@ in {
   config = mkIf cfg.enable {
     programs.zathura = {
       enable = true;
-      options = with theme.colors; {
+      options = {
         font = "monospace 13";
 
         default-fg = "#d8dee9";

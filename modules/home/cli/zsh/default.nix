@@ -1,4 +1,4 @@
-{ pkgs, lib, config, theme, ... }:
+{ pkgs, lib, config, ... }:
 with lib;
 let cfg = config.modules.cli.zsh;
 in {

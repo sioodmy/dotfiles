@@ -1,4 +1,4 @@
-{ config, lib, pkgs, theme, ... }:
+{ config, lib, pkgs, ... }:
 with lib;
 let cfg = config.modules.programs.dunst;
 in {
@@ -11,7 +11,7 @@ in {
         package = pkgs.papirus-icon-theme;
         name = "Papirus";
       };
-      settings = with theme.colors; {
+      settings = {
         global = {
           geometry = "350x50-12+31";
           shrink = false;

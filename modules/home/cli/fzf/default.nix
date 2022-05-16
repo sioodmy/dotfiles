@@ -1,4 +1,4 @@
-{ pkgs, lib, config, theme, ... }:
+{ pkgs, lib, config, ... }:
 with lib;
 let cfg = config.modules.cli.fzf;
 in {
@@ -6,7 +6,7 @@ in {
 
   config = mkIf cfg.enable {
     programs.zsh = {
-      localVariables = with theme.colors; {
+      localVariables = {
         FZF_DEFAULT_OPTS =
           "--color=fg:#e5e9f0,bg:#3b4252,hl:#81a1c1
           --color=fg+:#e5e9f0,bg+:#3b4252,hl+:#81a1c1
@@ -18,7 +18,7 @@ in {
     programs.fzf = {
       enable = true;
       enableZshIntegration = true;
-      defaultOptions = with theme.colors; [
+      defaultOptions = [
         "--height 50%"
         "--color=fg:#e5e9f0,bg:#3b4252,hl:#81a1c1"
         "--color=fg+:#e5e9f0,bg+:#3b4252,hl+:#81a1c1"

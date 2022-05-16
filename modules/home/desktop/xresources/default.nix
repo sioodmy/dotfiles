@@ -1,4 +1,4 @@
-{ config, lib, pkgs, theme, ... }:
+{ config, lib, pkgs, ... }:
 with lib;
 let cfg = config.modules.desktop.xresources;
 in {
@@ -7,7 +7,7 @@ in {
   };
 
   config = mkIf cfg.enable {
-    xresources.extraConfig = with theme.colors; ''
+    xresources.extraConfig = ''
 
       #define nord0 #2E3440
       #define nord1 #3B4252

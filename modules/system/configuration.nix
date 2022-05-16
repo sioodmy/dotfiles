@@ -1,10 +1,8 @@
-{ config, pkgs, lib, theme, ... }:
+{ config, pkgs, lib, ... }:
 
 with lib;
 
-let
-  theme = import ../theme;
-in {
+{
   environment.variables = {
     NIXOS_CONFIG = "$HOME/.config/nixos/configuration.nix";
     NIXOS_CONFIG_DIR = "$HOME/.config/nixos/";
@@ -128,32 +126,9 @@ in {
           enable = true;
           user = "sioodmy";
         };
-        lightdm.greeters.mini = with theme.colors; {
+        lightdm.greeters.mini = {
           enable = true;
           user = "sioodmy";
-          extraConfig =
-            ''
-            [greeter]
-            show-password-label = false
-            invalid-password-text = Access Denied
-            show-input-cursor = true
-            password-alignment = left
-            [greeter-hotkeys]
-            mod-key = meta
-            shutdown-key = s
-            [greeter-theme]
-            font-size = 1em
-            font = "monospace";
-            background-image = ""
-            background-color = "#${bg}"
-            window-color = "#${bg}"
-            password-border-radius = 10px
-            password-border-width = 3px
-            password-border-color = "#${ac}"
-            password-background-color = "#${bg}"
-            border-width = 0px
-            text-color = "#${ac}"
-            '';
         };
       };
       windowManager.bspwm.enable = true;
@@ -248,7 +223,7 @@ in {
 
     enableDefaultFonts = false;
 
-    fontconfig = with theme.colors; {
+    fontconfig = {
       defaultFonts = {
         monospace = [ "Iosevka Custom" "Noto Color Emoji" "Iosevka Nerd Font" ];
         sansSerif = [ "Lato" "Noto Color Emoji" ];

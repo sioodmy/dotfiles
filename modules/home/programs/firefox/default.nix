@@ -1,4 +1,4 @@
-{ config, lib, pkgs, theme, ... }:
+{ config, lib, pkgs, ... }:
 with lib;
 let cfg = config.modules.programs.firefox;
 in {
