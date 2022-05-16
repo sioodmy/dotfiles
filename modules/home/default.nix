@@ -27,10 +27,7 @@
     ./programs/kitty
     ./programs/dunst
     ./programs/firefox
-    ./programs/flameshot
-    ./programs/alacritty
     ./programs/qutebrowser
-    ./programs/urxvt
     ./programs/rofi
     ./programs/zathura
     ./programs/discocss

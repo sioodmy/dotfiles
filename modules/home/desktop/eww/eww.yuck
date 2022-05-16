@@ -1,3 +1,25 @@
+;;
+(defwidget bar []
+  (centerbox :orientation "v" :hexpand false
+    (box :space-evenly false :valign "start" :halign "center" :vexpand true :hexpand false :orientation "v" :spacing 10
+      (power)
+      (box :class "system-status" :orientation "v" :spacing 10 :hexpand false :active false :vexpand false
+      (mem)
+      (cpu)
+      (disk)
+        )
+      (wifi)
+      )
+
+    (workspaces :halign "center" :vexpand true :hexpand false :orientation "v")
+
+    (box :valign "end" :hexpand false :vexpand true :orientation "v" :space-evenly false :spacing 10
+      (battery)
+      (time)
+      ))
+  )
+
+(defpoll battery :interval "2s" "./scripts/battery.sh")
 
 (defwidget screenshot []
   (box
@@ -7,29 +29,19 @@
 
 
 ;; Variables
-(defpoll temperature :interval "20m" "curl -s 'wttr.in/?format=%c%f'")
-(defpoll weatherstats :interval "30m" "curl -s 'wttr.in/?format=%P+%w+%p+%h'")
+(defpoll temperature :interval "20m" "curl -s 'wttr.in/?format=%f'")
 
-(deflisten cover_art "./scripts/music.sh --cover")
-(deflisten song "./scripts/music.sh --song")
-(deflisten song_status "./scripts/music.sh --status")
-(defpoll current_status :interval "1s"  "./scripts/music.sh --time")
 (defpoll wifi :interval "3s" "./scripts/wifi.sh")
-(defpoll ctime :interval "1s"  "./scripts/music.sh --ctime")
-(defpoll ttime :interval "1s"  "./scripts/music.sh --ttime")
-(defpoll timeVar :interval "10s" "date '+%H:%M'")
+(defpoll hour :interval "10s" "date +%H")
+(defpoll minute :interval "10s" "date +%M")
 (defpoll dateVar :interval "600s" "date '+%A %d.%m.%y'")
 (deflisten workspaces_listen "./scripts/workspaces.sh")
 (defpoll volumepoll :interval "999s" "./scripts/volume.sh")
-(defpoll micvolumepoll :interval "999s" "./scripts/micvolume.sh")
 (defvar screenshotpath "/tmp/screenshot.png")
 
 (defvar volum false)
-(defvar micvolum false)
 (defvar screenshot false)
 (defvar power false)
-(defvar weather false)
-(defvar music false)
 (defvar search false)
 (defvar time false)
 (defvar cal false)
@@ -39,35 +51,23 @@
 (defwidget volume []
   (eventbox :tooltip "Volume: ${volumepoll.content}%" :onhover "eww update volum=true && eww update currentVolume=$(pamixer --get-volume)tter"   
             :onhoverlost "eww update volum=false"
-    (box :orientation "h" :space-evenly false 
-      (eventbox :cursor "hand"(button :class "${volumepoll.class} label" 
-                :onclick "tdrop -ma -y 55 -x 7 -w 35% -h 40% pavucontrol" "${volumepoll.icon} "))
-      (revealer :transition "slideleft" 
+    (box :orientation "v" :space-evenly false 
+(revealer :transition "slideup" 
                 :reveal volum 
                 :duration "500ms"
         (scale :class "volumeBar"
+              :flipped true
                :min 0
+                :orientation "v"
                :max 101
                :onchange `eww update volumepoll="$(./scripts/volume.sh {})"` 
                :value "${volumepoll.content}" )
-        ))))
+        )
+      (eventbox :cursor "hand"(button :class "${volumepoll.class} label" 
+                :onclick "tdrop -ma -y 55 -x 7 -w 35% -h 40% pavucontrol" "${volumepoll.icon} "))
+      )))
 
 
-(defwidget micvolume []
-  (eventbox :tooltip "Volume: ${micvolumepoll.content}% ${micvolumepoll.icon}" :onhover "eww update micvolum=true"   
-            :onhoverlost "eww update micvolum=false"
-    (box :orientation "h" :space-evenly false 
-      (eventbox :cursor "hand"(button :class "${micvolumepoll.class} label" :onclick `eww update micvolumepoll="$(./scripts/micvolume.sh toggle)"` "${micvolumepoll.icon} "))
-      (revealer :transition "slideleft" 
-                :reveal micvolum 
-                :duration "500ms"
-        (scale :class "volumemicBar"
-               :min 0
-               :max 101
-               :onchange `eww update micvolumepoll="$(./scripts/micvolume.sh {})"` 
-               :value "${micvolumepoll.content}")
-
-        ))))
 
 (defwidget mem []
   (box :vexpand "false" :hexpand "false"
@@ -102,11 +102,21 @@
   )
 
 (defwidget wifi [] 
- (box :vexpand false :hexpand false
+ (box :vexpand false :hexpand false :orientation "v"
    (label :text {wifi.icon} 
           :limit-width 10 
           :tooltip {wifi.status}
           :class "label wifi")
+
+   )
+)
+
+(defwidget battery [] 
+ (box :vexpand false :hexpand false :orientation "v" :visible {battery.visible}
+   (label :text "${battery.icon}"
+          :limit-width 10 
+          :tooltip "${battery.percent}% ${EWW_BATTERY["BAT0"].status}"
+          :class "label battery")
 
    )
 )
@@ -131,99 +141,42 @@
               :onhover "eww update power=true"	
               :onhoverlost "eww update power=false" 
               :cursor "hand"
-    (box		:orientation "h"					
+    (box		:orientation "v"					
                 :space-evenly "false" 	 
                 :class "powerLabel label"
 
-      (button		:class "button-off"					
-                    :tooltip "Shutdown"		 
-                    :onclick "shutdown now"	" ")
-      (revealer	:transition "slideright"				
+      (button		:class "nixos"					
+                    :onclick "rofi -show drun &"	"󱄅")
+      (revealer	:transition "slidedown"				
                 :reveal power			 
                 :duration "250ms"
-        (box        :space-evenly true
-          (button		:class "button-reb"					
-                        :tooltip "Reboot"
-                        :onclick "reboot" "勒")
+        (box        :space-evenly true :orientation "v"
+          (button		:class "button-off"					
+                        :onclick "reboot" "󰐥")
           (button		:class "button-lock"					
-                        :tooltip "Lockscreen"
-                        :onclick "dm-tool lock" " ")
+                        :onclick "lockscreen" "󱅞")
           (button		:class "button-sleep"					
-                        :tooltip "Sleep"
-                        :onclick "systemctl suspend" ""))
+                        :onclick "systemctl suspend" "󰤄"))
         ))))
 
 
-(defwidget weather []
-  (eventbox   :hexpand false 
-              :onhover "eww update weather=true"	
-              :onhoverlost "eww update weather=false" 
-    (box		:orientation "h"					
-                :space-evenly "false" 	 
-                :class "weather"
-
-      (label		:class "weather"					
-                    :tooltip "Weather"		 
-                    :limit-width "10"
-                    :wrap false
-                    :text "${temperature}")
-      (revealer	:transition "slideright"				
-                :reveal weather			 
-                :duration "250ms"
-        (label		:class "weather-details"					
-                    :tooltip "Weather"
-                    :limit-width "30"
-                    :wrap false
-                    :text "${weatherstats}")))))
-
-
-
 (defwidget time []
-  (eventbox :cursor "hand"
-    (button		:class "date"					
+  (eventbox :cursor "hand"  :hexpand false
                 :tooltip "${dateVar}"		 
-                :onclick "eww open --toggle calendar"	"${timeVar}"))
+    (box :orientation "v" :hexpand false :vexpand false :space-evenly false :class "clock"
+    (button		:class "date"					
+                :orientation "v"
+                :onclick "eww open --toggle calendar"	"${hour}")
+
+    (button		:class "date"					
+                :orientation "v"
+                :onclick "eww open --toggle calendar"	"${minute}")
+    )
+    )
   )
 
 
 
-(defwidget music []
-  (eventbox   :hexpand false 
-              :onhover "eww update music=true"	
-              :cursor "hand"
-              :onhoverlost "eww update music=false" 
-    (box		:orientation "h"					
-                :space-evenly false 	 
-                :class "musiclabel"
-
-      (button      
-        :onclick "tdrop -ma -y 55 -x 7 -w 30% -h 40% -n musicplayer kitty -e ncmpcpp" 
-        (box        :space-evenly false
-                    :orientation "h"
-          (box :class "song_cover_art" :vexpand "false" :hexpand "false" :style "background-image: url('${cover_art}');")
-          (label      :text "${song}"
-                      :limit-width 30
-                      :wrap false)
-          )
-        )
-      (revealer	:transition "slideright"				
-                :reveal music			 
-                :expand true
-                :duration "300ms"
-        (box :space-evenly false
-          (button		:class "button-music"					
-                        :tooltip "Previous"
-                        :onclick "./scripts/music.sh --prev" "")
-          (button		:class "button-music button-pause"					
-                        :tooltip "Toggle"
-                        :onclick "./scripts/music.sh --toggle " "${song_status}")
-          (button		:class "button-music"					
-                        :tooltip "Next"
-                        :onclick "./scripts/music.sh --next" "")
-
-          (scale :class "musicBar" :onscroll "mpc -q seek {}" :min 0 :active "true" :max 100 :value "${current_status}" :tooltip "${ctime}/${ttime}")
-          )
-        ))))
 
 (defwidget workspaces []
   (literal :content workspaces_listen))
@@ -298,9 +251,9 @@
 
 (defwindow bar 
   :monitor 0
-  :reserve (struts :distance "50px" :side "top")
-  :geometry (geometry :width "100%"
-  :height "20px"
+  :reserve (struts :distance "50px" :side "left")
+  :geometry (geometry :height "100%"
+  :width "50px"
   :anchor "top left")
   :hexpand false
   :stacking "bg"

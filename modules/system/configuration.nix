@@ -37,7 +37,6 @@ in {
 
   boot = {
     cleanTmpDir = true;
-    plymouth.enable = true;
     kernelParams = [
       "quiet"
       "rd.systemd.show_status=false"
@@ -56,12 +55,6 @@ in {
         useOSProber = true;
         efiSupport = true;
         device = "nodev";
-        theme = pkgs.fetchFromGitHub {
-          owner = "catppuccin";
-          repo = "grub";
-          rev = "3f62cd4174465631b40269a7c5631e5ee86dec45";
-          sha256 = "d15FS7R78kdUKqC7EAei5Pe0Vuj2boVnm4WZYQdPURo=";
-        } + "/catppuccin-grub-theme";
       };
     };
   };
@@ -226,6 +219,7 @@ in {
     fonts = with pkgs; [
       material-design-icons
       roboto
+      comic-neue
       source-sans
       twemoji-color-font
       comfortaa

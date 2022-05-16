@@ -36,21 +36,18 @@ in {
           history_length = "50";
         };
         urgency_low = {
-          background = "#${bg}";
-          foreground = "#${fg}";
-          frame_color = "#${fg}";
+          background = "#3B4252";
+          foreground = "#4C566A";
           timeout = "5";
         };
         urgency_normal = {
-          background = "#${bg}";
-          foreground = "#${fg}";
-          frame_color = "#${c2}";
+          background = "#434C5E";
+          foreground = "#E5E9F0";
           timeout = "10";
         };
         urgency_critical = {
-          background = "#${bg}";
-          foreground = "#${fg}";
-          frame_color = "#${c1}";
+          background = "#88C0D0";
+          foreground = "#ECEFF4";
           timeout = "15";
         };
         notify_send = {

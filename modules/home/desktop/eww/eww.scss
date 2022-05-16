@@ -1,60 +1,85 @@
 
 
+$nord0: #2e3440;
+$nord1: #3b4252;
+$nord2: #434c5e;
+$nord3: #4c566a;
+$nord4: #d8dee9;
+$nord5: #e5e9f0;
+$nord6: #eceff4;
+$nord7: #8fbcbb;
+$nord8: #88c0d0;
+$nord9: #81a1c1;
+$nord10: #5e81ac;
+$nord11: #bf616a;
+$nord12: #d08770;
+$nord13: #ebcb8b;
+$nord14: #a3be8c;
+$nord15: #b48ead;
+
 * {
     all: unset; //Unsets everything so you can style everything from scratch
     font-family: monospace;
 }
 
 .bar, .screenshot, .screenshottool{
-    background-color: $background;
-    padding: 0 0.6rem;
+    background-color: $nord1;
+    padding: 0.6rem 0;
 }
 
 scale trough highlight {
     all: unset;
-    background-color: $black;
-    min-height: 10px;
-    min-width: 16px;
+    background-color: $nord1;
+    min-height: 16px;
+    min-width: 10px;
     border-radius: 8px;
 }
 
 scale trough {
     all: unset;
-    background-color: $black;
+    background-color: $nord1;
     border-radius: 8px;
-    min-height: 10px;
-    min-width: 80px;
+    min-height: 80px;
+    min-width: 10px;
     margin: 0.6rem;
 }
 
 .screenshot, .screenshottool{
-    border: 2px solid $accent;
+    border: 2px solid $nord10;
     border-radius: 10px;
 }
 
 .bell {
-    color: $yellow;
+    color: $nord13;
     font-size: 1.5rem;
 }
 .wifi {
     font-size: 1.5rem;
-    color: $blue;
+    color: $nord9;
 }
 
 .noticontent {
-    color: $white;
+    color: $nord3;
 }
 
 .sspreview {
     border-radius: 10px;
-    border: 2px solid $black;
+    border: 2px solid $nord1;
     background-size: contain;	
     background-repeat: no-repeat;
     background-position: center;
     margin: 1rem;
 }
+.clock {
+  font-weight: bold;
+  font-size: 1.2em;
+  background-color: $nord3;
+  color: $nord5;
+  border-radius: 5px;
+  margin: 0.5rem 0 0.5rem 0;
+}
 .ss {
-    background-color: $black;
+    background-color: $nord1;
     border-radius: 100px;
     padding: 0.6rem;
     margin: 1rem;
@@ -64,140 +89,118 @@ scale trough {
     font-size: 2rem;
 }
 .ss:hover {
-    color: $accent;
+    color: $nord10;
 }
 .ss-close:hover {
-    color: $red;
+    color: $nord11;
 }
 .cpubar {
-    color: $blue;
-    background-color: $black;
+    color: $nord10;
+    background-color: $nord3;
     border-radius: 10px;
-    margin: 0.6rem;
 }
 
 .diskbar {
-    color: $yellow;
-    background-color: $black;
+    color: $nord13;
+    background-color: $nord3;
     border-radius: 10px;
 }
 .membar {
-    color: $green;
-    background-color: $black;
+    color: $nord14;
+    background-color: $nord3;
     border-radius: 10px;
 }
+.system-status {
+    background-color: $nord2;
+    padding: 0.5rem;
+    border-radius: 10px;
+
+}
 .iconmem {
-    color: $background;
-    margin: 0.6rem;
-    font-size: 0.5rem;
+    color: $nord2;
+    font-size: 2.5rem;
 }
 .workspace-focused {
-    color: $green;
+    color: $nord9;
 }
 .workspace-empty {
-    color: $gray;
+    color: $nord3;
 }
 .workspace-occupied {
-    color: $white;
+    color: $nord4;
 }
-.button-off { color: $red;}
-.button-reb, .button-lock, .button-sleep {
-    margin: 0 0.6rem;
-}
-.button-reb { 
-    color: $magenta;
-}
-.button-lock {
-    color: $green;
-}
-.button-sleep {
-    color: $yellow;
-}
-.weather {
-    margin: 0 0.6rem;
-}
-.weather-details { 
-    margin: 0 0.6rem; 
-    color: $magenta;
-}
-
-.button-music {
-    color: $magenta;
-    margin: 0 0.7rem;
-}
-.button-pause {
+.date {
     font-size: 1.5rem;
 }
-.song_cover_art {
-    color: $yellow;
-    background-size: cover;	
-    background-position: center;
-    min-height: 24px;
-    min-width: 24px;
-    margin: 10px;
-    border-radius: 100px;
+.button-off { color: $nord11; font-size: 2rem; }
+.button-reb { 
+    color: $nord15;
+}
+.button-lock {
+    color: $nord14;
+    font-size: 2rem;
+}
+.button-sleep {
+    color: $nord13;
+    font-size: 2rem;
+}
+.nixos { font-size: 2rem; color: $nord9; }
+.battery {
+    font-size: 1.5rem;
+    color: $nord9;
 }
 
 .volumemicBar trough highlight {
-    background-color: $blue;
+    background-color: $nord10;
 }
 .volumeBar trough highlight {
-    background-color: $green;
-}
-.batteryBar trough highlight {
-    background-color: $green;
+    background-color: $nord14;
 }
 .Charging trough highlight {
-    background-color: $blue;
+    background-color: $nord10;
     min-height: 15px;
 }
 .Discharging trough highlight {
-    background-color: $green;
+    background-color: $nord14;
     min-height: 15px;
 }
 .Not trough highlight {
-    background-color: $yellow;
+    background-color: $nord13;
     min-height: 15px;
 }
 .brightnessBar trough highlight {
-    background-color: $yellow;
+    background-color: $nord13;
 }
 .brightness {
-    color: $yellow;
+    color: $nord13;
     margin: 0 0.6rem;
 }
 .musicBar trough highlight {
-    background-color: $magenta;
+    background-color: $nord15;
 }
 
 .muted {
-    color: $red;
+    color: $nord11;
 }
 
 .nomuted {
-    color: $green;
+    color: $nord14;
 }
 
 .loud {
-    color: $yellow;
+    color: $nord13;
 }
 
 .micnomuted {
-    color: $blue;
+    color: $nord10;
 }
 
 .micmuted {
-    color: $red;
+    color: $nord11;
 }
-
-.label {
-    //   font-size: 2rem;
-    margin: 0rem 0rem 0rem 0.6rem;
-}
-
 
 .cal {
-    background-color: $background;
+    background-color: $nord0;
     font-size: 18px;
     font-weight: normal;
 
@@ -213,31 +216,5 @@ scale trough {
             margin-left: 10px;
         }
     }
-}
-
-
-calender {
-    color: $foreground;
-}
-calendar:selected {
-    color: $accent;
-}
-
-calendar.header {
-    color: $foreground;
-    font-weight: bold;
-}
-
-calendar.button {
-    color: $accent;
-}
-
-calendar.highlight {
-    color: $accent;
-    font-weight: bold;
-}
-
-calendar:indeterminate {
-    color: $black;
 }
 

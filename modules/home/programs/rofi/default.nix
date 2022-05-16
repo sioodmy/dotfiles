@@ -37,14 +37,14 @@ in {
       theme = let inherit (config.lib.formats.rasi) mkLiteral;
       in with theme.colors; {
         "*" = {
-          bg-col = mkLiteral "#${bg}";
-          bg-col-light = mkLiteral "#${bg}";
-          border-col = mkLiteral "#${bg}";
-          selected-col = mkLiteral "#${bg}";
-          accent = mkLiteral "#${ac}";
-          fg-col = mkLiteral "#${fg}";
-          fg-col2 = mkLiteral "#${c1}";
-          grey = mkLiteral "#${fg}";
+          bg-col = mkLiteral "#2e3440";
+          bg-col-light = mkLiteral "#343a46";
+          border-col = mkLiteral "#343a46";
+          selected-col = mkLiteral "#343a46";
+          accent = mkLiteral "#81a1c1";
+          fg-col = mkLiteral "#b4bbc8";
+          fg-col2 = mkLiteral "#bf616a";
+          grey = mkLiteral "#646a76";
           width = 600;
         };
 

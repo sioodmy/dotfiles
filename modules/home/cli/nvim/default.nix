@@ -3,16 +3,6 @@
 with lib;
 let
   cfg = config.modules.cli.nvim;
-  catppuccin-nvim = pkgs.vimUtils.buildVimPlugin {
-    name = "catppuccin-nvim";
-    src = pkgs.fetchFromGitHub {
-      owner = "catppuccin";
-      repo = "nvim";
-      rev = "406fdf2f2d2372df52d503e9f7bef96d89901c9f";
-      sha256 = "17b07krgc9pzqhmwls2d50xbiqs4fgzmdi61qrz1v5n0bgs011mr";
-    };
-  };
-
   yuck-nvim = pkgs.vimUtils.buildVimPlugin {
     name = "yuck-nvim";
     src = pkgs.fetchFromGitHub {
@@ -281,9 +271,9 @@ in {
           '';
         }
         {
-          plugin = catppuccin-nvim;
+          plugin = nord-nvim;
           config = ''
-            colorscheme catppuccin
+            colorscheme nord
           '';
         }
         {
