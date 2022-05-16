@@ -1,4 +1,4 @@
-{ pkgs, lib, config, theme, ... }:
+{ pkgs, lib, config, ... }:
 with lib;
 let cfg = config.modules.programs.kitty;
 in {
@@ -10,7 +10,7 @@ in {
     home.packages = [ pkgs.tdrop ];
     programs.kitty = {
       enable = true;
-      settings = with theme.colors; {
+      settings = {
         font_family = "monospace";
         font_size = 16;
         cursor_blink_interval = "0.5";

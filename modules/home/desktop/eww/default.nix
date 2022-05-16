@@ -1,4 +1,4 @@
-{ inputs, lib, config, theme, pkgs, ... }:
+{ inputs, lib, config, pkgs, ... }:
 with lib;
 let cfg = config.modules.desktop.eww;
 in {

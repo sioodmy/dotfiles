@@ -1,4 +1,4 @@
-{ config, pkgs, lib, theme, ... }:
+{ config, pkgs, lib, ... }:
 with lib;
 let
   cfg = config.modules.desktop.lockscreen;
@@ -6,7 +6,7 @@ let
     #! ${pkgs.bash}/bin/bash
     ${pkgs.libnotify}/bin/notify-send 'Sleeping in 60 seconds..'
   '';
-  lockscreen = (with theme.colors;
+  lockscreen = (
     pkgs.writeScriptBin "lockscreen" ''
       #! ${pkgs.zsh}/bin/zsh
       background=#2e3440

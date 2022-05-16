@@ -10,10 +10,7 @@
       picom.enable = true;
       xresources.enable = true;
       lockscreen.enable = true;
-      eww = {
-        enable = true;
-        laptop = true;
-      };
+      eww.enable = true;
     };
     programs = {
       discocss.enable = true;
@@ -32,7 +29,6 @@
     };
     cli = {
       nvim.enable = true;
-      helix.enable = true;
       bat.enable = true;
       btm.enable = true;
       cava.enable = true;

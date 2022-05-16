@@ -1,4 +1,4 @@
-{ pkgs, config, lib, theme, ... }:
+{ pkgs, config, lib, ... }:
 with lib;
 let cfg = config.modules.programs.rofi;
 in {
@@ -35,7 +35,8 @@ in {
       plugins = with pkgs; [ rofi-calc rofi-emoji ];
 
       theme = let inherit (config.lib.formats.rasi) mkLiteral;
-      in with theme.colors; {
+      in {
+
         "*" = {
           bg-col = mkLiteral "#2e3440";
           bg-col-light = mkLiteral "#343a46";
