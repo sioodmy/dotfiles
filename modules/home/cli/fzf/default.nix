@@ -1,4 +1,4 @@
-{ pkgs, lib, config, theme, ... }:
+{ pkgs, lib, config, ... }:
 with lib;
 let cfg = config.modules.cli.fzf;
 in {
@@ -6,18 +6,24 @@ in {
 
   config = mkIf cfg.enable {
     programs.zsh = {
-      localVariables = with theme.colors; {
+      localVariables = {
         FZF_DEFAULT_OPTS =
-          "--color=fg+:#${c6},bg+:#${bg},fg:#${fg},info:#${c3},prompt:#${c6},pointer:#${c6}";
-      };
+          "--color=fg:#e5e9f0,bg:#3b4252,hl:#81a1c1
+          --color=fg+:#e5e9f0,bg+:#3b4252,hl+:#81a1c1
+          --color=info:#eacb8a,prompt:#bf6069,pointer:#b48dac
+          --color=marker:#a3be8b,spinner:#b48dac,header:#a3be8b'";
+          };
     };
 
     programs.fzf = {
       enable = true;
       enableZshIntegration = true;
-      defaultOptions = with theme.colors; [
+      defaultOptions = [
         "--height 50%"
-        "--color=fg+:#${c6},bg+:#${bg},fg:#${fg},info:#${c3},prompt:#${c3},pointer:#${c6}"
+        "--color=fg:#e5e9f0,bg:#3b4252,hl:#81a1c1"
+        "--color=fg+:#e5e9f0,bg+:#3b4252,hl+:#81a1c1"
+        "--color=info:#eacb8a,prompt:#bf6069,pointer:#b48dac"
+        "--color=marker:#a3be8b,spinner:#b48dac,header:#a3be8b'"
       ];
     };
   };

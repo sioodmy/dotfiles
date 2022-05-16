@@ -1,4 +1,4 @@
-{ pkgs, lib, config, theme, ... }:
+{ pkgs, lib, config, ... }:
 with lib;
 let cfg = config.modules.programs.qutebrowser;
 in {
@@ -19,8 +19,7 @@ in {
         y = "https://www.youtube.com/results?search_query={}";
       };
 
-      settings = with theme.colors; {
-        hints.border = "1px solid #${fg}";
+      settings = {
         content = {
           blocking.method = "both";
           headers = {
@@ -31,118 +30,6 @@ in {
         fonts = {
           default_family = "monospace";
           default_size = "12pt";
-        };
-        colors = {
-          webpage.darkmode.enabled = true;
-          completion = {
-            category = {
-              bg = "#${bg}";
-              fg = "#${fg}";
-              border.bottom = "#${bg}";
-              border.top = "#${bg}";
-            };
-            even.bg = "#${bg}";
-            odd.bg = "#${bg}";
-            fg = "#${fg}";
-            item.selected = {
-              bg = "#${c0}";
-              fg = "#${fg}";
-              border.bottom = "#${ac}";
-              border.top = "#${ac}";
-            };
-            match.fg = "#${c11}";
-            scrollbar.bg = "#${bg}";
-            scrollbar.fg = "#${fg}";
-          };
-          downloads = {
-            bar.bg = "#${bg}";
-            error.bg = "#${bg}";
-            error.fg = "#${c1}";
-            stop.bg = "#${bg}";
-            system.bg = "none";
-          };
-          hints = {
-            bg = "#${bg}";
-            fg = "#${fg}";
-            match.fg = "#${c0}";
-          };
-          keyhint = {
-            bg = "#${bg}";
-            fg = "#${ac}";
-            suffix.fg = "#${c11}";
-          };
-          messages = {
-            error.bg = "#${bg}";
-            error.border = "#${c7}";
-            error.fg = "#${c1}";
-            info.bg = "#${bg}";
-            info.fg = "#${c7}";
-            warning.bg = "#${bg}";
-            warning.border = "#${c7}";
-            warning.fg = "#${c1}";
-          };
-          prompts = {
-            border = "1px solid #${c7}";
-            fg = "#${ac}";
-            selected.bg = "#${ac}";
-          };
-          statusbar = {
-            caret = {
-              bg = "#${bg}";
-              fg = "#${fg}";
-              selection.bg = "#${bg}";
-              selection.fg = "#${ac}";
-            };
-            command = {
-              bg = "#${bg}";
-              fg = "#${ac}";
-
-            };
-            insert = {
-              fg = "#${fg}";
-              bg = "#${bg}";
-            };
-            normal = {
-              bg = "#${bg}";
-              fg = "#${fg}";
-            };
-            passthrough = {
-              bg = "#${bg}";
-              fg = "#${fg}";
-            };
-            private = {
-              bg = "#${bg}";
-              fg = "#${fg}";
-            };
-            progress.bg = "#${bg}";
-            url = {
-              error.fg = "#${c1}";
-              fg = "#${fg}";
-              hover.fg = "#${ac}";
-              success.https.fg = "#${ac}";
-              success.http.fg = "#${ac}";
-              warn.fg = "#${c1}";
-            };
-          };
-          tabs = {
-            bar.bg = "#${bg}";
-            even.bg = "#${bg}";
-            even.fg = "#${fg}";
-            indicator = {
-              error = "#${c1}";
-              start = "#${c11}";
-              stop = "#${ac}";
-              system = "none";
-            };
-            odd.fg = "#${fg}";
-            odd.bg = "#${bg}";
-            selected = {
-              even.fg = "#${fg}";
-              even.bg = "#${bg}";
-              odd.fg = "#${fg}";
-              odd.bg = "#${bg}";
-            };
-          };
         };
         tabs = {
           favicons.scale = 1.25;

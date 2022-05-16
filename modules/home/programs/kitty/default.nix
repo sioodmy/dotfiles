@@ -1,4 +1,4 @@
-{ pkgs, lib, config, theme, ... }:
+{ pkgs, lib, config, ... }:
 with lib;
 let cfg = config.modules.programs.kitty;
 in {
@@ -10,7 +10,7 @@ in {
     home.packages = [ pkgs.tdrop ];
     programs.kitty = {
       enable = true;
-      settings = with theme.colors; {
+      settings = {
         font_family = "monospace";
         font_size = 16;
         cursor_blink_interval = "0.5";
@@ -31,39 +31,39 @@ in {
 
         window_padding_width = 15;
         disable_ligatures = "always";
-        foreground = "#${fg}";
-        background = "#${bg}";
+        foreground = "#D8DEE9";
+        background = "#2E3440";
 
-        selection_foreground = "#${fg}";
-        selection_background = "#${ac}";
+        selection_foreground = "#000000";
+        selection_background = "#FFFACD";
 
-        cursor = "#${c6}";
-        cursor_text_color = "#${bg}";
-        url_color = "#${c6}";
+        cursor = "#81A1C1";
+        cursor_text_color = "#2E3440";
+        url_color = "#0087BD";
 
-        mark1_foreground = "#${bg}";
-        mark1_background = "#${c4}";
-        mark2_foreground = "#${bg}";
-        mark2_background = "#${c6}";
-        mark3_foreground = "#${bg}";
-        mark3_background = "#${c2}";
+        mark1_foreground = "#2E3440";
+        mark1_background = "#81A1C1";
+        mark2_foreground = "#2E3440";
+        mark2_background = "#EBCB8B";
+        mark3_foreground = "#2E3440";
+        mark3_background = "#A3BE8C";
 
-        color0 = "#${c0}";
-        color1 = "#${c1}";
-        color2 = "#${c2}";
-        color3 = "#${c3}";
-        color4 = "#${c4}";
-        color5 = "#${c5}";
-        color6 = "#${c6}";
-        color7 = "#${c7}";
-        color8 = "#${c8}";
-        color9 = "#${c9}";
-        color10 = "#${c10}";
-        color11 = "#${c11}";
-        color12 = "#${c12}";
-        color13 = "#${c13}";
-        color14 = "#${c14}";
-        color15 = "#${c15}";
+        color0 = "#2e3440";
+        color1 = "#bf616a";
+        color2 = "#a3be8c";
+        color3 = "#ebcb8b";
+        color4 = "#81a1c1";
+        color5 = "#b48ead";
+        color6 = "#88c0d0";
+        color7 = "#e5e9f0";
+        color8 = "#4c566a";
+        color9 = "#bf616a";
+        color10 = "#a3be8c";
+        color11 = "#ebcb8b";
+        color12 = "#81a1c1";
+        color13 = "#b48ead";
+        color14 = "#8fbcbb";
+        color15 = "#eceff4";
       };
 
       keybindings = {

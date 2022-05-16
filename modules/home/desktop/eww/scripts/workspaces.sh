@@ -41,7 +41,7 @@ print_workspaces() {
         buf="$buf (eventbox :cursor \"hand\" (button :class \"$class\" :onclick \"bspc desktop -f $ws\" \"$icon\"))"
     done
 
-    echo "(box :orientation \"h\" :class \"workspaces\" :spacing 10 :halign \"center\" :valign \"center\" :vexpand true :hexpand true $buf)"
+    echo "(box :orientation \"v\" :class \"workspaces\" :spacing 10 :halign \"center\" :valign \"center\" :vexpand true :hexpand true $buf)"
 }
 
 # Listen to bspwm changes

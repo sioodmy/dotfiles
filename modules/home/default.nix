@@ -19,7 +19,6 @@
     ./cli/cava
     ./cli/music
     ./cli/btm
-    ./cli/helix
     ./cli/nvim
     ./cli/xdg
     ./cli/zsh
@@ -27,10 +26,7 @@
     ./programs/kitty
     ./programs/dunst
     ./programs/firefox
-    ./programs/flameshot
-    ./programs/alacritty
     ./programs/qutebrowser
-    ./programs/urxvt
     ./programs/rofi
     ./programs/zathura
     ./programs/discocss

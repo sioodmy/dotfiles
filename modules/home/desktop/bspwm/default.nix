@@ -1,4 +1,4 @@
-{ config, pkgs, lib, theme, fetchurl, ... }:
+{ config, pkgs, lib, fetchurl, ... }:
 
 with lib;
 let cfg = config.modules.desktop.bspwm;
@@ -9,7 +9,7 @@ in {
     home.packages = with pkgs; [ feh ];
 
     home.file.".local/backgrounds/wallpaper.png".source =
-      ../../../theme/wallpaper.png;
+      ../wall.png;
 
     home.keyboard = {
       layout = "pl";
@@ -38,13 +38,13 @@ in {
           remove_unplugged_monitors = true;
           ignore_ewmh_focus = true;
           focus_follows_pointer = true;
+          border_width = 2;
           window_gap = 10;
-          top_padding = 50;
-          focused_border_color = "#${c6}";
+          focused_border_color = "#81a1c1";
           split_ratio = 0.618;
-          urgent_border_color = "#${c3}";
-          normal_border_color = "#${bg}";
-          presel_feedback_color = "#${c6}";
+          urgent_border_color = "#d08770";
+          normal_border_color = "#2e3440";
+          presel_feedback_color = "#4c566a";
         };
         monitors = { "focused" = [ "1" "2" "3" "4" "5" ]; };
 

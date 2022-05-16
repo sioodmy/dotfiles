@@ -1,10 +1,8 @@
-{ config, pkgs, lib, theme, ... }:
+{ config, pkgs, lib, ... }:
 
 with lib;
 
-let
-  theme = import ../theme;
-in {
+{
   environment.variables = {
     NIXOS_CONFIG = "$HOME/.config/nixos/configuration.nix";
     NIXOS_CONFIG_DIR = "$HOME/.config/nixos/";
@@ -37,7 +35,6 @@ in {
 
   boot = {
     cleanTmpDir = true;
-    plymouth.enable = true;
     kernelParams = [
       "quiet"
       "rd.systemd.show_status=false"
@@ -56,12 +53,6 @@ in {
         useOSProber = true;
         efiSupport = true;
         device = "nodev";
-        theme = pkgs.fetchFromGitHub {
-          owner = "catppuccin";
-          repo = "grub";
-          rev = "3f62cd4174465631b40269a7c5631e5ee86dec45";
-          sha256 = "d15FS7R78kdUKqC7EAei5Pe0Vuj2boVnm4WZYQdPURo=";
-        } + "/catppuccin-grub-theme";
       };
     };
   };
@@ -135,32 +126,9 @@ in {
           enable = true;
           user = "sioodmy";
         };
-        lightdm.greeters.mini = with theme.colors; {
+        lightdm.greeters.mini = {
           enable = true;
           user = "sioodmy";
-          extraConfig =
-            ''
-            [greeter]
-            show-password-label = false
-            invalid-password-text = Access Denied
-            show-input-cursor = true
-            password-alignment = left
-            [greeter-hotkeys]
-            mod-key = meta
-            shutdown-key = s
-            [greeter-theme]
-            font-size = 1em
-            font = "monospace";
-            background-image = ""
-            background-color = "#${bg}"
-            window-color = "#${bg}"
-            password-border-radius = 10px
-            password-border-width = 3px
-            password-border-color = "#${ac}"
-            password-background-color = "#${bg}"
-            border-width = 0px
-            text-color = "#${ac}"
-            '';
         };
       };
       windowManager.bspwm.enable = true;
@@ -226,6 +194,7 @@ in {
     fonts = with pkgs; [
       material-design-icons
       roboto
+      comic-neue
       source-sans
       twemoji-color-font
       comfortaa
@@ -254,7 +223,7 @@ in {
 
     enableDefaultFonts = false;
 
-    fontconfig = with theme.colors; {
+    fontconfig = {
       defaultFonts = {
         monospace = [ "Iosevka Custom" "Noto Color Emoji" "Iosevka Nerd Font" ];
         sansSerif = [ "Lato" "Noto Color Emoji" ];
