@@ -1,4 +1,4 @@
-{ config, pkgs, lib, theme, ... }:
+{ config, pkgs, lib, ... }:
 with lib;
 let
   cfg = config.modules.desktop.lockscreen;
@@ -6,24 +6,24 @@ let
     #! ${pkgs.bash}/bin/bash
     ${pkgs.libnotify}/bin/notify-send 'Sleeping in 60 seconds..'
   '';
-  lockscreen = (with theme.colors;
+  lockscreen = (
     pkgs.writeScriptBin "lockscreen" ''
       #! ${pkgs.zsh}/bin/zsh
-      background=#${bg}
-      insidecolor=#${bg}ff
-      insidevercolor=#${bg}ff
-      insidewrongcolor=#${c1}ff
-      ringcolor=#${ac}1A
-      ringvercolor=#${c4}ff
-      ringwrongcolor=#${c1}ff
-      keyhlcolor=#${c2}ff
-      bshlcolor=#${c1}ff
-      layoutcolor=#${ac}ff
-      seperatorcolor=#${ba}00
-      timecolor=#${fg}7f
-      datecolor=#${fg}ff
-      verifcolor=#${fg}ff
-      wrongcolor=#${bg}ff
+      background=#2e3440
+      insidecolor=#2e3440ff
+      insidevercolor=#2e3440ff
+      insidewrongcolor=#bf616aff
+      ringcolor=#5e81ac1A
+      ringvercolor=#81A1C1ff
+      ringwrongcolor=#bf616aff
+      keyhlcolor=#A3BE8Cff
+      bshlcolor=#bf616aff
+      layoutcolor=#5e81acff
+      seperatorcolor=#3b425200
+      timecolor=#d8dee97f
+      datecolor=#d8dee9ff
+      verifcolor=#d8dee9ff
+      wrongcolor=#d8dee9ff
       ${pkgs.i3lock-color}/bin/i3lock-color \
         -n \
         --indicator \

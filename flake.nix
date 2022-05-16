@@ -58,7 +58,6 @@
                 sharedModules = [ discocss.hmModule ];
                 extraSpecialArgs = {
                   inherit inputs;
-                  theme = import ./modules/theme;
                 };
                 users.sioodmy = (./. + "/hosts/${hostname}/user.nix");
               };
