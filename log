@@ -1,0 +1,2770 @@
+App {
+    scope_graph: ScopeGraph {
+        graph: ScopeGraphInternal {
+            last_index: ScopeIndex(35),
+            scopes: {
+                ScopeIndex(24): Scope {
+                    name: "global",
+                    ancestor: None,
+                    data: {
+                        "wifi": "",
+                        "EWW_NET": "{ "eno0": { "NET_UP": 0, "NET_DOWN": 0 },"lo": { "NET_UP": 0, "NET_DOWN": 0 },"wlp3s0": { "NET_UP": 1816, "NET_DOWN": 8946 } }",
+                        "time": "false",
+                        "battery": "{"percent": "27", "icon": "", "charging": "", "visible": true }",
+                        "EWW_CPU": "{ "cores": [{"core": "cpu0", "freq": 798, "usage": 0},{"core": "cpu1", "freq": 798, "usage": 0},{"core": "cpu2", "freq": 798, "usage": 1},{"core": "cpu3", "freq": 799, "usage": 1},{"core": "cpu4", "freq": 798, "usage": 1},{"core": "cpu5", "freq": 799, "usage": 7},{"core": "cpu6", "freq": 798, "usage": 1},{"core": "cpu7", "freq": 798, "usage": 0}], "avg": 1.6740798 }",
+                        "power": "false",
+                        "volum": "false",
+                        "EWW_TEMPS": "{ "CORE_0": 55,"CORE_1": 55,"CORE_2": 54,"CORE_3": 55,"PACKAGE_ID_0": 56,"CPU": 55 }",
+                        "cal": "false",
+                        "temperature": "",
+                        "EWW_DISK": "{ "/": {"name": "/dev/disk/by-label/root", "total": 965891801088, "free": 860892790784, "used": 104999010304, "used_perc": 10.87068},"/nix/store": {"name": "/dev/disk/by-label/root", "total": 965891801088, "free": 860892790784, "used": 104999010304, "used_perc": 10.87068},"/boot": {"name": "/dev/sda1", "total": 535805952, "free": 397611008, "used": 138194944, "used_perc": 25.791975} }",
+                        "search": "false",
+                        "hour": "21",
+                        "screenshotpath": "/tmp/screenshot.png",
+                        "dateVar": "Monday 16.05.22",
+                        "EWW_RAM": "{"total_mem": 8294686, "free_mem": 5172232, "total_swap": 17179865, "free_swap": 17179865, "available_mem": 6596743, "used_mem": 1697943, "used_mem_perc": 20.470251}",
+                        "workspaces_listen": "(box :orientation "v" :class "workspaces" :spacing 10 :halign "center" :valign "center" :vexpand true :hexpand true  (eventbox :cursor "hand" (button :class "workspace-occupied" :onclick "bspc desktop -f 1" " ")) (eventbox :cursor "hand" (button :class "workspace-focused" :onclick "bspc desktop -f 2" " ")) (eventbox :cursor "hand" (button :class "workspace-occupied" :onclick "bspc desktop -f 3" " ")) (eventbox :cursor "hand" (button :class "workspace-empty" :onclick "bspc desktop -f 4" " ")) (eventbox :cursor "hand" (button :class "workspace-empty" :onclick "bspc desktop -f 5" " ")))",
+                        "volumepoll": "",
+                        "minute": "28",
+                        "EWW_BATTERY": "{"BAT0": { "status": "Charging", "capacity": 27 }, "total_avg": 27.6}",
+                        "screenshot": "false",
+                    },
+                    listeners: {},
+                    node_index: ScopeIndex(24),
+                },
+                ScopeIndex(28): Scope {
+                    name: "mem",
+                    ancestor: Some(
+                        ScopeIndex(26),
+                    ),
+                    data: {},
+                    listeners: {
+                        "EWW_RAM": [
+                            Listener {
+                                needed_variables: [
+                                    "EWW_RAM",
+                                ],
+                                f: "function",
+                            },
+                            Listener {
+                                needed_variables: [
+                                    "EWW_RAM",
+                                ],
+                                f: "function",
+                            },
+                        ],
+                    },
+                    node_index: ScopeIndex(28),
+                },
+                ScopeIndex(32): Scope {
+                    name: "workspaces",
+                    ancestor: Some(
+                        ScopeIndex(26),
+                    ),
+                    data: {},
+                    listeners: {
+                        "workspaces_listen": [
+                            Listener {
+                                needed_variables: [
+                                    "workspaces_listen",
+                                ],
+                                f: "function",
+                            },
+                        ],
+                    },
+                    node_index: ScopeIndex(32),
+                },
+                ScopeIndex(25): Scope {
+                    name: "bar",
+                    ancestor: Some(
+                        ScopeIndex(24),
+                    ),
+                    data: {},
+                    listeners: {},
+                    node_index: ScopeIndex(25),
+                },
+                ScopeIndex(34): Scope {
+                    name: "time",
+                    ancestor: Some(
+                        ScopeIndex(26),
+                    ),
+                    data: {},
+                    listeners: {
+                        "hour": [
+                            Listener {
+                                needed_variables: [
+                                    "hour",
+                                ],
+                                f: "function",
+                            },
+                        ],
+                        "minute": [
+                            Listener {
+                                needed_variables: [
+                                    "minute",
+                                ],
+                                f: "function",
+                            },
+                        ],
+                        "dateVar": [
+                            Listener {
+                                needed_variables: [
+                                    "dateVar",
+                                ],
+                                f: "function",
+                            },
+                        ],
+                    },
+                    node_index: ScopeIndex(34),
+                },
+                ScopeIndex(33): Scope {
+                    name: "battery",
+                    ancestor: Some(
+                        ScopeIndex(26),
+                    ),
+                    data: {},
+                    listeners: {
+                        "battery": [
+                            Listener {
+                                needed_variables: [
+                                    "battery",
+                                ],
+                                f: "function",
+                            },
+                            Listener {
+                                needed_variables: [
+                                    "battery",
+                                    "EWW_BATTERY",
+                                ],
+                                f: "function",
+                            },
+                            Listener {
+                                needed_variables: [
+                                    "battery",
+                                ],
+                                f: "function",
+                            },
+                        ],
+                        "EWW_BATTERY": [
+                            Listener {
+                                needed_variables: [
+                                    "battery",
+                                    "EWW_BATTERY",
+                                ],
+                                f: "function",
+                            },
+                        ],
+                    },
+                    node_index: ScopeIndex(33),
+                },
+                ScopeIndex(27): Scope {
+                    name: "power",
+                    ancestor: Some(
+                        ScopeIndex(26),
+                    ),
+                    data: {},
+                    listeners: {
+                        "power": [
+                            Listener {
+                                needed_variables: [
+                                    "power",
+                                ],
+                                f: "function",
+                            },
+                        ],
+                    },
+                    node_index: ScopeIndex(27),
+                },
+                ScopeIndex(29): Scope {
+                    name: "cpu",
+                    ancestor: Some(
+                        ScopeIndex(26),
+                    ),
+                    data: {},
+                    listeners: {
+                        "EWW_CPU": [
+                            Listener {
+                                needed_variables: [
+                                    "EWW_CPU",
+                                ],
+                                f: "function",
+                            },
+                            Listener {
+                                needed_variables: [
+                                    "EWW_CPU",
+                                ],
+                                f: "function",
+                            },
+                        ],
+                    },
+                    node_index: ScopeIndex(29),
+                },
+                ScopeIndex(30): Scope {
+                    name: "disk",
+                    ancestor: Some(
+                        ScopeIndex(26),
+                    ),
+                    data: {},
+                    listeners: {
+                        "EWW_DISK": [
+                            Listener {
+                                needed_variables: [
+                                    "EWW_DISK",
+                                ],
+                                f: "function",
+                            },
+                            Listener {
+                                needed_variables: [
+                                    "EWW_DISK",
+                                ],
+                                f: "function",
+                            },
+                        ],
+                    },
+                    node_index: ScopeIndex(30),
+                },
+                ScopeIndex(31): Scope {
+                    name: "wifi",
+                    ancestor: Some(
+                        ScopeIndex(26),
+                    ),
+                    data: {},
+                    listeners: {
+                        "wifi": [
+                            Listener {
+                                needed_variables: [
+                                    "wifi",
+                                ],
+                                f: "function",
+                            },
+                            Listener {
+                                needed_variables: [
+                                    "wifi",
+                                ],
+                                f: "function",
+                            },
+                        ],
+                    },
+                    node_index: ScopeIndex(31),
+                },
+                ScopeIndex(26): Scope {
+                    name: "bar",
+                    ancestor: Some(
+                        ScopeIndex(25),
+                    ),
+                    data: {},
+                    listeners: {},
+                    node_index: ScopeIndex(26),
+                },
+            },
+            hierarchy_relations: OneToNElementsMap {
+                child_to_parent: {
+                    ScopeIndex(30): (
+                        ScopeIndex(26),
+                        [],
+                    ),
+                    ScopeIndex(32): (
+                        ScopeIndex(26),
+                        [],
+                    ),
+                    ScopeIndex(27): (
+                        ScopeIndex(26),
+                        [],
+                    ),
+                    ScopeIndex(33): (
+                        ScopeIndex(26),
+                        [],
+                    ),
+                    ScopeIndex(34): (
+                        ScopeIndex(26),
+                        [],
+                    ),
+                    ScopeIndex(31): (
+                        ScopeIndex(26),
+                        [],
+                    ),
+                    ScopeIndex(26): (
+                        ScopeIndex(25),
+                        [],
+                    ),
+                    ScopeIndex(28): (
+                        ScopeIndex(26),
+                        [],
+                    ),
+                    ScopeIndex(29): (
+                        ScopeIndex(26),
+                        [],
+                    ),
+                    ScopeIndex(25): (
+                        ScopeIndex(24),
+                        [],
+                    ),
+                },
+                parent_to_children: {
+                    ScopeIndex(25): {
+                        ScopeIndex(26),
+                    },
+                    ScopeIndex(26): {
+                        ScopeIndex(27),
+                        ScopeIndex(34),
+                        ScopeIndex(30),
+                        ScopeIndex(31),
+                        ScopeIndex(33),
+                        ScopeIndex(28),
+                        ScopeIndex(29),
+                        ScopeIndex(32),
+                    },
+                    ScopeIndex(24): {
+                        ScopeIndex(25),
+                    },
+                },
+            },
+            inheritance_relations: OneToNElementsMap {
+                child_to_parent: {
+                    ScopeIndex(31): (
+                        ScopeIndex(24),
+                        Inherits {
+                            references: {
+                                "wifi",
+                            },
+                        },
+                    ),
+                    ScopeIndex(25): (
+                        ScopeIndex(24),
+                        Inherits {
+                            references: {},
+                        },
+                    ),
+                    ScopeIndex(28): (
+                        ScopeIndex(24),
+                        Inherits {
+                            references: {
+                                "EWW_RAM",
+                            },
+                        },
+                    ),
+                    ScopeIndex(29): (
+                        ScopeIndex(24),
+                        Inherits {
+                            references: {
+                                "EWW_CPU",
+                            },
+                        },
+                    ),
+                    ScopeIndex(26): (
+                        ScopeIndex(24),
+                        Inherits {
+                            references: {},
+                        },
+                    ),
+                    ScopeIndex(30): (
+                        ScopeIndex(24),
+                        Inherits {
+                            references: {
+                                "EWW_DISK",
+                            },
+                        },
+                    ),
+                    ScopeIndex(34): (
+                        ScopeIndex(24),
+                        Inherits {
+                            references: {
+                                "hour",
+                                "minute",
+                                "dateVar",
+                            },
+                        },
+                    ),
+                    ScopeIndex(32): (
+                        ScopeIndex(24),
+                        Inherits {
+                            references: {
+                                "workspaces_listen",
+                            },
+                        },
+                    ),
+                    ScopeIndex(27): (
+                        ScopeIndex(24),
+                        Inherits {
+                            references: {
+                                "power",
+                            },
+                        },
+                    ),
+                    ScopeIndex(33): (
+                        ScopeIndex(24),
+                        Inherits {
+                            references: {
+                                "EWW_BATTERY",
+                                "battery",
+                            },
+                        },
+                    ),
+                },
+                parent_to_children: {
+                    ScopeIndex(24): {
+                        ScopeIndex(26),
+                        ScopeIndex(32),
+                        ScopeIndex(31),
+                        ScopeIndex(27),
+                        ScopeIndex(28),
+                        ScopeIndex(30),
+                        ScopeIndex(34),
+                        ScopeIndex(29),
+                        ScopeIndex(25),
+                        ScopeIndex(33),
+                    },
+                },
+            },
+        },
+        root_index: ScopeIndex(24),
+        event_sender: UnboundedSender {
+            chan: Tx {
+                inner: Chan {
+                    tx: Tx {
+                        block_tail: 0x0000558c654bc000,
+                        tail_position: 22,
+                    },
+                    semaphore: 0,
+                    rx_waker: AtomicWaker,
+                    tx_count: 11,
+                    rx_fields: "...",
+                },
+            },
+        },
+    },
+    eww_config: EwwConfig {
+        widgets: {
+            "cpu": WidgetDefinition {
+                name: "cpu",
+                expected_args: [],
+                widget: Basic(
+                    BasicWidgetUse {
+                        name: "box",
+                        attrs: Attributes {
+                            span: 2595..2974,
+                            attrs: {
+                                "vexpand": AttrEntry {
+                                    key_span: 2596..2604,
+                                    value: "false",
+                                },
+                                "hexpand": AttrEntry {
+                                    key_span: 2613..2621,
+                                    value: "false",
+                                },
+                            },
+                        },
+                        children: [
+                            Basic(
+                                BasicWidgetUse {
+                                    name: "circular-progress",
+                                    attrs: Attributes {
+                                        span: 2652..2966,
+                                        attrs: {
+                                            "class": AttrEntry {
+                                                key_span: 2699..2705,
+                                                value: "cpubar",
+                                            },
+                                            "thickness": AttrEntry {
+                                                key_span: 2778..2788,
+                                                value: "4",
+                                            },
+                                            "start-angle": AttrEntry {
+                                                key_span: 2739..2751,
+                                                value: "0",
+                                            },
+                                            "value": AttrEntry {
+                                                key_span: 2654..2660,
+                                                value: {EWW_CPU["avg"]},
+                                            },
+                                        },
+                                    },
+                                    children: [
+                                        Basic(
+                                            BasicWidgetUse {
+                                                name: "button",
+                                                attrs: Attributes {
+                                                    span: 2804..2965,
+                                                    attrs: {
+                                                        "tooltip": AttrEntry {
+                                                            key_span: 2862..2870,
+                                                            value: {" ${round(EWW_CPU["avg"], "1")}%"},
+                                                        },
+                                                        "wrap": AttrEntry {
+                                                            key_span: 2940..2945,
+                                                            value: "false",
+                                                        },
+                                                        "class": AttrEntry {
+                                                            key_span: 2814..2820,
+                                                            value: "iconmem",
+                                                        },
+                                                        "show_truncated": AttrEntry {
+                                                            key_span: 2910..2925,
+                                                            value: "false",
+                                                        },
+                                                        "limit-width": AttrEntry {
+                                                            key_span: 2839..2851,
+                                                            value: "2",
+                                                        },
+                                                    },
+                                                },
+                                                children: [
+                                                    Basic(
+                                                        BasicWidgetUse {
+                                                            name: "label",
+                                                            attrs: Attributes {
+                                                                span: 2960..2965,
+                                                                attrs: {
+                                                                    "text": AttrEntry {
+                                                                        key_span: 2960..2965,
+                                                                        value: "",
+                                                                    },
+                                                                },
+                                                            },
+                                                            children: [],
+                                                            span: 2960..2965,
+                                                            name_span: 2960..2960,
+                                                        },
+                                                    ),
+                                                ],
+                                                span: 2797..2966,
+                                                name_span: 2798..2804,
+                                            },
+                                        ),
+                                    ],
+                                    span: 2634..2974,
+                                    name_span: 2635..2652,
+                                },
+                            ),
+                        ],
+                        span: 2591..2975,
+                        name_span: 2592..2595,
+                    },
+                ),
+                span: 2571..2992,
+                args_span: 2586..2588,
+            },
+            "power": WidgetDefinition {
+                name: "power",
+                expected_args: [],
+                widget: Basic(
+                    BasicWidgetUse {
+                        name: "eventbox",
+                        attrs: Attributes {
+                            span: 3953..4789,
+                            attrs: {
+                                "onhoverlost": AttrEntry {
+                                    key_span: 4034..4046,
+                                    value: "eww update power=false",
+                                },
+                                "hexpand": AttrEntry {
+                                    key_span: 3956..3964,
+                                    value: "false",
+                                },
+                                "cursor": AttrEntry {
+                                    key_span: 4087..4094,
+                                    value: "hand",
+                                },
+                                "onhover": AttrEntry {
+                                    key_span: 3986..3994,
+                                    value: "eww update power=true",
+                                },
+                            },
+                        },
+                        children: [
+                            Basic(
+                                BasicWidgetUse {
+                                    name: "box",
+                                    attrs: Attributes {
+                                        span: 4110..4309,
+                                        attrs: {
+                                            "class": AttrEntry {
+                                                key_span: 4191..4197,
+                                                value: "powerLabel label",
+                                            },
+                                            "orientation": AttrEntry {
+                                                key_span: 4112..4124,
+                                                value: "v",
+                                            },
+                                            "space-evenly": AttrEntry {
+                                                key_span: 4150..4163,
+                                                value: "false",
+                                            },
+                                        },
+                                    },
+                                    children: [
+                                        Basic(
+                                            BasicWidgetUse {
+                                                name: "button",
+                                                attrs: Attributes {
+                                                    span: 4231..4308,
+                                                    attrs: {
+                                                        "class": AttrEntry {
+                                                            key_span: 4233..4239,
+                                                            value: "nixos",
+                                                        },
+                                                        "onclick": AttrEntry {
+                                                            key_span: 4273..4281,
+                                                            value: "rofi -show drun &",
+                                                        },
+                                                    },
+                                                },
+                                                children: [
+                                                    Basic(
+                                                        BasicWidgetUse {
+                                                            name: "label",
+                                                            attrs: Attributes {
+                                                                span: 4302..4308,
+                                                                attrs: {
+                                                                    "text": AttrEntry {
+                                                                        key_span: 4302..4308,
+                                                                        value: "󱄅",
+                                                                    },
+                                                                },
+                                                            },
+                                                            children: [],
+                                                            span: 4302..4308,
+                                                            name_span: 4302..4302,
+                                                        },
+                                                    ),
+                                                ],
+                                                span: 4224..4309,
+                                                name_span: 4225..4231,
+                                            },
+                                        ),
+                                        Basic(
+                                            BasicWidgetUse {
+                                                name: "revealer",
+                                                attrs: Attributes {
+                                                    span: 4325..4778,
+                                                    attrs: {
+                                                        "transition": AttrEntry {
+                                                            key_span: 4326..4337,
+                                                            value: "slidedown",
+                                                        },
+                                                        "reveal": AttrEntry {
+                                                            key_span: 4370..4377,
+                                                            value: power,
+                                                        },
+                                                        "duration": AttrEntry {
+                                                            key_span: 4404..4413,
+                                                            value: "250ms",
+                                                        },
+                                                    },
+                                                },
+                                                children: [
+                                                    Basic(
+                                                        BasicWidgetUse {
+                                                            name: "box",
+                                                            attrs: Attributes {
+                                                                span: 4434..4571,
+                                                                attrs: {
+                                                                    "space-evenly": AttrEntry {
+                                                                        key_span: 4442..4455,
+                                                                        value: "true",
+                                                                    },
+                                                                    "orientation": AttrEntry {
+                                                                        key_span: 4461..4473,
+                                                                        value: "v",
+                                                                    },
+                                                                },
+                                                            },
+                                                            children: [
+                                                                Basic(
+                                                                    BasicWidgetUse {
+                                                                        name: "button",
+                                                                        attrs: Attributes {
+                                                                            span: 4495..4570,
+                                                                            attrs: {
+                                                                                "class": AttrEntry {
+                                                                                    key_span: 4497..4503,
+                                                                                    value: "button-off",
+                                                                                },
+                                                                                "onclick": AttrEntry {
+                                                                                    key_span: 4546..4554,
+                                                                                    value: "reboot",
+                                                                                },
+                                                                            },
+                                                                        },
+                                                                        children: [
+                                                                            Basic(
+                                                                                BasicWidgetUse {
+                                                                                    name: "label",
+                                                                                    attrs: Attributes {
+                                                                                        span: 4564..4570,
+                                                                                        attrs: {
+                                                                                            "text": AttrEntry {
+                                                                                                key_span: 4564..4570,
+                                                                                                value: "󰐥",
+                                                                                            },
+                                                                                        },
+                                                                                    },
+                                                                                    children: [],
+                                                                                    span: 4564..4570,
+                                                                                    name_span: 4564..4564,
+                                                                                },
+                                                                            ),
+                                                                        ],
+                                                                        span: 4488..4571,
+                                                                        name_span: 4489..4495,
+                                                                    },
+                                                                ),
+                                                                Basic(
+                                                                    BasicWidgetUse {
+                                                                        name: "button",
+                                                                        attrs: Attributes {
+                                                                            span: 4589..4669,
+                                                                            attrs: {
+                                                                                "class": AttrEntry {
+                                                                                    key_span: 4591..4597,
+                                                                                    value: "button-lock",
+                                                                                },
+                                                                                "onclick": AttrEntry {
+                                                                                    key_span: 4641..4649,
+                                                                                    value: "lockscreen",
+                                                                                },
+                                                                            },
+                                                                        },
+                                                                        children: [
+                                                                            Basic(
+                                                                                BasicWidgetUse {
+                                                                                    name: "label",
+                                                                                    attrs: Attributes {
+                                                                                        span: 4663..4669,
+                                                                                        attrs: {
+                                                                                            "text": AttrEntry {
+                                                                                                key_span: 4663..4669,
+                                                                                                value: "󱅞",
+                                                                                            },
+                                                                                        },
+                                                                                    },
+                                                                                    children: [],
+                                                                                    span: 4663..4669,
+                                                                                    name_span: 4663..4663,
+                                                                                },
+                                                                            ),
+                                                                        ],
+                                                                        span: 4582..4670,
+                                                                        name_span: 4583..4589,
+                                                                    },
+                                                                ),
+                                                                Basic(
+                                                                    BasicWidgetUse {
+                                                                        name: "button",
+                                                                        attrs: Attributes {
+                                                                            span: 4688..4776,
+                                                                            attrs: {
+                                                                                "onclick": AttrEntry {
+                                                                                    key_span: 4741..4749,
+                                                                                    value: "systemctl suspend",
+                                                                                },
+                                                                                "class": AttrEntry {
+                                                                                    key_span: 4690..4696,
+                                                                                    value: "button-sleep",
+                                                                                },
+                                                                            },
+                                                                        },
+                                                                        children: [
+                                                                            Basic(
+                                                                                BasicWidgetUse {
+                                                                                    name: "label",
+                                                                                    attrs: Attributes {
+                                                                                        span: 4770..4776,
+                                                                                        attrs: {
+                                                                                            "text": AttrEntry {
+                                                                                                key_span: 4770..4776,
+                                                                                                value: "󰤄",
+                                                                                            },
+                                                                                        },
+                                                                                    },
+                                                                                    children: [],
+                                                                                    span: 4770..4776,
+                                                                                    name_span: 4770..4770,
+                                                                                },
+                                                                            ),
+                                                                        ],
+                                                                        span: 4681..4777,
+                                                                        name_span: 4682..4688,
+                                                                    },
+                                                                ),
+                                                            ],
+                                                            span: 4430..4778,
+                                                            name_span: 4431..4434,
+                                                        },
+                                                    ),
+                                                ],
+                                                span: 4316..4788,
+                                                name_span: 4317..4325,
+                                            },
+                                        ),
+                                    ],
+                                    span: 4106..4789,
+                                    name_span: 4107..4110,
+                                },
+                            ),
+                        ],
+                        span: 3944..4790,
+                        name_span: 3945..3953,
+                    },
+                ),
+                span: 3922..4791,
+                args_span: 3939..3941,
+            },
+            "workspaces": WidgetDefinition {
+                name: "workspaces",
+                expected_args: [],
+                widget: Basic(
+                    BasicWidgetUse {
+                        name: "literal",
+                        attrs: Attributes {
+                            span: 5306..5333,
+                            attrs: {
+                                "content": AttrEntry {
+                                    key_span: 5307..5315,
+                                    value: workspaces_listen,
+                                },
+                            },
+                        },
+                        children: [],
+                        span: 5298..5334,
+                        name_span: 5299..5306,
+                    },
+                ),
+                span: 5271..5335,
+                args_span: 5293..5295,
+            },
+            "screenshotmenu": WidgetDefinition {
+                name: "screenshotmenu",
+                expected_args: [],
+                widget: Basic(
+                    BasicWidgetUse {
+                        name: "box",
+                        attrs: Attributes {
+                            span: 5516..5652,
+                            attrs: {
+                                "orientation": AttrEntry {
+                                    key_span: 5517..5529,
+                                    value: "v",
+                                },
+                            },
+                        },
+                        children: [
+                            Basic(
+                                BasicWidgetUse {
+                                    name: "box",
+                                    attrs: Attributes {
+                                        span: 5542..5644,
+                                        attrs: {
+                                            "vexpand": AttrEntry {
+                                                key_span: 5543..5551,
+                                                value: "true",
+                                            },
+                                            "hexpand": AttrEntry {
+                                                key_span: 5557..5565,
+                                                value: "true",
+                                            },
+                                            "orientation": AttrEntry {
+                                                key_span: 5571..5583,
+                                                value: "h",
+                                            },
+                                        },
+                                    },
+                                    children: [
+                                        Basic(
+                                            BasicWidgetUse {
+                                                name: "label",
+                                                attrs: Attributes {
+                                                    span: 5600..5643,
+                                                    attrs: {
+                                                        "class": AttrEntry {
+                                                            key_span: 5627..5633,
+                                                            value: "ss-text",
+                                                        },
+                                                        "text": AttrEntry {
+                                                            key_span: 5601..5606,
+                                                            value: "Screenshot taken!",
+                                                        },
+                                                    },
+                                                },
+                                                children: [],
+                                                span: 5594..5644,
+                                                name_span: 5595..5600,
+                                            },
+                                        ),
+                                    ],
+                                    span: 5538..5652,
+                                    name_span: 5539..5542,
+                                },
+                            ),
+                            Basic(
+                                BasicWidgetUse {
+                                    name: "box",
+                                    attrs: Attributes {
+                                        span: 5661..5832,
+                                        attrs: {
+                                            "orientation": AttrEntry {
+                                                key_span: 5662..5674,
+                                                value: "h",
+                                            },
+                                        },
+                                    },
+                                    children: [
+                                        Basic(
+                                            BasicWidgetUse {
+                                                name: "button",
+                                                attrs: Attributes {
+                                                    span: 5692..5831,
+                                                    attrs: {
+                                                        "onclick": AttrEntry {
+                                                            key_span: 5790..5798,
+                                                            value: "./scripts/ss.sh upload &",
+                                                        },
+                                                        "class": AttrEntry {
+                                                            key_span: 5699..5705,
+                                                            value: "ss-upload ss",
+                                                        },
+                                                        "tooltip": AttrEntry {
+                                                            key_span: 5741..5749,
+                                                            value: "Upload screenshot",
+                                                        },
+                                                    },
+                                                },
+                                                children: [
+                                                    Basic(
+                                                        BasicWidgetUse {
+                                                            name: "label",
+                                                            attrs: Attributes {
+                                                                span: 5826..5831,
+                                                                attrs: {
+                                                                    "text": AttrEntry {
+                                                                        key_span: 5826..5831,
+                                                                        value: "",
+                                                                    },
+                                                                },
+                                                            },
+                                                            children: [],
+                                                            span: 5826..5831,
+                                                            name_span: 5826..5826,
+                                                        },
+                                                    ),
+                                                ],
+                                                span: 5685..5832,
+                                                name_span: 5686..5692,
+                                            },
+                                        ),
+                                        Basic(
+                                            BasicWidgetUse {
+                                                name: "button",
+                                                attrs: Attributes {
+                                                    span: 5846..5978,
+                                                    attrs: {
+                                                        "onclick": AttrEntry {
+                                                            key_span: 5939..5947,
+                                                            value: "./scripts/ss.sh save &",
+                                                        },
+                                                        "class": AttrEntry {
+                                                            key_span: 5853..5859,
+                                                            value: "ss-win ss",
+                                                        },
+                                                        "tooltip": AttrEntry {
+                                                            key_span: 5892..5900,
+                                                            value: "Save screenshot",
+                                                        },
+                                                    },
+                                                },
+                                                children: [
+                                                    Basic(
+                                                        BasicWidgetUse {
+                                                            name: "label",
+                                                            attrs: Attributes {
+                                                                span: 5973..5978,
+                                                                attrs: {
+                                                                    "text": AttrEntry {
+                                                                        key_span: 5973..5978,
+                                                                        value: "",
+                                                                    },
+                                                                },
+                                                            },
+                                                            children: [],
+                                                            span: 5973..5978,
+                                                            name_span: 5973..5973,
+                                                        },
+                                                    ),
+                                                ],
+                                                span: 5839..5979,
+                                                name_span: 5840..5846,
+                                            },
+                                        ),
+                                        Basic(
+                                            BasicWidgetUse {
+                                                name: "button",
+                                                attrs: Attributes {
+                                                    span: 5993..6126,
+                                                    attrs: {
+                                                        "class": AttrEntry {
+                                                            key_span: 6000..6006,
+                                                            value: "ss-copy ss",
+                                                        },
+                                                        "tooltip": AttrEntry {
+                                                            key_span: 6040..6048,
+                                                            value: "Copy screenshot",
+                                                        },
+                                                        "onclick": AttrEntry {
+                                                            key_span: 6087..6095,
+                                                            value: "./scripts/ss.sh copy &",
+                                                        },
+                                                    },
+                                                },
+                                                children: [
+                                                    Basic(
+                                                        BasicWidgetUse {
+                                                            name: "label",
+                                                            attrs: Attributes {
+                                                                span: 6121..6126,
+                                                                attrs: {
+                                                                    "text": AttrEntry {
+                                                                        key_span: 6121..6126,
+                                                                        value: "",
+                                                                    },
+                                                                },
+                                                            },
+                                                            children: [],
+                                                            span: 6121..6126,
+                                                            name_span: 6121..6121,
+                                                        },
+                                                    ),
+                                                ],
+                                                span: 5986..6127,
+                                                name_span: 5987..5993,
+                                            },
+                                        ),
+                                        Basic(
+                                            BasicWidgetUse {
+                                                name: "button",
+                                                attrs: Attributes {
+                                                    span: 6141..6283,
+                                                    attrs: {
+                                                        "tooltip": AttrEntry {
+                                                            key_span: 6191..6199,
+                                                            value: "Discard screenshot",
+                                                        },
+                                                        "onclick": AttrEntry {
+                                                            key_span: 6241..6249,
+                                                            value: "./scripts/ss.sh discard &",
+                                                        },
+                                                        "class": AttrEntry {
+                                                            key_span: 6148..6154,
+                                                            value: "ss-discard ss",
+                                                        },
+                                                    },
+                                                },
+                                                children: [
+                                                    Basic(
+                                                        BasicWidgetUse {
+                                                            name: "label",
+                                                            attrs: Attributes {
+                                                                span: 6278..6283,
+                                                                attrs: {
+                                                                    "text": AttrEntry {
+                                                                        key_span: 6278..6283,
+                                                                        value: "",
+                                                                    },
+                                                                },
+                                                            },
+                                                            children: [],
+                                                            span: 6278..6283,
+                                                            name_span: 6278..6278,
+                                                        },
+                                                    ),
+                                                ],
+                                                span: 6134..6284,
+                                                name_span: 6135..6141,
+                                            },
+                                        ),
+                                    ],
+                                    span: 5657..6292,
+                                    name_span: 5658..5661,
+                                },
+                            ),
+                        ],
+                        span: 5512..6293,
+                        name_span: 5513..5516,
+                    },
+                ),
+                span: 5481..6297,
+                args_span: 5507..5509,
+            },
+            "wifi": WidgetDefinition {
+                name: "wifi",
+                expected_args: [],
+                widget: Basic(
+                    BasicWidgetUse {
+                        name: "box",
+                        attrs: Attributes {
+                            span: 3019..3186,
+                            attrs: {
+                                "orientation": AttrEntry {
+                                    key_span: 3050..3062,
+                                    value: "v",
+                                },
+                                "vexpand": AttrEntry {
+                                    key_span: 3020..3028,
+                                    value: "false",
+                                },
+                                "hexpand": AttrEntry {
+                                    key_span: 3035..3043,
+                                    value: "false",
+                                },
+                            },
+                        },
+                        children: [
+                            Basic(
+                                BasicWidgetUse {
+                                    name: "label",
+                                    attrs: Attributes {
+                                        span: 3076..3185,
+                                        attrs: {
+                                            "limit-width": AttrEntry {
+                                                key_span: 3106..3118,
+                                                value: "10",
+                                            },
+                                            "class": AttrEntry {
+                                                key_span: 3166..3172,
+                                                value: "label wifi",
+                                            },
+                                            "text": AttrEntry {
+                                                key_span: 3077..3082,
+                                                value: {wifi["icon"]},
+                                            },
+                                            "tooltip": AttrEntry {
+                                                key_span: 3133..3141,
+                                                value: {wifi["status"]},
+                                            },
+                                        },
+                                    },
+                                    children: [],
+                                    span: 3070..3186,
+                                    name_span: 3071..3076,
+                                },
+                            ),
+                        ],
+                        span: 3015..3192,
+                        name_span: 3016..3019,
+                    },
+                ),
+                span: 2994..3194,
+                args_span: 3010..3012,
+            },
+            "screenshottool": WidgetDefinition {
+                name: "screenshottool",
+                expected_args: [],
+                widget: Basic(
+                    BasicWidgetUse {
+                        name: "box",
+                        attrs: Attributes {
+                            span: 6334..6473,
+                            attrs: {},
+                        },
+                        children: [
+                            Basic(
+                                BasicWidgetUse {
+                                    name: "button",
+                                    attrs: Attributes {
+                                        span: 6347..6472,
+                                        attrs: {
+                                            "tooltip": AttrEntry {
+                                                key_span: 6392..6400,
+                                                value: "Select area",
+                                            },
+                                            "class": AttrEntry {
+                                                key_span: 6354..6360,
+                                                value: "ss-area ss",
+                                            },
+                                            "onclick": AttrEntry {
+                                                key_span: 6433..6441,
+                                                value: "./scripts/ss.sh area &",
+                                            },
+                                        },
+                                    },
+                                    children: [
+                                        Basic(
+                                            BasicWidgetUse {
+                                                name: "label",
+                                                attrs: Attributes {
+                                                    span: 6467..6472,
+                                                    attrs: {
+                                                        "text": AttrEntry {
+                                                            key_span: 6467..6472,
+                                                            value: "",
+                                                        },
+                                                    },
+                                                },
+                                                children: [],
+                                                span: 6467..6472,
+                                                name_span: 6467..6467,
+                                            },
+                                        ),
+                                    ],
+                                    span: 6340..6473,
+                                    name_span: 6341..6347,
+                                },
+                            ),
+                            Basic(
+                                BasicWidgetUse {
+                                    name: "button",
+                                    attrs: Attributes {
+                                        span: 6485..6615,
+                                        attrs: {
+                                            "class": AttrEntry {
+                                                key_span: 6492..6498,
+                                                value: "ss-screen ss",
+                                            },
+                                            "tooltip": AttrEntry {
+                                                key_span: 6532..6540,
+                                                value: "Whole screen",
+                                            },
+                                            "onclick": AttrEntry {
+                                                key_span: 6574..6582,
+                                                value: "./scripts/ss.sh screen &",
+                                            },
+                                        },
+                                    },
+                                    children: [
+                                        Basic(
+                                            BasicWidgetUse {
+                                                name: "label",
+                                                attrs: Attributes {
+                                                    span: 6610..6615,
+                                                    attrs: {
+                                                        "text": AttrEntry {
+                                                            key_span: 6610..6615,
+                                                            value: "",
+                                                        },
+                                                    },
+                                                },
+                                                children: [],
+                                                span: 6610..6615,
+                                                name_span: 6610..6610,
+                                            },
+                                        ),
+                                    ],
+                                    span: 6478..6616,
+                                    name_span: 6479..6485,
+                                },
+                            ),
+                            Basic(
+                                BasicWidgetUse {
+                                    name: "button",
+                                    attrs: Attributes {
+                                        span: 6628..6749,
+                                        attrs: {
+                                            "class": AttrEntry {
+                                                key_span: 6635..6641,
+                                                value: "ss-win ss",
+                                            },
+                                            "onclick": AttrEntry {
+                                                key_span: 6708..6716,
+                                                value: "./scripts/ss.sh window &",
+                                            },
+                                            "tooltip": AttrEntry {
+                                                key_span: 6672..6680,
+                                                value: "Window",
+                                            },
+                                        },
+                                    },
+                                    children: [
+                                        Basic(
+                                            BasicWidgetUse {
+                                                name: "label",
+                                                attrs: Attributes {
+                                                    span: 6744..6749,
+                                                    attrs: {
+                                                        "text": AttrEntry {
+                                                            key_span: 6744..6749,
+                                                            value: "",
+                                                        },
+                                                    },
+                                                },
+                                                children: [],
+                                                span: 6744..6749,
+                                                name_span: 6744..6744,
+                                            },
+                                        ),
+                                    ],
+                                    span: 6621..6750,
+                                    name_span: 6622..6628,
+                                },
+                            ),
+                            Basic(
+                                BasicWidgetUse {
+                                    name: "button",
+                                    attrs: Attributes {
+                                        span: 6762..6888,
+                                        attrs: {
+                                            "tooltip": AttrEntry {
+                                                key_span: 6809..6817,
+                                                value: "Cancel",
+                                            },
+                                            "onclick": AttrEntry {
+                                                key_span: 6845..6853,
+                                                value: "eww close screenshottool &",
+                                            },
+                                            "class": AttrEntry {
+                                                key_span: 6769..6775,
+                                                value: "ss-cancel ss",
+                                            },
+                                        },
+                                    },
+                                    children: [
+                                        Basic(
+                                            BasicWidgetUse {
+                                                name: "label",
+                                                attrs: Attributes {
+                                                    span: 6883..6888,
+                                                    attrs: {
+                                                        "text": AttrEntry {
+                                                            key_span: 6883..6888,
+                                                            value: "",
+                                                        },
+                                                    },
+                                                },
+                                                children: [],
+                                                span: 6883..6888,
+                                                name_span: 6883..6883,
+                                            },
+                                        ),
+                                    ],
+                                    span: 6755..6889,
+                                    name_span: 6756..6762,
+                                },
+                            ),
+                        ],
+                        span: 6330..6895,
+                        name_span: 6331..6334,
+                    },
+                ),
+                span: 6299..6899,
+                args_span: 6325..6327,
+            },
+            "disk": WidgetDefinition {
+                name: "disk",
+                expected_args: [],
+                widget: Basic(
+                    BasicWidgetUse {
+                        name: "box",
+                        attrs: Attributes {
+                            span: 3499..3903,
+                            attrs: {
+                                "vexpand": AttrEntry {
+                                    key_span: 3500..3508,
+                                    value: "false",
+                                },
+                                "hexpand": AttrEntry {
+                                    key_span: 3517..3525,
+                                    value: "false",
+                                },
+                            },
+                        },
+                        children: [
+                            Basic(
+                                BasicWidgetUse {
+                                    name: "circular-progress",
+                                    attrs: Attributes {
+                                        span: 3556..3895,
+                                        attrs: {
+                                            "class": AttrEntry {
+                                                key_span: 3615..3621,
+                                                value: "diskbar",
+                                            },
+                                            "start-angle": AttrEntry {
+                                                key_span: 3656..3668,
+                                                value: "0",
+                                            },
+                                            "value": AttrEntry {
+                                                key_span: 3558..3564,
+                                                value: {EWW_DISK["/"]["used_perc"]},
+                                            },
+                                            "thickness": AttrEntry {
+                                                key_span: 3695..3705,
+                                                value: "4",
+                                            },
+                                        },
+                                    },
+                                    children: [
+                                        Basic(
+                                            BasicWidgetUse {
+                                                name: "button",
+                                                attrs: Attributes {
+                                                    span: 3721..3894,
+                                                    attrs: {
+                                                        "wrap": AttrEntry {
+                                                            key_span: 3869..3874,
+                                                            value: "false",
+                                                        },
+                                                        "class": AttrEntry {
+                                                            key_span: 3731..3737,
+                                                            value: "iconmem",
+                                                        },
+                                                        "show_truncated": AttrEntry {
+                                                            key_span: 3839..3854,
+                                                            value: "false",
+                                                        },
+                                                        "tooltip": AttrEntry {
+                                                            key_span: 3779..3787,
+                                                            value: {" ${round(EWW_DISK["/"]["used_perc"], "1")}%"},
+                                                        },
+                                                        "limit-width": AttrEntry {
+                                                            key_span: 3756..3768,
+                                                            value: "2",
+                                                        },
+                                                    },
+                                                },
+                                                children: [
+                                                    Basic(
+                                                        BasicWidgetUse {
+                                                            name: "label",
+                                                            attrs: Attributes {
+                                                                span: 3889..3894,
+                                                                attrs: {
+                                                                    "text": AttrEntry {
+                                                                        key_span: 3889..3894,
+                                                                        value: "",
+                                                                    },
+                                                                },
+                                                            },
+                                                            children: [],
+                                                            span: 3889..3894,
+                                                            name_span: 3889..3889,
+                                                        },
+                                                    ),
+                                                ],
+                                                span: 3714..3895,
+                                                name_span: 3715..3721,
+                                            },
+                                        ),
+                                    ],
+                                    span: 3538..3903,
+                                    name_span: 3539..3556,
+                                },
+                            ),
+                        ],
+                        span: 3495..3904,
+                        name_span: 3496..3499,
+                    },
+                ),
+                span: 3474..3921,
+                args_span: 3490..3492,
+            },
+            "screenshot": WidgetDefinition {
+                name: "screenshot",
+                expected_args: [],
+                widget: Basic(
+                    BasicWidgetUse {
+                        name: "box",
+                        attrs: Attributes {
+                            span: 689..710,
+                            attrs: {},
+                        },
+                        children: [
+                            Basic(
+                                BasicWidgetUse {
+                                    name: "screenshotmenu",
+                                    attrs: Attributes {
+                                        span: 709..709,
+                                        attrs: {},
+                                    },
+                                    children: [],
+                                    span: 694..710,
+                                    name_span: 695..709,
+                                },
+                            ),
+                        ],
+                        span: 685..716,
+                        name_span: 686..689,
+                    },
+                ),
+                span: 658..720,
+                args_span: 680..682,
+            },
+            "volume": WidgetDefinition {
+                name: "volume",
+                expected_args: [],
+                widget: Basic(
+                    BasicWidgetUse {
+                        name: "eventbox",
+                        attrs: Attributes {
+                            span: 1336..2122,
+                            attrs: {
+                                "tooltip": AttrEntry {
+                                    key_span: 1337..1345,
+                                    value: {"Volume: ${volumepoll["content"]}%"},
+                                },
+                                "onhover": AttrEntry {
+                                    key_span: 1379..1387,
+                                    value: "eww update volum=true && eww update currentVolume=$(pamixer --get-volume)tter",
+                                },
+                                "onhoverlost": AttrEntry {
+                                    key_span: 1483..1495,
+                                    value: "eww update volum=false",
+                                },
+                            },
+                        },
+                        children: [
+                            Basic(
+                                BasicWidgetUse {
+                                    name: "box",
+                                    attrs: Attributes {
+                                        span: 1529..1942,
+                                        attrs: {
+                                            "orientation": AttrEntry {
+                                                key_span: 1530..1542,
+                                                value: "v",
+                                            },
+                                            "space-evenly": AttrEntry {
+                                                key_span: 1547..1560,
+                                                value: "false",
+                                            },
+                                        },
+                                    },
+                                    children: [
+                                        Basic(
+                                            BasicWidgetUse {
+                                                name: "revealer",
+                                                attrs: Attributes {
+                                                    span: 1577..1932,
+                                                    attrs: {
+                                                        "reveal": AttrEntry {
+                                                            key_span: 1617..1624,
+                                                            value: volum,
+                                                        },
+                                                        "transition": AttrEntry {
+                                                            key_span: 1578..1589,
+                                                            value: "slideup",
+                                                        },
+                                                        "duration": AttrEntry {
+                                                            key_span: 1648..1657,
+                                                            value: "500ms",
+                                                        },
+                                                    },
+                                                },
+                                                children: [
+                                                    Basic(
+                                                        BasicWidgetUse {
+                                                            name: "scale",
+                                                            attrs: Attributes {
+                                                                span: 1680..1930,
+                                                                attrs: {
+                                                                    "min": AttrEntry {
+                                                                        key_span: 1743..1747,
+                                                                        value: "0",
+                                                                    },
+                                                                    "orientation": AttrEntry {
+                                                                        key_span: 1766..1778,
+                                                                        value: "v",
+                                                                    },
+                                                                    "onchange": AttrEntry {
+                                                                        key_span: 1822..1831,
+                                                                        value: "eww update volumepoll="$(./scripts/volume.sh {})"",
+                                                                    },
+                                                                    "value": AttrEntry {
+                                                                        key_span: 1900..1906,
+                                                                        value: {"${volumepoll["content"]}"},
+                                                                    },
+                                                                    "class": AttrEntry {
+                                                                        key_span: 1681..1687,
+                                                                        value: "volumeBar",
+                                                                    },
+                                                                    "flipped": AttrEntry {
+                                                                        key_span: 1714..1722,
+                                                                        value: "true",
+                                                                    },
+                                                                    "max": AttrEntry {
+                                                                        key_span: 1798..1802,
+                                                                        value: "101",
+                                                                    },
+                                                                },
+                                                            },
+                                                            children: [],
+                                                            span: 1674..1932,
+                                                            name_span: 1675..1680,
+                                                        },
+                                                    ),
+                                                ],
+                                                span: 1568..1942,
+                                                name_span: 1569..1577,
+                                            },
+                                        ),
+                                        Basic(
+                                            BasicWidgetUse {
+                                                name: "eventbox",
+                                                attrs: Attributes {
+                                                    span: 1958..2113,
+                                                    attrs: {
+                                                        "cursor": AttrEntry {
+                                                            key_span: 1959..1966,
+                                                            value: "hand",
+                                                        },
+                                                    },
+                                                },
+                                                children: [
+                                                    Basic(
+                                                        BasicWidgetUse {
+                                                            name: "button",
+                                                            attrs: Attributes {
+                                                                span: 1980..2112,
+                                                                attrs: {
+                                                                    "class": AttrEntry {
+                                                                        key_span: 1981..1987,
+                                                                        value: {"${volumepoll["class"]} label"},
+                                                                    },
+                                                                    "onclick": AttrEntry {
+                                                                        key_span: 2033..2041,
+                                                                        value: "tdrop -ma -y 55 -x 7 -w 35% -h 40% pavucontrol",
+                                                                    },
+                                                                },
+                                                            },
+                                                            children: [
+                                                                Basic(
+                                                                    BasicWidgetUse {
+                                                                        name: "label",
+                                                                        attrs: Attributes {
+                                                                            span: 2091..2112,
+                                                                            attrs: {
+                                                                                "text": AttrEntry {
+                                                                                    key_span: 2091..2112,
+                                                                                    value: {"${volumepoll["icon"]} "},
+                                                                                },
+                                                                            },
+                                                                        },
+                                                                        children: [],
+                                                                        span: 2091..2112,
+                                                                        name_span: 2091..2091,
+                                                                    },
+                                                                ),
+                                                            ],
+                                                            span: 1973..2113,
+                                                            name_span: 1974..1980,
+                                                        },
+                                                    ),
+                                                ],
+                                                span: 1949..2114,
+                                                name_span: 1950..1958,
+                                            },
+                                        ),
+                                    ],
+                                    span: 1525..2122,
+                                    name_span: 1526..1529,
+                                },
+                            ),
+                        ],
+                        span: 1327..2123,
+                        name_span: 1328..1336,
+                    },
+                ),
+                span: 1304..2124,
+                args_span: 1322..1324,
+            },
+            "screenshotpreview": WidgetDefinition {
+                name: "screenshotpreview",
+                expected_args: [],
+                widget: Basic(
+                    BasicWidgetUse {
+                        name: "box",
+                        attrs: Attributes {
+                            span: 5375..5475,
+                            attrs: {
+                                "style": AttrEntry {
+                                    key_span: 5423..5429,
+                                    value: {"background-image: url('${screenshotpath}');"},
+                                },
+                                "hexpand": AttrEntry {
+                                    key_span: 5395..5403,
+                                    value: "true",
+                                },
+                                "class": AttrEntry {
+                                    key_span: 5376..5382,
+                                    value: "sspreview",
+                                },
+                                "vexpand": AttrEntry {
+                                    key_span: 5409..5417,
+                                    value: "true",
+                                },
+                            },
+                        },
+                        children: [],
+                        span: 5371..5476,
+                        name_span: 5372..5375,
+                    },
+                ),
+                span: 5337..5480,
+                args_span: 5366..5368,
+            },
+            "battery": WidgetDefinition {
+                name: "battery",
+                expected_args: [],
+                widget: Basic(
+                    BasicWidgetUse {
+                        name: "box",
+                        attrs: Attributes {
+                            span: 3224..3464,
+                            attrs: {
+                                "visible": AttrEntry {
+                                    key_span: 3272..3280,
+                                    value: {battery["visible"]},
+                                },
+                                "vexpand": AttrEntry {
+                                    key_span: 3225..3233,
+                                    value: "false",
+                                },
+                                "hexpand": AttrEntry {
+                                    key_span: 3240..3248,
+                                    value: "false",
+                                },
+                                "orientation": AttrEntry {
+                                    key_span: 3255..3267,
+                                    value: "v",
+                                },
+                            },
+                        },
+                        children: [
+                            Basic(
+                                BasicWidgetUse {
+                                    name: "label",
+                                    attrs: Attributes {
+                                        span: 3308..3463,
+                                        attrs: {
+                                            "tooltip": AttrEntry {
+                                                key_span: 3370..3378,
+                                                value: {"${battery["percent"]}% ${EWW_BATTERY["BAT0"]["status"]}"},
+                                            },
+                                            "limit-width": AttrEntry {
+                                                key_span: 3343..3355,
+                                                value: "10",
+                                            },
+                                            "class": AttrEntry {
+                                                key_span: 3441..3447,
+                                                value: "label battery",
+                                            },
+                                            "text": AttrEntry {
+                                                key_span: 3309..3314,
+                                                value: {"${battery["icon"]}"},
+                                            },
+                                        },
+                                    },
+                                    children: [],
+                                    span: 3302..3464,
+                                    name_span: 3303..3308,
+                                },
+                            ),
+                        ],
+                        span: 3220..3470,
+                        name_span: 3221..3224,
+                    },
+                ),
+                span: 3196..3472,
+                args_span: 3215..3217,
+            },
+            "bar": WidgetDefinition {
+                name: "bar",
+                expected_args: [],
+                widget: Basic(
+                    BasicWidgetUse {
+                        name: "centerbox",
+                        attrs: Attributes {
+                            span: 33..374,
+                            attrs: {
+                                "hexpand": AttrEntry {
+                                    key_span: 51..59,
+                                    value: "false",
+                                },
+                                "orientation": AttrEntry {
+                                    key_span: 34..46,
+                                    value: "v",
+                                },
+                            },
+                        },
+                        children: [
+                            Basic(
+                                BasicWidgetUse {
+                                    name: "box",
+                                    attrs: Attributes {
+                                        span: 74..199,
+                                        attrs: {
+                                            "vexpand": AttrEntry {
+                                                key_span: 128..136,
+                                                value: "true",
+                                            },
+                                            "hexpand": AttrEntry {
+                                                key_span: 142..150,
+                                                value: "false",
+                                            },
+                                            "orientation": AttrEntry {
+                                                key_span: 157..169,
+                                                value: "v",
+                                            },
+                                            "space-evenly": AttrEntry {
+                                                key_span: 75..88,
+                                                value: "false",
+                                            },
+                                            "spacing": AttrEntry {
+                                                key_span: 174..182,
+                                                value: "10",
+                                            },
+                                            "valign": AttrEntry {
+                                                key_span: 95..102,
+                                                value: "start",
+                                            },
+                                            "halign": AttrEntry {
+                                                key_span: 111..118,
+                                                value: "center",
+                                            },
+                                        },
+                                    },
+                                    children: [
+                                        Basic(
+                                            BasicWidgetUse {
+                                                name: "power",
+                                                attrs: Attributes {
+                                                    span: 198..198,
+                                                    attrs: {},
+                                                },
+                                                children: [],
+                                                span: 192..199,
+                                                name_span: 193..198,
+                                            },
+                                        ),
+                                        Basic(
+                                            BasicWidgetUse {
+                                                name: "box",
+                                                attrs: Attributes {
+                                                    span: 210..318,
+                                                    attrs: {
+                                                        "orientation": AttrEntry {
+                                                            key_span: 234..246,
+                                                            value: "v",
+                                                        },
+                                                        "hexpand": AttrEntry {
+                                                            key_span: 263..271,
+                                                            value: "false",
+                                                        },
+                                                        "active": AttrEntry {
+                                                            key_span: 278..285,
+                                                            value: "false",
+                                                        },
+                                                        "vexpand": AttrEntry {
+                                                            key_span: 292..300,
+                                                            value: "false",
+                                                        },
+                                                        "class": AttrEntry {
+                                                            key_span: 211..217,
+                                                            value: "system-status",
+                                                        },
+                                                        "spacing": AttrEntry {
+                                                            key_span: 251..259,
+                                                            value: "10",
+                                                        },
+                                                    },
+                                                },
+                                                children: [
+                                                    Basic(
+                                                        BasicWidgetUse {
+                                                            name: "mem",
+                                                            attrs: Attributes {
+                                                                span: 317..317,
+                                                                attrs: {},
+                                                            },
+                                                            children: [],
+                                                            span: 313..318,
+                                                            name_span: 314..317,
+                                                        },
+                                                    ),
+                                                    Basic(
+                                                        BasicWidgetUse {
+                                                            name: "cpu",
+                                                            attrs: Attributes {
+                                                                span: 329..329,
+                                                                attrs: {},
+                                                            },
+                                                            children: [],
+                                                            span: 325..330,
+                                                            name_span: 326..329,
+                                                        },
+                                                    ),
+                                                    Basic(
+                                                        BasicWidgetUse {
+                                                            name: "disk",
+                                                            attrs: Attributes {
+                                                                span: 342..342,
+                                                                attrs: {},
+                                                            },
+                                                            children: [],
+                                                            span: 337..343,
+                                                            name_span: 338..342,
+                                                        },
+                                                    ),
+                                                ],
+                                                span: 206..353,
+                                                name_span: 207..210,
+                                            },
+                                        ),
+                                        Basic(
+                                            BasicWidgetUse {
+                                                name: "wifi",
+                                                attrs: Attributes {
+                                                    span: 365..365,
+                                                    attrs: {},
+                                                },
+                                                children: [],
+                                                span: 360..366,
+                                                name_span: 361..365,
+                                            },
+                                        ),
+                                    ],
+                                    span: 70..374,
+                                    name_span: 71..74,
+                                },
+                            ),
+                            Basic(
+                                BasicWidgetUse {
+                                    name: "workspaces",
+                                    attrs: Attributes {
+                                        span: 391..454,
+                                        attrs: {
+                                            "orientation": AttrEntry {
+                                                key_span: 438..450,
+                                                value: "v",
+                                            },
+                                            "halign": AttrEntry {
+                                                key_span: 392..399,
+                                                value: "center",
+                                            },
+                                            "vexpand": AttrEntry {
+                                                key_span: 409..417,
+                                                value: "true",
+                                            },
+                                            "hexpand": AttrEntry {
+                                                key_span: 423..431,
+                                                value: "false",
+                                            },
+                                        },
+                                    },
+                                    children: [],
+                                    span: 380..455,
+                                    name_span: 381..391,
+                                },
+                            ),
+                            Basic(
+                                BasicWidgetUse {
+                                    name: "box",
+                                    attrs: Attributes {
+                                        span: 465..573,
+                                        attrs: {
+                                            "valign": AttrEntry {
+                                                key_span: 466..473,
+                                                value: "end",
+                                            },
+                                            "spacing": AttrEntry {
+                                                key_span: 546..554,
+                                                value: "10",
+                                            },
+                                            "vexpand": AttrEntry {
+                                                key_span: 495..503,
+                                                value: "true",
+                                            },
+                                            "orientation": AttrEntry {
+                                                key_span: 509..521,
+                                                value: "v",
+                                            },
+                                            "space-evenly": AttrEntry {
+                                                key_span: 526..539,
+                                                value: "false",
+                                            },
+                                            "hexpand": AttrEntry {
+                                                key_span: 480..488,
+                                                value: "false",
+                                            },
+                                        },
+                                    },
+                                    children: [
+                                        Basic(
+                                            BasicWidgetUse {
+                                                name: "battery",
+                                                attrs: Attributes {
+                                                    span: 572..572,
+                                                    attrs: {},
+                                                },
+                                                children: [],
+                                                span: 564..573,
+                                                name_span: 565..572,
+                                            },
+                                        ),
+                                        Basic(
+                                            BasicWidgetUse {
+                                                name: "time",
+                                                attrs: Attributes {
+                                                    span: 585..585,
+                                                    attrs: {},
+                                                },
+                                                children: [],
+                                                span: 580..586,
+                                                name_span: 581..585,
+                                            },
+                                        ),
+                                    ],
+                                    span: 461..594,
+                                    name_span: 462..465,
+                                },
+                            ),
+                        ],
+                        span: 23..595,
+                        name_span: 24..33,
+                    },
+                ),
+                span: 3..599,
+                args_span: 18..20,
+            },
+            "mem": WidgetDefinition {
+                name: "mem",
+                expected_args: [],
+                widget: Basic(
+                    BasicWidgetUse {
+                        name: "box",
+                        attrs: Attributes {
+                            span: 2152..2551,
+                            attrs: {
+                                "hexpand": AttrEntry {
+                                    key_span: 2170..2178,
+                                    value: "false",
+                                },
+                                "vexpand": AttrEntry {
+                                    key_span: 2153..2161,
+                                    value: "false",
+                                },
+                            },
+                        },
+                        children: [
+                            Basic(
+                                BasicWidgetUse {
+                                    name: "circular-progress",
+                                    attrs: Attributes {
+                                        span: 2209..2543,
+                                        attrs: {
+                                            "start-angle": AttrEntry {
+                                                key_span: 2306..2318,
+                                                value: "0",
+                                            },
+                                            "thickness": AttrEntry {
+                                                key_span: 2345..2355,
+                                                value: "4",
+                                            },
+                                            "value": AttrEntry {
+                                                key_span: 2211..2217,
+                                                value: {EWW_RAM["used_mem_perc"]},
+                                            },
+                                            "class": AttrEntry {
+                                                key_span: 2266..2272,
+                                                value: "membar",
+                                            },
+                                        },
+                                    },
+                                    children: [
+                                        Basic(
+                                            BasicWidgetUse {
+                                                name: "button",
+                                                attrs: Attributes {
+                                                    span: 2371..2542,
+                                                    attrs: {
+                                                        "class": AttrEntry {
+                                                            key_span: 2381..2387,
+                                                            value: "iconmem",
+                                                        },
+                                                        "wrap": AttrEntry {
+                                                            key_span: 2517..2522,
+                                                            value: "false",
+                                                        },
+                                                        "tooltip": AttrEntry {
+                                                            key_span: 2429..2437,
+                                                            value: {" ${round(EWW_RAM["used_mem_perc"], "1")}%"},
+                                                        },
+                                                        "limit-width": AttrEntry {
+                                                            key_span: 2406..2418,
+                                                            value: "2",
+                                                        },
+                                                        "show_truncated": AttrEntry {
+                                                            key_span: 2487..2502,
+                                                            value: "false",
+                                                        },
+                                                    },
+                                                },
+                                                children: [
+                                                    Basic(
+                                                        BasicWidgetUse {
+                                                            name: "label",
+                                                            attrs: Attributes {
+                                                                span: 2537..2542,
+                                                                attrs: {
+                                                                    "text": AttrEntry {
+                                                                        key_span: 2537..2542,
+                                                                        value: "",
+                                                                    },
+                                                                },
+                                                            },
+                                                            children: [],
+                                                            span: 2537..2542,
+                                                            name_span: 2537..2537,
+                                                        },
+                                                    ),
+                                                ],
+                                                span: 2364..2543,
+                                                name_span: 2365..2371,
+                                            },
+                                        ),
+                                    ],
+                                    span: 2191..2551,
+                                    name_span: 2192..2209,
+                                },
+                            ),
+                        ],
+                        span: 2148..2552,
+                        name_span: 2149..2152,
+                    },
+                ),
+                span: 2128..2569,
+                args_span: 2143..2145,
+            },
+            "time": WidgetDefinition {
+                name: "time",
+                expected_args: [],
+                widget: Basic(
+                    BasicWidgetUse {
+                        name: "eventbox",
+                        attrs: Attributes {
+                            span: 4824..5256,
+                            attrs: {
+                                "tooltip": AttrEntry {
+                                    key_span: 4872..4880,
+                                    value: {"${dateVar}"},
+                                },
+                                "cursor": AttrEntry {
+                                    key_span: 4825..4832,
+                                    value: "hand",
+                                },
+                                "hexpand": AttrEntry {
+                                    key_span: 4841..4849,
+                                    value: "false",
+                                },
+                            },
+                        },
+                        children: [
+                            Basic(
+                                BasicWidgetUse {
+                                    name: "box",
+                                    attrs: Attributes {
+                                        span: 4905..5117,
+                                        attrs: {
+                                            "orientation": AttrEntry {
+                                                key_span: 4906..4918,
+                                                value: "v",
+                                            },
+                                            "class": AttrEntry {
+                                                key_span: 4973..4979,
+                                                value: "clock",
+                                            },
+                                            "hexpand": AttrEntry {
+                                                key_span: 4923..4931,
+                                                value: "false",
+                                            },
+                                            "vexpand": AttrEntry {
+                                                key_span: 4938..4946,
+                                                value: "false",
+                                            },
+                                            "space-evenly": AttrEntry {
+                                                key_span: 4953..4966,
+                                                value: "false",
+                                            },
+                                        },
+                                    },
+                                    children: [
+                                        Basic(
+                                            BasicWidgetUse {
+                                                name: "button",
+                                                attrs: Attributes {
+                                                    span: 4999..5116,
+                                                    attrs: {
+                                                        "onclick": AttrEntry {
+                                                            key_span: 5069..5077,
+                                                            value: "eww open --toggle calendar",
+                                                        },
+                                                        "class": AttrEntry {
+                                                            key_span: 5001..5007,
+                                                            value: "date",
+                                                        },
+                                                        "orientation": AttrEntry {
+                                                            key_span: 5036..5048,
+                                                            value: "v",
+                                                        },
+                                                    },
+                                                },
+                                                children: [
+                                                    Basic(
+                                                        BasicWidgetUse {
+                                                            name: "label",
+                                                            attrs: Attributes {
+                                                                span: 5107..5116,
+                                                                attrs: {
+                                                                    "text": AttrEntry {
+                                                                        key_span: 5107..5116,
+                                                                        value: {"${hour}"},
+                                                                    },
+                                                                },
+                                                            },
+                                                            children: [],
+                                                            span: 5107..5116,
+                                                            name_span: 5107..5107,
+                                                        },
+                                                    ),
+                                                ],
+                                                span: 4992..5117,
+                                                name_span: 4993..4999,
+                                            },
+                                        ),
+                                        Basic(
+                                            BasicWidgetUse {
+                                                name: "button",
+                                                attrs: Attributes {
+                                                    span: 5130..5249,
+                                                    attrs: {
+                                                        "orientation": AttrEntry {
+                                                            key_span: 5167..5179,
+                                                            value: "v",
+                                                        },
+                                                        "class": AttrEntry {
+                                                            key_span: 5132..5138,
+                                                            value: "date",
+                                                        },
+                                                        "onclick": AttrEntry {
+                                                            key_span: 5200..5208,
+                                                            value: "eww open --toggle calendar",
+                                                        },
+                                                    },
+                                                },
+                                                children: [
+                                                    Basic(
+                                                        BasicWidgetUse {
+                                                            name: "label",
+                                                            attrs: Attributes {
+                                                                span: 5238..5249,
+                                                                attrs: {
+                                                                    "text": AttrEntry {
+                                                                        key_span: 5238..5249,
+                                                                        value: {"${minute}"},
+                                                                    },
+                                                                },
+                                                            },
+                                                            children: [],
+                                                            span: 5238..5249,
+                                                            name_span: 5238..5238,
+                                                        },
+                                                    ),
+                                                ],
+                                                span: 5123..5250,
+                                                name_span: 5124..5130,
+                                            },
+                                        ),
+                                    ],
+                                    span: 4901..5256,
+                                    name_span: 4902..4905,
+                                },
+                            ),
+                        ],
+                        span: 4815..5262,
+                        name_span: 4816..4824,
+                    },
+                ),
+                span: 4794..5266,
+                args_span: 4810..4812,
+            },
+        },
+        windows: {
+            "calendar": WindowDefinition {
+                name: "calendar",
+                geometry: Some(
+                    WindowGeometry {
+                        anchor_point: AnchorPoint {
+                            x: END,
+                            y: START,
+                        },
+                        offset: CoordsWithUnits(-20, 7),
+                        size: CoordsWithUnits(270, 60),
+                    },
+                ),
+                stacking: Foreground,
+                monitor_number: None,
+                widget: Basic(
+                    BasicWidgetUse {
+                        name: "calendar",
+                        attrs: Attributes {
+                            span: 7035..7048,
+                            attrs: {
+                                "class": AttrEntry {
+                                    key_span: 7036..7042,
+                                    value: "cal",
+                                },
+                            },
+                        },
+                        children: [],
+                        span: 7026..7049,
+                        name_span: 7027..7035,
+                    },
+                ),
+                resizable: true,
+                backend_options: BackendWindowOptions {
+                    wm_ignore: true,
+                    sticky: true,
+                    window_type: Dock,
+                    struts: StrutDefinition {
+                        side: Top,
+                        dist: 0,
+                    },
+                },
+            },
+            "screenshot": WindowDefinition {
+                name: "screenshot",
+                geometry: Some(
+                    WindowGeometry {
+                        anchor_point: AnchorPoint {
+                            x: END,
+                            y: END,
+                        },
+                        offset: CoordsWithUnits(-50, -50),
+                        size: CoordsWithUnits(500, 400),
+                    },
+                ),
+                stacking: Foreground,
+                monitor_number: None,
+                widget: Basic(
+                    BasicWidgetUse {
+                        name: "box",
+                        attrs: Attributes {
+                            span: 7188..7242,
+                            attrs: {
+                                "orientation": AttrEntry {
+                                    key_span: 7209..7221,
+                                    value: "v",
+                                },
+                                "space-evenly": AttrEntry {
+                                    key_span: 7189..7202,
+                                    value: "false",
+                                },
+                            },
+                        },
+                        children: [
+                            Basic(
+                                BasicWidgetUse {
+                                    name: "screenshot",
+                                    attrs: Attributes {
+                                        span: 7241..7241,
+                                        attrs: {},
+                                    },
+                                    children: [],
+                                    span: 7230..7242,
+                                    name_span: 7231..7241,
+                                },
+                            ),
+                            Basic(
+                                BasicWidgetUse {
+                                    name: "screenshotpreview",
+                                    attrs: Attributes {
+                                        span: 7265..7265,
+                                        attrs: {},
+                                    },
+                                    children: [],
+                                    span: 7247..7266,
+                                    name_span: 7248..7265,
+                                },
+                            ),
+                        ],
+                        span: 7184..7272,
+                        name_span: 7185..7188,
+                    },
+                ),
+                resizable: true,
+                backend_options: BackendWindowOptions {
+                    wm_ignore: true,
+                    sticky: true,
+                    window_type: Dock,
+                    struts: StrutDefinition {
+                        side: Top,
+                        dist: 0,
+                    },
+                },
+            },
+            "screenshottool": WindowDefinition {
+                name: "screenshottool",
+                geometry: Some(
+                    WindowGeometry {
+                        anchor_point: AnchorPoint {
+                            x: END,
+                            y: END,
+                        },
+                        offset: CoordsWithUnits(-50, -50),
+                        size: CoordsWithUnits(500, 60),
+                    },
+                ),
+                stacking: Foreground,
+                monitor_number: None,
+                widget: Basic(
+                    BasicWidgetUse {
+                        name: "box",
+                        attrs: Attributes {
+                            span: 7410..7468,
+                            attrs: {
+                                "space-evenly": AttrEntry {
+                                    key_span: 7411..7424,
+                                    value: "false",
+                                },
+                                "orientation": AttrEntry {
+                                    key_span: 7431..7443,
+                                    value: "v",
+                                },
+                            },
+                        },
+                        children: [
+                            Basic(
+                                BasicWidgetUse {
+                                    name: "screenshottool",
+                                    attrs: Attributes {
+                                        span: 7467..7467,
+                                        attrs: {},
+                                    },
+                                    children: [],
+                                    span: 7452..7468,
+                                    name_span: 7453..7467,
+                                },
+                            ),
+                        ],
+                        span: 7406..7474,
+                        name_span: 7407..7410,
+                    },
+                ),
+                resizable: true,
+                backend_options: BackendWindowOptions {
+                    wm_ignore: true,
+                    sticky: true,
+                    window_type: Dock,
+                    struts: StrutDefinition {
+                        side: Top,
+                        dist: 0,
+                    },
+                },
+            },
+            "bar": WindowDefinition {
+                name: "bar",
+                geometry: Some(
+                    WindowGeometry {
+                        anchor_point: AnchorPoint {
+                            x: START,
+                            y: START,
+                        },
+                        offset: CoordsWithUnits(0, 0),
+                        size: CoordsWithUnits(50, 100),
+                    },
+                ),
+                stacking: Background,
+                monitor_number: Some(
+                    0,
+                ),
+                widget: Basic(
+                    BasicWidgetUse {
+                        name: "bar",
+                        attrs: Attributes {
+                            span: 7707..7707,
+                            attrs: {},
+                        },
+                        children: [],
+                        span: 7703..7708,
+                        name_span: 7704..7707,
+                    },
+                ),
+                resizable: true,
+                backend_options: BackendWindowOptions {
+                    wm_ignore: false,
+                    sticky: true,
+                    window_type: Dock,
+                    struts: StrutDefinition {
+                        side: Left,
+                        dist: 50,
+                    },
+                },
+            },
+        },
+        initial_variables: {
+            "search": "false",
+            "time": "false",
+            "screenshot": "false",
+            "power": "false",
+            "screenshotpath": "/tmp/screenshot.png",
+            "volum": "false",
+            "cal": "false",
+        },
+        script_vars: {
+            "volumepoll": Poll(
+                PollScriptVar {
+                    name: "volumepoll",
+                    run_while_expr: "true",
+                    run_while_var_refs: [],
+                    command: Shell(
+                        1092..1113,
+                        "./scripts/volume.sh",
+                    ),
+                    initial_value: Some(
+                        "",
+                    ),
+                    interval: 999s,
+                    name_span: 1064..1074,
+                },
+            ),
+            "battery": Poll(
+                PollScriptVar {
+                    name: "battery",
+                    run_while_expr: "true",
+                    run_while_var_refs: [],
+                    command: Shell(
+                        633..655,
+                        "./scripts/battery.sh",
+                    ),
+                    initial_value: Some(
+                        "",
+                    ),
+                    interval: 2s,
+                    name_span: 610..617,
+                },
+            ),
+            "temperature": Poll(
+                PollScriptVar {
+                    name: "temperature",
+                    run_while_expr: "true",
+                    run_while_var_refs: [],
+                    command: Shell(
+                        773..803,
+                        "curl -s 'wttr.in/?format=%f'",
+                    ),
+                    initial_value: Some(
+                        "",
+                    ),
+                    interval: 1200s,
+                    name_span: 745..756,
+                },
+            ),
+            "EWW_DISK": Poll(
+                PollScriptVar {
+                    name: "EWW_DISK",
+                    run_while_expr: "true",
+                    run_while_var_refs: [],
+                    command: Function(
+                        0x0000558c645d50a0,
+                    ),
+                    initial_value: None,
+                    interval: 2s,
+                    name_span: DUMMY,
+                },
+            ),
+            "EWW_TEMPS": Poll(
+                PollScriptVar {
+                    name: "EWW_TEMPS",
+                    run_while_expr: "true",
+                    run_while_var_refs: [],
+                    command: Function(
+                        0x0000558c645d4fa0,
+                    ),
+                    initial_value: None,
+                    interval: 2s,
+                    name_span: DUMMY,
+                },
+            ),
+            "EWW_RAM": Poll(
+                PollScriptVar {
+                    name: "EWW_RAM",
+                    run_while_expr: "true",
+                    run_while_var_refs: [],
+                    command: Function(
+                        0x0000558c645d4de0,
+                    ),
+                    initial_value: None,
+                    interval: 2s,
+                    name_span: DUMMY,
+                },
+            ),
+            "minute": Poll(
+                PollScriptVar {
+                    name: "minute",
+                    run_while_expr: "true",
+                    run_while_var_refs: [],
+                    command: Shell(
+                        930..940,
+                        "date +%M",
+                    ),
+                    initial_value: Some(
+                        "",
+                    ),
+                    interval: 10s,
+                    name_span: 907..913,
+                },
+            ),
+            "EWW_CPU": Poll(
+                PollScriptVar {
+                    name: "EWW_CPU",
+                    run_while_expr: "true",
+                    run_while_var_refs: [],
+                    command: Function(
+                        0x0000558c645d4ff0,
+                    ),
+                    initial_value: None,
+                    interval: 2s,
+                    name_span: DUMMY,
+                },
+            ),
+            "wifi": Poll(
+                PollScriptVar {
+                    name: "wifi",
+                    run_while_expr: "true",
+                    run_while_var_refs: [],
+                    command: Shell(
+                        835..854,
+                        "./scripts/wifi.sh",
+                    ),
+                    initial_value: Some(
+                        "",
+                    ),
+                    interval: 3s,
+                    name_span: 815..819,
+                },
+            ),
+            "dateVar": Poll(
+                PollScriptVar {
+                    name: "dateVar",
+                    run_while_expr: "true",
+                    run_while_var_refs: [],
+                    command: Shell(
+                        976..997,
+                        "date '+%A %d.%m.%y'",
+                    ),
+                    initial_value: Some(
+                        "",
+                    ),
+                    interval: 600s,
+                    name_span: 951..958,
+                },
+            ),
+            "hour": Poll(
+                PollScriptVar {
+                    name: "hour",
+                    run_while_expr: "true",
+                    run_while_var_refs: [],
+                    command: Shell(
+                        886..896,
+                        "date +%H",
+                    ),
+                    initial_value: Some(
+                        "",
+                    ),
+                    interval: 10s,
+                    name_span: 865..869,
+                },
+            ),
+            "workspaces_listen": Listen(
+                ListenScriptVar {
+                    name: "workspaces_listen",
+                    command: "./scripts/workspaces.sh",
+                    initial_value: "",
+                    command_span: 1028..1053,
+                    name_span: 1010..1027,
+                },
+            ),
+            "EWW_BATTERY": Poll(
+                PollScriptVar {
+                    name: "EWW_BATTERY",
+                    run_while_expr: "true",
+                    run_while_var_refs: [],
+                    command: Function(
+                        0x0000558c645d4e30,
+                    ),
+                    initial_value: None,
+                    interval: 2s,
+                    name_span: DUMMY,
+                },
+            ),
+            "EWW_NET": Poll(
+                PollScriptVar {
+                    name: "EWW_NET",
+                    run_while_expr: "true",
+                    run_while_var_refs: [],
+                    command: Function(
+                        0x0000558c645d50f0,
+                    ),
+                    initial_value: None,
+                    interval: 2s,
+                    name_span: DUMMY,
+                },
+            ),
+        },
+        poll_var_links: {},
+    },
+    open_windows: {
+        "bar": EwwWindow {
+            name: "bar",
+            definition: WindowDefinition {
+                name: "bar",
+                geometry: Some(
+                    WindowGeometry {
+                        anchor_point: AnchorPoint {
+                            x: START,
+                            y: START,
+                        },
+                        offset: CoordsWithUnits(0, 0),
+                        size: CoordsWithUnits(50, 100),
+                    },
+                ),
+                stacking: Background,
+                monitor_number: Some(
+                    0,
+                ),
+                widget: Basic(
+                    BasicWidgetUse {
+                        name: "bar",
+                        attrs: Attributes {
+                            span: 7707..7707,
+                            attrs: {},
+                        },
+                        children: [],
+                        span: 7703..7708,
+                        name_span: 7704..7707,
+                    },
+                ),
+                resizable: true,
+                backend_options: BackendWindowOptions {
+                    wm_ignore: false,
+                    sticky: true,
+                    window_type: Dock,
+                    struts: StrutDefinition {
+                        side: Left,
+                        dist: 50,
+                    },
+                },
+            },
+            scope_index: ScopeIndex(25),
+            gtk_window: Window(
+                ObjectRef {
+                    inner: 0x0000558c658dea70,
+                    type: GtkWindow,
+                },
+            ),
+        },
+    },
+    failed_windows: {},
+    paths: EwwPaths {
+        log_file: "/home/sioodmy/.cache/eww_f1d302f04839ab19.log",
+        ipc_socket_file: "/run/user/1000/eww-server_f1d302f04839ab19",
+        config_dir: "/home/sioodmy/.config/eww",
+    },
+}

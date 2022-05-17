@@ -30,13 +30,12 @@
     };
 
     eww.url = "github:elkowar/eww";
-    neovim-nightly-overlay.url = "github:nix-community/neovim-nightly-overlay";
     todo.url = "github:sioodmy/todo";
     fetch.url = "github:sioodmy/fetch";
 
   };
   outputs = inputs@{ self, nixpkgs, home-manager, nur, picom-ibhagwan
-    , eww, discord-overlay, discocss, neovim-nightly-overlay, ... }:
+    , eww, discord-overlay, discocss, ... }:
     let
       system = "x86_64-linux";
       pkgs = inputs.nixpkgs.legacyPackages.x86_64-linux;
@@ -80,7 +79,6 @@
                 })
                 nur.overlay
                 discord-overlay.overlay
-                neovim-nightly-overlay.overlay
               ];
             }
 

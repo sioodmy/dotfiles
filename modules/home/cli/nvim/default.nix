@@ -58,8 +58,6 @@ in {
       viAlias = true;
       vimAlias = true;
 
-      package = pkgs.neovim-nightly;
-
       plugins = with pkgs.vimPlugins; [
         vim-flutter
         indent-blankline-nvim
