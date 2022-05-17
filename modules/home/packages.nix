@@ -13,7 +13,7 @@
     tealdeer killall onefetch
     du-dust pfetch
     # gui apps
-    obs-studio mpv nsxiv tdesktop
+    obs-studio mpv nsxiv tdesktop monero-gui
     transmission-gtk pavucontrol pcmanfm
     # unfree apps (sorry daddy stallman)
     minecraft 
