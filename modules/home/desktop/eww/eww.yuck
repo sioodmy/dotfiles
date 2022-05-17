@@ -152,7 +152,7 @@
                 :duration "250ms"
         (box        :space-evenly true :orientation "v"
           (button		:class "button-off"					
-                        :onclick "reboot" "󰐥")
+                        :onclick "shutdown now" "󰐥")
           (button		:class "button-lock"					
                         :onclick "lockscreen" "󱅞")
           (button		:class "button-sleep"					
