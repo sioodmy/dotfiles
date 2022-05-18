@@ -37,6 +37,8 @@ with lib;
     cleanTmpDir = true;
     kernelParams = [
       "nmi_watchdog=0"
+      "page_poison=1"
+      "page_alloc.shuffle=1"
     ];
     kernelPackages = pkgs.linuxPackages_latest;
     consoleLogLevel = 0;
@@ -279,6 +281,7 @@ with lib;
     rtkit.enable = true;
     apparmor = {
       enable = true;
+      killUnconfinedConfinables = true;
       packages = [ pkgs.apparmor-profiles ];
     };
     pam.services.login.enableGnomeKeyring = true;
@@ -309,5 +312,7 @@ with lib;
   };
 
   security.protectKernelImage = true;
+  security.lockKernelModules = true;
+
   system.stateVersion = "21.11"; # DONT TOUCH THIS
 }
