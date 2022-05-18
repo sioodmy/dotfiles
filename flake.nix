@@ -30,6 +30,7 @@
     };
 
     eww.url = "github:elkowar/eww";
+    neovim-nightly-overlay.url = "github:nix-community/neovim-nightly-overlay";
     todo.url = "github:sioodmy/todo";
     fetch.url = "github:sioodmy/fetch";
 
@@ -79,6 +80,7 @@
                 })
                 nur.overlay
                 discord-overlay.overlay
+                inputs.neovim-nightly-overlay.overlay
               ];
             }
 
