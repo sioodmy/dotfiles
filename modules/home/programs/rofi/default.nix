@@ -44,7 +44,7 @@ in {
           selected-col = mkLiteral "#343a46";
           accent = mkLiteral "#81a1c1";
           fg-col = mkLiteral "#b4bbc8";
-          fg-col2 = mkLiteral "#bf616a";
+          fg-col2 = mkLiteral "#5e81ac";
           grey = mkLiteral "#646a76";
           width = 600;
         };
