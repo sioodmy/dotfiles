@@ -16,7 +16,7 @@ in {
 
   nix = {
     autoOptimiseStore = true;
-    allowedUsers = [ "sioodmy" ];
+    allowedUsers = [ "grajap" ];
     gc = {
       automatic = true;
       dates = "daily";
@@ -134,11 +134,11 @@ in {
       displayManager = {
         autoLogin = mkIf encrypted {
           enable = true;
-          user = "sioodmy";
+          user = "grajap";
         };
         lightdm.greeters.mini = with theme.colors; {
           enable = true;
-          user = "sioodmy";
+          user = "grajap";
           extraConfig =
             ''
             [greeter]
@@ -202,7 +202,7 @@ in {
     };
   };
 
-  users.users.sioodmy = {
+  users.users.grajap = {
     isNormalUser = true;
     # Enable ‘sudo’ for the user.
     extraGroups = [ "wheel" ] ++ optionals config.services.xserver.enable [
