@@ -7,17 +7,7 @@ in {
   config = mkIf cfg.enable {
     home.packages = [ pkgs.devour ]; # for swallowing
 
-    programs.nix-index = {
-      enable = true;
-      enableZshIntegration = true;
-    };
-
     programs.zoxide = {
-      enable = true;
-      enableZshIntegration = true;
-    };
-
-    programs.direnv = {
       enable = true;
       enableZshIntegration = true;
     };
@@ -26,7 +16,7 @@ in {
       enable = true;
       settings = {
         add_newline = false;
-        scan_timeout = 10;
+        scan_timeout = 5;
         character = {
           error_symbol = "[](bold red)";
           success_symbol = "[](bold green)";
@@ -72,7 +62,6 @@ in {
         expireDuplicatesFirst = true;
         ignoreDups = true;
         ignoreSpace = true;
-        path = "$HOME/.cache/.zsh_hist";
       };
 
       dirHashes = {
