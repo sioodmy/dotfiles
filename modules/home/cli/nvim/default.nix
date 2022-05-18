@@ -58,6 +58,8 @@ in {
       viAlias = true;
       vimAlias = true;
 
+      package = pkgs.neovim-nightly;
+
       plugins = with pkgs.vimPlugins; [
         vim-flutter
         indent-blankline-nvim
@@ -65,6 +67,7 @@ in {
         stabilize-nvim
         vim-pandoc-syntax
         vim-pandoc
+        vim-table-mode
         vim-nix
         vim-vsnip-integ
         vim-commentary
@@ -699,6 +702,7 @@ in {
 
         -- Nicer UI settings
         opt.laststatus = 3
+        opt.splitright = true
 
         -- Miscellaneous quality of life
         opt.ignorecase = true
