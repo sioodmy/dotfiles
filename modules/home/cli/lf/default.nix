@@ -13,10 +13,8 @@ in {
       p7zip
       unzip
       catdoc
-      gnumeric
       glow
       exiftool
-      mcomix3
       odt2txt
       wkhtmltopdf
       imagemagick
