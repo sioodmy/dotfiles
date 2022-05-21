@@ -1,1 +1,1 @@
-#Stolen configs for nix from friend
+Stolen configs for nix from friend
