@@ -1,6 +1,6 @@
 { pkgs, config, ... }: {
   networking = {
-    hostName = "sioodmy";
+    hostName = "grajap";
     networkmanager.enable = true;
     interfaces = { enp24s0.useDHCP = true; };
     firewall = {
@@ -22,6 +22,6 @@
 
   services.xserver.displayManager.lightdm.autologin = {
     enable = true;
-    user = "sioodmy";
+    user = "grajap";
   };
 }

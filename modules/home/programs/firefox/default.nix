@@ -5,9 +5,9 @@ in {
   options.modules.programs.firefox = { enable = mkEnableOption "firefox"; };
 
   config = mkIf cfg.enable {
-    home.file.".mozilla/firefox/sioodmy/chrome/left-arrow.svg".source = ./left-arrow.svg;
-    home.file.".mozilla/firefox/sioodmy/chrome/right-arrow.svg".source = ./right-arrow.svg;
-    home.file.".mozilla/firefox/sioodmy/chrome/add.svg".source = ./add.svg;
+    home.file.".mozilla/firefox/grajap/chrome/left-arrow.svg".source = ./left-arrow.svg;
+    home.file.".mozilla/firefox/grajap/chrome/right-arrow.svg".source = ./right-arrow.svg;
+    home.file.".mozilla/firefox/grajap/chrome/add.svg".source = ./add.svg;
 
     programs.firefox = {
       enable = true;
@@ -18,7 +18,7 @@ in {
         darkreader
         vimium
       ];
-      profiles.sioodmy = {
+      profiles.grajap = {
         settings = {
           "browser.send_pings" = false;
           "browser.urlbar.speculativeConnect.enabled" = false;

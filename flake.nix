@@ -59,7 +59,7 @@
                 extraSpecialArgs = {
                   inherit inputs;
                 };
-                users.sioodmy = (./. + "/hosts/${hostname}/user.nix");
+                users.grajap = (./. + "/hosts/${hostname}/user.nix");
               };
               nixpkgs.overlays = [
                 (final: prev: {

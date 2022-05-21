@@ -9,7 +9,7 @@ in {
 
     services.mpd = {
       enable = true;
-      # dataDir = "/home/sioodmy/.config/mpd";
+      # dataDir = "/home/grajap/.config/mpd";
       network = {
         listenAddress = "any";
         port = 6600;
@@ -27,9 +27,9 @@ in {
       enable = true;
       package = pkgs.ncmpcpp;
       settings = {
-        ncmpcpp_directory = "/home/sioodmy/.config/ncmpcpp";
+        ncmpcpp_directory = "/home/grajap/.config/ncmpcpp";
         mpd_crossfade_time = 2;
-        lyrics_directory = "/home/sioodmy/.cache/lyrics";
+        lyrics_directory = "/home/grajap/.cache/lyrics";
         progressbar_look = "▃▃▃";
         progressbar_elapsed_color = 5;
         progressbar_color = "black";
