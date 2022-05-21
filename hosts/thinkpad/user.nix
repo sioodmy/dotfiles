@@ -33,7 +33,6 @@
       btm.enable = true;
       cava.enable = true;
       fzf.enable = true;
-      git.enable = true;
       music.enable = true;
       zsh.enable = true;
       gpg.enable = true;

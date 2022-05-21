@@ -13,7 +13,6 @@
 
     ./cli/bat
     ./cli/fzf
-    ./cli/git
     ./cli/gpg
     ./cli/lf
     ./cli/cava
