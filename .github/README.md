@@ -1,1 +1,1 @@
-Stolen nixdots from friend
+Stolen configs for nix from friend
