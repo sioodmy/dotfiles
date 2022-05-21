@@ -13,7 +13,7 @@ with lib;
 
   nix = {
     autoOptimiseStore = true;
-    allowedUsers = [ "sioodmy" ];
+    allowedUsers = [ "grajap" ];
     gc = {
       automatic = true;
       dates = "daily";
@@ -122,11 +122,35 @@ with lib;
       displayManager = {
         autoLogin = {
           enable = true;
-          user = "sioodmy";
+          user = "grajap";
         };
         lightdm.greeters.mini = {
           enable = true;
-          user = "sioodmy";
+          user = "grajap";
+          extraConfig =
+            ''
+            [greeter]
+            show-password-label = false
+            invalid-password-text = Access Denied
+            show-input-cursor = true
+            password-alignment = left
+            [greeter-hotkeys]
+            mod-key = meta
+            shutdown-key = s
+            [greeter-theme]
+            font-size = 1em
+            font = "monospace";
+            background-image = ""
+            background-color = "#${bg}"
+            window-color = "#${bg}"
+            password-border-radius = 10px
+            password-border-width = 3px
+            password-border-color = "#${ac}"
+            password-background-color = "#${bg}"
+            border-width = 0px
+            text-color = "#${ac}"
+            '';
+>>>>>>> e530e4cbf8242ef9d3c97910064c0c982c6e1d1f
         };
       };
       windowManager.bspwm.enable = true;
@@ -168,7 +192,7 @@ with lib;
     };
   };
 
-  users.users.sioodmy = {
+  users.users.grajap = {
     isNormalUser = true;
     # Enable ‘sudo’ for the user.
     extraGroups = [ "wheel" ] ++ optionals config.services.xserver.enable [
@@ -237,7 +261,7 @@ with lib;
     allowReboot = false;
   };
 
-  # Security 
+  # Security
   boot.blacklistedKernelModules = [
     # Obscure network protocols
     "ax25"
