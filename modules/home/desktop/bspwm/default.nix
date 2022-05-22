@@ -38,7 +38,7 @@ in {
           remove_unplugged_monitors = true;
           ignore_ewmh_focus = true;
           focus_follows_pointer = true;
-          border_width = 3;
+          border_width = 5;
           window_gap = 10;
           focused_border_color = "#81a1c1";
           split_ratio = 0.618;
