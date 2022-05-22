@@ -4,7 +4,7 @@ require'nvim-treesitter.configs'.setup {
     'typescript', 'vim', 'rust', 'org'
   },
   -- Install parsers synchronously (only applied to `ensure_installed`)
-  sync_install = true,
+  sync_install = false,
 
   rainbow = {
     enable = true,

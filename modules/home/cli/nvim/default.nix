@@ -33,6 +33,26 @@ let
       };
     };
 
+  headlines-nvim = pkgs.vimUtils.buildVimPlugin {
+      name = "headlines-nvim";
+      src = pkgs.fetchFromGitHub {
+        owner = "lukas-reineke";
+        repo = "headlines.nvim";
+        rev = "347ef0371451d9bfbf010c6743fb74997b5b9a80";
+        sha256 = "XgXSKBLLVCu9hfHzk9Xro+dooV4XaZJnFsVz+/wzyaQ=";
+      };
+    };
+
+  org-bullets = pkgs.vimUtils.buildVimPlugin {
+      name = "org-bullets";
+      src = pkgs.fetchFromGitHub {
+        owner = "akinsho";
+        repo = "org-bullets.nvim";
+        rev = "8dc2e25088ffa10029157c9aaede7d79f3fc75b1";
+        sha256 = "OtjjuNYGRD38i/356rej0ps4VRSPYv1yBKtNwGkmGxI=";
+      };
+    };
+
 in {
   options.modules.cli.nvim = { enable = mkEnableOption "nvim"; };
 
@@ -78,6 +98,8 @@ in {
         nvim-lspconfig
         lspsaga-nvim
         orgmode
+        org-bullets
+        headlines-nvim
         nvim-treesitter
         toggleterm-nvim
         nvim-ts-rainbow
