@@ -99,6 +99,7 @@ in {
         lspsaga-nvim
         orgmode
         org-bullets
+        vim-table-mode
         headlines-nvim
         nvim-treesitter
         toggleterm-nvim
@@ -109,7 +110,6 @@ in {
         telescope-nvim
         aerial-nvim
         todo-comments-nvim
-        cmp-nvim-lsp
         TrueZen-nvim
         bufferline-nvim
         alpha-nvim
@@ -120,6 +120,10 @@ in {
         nvim-web-devicons
         nvim-tree-lua
         nvim-cmp
+        cmp-nvim-lsp
+        cmp-spell
+        cmp-latex-symbols
+        cmp-emoji
         lspkind-nvim
         vim-commentary
         null-ls-nvim
