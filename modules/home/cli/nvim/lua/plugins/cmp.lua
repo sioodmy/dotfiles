@@ -29,6 +29,7 @@ local options = {
   window = {
     completion = {
       border = border "CmpBorder",
+      winhighlight = 'Normal:CmpPmenu,FloatBorder:CmpPmenuBorder,CursorLine:PmenuSel,Search:None',
     },
     documentation = {
       border = border "CmpDocBorder",
