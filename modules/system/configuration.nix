@@ -101,6 +101,13 @@ with lib;
       '';
     };
 
+    syncthing = {
+      enable = true;
+      user = "sioodmy";
+      dataDir = "/home/sioodmy/docs";
+      configDir = "/home/sioodmy/docs/.config/syncthing";
+    };
+
     cron = {
       enable = true;
       systemCronJobs = [ "@weekly      root    tldr --update" ];
@@ -237,7 +244,7 @@ with lib;
     allowReboot = false;
   };
 
-  # Security 
+  # Security
   boot.blacklistedKernelModules = [
     # Obscure network protocols
     "ax25"
