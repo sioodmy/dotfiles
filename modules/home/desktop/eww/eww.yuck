@@ -36,10 +36,8 @@
 (defpoll minute :interval "10s" "date +%M")
 (defpoll dateVar :interval "600s" "date '+%A %d.%m.%y'")
 (deflisten workspaces_listen "./scripts/workspaces.sh")
-(defpoll volumepoll :interval "999s" "./scripts/volume.sh")
 (defvar screenshotpath "/tmp/screenshot.png")
 
-(defvar volum false)
 (defvar screenshot false)
 (defvar power false)
 (defvar search false)
@@ -48,41 +46,20 @@
 
 ;; Widgets
 
-(defwidget volume []
-  (eventbox :tooltip "Volume: ${volumepoll.content}%" :onhover "eww update volum=true && eww update currentVolume=$(pamixer --get-volume)tter"   
-            :onhoverlost "eww update volum=false"
-    (box :orientation "v" :space-evenly false 
-(revealer :transition "slideup" 
-                :reveal volum 
-                :duration "500ms"
-        (scale :class "volumeBar"
-              :flipped true
-               :min 0
-                :orientation "v"
-               :max 101
-               :onchange `eww update volumepoll="$(./scripts/volume.sh {})"` 
-               :value "${volumepoll.content}" )
-        )
-      (eventbox :cursor "hand"(button :class "${volumepoll.class} label" 
-                :onclick "tdrop -ma -y 55 -x 7 -w 35% -h 40% pavucontrol" "${volumepoll.icon} "))
-      )))
-
-
-
 (defwidget mem []
   (box :vexpand "false" :hexpand "false"
     (circular-progress  :value {EWW_RAM.used_mem_perc}
                         :class "membar"
                         :start-angle 0
                         :thickness 4
-      (button 
+      (button
         :class "iconmem"
         :limit-width 2
         :tooltip " ${round(EWW_RAM.used_mem_perc,1)}%"
         :show_truncated false
         :wrap false
         "")
-      ))             
+      ))
   )
 
 (defwidget cpu []
@@ -91,30 +68,30 @@
                         :class "cpubar"
                         :start-angle 0
                         :thickness 4
-      (button 
+      (button
         :class "iconmem"
         :limit-width 2
         :tooltip " ${round(EWW_CPU.avg,1)}%"
         :show_truncated false
         :wrap false
         "")
-      ))             
+      ))
   )
 
-(defwidget wifi [] 
+(defwidget wifi []
  (box :vexpand false :hexpand false :orientation "v"
-   (label :text {wifi.icon} 
-          :limit-width 10 
+   (label :text {wifi.icon}
+          :limit-width 10
           :tooltip {wifi.status}
           :class "label wifi")
 
    )
 )
 
-(defwidget battery [] 
+(defwidget battery []
  (box :vexpand false :hexpand false :orientation "v" :visible {battery.visible}
    (label :text "${battery.icon}"
-          :limit-width 10 
+          :limit-width 10
           :tooltip "${battery.percent}% ${EWW_BATTERY["BAT0"].status}"
           :class "label battery")
 
@@ -127,48 +104,48 @@
                         :class "diskbar"
                         :start-angle 0
                         :thickness 4
-      (button 
+      (button
         :class "iconmem"
         :limit-width 2
         :tooltip " ${round(EWW_DISK["/"].used_perc,1)}%"
         :show_truncated false
         :wrap false
         "")
-      ))             
+      ))
   )
 (defwidget power []
-  (eventbox   :hexpand false 
-              :onhover "eww update power=true"	
-              :onhoverlost "eww update power=false" 
+  (eventbox   :hexpand false
+              :onhover "eww update power=true"
+              :onhoverlost "eww update power=false"
               :cursor "hand"
-    (box		:orientation "v"					
-                :space-evenly "false" 	 
+    (box		:orientation "v"
+                :space-evenly "false"
                 :class "powerLabel label"
 
-      (button		:class "nixos"					
+      (button		:class "nixos"
                     :onclick "rofi -show drun &"	"󱄅")
-      (revealer	:transition "slidedown"				
-                :reveal power			 
+      (revealer	:transition "slidedown"
+                :reveal power
                 :duration "250ms"
         (box        :space-evenly true :orientation "v"
-          (button		:class "button-off"					
+          (button		:class "button-off"
                         :onclick "shutdown now" "󰐥")
-          (button		:class "button-lock"					
+          (button		:class "button-lock"
                         :onclick "lockscreen" "󱅞")
-          (button		:class "button-sleep"					
+          (button		:class "button-sleep"
                         :onclick "systemctl suspend" "󰤄"))
         ))))
 
 
 (defwidget time []
   (eventbox :cursor "hand"  :hexpand false
-                :tooltip "${dateVar}"		 
+                :tooltip "${dateVar}"
     (box :orientation "v" :hexpand false :vexpand false :space-evenly false :class "clock"
-    (button		:class "date"					
+    (button		:class "date"
                 :orientation "v"
                 :onclick "eww open --toggle calendar"	"${hour}")
 
-    (button		:class "date"					
+    (button		:class "date"
                 :orientation "v"
                 :onclick "eww open --toggle calendar"	"${minute}")
     )
@@ -206,7 +183,7 @@
   )
 
 (defwidget screenshottool []
-  (box 
+  (box
     (button       :class "ss-area ss"
                   :tooltip "Select area"
                   :onclick "./scripts/ss.sh area &" "")
@@ -223,16 +200,16 @@
   )
 
 (defwindow calendar
-  :geometry (geometry :x "-20px" 
-  :y "7%" 
-  :width "270px" 
+  :geometry (geometry :x "-20px"
+  :y "7%"
+  :width "270px"
   :height "60px"
   :anchor "top right")
   (calendar :class "cal")
   )
 (defwindow screenshot
   :geometry (geometry :x "-50px" :y "-50px"
-  :width "500px" 
+  :width "500px"
   :height "400px"
   :anchor "bottom right")
   (box :space-evenly false :orientation "v"
@@ -242,14 +219,14 @@
 
 (defwindow screenshottool
   :geometry (geometry :x "-50px" :y "-50px"
-  :width "500px" 
+  :width "500px"
   :height "60"
   :anchor "bottom right")
   (box :space-evenly false :orientation "v"
     (screenshottool)
     ))
 
-(defwindow bar 
+(defwindow bar
   :monitor 0
   :reserve (struts :distance "50px" :side "left")
   :geometry (geometry :height "100%"
