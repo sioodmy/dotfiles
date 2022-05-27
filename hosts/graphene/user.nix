@@ -13,7 +13,7 @@
     };
     programs = {
       discocss.enable = true;
-      firefox.enable = true;
+      chromium.enable = true;
       qutebrowser.enable = true;
       kitty.enable = true;
       zathura.enable = true;
