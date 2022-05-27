@@ -3,6 +3,13 @@
   services.xserver.videoDrivers = [ "nvidia" ];
   programs.steam.enable = true;
 
+  services.xserver = {
+    videoDrivers = [ "nvidia" ];
+    setupCommands = ''
+      ${pkgs.xorg.xrandr}/bin/xrandr --output DP-0 --rate 144 --mode 1920x1080
+    '';
+  };
+
   networking = {
     networkmanager.enable = true;
     interfaces = { enp24s0.useDHCP = true; };

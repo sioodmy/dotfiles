@@ -108,11 +108,6 @@ with lib;
       configDir = "/home/sioodmy/docs/.config/syncthing";
     };
 
-    cron = {
-      enable = true;
-      systemCronJobs = [ "@weekly      root    tldr --update" ];
-    };
-
     printing.enable = true;
     fstrim.enable = true;
 
