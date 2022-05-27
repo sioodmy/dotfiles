@@ -107,35 +107,19 @@ in {
 
       plugins = with pkgs; [
         {
-          name = "bd";
-          src = pkgs.zsh-bd;
-          file = "share/bd/bd.plugin.zsh";
-        }
-        {
-          name = "you-should-use";
-          src = pkgs.zsh-you-should-use;
-          file = "share/you-should-use/you-should-use.plugin.zsh";
-        }
-        {
-          name = "autopair";
-          src = pkgs.zsh-autopair;
-          file = "share/autopair/autopair.zsh";
+          name = "zsh-nix-shell";
+          file = "nix-shell.plugin.zsh";
+          src = pkgs.fetchFromGitHub {
+            owner = "chisui";
+            repo = "zsh-nix-shell";
+            rev = "v0.5.0";
+            sha256 = "0za4aiwwrlawnia4f29msk822rj9bgcygw6a8a6iikiwzjjz0g91";
+          };
         }
         {
           name = "zsh-vi-mode";
           src = pkgs.zsh-vi-mode;
           file = "share/zsh-vi-mode/zsh-vi-mode.plugin.zsh";
-        }
-        {
-          name = "zsh-history-substring-search";
-          src = pkgs.zsh-history-substring-search;
-          file =
-            "share/zsh-history-substring-search/zsh-history-substring-search.zsh";
-        }
-        {
-          name = "zsh-nix-shell";
-          src = pkgs.zsh-nix-shell;
-          file = "share/zsh-nix-shell/nix-shell.plugin.zsh";
         }
       ];
     };
