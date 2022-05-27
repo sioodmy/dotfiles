@@ -5,11 +5,20 @@ in {
   options.modules.cli.zsh = { enable = mkEnableOption "zsh"; };
 
   config = mkIf cfg.enable {
-    home.packages = [ pkgs.devour ]; # for swallowing
+    home.packages = with pkgs; [ devour exa ]; # for swallowing
 
     programs.zoxide = {
       enable = true;
       enableZshIntegration = true;
+    };
+
+    programs.dircolors = {
+      enable = true;
+      enableZshIntegration = true;
+      extraConfig = builtins.readFile "${pkgs.fetchurl {
+        url = "https://github.com/arcticicestudio/nord-dircolors/raw/addb3b427e008d23affc721450fde86f27566f1d/src/dir_colors";
+        sha256 = "sha256-hlezTQqouVKbxgQBxtZU4en0idDiTCRJtFGH6XYFmtc="; }
+      }";
     };
 
     programs.starship = {
@@ -56,6 +65,10 @@ in {
         bindkey -M menuselect 'j' vi-down-line-or-history
         bindkey -v '^?' backward-delete-char
       '';
+      initExtra = ''
+          autoload -U url-quote-magic
+          zle -N self-insert url-quote-magic
+      '';
       history = {
         save = 1000;
         size = 1000;
@@ -66,6 +79,7 @@ in {
 
       dirHashes = {
         docs = "$HOME/docs";
+        notes = "$HOME/docs/notes";
         dl = "$HOME/download";
         vids = "$HOME/vids";
         music = "$HOME/music";
@@ -78,23 +92,25 @@ in {
         need = "nix-shell -p";
         ytmp3 = ''
           yt-dlp -x --continue --add-metadata --embed-thumbnail --audio-format mp3 --audio-quality 0 --metadata-from-title="%(artist)s - %(title)s" --prefer-ffmpeg -o "%(title)s.%(ext)s"'';
-        cat = "bat --style=plain";
-        grep = "rg";
-        du = "dust";
-        ps = "procs";
-        htop = "btm";
-        m = "mkdir -p";
-        fcd = "cd $(find -type d | fzf)";
-        ls = "exa --icons";
-        sl = "ls";
-        v = "nvim";
-        tree = "exa --tree --icons";
-        sxiv = "devour sxiv";
-        mpv = "devour mpv";
-        zathura = "devour zathura";
-        rm = "rm -i";
-        cp = "cp -i";
-        mv = "mv -i";
+          cat = "bat --style=plain";
+          grep = "rg";
+          du = "dust";
+          ps = "procs";
+          htop = "btm";
+
+          m = "mkdir -p";
+          fcd = "cd $(find -type d | fzf)";
+          ls = "exa --icons --group-directories-first";
+          ssh = "TERM=xterm-256color ssh";
+          sl = "ls";
+          v = "nvim";
+          tree = "exa --tree --icons";
+          sxiv = "devour sxiv";
+          mpv = "devour mpv";
+          zathura = "devour zathura";
+          rm = "rm -i";
+          cp = "cp -i";
+          mv = "mv -i";
 
         # Git aliases
         g = "git";
@@ -107,21 +123,6 @@ in {
 
       plugins = with pkgs; [
         {
-          name = "bd";
-          src = pkgs.zsh-bd;
-          file = "share/bd/bd.plugin.zsh";
-        }
-        {
-          name = "you-should-use";
-          src = pkgs.zsh-you-should-use;
-          file = "share/you-should-use/you-should-use.plugin.zsh";
-        }
-        {
-          name = "autopair";
-          src = pkgs.zsh-autopair;
-          file = "share/autopair/autopair.zsh";
-        }
-        {
           name = "zsh-vi-mode";
           src = pkgs.zsh-vi-mode;
           file = "share/zsh-vi-mode/zsh-vi-mode.plugin.zsh";
@@ -131,13 +132,8 @@ in {
           src = pkgs.zsh-history-substring-search;
           file =
             "share/zsh-history-substring-search/zsh-history-substring-search.zsh";
-        }
-        {
-          name = "zsh-nix-shell";
-          src = pkgs.zsh-nix-shell;
-          file = "share/zsh-nix-shell/nix-shell.plugin.zsh";
-        }
-      ];
+          }
+        ];
+      };
     };
-  };
-}
+  }

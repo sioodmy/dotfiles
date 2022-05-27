@@ -4,10 +4,10 @@
   nixpkgs.config.allowUnfree = true;
   home.packages = with pkgs; [
     inputs.todo.packages."${system}".todo
-    maim 
+    maim
     # cli tools
-    exa ffmpeg unzip xclip 
-    libnotify gnupg yt-dlp 
+    ffmpeg unzip xclip
+    libnotify gnupg yt-dlp
     ripgrep rsync imagemagick
     scrot newsboat unrar
     tealdeer killall onefetch
@@ -17,7 +17,7 @@
     transmission-gtk pavucontrol pcmanfm
     libreoffice-fresh
     # unfree apps (sorry daddy stallman)
-    minecraft 
+    minecraft
     # dev tools
     python3 git jdk dconf gcc rustc rustfmt cargo
   ];
