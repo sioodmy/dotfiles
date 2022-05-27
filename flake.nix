@@ -54,6 +54,7 @@
             (./. + "/hosts/${hostname}/system.nix")
             (./. + "/hosts/${hostname}/hardware-configuration.nix")
             ./modules/system/configuration.nix
+            ./modules/system/adblock.nix
             home-manager.nixosModules.home-manager
             {
               home-manager = {
