@@ -14,6 +14,11 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
+    pre-commit-hooks = {
+      url = "github:cachix/pre-commit-hooks.nix";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+
     picom-ibhagwan = {
       url = "github:ibhagwan/picom";
       flake = false;
@@ -25,8 +30,7 @@
     };
 
     discocss = {
-      url = "github:mlvzk/discocss/flake";
-      inputs.nixpkgs.follows = "nixpkgs";
+      url = "github:mlvzk/discocss/flake"; inputs.nixpkgs.follows = "nixpkgs";
     };
 
     eww.url = "github:elkowar/eww";
@@ -93,6 +97,16 @@
         thinkpad = mkSystem inputs.nixpkgs "x86_64-linux" "thinkpad";
       };
 
-      devShell.x86_64-linux = pkgs.mkShell { packages = [ pkgs.nixfmt ]; };
+
+      devShell.${system} = pkgs.mkShell {
+        packages = [ pkgs.nixpkgs-fmt ];
+        inherit (self.checks.${system}.pre-commit-check) shellHook;
+      };
+
+      checks.${system}.pre-commit-check = inputs.pre-commit-hooks.lib.${system}.run {
+        src = self;
+        hooks.nixpkgs-fmt.enable = true;
+        hooks.shellcheck.enable = true;
+      };
     };
 }
