@@ -46,11 +46,15 @@ with lib;
     loader = {
       systemd-boot.enable = false;
       efi.canTouchEfiVariables = true;
+      timeout = 1;
       grub = {
         enable = true;
         useOSProber = true;
         efiSupport = true;
         device = "nodev";
+        theme = null;
+        backgroundColor = null;
+        splashImage = null;
       };
     };
   };
