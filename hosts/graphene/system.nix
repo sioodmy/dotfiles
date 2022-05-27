@@ -1,11 +1,10 @@
 { pkgs, system, config, ... }: {
   hardware.nvidia.modesetting.enable = true;
-  services.xserver.videoDrivers = [ "nvidia" ];
   programs.steam.enable = true;
 
   services.xserver = {
     videoDrivers = [ "nvidia" ];
-    setupCommands = ''
+    displayManager.setupCommands = ''
       ${pkgs.xorg.xrandr}/bin/xrandr --output DP-0 --rate 144 --mode 1920x1080
     '';
   };
