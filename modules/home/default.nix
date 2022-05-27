@@ -26,6 +26,7 @@
     ./programs/kitty
     ./programs/dunst
     ./programs/firefox
+    ./programs/chromium
     ./programs/qutebrowser
     ./programs/rofi
     ./programs/zathura
