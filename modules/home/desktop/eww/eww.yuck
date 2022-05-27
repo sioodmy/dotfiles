@@ -154,7 +154,7 @@
          :orientation "h"
          :space-evenly false
          :spacing 10
-      (label :text {volume-muted ? ""
+      (label :text {volume-muted ? "" :
                     volume-level == 0 ? "" :
                     volume-level < 32 ? "" :
                     volume-level < 65 ? "" :
@@ -200,22 +200,22 @@
   (box :class "volume-window"
        :orientation "v"
        :space-evenly "false"
-    (box :class "volume-spacer" :style {volume-hidden ? "padding-top: 100px;" : "padding-top: 30px;"})
+    (box :class "volume-spacer" :style {bright-hidden ? "padding-top: 100px;" : "padding-top: 30px;"})
     (box :class "volume-widget"
          :orientation "h"
          :space-evenly false
          :spacing 10
       (label :text ""
-             :class 'volume-icon}'
+             :class 'volume-icon'
       )
-      (scale :class 'volume-slider ${volume-muted ? "volume-slider-muted" : ""}'
+      (scale :class 'volume-slider'
              :hexpand "true"
              :min 0
              :max 100
              :height 8
              :marks true
-             :value volume-level
-             :onchange "brightnessctl --set {}%"))))
+             :value bright-level
+             :onchange "brightnessctl set {}%"))))
 
 
 

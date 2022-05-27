@@ -2,8 +2,8 @@
 with lib;
 let
   cfg = config.modules.desktop.eww;
+  bright = pkgs.writeShellScriptBin "bright" ''${builtins.readFile ./scripts/brightness.sh}'';
   volume = pkgs.writeShellScriptBin "volume" ''${builtins.readFile ./scripts/volume.sh}'';
-  brightness = pkgs.writeShellScriptBin "brightness" ''${builtins.readFile ./scripts/brightness.sh}'';
 in {
   options.modules.desktop.eww = {
     enable = mkEnableOption "eww";
@@ -18,8 +18,8 @@ in {
       pkgs.libcanberra-gtk3
       pkgs.tiramisu
       pkgs.brightnessctl
+      bright
       volume
-      brightness
     ];
 
     # configuration
@@ -62,9 +62,9 @@ in {
       "XF86AudioMute" =
         ''pamixer --toggle && volume'';
       "XF86MonBrightnessUp" =
-        "brightnessctl --set +5% && brightness";
+        "brightnessctl set +5% && bright &";
       "XF86MonBrightnessDown" =
-        "brightnessctl --set -5% && brightness";
+        "brightnessctl set 5%- && bright &";
       "super + b" = "eww open --toggle bar";
       "Print" = "~/.config/eww/scripts/ss.sh menu";
     };
