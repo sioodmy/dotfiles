@@ -5,7 +5,7 @@ if eww windows | rg -q "\*volume"; then
     eww update volume-muted=$(pamixer --get-mute)
     eww update volume-hidden=false
 else
-
+    eww close brightness
     eww open volume
 
     eww update volume-level=$(pamixer --get-volume)
