@@ -1,16 +1,17 @@
 #!/bin/sh
 
-per="$(brightnessctl -m -d intel_backlight | awk -F, '{print substr($4, 0, length($4)-1)}' | tr -d '%')"
+if eww windows | rg -q "\*bright"; then
+    eww update volume-level="$(brightnessctl -m -d intel_backlight | awk -F, '{print substr($4, 0, length($4)-1)}' | tr -d '%')"
 
+    eww update volume-hidden=false
+else
 
-case $1 in 
-    "*") command="" ;;
-    "up") brightnessctl set +20% > /dev/null;;
-    "down") brightnessctl set 20%- > /dev/null;;
-    [0-9]*) 
-        int=$(printf '%.0f' $1)
-        brightnessctl set "$int%" > /dev/null
-        ;;
-esac
+    eww open volume
 
-echo $per
+    eww update volume-level="$(brightnessctl -m -d intel_backlight | awk -F, '{print substr($4, 0, length($4)-1)}' | tr -d '%')"
+    eww update volume-hidden=false
+    sleep 2
+    eww update volume-hidden=true
+    sleep 1
+    eww close volume
+fi
