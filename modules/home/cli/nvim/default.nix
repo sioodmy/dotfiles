@@ -92,6 +92,8 @@ in {
         stabilize-nvim
         nvim-colorizer-lua
         autosave-nvim
+        plenary-nvim
+        vim-flutter
         vim-nix
         nord-nvim
         nvim-autopairs
