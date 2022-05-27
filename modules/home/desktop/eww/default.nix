@@ -1,6 +1,9 @@
 { inputs, lib, config, pkgs, ... }:
 with lib;
-let cfg = config.modules.desktop.eww;
+let
+  cfg = config.modules.desktop.eww;
+  volume = pkgs.writeShellScriptBin "volume" ''${builtins.readFile ./scripts/volume.sh}'';
+  brightness = pkgs.writeShellScriptBin "brightness" ''${builtins.readFile ./scripts/brightness.sh}'';
 in {
   options.modules.desktop.eww = {
     enable = mkEnableOption "eww";
@@ -15,6 +18,8 @@ in {
       pkgs.libcanberra-gtk3
       pkgs.tiramisu
       pkgs.brightnessctl
+      volume
+      brightness
     ];
 
     # configuration
@@ -34,11 +39,6 @@ in {
       executable = true;
     };
 
-    home.file.".config/eww/scripts/volume.sh" = {
-      source = ./scripts/volume.sh;
-      executable = true;
-    };
-
     home.file.".config/eww/scripts/brightness.sh" = {
       source = ./scripts/brightness.sh;
       executable = true;
@@ -53,19 +53,18 @@ in {
       executable = true;
     };
 
+
     services.sxhkd.keybindings = {
       "XF86AudioRaiseVolume" =
-        ''eww update volumepoll="$(~/.config/eww/scripts/volume.sh up)"'';
+        ''pamixer --increase 5 --unmute && volume &'';
       "XF86AudioLowerVolume" =
-        ''eww update volumepoll="$(~/.config/eww/scripts/volume.sh down)"'';
-      "XF86AudioMicMute" = ''
-        eww update micvolumepoll="$(~/.config/eww/scripts/micvolume.sh toggle)"'';
+        ''pamixer --decrease 5 --unmute && volume &'';
       "XF86AudioMute" =
-        ''eww update volumepoll="$(~/.config/eww/scripts/volume.sh toggle)"'';
+        ''pamixer --toggle && volume'';
       "XF86MonBrightnessUp" =
-        "eww update brightnesspoll=$(~/.config/eww/scripts/brightness.sh up)";
+        "brightnessctl --set +5% && brightness";
       "XF86MonBrightnessDown" =
-        "eww update brightnesspoll=$(~/.config/eww/scripts/brightness.sh down)";
+        "brightnessctl --set -5% && brightness";
       "super + b" = "eww open --toggle bar";
       "Print" = "~/.config/eww/scripts/ss.sh menu";
     };

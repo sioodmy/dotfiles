@@ -27,23 +27,6 @@ $nord15: #b48ead;
     padding: 0.6rem 0;
 }
 
-scale trough highlight {
-    all: unset;
-    background-color: $nord1;
-    min-height: 16px;
-    min-width: 10px;
-    border-radius: 8px;
-}
-
-scale trough {
-    all: unset;
-    background-color: $nord1;
-    border-radius: 8px;
-    min-height: 80px;
-    min-width: 10px;
-    margin: 0.6rem;
-}
-
 .screenshot, .screenshottool{
     border: 2px solid $nord10;
     border-radius: 10px;
@@ -65,7 +48,7 @@ scale trough {
 .sspreview {
     border-radius: 10px;
     border: 2px solid $nord1;
-    background-size: contain;	
+    background-size: contain;
     background-repeat: no-repeat;
     background-position: center;
     margin: 1rem;
@@ -133,7 +116,7 @@ scale trough {
     font-size: 1.5rem;
 }
 .button-off { color: $nord11; font-size: 2rem; }
-.button-reb { 
+.button-reb {
     color: $nord15;
 }
 .button-lock {
@@ -216,5 +199,64 @@ scale trough {
             margin-left: 10px;
         }
     }
+}
+
+
+.volume-window {
+
+}
+
+.volume-spacer, .menu-spacer {
+  transition: all 200ms cubic-bezier(.1,-0.00,.0,1.49);
+}
+
+.volume-widget {
+  background-color: $nord1;
+  border: 2px solid $nord3;
+  border-radius: 12px;
+  padding: 0px 10px 0px;
+  min-height: 32px;
+}
+
+.volume-icon {
+  font-size: 2rem;
+  margin-right: 1rem;
+  // margin: 0 6px 0;
+}
+
+.volume-icon-muted {
+  color: $nord11;
+}
+
+.volume-slider {
+  background-color: $nord2;
+  // padding: 1px;
+  border-radius: 10px;
+  margin: 2rem 0px 2rem;
+  contents {
+    trough {
+      // padding-top: 3px;
+      border-radius:8px;
+      slider {
+        background: transparent;
+      }
+      highlight {
+        background: $nord10;
+        padding: 3px;
+        border-radius:4px;
+      }
+    }
+  }
+}
+
+.volume-slider-muted {
+  background-color: $nord2;
+  contents {
+    trough {
+      highlight {
+        background: $nord3;
+      }
+    }
+  }
 }
 
