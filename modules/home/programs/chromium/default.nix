@@ -7,13 +7,14 @@ in {
   config = mkIf cfg.enable {
     programs.chromium = {
       enable = true;
-      package = pkgs.ungoogled-chromium;
+      package = pkgs.brave;
       extensions = [
         { id = "cjpalhdlnbpafiamejdnhcphjbkeiagm"; } # ublock
         { id = "eimadpbcbfnmbkopoojfekhnkhdbieeh"; } # dark reader
         { id = "abehfkkfjlplnjadfcjiflnejblfmmpj"; } # nord theme
         { id = "mnjggcdmjocbbbhaepdhchncahnbgone"; } # sponsorblock
         { id = "dhdgffkkebhmkfjojejmpbldmpobfkfo"; } # tampermonkey
+        { id = "ohnjgmpcibpbafdlkimncjhflgedgpam"; } # 4chanx
         {
           id = "dcpihecpambacapedldabdbpakmachpb";
           updateUrl = "https://raw.githubusercontent.com/iamadamdev/bypass-paywalls-chrome/master/updates.xml";
