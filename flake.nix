@@ -29,9 +29,7 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
-    discocss = {
-      url = "github:mlvzk/discocss/flake"; inputs.nixpkgs.follows = "nixpkgs";
-    };
+    discocss.url = "github:mlvzk/discocss/flake";
 
     eww.url = "github:elkowar/eww";
     neovim-nightly-overlay.url = "github:nix-community/neovim-nightly-overlay";
@@ -60,11 +58,11 @@
               home-manager = {
                 useUserPackages = true;
                 useGlobalPkgs = true;
-                sharedModules = [ discocss.hmModule ];
                 extraSpecialArgs = {
                   inherit inputs;
                 };
                 users.sioodmy = (./. + "/hosts/${hostname}/user.nix");
+                sharedModules = [ discocss.hmModule ];
               };
               nixpkgs.overlays = [
                 (final: prev: {
@@ -72,16 +70,8 @@
                     prev.picom.overrideAttrs (o: { src = picom-ibhagwan; });
                 })
                 (final: prev: {
-                  discocss = prev.discocss.overrideAttrs (oldAttrs: rec {
-                    patches = (oldAttrs.patches or [ ])
-                      ++ [ ./overlays/discocss-no-launch.patch ];
-                  });
-                  catppuccin-gtk =
-                    prev.callPackage ./overlays/catppuccin-gtk.nix { };
                   catppuccin-cursors =
                     prev.callPackage ./overlays/catppuccin-cursors.nix { };
-                  catppuccin-grub =
-                    prev.callPackage ./overlays/catppuccin-grub.nix { };
                 })
                 nur.overlay
                 discord-overlay.overlay
