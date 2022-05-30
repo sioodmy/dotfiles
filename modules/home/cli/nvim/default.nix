@@ -12,7 +12,8 @@ let
       sha256 = "GA+fIfVlHOllojGyErYGC0+zyYTl9rOxendqOgApJw4=";
     };
   };
-   yuck-nvim = pkgs.vimUtils.buildVimPlugin {
+
+  yuck-nvim = pkgs.vimUtils.buildVimPlugin {
     name = "yuck-nvim";
     src = pkgs.fetchFromGitHub {
       owner = "elkowar";
@@ -62,6 +63,16 @@ let
       };
     };
 
+  prettier-nvim = pkgs.vimUtils.buildVimPlugin {
+      name = "prettier-nvim";
+      src = pkgs.fetchFromGitHub {
+        owner = "MunifTanjim";
+        repo = "prettier.nvim";
+        rev = "9fb2b9795ccb29081e3afcd41b9138a27cba2ec2";
+        sha256 = "cgHHXg+DqBvSrMyC5A9GhbvFwatIMPgaAg/fkCIyr7w=";
+      };
+    };
+
 in {
   options.modules.cli.nvim = { enable = mkEnableOption "nvim"; };
 
@@ -72,20 +83,21 @@ in {
     home.file.".config/nvim/lua".source = ./lua;
     home.file.".config/nvim/config.lua".source = ./config.lua;
 
-    # Language servers
+    # Language servers / dev tools
     home.packages = with pkgs; [
-      rnix-lsp # Nix
+      rnix-lsp nixfmt # Nix
       pyright # Python
-      rust-analyzer # Rust
+      rust-analyzer clippy # Rust
       gopls # Go
       sumneko-lua-language-server # Lua
-      dart # Dart
+      dart flutter # Dart/flutter things
       pandoc # For notes
-      nodePackages.typescript-language-server # Typescript
+      nodejs nodePackages.typescript nodePackages.typescript-language-server # Typescript
       nodePackages.vscode-langservers-extracted # HTML, CSS, JavaScript
-      nodePackages.bash-language-server # Bash
-      ccls
-      cmake # C/C++
+      nodePackages.yarn
+      nodePackages.bash-language-server nodePackages.node2nix# Bash
+      ccls cmake # C/C++
+      nodePackages.prettier # prettier code UwU
     ];
 
     programs.neovim = {
@@ -107,6 +119,7 @@ in {
         nord-nvim
         nvim-autopairs
         nvim-lspconfig
+        prettier-nvim
         lspsaga-nvim
         orgmode
         org-bullets
