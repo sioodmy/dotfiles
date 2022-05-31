@@ -143,6 +143,7 @@ in {
         nvim-notify
         lualine-nvim
         nvim-web-devicons
+        emmet-vim
         nvim-tree-lua
         nvim-cmp
         cmp-nvim-lsp
