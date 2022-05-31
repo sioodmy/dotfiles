@@ -1,21 +1,10 @@
 
 @import url("https://mwittrien.github.io/BetterDiscordAddons/Themes/BlurpleRecolor/BlurpleRecolor.css");
 @import url("https://gibbu.github.io/BetterDiscord-Themes/AdjustableServerWidth/base.css");
-@import url("https://fonts.googleapis.com/css2?family=Major+Mono+Display&display=swap");
 @import url("https://zzzmario.github.io/modern-indicators/src/source.css");
 
-
-@font-face {
-	font-family: 'Iosevka Custom';
-	font-style: normal;
-	font-weight: 200;
-	font-display: swap;
-	src: url(https://fonts.gstatic.com/s/baloo2/v1/wXKrE3kTposypRyd51jcAA.woff2) format('woff2');
-	unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+2000-206F, U+2074, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
-}
-
 ::-webkit-input-placeholder, body, button, input, select, textarea {
-	font-family: var(--font, "Baloo2"), Whitney;
+	font-family: var(--font, "Iosevka Custom"), Whitney;
 }
 
 :root{
@@ -42,7 +31,7 @@
 	/* native (default), windows, osx, linux (framed) */
 	--glasscord-titlebar: windows;
 
-	--font: 'Baloo2';
+	--font: 'Iosevka Custom';
 
 	--accentcolor: 94,129,172;		/* blurple - default: 114,137,218 */
 	--linkcolor: 136,192,208;		/* link - default: 0,176,244 */
@@ -416,16 +405,16 @@ body {
 
 nav[aria-label="Servers sidebar"] {
     width: 12px;
-    transition: all 500ms ease-in;
+    transition: all 100ms ease-in;
 	background-color: var(--background-primary);
 }
 nav[aria-label="Servers sidebar"]:hover {
-    width: 70px;
+    width: 200px;
 	background-color: var(--background-primary);
 }
 
 nav[aria-label="Servers sidebar"] span.item-2LIpTv {
-    transition: all 500ms ease-in;
+    transition: all 100ms ease-in;
     background-color: transparent;
 }
 nav[aria-label="Servers sidebar"]:hover span.item-2LIpTv {
@@ -435,7 +424,7 @@ nav[aria-label="Servers sidebar"]:hover span.item-2LIpTv {
 div.sidebar-1tnWFu {
     width: 15px;
     /*transition: width 0.4s;*/
-	transition: all 500ms ease-in;
+	transition: all 100ms ease-in;
 	opacity: 0;
 }
 div.sidebar-1tnWFu:hover {
@@ -445,7 +434,7 @@ div.sidebar-1tnWFu:hover {
 
 div.container-2o3qEW {
     width: 15px;
-    transition: all 500ms ease-in;
+    transition: all 100ms ease-in;
 	opacity: 0;
 }
 div.container-2o3qEW:hover {
@@ -456,7 +445,7 @@ div.container-2o3qEW:hover {
 div.sidebar-1tnWFu div.unread-36eUEm {
     background-color: transparent !important;
     color: transparent !important;
-    transition: background-color 0.4s linear;
+    transition: background-color 0.1s linear;
 }
 div.sidebar-1tnWFu:hover div.unread-36eUEm {
     background-color: var(--unread-badge) !important;
