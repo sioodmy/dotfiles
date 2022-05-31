@@ -126,6 +126,7 @@ in {
         vim-table-mode
         headlines-nvim
         nvim-treesitter
+        nvim-ts-autotag
         toggleterm-nvim
         nvim-ts-rainbow
         friendly-snippets
