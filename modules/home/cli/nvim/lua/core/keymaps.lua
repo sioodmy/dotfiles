@@ -54,6 +54,9 @@ map('n', '<C-j>', '<C-w>j')
 map('n', '<C-k>', '<C-w>k')
 map('n', '<C-l>', '<C-w>l')
 
+map('n', '<leader>j', ':bprev<CR>')
+map('n', '<leader>k', ':bnext<CR>')
+
 -- Reload configuration without restart nvim
 map('n', '<leader>r', ':so %<CR>')
 
