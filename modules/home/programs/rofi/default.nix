@@ -15,6 +15,9 @@ in {
       enable = true;
       extraConfig = {
         modi = "drun,window,calc,emoji";
+        sort = true;
+        sorting-method = "fzf";
+        matching = "fuzzy";
         lines = 5;
         font = "monospace 14";
         show-icons = true;
