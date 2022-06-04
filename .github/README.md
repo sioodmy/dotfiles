@@ -49,14 +49,3 @@ SIOODMY'S NIXOS CONFIGURATION
 <div align="center">
 
 <br clear="right"/>
-
-```ocaml
-GALLERY
-```
-</div>
-
-<img src="../assets/bar.gif" width="47%" align="right" />
-<img src="../assets/ss.gif" width="47%" />
-
-
-
