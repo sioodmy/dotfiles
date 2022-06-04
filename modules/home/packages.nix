@@ -11,7 +11,8 @@
     ripgrep rsync imagemagick
     scrot newsboat unrar
     tealdeer killall onefetch
-    du-dust pfetch
+    du-dust pfetch tokei bandwhich
+    grex
     # gui apps
     obs-studio mpv nsxiv tdesktop monero-gui
     transmission-gtk pavucontrol pcmanfm
