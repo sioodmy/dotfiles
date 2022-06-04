@@ -2,7 +2,7 @@
 
 <p align="center">
   <img src="https://camo.githubusercontent.com/8c73ac68e6db84a5c58eef328946ba571a92829b3baaa155b7ca5b3521388cc9/68747470733a2f2f692e696d6775722e636f6d2f367146436c41312e706e67" width="200px" /> <br>
-  
+
 </p>
 
 <div align="center">
@@ -13,15 +13,15 @@ SIOODMY'S NIXOS CONFIGURATION
 </div>
 
 
-<a href="#octocat--hi-there-thanks-for-dropping-by">
+<a href="#sioodmy--hi-there-thanks-for-dropping-by">
   <img alt="" align="right" width="50%" src="../assets/fetch.png"/>
 </a>
 
 <pre>
 
 # Hi there!
-   Welcome to me NixOS configuration. 
-   Feel free to steal anything from here 
+   Welcome to me NixOS configuration.
+   Feel free to steal anything from here
    but don't
    forget to give me credits.
    Remember that this configuration is made
@@ -33,23 +33,23 @@ SIOODMY'S NIXOS CONFIGURATION
 # Installation
    1) fork this repo
    2) customize configs to your likings
-   3) run nixos-rebuild switch --flake .# 
+   3) run nixos-rebuild switch --flake .#
    in your forked repo
 </pre>
 <pre>
 
 # How do I install it on Arch Loonix?
    That's the neat part, you don't!
-   
-   
-   
-   
+
+
+
+
 </pre>
 
 <div align="center">
-  
+
 <br clear="right"/>
-  
+
 ```ocaml
 GALLERY
 ```
@@ -58,5 +58,5 @@ GALLERY
 <img src="../assets/bar.gif" width="47%" align="right" />
 <img src="../assets/ss.gif" width="47%" />
 
-  
+
 
