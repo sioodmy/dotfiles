@@ -203,33 +203,19 @@ with lib;
       twemoji-color-font
       comfortaa
       inter
-      iosevka
       lato
+      jetbrains-mono
       noto-fonts
       noto-fonts-cjk
       noto-fonts-emoji
-      (pkgs.iosevka.override {
-        privateBuildPlan = ''
-          [buildPlans.iosevka-custom]
-          family = "Iosevka Custom"
-          spacing = "normal"
-          serifs = "sans"
-          no-cv-ss = true
-          no-ligation = true
-
-          [buildPlans.iosevka-custom.variants]
-          inherits = "ss14"
-        '';
-        set = "custom";
-      })
-      (nerdfonts.override { fonts = [ "Iosevka" ]; })
+      (nerdfonts.override { fonts = [ "JetBrainsMono" ]; })
     ];
 
     enableDefaultFonts = false;
 
     fontconfig = {
       defaultFonts = {
-        monospace = [ "Iosevka Custom" "Noto Color Emoji" "Iosevka Nerd Font" ];
+        monospace = [ "JetBrainsMono Nerd Font" "Noto Color Emoji" "JetBrainsMono Nerd Font" ];
         sansSerif = [ "Lato" "Noto Color Emoji" ];
         serif = [ "JetBrainsMono Nerd Font" "Noto Color Emoji" ];
         emoji = [ "Noto Color Emoji" ];

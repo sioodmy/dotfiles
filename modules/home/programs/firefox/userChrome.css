@@ -8,7 +8,7 @@
   --mff-sidebar-color: #d8dee9;
   --mff-tab-border-radius: 0px;
   --mff-tab-color: #d8dee9;
-  --mff-tab-font-family: "Iosevka", monospace;
+  --mff-tab-font-family: "JetBrainsMono Nerd Font", monospace;
   --mff-tab-font-size: 11pt;
   --mff-tab-font-weight: 400;
   --mff-tab-height: 32px;
@@ -17,11 +17,11 @@
   --mff-tab-soundplaying-bg: #b48ead;
   --mff-urlbar-color: #81a1c1;
   --mff-urlbar-focused-color: #eceff4;
-  --mff-urlbar-font-family: "Iosevka", monospace;
+  --mff-urlbar-font-family: "JetBrainsMono Nerd Font", monospace;
   --mff-urlbar-font-size: 12pt;
   --mff-urlbar-font-weight: 700;
   --mff-urlbar-results-color: #d8dee9
-  --mff-urlbar-results-font-family: "Iosevka", monospace;
+  --mff-urlbar-results-font-family: "JetBrainsMono Nerd Font", monospace;
   --mff-urlbar-results-font-size: 12pt;
   --mff-urlbar-results-font-weight: 700;
   --mff-urlbar-results-url-color: #81a1c1;

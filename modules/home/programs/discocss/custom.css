@@ -4,7 +4,7 @@
 @import url("https://zzzmario.github.io/modern-indicators/src/source.css");
 
 ::-webkit-input-placeholder, body, button, input, select, textarea {
-	font-family: var(--font, "Iosevka Custom"), Whitney;
+	font-family: var(--font, "JetBrainsMono Nerd Font"), Whitney;
 }
 
 :root{
@@ -31,7 +31,7 @@
 	/* native (default), windows, osx, linux (framed) */
 	--glasscord-titlebar: windows;
 
-	--font: 'Iosevka Custom';
+	--font: 'JetBrainsMono Nerd Font';
 
 	--accentcolor: 94,129,172;		/* blurple - default: 114,137,218 */
 	--linkcolor: 136,192,208;		/* link - default: 0,176,244 */
