@@ -51,6 +51,18 @@ g.neovide_cursor_vfx_particle_speed= 10.0
 g.neovide_cursor_vfx_particle_phase = 1.5
 g.neovide_cursor_vfx_particle_curl = 1.0
 o.guifont = "JetBrains Mono, monospace:h13"
+
+-----------------------------------------------------------
+-- Theme
+-----------------------------------------------------------
+vim.g.nord_contrast = false
+vim.g.nord_borders = true
+vim.g.nord_disable_background = false
+vim.g.nord_italic = false
+
+-- Load the colorscheme
+require('nord').set()
+
 -----------------------------------------------------------
 -- Tabs, indent
 -----------------------------------------------------------

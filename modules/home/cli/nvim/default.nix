@@ -163,7 +163,6 @@ in {
       ];
 
       extraConfig = ''
-        colorscheme nord
         luafile ~/.config/nvim/config.lua
       '';
     };
