@@ -85,6 +85,7 @@ in {
 
     # Language servers / dev tools
     home.packages = with pkgs; [
+      neovide # neovim client
       rnix-lsp nixfmt # Nix
       pyright # Python
       rust-analyzer clippy # Rust
