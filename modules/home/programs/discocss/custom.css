@@ -4,7 +4,7 @@
 @import url("https://zzzmario.github.io/modern-indicators/src/source.css");
 
 ::-webkit-input-placeholder, body, button, input, select, textarea {
-	font-family: var(--font, "JetBrainsMono Nerd Font"), Whitney;
+	font-family: var(--font, "JetBrainsMono Nerd Font");
 }
 
 :root{
