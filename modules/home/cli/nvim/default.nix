@@ -127,6 +127,7 @@ in {
         headlines-nvim
         nvim-treesitter
         nvim-ts-autotag
+        impatient-nvim
         toggleterm-nvim
         nvim-ts-rainbow
         friendly-snippets
