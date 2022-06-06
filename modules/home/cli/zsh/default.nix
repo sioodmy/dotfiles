@@ -104,7 +104,7 @@ in {
           ls = "exa --icons --group-directories-first";
           ssh = "TERM=xterm-256color ssh";
           sl = "ls";
-          v = "nvim";
+          v = "devour neovide --nofork --multigrid";
           tree = "exa --tree --icons";
           sxiv = "devour sxiv";
           mpv = "devour mpv";
