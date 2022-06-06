@@ -40,6 +40,9 @@ opt.scrolloff = 8
 opt.undofile = true
 opt.fileencoding = "utf-8"
 opt.conceallevel = 0
+-----------------------------------------------------------
+-- Neovide
+-----------------------------------------------------------
 g.neovide_cursor_vfx_mode = "railgun" -- neovide option
 g.neovide_refresh_rate= 60
 g.neovide_cursor_vfx_particle_lifetime= 1.2
@@ -47,8 +50,7 @@ g.neovide_cursor_vfx_particle_density= 7.0
 g.neovide_cursor_vfx_particle_speed= 10.0
 g.neovide_cursor_vfx_particle_phase = 1.5
 g.neovide_cursor_vfx_particle_curl = 1.0
-o.guifont = "JetBrainsMono\\ Nerd\\ Font\\ Mono:h18"
-
+o.guifont = "JetBrains Mono, monospace:h13"
 -----------------------------------------------------------
 -- Tabs, indent
 -----------------------------------------------------------
