@@ -8,10 +8,12 @@
 
 local g = vim.g       -- Global variables
 local opt = vim.opt   -- Set options (global/buffer/windows-scoped)
+local o = vim.o
 
------------------------------------------------------------
--- General
------------------------------------------------------------
+require("impatient")
+
+----------------------------------------------------------e
+-- General ---------------------------------------------------------
 opt.mouse = 'a'                       -- Enable mouse support
 opt.clipboard = 'unnamedplus'         -- Copy/paste to system clipboard
 opt.swapfile = false                  -- Don't use swapfile
@@ -38,6 +40,14 @@ opt.scrolloff = 8
 opt.undofile = true
 opt.fileencoding = "utf-8"
 opt.conceallevel = 0
+g.neovide_cursor_vfx_mode = "railgun" -- neovide option
+g.neovide_refresh_rate= 60
+g.neovide_cursor_vfx_particle_lifetime= 1.2
+g.neovide_cursor_vfx_particle_density= 7.0
+g.neovide_cursor_vfx_particle_speed= 10.0
+g.neovide_cursor_vfx_particle_phase = 1.5
+g.neovide_cursor_vfx_particle_curl = 1.0
+o.guifont = "JetBrainsMono\\ Nerd\\ Font\\ Mono:h18"
 
 -----------------------------------------------------------
 -- Tabs, indent
@@ -56,6 +66,7 @@ opt.history = 100           -- Remember N lines in history
 opt.lazyredraw = true       -- Faster scrolling
 opt.synmaxcol = 240         -- Max column for syntax highlight
 opt.updatetime = 700        -- ms to wait for trigger an event
+
 
 -----------------------------------------------------------
 -- Startup
