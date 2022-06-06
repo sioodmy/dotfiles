@@ -98,13 +98,11 @@ in {
           du = "dust";
           ps = "procs";
           htop = "btm";
-
           m = "mkdir -p";
           fcd = "cd $(find -type d | fzf)";
           ls = "exa --icons --group-directories-first";
           ssh = "TERM=xterm-256color ssh";
           sl = "ls";
-          v = "devour neovide --nofork --multigrid";
           tree = "exa --tree --icons";
           sxiv = "devour sxiv";
           mpv = "devour mpv";
@@ -140,5 +138,5 @@ in {
         }
       ];
     };
-    };
-  }
+  };
+}

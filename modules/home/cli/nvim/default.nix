@@ -101,6 +101,9 @@ in {
       nodePackages.prettier # prettier code UwU
     ];
 
+    # Neovide alias
+    programs.zsh.shellAliases.v = "devour neovide --nofork --multigrid";
+
     programs.neovim = {
       enable = true;
 
