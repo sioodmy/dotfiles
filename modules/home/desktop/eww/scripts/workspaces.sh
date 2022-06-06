@@ -3,7 +3,7 @@
 # Checks if a list ($1) contains an element ($2)
 contains() {
     for e in $1; do
-        [ "$e" -eq "$2" ] && echo 1 && return 
+        [ "$e" -eq "$2" ] && echo 1 && return
     done
     echo 0
 }
@@ -32,13 +32,13 @@ print_workspaces() {
             ws=$d
             icon=" "
             class="workspace-urgent"
-        else 
+        else
             ws=$d
             icon=" "
             class="workspace-empty"
-        fi  
+        fi
 
-        buf="$buf (eventbox :cursor \"hand\" (button :class \"$class\" :onclick \"bspc desktop -f $ws\" \"$icon\"))"
+        buf="$buf (eventbox :cursor \"hand\" (button :class \"$class icon\" :onclick \"bspc desktop -f $ws\" \"$icon\"))"
     done
 
     echo "(box :orientation \"v\" :class \"workspaces\" :spacing 10 :halign \"center\" :valign \"center\" :vexpand true :hexpand true $buf)"
@@ -48,4 +48,4 @@ print_workspaces() {
 print_workspaces
 bspc subscribe desktop node_transfer | while read -r _ ; do
     print_workspaces
-done 
+done

@@ -172,7 +172,7 @@
              :onchange "pamixer --set-volume {}"))))
 
 (defwidget time []
-  (eventbox :cursor "hand"  :hexpand false
+  (eventbox :cursor "hand"  :hexpand false :vexpand false
                 :tooltip "${dateVar}"
     (box :orientation "v" :hexpand false :vexpand false :space-evenly false :class "clock"
     (button		:class "date"
