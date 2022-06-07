@@ -16,7 +16,7 @@
     # gui apps
     obs-studio mpv nsxiv tdesktop monero-gui
     transmission-gtk pavucontrol pcmanfm
-    libreoffice-fresh kdenlive gimp
+    libreoffice-fresh kdenlive gimp keepassxc
     # unfree apps (sorry daddy stallman)
     minecraft
     # dev tools
