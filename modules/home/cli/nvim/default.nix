@@ -144,8 +144,8 @@ in {
         bufferline-nvim
         alpha-nvim
         neoscroll-nvim
-        nvim-whichkey-setup-lua
         yuck-nvim
+        copilot-vim
         nvim-notify
         lualine-nvim
         nvim-web-devicons

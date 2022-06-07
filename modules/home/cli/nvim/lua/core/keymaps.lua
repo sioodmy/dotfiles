@@ -28,7 +28,6 @@ map('i', 'kk', '<Esc>')
 
 -- Clear search highlighting with <leader> and c
 map('n', '<leader>c', ':nohl<CR>')
-
 -- Telescope
 map("n", "<leader>lf", ":Telescope find_files<CR>")
 map("n", "<leader>lg", ":Telescope live_grep<CR>")
