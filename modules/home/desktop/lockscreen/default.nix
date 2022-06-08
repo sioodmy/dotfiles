@@ -92,19 +92,6 @@ in {
   config = mkIf cfg.enable {
     home.packages = [ pkgs.i3lock-color lockscreen ];
 
-    services.screen-locker = {
-      enable = true;
-      inactiveInterval = config.modules.desktop.lockscreen.time;
-      xautolock.enable = config.modules.desktop.lockscreen.autolock;
-      xautolock.extraOptions = [
-        "-corners '--00'"
-        "-cornersize 20"
-        "-notify 60"
-        "-notifier ${sleep-noti}"
-      ];
-      lockCmd = "${lockscreen}/bin/lockscreen";
-    };
-
     services.sxhkd.keybindings = mkIf config.modules.services.sxhkd.enable {
       "super + shift + p" = "${lockscreen}/bin/lockscreen";
     };
