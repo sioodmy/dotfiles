@@ -216,7 +216,7 @@ with lib;
     fontconfig = {
       defaultFonts = {
         monospace = [ "JetBrainsMono Nerd Font" "Noto Color Emoji" "JetBrainsMono Nerd Font" ];
-        sansSerif = [ "Lato" "Noto Color Emoji" ];
+        sansSerif = [ "Roboto" "Noto Color Emoji" ];
         serif = [ "JetBrainsMono Nerd Font" "Noto Color Emoji" ];
         emoji = [ "Noto Color Emoji" ];
       };
