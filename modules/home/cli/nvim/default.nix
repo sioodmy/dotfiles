@@ -133,7 +133,6 @@ in {
         nvim-ts-autotag
         impatient-nvim
         toggleterm-nvim
-        nvim-ts-rainbow
         friendly-snippets
         luasnip
         lsp_signature-nvim
