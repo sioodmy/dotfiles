@@ -123,6 +123,7 @@ in {
         nord-nvim
         nvim-autopairs
         nvim-lspconfig
+        neorg
         prettier-nvim
         lspsaga-nvim
         orgmode
