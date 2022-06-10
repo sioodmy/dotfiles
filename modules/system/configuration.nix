@@ -40,7 +40,7 @@ with lib;
       "page_poison=1"
       "page_alloc.shuffle=1"
     ];
-    kernelPackages = pkgs.linuxPackages_latest;
+    kernelPackages = pkgs.linuxPackages_xanmod_latest;
     consoleLogLevel = 0;
     initrd.verbose = false;
     loader = {
