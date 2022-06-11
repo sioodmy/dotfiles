@@ -23,6 +23,19 @@ formatter.setup({
                 return { exe = "gofmt", args = { "-w", "." }, stdin = false }
             end,
         },
+        nix = {
+            -- prettier
+            function()
+                return {
+                    exe = "nixfmt",
+                    args = {
+                        "-w 80",
+                        vim.api.nvim_buf_get_name(0),
+                    },
+                    stdin = true,
+                }
+            end,
+        },
         html = {
             -- prettier
             function()
