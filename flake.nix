@@ -37,8 +37,8 @@
     fetch.url = "github:sioodmy/fetch";
 
   };
-  outputs = inputs@{ self, nixpkgs, home-manager, nur, picom-ibhagwan
-    , eww, discord-overlay, discocss, ... }:
+  outputs = inputs@{ self, nixpkgs, home-manager, nur, picom-ibhagwan, eww
+    , discord-overlay, discocss, ... }:
     let
       system = "x86_64-linux";
       pkgs = inputs.nixpkgs.legacyPackages.x86_64-linux;
@@ -58,9 +58,7 @@
               home-manager = {
                 useUserPackages = true;
                 useGlobalPkgs = true;
-                extraSpecialArgs = {
-                  inherit inputs;
-                };
+                extraSpecialArgs = { inherit inputs; };
                 users.sioodmy = (./. + "/hosts/${hostname}/user.nix");
                 sharedModules = [ discocss.hmModule ];
               };
@@ -88,16 +86,16 @@
         thinkpad = mkSystem inputs.nixpkgs "x86_64-linux" "thinkpad";
       };
 
-
       devShell.${system} = pkgs.mkShell {
         packages = [ pkgs.nixpkgs-fmt ];
         inherit (self.checks.${system}.pre-commit-check) shellHook;
       };
 
-      checks.${system}.pre-commit-check = inputs.pre-commit-hooks.lib.${system}.run {
-        src = self;
-        hooks.nixpkgs-fmt.enable = true;
-        hooks.shellcheck.enable = true;
-      };
+      checks.${system}.pre-commit-check =
+        inputs.pre-commit-hooks.lib.${system}.run {
+          src = self;
+          hooks.nixpkgs-fmt.enable = true;
+          hooks.shellcheck.enable = true;
+        };
     };
 }

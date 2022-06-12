@@ -87,10 +87,11 @@ in {
     home.packages = with pkgs; [
       neovide # neovim client
       rnix-lsp nixfmt # Nix
-      pyright # Python
-      rust-analyzer clippy # Rust
-      gopls # Go
-      sumneko-lua-language-server # Lua
+      pyright black # Python
+      rust-analyzer clippy rustfmt # Rust
+      gopls asmfmt go # Go
+      sumneko-lua-language-server stylua # Lua
+      nodePackages.sql-formatter # SQL
       dart flutter # Dart/flutter things
       pandoc # For notes
       nodejs nodePackages.typescript nodePackages.typescript-language-server # Typescript
@@ -123,6 +124,7 @@ in {
         nord-nvim
         nvim-autopairs
         nvim-lspconfig
+        neorg
         prettier-nvim
         lspsaga-nvim
         orgmode
@@ -158,6 +160,7 @@ in {
         lspkind-nvim
         vim-commentary
         null-ls-nvim
+        formatter-nvim
         gitsigns-nvim
       ];
 
