@@ -14,7 +14,7 @@
     du-dust pfetch tokei bandwhich
     grex fd xh
     # gui apps
-    obs-studio mpv nsxiv tdesktop monero-gui
+    obs-studio nsxiv tdesktop monero-gui
     transmission-gtk pavucontrol pcmanfm
     libreoffice-fresh kdenlive gimp keepassxc
     # unfree apps (sorry daddy stallman)
