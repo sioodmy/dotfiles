@@ -31,6 +31,7 @@
     ./programs/rofi
     ./programs/zathura
     ./programs/discocss
+    ./programs/mpv
 
     ./services/udiskie
     ./services/sxhkd
