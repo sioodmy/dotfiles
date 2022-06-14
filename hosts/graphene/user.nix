@@ -19,6 +19,7 @@
       zathura.enable = true;
       dunst.enable = true;
       rofi.enable = true;
+      mpv.enable = true;
     };
     services = {
       sxhkd.enable = true;
