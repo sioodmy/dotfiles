@@ -26,6 +26,7 @@ in {
         input_delay = 3;
         visual_bell_duration = "0.0";
         open_url_with = "default";
+        confirm_os_window_close = 0;
 
         enable_audio_bell = false;
 
