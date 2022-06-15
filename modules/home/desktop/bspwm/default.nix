@@ -41,6 +41,7 @@ in {
           remove_unplugged_monitors = true;
           ignore_ewmh_focus = true;
           focus_follows_pointer = true;
+          pointer_follows_focus = true;
           border_width = 0;
           window_gap = 15;
           focused_border_color = "#81a1c1";
