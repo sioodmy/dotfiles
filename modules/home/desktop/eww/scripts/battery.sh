@@ -2,6 +2,7 @@
 
 bat=/sys/class/power_supply/BAT0/
 per="$(cat "$bat/capacity")"
+status="$(cat "$bat/status")"
 
 if [ "$per" -gt "90" ]; then
 	icon=""
@@ -28,8 +29,10 @@ else
 fi
 
 
+
+
 if [ -s /sys/class/power_supply/BAT0/capacity ]; then
-    echo "{\"percent\": \"$per\", \"icon\": \"$icon\", \"charging\": \"$charging\", \"visible\": true }"
+    echo "{\"percent\": \"$per\", \"icon\": \"$icon\", \"charging\": \"$charging\", \"visible\": true, \"status\": \"$status\"}"
 else
     echo "{\"visible\": false }"
-fi 
+fi
