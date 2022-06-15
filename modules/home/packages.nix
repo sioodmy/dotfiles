@@ -15,8 +15,9 @@
     grex fd xh
     # gui apps
     obs-studio nsxiv tdesktop monero-gui
-    transmission-gtk pavucontrol pcmanfm
+    transmission-gtk pavucontrol
     libreoffice-fresh kdenlive gimp keepassxc
+    xfce.thunar
     # unfree apps (sorry daddy stallman)
     minecraft
     # dev tools
