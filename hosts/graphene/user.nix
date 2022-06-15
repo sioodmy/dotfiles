@@ -14,7 +14,6 @@
     programs = {
       discocss.enable = true;
       chromium.enable = true;
-      qutebrowser.enable = true;
       kitty.enable = true;
       zathura.enable = true;
       dunst.enable = true;
