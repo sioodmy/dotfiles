@@ -11,15 +11,18 @@ in {
       shadow = true;
       shadowOpacity = "0.2";
       extraOptions = ''
-          corner-radius = 10;
-          border-radius = 10;
-          shadow-radius = 10;
-          detect-client-opacity = true;
-          transition = true;
-          transition-offset = 25;
-          transition-direction = "smart-x";
-          transition-timing-function = "ease-out-cubic";
-          transition-step = 0.028;
+        corner-radius = 10;
+        border-radius = 10;
+        shadow-radius = 10;
+        detect-client-opacity = true;
+        transition = true;
+        transition-offset = 25;
+        transition-direction = "smart-x";
+        transition-timing-function = "ease-out-cubic";
+        transition-step = 0.028;
+        inactive-opacity = 0.8;
+        inactive-opacity-override = true;
+        active-opacity = 1;
       '';
       fadeExclude = [
         # "class_g = 'Rofi'"
