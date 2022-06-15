@@ -92,7 +92,7 @@
  (box :vexpand false :hexpand false :orientation "v" :visible {battery.visible}
    (label :text "${battery.icon}"
           :limit-width 10
-          :tooltip "${battery.percent}% ${EWW_BATTERY["BAT0"].status}"
+          :tooltip "${battery.percent}% ${battery.charging}"
           :class "label battery")
 
    )
@@ -292,8 +292,8 @@
 
 (defwindow bar
   :monitor 0
-  :reserve (struts :distance "50px" :side "left")
-  :geometry (geometry :height "100%"
+  :reserve (struts :distance "55px" :side "left")
+  :geometry (geometry :height "1050px" :x "5px" :y "15px"
   :width "50px"
   :anchor "top left")
   :hexpand false
