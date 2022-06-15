@@ -114,6 +114,7 @@ in {
       package = pkgs.neovim-nightly;
 
       plugins = with pkgs.vimPlugins; [
+        (pkgs.vimPlugins.nvim-treesitter.withPlugins (plugins: pkgs.tree-sitter.allGrammars))
         indent-blankline-nvim
         stabilize-nvim
         nvim-colorizer-lua
@@ -131,7 +132,6 @@ in {
         org-bullets
         vim-table-mode
         headlines-nvim
-        nvim-treesitter
         nvim-ts-autotag
         impatient-nvim
         toggleterm-nvim
