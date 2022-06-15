@@ -87,6 +87,9 @@ in {
             desktop = "^3";
             follow = true;
           };
+          "keepassxc" = {
+            state = "floating";
+          };
         };
       };
     };
