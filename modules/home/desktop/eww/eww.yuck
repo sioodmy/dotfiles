@@ -92,7 +92,7 @@
  (box :vexpand false :hexpand false :orientation "v" :visible {battery.visible}
    (label :text "${battery.icon}"
           :limit-width 10
-          :tooltip "${battery.percent}% ${EWW_BATTERY["BAT0"].status}"
+          :tooltip "${battery.percent}% ${battery.charging}"
           :class "label battery")
 
    )
