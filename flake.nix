@@ -38,7 +38,7 @@
 
   };
   outputs = inputs@{ self, nixpkgs, home-manager, nur, picom-ibhagwan, eww
-    , discord-overlay, discocss, ... }:
+    , discord-overlay, ... }:
     let
       system = "x86_64-linux";
       pkgs = inputs.nixpkgs.legacyPackages.x86_64-linux;
@@ -60,7 +60,7 @@
                 useGlobalPkgs = true;
                 extraSpecialArgs = { inherit inputs; };
                 users.sioodmy = (./. + "/hosts/${hostname}/user.nix");
-                sharedModules = [ discocss.hmModule ];
+                sharedModules = [ inputs.discocss.hmModule ];
               };
               nixpkgs.overlays = [
                 (final: prev: {
