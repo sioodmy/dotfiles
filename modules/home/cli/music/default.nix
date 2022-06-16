@@ -9,7 +9,6 @@ in {
 
     services.mpd = {
       enable = true;
-      # dataDir = "/home/sioodmy/.config/mpd";
       network = {
         listenAddress = "any";
         port = 6600;
