@@ -55,7 +55,7 @@ in {
         rules = {
           "Zathura" = { state = "tiled"; };
           "Pavucontrol" = { state = "floating"; };
-          "Pcmanfm" = { state = "floating"; };
+          "Thunar" = { state = "floating"; };
           "pavucontrol" = { state = "floating"; };
           "transmission-gtk" = { state = "floating"; };
 
