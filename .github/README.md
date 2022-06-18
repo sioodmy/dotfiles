@@ -7,6 +7,23 @@
 
 <div align="center">
 
+  <div align="center">
+   <p></p>
+   <a href="">
+      <img src="https://img.shields.io/github/issues/sioodmy/dotfiles?color=ffb29b&labelColor=1C2325&style=for-the-badge">
+   </a>
+   <a href="https://github.com/sioodmy/dotfiles/stargazers">
+      <img src="https://img.shields.io/github/stars/sioodmy/dotfiles?color=C9CBFF&labelColor=1C2325&style=for-the-badge">
+   </a>
+   <a href="https://github.com/sioodmy/dotfiles/">
+      <img src="https://img.shields.io/github/repo-size/sioodmy/dotfiles?color=FCA2AA&labelColor=1C2325&style=for-the-badge">
+   </a>
+  
+  <img alt="" src="https://badges.pufler.dev/visits/sioodmy/dotfiles?style=for-the-badge&color=A7D9B2&logoColor=white&labelColor=1C2325"/>
+   <br>
+</div>
+<br>
+  
 ```ocaml
 SIOODMY'S NIXOS CONFIGURATION
 ```
