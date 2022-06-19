@@ -41,14 +41,15 @@ in {
       in {
 
         "*" = {
-          bg-col = mkLiteral "#2e3440";
-          bg-col-light = mkLiteral "#343a46";
-          border-col = mkLiteral "#343a46";
-          selected-col = mkLiteral "#343a46";
-          accent = mkLiteral "#81a1c1";
-          fg-col = mkLiteral "#b4bbc8";
-          fg-col2 = mkLiteral "#5e81ac";
-          grey = mkLiteral "#646a76";
+          bg-col = mkLiteral "#1e2030";
+          bg-col-light = mkLiteral "#1e2030";
+          border-col = mkLiteral "#1e2030";
+          selected-col = mkLiteral "#1e2030";
+          accent = mkLiteral "#8aadf4";
+          fg-col = mkLiteral "#cad3f5";
+          fg-col2 = mkLiteral "#ee99a0";
+          grey = mkLiteral "#cad3f5";
+
           width = 600;
         };
 
