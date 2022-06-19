@@ -70,6 +70,7 @@ opt.expandtab = true        -- Use spaces instead of tabs
 opt.shiftwidth = 4          -- Shift 4 spaces when tab
 opt.tabstop = 4             -- 1 tab == 4 spaces
 opt.smartindent = true      -- Autoindent new lines
+opt.autoindent = true      -- Autoindent new lines
 g.user_emmet_leader_key = "<M-c>" -- Emmet key
 
 -----------------------------------------------------------
