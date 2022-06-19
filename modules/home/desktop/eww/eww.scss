@@ -85,7 +85,10 @@ $crust: #181926;
   color: $base;
   background-color: $blue;
   margin: 7px;
-  padding: 3px;
+  padding-top: 5px;
+  padding-bottom: 5px;
+  padding-left: 10px;
+  padding-right: 10px;
   border-radius: 10px;
 }
 .battery {
