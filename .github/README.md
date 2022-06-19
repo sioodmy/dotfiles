@@ -10,16 +10,16 @@
   <div align="center">
    <p></p>
    <a href="">
-      <img src="https://img.shields.io/github/issues/sioodmy/dotfiles?color=ffb29b&labelColor=1C2325&style=for-the-badge">
+      <img src="https://img.shields.io/github/issues/sioodmy/dotfiles?color=f5a97f&labelColor=24273a&style=for-the-badge">
    </a>
    <a href="https://github.com/sioodmy/dotfiles/stargazers">
-      <img src="https://img.shields.io/github/stars/sioodmy/dotfiles?color=C9CBFF&labelColor=1C2325&style=for-the-badge">
+      <img src="https://img.shields.io/github/stars/sioodmy/dotfiles?color=c6a0f6&labelColor=24273a&style=for-the-badge">
    </a>
    <a href="https://github.com/sioodmy/dotfiles/">
-      <img src="https://img.shields.io/github/repo-size/sioodmy/dotfiles?color=FCA2AA&labelColor=1C2325&style=for-the-badge">
+      <img src="https://img.shields.io/github/repo-size/sioodmy/dotfiles?color=ee99a0&labelColor=24273a&style=for-the-badge">
    </a>
   
-  <img alt="" src="https://badges.pufler.dev/visits/sioodmy/dotfiles?style=for-the-badge&color=A7D9B2&logoColor=white&labelColor=1C2325"/>
+  <img alt="" src="https://badges.pufler.dev/visits/sioodmy/dotfiles?style=for-the-badge&color=a6da95&logoColor=white&labelColor=24273a"/>
    <br>
 </div>
 <br>
@@ -66,3 +66,5 @@ SIOODMY'S NIXOS CONFIGURATION
 <div align="center">
 
 <br clear="right"/>
+<br />
+  <p align="center"><a href="https://github.com/sioodmy/dotfiles/blob/main/LICENSE"><img src="https://img.shields.io/static/v1.svg?style=for-the-badge&label=License&message=GPL-3&logoColor=d9e0ee&colorA=363a4f&colorB=c6a0f6"/></a></p>
