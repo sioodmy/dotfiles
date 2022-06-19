@@ -20,7 +20,6 @@ in {
         transition-direction = "smart-x";
         transition-timing-function = "ease-out-cubic";
         transition-step = 0.028;
-        inactive-opacity = 0.8;
         inactive-opacity-override = false;
         active-opacity = 1;
       '';
