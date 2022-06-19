@@ -531,18 +531,18 @@
         "type": "github"
       }
     },
-    "picom-ibhagwan": {
+    "picom-arian8j2": {
       "flake": false,
       "locked": {
-        "lastModified": 1635984309,
-        "narHash": "sha256-1hVFBGo4Ieke2T9PqMur1w4D0bz/L3FAvfujY9Zergw=",
-        "owner": "ibhagwan",
+        "lastModified": 1650878148,
+        "narHash": "sha256-PH0Mml7hLoejwYHf8AwqK0OIKpTr6WwGUrbx5SJ+5SY=",
+        "owner": "Arian8j2",
         "repo": "picom",
-        "rev": "c4107bb6cc17773fdc6c48bb2e475ef957513c7a",
+        "rev": "f70d083a01dc0eebbbe3f65aaa8ca490816b1b35",
         "type": "github"
       },
       "original": {
-        "owner": "ibhagwan",
+        "owner": "Arian8j2",
         "repo": "picom",
         "type": "github"
       }
@@ -578,7 +578,7 @@
         "neovim-nightly-overlay": "neovim-nightly-overlay",
         "nixpkgs": "nixpkgs_6",
         "nur": "nur",
-        "picom-ibhagwan": "picom-ibhagwan",
+        "picom-arian8j2": "picom-arian8j2",
         "pre-commit-hooks": "pre-commit-hooks",
         "todo": "todo"
       }
