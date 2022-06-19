@@ -19,8 +19,8 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
-    picom-arian8j2 = {
-      url = "github:Arian8j2/picom";
+    picom-pijulius = {
+      url = "github:pijulius/picom/implement-window-animations";
       flake = false;
     };
 
@@ -65,7 +65,7 @@
               nixpkgs.overlays = [
                 (final: prev: {
                   picom =
-                    prev.picom.overrideAttrs (o: { src = inputs.picom-arian8j2; });
+                    prev.picom.overrideAttrs (o: { src = inputs.picom-pijulius; });
                 })
                 (final: prev: {
                   catppuccin-cursors =
