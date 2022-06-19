@@ -187,7 +187,8 @@
              :onchange "brightnessctl set {}%"))))
 (defwidget launch []
   (button		:class "icon nixos"
-                :onclick "rofi -show drun &"	"  ")
+                :hexpand true
+                :onclick "rofi -show drun &"	"")
 )
 
 (defwidget powerbutton []
