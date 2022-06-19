@@ -132,7 +132,6 @@ in {
         plenary-nvim
         vim-flutter
         vim-nix
-        nord-nvim
         catppuccin-nvim
         nvim-autopairs
         nvim-lspconfig

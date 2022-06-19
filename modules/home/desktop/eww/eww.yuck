@@ -108,6 +108,7 @@
   (eventbox   :hexpand false
               :onhover "eww update power=true"
               :onhoverlost "eww update power=false"
+              :valign "center"
               :cursor "hand"
     (box		:orientation "v"
                 :space-evenly "false"

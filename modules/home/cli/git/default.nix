@@ -11,7 +11,7 @@ in {
       userEmail = "sioodmy@tuta.io";
       extraConfig = {
         init = { defaultBranch = "main"; };
-        delta = { syntax-theme = "Nord"; };
+        delta = { syntax-theme = "ansi"; };
       };
       delta = { enable = true; };
     };

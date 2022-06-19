@@ -11,7 +11,7 @@ in {
       extensions = [
         { id = "cjpalhdlnbpafiamejdnhcphjbkeiagm"; } # ublock
         { id = "eimadpbcbfnmbkopoojfekhnkhdbieeh"; } # dark reader
-        { id = "abehfkkfjlplnjadfcjiflnejblfmmpj"; } # nord theme
+        { id = "cmpdlhmnmjhihmcfnigoememnffkimlk"; } # catppuccin theme
         { id = "mnjggcdmjocbbbhaepdhchncahnbgone"; } # sponsorblock
         { id = "dhdgffkkebhmkfjojejmpbldmpobfkfo"; } # tampermonkey
         { id = "ohnjgmpcibpbafdlkimncjhflgedgpam"; } # 4chanx

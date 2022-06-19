@@ -8,46 +8,40 @@ in {
 
   config = mkIf cfg.enable {
     xresources.extraConfig = ''
+*background: #24273A
+*foreground: #CAD3F5
 
-      #define nord0 #2E3440
-      #define nord1 #3B4252
-      #define nord2 #434C5E
-      #define nord3 #4C566A
-      #define nord4 #D8DEE9
-      #define nord5 #E5E9F0
-      #define nord6 #ECEFF4
-      #define nord7 #8FBCBB
-      #define nord8 #88C0D0
-      #define nord9 #81A1C1
-      #define nord10 #5E81AC
-      #define nord11 #BF616A
-      #define nord12 #D08770
-      #define nord13 #EBCB8B
-      #define nord14 #A3BE8C
-      #define nord15 #B48EAD
+! Gray
+*color0: #494D64
+*color8: #5B6078
 
-      *.foreground:   nord4
-      *.background:   nord0
-      *.cursorColor:  nord4
-      *fading: 35
-      *fadeColor: nord3
+! Red
+*color1: #ED8796
+*color9: #ED8796
 
-      *.color0: nord1
-      *.color1: nord11
-      *.color2: nord14
-      *.color3: nord13
-      *.color4: nord9
-      *.color5: nord15
-      *.color6: nord8
-      *.color7: nord5
-      *.color8: nord3
-      *.color9: nord11
-      *.color10: nord14
-      *.color11: nord13
-      *.color12: nord9
-      *.color13: nord15
-      *.color14: nord7
-      *.color15: nord6
+! Green
+*color2: #A6DA95
+*color10: #A6DA95
+
+! Yellow
+*color3: #EED49F
+*color11:  #EED49F
+
+! Blue
+*color4: #8AADF4
+*color12: #8AADF4
+
+! Maguve
+*color5: #F5BDE6
+*color13: #F5BDE6
+
+! Pink
+*color6: #8BD5CA
+*color14: #8BD5CA
+
+! Whites
+*color7: #B8C0E0
+*color15: #A5ADCB
     '';
 
   };

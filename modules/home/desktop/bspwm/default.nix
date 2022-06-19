@@ -44,11 +44,11 @@ in {
           pointer_follows_focus = false;
           border_width = 0;
           window_gap = 15;
-          focused_border_color = "#81a1c1";
+          focused_border_color = "#8aadf4";
           split_ratio = 0.618;
-          urgent_border_color = "#d08770";
-          normal_border_color = "#2e3440";
-          presel_feedback_color = "#4c566a";
+          urgent_border_color = "#ed8796";
+          normal_border_color = "#5b6078";
+          presel_feedback_color = "#f4dbd6";
         };
         monitors = { "focused" = [ "1" "2" "3" "4" "5" ]; };
 
