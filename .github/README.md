@@ -1,11 +1,10 @@
 
 
-<p align="center">
-  <img src="https://camo.githubusercontent.com/8c73ac68e6db84a5c58eef328946ba571a92829b3baaa155b7ca5b3521388cc9/68747470733a2f2f692e696d6775722e636f6d2f367146436c41312e706e67" width="200px" /> <br>
-
-</p>
-
-<div align="center">
+<h1 align="center">
+  <img src="https://camo.githubusercontent.com/8c73ac68e6db84a5c58eef328946ba571a92829b3baaa155b7ca5b3521388cc9/68747470733a2f2f692e696d6775722e636f6d2f367146436c41312e706e67" width="100px" /> <br>
+  sioodmy's dotfiles <br>
+  <img src="../assets/colors.png" width="600px" /> <br>
+  <div align="center">
 
   <div align="center">
    <p></p>
@@ -22,6 +21,10 @@
   <img alt="" src="https://badges.pufler.dev/visits/sioodmy/dotfiles?style=for-the-badge&color=a6da95&logoColor=white&labelColor=24273a"/>
    <br>
 </div>
+</h1>
+
+
+
 <br>
   
 ```ocaml
@@ -39,8 +42,7 @@ SIOODMY'S NIXOS CONFIGURATION
 # Hi there!
    Welcome to me NixOS configuration.
    Feel free to steal anything from here
-   but don't
-   forget to give me credits.
+  
    Remember that this configuration is made
    specifically for my hardware and
    it may not work for yours!
