@@ -1,13 +1,13 @@
-{ lib, stdenv, ... }:
+{ lib, stdenv, fetchzip, ... }:
 
 stdenv.mkDerivation rec {
   pname = "cattpuccin-cursors";
-  version = "0.1.3";
+  version = "0.2.0";
 
-  src = fetchTarball {
+  src = fetchzip {
     url =
-      "https://github.com/catppuccin/cursors/raw/e5a04bcdd953f8cc9fdc9909da24d63319fa252d/cursors/Catppuccin-Dark-Cursors.tar.gz";
-    sha256 = "0jnjr0g7j7nwbbf961x5y1s1n2d79f8q8w2qsmn2xm1p1qyay0vd";
+      "https://github.com/catppuccin/cursors/raw/1df332a406916a89a07be93adaf785236728077f/cursors/Catppuccin-Macchiato-Dark-Cursors.zip";
+    sha256 = "y1Pozu+wPRGl4ICtYuH6rl5B0b5YvbbTTEm48OollsQ=";
   };
 
   installPhase = ''

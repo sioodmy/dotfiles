@@ -15,10 +15,6 @@ in {
     programs.dircolors = {
       enable = true;
       enableZshIntegration = true;
-      extraConfig = builtins.readFile "${pkgs.fetchurl {
-        url = "https://github.com/arcticicestudio/nord-dircolors/raw/addb3b427e008d23affc721450fde86f27566f1d/src/dir_colors";
-        sha256 = "sha256-hlezTQqouVKbxgQBxtZU4en0idDiTCRJtFGH6XYFmtc="; }
-      }";
     };
 
     programs.starship = {

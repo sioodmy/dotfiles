@@ -9,21 +9,21 @@ let
   lockscreen = (
     pkgs.writeScriptBin "lockscreen" ''
       #! ${pkgs.zsh}/bin/zsh
-      background=#2e3440
-      insidecolor=#2e3440ff
-      insidevercolor=#2e3440ff
-      insidewrongcolor=#bf616aff
-      ringcolor=#5e81ac1A
-      ringvercolor=#81A1C1ff
-      ringwrongcolor=#bf616aff
-      keyhlcolor=#A3BE8Cff
-      bshlcolor=#bf616aff
-      layoutcolor=#5e81acff
-      seperatorcolor=#3b425200
-      timecolor=#d8dee97f
-      datecolor=#d8dee9ff
-      verifcolor=#d8dee9ff
-      wrongcolor=#d8dee9ff
+      background=#24273a
+      insidecolor=#363a4f
+      insidevercolor=#363a4f
+      insidewrongcolor=#ed8796
+      ringcolor=#8aadf4
+      ringvercolor=#a6da95
+      ringwrongcolor=#ed8796
+      keyhlcolor=#a6da95
+      bshlcolor=#ed8796
+      layoutcolor=#8aadf4
+      seperatorcolor=#6e738d00
+      timecolor=#cad3f5
+      datecolor=#cad3f5
+      verifcolor=#cad3f5
+      wrongcolor=#cad3f5
       ${pkgs.i3lock-color}/bin/i3lock-color \
         -n \
         --indicator \
