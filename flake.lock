@@ -531,18 +531,19 @@
         "type": "github"
       }
     },
-    "picom-arian8j2": {
+    "picom-pijulius": {
       "flake": false,
       "locked": {
-        "lastModified": 1650878148,
-        "narHash": "sha256-PH0Mml7hLoejwYHf8AwqK0OIKpTr6WwGUrbx5SJ+5SY=",
-        "owner": "Arian8j2",
+        "lastModified": 1634982684,
+        "narHash": "sha256-YiuLScDV9UfgI1MiYRtjgRkJ0VuA1TExATA2nJSJMhM=",
+        "owner": "pijulius",
         "repo": "picom",
-        "rev": "f70d083a01dc0eebbbe3f65aaa8ca490816b1b35",
+        "rev": "982bb43e5d4116f1a37a0bde01c9bda0b88705b9",
         "type": "github"
       },
       "original": {
-        "owner": "Arian8j2",
+        "owner": "pijulius",
+        "ref": "implement-window-animations",
         "repo": "picom",
         "type": "github"
       }
@@ -578,7 +579,7 @@
         "neovim-nightly-overlay": "neovim-nightly-overlay",
         "nixpkgs": "nixpkgs_6",
         "nur": "nur",
-        "picom-arian8j2": "picom-arian8j2",
+        "picom-pijulius": "picom-pijulius",
         "pre-commit-hooks": "pre-commit-hooks",
         "todo": "todo"
       }

@@ -14,17 +14,23 @@ in {
         corner-radius = 10;
         border-radius = 10;
         shadow-radius = 10;
-        detect-client-opacity = true;
-        transition = true;
-        transition-offset = 25;
-        transition-direction = "smart-x";
-        transition-timing-function = "ease-out-cubic";
-        transition-step = 0.028;
         inactive-opacity-override = false;
         active-opacity = 1;
         rounded-corners-exclude = [
           "class_g = 'Dunst'",
         ];
+        animations: true;
+
+        animation-stiffness = 500
+        animation-window-mass = 0.8
+        animation-dampening = 25
+        animation-clamping = false
+
+        animation-for-open-window = "zoom"; #open window
+        animation-for-unmap-window = "zoom"; #minimize window
+# animation-for-workspace-switch-in = "slide-down"; #the windows in the workspace that is coming in
+# animation-for-workspace-switch-out = "zoom"; #the windows in the workspace that are coming out
+animation-for-transient-window = "slide-up"; #popup windows
 '';
 fadeExclude = [
         # "class_g = 'Rofi'"
