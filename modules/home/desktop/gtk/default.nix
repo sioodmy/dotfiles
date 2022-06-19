@@ -8,8 +8,8 @@ in {
     gtk = {
       enable = true;
       theme = {
-        name = "Nordic";
-        package = pkgs.nordic;
+        name = "Catppuccin-dark";
+        package = pkgs.catppuccin-gtk;
       };
       iconTheme = {
         name = "Papirus-Dark";
