@@ -2,7 +2,7 @@
 (defwidget bar []
   (centerbox :orientation "v" :hexpand false
     (box :space-evenly false :valign "start" :halign "center" :vexpand true :hexpand false :orientation "v" :spacing 10
-      (power)
+      (launch)
       (box :class "system-status" :orientation "v" :spacing 10 :hexpand false :active false :vexpand false
       (mem)
       (cpu)
@@ -15,6 +15,7 @@
 
     (box :valign "end" :hexpand false :vexpand true :orientation "v" :space-evenly false :spacing 10
       (battery)
+      (powerbutton)
       (time)
       ))
   )
@@ -30,7 +31,6 @@
 (defpoll dateVar :interval "600s" "date '+%A %d.%m.%y'")
 (deflisten workspaces_listen "./scripts/workspaces.sh")
 
-(defvar power false)
 (defvar search false)
 (defvar time false)
 (defvar cal false)
@@ -104,29 +104,6 @@
         "")
       ))
   )
-(defwidget power []
-  (eventbox   :hexpand false
-              :onhover "eww update power=true"
-              :onhoverlost "eww update power=false"
-              :valign "center"
-              :cursor "hand"
-    (box		:orientation "v"
-                :space-evenly "false"
-                :class "powerLabel label"
-
-      (button		:class "nixos"
-                    :onclick "rofi -show drun &"	"󱄅")
-      (revealer	:transition "slidedown"
-                :reveal power
-                :duration "250ms"
-        (box        :space-evenly true :orientation "v"
-          (button		:class "button-off"
-                        :onclick "shutdown now" "󰐥")
-          (button		:class "button-lock"
-                        :onclick "lockscreen" "󱅞")
-          (button		:class "button-sleep"
-                        :onclick "systemctl suspend" "󰤄"))
-        ))))
 
 (defvar volume-hidden false)
 (defvar volume-level 50)
@@ -208,8 +185,52 @@
              :marks true
              :value bright-level
              :onchange "brightnessctl set {}%"))))
+(defwidget launch []
+  (button		:class "icon nixos"
+                :onclick "rofi -show drun &"	"  ")
+)
 
+(defwidget powerbutton []
+  (eventbox :cursor "hand"
+  (button		:class "icon button-off"
+                :onclick "eww open powermenu --toggle &"	"")
+  )
+)
+                                                  (defwidget powermenucontent []
+                                                  (box :orientation "h"
+  :class "powermenu-container"
+  (box :class "shutdown-btn-box"
+       :orientation "h"
+    (button :class "btn"
+            :tooltip "Shutdown"
+            :onclick "eww close powermenu && shutdown now"
+      "⏻")
+    )
+  (box :class "reboot-btn-box"
+       :orientation "h"
+    (button :class "btn"
+            :tooltip "Reboot"
+            :onclick "eww close powermenu && reboot"
+      "")
+    )
+  (box :class "exit-btn-box"
+       :orientation "h"
+    (button :class "btn"
+            :tooltip "Suspend"
+            :onclick "systemctl suspend"
+      "")
+    )
+  )
+)
 
+(defwindow powermenu
+  :geometry (geometry :x "0%"
+  :y "0%"
+  :width "30%"
+  :height "15%"
+  :anchor "center center")
+  :wm-ignore true
+  (powermenucontent))
 
 (defwidget workspaces []
   (literal :content workspaces_listen))
