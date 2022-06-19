@@ -198,6 +198,7 @@ with lib;
     fonts = with pkgs; [
       material-design-icons
       roboto
+      work-sans
       comic-neue
       source-sans
       twemoji-color-font
