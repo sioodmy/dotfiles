@@ -22,8 +22,11 @@ in {
         transition-step = 0.028;
         inactive-opacity-override = false;
         active-opacity = 1;
-      '';
-      fadeExclude = [
+        rounded-corners-exclude = [
+          "class_g = 'Dunst'",
+        ];
+'';
+fadeExclude = [
         # "class_g = 'Rofi'"
         "class_g = 'slop'"
       ];
