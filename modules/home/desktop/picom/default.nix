@@ -22,8 +22,8 @@ in {
         animations: true;
 
         animation-stiffness = 500
-        animation-window-mass = 0.8
-        animation-dampening = 25
+        animation-window-mass = 0.4
+        animation-dampening = 20
         animation-clamping = false
 
         animation-for-open-window = "zoom"; #open window
