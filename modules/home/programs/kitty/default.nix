@@ -32,39 +32,42 @@ in {
 
         window_padding_width = 15;
         disable_ligatures = "always";
-        foreground = "#D8DEE9";
-        background = "#2E3440";
+        foreground = "#CAD3F5";
+        background = "#24273A";
 
-        selection_foreground = "#000000";
-        selection_background = "#FFFACD";
+        selection_foreground = "#24273A";
+        selection_background = "#F4DBD6";
 
-        cursor = "#81A1C1";
-        cursor_text_color = "#2E3440";
-        url_color = "#0087BD";
+        cursor = "#F4DBD6";
+        cursor_text_color = "#24273A";
+        url_color = "#F4DBD6";
 
-        mark1_foreground = "#2E3440";
-        mark1_background = "#81A1C1";
-        mark2_foreground = "#2E3440";
-        mark2_background = "#EBCB8B";
-        mark3_foreground = "#2E3440";
-        mark3_background = "#A3BE8C";
+        mark1_foreground = "#24273A";
+        mark1_background = "#B7BDF8";
+        mark2_foreground = "#24273A";
+        mark2_background = "#C6A0F6";
+        mark3_foreground = "#24273A";
+        mark3_background = "#7DC4E4";
 
-        color0 = "#2e3440";
-        color1 = "#bf616a";
-        color2 = "#a3be8c";
-        color3 = "#ebcb8b";
-        color4 = "#81a1c1";
-        color5 = "#b48ead";
-        color6 = "#88c0d0";
-        color7 = "#e5e9f0";
-        color8 = "#4c566a";
-        color9 = "#bf616a";
-        color10 = "#a3be8c";
-        color11 = "#ebcb8b";
-        color12 = "#81a1c1";
-        color13 = "#b48ead";
-        color14 = "#8fbcbb";
-        color15 = "#eceff4";
+        active_border_color = "#B7BDF8";
+        inactive_border_color = "#6E738D";
+
+        color0 = "#494D64";
+        color1 = "#ED8796";
+        color2 = "#A6DA95";
+        color3 = "#EED49F";
+        color4 = "#8AADF4";
+        color5 = "#F5BDE6";
+        color6 = "#8BD5CA";
+        color7 = "#B8C0E0";
+        color8 = "#5B6078";
+        color9 = "#ED8796";
+        color10 = "#A6DA95";
+        color11 = "#EED49F";
+        color12 = "#8AADF4";
+        color13 = "#F5BDE6";
+        color14 = "#8BD5CA";
+        color15 = "#A5ADCB";
       };
 
       keybindings = {

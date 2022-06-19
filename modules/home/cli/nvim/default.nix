@@ -73,6 +73,16 @@ let
       };
     };
 
+  catppuccin-nvim = pkgs.vimUtils.buildVimPlugin {
+      name = "catppuccin-nvim";
+      src = pkgs.fetchFromGitHub {
+        owner = "catppuccin";
+        repo = "nvim";
+        rev = "d46425163dad4cc74910c0c81eeedb00cadf8a61";
+        sha256 = "TQP+Rr4xbT5Po7yW+1zeJicP/i+hOXVXcdSGlvKmEsc=";
+      };
+    };
+
 in {
   options.modules.cli.nvim = { enable = mkEnableOption "nvim"; };
 
@@ -122,7 +132,7 @@ in {
         plenary-nvim
         vim-flutter
         vim-nix
-        nord-nvim
+        catppuccin-nvim
         nvim-autopairs
         nvim-lspconfig
         neorg

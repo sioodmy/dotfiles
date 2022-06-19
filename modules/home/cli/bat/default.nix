@@ -10,7 +10,7 @@ in {
       config = {
         paging = "never";
         style = "numbers";
-        theme = "Nord";
+        theme = "ansi";
       };
     };
   };

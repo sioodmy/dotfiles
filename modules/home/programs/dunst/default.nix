@@ -15,7 +15,7 @@ in {
         global = {
           geometry = "350x50-12+31";
           shrink = false;
-          transparency = "5";
+          transparency = "0";
           line_height = "4";
           word_wrap = true;
           ignore_newline = false;
@@ -24,36 +24,41 @@ in {
           hide_duplicate_count = true;
           show_indicators = true;
           separator_height = "10";
-          frame_width = "0";
-          padding = "10";
+          frame_width = "2";
+          frame_color = "#8aadf4";
+          padding = "20";
           max_icon_size = "128";
           min_icon_size = "90";
           enable_recursive_icon_lookup = true;
+          icon_path = "${pkgs.papirus-icon-theme}/usr/share/icons/Papirus-Dark/48x48/status/:${pkgs.papirus-icon-theme}/usr/share/icons/Papirus-Dark/48x48/devices/:${pkgs.papirus-icon-theme}/usr/share/icons/Papirus-Dark/48x48/apps";
+          text_icon_padding = 5;
+          icon_position = "left";
           font = "monospace 13";
-          corner_radius = "10";
+          corner_radius = "0";
           alignment = "left";
           sticky_history = true;
           history_length = "50";
         };
         urgency_low = {
-          background = "#3B4252";
-          foreground = "#4C566A";
+          background = "#24273a";
+          foreground = "#cad3f5";
           timeout = "5";
         };
         urgency_normal = {
-          background = "#434C5E";
-          foreground = "#E5E9F0";
+          background = "#24273a";
+          foreground = "#cad3f5";
           timeout = "10";
         };
         urgency_critical = {
-          background = "#88C0D0";
-          foreground = "#ECEFF4";
+          background = "#24273a";
+          foreground = "#cad3f5";
+          frame_color = "#8aadf4";
           timeout = "15";
         };
         notify_send = {
           appname = "notify-send";
           new_icon = "bell";
-        };  
+        };
       };
     };
   };

@@ -55,14 +55,9 @@ o.guifont = "JetBrains Mono, monospace:h13"
 -----------------------------------------------------------
 -- Theme
 -----------------------------------------------------------
-vim.g.nord_contrast = false
-vim.g.nord_borders = true
-vim.g.nord_disable_background = false
-vim.g.nord_italic = false
-
 -- Load the colorscheme
-require('nord').set()
-
+vim.g.catppuccin_flavour = "macchiato" -- latte, frappe, macchiato, mocha
+vim.cmd[[colorscheme catppuccin]]
 -----------------------------------------------------------
 -- Tabs, indent
 -----------------------------------------------------------
