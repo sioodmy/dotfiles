@@ -19,8 +19,8 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
-    picom-ibhagwan = {
-      url = "github:ibhagwan/picom";
+    picom-arian8j2 = {
+      url = "github:Arian8j2/picom";
       flake = false;
     };
 
@@ -37,7 +37,7 @@
     fetch.url = "github:sioodmy/fetch";
 
   };
-  outputs = inputs@{ self, nixpkgs, home-manager, nur, picom-ibhagwan, eww
+  outputs = inputs@{ self, nixpkgs, home-manager, nur, eww
     , discord-overlay, ... }:
     let
       system = "x86_64-linux";
@@ -65,7 +65,7 @@
               nixpkgs.overlays = [
                 (final: prev: {
                   picom =
-                    prev.picom.overrideAttrs (o: { src = picom-ibhagwan; });
+                    prev.picom.overrideAttrs (o: { src = inputs.picom-arian8j2; });
                 })
                 (final: prev: {
                   catppuccin-cursors =
