@@ -105,6 +105,8 @@ with lib;
       '';
     };
 
+    lorri.enable = true;
+
     syncthing = {
       enable = true;
       user = "sioodmy";
