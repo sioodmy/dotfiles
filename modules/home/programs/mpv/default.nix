@@ -23,6 +23,7 @@ in {
         force-seekable = true;
         cursor-autohide = 100;
         osd-bar = false;
+        osd-color = "#8aadf4";
         audio-file-auto = "fuzzy";
         volume = 80;
         volume-max = 100;
@@ -48,12 +49,7 @@ in {
         dscale-antiring = 0.7;
         cscale-antiring = 0.7;
         interpolation = true;
-        tscale = "sphinx";
-        tscale-clamp = 0.0;
-        tscale-radius = 1.0;
-        tscale-blur = 0.6991556596428412;
         gpu-api = "vulkan";
-        target-colorspace-hint = true;
         hwdec = false;
         dither-depth = false;
       };
