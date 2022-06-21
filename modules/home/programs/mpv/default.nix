@@ -5,18 +5,20 @@ in {
   options.modules.programs.mpv = { enable = mkEnableOption "mpv"; };
 
   config = mkIf cfg.enable {
+    home.file.".config/mpv/scripts/mordenx.lua".source = ./mordenx.lua;
+    home.file.".config/mpv/fonts/Material-Design-Iconic-Font.ttf".source = ./Material-Design-Iconic-Font.ttf;
     programs.mpv = {
       enable = true;
       scripts = with pkgs.mpvScripts; [
         mpris
-        thumbnail
         sponsorblock
         convert
         cutter
       ];
       config = {
         osc = false;
-        fullscreen = true;
+        border = false;
+        fullscreen = false;
         keep-open = true;
         force-seekable = true;
         cursor-autohide = 100;
@@ -27,8 +29,6 @@ in {
         demuxer-mkv-subtitle-preroll = true;
         sub-font-size = 52;
         sub-blur = 0.2;
-        sub-border-color = "0.0/0.0/0.0/1.0";
-        sub-border-size = "3.0";
         sub-color = "1.0/1.0/1.0/1.0";
         sub-margin-x = 100;
         sub-margin-y = 50;
