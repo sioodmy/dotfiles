@@ -156,7 +156,6 @@ in {
         alpha-nvim
         neoscroll-nvim
         yuck-nvim
-        copilot-vim
         nvim-notify
         lualine-nvim
         nvim-web-devicons
