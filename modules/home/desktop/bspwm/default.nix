@@ -52,13 +52,16 @@ in {
         };
         monitors = { "focused" = [ "1" "2" "3" "4" "5" ]; };
 
+        extraConfig = ''
+        bspc rule -a "*:Toolkit:Picture-in-Picture" \
+        state=floating sticky=on follow=off focus=on \
+        '';
         rules = {
           "Zathura" = { state = "tiled"; };
           "Pavucontrol" = { state = "floating"; };
           "Thunar" = { state = "floating"; };
           "pavucontrol" = { state = "floating"; };
           "transmission-gtk" = { state = "floating"; };
-
           "Firefox" = {
             desktop = "^2";
             follow = true;
