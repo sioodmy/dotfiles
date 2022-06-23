@@ -19,8 +19,8 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
-    picom-pijulius = {
-      url = "github:pijulius/picom/implement-window-animations";
+    picom-dccsillag = {
+      url = "github:dccsillag/picom/implement-window-animations";
       flake = false;
     };
 
@@ -65,7 +65,7 @@
               nixpkgs.overlays = [
                 (final: prev: {
                   picom =
-                    prev.picom.overrideAttrs (o: { src = inputs.picom-pijulius; });
+                    prev.picom.overrideAttrs (o: { src = inputs.picom-dccsillag; });
                 })
                 (final: prev: {
                   catppuccin-cursors =
