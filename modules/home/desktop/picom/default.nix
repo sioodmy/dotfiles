@@ -7,38 +7,52 @@ in {
 
   config = mkIf cfg.enable {
     services.picom = {
+
+      package = pkgs.picom.overrideAttrs (o: {
+        src = pkgs.fetchFromGitHub {
+          repo = "picom";
+          owner = "ibhagwan";
+          rev = "c4107bb6cc17773fdc6c48bb2e475ef957513c7a";
+          sha256 = "1hVFBGo4Ieke2T9PqMur1w4D0bz/L3FAvfujY9Zergw=";
+        };
+      });
       enable = true;
-      shadow = true;
+      shadow = false;
       shadowOpacity = "0.2";
       extraOptions = ''
-        corner-radius = 10;
-        border-radius = 10;
-        shadow-radius = 10;
-        inactive-opacity-override = false;
-        active-opacity = 1;
-        rounded-corners-exclude = [
-          "class_g = 'Dunst'",
-        ];
-        animations: true;
+      daemon = true;
+      use-damage = false;                         # Fixes flickering and visual bugs with borders
+      resize-damage = 1
+      refresh-rate = 0;
+      corner-radius = 10;                          # Corners
+      round-borders = 10;
+      fade-out-step = 1;                          # Will fix random border dots from not disappearing
+      detect-rounded-corners = true;              # Below should fix multiple issues
+      detect-client-opacity = false;
+      detect-transient = true
+      detect-client-leader = false
+      mark-wmwim-focused = true;
+      mark-ovredir-focues = true;
+      unredir-if-possible = true;
+      glx-no-stencil = true;
+      glx-no-rebind-pixmap = true;
+      wintypes:
+      {
+        popup_menu = { shadow = false; };
+        dropdown_menu = { shadow = false; };
+        dnd = { shadow = false; };
+        dock = { shadow = false; };
+        tooltip = { fade = true; shadow = true; opacity = 1.0; focus = true; };
+        notification = { fade = false; };
+      };
+      '';
 
-        animation-stiffness = 500
-        animation-window-mass = 0.4
-        animation-dampening = 20
-        animation-clamping = false
-
-        animation-for-open-window = "zoom"; #open window
-        animation-for-unmap-window = "zoom"; #minimize window
-# animation-for-workspace-switch-in = "slide-down"; #the windows in the workspace that is coming in
-# animation-for-workspace-switch-out = "zoom"; #the windows in the workspace that are coming out
-animation-for-transient-window = "slide-up"; #popup windows
-'';
-fadeExclude = [
+      fadeExclude = [
         # "class_g = 'Rofi'"
         "class_g = 'slop'"
       ];
       shadowExclude = [ "class_g = 'slop'" ];
       backend = "glx";
-      fadeSteps = [ "0.03" "0.03" ];
       vSync = true;
     };
   };
