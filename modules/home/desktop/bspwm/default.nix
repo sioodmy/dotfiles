@@ -10,7 +10,7 @@ in {
   options.modules.desktop.bspwm = { enable = mkEnableOption "bspwm"; };
 
   config = mkIf cfg.enable {
-    home.packages = with pkgs; [ feh flashfocus floatworkspace ];
+    home.packages = with pkgs; [ feh floatworkspace ];
 
     home.file.".local/backgrounds/wallpaper.png".source = ../wall.png;
 
@@ -33,7 +33,6 @@ in {
           "feh --bg-fill ~/.local/backgrounds/wallpaper.png"
           "xsetroot -cursor_name left_ptr"
           "eww daemon && eww open bar"
-          "flashfocus"
           "floatworkspace"
         ];
         settings = with theme.colors; {
