@@ -17,43 +17,87 @@ in {
         };
       });
       enable = true;
-      shadow = false;
-      shadowOpacity = "0.2";
+
+      shadow = true;
+      shadowOffsets = [ (-12) (-12) ];
+      shadowOpacity = "0.4";
+      shadowExclude = [
+        "class_g = 'slop'"
+        "class_g ?= 'peek'"
+        "_NET_WM_WINDOW_TYPE@:a *= 'SPLASH'"
+        "window_type = 'utility'"
+        "window_type = 'dropdown_menu'"
+      ];
+
+      fade = true;
+      fadeDelta = 5;
+      fadeSteps = [ "0.03" "0.03" ];
+
+      vSync = true;
+      backend = "glx";
+
       extraOptions = ''
-      daemon = true;
-      use-damage = false;                         # Fixes flickering and visual bugs with borders
-      resize-damage = 1
-      refresh-rate = 0;
-      corner-radius = 10;                          # Corners
-      round-borders = 10;
-      fade-out-step = 1;                          # Will fix random border dots from not disappearing
-      detect-rounded-corners = true;              # Below should fix multiple issues
-      detect-client-opacity = false;
-      detect-transient = true
-      detect-client-leader = false
-      mark-wmwim-focused = true;
-      mark-ovredir-focues = true;
-      unredir-if-possible = true;
-      glx-no-stencil = true;
-      glx-no-rebind-pixmap = true;
-      wintypes:
-      {
-        popup_menu = { shadow = false; };
-        dropdown_menu = { shadow = false; };
-        dnd = { shadow = false; };
-        dock = { shadow = false; };
-        tooltip = { fade = true; shadow = true; opacity = 1.0; focus = true; };
-        notification = { fade = false; };
-      };
+        corner-radius = 5;
+        rounded-corners-exclude = [
+          "window_type *= 'dock'",
+          "window_type = 'menu'",
+          "window_type = 'tooltip'",
+          "window_type = 'dropdown_menu'"
+        ];
+
+        xinerama-shadow-crop = true;
+        shadow-ignore-shaped = false;
+
+        no-fading-openclose = false
+        no-fading-destroyed-argb = true
+
+        fade-exclude = [
+          "class_g = 'slop'"   # maim
+        ]
+
+        active-opacity = 1.0;
+        inactive-opacity = 1.0;
+        frame-opacity = 1.0;
+        inactive-dim = 0.0;
+
+        opacity-rule = [];
+
+        focus-exclude = [
+            #"class_g ?= 'rofi'"
+            #'_NET_WM_NAME@:s = "rofi"'
+            "class_g ?= 'slop'",
+            "name = 'rofi'",
+            "class_g ?= 'Steam'",
+            "_NET_WM_WINDOW_TYPE@:a *= 'MENU'",
+            "window_type *= 'menu'",
+            "window_type = 'utility'",
+            "window_type = 'dropdown_menu'",
+            "window_type = 'popup_menu'"
+          ];
+
+          glx-no-stencil = false;
+          glx-copy-from-front = false;
+          use-damage = true;
+          detect-rounded-corners = true;
+          detect-client-leader = true;
+          detect-transient = true;
+          unredir-if-possible = true;
+
+          wintypes:
+          {
+            tooltip = { fade = true; full-shadow = true; focus = true; blur-background = false;};
+            menu = { full-shadow = true;};
+            popup_menu =  { full-shadow = true;};
+            utility =  {full-shadow = true;};
+            toolbar = {full-shadow = true;};
+            normal = {full-shadow = true;};
+            notification = {full-shadow = true;};
+            dialog = {full-shadow = true};
+            dock = {full-shadow = true;};
+            dropdown_menu = { full-shadow = true;};
+          };
       '';
 
-      fadeExclude = [
-        # "class_g = 'Rofi'"
-        "class_g = 'slop'"
-      ];
-      shadowExclude = [ "class_g = 'slop'" ];
-      backend = "glx";
-      vSync = true;
     };
   };
 }
