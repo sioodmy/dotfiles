@@ -531,23 +531,6 @@
         "type": "github"
       }
     },
-    "picom-pijulius": {
-      "flake": false,
-      "locked": {
-        "lastModified": 1634982684,
-        "narHash": "sha256-YiuLScDV9UfgI1MiYRtjgRkJ0VuA1TExATA2nJSJMhM=",
-        "owner": "pijulius",
-        "repo": "picom",
-        "rev": "982bb43e5d4116f1a37a0bde01c9bda0b88705b9",
-        "type": "github"
-      },
-      "original": {
-        "owner": "pijulius",
-        "ref": "implement-window-animations",
-        "repo": "picom",
-        "type": "github"
-      }
-    },
     "pre-commit-hooks": {
       "inputs": {
         "flake-utils": "flake-utils_4",
@@ -579,7 +562,6 @@
         "neovim-nightly-overlay": "neovim-nightly-overlay",
         "nixpkgs": "nixpkgs_6",
         "nur": "nur",
-        "picom-pijulius": "picom-pijulius",
         "pre-commit-hooks": "pre-commit-hooks",
         "todo": "todo"
       }
