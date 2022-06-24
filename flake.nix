@@ -18,12 +18,6 @@
       url = "github:cachix/pre-commit-hooks.nix";
       inputs.nixpkgs.follows = "nixpkgs";
     };
-
-    picom-dccsillag = {
-      url = "github:dccsillag/picom/implement-window-animations";
-      flake = false;
-    };
-
     discord-overlay = {
       url = "github:InternetUnexplorer/discord-overlay";
       inputs.nixpkgs.follows = "nixpkgs";
