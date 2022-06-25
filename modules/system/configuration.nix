@@ -132,12 +132,8 @@ with lib;
           enable = true;
           user = "sioodmy";
         };
-        lightdm.greeters.mini = {
-          enable = true;
-          user = "sioodmy";
-        };
       };
-      windowManager.bspwm.enable = true;
+      windowManager.awesome.enable = true;
 
       libinput = {
         enable = true;
