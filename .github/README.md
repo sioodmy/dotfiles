@@ -66,7 +66,22 @@ SIOODMY'S NIXOS CONFIGURATION
 </pre>
 
 <div align="center">
-
+ 
 <br clear="right"/>
+
+ <div align="left">
+    <h3> ♥️ Thanks to</h3>
+   <ul>
+     <li><a href="https://github.com/siduck">siduck</a></li>
+     <li><a href="https://github.com/rxyhn">rxyhn</a></li>
+     <li><a href="https://github.com/NobbZ">NobbZ</a></li>
+     <li><a href="https://github.com/notusknot">notusknot</a></li>
+     <li><a href="https://github.com/Tanish2002">Tanish2002</a></li>
+     <li><a href="https://github.com/AlphaTechnolog">AlphaTechnolog</a></li>
+     <li><a href="https://github.com/owl4ce">owl4ce</a></li>
+   </ul>
+  </div>
 <br />
+  <img src="https://raw.githubusercontent.com/catppuccin/catppuccin/c9d3d7de6ab8cb2609b37c4b79b026a2c7784b6f/assets/footers/gray0_ctp_on_line.svg?sanitize=true" alt="" /> <br />
+  Copyright © 2021-present <a href="https://github.com/sioodmy">sioodmy</a>
   <p align="center"><a href="https://github.com/sioodmy/dotfiles/blob/main/LICENSE"><img src="https://img.shields.io/static/v1.svg?style=for-the-badge&label=License&message=GPL-3&logoColor=d9e0ee&colorA=363a4f&colorB=c6a0f6"/></a></p>
