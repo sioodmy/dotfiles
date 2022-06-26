@@ -38,12 +38,6 @@ in {
 
       extraOptions = ''
         corner-radius = 5;
-        rounded-corners-exclude = [
-          "window_type *= 'dock'",
-          "window_type = 'menu'",
-          "window_type = 'tooltip'",
-          "window_type = 'dropdown_menu'"
-        ];
 
         xinerama-shadow-crop = true;
         shadow-ignore-shaped = false;

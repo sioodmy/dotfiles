@@ -1,6 +1,9 @@
 { config, pkgs, lib, fetchurl, ... }:
 
 with lib;
+
+let cfg = config.modules.desktop.awesome;
+in
 {
   options.modules.desktop.awesome = { enable = mkEnableOption "awesome"; };
 
