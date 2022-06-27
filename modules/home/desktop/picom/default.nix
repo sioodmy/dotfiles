@@ -37,7 +37,7 @@ in {
       backend = "glx";
 
       extraOptions = ''
-        corner-radius = 5;
+        corner-radius = 0;
 
         xinerama-shadow-crop = true;
         shadow-ignore-shaped = false;
