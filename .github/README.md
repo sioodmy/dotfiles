@@ -17,7 +17,7 @@
    <a href="https://github.com/sioodmy/dotfiles/">
       <img src="https://img.shields.io/github/repo-size/sioodmy/dotfiles?color=ee99a0&labelColor=24273a&style=for-the-badge">
    </a>
-  
+
   <img alt="" src="https://badges.pufler.dev/visits/sioodmy/dotfiles?style=for-the-badge&color=a6da95&logoColor=white&labelColor=24273a"/>
    <br>
 </div>
@@ -26,7 +26,7 @@
 
 
 <br>
-  
+
 ```ocaml
 SIOODMY'S NIXOS CONFIGURATION
 ```
@@ -40,9 +40,9 @@ SIOODMY'S NIXOS CONFIGURATION
 <pre>
 
 # Hi there!
-   Welcome to me NixOS configuration.
+   Welcome to my NixOS configuration.
    Feel free to steal anything from here
-  
+
    Remember that this configuration is made
    specifically for my hardware and
    it may not work for yours!
@@ -66,7 +66,7 @@ SIOODMY'S NIXOS CONFIGURATION
 </pre>
 
 <div align="center">
- 
+
 <br clear="right"/>
 
  <div align="left">
