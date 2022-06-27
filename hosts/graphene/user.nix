@@ -4,7 +4,6 @@
   imports = [ ../../modules/home/default.nix ];
   config.modules = {
     desktop = {
-      bspwm.enable = true;
       eww.enable = true;
       gtk.enable = true;
       picom.enable = true;
