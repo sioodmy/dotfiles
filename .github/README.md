@@ -40,7 +40,7 @@ SIOODMY'S NIXOS CONFIGURATION
 <pre>
 
 # Hi there!
-   Welcome to my NixOS configuration.
+   Welcome to my catppuccin themed NixOS configuration.
    Feel free to steal anything from here
 
    Remember that this configuration is made
