@@ -79,6 +79,7 @@ SIOODMY'S NIXOS CONFIGURATION
      <li><a href="https://github.com/Tanish2002">Tanish2002</a></li>
      <li><a href="https://github.com/AlphaTechnolog">AlphaTechnolog</a></li>
      <li><a href="https://github.com/owl4ce">owl4ce</a></li>
+     <li><a href="https://github.com/JavaCafe01">JavaCafe</a></li>
    </ul>
   </div>
 <br />
