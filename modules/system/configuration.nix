@@ -133,7 +133,11 @@ with lib;
           user = "sioodmy";
         };
       };
-      windowManager.awesome.enable = true;
+
+      windowManager.awesome = {
+        enable = true;
+        package = pkgs.awesome-git;
+      };
 
       libinput = {
         enable = true;
