@@ -31,6 +31,7 @@ in {
         enable_audio_bell = false;
 
         window_padding_width = 15;
+        window_margin_width = 10;
         disable_ligatures = "never";
         foreground = "#CAD3F5";
         background = "#24273A";
