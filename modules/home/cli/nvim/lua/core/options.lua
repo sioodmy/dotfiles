@@ -71,6 +71,13 @@ opt.smartindent = true      -- Autoindent new lines
 opt.autoindent = true      -- Autoindent new lines
 g.user_emmet_leader_key = "<M-c>" -- Emmet key
 
+vim.cmd [[
+augroup kitty_mp
+    autocmd!
+    au VimLeave * :silent !kitty @ set-spacing padding=15 margin=10
+    au VimEnter * :silent !kitty @ set-spacing padding=0 margin=0
+augroup END
+]]
 -----------------------------------------------------------
 -- Memory, CPU
 -----------------------------------------------------------
