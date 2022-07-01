@@ -5,7 +5,7 @@
 
   config.modules = {
     desktop = {
-      bspwm.enable = true;
+      bspwm.enable = false;
       gtk.enable = true;
       picom.enable = true;
       xresources.enable = true;

@@ -8,14 +8,7 @@ in {
   config = mkIf cfg.enable {
     services.picom = {
 
-      package = pkgs.picom.overrideAttrs (o: {
-        src = pkgs.fetchFromGitHub {
-          repo = "picom";
-          owner = "ibhagwan";
-          rev = "c4107bb6cc17773fdc6c48bb2e475ef957513c7a";
-          sha256 = "1hVFBGo4Ieke2T9PqMur1w4D0bz/L3FAvfujY9Zergw=";
-        };
-      });
+      package = pkgs.picom-dccsillag;
       enable = true;
 
       shadow = true;
@@ -37,32 +30,36 @@ in {
       backend = "glx";
 
       extraOptions = ''
-        corner-radius = 5;
-        rounded-corners-exclude = [
-          "window_type *= 'dock'",
-          "window_type = 'menu'",
-          "window_type = 'tooltip'",
-          "window_type = 'dropdown_menu'"
-        ];
+      corner-radius = 10;
 
-        xinerama-shadow-crop = true;
-        shadow-ignore-shaped = false;
+      xinerama-shadow-crop = true;
+      shadow-ignore-shaped = false;
 
-        no-fading-openclose = false
-        no-fading-destroyed-argb = true
+      no-fading-openclose = false
+      no-fading-destroyed-argb = true
 
-        fade-exclude = [
-          "class_g = 'slop'"   # maim
-        ]
+      fade-exclude = [
+        "class_g = 'slop'"   # maim
+      ]
 
-        active-opacity = 1.0;
-        inactive-opacity = 1.0;
-        frame-opacity = 1.0;
-        inactive-dim = 0.0;
+      active-opacity = 1.0;
+      inactive-opacity = 1.0;
+      frame-opacity = 1.0;
+      inactive-dim = 0.0;
 
-        opacity-rule = [];
+      animations: true;
+      animation-stiffness = 300
+      animation-window-mass = 0.7
+      animation-dampening = 20
+      animation-clamping = false
+      animation-for-open-window = "zoom"; #open window
+      animation-for-unmap-window = "zoom"; #minimize window
+      animation-for-workspace-switch-in = "slide-down"; #the windows in the workspace that is coming in
+      animation-for-workspace-switch-out = "slide-up"; #the windows in the workspace that are coming out
+      animation-for-transient-window = "slide-up"; #popup windows
+      opacity-rule = [];
 
-        focus-exclude = [
+      focus-exclude = [
             #"class_g ?= 'rofi'"
             #'_NET_WM_NAME@:s = "rofi"'
             "class_g ?= 'slop'",
@@ -73,6 +70,12 @@ in {
             "window_type = 'utility'",
             "window_type = 'dropdown_menu'",
             "window_type = 'popup_menu'"
+          ];
+          rounded-corners-exclude = [
+            "window_type = 'menu'",
+            "window_type = 'popup_menu'",
+            "window_type = 'utility'",
+            "class_g = 'awesome'",
           ];
 
           glx-no-stencil = false;
@@ -96,8 +99,8 @@ in {
             dock = {full-shadow = true;};
             dropdown_menu = { full-shadow = true;};
           };
-      '';
+          '';
 
-    };
-  };
-}
+        };
+      };
+    }

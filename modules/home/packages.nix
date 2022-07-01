@@ -11,7 +11,7 @@
     ripgrep rsync imagemagick
     scrot newsboat unrar
     tealdeer killall onefetch
-    du-dust pfetch tokei bandwhich
+    du-dust bunnyfetch tokei bandwhich
     grex fd xh direnv
     # gui apps
     obs-studio nsxiv tdesktop monero-gui
