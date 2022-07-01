@@ -66,7 +66,7 @@ SIOODMY'S NIXOS CONFIGURATION
 </pre>
 
 <div align="center">
-
+ 
 <br clear="right"/>
 
  <div align="left">
