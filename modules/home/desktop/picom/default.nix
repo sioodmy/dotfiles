@@ -75,7 +75,6 @@ in {
             "window_type = 'menu'",
             "window_type = 'popup_menu'",
             "window_type = 'utility'",
-            "class_g = 'awesome'",
           ];
 
           glx-no-stencil = false;
