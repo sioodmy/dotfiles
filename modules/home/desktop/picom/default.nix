@@ -8,7 +8,7 @@ in {
   config = mkIf cfg.enable {
     services.picom = {
 
-      package = pkgs.picom-dccsillag;
+      package = pkgs.picom;
       enable = true;
 
       shadow = true;
@@ -26,7 +26,7 @@ in {
       fadeDelta = 5;
       fadeSteps = [ "0.03" "0.03" ];
 
-      vSync = true;
+      vSync = false;
       backend = "glx";
 
       extraOptions = ''
