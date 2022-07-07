@@ -11,7 +11,6 @@
 
   networking = {
     networkmanager.enable = true;
-    interfaces = { enp24s0.useDHCP = true; };
     firewall = {
       enable = true;
       allowedTCPPorts = [ 443 80 25565 ];
