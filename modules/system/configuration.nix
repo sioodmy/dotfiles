@@ -23,6 +23,17 @@ with lib;
     extraOptions = ''
       experimental-features = nix-command flakes
     '';
+    settings = {
+      substituters = [
+        "https://cache.nixos.org?priority=10"
+        "https://fortuneteller2k.cachix.org"
+      ];
+
+      trusted-public-keys = [
+        "cache.nixos.org-1:6NCHdD59X431o0gWypbMrAURkbJ16ZPMQFGspcDShjY="
+        "fortuneteller2k.cachix.org-1:kXXNkMV5yheEQwT0I4XYh1MaCSz+qg72k8XAi2PthJI="
+      ];
+    };
   };
 
   hardware = {
@@ -35,11 +46,7 @@ with lib;
 
   boot = {
     cleanTmpDir = true;
-    kernelParams = [
-      "nmi_watchdog=0"
-      "page_poison=1"
-      "page_alloc.shuffle=1"
-    ];
+    kernelParams = [ "nmi_watchdog=0" "page_poison=1" "page_alloc.shuffle=1" ];
     kernelPackages = pkgs.linuxPackages_latest;
     consoleLogLevel = 0;
     initrd.verbose = false;
@@ -64,6 +71,7 @@ with lib;
   i18n.defaultLocale = "en_US.UTF-8";
 
   networking = {
+    interfaces = { enp24s0.useDHCP = true; };
     networkmanager.enable = true;
     firewall = {
       enable = true;
@@ -159,7 +167,7 @@ with lib;
 
     # enable and secure ssh
     openssh = {
-      enable = true;
+      enable = false;
       permitRootLogin = "no";
       passwordAuthentication = true;
     };
@@ -218,7 +226,11 @@ with lib;
 
     fontconfig = {
       defaultFonts = {
-        monospace = [ "JetBrainsMono Nerd Font" "Noto Color Emoji" "JetBrainsMono Nerd Font" ];
+        monospace = [
+          "JetBrainsMono Nerd Font"
+          "Noto Color Emoji"
+          "JetBrainsMono Nerd Font"
+        ];
         sansSerif = [ "Roboto" "Noto Color Emoji" ];
         serif = [ "JetBrainsMono Nerd Font" "Noto Color Emoji" ];
         emoji = [ "Noto Color Emoji" ];
@@ -264,10 +276,10 @@ with lib;
   environment.etc."sudo_lecture" = {
     text = ''
       [1m     [32m"Bee" careful    [34m__
-             [32mwith sudo!    [34m// \
-                           \\_/ [33m//
-         [35m'''-.._.-'''-.._.. [33m-(||)(')
-                           ''''[0m
+      [32mwith sudo!    [34m// \
+      \\_/ [33m//
+      [35m'''-.._.-'''-.._.. [33m-(||)(')
+      ''''[0m
     '';
     mode = "444";
   };

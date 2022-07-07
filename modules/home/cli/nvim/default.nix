@@ -95,7 +95,6 @@ in {
 
     # Language servers / dev tools
     home.packages = with pkgs; [
-      neovide # neovim client
       rnix-lsp nixfmt # Nix
       pyright black # Python
       rust-analyzer clippy rustfmt # Rust
@@ -113,7 +112,7 @@ in {
     ];
 
     # Neovide alias
-    programs.zsh.shellAliases.v = "devour neovide --nofork --multigrid";
+    programs.zsh.shellAliases.v = "nvim";
 
     programs.neovim = {
       enable = true;
@@ -127,6 +126,7 @@ in {
         (pkgs.vimPlugins.nvim-treesitter.withPlugins (plugins: pkgs.tree-sitter.allGrammars))
         indent-blankline-nvim
         stabilize-nvim
+        neoscroll-nvim
         nvim-colorizer-lua
         autosave-nvim
         plenary-nvim

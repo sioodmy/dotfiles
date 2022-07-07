@@ -9,9 +9,11 @@ in
 
   config = mkIf cfg.enable {
 
+    home.packages = [ pkgs.inotify-tools ];
+
     home.pointerCursor = {
       package = pkgs.catppuccin-cursors;
-      name = "Catppuccin-Dark-Cursors";
+      name = "Catppuccin-Macchiato-Dark";
       size = 32;
     };
 
