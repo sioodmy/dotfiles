@@ -64,7 +64,7 @@
                 })
                 nur.overlay
                 inputs.discord-overlay.overlay
-                inputs.nixpkgs-f2k.overlay
+                inputs.nixpkgs-f2k.overlays.default
                 inputs.neovim-nightly-overlay.overlay
               ];
             }

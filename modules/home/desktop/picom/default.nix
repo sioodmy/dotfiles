@@ -24,7 +24,7 @@ in {
 
       fade = true;
       fadeDelta = 5;
-      fadeSteps = [ "0.03" "0.03" ];
+      fadeSteps = [ "0.03" "0.05" ];
 
       vSync = false;
       backend = "glx";
@@ -47,16 +47,6 @@ in {
       frame-opacity = 1.0;
       inactive-dim = 0.0;
 
-      animations: true;
-      animation-stiffness = 300
-      animation-window-mass = 0.7
-      animation-dampening = 20
-      animation-clamping = false
-      animation-for-open-window = "zoom"; #open window
-      animation-for-unmap-window = "zoom"; #minimize window
-      animation-for-workspace-switch-in = "slide-down"; #the windows in the workspace that is coming in
-      animation-for-workspace-switch-out = "slide-up"; #the windows in the workspace that are coming out
-      animation-for-transient-window = "slide-up"; #popup windows
       opacity-rule = [];
 
       focus-exclude = [

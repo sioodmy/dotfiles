@@ -12,7 +12,7 @@
     scrot newsboat unrar
     tealdeer killall onefetch
     du-dust bunnyfetch tokei bandwhich
-    grex fd xh direnv
+    grex fd xh direnv figlet
     # gui apps
     obs-studio nsxiv tdesktop monero-gui
     transmission-gtk pavucontrol
