@@ -71,7 +71,6 @@ with lib;
   i18n.defaultLocale = "en_US.UTF-8";
 
   networking = {
-    interfaces = { enp24s0.useDHCP = true; };
     networkmanager.enable = true;
     firewall = {
       enable = true;
