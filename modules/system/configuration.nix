@@ -9,6 +9,7 @@ with lib;
     EDITOR = "nvim";
     TERMINAL = "kitty";
     BROWSER = "firefox";
+    SUDO_PROMPT = " Password: ";
   };
 
   nix = {
@@ -272,17 +273,6 @@ with lib;
     "ufs"
   ];
 
-  environment.etc."sudo_lecture" = {
-    text = ''
-      [1m     [32m"Bee" careful    [34m__
-      [32mwith sudo!    [34m// \
-      \\_/ [33m//
-      [35m'''-.._.-'''-.._.. [33m-(||)(')
-      ''''[0m
-    '';
-    mode = "444";
-  };
-
   security = {
     rtkit.enable = true;
     apparmor = {
@@ -291,10 +281,7 @@ with lib;
       packages = [ pkgs.apparmor-profiles ];
     };
     pam.services.login.enableGnomeKeyring = true;
-    sudo.extraConfig = ''
-      Defaults    lecture = always
-      Defaults    lecture_file = /run/current-system/etc/sudo_lecture
-    '';
+    sudo.execWheelOnly = true;
   };
 
   boot.kernel.sysctl = {
