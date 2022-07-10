@@ -3,6 +3,7 @@ local awful = require("awful")
 local gears = require("gears")
 local wibox = require("wibox")
 local beautiful = require("wibox")
+local dpi = require("beautiful.xresources").apply_dpi
 
 require("signals.volume")
 require("signals.brightness")
@@ -34,32 +35,34 @@ client.connect_signal("request::titlebars", function(c)
     awful.mouse.client.resize(c)
   end)
   )
-
-  awful.titlebar(c) : setup {
-    { -- Left
-    buttons = buttons,
-    layout  = wibox.layout.fixed.horizontal
-  },
-
-  { -- Middle
- { -- Title
-            align  = 'center',
-            widget = awful.titlebar.widget.titlewidget(c)
-        },
-  buttons = buttons,
-
-  layout  = wibox.layout.flex.horizontal
-},
-{ -- Right
-margin(awful.titlebar.widget.stickybutton (c), 5, 3, 8, 8),
-margin(awful.titlebar.widget.floatingbutton (c), 5, 3, 8, 8),
-margin(awful.titlebar.widget.maximizedbutton(c), 5, 3, 8, 8),
-margin(awful.titlebar.widget.minimizebutton(c), 5, 3, 8, 8),
-margin(awful.titlebar.widget.closebutton(c), 5, 10, 8, 8),
-layout = wibox.layout.fixed.horizontal()
-      },
-      layout = wibox.layout.align.horizontal
-    }
+awful.titlebar(c, {position = 'left'}) : setup {
+	{
+		{
+ 			awful.titlebar.widget.closebutton(c),
+ 			awful.titlebar.widget.maximizedbutton(c),
+		awful.titlebar.widget.floatingbutton (c),
+			spacing = dpi(7),
+			layout  = wibox.layout.fixed.vertical
+		},
+		margins = dpi(10),
+		widget = wibox.container.margin
+	},
+	{
+		buttons = buttons,
+		layout = wibox.layout.flex.vertical
+	},
+ 	{
+    {
+    awful.titlebar.widget.ontopbutton    (c),
+    awful.titlebar.widget.stickybutton   (c),
+		spacing = dpi(7),
+	  layout  = wibox.layout.fixed.vertical
+    },
+	    	margins = dpi(10),
+   		widget = wibox.container.margin
+	},
+	layout = wibox.layout.align.vertical
+}
   end)
 
   -- Enable sloppy focus, so that focus follows mouse.

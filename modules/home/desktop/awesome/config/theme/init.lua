@@ -7,15 +7,22 @@ local xresources = require("beautiful.xresources")
 local dpi = xresources.apply_dpi
 
 local gfs = require("gears.filesystem")
+local gears = require("gears")
 local machi = require("modules.layout-machi")
 local color = require("gears.color")
 local themes_path = gfs.get_themes_dir()
 local config_dir = gfs.get_configuration_dir()
 local theme = {}
 
+function rounded(round)
+    return function(cr, w, h) return gears.shape.rounded_rect(cr, w, h, round) end
+end
+
 theme.font          = "Roboto 13"
-theme.icon_font_name = "JetBrainsMono Nerd Font Mono"
+theme.icon_font_name = "JetBrainsMono Nerd Font Mono "
+theme.clock_font    = "Work Sans Bold 19"
 theme.bg_normal     = "#24273a"
+theme.bg_container  = "#363a4f"
 theme.bg_focus      = "#363a4f"
 theme.bg_urgent     = "#ed8796"
 theme.bg_minimize   = "#1e2030"
@@ -53,10 +60,12 @@ theme.hotkeys_modifiers_fg = "#8aadf4"
 theme.hotkeys_description_fg = "#cad3f5"
 -- Generate taglist squares:
 theme.wibar_height = 35
+theme.taglist_bg_urgent = theme.bg_normal
+theme.taglist_fg_urgent = theme.green
 theme.taglist_bg_focus = theme.bg_normal
 theme.taglist_fg_focus = theme.border_focus
 theme.taglist_fg_empty = "#939ab7"
-theme.taglist_font = "JetBrainsMono Nerd Font Mono 18"
+theme.taglist_font = "JetBrainsMono Nerd Font Mono 16"
 local taglist_square_size = dpi(0)
 theme.taglist_squares_sel = theme_assets.taglist_squares_sel(
     taglist_square_size, theme.fg_normal
@@ -74,6 +83,21 @@ theme.taglist_squares_unsel = theme_assets.taglist_squares_unsel(
 -- Variables set for theming the menu:
 -- menu_[bg|fg]_[normal|focus]
 -- menu_[border_color|border_width]
+
+theme.notification_font     = "Roboto 15"
+theme.notification_fg       = theme.fg_normal
+theme.notification_bg       = theme.bg_normal
+theme.notification_opacity  = 1
+theme.notification_margin   = 50
+theme.notification_icon_size = 100
+theme.notification_spacing  = 10
+theme.notification_shape    = rounded(8)
+theme.notification_max_width = 500
+theme.notification_border_width = 1
+theme.notification_border_color = theme.color_darker
+
+
+
 theme.menu_submenu_icon = themes_path.."default/submenu.png"
 theme.menu_height = dpi(35)
 theme.menu_border_width = dpi(15)
@@ -115,23 +139,22 @@ theme.task_preview_widget_margin = 30
 
 -- Define the image to load
 theme.layout_machi = machi.get_icon()
-theme = theme_assets.recolor_layout(theme, theme.fg_normal)
 local dot = config_dir .. "theme/assets/icons/dot.png"
 theme.titlebar_close_button_normal = color.recolor_image(dot, theme.red)
 theme.titlebar_close_button_focus  = theme.titlebar_close_button_normal
 
-theme.titlebar_minimize_button_normal = color.recolor_image(dot, "#f5a97f")
+theme.titlebar_minimize_button_normal = color.recolor_image(dot, "#eed49f")
 theme.titlebar_minimize_button_focus  = theme.titlebar_minimize_button_normal
 
-theme.titlebar_ontop_button_normal_inactive = themes_path.."default/titlebar/ontop_normal_inactive.png"
-theme.titlebar_ontop_button_focus_inactive  = themes_path.."default/titlebar/ontop_focus_inactive.png"
-theme.titlebar_ontop_button_normal_active = themes_path.."default/titlebar/ontop_normal_active.png"
-theme.titlebar_ontop_button_focus_active  = themes_path.."default/titlebar/ontop_focus_active.png"
+theme.titlebar_ontop_button_normal_inactive = color.recolor_image(dot, "#f5bde6")
+theme.titlebar_ontop_button_focus_inactive  = theme.titlebar_ontop_button_normal_inactive
+theme.titlebar_ontop_button_normal_active = color.recolor_image(dot, "#c6a0f6")
+theme.titlebar_ontop_button_focus_active  = theme.titlebar_ontop_button_normal_active
 
-theme.titlebar_sticky_button_normal_inactive = themes_path.."default/titlebar/sticky_normal_inactive.png"
-theme.titlebar_sticky_button_focus_inactive  = themes_path.."default/titlebar/sticky_focus_inactive.png"
-theme.titlebar_sticky_button_normal_active = themes_path.."default/titlebar/sticky_normal_active.png"
-theme.titlebar_sticky_button_focus_active  = themes_path.."default/titlebar/sticky_focus_active.png"
+theme.titlebar_sticky_button_normal_inactive = color.recolor_image(dot, "#f4dbd6")
+theme.titlebar_sticky_button_focus_inactive  = theme.titlebar_sticky_button_normal_inactive
+theme.titlebar_sticky_button_normal_active = color.recolor_image(dot, "#b8c0e0")
+theme.titlebar_sticky_button_focus_active  = theme.titlebar_sticky_button_focus_active
 
 theme.titlebar_floating_button_normal_inactive =color.recolor_image(dot, "#7dc4e4")
 theme.titlebar_floating_button_focus_inactive  = theme.titlebar_floating_button_normal_inactive
@@ -148,13 +171,13 @@ theme.wallpaper = config_dir.."theme/wallpaper.png"
 -- You can use your own layout icons like this:
 theme.layout_fairh = themes_path.."default/layouts/fairhw.png"
 theme.layout_fairv = themes_path.."default/layouts/fairvw.png"
-theme.layout_floating  = themes_path.."default/layouts/floatingw.png"
+theme.layout_floating  = color.recolor_image(themes_path.."default/layouts/floatingw.png", theme.fg_normal)
 theme.layout_magnifier = themes_path.."default/layouts/magnifierw.png"
 theme.layout_max = themes_path.."default/layouts/maxw.png"
 theme.layout_fullscreen = themes_path.."default/layouts/fullscreenw.png"
 theme.layout_tilebottom = themes_path.."default/layouts/tilebottomw.png"
 theme.layout_tileleft   = themes_path.."default/layouts/tileleftw.png"
-theme.layout_tile = themes_path.."default/layouts/tilew.png"
+theme.layout_tile = color.recolor_image(themes_path.."default/layouts/tilew.png", theme.fg_normal)
 theme.layout_tiletop = themes_path.."default/layouts/tiletopw.png"
 theme.layout_spiral  = themes_path.."default/layouts/spiralw.png"
 theme.layout_dwindle = themes_path.."default/layouts/dwindlew.png"
