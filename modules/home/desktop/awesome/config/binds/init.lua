@@ -32,6 +32,8 @@ end,
 awful.key({ modkey,           }, "w", function () mymainmenu:show() end,
 {description = "show main menu", group = "awesome"}),
 
+awful.key({ modkey,    }, "Tab", function () term_scratch:toggle()    end,
+{description = "Scratchpad", group = "client"}),
 awful.key({ alt,    }, "Tab", function () awesome.emit_signal("bling::window_switcher::turn_on")    end,
 {description = "Window switcher", group = "client"}),
 -- Layout manipulation

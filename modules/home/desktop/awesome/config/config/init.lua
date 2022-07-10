@@ -4,6 +4,7 @@ local wibox = require("wibox")
 
 require("config.apps")
 require("config.layouts")
+require("config.scratchpad")
 
 require("modules.bling")
 

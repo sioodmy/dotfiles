@@ -1,3 +1,7 @@
+-- Provides:
+-- signal::volume
+--      percentage (integer)
+--      muted (boolean)
 local awful = require("awful")
 
 local volume_old = -1
@@ -34,12 +38,12 @@ emit_volume_info()
 -- Sleeps until pactl detects an event (volume up/down/toggle mute)
 local volume_script = [[
     bash -c "
-    pw-mon 2> /dev/null | grep --line-buffered \"device.product.name\"
+    LANG=C pactl subscribe 2> /dev/null | grep --line-buffered \"Event 'change' on sink #\"
     "]]
 
 -- Kill old pactl subscribe processes
 awful.spawn.easy_async({
-    "pkill", "--full", "--uid", os.getenv("USER"), "^pw-mon"
+    "pkill", "--full", "--uid", os.getenv("USER"), "^pactl subscribe"
 }, function()
     -- Run emit_volume_info() with each line printed
     awful.spawn.with_line_callback(volume_script, {
