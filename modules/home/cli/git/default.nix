@@ -22,7 +22,7 @@ in {
         pl = "!git pull origin $(git rev-parse --abbrev-ref HEAD)";
         st = "status";
         br = "branch";
-
+        c = "!cz commit";
         df =
           "!git hist | peco | awk '{print $2}' | xargs -I {} git diff {}^ {}";
         hist = ''
