@@ -13,8 +13,6 @@ with lib;
   };
 
   nix = {
-    autoOptimiseStore = true;
-    allowedUsers = [ "sioodmy" ];
     gc = {
       automatic = true;
       dates = "daily";
@@ -25,6 +23,8 @@ with lib;
       experimental-features = nix-command flakes
     '';
     settings = {
+      auto-optimise-store = true;
+      allowed-users = [ "sioodmy" ];
       substituters = [
         "https://cache.nixos.org?priority=10"
         "https://fortuneteller2k.cachix.org"
@@ -307,5 +307,5 @@ with lib;
   security.protectKernelImage = true;
   security.lockKernelModules = true;
 
-  system.stateVersion = "21.11"; # DONT TOUCH THIS
+  system.stateVersion = "22.05"; # DONT TOUCH THIS
 }
