@@ -9,11 +9,10 @@ with lib;
     EDITOR = "nvim";
     TERMINAL = "kitty";
     BROWSER = "firefox";
+    SUDO_PROMPT = " Password: ";
   };
 
   nix = {
-    autoOptimiseStore = true;
-    allowedUsers = [ "sioodmy" ];
     gc = {
       automatic = true;
       dates = "daily";
@@ -23,6 +22,19 @@ with lib;
     extraOptions = ''
       experimental-features = nix-command flakes
     '';
+    settings = {
+      auto-optimise-store = true;
+      allowed-users = [ "sioodmy" ];
+      substituters = [
+        "https://cache.nixos.org?priority=10"
+        "https://fortuneteller2k.cachix.org"
+      ];
+
+      trusted-public-keys = [
+        "cache.nixos.org-1:6NCHdD59X431o0gWypbMrAURkbJ16ZPMQFGspcDShjY="
+        "fortuneteller2k.cachix.org-1:kXXNkMV5yheEQwT0I4XYh1MaCSz+qg72k8XAi2PthJI="
+      ];
+    };
   };
 
   hardware = {
@@ -35,11 +47,7 @@ with lib;
 
   boot = {
     cleanTmpDir = true;
-    kernelParams = [
-      "nmi_watchdog=0"
-      "page_poison=1"
-      "page_alloc.shuffle=1"
-    ];
+    kernelParams = [ "nmi_watchdog=0" "page_poison=1" "page_alloc.shuffle=1" ];
     kernelPackages = pkgs.linuxPackages_latest;
     consoleLogLevel = 0;
     initrd.verbose = false;
@@ -159,7 +167,7 @@ with lib;
 
     # enable and secure ssh
     openssh = {
-      enable = true;
+      enable = false;
       permitRootLogin = "no";
       passwordAuthentication = true;
     };
@@ -191,11 +199,6 @@ with lib;
 
   };
 
-  programs.zsh = {
-    enable = true;
-    enableGlobalCompInit = false;
-  };
-
   fonts = {
     fonts = with pkgs; [
       material-design-icons
@@ -218,7 +221,11 @@ with lib;
 
     fontconfig = {
       defaultFonts = {
-        monospace = [ "JetBrainsMono Nerd Font" "Noto Color Emoji" "JetBrainsMono Nerd Font" ];
+        monospace = [
+          "JetBrainsMono Nerd Font"
+          "Noto Color Emoji"
+          "JetBrainsMono Nerd Font"
+        ];
         sansSerif = [ "Roboto" "Noto Color Emoji" ];
         serif = [ "JetBrainsMono Nerd Font" "Noto Color Emoji" ];
         emoji = [ "Noto Color Emoji" ];
@@ -261,17 +268,6 @@ with lib;
     "ufs"
   ];
 
-  environment.etc."sudo_lecture" = {
-    text = ''
-      [1m     [32m"Bee" careful    [34m__
-             [32mwith sudo!    [34m// \
-                           \\_/ [33m//
-         [35m'''-.._.-'''-.._.. [33m-(||)(')
-                           ''''[0m
-    '';
-    mode = "444";
-  };
-
   security = {
     rtkit.enable = true;
     apparmor = {
@@ -280,10 +276,7 @@ with lib;
       packages = [ pkgs.apparmor-profiles ];
     };
     pam.services.login.enableGnomeKeyring = true;
-    sudo.extraConfig = ''
-      Defaults    lecture = always
-      Defaults    lecture_file = /run/current-system/etc/sudo_lecture
-    '';
+    sudo.execWheelOnly = true;
   };
 
   boot.kernel.sysctl = {
@@ -309,5 +302,5 @@ with lib;
   security.protectKernelImage = true;
   security.lockKernelModules = true;
 
-  system.stateVersion = "21.11"; # DONT TOUCH THIS
+  system.stateVersion = "22.05"; # DONT TOUCH THIS
 }
