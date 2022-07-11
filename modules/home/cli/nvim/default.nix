@@ -119,7 +119,7 @@ in {
       nodePackages.node2nix # Bash
       ccls
       cmake
-      clang # C/C++
+      uncrustify
       nodePackages.prettier
       black # prettier code UwU
     ];
