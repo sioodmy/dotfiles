@@ -3,8 +3,7 @@
 with lib;
 
 let cfg = config.modules.desktop.awesome;
-in
-{
+in {
   options.modules.desktop.awesome = { enable = mkEnableOption "awesome"; };
 
   config = mkIf cfg.enable {
@@ -17,11 +16,14 @@ in
       size = 32;
     };
 
+    # Link configuration
+    home.file.".config/awesome".source = ./config;
+
     xsession.windowManager.awesome = {
       enable = true;
       package = pkgs.awesome-git;
       luaModules = with pkgs.luaPackages; [ vicious luarocks ];
-     };
+    };
   };
 
 }
