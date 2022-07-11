@@ -1,4 +1,3 @@
-
 terminal = "kitty"
 search = "rofi -show drun"
 files = "thunar"
