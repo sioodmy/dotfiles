@@ -5,9 +5,9 @@ local wibox = require("wibox")
 local beautiful = require("wibox")
 local dpi = require("beautiful.xresources").apply_dpi
 
-require("signals.volume")
-require("signals.brightness")
-require("signals.battery")
+pcall(require, "signals.battery")
+pcall(require, "signals.brightness")
+pcall(require, "signals.volume")
 
 client.connect_signal("manage", function (c)
   -- Set the windows at the slave,
