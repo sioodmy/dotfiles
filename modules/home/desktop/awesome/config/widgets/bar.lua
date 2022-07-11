@@ -252,10 +252,11 @@ local network= wibox.widget({
       top = 10,
       bottom = 10,
       left = 10,
-      right = 10
+      right = 10,
+      visible = false
     }
 
-    awesome.connect_signal("signal::battery", function(percentage, state)
+    awesome.connect_signal("signal::battery", function(percentage, state, vis)
       local value = percentage or 10
 
       local bat_icon = ""
@@ -289,6 +290,8 @@ local network= wibox.widget({
 
       battery_icon.markup = "<span foreground='" .. beautiful.fg_normal .. "'>" ..
       bat_icon .. "</span>"
+
+      battery_widget.visible = vis
     end)
 
     local bright_icon = wibox.widget {

@@ -10,5 +10,5 @@ local battery_listener = upower_widget {
 }
 
 battery_listener:connect_signal("upower::update", function(_, device)
-    awesome.emit_signal("signal::battery", device.percentage, device.state)
+    awesome.emit_signal("signal::battery", device.percentage, device.state, true)
 end)
