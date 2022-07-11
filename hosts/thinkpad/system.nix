@@ -2,6 +2,7 @@
 
   # undervolting and power saving stuff
   services.thermald.enable = true;
+  services.upower.enable = true;
   powerManagement.cpuFreqGovernor = lib.mkDefault "powersave";
   services.tlp = {
     enable = true;
