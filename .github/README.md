@@ -40,7 +40,7 @@ SIOODMY'S NIXOS CONFIGURATION
 <pre>
 
 # Hi there!
-   Welcome to me NixOS configuration.
+   Welcome to my catppuccin themed NixOS configuration.
    Feel free to steal anything from here
 
    Remember that this configuration is made
@@ -80,6 +80,7 @@ SIOODMY'S NIXOS CONFIGURATION
      <li><a href="https://github.com/AlphaTechnolog">AlphaTechnolog</a></li>
      <li><a href="https://github.com/owl4ce">owl4ce</a></li>
      <li><a href="https://gitlab.com/luca.py/">luca.py</a></li>
+     <li><a href="https://github.com/JavaCafe01">JavaCafe</a></li>
    </ul>
   </div>
 <br />
