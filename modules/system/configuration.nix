@@ -199,11 +199,6 @@ with lib;
 
   };
 
-  programs.zsh = {
-    enable = true;
-    enableGlobalCompInit = false;
-  };
-
   fonts = {
     fonts = with pkgs; [
       material-design-icons
