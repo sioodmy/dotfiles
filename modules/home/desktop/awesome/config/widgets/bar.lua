@@ -230,7 +230,7 @@ local network= wibox.widget({
       max_value = 100,
       min_value = 0,
       value = 80,
-      color = beautiful.blue,
+      color = beautiful.light,
       background_color = beautiful.bg_focus,
       shape = rounded(10),
       bar_shape = rounded(10),
@@ -249,10 +249,10 @@ local network= wibox.widget({
         layout = wibox.layout.stack
       },
       widget = wibox.container.margin,
-      top = 15,
-      bottom = 15,
-      left = 15,
-      right = 15
+      top = 10,
+      bottom = 10,
+      left = 10,
+      right = 10
     }
 
     awesome.connect_signal("signal::battery", function(percentage, state)
@@ -287,7 +287,7 @@ local network= wibox.widget({
 
       battery_bar.value = value
 
-      battery_icon.markup = "<span foreground='" .. beautiful.blue .. "'>" ..
+      battery_icon.markup = "<span foreground='" .. beautiful.fg_normal .. "'>" ..
       bat_icon .. "</span>"
     end)
 
@@ -366,6 +366,7 @@ local network= wibox.widget({
 
     { -- Right widgets
     layout = wibox.layout.fixed.vertical,
+    battery_widget,
     margin(clock, 7, 7, 7, 7),
     margin(s.mylayoutbox, 15, 15, 0, 15),
   },
