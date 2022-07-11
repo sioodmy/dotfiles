@@ -86,6 +86,7 @@ in {
         rebuild = "sudo nix-store --verify; sudo nixos-rebuild switch --flake .#";
 
         cleanup = "sudo nix-collect-garbage --delete-older-than 7d";
+        nixtest = "sudo nixos-rebuild test --flake .#graphene --fast";
         need = "nix-shell -p";
         ytmp3 = ''
           yt-dlp -x --continue --add-metadata --embed-thumbnail --audio-format mp3 --audio-quality 0 --metadata-from-title="%(artist)s - %(title)s" --prefer-ffmpeg -o "%(title)s.%(ext)s"'';
@@ -119,13 +120,8 @@ in {
       plugins = with pkgs; [
         {
           name = "zsh-nix-shell";
+          src = pkgs.zsh-nix-shell;
           file = "nix-shell.plugin.zsh";
-          src = pkgs.fetchFromGitHub {
-            owner = "chisui";
-            repo = "zsh-nix-shell";
-            rev = "v0.5.0";
-            sha256 = "0za4aiwwrlawnia4f29msk822rj9bgcygw6a8a6iikiwzjjz0g91";
-          };
         }
         {
           name = "zsh-vi-mode";

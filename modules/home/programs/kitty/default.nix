@@ -12,7 +12,7 @@ in {
       enable = true;
       settings = {
         font_family = "monospace";
-        font_size = 15;
+        font_size = 12;
         cursor_blink_interval = "0.5";
         cursor_stop_blinking_after = "15.0";
         scrollback_lines = 2000;
