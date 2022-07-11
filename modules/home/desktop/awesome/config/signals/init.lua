@@ -7,6 +7,7 @@ local dpi = require("beautiful.xresources").apply_dpi
 
 require("signals.volume")
 require("signals.brightness")
+require("signals.battery")
 
 client.connect_signal("manage", function (c)
   -- Set the windows at the slave,
