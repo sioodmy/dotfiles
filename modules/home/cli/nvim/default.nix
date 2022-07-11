@@ -34,58 +34,57 @@ let
   };
 
   whichkey-nvim = pkgs.vimUtils.buildVimPlugin {
-      name = "whichkey-nvim";
-      src = pkgs.fetchFromGitHub {
-        owner = "folke";
-        repo = "which-key.nvim";
-        rev = "bd4411a2ed4dd8bb69c125e339d837028a6eea71";
-        sha256= "UoV9H3oVJL1BPmuG+/eU4cG1s7thOrcrPyat9npBxm0=";
-      };
+    name = "whichkey-nvim";
+    src = pkgs.fetchFromGitHub {
+      owner = "folke";
+      repo = "which-key.nvim";
+      rev = "bd4411a2ed4dd8bb69c125e339d837028a6eea71";
+      sha256 = "UoV9H3oVJL1BPmuG+/eU4cG1s7thOrcrPyat9npBxm0=";
     };
+  };
 
   headlines-nvim = pkgs.vimUtils.buildVimPlugin {
-      name = "headlines-nvim";
-      src = pkgs.fetchFromGitHub {
-        owner = "lukas-reineke";
-        repo = "headlines.nvim";
-        rev = "347ef0371451d9bfbf010c6743fb74997b5b9a80";
-        sha256 = "XgXSKBLLVCu9hfHzk9Xro+dooV4XaZJnFsVz+/wzyaQ=";
-      };
+    name = "headlines-nvim";
+    src = pkgs.fetchFromGitHub {
+      owner = "lukas-reineke";
+      repo = "headlines.nvim";
+      rev = "347ef0371451d9bfbf010c6743fb74997b5b9a80";
+      sha256 = "XgXSKBLLVCu9hfHzk9Xro+dooV4XaZJnFsVz+/wzyaQ=";
     };
+  };
 
   org-bullets = pkgs.vimUtils.buildVimPlugin {
-      name = "org-bullets";
-      src = pkgs.fetchFromGitHub {
-        owner = "akinsho";
-        repo = "org-bullets.nvim";
-        rev = "8dc2e25088ffa10029157c9aaede7d79f3fc75b1";
-        sha256 = "OtjjuNYGRD38i/356rej0ps4VRSPYv1yBKtNwGkmGxI=";
-      };
+    name = "org-bullets";
+    src = pkgs.fetchFromGitHub {
+      owner = "akinsho";
+      repo = "org-bullets.nvim";
+      rev = "8dc2e25088ffa10029157c9aaede7d79f3fc75b1";
+      sha256 = "OtjjuNYGRD38i/356rej0ps4VRSPYv1yBKtNwGkmGxI=";
     };
+  };
 
   prettier-nvim = pkgs.vimUtils.buildVimPlugin {
-      name = "prettier-nvim";
-      src = pkgs.fetchFromGitHub {
-        owner = "MunifTanjim";
-        repo = "prettier.nvim";
-        rev = "9fb2b9795ccb29081e3afcd41b9138a27cba2ec2";
-        sha256 = "cgHHXg+DqBvSrMyC5A9GhbvFwatIMPgaAg/fkCIyr7w=";
-      };
+    name = "prettier-nvim";
+    src = pkgs.fetchFromGitHub {
+      owner = "MunifTanjim";
+      repo = "prettier.nvim";
+      rev = "9fb2b9795ccb29081e3afcd41b9138a27cba2ec2";
+      sha256 = "cgHHXg+DqBvSrMyC5A9GhbvFwatIMPgaAg/fkCIyr7w=";
     };
+  };
 
   catppuccin-nvim = pkgs.vimUtils.buildVimPlugin {
-      name = "catppuccin-nvim";
-      src = pkgs.fetchFromGitHub {
-        owner = "catppuccin";
-        repo = "nvim";
-        rev = "d46425163dad4cc74910c0c81eeedb00cadf8a61";
-        sha256 = "TQP+Rr4xbT5Po7yW+1zeJicP/i+hOXVXcdSGlvKmEsc=";
-      };
+    name = "catppuccin-nvim";
+    src = pkgs.fetchFromGitHub {
+      owner = "catppuccin";
+      repo = "nvim";
+      rev = "d46425163dad4cc74910c0c81eeedb00cadf8a61";
+      sha256 = "TQP+Rr4xbT5Po7yW+1zeJicP/i+hOXVXcdSGlvKmEsc=";
     };
+  };
 
 in {
   options.modules.cli.nvim = { enable = mkEnableOption "nvim"; };
-
 
   config = mkIf cfg.enable {
 
@@ -95,20 +94,34 @@ in {
 
     # Language servers / dev tools
     home.packages = with pkgs; [
-      rnix-lsp nixfmt # Nix
-      pyright black # Python
-      rust-analyzer clippy rustfmt # Rust
-      gopls asmfmt go # Go
-      sumneko-lua-language-server stylua # Lua
+      rnix-lsp
+      nixfmt # Nix
+      pyright
+      black # Python
+      rust-analyzer
+      clippy
+      rustfmt # Rust
+      gopls
+      asmfmt
+      go # Go
+      sumneko-lua-language-server
+      stylua # Lua
       nodePackages.sql-formatter # SQL
-      dart flutter # Dart/flutter things
+      dart
+      flutter # Dart/flutter things
       pandoc # For notes
-      nodejs nodePackages.typescript nodePackages.typescript-language-server # Typescript
+      nodejs
+      nodePackages.typescript
+      nodePackages.typescript-language-server # Typescript
       nodePackages.vscode-langservers-extracted # HTML, CSS, JavaScript
       nodePackages.yarn
-      nodePackages.bash-language-server nodePackages.node2nix# Bash
-      ccls cmake # C/C++
-      nodePackages.prettier # prettier code UwU
+      nodePackages.bash-language-server
+      nodePackages.node2nix # Bash
+      ccls
+      cmake
+      clang # C/C++
+      nodePackages.prettier
+      black # prettier code UwU
     ];
 
     # Neovide alias
@@ -123,7 +136,8 @@ in {
       package = pkgs.neovim-nightly;
 
       plugins = with pkgs.vimPlugins; [
-        (pkgs.vimPlugins.nvim-treesitter.withPlugins (plugins: pkgs.tree-sitter.allGrammars))
+        (pkgs.vimPlugins.nvim-treesitter.withPlugins
+          (plugins: pkgs.tree-sitter.allGrammars))
         indent-blankline-nvim
         stabilize-nvim
         neoscroll-nvim
