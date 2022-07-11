@@ -9,7 +9,7 @@ in
 
   config = mkIf cfg.enable {
 
-    home.packages = [ pkgs.inotify-tools ];
+    home.packages = [ pkgs.inotify-tools pkgs.pulseaudio ];
 
     home.pointerCursor = {
       package = pkgs.catppuccin-cursors;
