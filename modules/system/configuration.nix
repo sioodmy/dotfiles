@@ -53,6 +53,9 @@ with lib;
       "page_alloc.shuffle=1"
       "sysrq_always_enabled=1"
       "rootflags=noatime"
+      "lsm=landlock,lockdown,yama,apparmor,bpf"
+      "ipv6.disable=1"
+      "mitigations=off"
     ];
     kernelPackages = pkgs.linuxPackages_latest;
     consoleLogLevel = 0;
