@@ -47,7 +47,13 @@ with lib;
 
   boot = {
     cleanTmpDir = true;
-    kernelParams = [ "nmi_watchdog=0" "page_poison=1" "page_alloc.shuffle=1" ];
+    kernelParams = [
+      "nmi_watchdog=0"
+      "page_poison=1"
+      "page_alloc.shuffle=1"
+      "sysrq_always_enabled=1"
+      "rootflags=noatime"
+    ];
     kernelPackages = pkgs.linuxPackages_latest;
     consoleLogLevel = 0;
     initrd.verbose = false;
