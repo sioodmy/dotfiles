@@ -55,7 +55,6 @@ with lib;
       "rootflags=noatime"
       "lsm=landlock,lockdown,yama,apparmor,bpf"
       "ipv6.disable=1"
-      "mitigations=off"
     ];
     kernelPackages = pkgs.linuxPackages_latest;
     consoleLogLevel = 0;
