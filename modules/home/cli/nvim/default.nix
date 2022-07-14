@@ -105,12 +105,14 @@ in {
       asmfmt
       go # Go
       sumneko-lua-language-server
+      shellcheck
       stylua # Lua
       nodePackages.sql-formatter # SQL
       dart
       flutter # Dart/flutter things
       pandoc # For notes
       nodejs
+      nodePackages.jsonlint # JSON
       nodePackages.typescript
       nodePackages.typescript-language-server # Typescript
       nodePackages.vscode-langservers-extracted # HTML, CSS, JavaScript
@@ -150,8 +152,6 @@ in {
         nvim-autopairs
         nvim-lspconfig
         neorg
-        prettier-nvim
-        lspsaga-nvim
         orgmode
         org-bullets
         vim-table-mode
