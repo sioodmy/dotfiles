@@ -62,8 +62,8 @@ in {
         bindkey -v '^?' backward-delete-char
       '';
       initExtra = ''
-          autoload -U url-quote-magic
-          zle -N self-insert url-quote-magic
+        autoload -U url-quote-magic
+        zle -N self-insert url-quote-magic
       '';
       history = {
         save = 1000;
@@ -83,30 +83,31 @@ in {
       };
 
       shellAliases = {
-        rebuild = "sudo nix-store --verify; sudo nixos-rebuild switch --flake .#";
+        rebuild =
+          "sudo nix-store --verify; sudo nixos-rebuild switch --flake .#";
 
         cleanup = "sudo nix-collect-garbage --delete-older-than 7d";
         nixtest = "sudo nixos-rebuild test --flake .#graphene --fast";
         need = "nix-shell -p";
         ytmp3 = ''
           yt-dlp -x --continue --add-metadata --embed-thumbnail --audio-format mp3 --audio-quality 0 --metadata-from-title="%(artist)s - %(title)s" --prefer-ffmpeg -o "%(title)s.%(ext)s"'';
-          cat = "bat --style=plain";
-          grep = "rg";
-          du = "dust";
-          ps = "procs";
-          htop = "btm";
-          m = "mkdir -p";
-          fcd = "cd $(find -type d | fzf)";
-          ls = "exa --icons --group-directories-first";
-          ssh = "TERM=xterm-256color ssh";
-          sl = "ls";
-          tree = "exa --tree --icons";
-          sxiv = "devour sxiv";
-          mpv = "devour mpv";
-          zathura = "devour zathura";
-          rm = "rm -i";
-          cp = "cp -i";
-          mv = "mv -i";
+        cat = "bat --style=plain";
+        grep = "rg";
+        du = "dust";
+        ps = "procs";
+        htop = "btm";
+        m = "mkdir -p";
+        fcd = "cd $(find -type d | fzf)";
+        ls = "exa --icons --group-directories-first";
+        ssh = "TERM=xterm-256color ssh";
+        sl = "ls";
+        tree = "exa --tree --icons";
+        sxiv = "devour sxiv";
+        mpv = "devour mpv";
+        zathura = "devour zathura";
+        rm = "rm -i";
+        cp = "cp -i";
+        mv = "mv -i";
 
         # Git aliases
         g = "git";

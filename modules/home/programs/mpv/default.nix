@@ -5,24 +5,15 @@ in {
   options.modules.programs.mpv = { enable = mkEnableOption "mpv"; };
 
   config = mkIf cfg.enable {
-    home.file.".config/mpv/scripts/mordenx.lua".source = ./mordenx.lua;
-    home.file.".config/mpv/fonts/Material-Design-Iconic-Font.ttf".source = ./Material-Design-Iconic-Font.ttf;
     programs.mpv = {
       enable = true;
-      scripts = with pkgs.mpvScripts; [
-        mpris
-        sponsorblock
-        convert
-        cutter
-      ];
+      scripts = with pkgs.mpvScripts; [ mpris sponsorblock convert cutter ];
       config = {
-        osc = false;
         border = false;
         fullscreen = false;
         keep-open = true;
         force-seekable = true;
         cursor-autohide = 100;
-        osd-bar = false;
         osd-color = "#8aadf4";
         audio-file-auto = "fuzzy";
         volume = 80;
