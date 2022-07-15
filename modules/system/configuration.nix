@@ -55,7 +55,6 @@ with lib;
       "sysrq_always_enabled=1"
       "rootflags=noatime"
       "iommu=pt"
-      "vt.cur_default=8 vt.color=7"
       "usbcore.autosuspend=-1"
       "lsm=landlock,lockdown,yama,apparmor,bpf"
       "ipv6.disable=1"
