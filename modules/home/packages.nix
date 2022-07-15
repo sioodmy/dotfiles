@@ -32,7 +32,7 @@
     direnv
     figlet
     lm_sensors
-
+    wifite2
     # gui apps
     obs-studio
     nsxiv
