@@ -48,10 +48,13 @@ with lib;
   boot = {
     cleanTmpDir = true;
     kernelParams = [
+      "quiet"
+      "splash"
       "nmi_watchdog=0"
       "page_poison=1"
       "page_alloc.shuffle=1"
       "sysrq_always_enabled=1"
+      "usbcore.autosuspend=-1"
       "rootflags=noatime"
       "lsm=landlock,lockdown,yama,apparmor,bpf"
       "ipv6.disable=1"
