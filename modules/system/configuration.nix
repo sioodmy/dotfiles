@@ -51,7 +51,6 @@ with lib;
       "nmi_watchdog=0"
       "page_poison=1"
       "page_alloc.shuffle=1"
-      "net.ifnames=0"
       "sysrq_always_enabled=1"
       "rootflags=noatime"
       "iommu=pt"
