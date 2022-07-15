@@ -36,8 +36,6 @@
     # gui apps
     obs-studio
     nsxiv
-    tdesktop
-    monero-gui
     transmission-gtk
     pavucontrol
     libreoffice-fresh
