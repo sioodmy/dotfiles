@@ -125,13 +125,6 @@ with lib;
 
     lorri.enable = true;
 
-    syncthing = {
-      enable = true;
-      user = "sioodmy";
-      dataDir = "/home/sioodmy/docs";
-      configDir = "/home/sioodmy/docs/.config/syncthing";
-    };
-
     printing.enable = true;
     fstrim.enable = true;
 
