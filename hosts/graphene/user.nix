@@ -1,4 +1,4 @@
-{ config, lib, inputs, ...}:
+{ config, lib, inputs, ... }:
 
 {
   imports = [ ../../modules/home/default.nix ];
@@ -12,7 +12,6 @@
       lockscreen.enable = true;
     };
     programs = {
-      discocss.enable = true;
       chromium.enable = true;
       kitty.enable = true;
       zathura.enable = true;
