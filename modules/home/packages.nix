@@ -34,12 +34,9 @@
     lm_sensors
     wifite2
     # gui apps
-    obs-studio
     nsxiv
     transmission-gtk
     pavucontrol
-    kdenlive
-    gimp
     keepassxc
     xfce.thunar
     # unfree apps (sorry daddy stallman)
