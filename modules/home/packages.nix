@@ -38,7 +38,6 @@
     nsxiv
     transmission-gtk
     pavucontrol
-    libreoffice-fresh
     kdenlive
     gimp
     keepassxc
