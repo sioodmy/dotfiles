@@ -8,6 +8,7 @@
     # cli tools
     ffmpeg
     unzip
+    st
     xclip
     libnotify
     gnupg
