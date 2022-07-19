@@ -1,4 +1,4 @@
-terminal = "kitty"
+terminal = os.getenv("TERMINAL") or "st"
 search = "rofi -show drun"
 files = "thunar"
 editor = os.getenv("EDITOR") or "nvim"
