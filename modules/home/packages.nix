@@ -4,11 +4,11 @@
   nixpkgs.config.allowUnfree = true;
   home.packages = with pkgs; [
     inputs.todo.packages."${system}".todo
+    inputs.st.packages."${system}".st-snazzy
     maim
     # cli tools
     ffmpeg
     unzip
-    st
     xclip
     libnotify
     gnupg
