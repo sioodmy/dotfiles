@@ -29,6 +29,7 @@
     eww.url = "github:elkowar/eww";
     neovim-nightly-overlay.url = "github:nix-community/neovim-nightly-overlay";
     todo.url = "github:sioodmy/todo";
+    st.url = "github:sioodmy/st-snazzy/implement/nix-flake";
     fetch.url = "github:sioodmy/fetch";
 
   };
@@ -57,7 +58,6 @@
                 sharedModules = [ inputs.discocss.hmModule ];
               };
               nixpkgs.overlays = [
-                (import ./overlays/st.nix)
                 (final: prev: {
                   catppuccin-cursors =
                     prev.callPackage ./overlays/catppuccin-cursors.nix { };
