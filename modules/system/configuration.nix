@@ -7,8 +7,8 @@ with lib;
     NIXOS_CONFIG = "$HOME/.config/nixos/configuration.nix";
     NIXOS_CONFIG_DIR = "$HOME/.config/nixos/";
     EDITOR = "nvim";
-    TERMINAL = "kitty";
-    BROWSER = "firefox";
+    TERMINAL = "st";
+    BROWSER = "brave";
     SUDO_PROMPT = " Password: ";
   };
 

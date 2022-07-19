@@ -13,7 +13,6 @@
     };
     programs = {
       chromium.enable = true;
-      kitty.enable = true;
       zathura.enable = true;
       dunst.enable = true;
       rofi.enable = true;
