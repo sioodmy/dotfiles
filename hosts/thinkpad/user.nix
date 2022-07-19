@@ -1,4 +1,4 @@
-{ config, lib, inputs, ...}:
+{ config, lib, inputs, ... }:
 
 {
   imports = [ ../../modules/home/default.nix ];
@@ -15,7 +15,6 @@
     programs = {
       discocss.enable = true;
       chromium.enable = true;
-      kitty.enable = true;
       zathura.enable = true;
       rofi.enable = true;
       dunst.enable = true;
