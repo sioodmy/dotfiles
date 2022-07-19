@@ -57,6 +57,7 @@
                 sharedModules = [ inputs.discocss.hmModule ];
               };
               nixpkgs.overlays = [
+                (import ./overlays/st.nix)
                 (final: prev: {
                   catppuccin-cursors =
                     prev.callPackage ./overlays/catppuccin-cursors.nix { };
