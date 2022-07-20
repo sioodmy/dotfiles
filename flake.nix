@@ -29,7 +29,7 @@
     eww.url = "github:elkowar/eww";
     neovim-nightly-overlay.url = "github:nix-community/neovim-nightly-overlay";
     todo.url = "github:sioodmy/todo";
-    st.url = "github:sioodmy/st-snazzy/implement/nix-flake";
+    st.url = "github:sioodmy/st-snazzy";
     fetch.url = "github:sioodmy/fetch";
 
   };

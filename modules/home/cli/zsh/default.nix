@@ -88,6 +88,7 @@ in {
 
         cleanup = "sudo nix-collect-garbage --delete-older-than 7d";
         nixtest = "sudo nixos-rebuild test --flake .#graphene --fast";
+        bloat = "nix path-info -Sh /run/current-system";
         need = "nix-shell -p";
         ytmp3 = ''
           yt-dlp -x --continue --add-metadata --embed-thumbnail --audio-format mp3 --audio-quality 0 --metadata-from-title="%(artist)s - %(title)s" --prefer-ffmpeg -o "%(title)s.%(ext)s"'';
