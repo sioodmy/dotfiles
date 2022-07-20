@@ -47,13 +47,17 @@ in {
 
         wintypes = {
           tooltip = {
-            fade = true;
-            full-shadow = true;
+            fade = false;
+            full-shadow = false;
             focus = true;
-            blur-background = false;
+            blur-background = true;
           };
           menu = { full-shadow = true; };
-          popup_menu = { full-shadow = true; };
+          popup_menu = {
+            full-shadow = true;
+            fade = true;
+            opacity = false;
+          };
           utility = { full-shadow = true; };
           toolbar = { full-shadow = true; };
           normal = { full-shadow = true; };
@@ -71,6 +75,22 @@ in {
           "window_type = 'utility'"
           "window_type = 'dropdown_menu'"
         ];
+        blur-background = true;
+        blur-method = "dual_kawase";
+        blur-size = 20;
+        blur-deviation = 5;
+        blur-background-fixed = true;
+        blur-background-frame = true;
+        blur-kernel = "7x7box";
+        ## blur-kernel = "5,5,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1";
+        #
+        blur-background-exclude = [
+          "class_g ~= 'slop'"
+          "class_g = 'spectrwm'"
+          "class_g = 'GLava'"
+          "_GTK_FRAME_EXTENTS@:c"
+        ];
+        shadow-exclude = [ "class_g = 'slop'" ];
         focus-exclude = [
           "class_g ?= 'slop'"
           "name = 'rofi'"

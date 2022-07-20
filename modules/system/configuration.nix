@@ -117,7 +117,6 @@ with lib;
 
   services = {
     logind = {
-      lidSwitch = "lock";
       extraConfig = ''
         HandlePowerKey=suspend-then-hibernate
       '';
@@ -190,13 +189,14 @@ with lib;
   users.users.sioodmy = {
     isNormalUser = true;
     # Enable ‘sudo’ for the user.
-    extraGroups = [ "wheel" ] ++ optionals config.services.xserver.enable [
-      "audio"
-      "video"
-      "input"
-      "lp"
-      "networkmanager"
-    ];
+    extraGroups = [ "wheel" "systemd-journal" ]
+      ++ optionals config.services.xserver.enable [
+        "audio"
+        "video"
+        "input"
+        "lp"
+        "networkmanager"
+      ];
     uid = 1000;
     shell = pkgs.zsh;
 

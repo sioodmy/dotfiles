@@ -10,7 +10,7 @@ in {
     xresources.extraConfig = ''
       *background: #24273A
       *foreground: #CAD3F5
-      st.borderpx: 20
+      st.borderpx: 32
       st.font: monospace:pixelsize=16
 
       ! Gray
