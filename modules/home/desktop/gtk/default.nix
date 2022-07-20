@@ -16,8 +16,8 @@ in {
         package = pkgs.papirus-icon-theme;
       };
       font = {
-        name = "Inter";
-        size = 12;
+        name = "Iosevka Nerd Font";
+        size = 13;
       };
       gtk3.extraConfig = {
         gtk-xft-antialias = 1;
