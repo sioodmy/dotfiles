@@ -213,20 +213,24 @@ with lib;
       comfortaa
       inter
       lato
-      jetbrains-mono
+      iosevka
       noto-fonts
       noto-fonts-cjk
       noto-fonts-emoji
-      (nerdfonts.override { fonts = [ "JetBrainsMono" ]; })
+      (nerdfonts.override { fonts = [ "Iosevka" ]; })
     ];
 
     enableDefaultFonts = false;
 
     fontconfig = {
       defaultFonts = {
-        monospace = [ "JetBrainsMono Nerd Font" "Noto Color Emoji" ];
-        sansSerif = [ "Roboto" "Noto Color Emoji" ];
-        serif = [ "JetBrainsMono Nerd Font" "Noto Color Emoji" ];
+        monospace = [
+          "Iosevka Term Nerd Font Complete Mono"
+          "Iosevka Nerd Font"
+          "Noto Color Emoji"
+        ];
+        sansSerif = [ "Iosevka Nerd Font" "Noto Color Emoji" ];
+        serif = [ "Iosevka Nerd Font" "Noto Color Emoji" ];
         emoji = [ "Noto Color Emoji" ];
       };
     };

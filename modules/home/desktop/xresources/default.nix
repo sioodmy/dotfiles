@@ -11,7 +11,7 @@ in {
       *background: #24273A
       *foreground: #CAD3F5
       st.borderpx: 32
-      st.font: monospace:pixelsize=16
+      st.font: monospace:pixelsize=19
 
       ! Gray
       *color0: #494D64
