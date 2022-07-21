@@ -217,7 +217,8 @@ with lib;
       noto-fonts
       noto-fonts-cjk
       noto-fonts-emoji
-      (nerdfonts.override { fonts = [ "Iosevka" ]; })
+      jetbrains-mono
+      (nerdfonts.override { fonts = [ "Iosevka" "JetBrainsMono" ]; })
     ];
 
     enableDefaultFonts = false;

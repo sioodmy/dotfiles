@@ -21,7 +21,7 @@ function rounded(round)
 end
 
 theme.font = "Roboto 13"
-theme.icon_font_name = "Iosevka Nerd Font Mono "
+theme.icon_font_name = "JetBrainsMono Nerd Font Mono "
 theme.clock_font = "Work Sans Bold 19"
 theme.bg_normal = "#24273a"
 theme.light = "#494d64"
