@@ -55,7 +55,7 @@
                 useGlobalPkgs = true;
                 extraSpecialArgs = { inherit inputs; };
                 users.sioodmy = (./. + "/hosts/${hostname}/user.nix");
-                sharedModules = [ inputs.discocss.hmModule ];
+                sharedModules = with inputs; [ discocss.hmModule ];
               };
               nixpkgs.overlays = [
                 (final: prev: {
@@ -64,6 +64,7 @@
                 })
                 nur.overlay
                 inputs.discord-overlay.overlay
+
                 inputs.nixpkgs-f2k.overlays.default
                 inputs.neovim-nightly-overlay.overlay
               ];

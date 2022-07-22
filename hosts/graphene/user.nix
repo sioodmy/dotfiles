@@ -14,6 +14,7 @@
     programs = {
       chromium.enable = true;
       zathura.enable = true;
+      emacs.enable = true;
       dunst.enable = true;
       rofi.enable = true;
       mpv.enable = true;
