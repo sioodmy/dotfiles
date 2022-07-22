@@ -266,6 +266,7 @@ with lib;
     "minix"
     "nilfs2"
     "omfs"
+    "uvcvideo"
     "qnx4"
     "qnx6"
     "sysv"
