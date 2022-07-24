@@ -17,7 +17,7 @@ in {
       fade = true;
       fadeDelta = 5;
 
-      vSync = false;
+      vSync = true;
       backend = "glx";
 
       settings = {

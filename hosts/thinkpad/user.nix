@@ -16,7 +16,6 @@
       discocss.enable = true;
       chromium.enable = true;
       zathura.enable = true;
-      emacs.enable = true;
       rofi.enable = true;
       dunst.enable = true;
       mpv.enable = true;
