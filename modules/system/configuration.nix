@@ -82,7 +82,14 @@ with lib;
   i18n.defaultLocale = "en_US.UTF-8";
 
   networking = {
-    networkmanager.enable = true;
+    networkmanager = {
+      enable = true;
+      wifi = {
+        backend = "iwd";
+        powersave = true;
+      };
+      unmanaged = [ "docker0" "rndis0" ];
+    };
     firewall = {
       enable = true;
       allowedTCPPorts = [ 443 80 25565 ];
@@ -117,8 +124,11 @@ with lib;
 
   services = {
     logind = {
+      lidSwitch = "suspend-then-hibernate";
+      lidSwitchExternalPower = "lock";
       extraConfig = ''
         HandlePowerKey=suspend-then-hibernate
+        HibernateDelaySec=3600
       '';
     };
 
