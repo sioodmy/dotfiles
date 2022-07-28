@@ -86,7 +86,7 @@ with lib;
       enable = true;
       wifi = {
         backend = "iwd";
-        powersave = true;
+        powersave = false;
       };
       unmanaged = [ "docker0" "rndis0" ];
     };
