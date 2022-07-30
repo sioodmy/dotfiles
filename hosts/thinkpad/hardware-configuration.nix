@@ -12,13 +12,9 @@
 
   boot.initrd.availableKernelModules =
     [ "xhci_pci" "ehci_pci" "ahci" "sd_mod" "sr_mod" "rtsx_pci_sdmmc" ];
-  boot.initrd.kernelModules =
-    [ "dm-snapshot" "thinkpad-acpi" "acpi" "acpi-call" ];
+  boot.initrd.kernelModules = [ "dm-snapshot" "acpi" "acpi-call" ];
   boot.kernelModules = [ "tpm-rng" ];
-  boot.extraModulePackages = with config.boot.kernelPackages; [
-    acpi_call
-    tp_smapi
-  ];
+  boot.extraModulePackages = with config.boot.kernelPackages; [ acpi_call ];
   boot.extraModprobeConfig = lib.mkDefault ''
     options bbswitch use_acpi_to_detect_card_state=1
   '';
