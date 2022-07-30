@@ -3,6 +3,8 @@
   # undervolting and power saving stuff
   services.thermald.enable = true;
   services.upower.enable = true;
+  environment.systemPackages = [ pkgs.tpacpi-bat ];
+
   powerManagement.cpuFreqGovernor = lib.mkDefault "ondemand";
   services.tlp = {
     enable = true;
@@ -43,7 +45,7 @@
   };
   services.undervolt = {
     enable = true;
-    coreOffset = -75;
+    coreOffset = -70;
     gpuOffset = -50;
   };
   systemd.services.undervolt.wantedBy =
