@@ -165,7 +165,6 @@ in {
         telescope-nvim
         aerial-nvim
         todo-comments-nvim
-        TrueZen-nvim
         bufferline-nvim
         alpha-nvim
         neoscroll-nvim
