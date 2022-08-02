@@ -49,6 +49,13 @@ with lib;
     cleanTmpDir = true;
     kernelParams = [
       "nmi_watchdog=0"
+      "pti=on"
+      "randomize_kstack_offset=on"
+      "vsyscall=none"
+      "slab_nomerge"
+      "debugfs=off"
+      "module.sig_enforce=1"
+      "lockdown=confidentiality"
       "page_poison=1"
       "page_alloc.shuffle=1"
       "sysrq_always_enabled=1"
@@ -270,7 +277,23 @@ with lib;
     "exofs"
     "freevxfs"
     "f2fs"
+    "vivid"
+    "gfs2"
+    "ksmbd"
+    "nfsv4"
+    "nfsv3"
+    "cifs"
+    "nfs"
+    "cramfs"
+    "freevxfs"
+    "jffs2"
     "hfs"
+    "hfsplus"
+    "squashfs"
+    "udf"
+    "bluetooth"
+    "btusb"
+    "uvcvideo" # webcam
     "hpfs"
     "jfs"
     "minix"
@@ -295,7 +318,7 @@ with lib;
   };
 
   boot.kernel.sysctl = {
-    "kernel.yama.ptrace_scope" = mkOverride 500 1;
+    "kernel.yama.ptrace_scope" = 2;
     "kernel.kptr_restrict" = mkOverride 500 2;
     "net.core.bpf_jit_enable" = mkDefault false;
     "kernel.ftrace_enabled" = mkDefault false;
@@ -312,6 +335,11 @@ with lib;
     "net.ipv6.conf.default.accept_redirects" = mkDefault false;
     "net.ipv4.conf.all.send_redirects" = mkDefault false;
     "net.ipv4.conf.default.send_redirects" = mkDefault false;
+    "net.ipv6.conf.default.accept_ra" = 0;
+    "net.ipv6.conf.all.accept_ra" = 0;
+    "net.ipv4.tcp_syncookies" = 1;
+    "net.ipv4.tcp_timestamps" = 0;
+    "net.ipv4.tcp_rfc1337" = 1;
   };
 
   security.protectKernelImage = true;
