@@ -5,6 +5,12 @@
   services.upower.enable = true;
   environment.systemPackages = [ pkgs.tpacpi-bat ];
 
+  networking.networkmanager = {
+    wifi = {
+      backend = "iwd";
+      powersave = false;
+    };
+  };
   powerManagement.cpuFreqGovernor = lib.mkDefault "ondemand";
   services.tlp = {
     enable = true;
