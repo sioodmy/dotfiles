@@ -5,7 +5,6 @@ in {
   options.modules.cli.git = { enable = mkEnableOption "git"; };
 
   config = mkIf cfg.enable {
-    home.packages = [ pkgs.commitizen ];
     programs.git = {
       enable = true;
       userName = "sioodmy";
@@ -22,7 +21,6 @@ in {
         pl = "!git pull origin $(git rev-parse --abbrev-ref HEAD)";
         st = "status";
         br = "branch";
-        c = "!cz commit";
         df =
           "!git hist | peco | awk '{print $2}' | xargs -I {} git diff {}^ {}";
         hist = ''

@@ -91,10 +91,6 @@ with lib;
   networking = {
     networkmanager = {
       enable = true;
-      wifi = {
-        backend = "iwd";
-        powersave = false;
-      };
       unmanaged = [ "docker0" "rndis0" ];
     };
     firewall = {
