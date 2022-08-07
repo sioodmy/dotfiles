@@ -6,6 +6,10 @@
     inputs.todo.packages."${system}".todo
     inputs.st.packages."${system}".st-snazzy
     maim
+    firefox
+    wofi
+    grim
+    wl-clipboard
     # cli tools
     ffmpeg
     unzip
@@ -35,6 +39,7 @@
     lm_sensors
     wifite2
     # gui apps
+    foot
     nsxiv
     transmission-gtk
     pavucontrol

@@ -26,6 +26,7 @@
     ./cli/zsh
 
     ./programs/kitty
+    ./programs/foot
     ./programs/dunst
     ./programs/chromium
     ./programs/qutebrowser
