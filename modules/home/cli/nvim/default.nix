@@ -78,8 +78,8 @@ let
     src = pkgs.fetchFromGitHub {
       owner = "catppuccin";
       repo = "nvim";
-      rev = "d46425163dad4cc74910c0c81eeedb00cadf8a61";
-      sha256 = "TQP+Rr4xbT5Po7yW+1zeJicP/i+hOXVXcdSGlvKmEsc=";
+      rev = "cb80c9125e3d17a83549e0179a30d1f72b9e6315";
+      sha256 = "WSd5TyKj8bc4LsfduuMXsB0Wwr2Nudpwed6sDN18GMs=";
     };
   };
 

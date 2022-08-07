@@ -8,42 +8,42 @@ in {
 
   config = mkIf cfg.enable {
     xresources.extraConfig = ''
-      *background: #24273A
-      *foreground: #CAD3F5
+      *background: #1e1e2e
+      *foreground: #cdd6f4
       st.borderpx: 32
       st.font: monospace:pixelsize=19
 
       ! Gray
-      *color0: #494D64
-      *color8: #5B6078
+      *color0: #45475a
+      *color8: #585b70
 
       ! Red
-      *color1: #ED8796
-      *color9: #ED8796
+      *color1: #f38ba8
+      *color9: #f38ba8
 
       ! Green
-      *color2: #A6DA95
-      *color10: #A6DA95
+      *color2: #a6e3a1
+      *color10: #a6e3a1
 
       ! Yellow
-      *color3: #EED49F
-      *color11:  #EED49F
+      *color3: #f9e2af
+      *color11:  #f9e2af
 
       ! Blue
-      *color4: #8AADF4
-      *color12: #8AADF4
+      *color4: #89b4fa
+      *color12: #89b4fa
 
       ! Maguve
-      *color5: #F5BDE6
-      *color13: #F5BDE6
+      *color5: #f5c2e7
+      *color13: #f5c2e7
 
       ! Pink
-      *color6: #8BD5CA
-      *color14: #8BD5CA
+      *color6: #94e2d5
+      *color14: #94e2d5
 
       ! Whites
-      *color7: #B8C0E0
-      *color15: #A5ADCB
+      *color7: #bac2de
+      *color15: #a6adc8
     '';
 
   };

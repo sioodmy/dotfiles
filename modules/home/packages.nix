@@ -8,6 +8,9 @@
     maim
     firefox
     wofi
+    waybar
+    swappy
+    swaybg
     grim
     wl-clipboard
     # cli tools

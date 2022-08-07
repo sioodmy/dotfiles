@@ -25,7 +25,7 @@ in {
           show_indicators = true;
           separator_height = "10";
           frame_width = "2";
-          frame_color = "#8aadf4";
+          frame_color = "#89b4fa";
           padding = "20";
           max_icon_size = "128";
           min_icon_size = "90";
@@ -40,19 +40,19 @@ in {
           history_length = "50";
         };
         urgency_low = {
-          background = "#24273a";
-          foreground = "#cad3f5";
+          background = "#1e1e2e";
+          foreground = "#cdd6f4";
           timeout = "5";
         };
         urgency_normal = {
-          background = "#24273a";
-          foreground = "#cad3f5";
+          background = "#1e1e2e";
+          foreground = "#cdd6f4";
           timeout = "10";
         };
         urgency_critical = {
-          background = "#24273a";
-          foreground = "#cad3f5";
-          frame_color = "#8aadf4";
+          background = "#1e1e2e";
+          foreground = "#cdd6f4";
+          frame_color = "#89b4fa";
           timeout = "15";
         };
         notify_send = {
