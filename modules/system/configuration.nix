@@ -1,15 +1,35 @@
-{ config, pkgs, lib, ... }:
+{ config, pkgs, lib, inputs, ... }:
 
 with lib;
 
 {
-  environment.variables = {
-    NIXOS_CONFIG = "$HOME/.config/nixos/configuration.nix";
-    NIXOS_CONFIG_DIR = "$HOME/.config/nixos/";
-    EDITOR = "nvim";
-    TERMINAL = "st";
-    BROWSER = "brave";
-    SUDO_PROMPT = " Password: ";
+  disabledModules = [ "services/hardware/udev.nix" ];
+  imports = [ ./udev.nix ];
+  environment = {
+    variables = {
+      NIXOS_CONFIG = "$HOME/.config/nixos/configuration.nix";
+      NIXOS_CONFIG_DIR = "$HOME/.config/nixos/";
+      EDITOR = "nvim";
+      TERMINAL = "st";
+      BROWSER = "brave";
+      SUDO_PROMPT = " Password: ";
+    };
+    loginShellInit = ''
+      dbus-update-activation-environment --systemd DISPLAY
+      eval $(ssh-agent)
+      eval $(gnome-keyring-daemon --start)
+      export GPG_TTY=$TTY
+      export WLR_DRM_DEVICES=/dev/dri/card1:/dev/dri/card0
+      export CLUTTER_BACKEND=wayland
+      export XDG_SESSION_TYPE=wayland
+      export QT_QPA_PLATFORM=wayland
+      export QT_WAYLAND_DISABLE_WINDOWDECORATION=1
+      export MOZ_ENABLE_WAYLAND=1
+      export GBM_BACKEND=nvidia-drm
+      export __GLX_VENDOR_LIBRARY_NAME=nvidia
+      export WLR_NO_HARDWARE_CURSORS=1
+      export WLR_BACKEND=vulkan
+    '';
   };
 
   nix = {
@@ -28,16 +48,23 @@ with lib;
       substituters = [
         "https://cache.nixos.org?priority=10"
         "https://fortuneteller2k.cachix.org"
+        "https://nixpkgs-wayland.cachix.org"
       ];
 
       trusted-public-keys = [
         "cache.nixos.org-1:6NCHdD59X431o0gWypbMrAURkbJ16ZPMQFGspcDShjY="
         "fortuneteller2k.cachix.org-1:kXXNkMV5yheEQwT0I4XYh1MaCSz+qg72k8XAi2PthJI="
+        "nixpkgs-wayland.cachix.org-1:3lwxaILxMRkVhehr5StQprHdEo4IrE8sRho9R9HOLYA="
       ];
     };
   };
 
   hardware = {
+    nvidia = {
+      #      package = pkgs.linuxKernel.packages.linux_zen.nvidia_x11;
+      open = true;
+      modesetting.enable = true;
+    };
     opengl.driSupport32Bit = true;
     pulseaudio.support32Bit = true;
   };
@@ -65,7 +92,8 @@ with lib;
       "lsm=landlock,lockdown,yama,apparmor,bpf"
       "ipv6.disable=1"
     ];
-    kernelPackages = pkgs.linuxPackages_latest;
+    #    kernelPackages = pkgs.linuxPackages_latest;
+    #    kernelPackages = pkgs.linuxPackages_zen;
     consoleLogLevel = 0;
     initrd.verbose = false;
     loader = {
@@ -125,7 +153,17 @@ with lib;
     mediaKeys.enable = true;
   };
 
+  programs.sway = { enable = true; };
+  programs.hyprland = {
+    enable = true;
+    package = pkgs.hyprland-nvidia;
+  };
+
   services = {
+    gnome = {
+      glib-networking.enable = true;
+      gnome-keyring.enable = true;
+    };
     logind = {
       lidSwitch = "suspend-then-hibernate";
       lidSwitchExternalPower = "lock";
@@ -151,6 +189,7 @@ with lib;
         xfce.enable = false;
       };
       displayManager = {
+        defaultSession = "hyprland";
         autoLogin = {
           enable = true;
           user = "sioodmy";
@@ -226,7 +265,7 @@ with lib;
       comfortaa
       inter
       lato
-      iosevka
+      iosevka-bin
       noto-fonts
       noto-fonts-cjk
       noto-fonts-emoji
