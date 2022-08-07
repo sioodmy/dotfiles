@@ -23,20 +23,20 @@ end
 theme.font = "Roboto 13"
 theme.icon_font_name = "JetBrainsMono Nerd Font Mono "
 theme.clock_font = "Work Sans Bold 19"
-theme.bg_normal = "#24273a"
-theme.light = "#494d64"
-theme.overlay = "#8087a2"
-theme.bg_container = "#363a4f"
-theme.bg_focus = "#363a4f"
-theme.bg_urgent = "#ed8796"
-theme.bg_minimize = "#1e2030"
-theme.green = "#a6da95"
-theme.red = "#ed8796"
-theme.yellow = "#eed49f"
-theme.blue = "#8aadf4"
+theme.bg_normal = "#1e1e2e"
+theme.light = "#45475a"
+theme.overlay = "#7f849c"
+theme.bg_container = "#313244"
+theme.bg_focus = "#313244"
+theme.bg_urgent = "#f38ba8"
+theme.bg_minimize = "#181825"
+theme.green = "#a6e3a1"
+theme.red = "#f38ba8"
+theme.yellow = "#f9e2af"
+theme.blue = "#89b4fa"
 theme.bg_systray = theme.bg_normal
 
-theme.fg_normal = "#cad3f5"
+theme.fg_normal = "#cdd6f4"
 theme.fg_focus = theme.fg_normal
 
 theme.fg_urgent = theme.fg_normal
@@ -44,9 +44,9 @@ theme.fg_minimize = theme.fg_normal
 
 theme.useless_gap = dpi(6)
 theme.border_width = dpi(0)
-theme.border_normal = "#5b6078"
-theme.border_focus = "#8aadf4"
-theme.border_marked = "#f5a97f"
+theme.border_normal = "#585b70"
+theme.border_focus = "#89b4fa"
+theme.border_marked = "#fab387"
 
 -- There are other variable sets
 -- overriding the default one when
@@ -60,15 +60,15 @@ theme.border_marked = "#f5a97f"
 -- hotkeys_[bg|fg|border_width|border_color|shape|opacity|modifiers_fg|label_bg|label_fg|group_margin|font|description_font]
 -- Example:
 --theme.taglist_bg_focus = "#ff0000"
-theme.hotkeys_modifiers_fg = "#8aadf4"
-theme.hotkeys_description_fg = "#cad3f5"
+theme.hotkeys_modifiers_fg = "#89b4fa"
+theme.hotkeys_description_fg = "#cdd6f4"
 -- Generate taglist squares:
 theme.wibar_height = 35
 theme.taglist_bg_urgent = theme.bg_normal
 theme.taglist_fg_urgent = theme.green
 theme.taglist_bg_focus = theme.bg_normal
 theme.taglist_fg_focus = theme.border_focus
-theme.taglist_fg_empty = "#939ab7"
+theme.taglist_fg_empty = "#9399b2"
 theme.taglist_font = "JetBrainsMono Nerd Font Mono 16"
 local taglist_square_size = dpi(0)
 theme.taglist_squares_sel = theme_assets.taglist_squares_sel(taglist_square_size, theme.fg_normal)
@@ -104,10 +104,10 @@ theme.menu_width = dpi(200)
 
 theme.mstab_tabbar_style = "modern"
 
-theme.window_switcher_widget_bg = "#1e2030" -- The bg color of the widget
+theme.window_switcher_widget_bg = "#181825" -- The bg color of the widget
 theme.window_switcher_widget_border_width = 3 -- The border width of the widget
 theme.window_switcher_widget_border_radius = 10 -- The border radius of the widget
-theme.window_switcher_widget_border_color = "#363a4f" -- The border color of the widget
+theme.window_switcher_widget_border_color = "#313244" -- The border color of the widget
 theme.window_switcher_clients_spacing = 20 -- The space between each client item
 theme.window_switcher_client_icon_horizontal_spacing = 5 -- The space between client icon and text
 theme.window_switcher_client_width = 150 -- The width of one client widget
@@ -126,8 +126,8 @@ theme.window_switcher_icon_width = 20 -- The width of one icon
 -- Task list
 
 theme.task_preview_widget_border_radius = 5
-theme.task_preview_widget_bg = "#24273a"
-theme.task_preview_widget_border_color = "#363a4f"
+theme.task_preview_widget_bg = "#1e1e2e"
+theme.task_preview_widget_border_color = "#313244"
 theme.task_preview_widget_border_width = 3
 theme.task_preview_widget_margin = 30
 -- You can add as many variables as
@@ -141,22 +141,22 @@ local dot = config_dir .. "theme/assets/icons/dot.png"
 theme.titlebar_close_button_normal = color.recolor_image(dot, theme.red)
 theme.titlebar_close_button_focus = theme.titlebar_close_button_normal
 
-theme.titlebar_minimize_button_normal = color.recolor_image(dot, "#eed49f")
+theme.titlebar_minimize_button_normal = color.recolor_image(dot, "#f9e2af")
 theme.titlebar_minimize_button_focus = theme.titlebar_minimize_button_normal
 
-theme.titlebar_ontop_button_normal_inactive = color.recolor_image(dot, "#f5bde6")
+theme.titlebar_ontop_button_normal_inactive = color.recolor_image(dot, "#f5c2e7")
 theme.titlebar_ontop_button_focus_inactive = theme.titlebar_ontop_button_normal_inactive
-theme.titlebar_ontop_button_normal_active = color.recolor_image(dot, "#c6a0f6")
+theme.titlebar_ontop_button_normal_active = color.recolor_image(dot, "#cba6f7")
 theme.titlebar_ontop_button_focus_active = theme.titlebar_ontop_button_normal_active
 
-theme.titlebar_sticky_button_normal_inactive = color.recolor_image(dot, "#f4dbd6")
+theme.titlebar_sticky_button_normal_inactive = color.recolor_image(dot, "#f5e0dc")
 theme.titlebar_sticky_button_focus_inactive = theme.titlebar_sticky_button_normal_inactive
-theme.titlebar_sticky_button_normal_active = color.recolor_image(dot, "#b8c0e0")
+theme.titlebar_sticky_button_normal_active = color.recolor_image(dot, "#bac2de")
 theme.titlebar_sticky_button_focus_active = theme.titlebar_sticky_button_focus_active
 
-theme.titlebar_floating_button_normal_inactive = color.recolor_image(dot, "#7dc4e4")
+theme.titlebar_floating_button_normal_inactive = color.recolor_image(dot, "#74c7ec")
 theme.titlebar_floating_button_focus_inactive = theme.titlebar_floating_button_normal_inactive
-theme.titlebar_floating_button_normal_active = color.recolor_image(dot, "#b7bdf8")
+theme.titlebar_floating_button_normal_active = color.recolor_image(dot, "#b4befe")
 theme.titlebar_floating_button_focus_active = theme.titlebar_floating_button_normal_active
 
 theme.titlebar_maximized_button_normal_inactive = color.recolor_image(dot, theme.green)

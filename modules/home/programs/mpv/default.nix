@@ -14,7 +14,7 @@ in {
         keep-open = true;
         force-seekable = true;
         cursor-autohide = 100;
-        osd-color = "#8aadf4";
+        osd-color = "#89b4fa";
         audio-file-auto = "fuzzy";
         volume = 80;
         volume-max = 100;

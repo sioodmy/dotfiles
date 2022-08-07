@@ -3,17 +3,17 @@ local lualine = require("lualine")
 -- Color table for highlights
 -- stylua: ignore
 local colors = {
-    bg       = '#24273a',
-    fg       = '#cad3f5',
-    yellow   = '#eed49f',
-    cyan     = '#b7bdf8',
-    darkblue = '#8aadf4',
-    green    = '#a6da95',
-    orange   = '#f5a97f',
-    violet   = '#c6a0f6',
-    magenta  = '#f0c6c6',
-    blue     = '#8aadf4',
-    red      = '#ed8796',
+    bg       = '#1e1e2e',
+    fg       = '#cdd6f4',
+    yellow   = '#f9e2af',
+    cyan     = '#b4befe',
+    darkblue = '#89b4fa',
+    green    = '#a6e3a1',
+    orange   = '#fab387',
+    violet   = '#cba6f7',
+    magenta  = '#f2cdcd',
+    blue     = '#89b4fa',
+    red      = '#f38ba8',
 }
 
 local conditions = {
@@ -170,7 +170,7 @@ ins_left({
 		return msg
 	end,
 	icon = " LSP:",
-	color = { fg = "#f0c6c6", gui = "bold" },
+	color = { fg = "#f2cdcd", gui = "bold" },
 })
 
 ins_left({
@@ -182,7 +182,7 @@ ins_left({
 		end
 	end,
 	icon = " Autosave",
-	color = { fg = "#8aadf4", gui = "bold" },
+	color = { fg = "#89b4fa", gui = "bold" },
 })
 -- Add components to right sections
 ins_right({

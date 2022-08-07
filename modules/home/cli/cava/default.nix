@@ -19,11 +19,11 @@ in {
     gradient_color_1 = '#B5E8E0'
     gradient_color_2 = '#89DCEB'
     gradient_color_3 = '#96CDFB'
-    gradient_color_4 = '#c6a0f6'
-    gradient_color_5 = '#f5bde6'
-    gradient_color_6 = '#ed8796'
-    gradient_color_7 = '#f4dbd6'
-    gradient_color_8 = '#f0c6c6'
+    gradient_color_4 = '#cba6f7'
+    gradient_color_5 = '#f5c2e7'
+    gradient_color_6 = '#f38ba8'
+    gradient_color_7 = '#f5e0dc'
+    gradient_color_8 = '#f2cdcd'
     [smoothing]
     integral = 77
     gravity = 100
