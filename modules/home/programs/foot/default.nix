@@ -13,26 +13,25 @@ in {
           pad = "30x30";
         };
         colors = {
-          foreground = "CDD6F4";
-          background = "1E1E2E";
-          ## Normal/regular colors (color palette 0-7)
-          regular0 = "45475A"; # black
-          regular1 = "F38BA8";
-          regular2 = "A6E3A1";
-          regular3 = "F9E2AF";
-          regular4 = "89B4FA";
-          regular5 = "F5C2E7";
-          regular6 = "94E2D5";
-          regular7 = "BAC2DE";
+          foreground = "cce9ea";
+          background = "040c16";
+          regular0 = "1b2c31";
+          regular1 = "FF7377";
+          regular2 = "AAF0C1";
+          regular3 = "eadd94";
+          regular4 = "bdd6f4";
+          regular5 = "f9ecf7";
+          regular6 = "b3ffff";
+          regular7 = "edf7f8";
 
-          bright0 = "585B70"; # bright black
-          bright1 = "F38BA8"; # bright red
-          bright2 = "A6E3A1"; # bright green
-          bright3 = "F9E2AF"; # bright yellow
-          bright4 = "89B4FA";
-          bright5 = "F5C2E7"; # bright magenta
-          bright6 = "94E2D5"; # bright cyan
-          bright7 = "A6ADC8"; # bright white
+          bright0 = "17252A";
+          bright1 = "E6676B";
+          bright2 = "A2E4B8";
+          bright3 = "e2d06a";
+          bright4 = "92bbed";
+          bright5 = "ecc6e8";
+          bright6 = "80ffff";
+          bright7 = "cfebec";
         };
       };
     };

@@ -1,4 +1,4 @@
-{ pkgs, lib, config, fetchzip, ... }:
+{ pkgs, lib, config, fetchzip, inputs, ... }:
 with lib;
 let cfg = config.modules.desktop.gtk;
 in {
@@ -8,8 +8,9 @@ in {
     gtk = {
       enable = true;
       theme = {
-        name = "Catppuccin-dark";
-        package = pkgs.catppuccin-gtk;
+        name = "Articblush";
+        package = with pkgs;
+          inputs.articblush-gtk.packages."${system}".articblush-gtk;
       };
       iconTheme = {
         name = "Papirus-Dark";

@@ -348,7 +348,14 @@ with lib;
       killUnconfinedConfinables = true;
       packages = [ pkgs.apparmor-profiles ];
     };
-    pam.services.login.enableGnomeKeyring = true;
+    pam.services = {
+      login.enableGnomeKeyring = true;
+      swaylock = {
+        text = ''
+          auth include login
+        '';
+      };
+    };
     sudo.execWheelOnly = true;
   };
 
