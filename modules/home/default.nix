@@ -5,13 +5,10 @@
   imports = [
     ./packages.nix
 
-    ./desktop/bspwm
-    ./desktop/awesome
     ./desktop/gtk
-    ./desktop/picom
     ./desktop/xresources
-    ./desktop/eww
-    ./desktop/lockscreen
+    ./desktop/swaylock
+    ./desktop/hyprland
 
     ./cli/bat
     ./cli/fzf
@@ -26,19 +23,15 @@
     ./cli/zsh
 
     ./programs/kitty
+    ./programs/minivim
     ./programs/foot
-    ./programs/dunst
     ./programs/chromium
-    ./programs/qutebrowser
-    ./programs/rofi
     ./programs/zathura
-    ./programs/discocss
     ./programs/mpv
+    ./programs/mako
 
     ./services/udiskie
     ./services/sxhkd
-    ./services/fusuma
-    ./services/redshift
   ];
 
 }

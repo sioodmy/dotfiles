@@ -3,20 +3,19 @@
 {
   nixpkgs.config.allowUnfree = true;
   home.packages = with pkgs; [
-    inputs.todo.packages."${system}".todo
     inputs.st.packages."${system}".st-snazzy
-    maim
     firefox
     wofi
+    imv
     waybar
     swappy
     swaybg
+    slurp
     grim
     wl-clipboard
     # cli tools
     ffmpeg
     unzip
-    xclip
     libnotify
     gnupg
     yt-dlp
@@ -24,14 +23,10 @@
     rsync
     imagemagick
     scrot
-    newsboat
     unrar
     tealdeer
     killall
-    onefetch
-    neofetch
     du-dust
-    bunnyfetch
     tokei
     bandwhich
     grex
@@ -40,10 +35,7 @@
     direnv
     figlet
     lm_sensors
-    wifite2
     # gui apps
-    foot
-    nsxiv
     transmission-gtk
     pavucontrol
     keepassxc

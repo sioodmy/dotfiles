@@ -11,7 +11,6 @@ local opt = vim.opt -- Set options (global/buffer/windows-scoped)
 local o = vim.o
 
 require("impatient")
-require("neoscroll").setup()
 ----------------------------------------------------------e
 -- General ---------------------------------------------------------
 opt.mouse = "a" -- Enable mouse support

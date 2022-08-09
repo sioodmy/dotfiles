@@ -30,13 +30,12 @@
     };
 
     nixpkgs-wayland.url = "github:nix-community/nixpkgs-wayland";
+    articblush-gtk.url = "github:articblush/articblush-gtk/flake";
     discocss.url = "github:mlvzk/discocss/flake";
     nixpkgs-f2k.url = "github:fortuneteller2k/nixpkgs-f2k";
     eww.url = "github:elkowar/eww";
     neovim-nightly-overlay.url = "github:nix-community/neovim-nightly-overlay";
-    todo.url = "github:sioodmy/todo";
     st.url = "github:siduck/st";
-    fetch.url = "github:sioodmy/fetch";
 
   };
   outputs = inputs@{ self, nixpkgs, home-manager, nur, eww, ... }:
@@ -77,7 +76,15 @@
                     inputs.hyprland.packages.${system}.default.override {
                       inherit (final) wlroots;
                     };
-
+                })
+                (self: super: {
+                  waybar = super.waybar.overrideAttrs (oldAttrs: {
+                    mesonFlags = oldAttrs.mesonFlags
+                      ++ [ "-Dexperimental=true" ];
+                    patchPhase = ''
+                      substituteInPlace src/modules/wlr/workspace_manager.cpp --replace "zext_workspace_handle_v1_activate(workspace_handle_);" "const std::string command = \"hyprctl dispatch workspace \" + name_; system(command.c_str());"
+                    '';
+                  });
                 })
                 inputs.nixpkgs-wayland.overlay
                 nur.overlay
