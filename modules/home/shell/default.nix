@@ -1,12 +1,10 @@
-{ pkgs, lib, config, ... }:
+{ config, lib, pkgs, ... }:
 with lib;
-let cfg = config.modules.cli.zsh;
+let cfg = config.modules.services.shell;
 in {
-  options.modules.cli.zsh = { enable = mkEnableOption "zsh"; };
+  options.modules.services.shell = { enable = mkEnableOption "shell"; };
 
   config = mkIf cfg.enable {
-    home.packages = with pkgs; [ devour exa ]; # for swallowing
-
     programs.zoxide = {
       enable = true;
       enableZshIntegration = true;
@@ -44,11 +42,7 @@ in {
       enableCompletion = true;
       enableAutosuggestions = true;
       enableSyntaxHighlighting = true;
-      sessionVariables = {
-        LC_ALL = "en_US.UTF-8";
-
-        LF_ICONS = import ./LF_ICONS.nix;
-      };
+      sessionVariables = { LC_ALL = "en_US.UTF-8"; };
       completionInit = ''
         autoload -U compinit
         zstyle ':completion:*' menu select
@@ -85,37 +79,19 @@ in {
       shellAliases = {
         rebuild =
           "sudo nix-store --verify; sudo nixos-rebuild switch --flake .#";
-
         cleanup = "sudo nix-collect-garbage --delete-older-than 7d";
         nixtest = "sudo nixos-rebuild test --flake .#graphene --fast";
         bloat = "nix path-info -Sh /run/current-system";
-        need = "nix-shell -p";
         ytmp3 = ''
           yt-dlp -x --continue --add-metadata --embed-thumbnail --audio-format mp3 --audio-quality 0 --metadata-from-title="%(artist)s - %(title)s" --prefer-ffmpeg -o "%(title)s.%(ext)s"'';
         cat = "bat --style=plain";
         grep = "rg";
         du = "dust";
         ps = "procs";
-        htop = "btm";
         m = "mkdir -p";
         fcd = "cd $(find -type d | fzf)";
         ls = "exa --icons --group-directories-first";
-        ssh = "TERM=xterm-256color ssh";
-        sl = "ls";
         tree = "exa --tree --icons";
-        sxiv = "devour sxiv";
-        mpv = "devour mpv";
-        zathura = "devour zathura";
-        rm = "rm -i";
-        cp = "cp -i";
-        mv = "mv -i";
-
-        # Git aliases
-        g = "git";
-        gs = "git status";
-        gc = "git commit -m";
-        gp = "git push";
-        ga = "git add";
 
       };
 
@@ -123,7 +99,7 @@ in {
         {
           name = "zsh-nix-shell";
           src = pkgs.zsh-nix-shell;
-          file = "nix-shell.plugin.zsh";
+          file = "share/zsh-nix-shell/nix-shell.plugin.zsh";
         }
         {
           name = "zsh-vi-mode";
@@ -132,5 +108,33 @@ in {
         }
       ];
     };
+
+    programs.git = {
+      enable = true;
+      userName = "sioodmy";
+      userEmail = "sioodmy@tuta.io";
+      extraConfig = {
+        init = { defaultBranch = "main"; };
+        delta = { syntax-theme = "ansi"; };
+      };
+      delta = { enable = true; };
+      aliases = {
+        co = "checkout";
+        d = "diff";
+        ps = "!git push origin $(git rev-parse --abbrev-ref HEAD)";
+        pl = "!git pull origin $(git rev-parse --abbrev-ref HEAD)";
+        st = "status";
+        br = "branch";
+        df =
+          "!git hist | peco | awk '{print $2}' | xargs -I {} git diff {}^ {}";
+        hist = ''
+          log --pretty=format:"%Cgreen%h %Creset%cd %Cblue[%cn] %Creset%s%C(yellow)%d%C(reset)" --graph --date=relative --decorate --all'';
+        llog = ''
+          log --graph --name-status --pretty=format:"%C(red)%h %C(reset)(%cd) %C(green)%an %Creset%s %C(yellow)%d%Creset" --date=relative'';
+        edit-unmerged =
+          "!f() { git ls-files --unmerged | cut -f2 | sort -u ; }; vim `f`";
+      };
+    };
+
   };
 }

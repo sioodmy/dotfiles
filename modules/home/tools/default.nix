@@ -1,17 +1,22 @@
 { pkgs, lib, config, ... }:
 with lib;
-let
-  cfg = config.modules.cli.xdg;
-  defaults = {
-    "application/pdf" = [ "org.pwmt.zathura.desktop" ];
-    "application/x-bittorrent" = [ "transmission-gtk.desktop" ];
-    "x-scheme-handler/https" = [ "firefox.desktop" ];
-    "x-scheme-handler/http" = [ "firefox.desktop" ];
-  };
+let cfg = config.modules.cli.tools;
 in {
-  options.modules.cli.xdg = { enable = mkEnableOption "xdg"; };
+  options.modules.cli.tools = { enable = mkEnableOption "tools"; };
 
   config = mkIf cfg.enable {
+    programs.gpg = { enable = true; };
+
+    services.gpg-agent = {
+      enable = true;
+      pinentryFlavor = "qt";
+    };
+
+    programs.bat = {
+      enable = true;
+      config.theme = "nord";
+    };
+
     xdg = {
       userDirs = {
         enable = true;
@@ -30,5 +35,6 @@ in {
         defaultApplications = defaults;
       };
     };
+
   };
 }
