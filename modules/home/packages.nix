@@ -3,17 +3,22 @@
 {
   nixpkgs.config.allowUnfree = true;
   home.packages = with pkgs; [
-    inputs.st.packages."${system}".st-snazzy
-    firefox
+    inputs.eww.packages."${system}".eww-wayland
+    wf-recorder
+    pfetch
+    firefox-bin
     wofi
     imv
+    hyperfine
     waybar
     swappy
     swaybg
     slurp
     grim
     wl-clipboard
+    proxychains-ng
     # cli tools
+    exa
     ffmpeg
     unzip
     libnotify
@@ -22,24 +27,19 @@
     ripgrep
     rsync
     imagemagick
-    scrot
     unrar
     tealdeer
     killall
     du-dust
-    tokei
     bandwhich
     grex
     fd
     xh
-    direnv
+    jq
     figlet
     lm_sensors
     # gui apps
-    transmission-gtk
-    pavucontrol
     keepassxc
-    xfce.thunar
     # unfree apps (sorry daddy stallman)
     minecraft
     # dev tools

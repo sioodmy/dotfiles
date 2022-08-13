@@ -7,31 +7,43 @@ in {
   config = mkIf cfg.enable {
     programs.foot = {
       enable = true;
+      server.enable = true;
       settings = {
         main = {
+          term = "xterm-256color";
           font = "monospace:size=14:line-height=16px";
           pad = "30x30";
         };
         colors = {
-          foreground = "cce9ea";
-          background = "040c16";
-          regular0 = "1b2c31";
-          regular1 = "FF7377";
-          regular2 = "AAF0C1";
-          regular3 = "eadd94";
-          regular4 = "bdd6f4";
-          regular5 = "f9ecf7";
-          regular6 = "b3ffff";
-          regular7 = "edf7f8";
+          alpha = "0.90";
+          foreground = "d8dee9";
+          background = "2e3440";
+          regular0 = "3b4252";
+          regular1 = "bf616a";
+          regular2 = "a3be8c";
+          regular3 = "ebcb8b";
+          regular4 = "81a1c1";
+          regular5 = "b48ead";
+          regular6 = "88c0d0";
+          regular7 = "e5e9f0";
 
-          bright0 = "17252A";
-          bright1 = "E6676B";
-          bright2 = "A2E4B8";
-          bright3 = "e2d06a";
-          bright4 = "92bbed";
-          bright5 = "ecc6e8";
-          bright6 = "80ffff";
-          bright7 = "cfebec";
+          bright0 = "4c566a";
+          bright1 = "bf616a";
+          bright2 = "a3be8c";
+          bright3 = "ebcb8b";
+          bright4 = "81a1c1";
+          bright5 = "b48ead";
+          bright6 = "8fbcbb";
+          bright7 = "eceff4";
+
+          dim0 = "373e4d";
+          dim1 = "94545d";
+          dim2 = "809575";
+          dim3 = "b29e75";
+          dim4 = "68809a";
+          dim5 = "8c738c";
+          dim6 = "6d96a5";
+          dim7 = "aeb3bb";
         };
       };
     };

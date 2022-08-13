@@ -30,12 +30,9 @@
     };
 
     nixpkgs-wayland.url = "github:nix-community/nixpkgs-wayland";
-    articblush-gtk.url = "github:articblush/articblush-gtk/flake";
-    discocss.url = "github:mlvzk/discocss/flake";
     nixpkgs-f2k.url = "github:fortuneteller2k/nixpkgs-f2k";
     eww.url = "github:elkowar/eww";
     neovim-nightly-overlay.url = "github:nix-community/neovim-nightly-overlay";
-    st.url = "github:siduck/st";
 
   };
   outputs = inputs@{ self, nixpkgs, home-manager, nur, eww, ... }:
@@ -61,7 +58,6 @@
                 useGlobalPkgs = true;
                 extraSpecialArgs = { inherit inputs; };
                 users.sioodmy = (./. + "/hosts/${hostname}/user.nix");
-                sharedModules = with inputs; [ discocss.hmModule ];
               };
               nixpkgs.overlays = [
                 (final: prev: {

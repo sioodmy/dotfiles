@@ -8,9 +8,8 @@ in {
     gtk = {
       enable = true;
       theme = {
-        name = "Articblush";
-        package = with pkgs;
-          inputs.articblush-gtk.packages."${system}".articblush-gtk;
+        name = "Nordic";
+        package = pkgs.nordic;
       };
       iconTheme = {
         name = "Papirus-Dark";

@@ -2,7 +2,34 @@
 
 with lib;
 
-{
+let
+  dbus-hyprland-environment = pkgs.writeTextFile {
+    name = "dbus-hyprland-environment";
+    destination = "/bin/dbus-hyprland-environment";
+    executable = true;
+
+    text = ''
+      dbus-update-activation-environment --systemd WAYLAND_DISPLAY XDG_CURRENT_DESKTOP=hyprland
+      systemctl --user stop pipewire pipewire-media-session xdg-desktop-portal xdg-desktop-portal-wlr
+      systemctl --user start pipewire pipewire-media-session xdg-desktop-portal xdg-desktop-portal-wlr
+    '';
+  };
+
+  configure-gtk = pkgs.writeTextFile {
+    name = "configure-gtk";
+    destination = "/bin/configure-gtk";
+    executable = true;
+    text = let
+      schema = pkgs.gsettings-desktop-schemas;
+      datadir = "${schema}/share/gesettings/schemas/${schema.name}";
+    in ''
+      export XDG_DATA_DIRS=${datadir}:$XDG_DATA_DIRS
+      gnome_schema=org.gnome.desktop.interface
+      gesettings set $gnome_schema gtk-theme 'Adwaita'
+    '';
+  };
+
+in {
   disabledModules = [ "services/hardware/udev.nix" ];
   imports = [ ./udev.nix ];
   environment = {
@@ -12,30 +39,34 @@ with lib;
       EDITOR = "nvim";
       TERMINAL = "st";
       BROWSER = "brave";
-      SUDO_PROMPT = " Password: ";
+      GBM_BACKEND = "nvidia-drm";
+      __GL_GSYNC_ALLOWED = "0";
+      __GL_VRR_ALLOWED = "0";
+      WLR_DRM_NO_ATOMIC = "1";
+      __GLX_VENDOR_LIBRARY_NAME = "nvidia";
+      QT_QPA_PLATFORM = "wayland";
+      QT_WAYLAND_DISABLE_WINDOWDECORATION = "1";
+      QT_QPA_PLATFORMTHEME = "qt5ct";
+      GDK_BACKEND = "wayland";
+      MOZ_ENABLE_WAYLAND = "1";
+      WLR_BACKEND = "vulkan";
+      WLR_NO_HARDWARE_CURSORS = "1";
+      XDG_SESSION_TYPE = "wayland";
+      CLUTTER_BACKEND = "wayland";
+      WLR_DRM_DEVICES = "/dev/dri/card1:/dev/dri/card0";
     };
     loginShellInit = ''
       dbus-update-activation-environment --systemd DISPLAY
       eval $(ssh-agent)
       eval $(gnome-keyring-daemon --start)
       export GPG_TTY=$TTY
-      export WLR_DRM_DEVICES=/dev/dri/card1:/dev/dri/card0
-      export CLUTTER_BACKEND=wayland
-      export XDG_SESSION_TYPE=wayland
-      export QT_QPA_PLATFORM=wayland
-      export QT_WAYLAND_DISABLE_WINDOWDECORATION=1
-      export MOZ_ENABLE_WAYLAND=1
-      export GBM_BACKEND=nvidia-drm
-      export __GLX_VENDOR_LIBRARY_NAME=nvidia
-      export WLR_NO_HARDWARE_CURSORS=1
-      export WLR_BACKEND=vulkan
     '';
   };
 
   nix = {
     gc = {
       automatic = true;
-      dates = "daily";
+      dates = "weekly";
       options = "--delete-older-than 4d";
     };
     package = pkgs.nixUnstable;
@@ -59,9 +90,25 @@ with lib;
     };
   };
 
+  xdg = {
+    portal = {
+      enable = true;
+      extraPortals = with pkgs; [
+        xdg-desktop-portal-wlr
+        xdg-desktop-portal-gtk
+      ];
+    };
+  };
+
+  services.dbus.enable = true;
+
+  environment.systemPackages = with pkgs; [
+    dbus-hyprland-environment
+    configure-gtk
+  ];
+
   hardware = {
     nvidia = {
-      #      package = pkgs.linuxKernel.packages.linux_zen.nvidia_x11;
       open = true;
       modesetting.enable = true;
     };
@@ -75,7 +122,6 @@ with lib;
   boot = {
     cleanTmpDir = true;
     kernelParams = [
-      "nmi_watchdog=0"
       "pti=on"
       "randomize_kstack_offset=on"
       "vsyscall=none"
@@ -85,15 +131,16 @@ with lib;
       "lockdown=confidentiality"
       "page_poison=1"
       "page_alloc.shuffle=1"
+      "slub_debug=FZP"
       "sysrq_always_enabled=1"
       "rootflags=noatime"
       "iommu=pt"
       "usbcore.autosuspend=-1"
+      "sysrq_always_enabled=1"
       "lsm=landlock,lockdown,yama,apparmor,bpf"
-      "ipv6.disable=1"
+      "loglevel=7"
+      "rd.udev.log_priority=3"
     ];
-    #    kernelPackages = pkgs.linuxPackages_latest;
-    #    kernelPackages = pkgs.linuxPackages_zen;
     consoleLogLevel = 0;
     initrd.verbose = false;
     loader = {
@@ -117,6 +164,7 @@ with lib;
   i18n.defaultLocale = "en_US.UTF-8";
 
   networking = {
+    nameservers = [ "1.1.1.1" "1.0.0.1" ];
     networkmanager = {
       enable = true;
       unmanaged = [ "docker0" "rndis0" ];
@@ -127,14 +175,6 @@ with lib;
       allowedUDPPorts = [ 443 80 44857 ];
       allowPing = false;
       logReversePathDrops = true;
-      extraCommands = ''
-        ip46tables -t raw -I nixos-fw-rpfilter -p udp -m udp --sport 44857 -j RETURN
-        ip46tables -t raw -I nixos-fw-rpfilter -p udp -m udp --dport 44857 -j RETURN
-      '';
-      extraStopCommands = ''
-        ip46tables -t raw -D nixos-fw-rpfilter -p udp -m udp --sport 44857 -j RETURN || true
-        ip46tables -t raw -D nixos-fw-rpfilter -p udp -m udp --dport 44857 -j RETURN || true
-      '';
     };
   };
 
@@ -143,23 +183,33 @@ with lib;
     keyMap = "pl";
   };
 
-  environment.etc."libinput-gestures.conf".text = ''
-    gesture swipe right 3 bspc desktop -f next.local
-    gesture swipe left 3 bspc desktop -f prev.local
-  '';
-
   sound = {
     enable = true;
     mediaKeys.enable = true;
   };
 
-  programs.sway = { enable = true; };
+  programs.xwayland.enable = true;
   programs.hyprland = {
     enable = true;
     package = pkgs.hyprland-nvidia;
   };
 
+  environment.etc."greetd/environments".text = ''
+    Hyprland
+  '';
+
   services = {
+    greetd = {
+      enable = true;
+      settings = rec {
+        initial_session = {
+          command = "Hyprland";
+          user = "sioodmy";
+        };
+        default_session = initial_session;
+      };
+    };
+
     gnome = {
       glib-networking.enable = true;
       gnome-keyring.enable = true;
@@ -177,47 +227,6 @@ with lib;
 
     printing.enable = true;
     fstrim.enable = true;
-
-    xserver = {
-      layout = "pl";
-      xkbOptions = "caps:swapescape";
-      enable = true;
-      enableTCP = false;
-      exportConfiguration = false;
-      desktopManager = {
-        xterm.enable = false;
-        xfce.enable = false;
-      };
-      displayManager = {
-        defaultSession = "hyprland";
-        autoLogin = {
-          enable = true;
-          user = "sioodmy";
-        };
-      };
-
-      windowManager.awesome = {
-        enable = true;
-        package = pkgs.awesome-git;
-      };
-
-      libinput = {
-        enable = true;
-        mouse = {
-          accelProfile = "flat";
-          accelSpeed = "0";
-          middleEmulation = false;
-        };
-
-        touchpad = {
-          disableWhileTyping = true;
-          accelProfile = "flat";
-          accelSpeed = "0.6";
-          naturalScrolling = true;
-          tapping = true;
-        };
-      };
-    };
 
     # enable and secure ssh
     openssh = {
@@ -241,14 +250,15 @@ with lib;
   users.users.sioodmy = {
     isNormalUser = true;
     # Enable ‘sudo’ for the user.
-    extraGroups = [ "wheel" "systemd-journal" ]
-      ++ optionals config.services.xserver.enable [
-        "audio"
-        "video"
-        "input"
-        "lp"
-        "networkmanager"
-      ];
+    extraGroups = [
+      "wheel"
+      "systemd-journal"
+      "audio"
+      "video"
+      "input"
+      "lp"
+      "networkmanager"
+    ];
     uid = 1000;
     shell = pkgs.zsh;
 
@@ -342,6 +352,8 @@ with lib;
   ];
 
   security = {
+    protectKernelImage = true;
+    lockKernelModules = true;
     rtkit.enable = true;
     apparmor = {
       enable = true;
@@ -362,30 +374,27 @@ with lib;
   boot.kernel.sysctl = {
     "kernel.yama.ptrace_scope" = 2;
     "kernel.kptr_restrict" = mkOverride 500 2;
-    "net.core.bpf_jit_enable" = mkDefault false;
-    "kernel.ftrace_enabled" = mkDefault false;
-    "net.ipv4.conf.all.log_martians" = mkDefault true;
-    "net.ipv4.conf.all.rp_filter" = mkDefault "1";
-    "net.ipv4.conf.default.log_martians" = mkDefault true;
-    "net.ipv4.conf.default.rp_filter" = mkDefault "1";
-    "net.ipv4.icmp_echo_ignore_broadcasts" = mkDefault true;
-    "net.ipv4.conf.all.accept_redirects" = mkDefault false;
-    "net.ipv4.conf.all.secure_redirects" = mkDefault false;
-    "net.ipv4.conf.default.accept_redirects" = mkDefault false;
-    "net.ipv4.conf.default.secure_redirects" = mkDefault false;
-    "net.ipv6.conf.all.accept_redirects" = mkDefault false;
-    "net.ipv6.conf.default.accept_redirects" = mkDefault false;
-    "net.ipv4.conf.all.send_redirects" = mkDefault false;
-    "net.ipv4.conf.default.send_redirects" = mkDefault false;
+    "net.core.bpf_jit_enable" = false;
+    "kernel.ftrace_enabled" = false;
+    "net.ipv4.conf.all.log_martians" = true;
+    "net.ipv4.conf.all.rp_filter" = "1";
+    "net.ipv4.conf.default.log_martians" = true;
+    "net.ipv4.conf.default.rp_filter" = "1";
+    "net.ipv4.icmp_echo_ignore_broadcasts" = true;
+    "net.ipv4.conf.all.accept_redirects" = false;
+    "net.ipv4.conf.all.secure_redirects" = false;
+    "net.ipv4.conf.default.accept_redirects" = false;
+    "net.ipv4.conf.default.secure_redirects" = false;
+    "net.ipv6.conf.all.accept_redirects" = false;
+    "net.ipv6.conf.default.accept_redirects" = false;
+    "net.ipv4.conf.all.send_redirects" = false;
+    "net.ipv4.conf.default.send_redirects" = false;
     "net.ipv6.conf.default.accept_ra" = 0;
     "net.ipv6.conf.all.accept_ra" = 0;
     "net.ipv4.tcp_syncookies" = 1;
     "net.ipv4.tcp_timestamps" = 0;
     "net.ipv4.tcp_rfc1337" = 1;
   };
-
-  security.protectKernelImage = true;
-  security.lockKernelModules = true;
 
   system.stateVersion = "22.05"; # DONT TOUCH THIS
 }

@@ -1,8 +1,8 @@
 { config, lib, pkgs, ... }:
 with lib;
-let cfg = config.modules.services.shell;
+let cfg = config.modules.programs.shell;
 in {
-  options.modules.services.shell = { enable = mkEnableOption "shell"; };
+  options.modules.programs.shell = { enable = mkEnableOption "shell"; };
 
   config = mkIf cfg.enable {
     programs.zoxide = {
