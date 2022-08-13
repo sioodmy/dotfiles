@@ -1,12 +1,6 @@
 { pkgs, lib, config, fetchzip, inputs, ... }:
 with lib;
-let
-  cfg = config.modules.desktop.swaylock;
-  mkService = lib.recursiveUpdate {
-    Unit.PartOf = [ "graphical-session.target" ];
-    Unit.After = [ "graphical-session.target" ];
-    Install.WantedBy = [ "awesome-session.target" ];
-  };
+let cfg = config.modules.desktop.swaylock;
 in {
   options.modules.desktop.swaylock = { enable = mkEnableOption "swaylock"; };
 
@@ -16,30 +10,30 @@ in {
     programs.swaylock = {
       settings = {
         clock = true;
-        color = "040c16";
+        color = "2e3440";
         show-failed-attempts = true;
         indicator = true;
         indicator-radius = 200;
         indicator-thickness = 20;
-        line-color = "040c16";
-        ring-color = "17252A";
-        inside-color = "040c16";
-        key-hl-color = "92bbed";
+        line-color = "2e3440";
+        ring-color = "434c5e";
+        inside-color = "3b4252";
+        key-hl-color = "5e81ac";
         separator-color = "00000000";
-        text-color = "cce9ea";
-        text-caps-lock-color = "e2d06a";
-        line-ver-color = "040c16";
-        ring-ver-color = "17252A";
-        inside-ver-color = "040c16";
-        text-ver-color = "cce9ea";
-        ring-wrong-color = "E6676B";
+        text-color = "d8dee9";
+        text-caps-lock-color = "";
+        line-ver-color = "2e3440";
+        ring-ver-color = "81a1c1";
+        inside-ver-color = "2e3440";
+        text-ver-color = "d8dee9";
+        ring-wrong-color = "bf616a";
         text-wrong-color = "cce9ea";
-        inside-wrong-color = "040c16";
-        inside-clear-color = "040c16";
-        text-clear-color = "cce9ea";
-        ring-clear-color = "A2E4B8";
-        bs-hl-color = "e6676b";
-        line-uses-ring = true;
+        inside-wrong-color = "3b4252";
+        inside-clear-color = "3b4252";
+        text-clear-color = "d8dee9";
+        ring-clear-color = "a3be8c";
+        bs-hl-color = "bf616a";
+        line-uses-ring = false;
         grace = 2;
         datestr = "%d.%m";
         fade-in = "0.1";

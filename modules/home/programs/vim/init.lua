@@ -3,16 +3,6 @@ local g = vim.g
 
 require("impatient")
 
--- Colorscheme
-require("articblush").setup({
-	italics = {
-		code = true,
-		comments = true,
-	},
-	nvim_tree = {
-		contrast = true,
-	},
-})
 -- Autocmds
 vim.cmd([[
 augroup CursorLine
@@ -143,58 +133,142 @@ null_ls.builtins.formatting.rustfmt.with({
 	extra_args = { "--edition=2021" },
 })
 
-require("mini.comment").setup({
-	mappings = {
-		comment = "gc",
-		comment_line = "gcc",
-		textobject = "gc",
+local cmp = require("cmp")
+local lspkind = require("lspkind")
+
+local servers = {
+	"pyright",
+	"rnix",
+	"rust_analyzer",
+	"tsserver",
+	"gopls",
+	"ccls",
+	"bashls",
+	"cmake",
+	"html",
+	"cssls",
+	"dartls",
+}
+
+local capabilities = require("cmp_nvim_lsp").update_capabilities(vim.lsp.protocol.make_client_capabilities())
+
+for _, lsp in pairs(servers) do
+	require("lspconfig")[lsp].setup({
+		on_attach = on_attach,
+		capabilities = capabilities,
+		flags = {
+			-- This will be the default in neovim 0.7+
+			debounce_text_changes = 200,
+		},
+	})
+end
+
+cmp.setup({
+	formatting = {
+		format = lspkind.cmp_format({
+			with_text = false,
+		}),
 	},
-	hooks = {
-		pre = function() end,
-		post = function() end,
+	window = {
+		documentation = cmp.config.window.bordered(),
+	},
+	mapping = {
+		["<C-b>"] = cmp.mapping(cmp.mapping.scroll_docs(-4), { "i", "c" }),
+		["<C-f>"] = cmp.mapping(cmp.mapping.scroll_docs(4), { "i", "c" }),
+		["<C-Space>"] = cmp.mapping(cmp.mapping.complete(), { "i", "c" }),
+		["<C-y>"] = cmp.config.disable, -- Specify `cmp.config.disable` if you want to remove the default `<C-y>` mapping.
+		["<C-e>"] = cmp.mapping({
+			i = cmp.mapping.abort(),
+			c = cmp.mapping.close(),
+		}),
+		["<CR>"] = cmp.mapping.confirm({ select = true }), -- Accept currently selected item. Set `select` to `false` to only confirm explicitly selected items.
+		["<Tab>"] = cmp.mapping(function(fallback)
+			if cmp.visible() then
+				cmp.select_next_item()
+			else
+				fallback()
+			end
+		end, { "i", "s" }),
+
+		["<S-Tab>"] = cmp.mapping(function(fallback)
+			if cmp.visible() then
+				cmp.select_prev_item()
+			else
+				fallback()
+			end
+		end, { "i", "s" }),
+	},
+	sources = cmp.config.sources({
+		{ name = "nvim_lsp" },
+		{ name = "buffer" },
+		{ name = "path" },
+	}),
+})
+
+-- Use buffer source for `/` (if you enabled `native_menu`, this won't work anymore).
+cmp.setup.cmdline("/", {
+	sources = {
+		{ name = "buffer" },
 	},
 })
 
-require("mini.pairs").setup({
-	-- In which modes mappings from this `config` should be created
-	modes = { insert = true, command = false, terminal = false },
+-- Use cmdline & path source for ':' (if you enabled `native_menu`, this won't work anymore).
+cmp.setup.cmdline(":", {
+	sources = cmp.config.sources({
+		{ name = "path" },
+	}, {
+		{ name = "cmdline" },
+	}),
+})
 
-	-- Global mappings. Each right hand side should be a pair information, a
-	-- table with at least these fields (see more in |MiniPairs.map|):
-	-- - <action> - one of 'open', 'close', 'closeopen'.
-	-- - <pair> - two character string for pair to be used.
-	-- By default pair is not inserted after `\`, quotes are not recognized by
-	-- `<CR>`, `'` does not insert pair after a letter.
-	-- Only parts of tables can be tweaked (others will use these defaults).
-	mappings = {
-		["("] = { action = "open", pair = "()", neigh_pattern = "[^\\]." },
-		["["] = { action = "open", pair = "[]", neigh_pattern = "[^\\]." },
-		["{"] = { action = "open", pair = "{}", neigh_pattern = "[^\\]." },
+vim.g.nord_contrast = true
+vim.g.nord_borders = false
+vim.g.nord_disable_background = true
+vim.g.nord_italic = true
+vim.g.nord_uniform_diff_background = true
 
-		[")"] = { action = "close", pair = "()", neigh_pattern = "[^\\]." },
-		["]"] = { action = "close", pair = "[]", neigh_pattern = "[^\\]." },
-		["}"] = { action = "close", pair = "{}", neigh_pattern = "[^\\]." },
+local alpha = require("alpha")
+local dashboard = require("alpha.themes.dashboard")
 
-		['"'] = { action = "closeopen", pair = '""', neigh_pattern = "[^\\].", register = { cr = false } },
-		["'"] = { action = "closeopen", pair = "''", neigh_pattern = "[^%a\\].", register = { cr = false } },
-		["`"] = { action = "closeopen", pair = "``", neigh_pattern = "[^\\].", register = { cr = false } },
+dashboard.section.header.val = {
+	"⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⣀⣤⣶⣶⣿⣿⣿⣿⣶⣶⣤⣄⡀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀",
+	"⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⣠⣴⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣶⣄⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀",
+	"⠀⠀⠀⠀⠀⠀⠀⠀⢀⣾⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣷⡀⠀⠀⠀⠀⠀⠀⠀⠀",
+	"⠀⠀⠀⠀⠀⠀⠀⢠⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⡄⠀⠀⠀⠀⠀⠀⠀",
+	"⠀⠀⠀⠀⠀⠀⠀⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⡀⠀⠀⠀⠀⠀ ",
+	"⠀⠀⠀⠀⠀⠀⢸⣿⣿⣿⡿⠿⠛⠻⠿⣿⣿⣿⣿⣿⣿⣿⣿⠿⠟⠛⠿⢿⣿⣿⣿⡇⠀⠀⠀⠀⠀ ",
+	"⠀⠀⠀⠀⠀⠀⢸⣿⣿⠏⣠⣤⡄⣠⣤⡌⢿⣿⣿⣿⣿⡿⢁⣤⣄⢀⣤⣄⠹⣿⣿⡇⠀⠀⠀⠀⠀ ",
+	"⠀⠀⠀⠀⠀⠀⠸⣿⣿⠀⢿⣿⣿⣿⣿⡟⢸⣿⣿⣿⣿⡇⠸⣿⣿⣿⣿⡿⠀⣿⣿⠇⠀⠀⠀⠀⠀ ",
+	"⠀⠀⠀⠀⠀⠀⠀⢻⣿⣆⠀⠙⠿⠟⠋⢀⣾⣿⣿⣿⣿⣷⡀⠈⠻⡿⠋⠁⣰⣿⡟⠀⠀⠀⠀⠀⠀⠀",
+	"⠀⠀⠀⠀⠀⠀⠀⢸⣿⣿⣿⣶⣶⣶⣾⣿⣿⡿⠋⠙⢿⣿⣿⣷⣶⣶⣶⣿⣿⣿⡇⠀⠀⠀⠀⠀⠀⠀",
+	"⠀⠀⠀⠀⠀⠀⠀⠸⣿⣿⣿⣿⣿⣿⣿⣿⣿⢁⣴⣧⡀⣿⣿⣿⣿⣿⣿⣿⣿⣿⠇⠀⠀⠀⠀⠀⠀⠀",
+	"⠀⠀⠀⠀⠀⠀⠀⠀⠙⠿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⠿⠋⠀⠀⠀⠀⠀⠀⠀⠀",
+	"⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀",
+	"⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠘⠛⠙⠛⠙⠛⠛⠋⠛⠋⠛⠋⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀",
+}
+
+dashboard.section.buttons.val = {
+	dashboard.button("e", "  New File    ", ":enew<CR>"),
+	dashboard.button("f", "  Find File   ", ":Telescope find_files<CR>"),
+	dashboard.button("t", "  Find Text   ", ":Telescope live_grep<CR>"),
+	dashboard.button("q", "  Quit        ", ":qa<CR>"),
+}
+
+local datetime = os.date(" %d-%m-%Y   %H:%M")
+
+dashboard.section.footer.val = {
+	datetime,
+}
+
+alpha.setup(dashboard.opts)
+
+-- Load the colorscheme
+require("nord").set()
+
+require("lualine").setup({
+	options = {
+		disabled_filetypes = { "alpha", "dashboard", "Outline" },
 	},
 })
 
-local starter = require("mini.starter")
-starter.setup({
-	items = {
-		starter.sections.telescope(),
-		starter.sections.recent_files(10, false),
-		starter.sections.sessions(5, true),
-	},
-	content_hooks = {
-		starter.gen_hook.adding_bullet(),
-		starter.gen_hook.aligning("center", "center"),
-	},
-	footer = "coding is hard",
-})
-
-require("lualine").setup()
-require("mini.completion").setup({})
-require("mini.tabline").setup({})
+require("toggleterm").setup()

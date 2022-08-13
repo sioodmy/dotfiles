@@ -1,31 +1,38 @@
-{ pkgs, lib, config, ... }:
+{ pkgs, lib, config, inputs, ... }:
 
 with lib;
-let
-  cfg = config.modules.programs.minivim;
-  articblush-nvim = pkgs.vimUtils.buildVimPlugin {
-    name = "articblush-nvim";
-    src = pkgs.fetchFromGitHub {
-      owner = "articblush";
-      repo = "articblush.nvim";
-      rev = "4b80e05518fcfb7897ddc7fb50dc3b4603c6a27e";
-      sha256 = "rmUriyzsltVEtvH1R65WkPR3RSeXr+vruFodN5ZBxV4=";
-    };
-  };
-
+let cfg = config.modules.programs.vim;
 in {
-  options.modules.programs.minivim = { enable = mkEnableOption "minivim"; };
+  options.modules.programs.vim = { enable = mkEnableOption "vim"; };
 
   config = mkIf cfg.enable {
     home.file.".config/nvim/settings.lua".source = ./init.lua;
 
     home.packages = with pkgs; [
       rnix-lsp
-      nixfmt # Nix
       sumneko-lua-language-server
       stylua # Lua
       uncrustify
       shellcheck
+      rust-analyzer
+      rustfmt
+      nixfmt # Nix
+      gopls # go
+      asmfmt
+      ccls # cpp
+      black # python
+      shellcheck # bash
+      shfmt
+      nodePackages.pyright
+      nodePackages.prettier
+      nodePackages.jsonlint # JSON
+      nodePackages.typescript
+      nodePackages.typescript-language-server # Typescript
+      nodePackages.vscode-langservers-extracted # HTML, CSS, JavaScript
+      nodePackages.yarn
+      nodePackages.bash-language-server
+      nodePackages.node2nix # Bash
+
     ];
 
     programs.neovim = {
@@ -34,24 +41,24 @@ in {
       plugins = with pkgs.vimPlugins; [
         vim-nix
         null-ls-nvim
-        mini-nvim
+        neorg
+        nvim-colorizer-lua
         telescope-nvim
+        vim-commentary
         lualine-nvim
         impatient-nvim
-        articblush-nvim
         indent-blankline-nvim
-        {
-          plugin = nvim-lspconfig;
-          config = ''
-            lua << EOF
-            require('lspconfig').rust_analyzer.setup{}
-            require('lspconfig').sumneko_lua.setup{}
-            require('lspconfig').rnix.setup{}
-            require('lspconfig').zk.setup{}
-            EOF
-          '';
-        }
-
+        nvim-cmp
+        cmp-nvim-lsp
+        cmp-buffer
+        cmp-path
+        nord-nvim
+        lspkind-nvim
+        nvim-lspconfig
+        bufferline-nvim
+        alpha-nvim
+        toggleterm-nvim
+        vim-sayonara
       ];
       extraConfig = ''
         luafile ~/.config/nvim/settings.lua

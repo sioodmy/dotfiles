@@ -1,8 +1,8 @@
 { pkgs, lib, config, ... }:
 with lib;
-let cfg = config.modules.cli.tools;
+let cfg = config.modules.programs.tools;
 in {
-  options.modules.cli.tools = { enable = mkEnableOption "tools"; };
+  options.modules.programs.tools = { enable = mkEnableOption "programs"; };
 
   config = mkIf cfg.enable {
     programs.gpg = { enable = true; };
@@ -14,7 +14,7 @@ in {
 
     programs.bat = {
       enable = true;
-      config.theme = "nord";
+      config.theme = "Nord";
     };
 
     xdg = {
@@ -28,11 +28,6 @@ in {
         desktop = "$HOME/other";
         publicShare = "$HOME/other";
         templates = "$HOME/other";
-      };
-      mimeApps = {
-        enable = true;
-        associations.added = defaults;
-        defaultApplications = defaults;
       };
     };
 
