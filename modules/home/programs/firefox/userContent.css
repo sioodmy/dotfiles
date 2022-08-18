@@ -1,0 +1,49 @@
+  @-moz-document url("about:home"),url(about:preferences),url("about:blank"),url("about:newtab"),url("about:privatebrowsing"){
+  body{background-color:#2E3440!important;--newtab-search-icon: transparent !important;}
+  a,a:visited,a:hover{color:#2E3440!important}
+	#newtab-search-text {
+	background-color: #2E3440 !important;
+	font-size: 18px !important;
+	color: #88C0D0 !important;
+	box-shadow: none !important;
+	text-align: center !important;
+	border:none !important;
+	font-weight: bold !important;
+		}
+
+.search-wrapper input {
+    --newtab-textbox-focus-boxshadow: none !important;
+    padding-left: 20px !important;
+   	padding-inline-end: 13px !important;
+  }
+  
+
+.search-wrapper .logo-and-wordmark .wordmark {
+  display: none!important;
+}
+
+.search-wrapper .logo-and-wordmark {
+  margin-bottom: 40px!important;
+  padding-top: 60px!important;
+  opacity:0.5!important;
+}
+
+
+
+.search-button{background:none !important;}
+
+.prefs-button button {fill: #88C0D0 !important;}
+  
+.prefs-button button:hover, .prefs-button button:focus {
+    background-color:  transparent !important; }	
+ 
+ .contentSearchSuggestionTable {display: none !important;}
+ 
+
+}
+:root {
+	
+    --in-content-border-active: #88C0D0 !important;
+    --in-content-border-active-shadow: none !important;
+    --in-content-page-background: #2E3440 !important;
+}
