@@ -3,18 +3,6 @@
 with lib;
 
 let
-  dbus-hyprland-environment = pkgs.writeTextFile {
-    name = "dbus-hyprland-environment";
-    destination = "/bin/dbus-hyprland-environment";
-    executable = true;
-
-    text = ''
-      dbus-update-activation-environment --systemd WAYLAND_DISPLAY XDG_CURRENT_DESKTOP=hyprland
-      systemctl --user stop pipewire pipewire-media-session xdg-desktop-portal xdg-desktop-portal-wlr
-      systemctl --user start pipewire pipewire-media-session xdg-desktop-portal xdg-desktop-portal-wlr
-    '';
-  };
-
   configure-gtk = pkgs.writeTextFile {
     name = "configure-gtk";
     destination = "/bin/configure-gtk";
@@ -42,6 +30,9 @@ in {
       GBM_BACKEND = "nvidia-drm";
       __GL_GSYNC_ALLOWED = "0";
       __GL_VRR_ALLOWED = "0";
+      DISABLE_QT5_COMPAT = "0";
+      ANKI_WAYLAND = "1";
+      DIRENV_LOG_FORMAT = "";
       WLR_DRM_NO_ATOMIC = "1";
       __GLX_VENDOR_LIBRARY_NAME = "nvidia";
       QT_QPA_PLATFORM = "wayland";
@@ -72,6 +63,8 @@ in {
     package = pkgs.nixUnstable;
     extraOptions = ''
       experimental-features = nix-command flakes
+      keep-outputs = true
+      keep-derivations = true
     '';
     settings = {
       auto-optimise-store = true;
@@ -90,21 +83,28 @@ in {
     };
   };
 
-  xdg = {
-    portal = {
+  xdg.portal = {
+    enable = true;
+    extraPortals = [
+      (pkgs.xdg-desktop-portal-gtk.override { buildPortalsInGnome = false; })
+    ];
+    wlr = {
       enable = true;
-      extraPortals = with pkgs; [
-        xdg-desktop-portal-wlr
-        xdg-desktop-portal-gtk
-      ];
+      settings.screencast = {
+        chooser_type = "simple";
+        chooser_cmd = "${pkgs.slurp}/bin/slurp -f %o -or";
+      };
     };
   };
 
   services.dbus.enable = true;
+  services.dbus.packages = with pkgs; [ dconf ];
+  services.udev.packages = with pkgs; [ gnome.gnome-settings-daemon ];
 
   environment.systemPackages = with pkgs; [
-    dbus-hyprland-environment
+    gnome.adwaita-icon-theme
     configure-gtk
+    cryptsetup
   ];
 
   hardware = {
@@ -151,6 +151,7 @@ in {
         enable = true;
         useOSProber = true;
         efiSupport = true;
+        enableCryptodisk = true;
         device = "nodev";
         theme = null;
         backgroundColor = null;
@@ -227,6 +228,11 @@ in {
 
     printing.enable = true;
     fstrim.enable = true;
+
+    tor = {
+      enable = true;
+      torsocks.enable = true;
+    };
 
     # enable and secure ssh
     openssh = {

@@ -1,16 +1,16 @@
 { config, lib, pkgs, ... }:
 with lib;
-let cfg = config.modules.services.mako;
+let cfg = config.modules.programs.mako;
 in {
-  options.modules.services.mako = { enable = mkEnableOption "mako"; };
+  options.modules.programs.mako = { enable = mkEnableOption "mako"; };
 
   config = mkIf cfg.enable {
     programs.mako = {
       enable = true;
 
-      backgroundColor = "#040c16";
-      textColor = "#cce9ea";
-      borderColor = "#92bbed";
+      backgroundColor = "#3b4252";
+      textColor = "#d8dee9";
+      borderColor = "#434c5e";
       padding = "15";
       defaultTimeout = 7000;
       borderSize = 3;
@@ -20,8 +20,9 @@ in {
 
       extraConfig = ''
         [urgency=high]
-        border-color=#E6676B
+        border-color=#bf616a
       '';
+
     };
   };
 }
