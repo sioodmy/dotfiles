@@ -15,6 +15,7 @@
     ./programs/vim
     ./programs/wofi
     ./programs/foot
+    ./programs/firefox
     ./programs/zathura
     ./programs/mpv
     ./programs/mako

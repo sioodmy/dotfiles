@@ -9,8 +9,10 @@
       swaylock.enable = true;
     };
     programs = {
+      firefox.enable = true;
       foot.enable = true;
-      zathura.enable = true;
+      mako.enable = true;
+      zathura.enable = false;
       wofi.enable = true;
       mpv.enable = true;
       vim.enable = true;

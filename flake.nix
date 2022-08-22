@@ -29,6 +29,10 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
+    waybar = {
+      url = "github:Alexays/Waybar";
+      flake = false;
+    };
     nixpkgs-wayland.url = "github:nix-community/nixpkgs-wayland";
     nixpkgs-f2k.url = "github:fortuneteller2k/nixpkgs-f2k";
     eww.url = "github:elkowar/eww";
@@ -75,6 +79,7 @@
                 })
                 (self: super: {
                   waybar = super.waybar.overrideAttrs (oldAttrs: {
+                    src = inputs.waybar;
                     mesonFlags = oldAttrs.mesonFlags
                       ++ [ "-Dexperimental=true" ];
                     patchPhase = ''

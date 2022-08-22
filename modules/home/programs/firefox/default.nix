@@ -7,20 +7,10 @@ in {
   config = mkIf cfg.enable {
     programs.firefox = {
       enable = true;
-
       package = with pkgs;
-        wrapFirefox firefox-esr-unwrapped {
+        wrapFirefox firefox-esr-102-unwrapped {
           forceWayland = true;
-
-          # credits to https://github.com/elohmeier/frix/blob/6fc1d2befdf5d365c21a462dad840d132d3ad5da/2configs/plasma-desktop/home-manager.nix
-
           nixExtensions = [
-            (pkgs.fetchFirefoxAddon {
-              name = "cookie-autodelete";
-              url =
-                "https://addons.mozilla.org/firefox/downloads/file/3711829/cookie_autodelete-3.6.0-an+fx.xpi";
-              sha256 = "sha256-+DZG1C9HbIY4QWT9SGj6nFt0UkkfHzfU4hnD+zxCHe8=";
-            })
             (pkgs.fetchFirefoxAddon {
               name = "ublock-origin";
               url =
@@ -45,6 +35,24 @@ in {
                 "https://addons.mozilla.org/firefox/downloads/file/3987382/ether_metamask-10.18.3.xpi";
               sha256 = "TS472KTMNbY2iWV5G+UA5GChMxEsiCoipab6nGzmh4I=";
             })
+            (pkgs.fetchFirefoxAddon {
+              name = "nord123";
+              url =
+                "https://addons.mozilla.org/firefox/downloads/file/3692469/nord123-1.1.xpi";
+              sha256 = "CAFrUxw8Y7Mg8GXxFb0yalaFahxOPLRC1NFMmYzNcBI=";
+            })
+            (pkgs.fetchFirefoxAddon {
+              name = "clearurls";
+              url =
+                "https://addons.mozilla.org/firefox/downloads/file/3980848/clearurls-1.25.0.xpi";
+              sha256 = "lr+DCSgwo0Qnrk8QXc4EIsMG2dlWacDJP05VgEmTQ1w=";
+            })
+            (pkgs.fetchFirefoxAddon {
+              name = "vimium";
+              url =
+                "https://addons.mozilla.org/firefox/downloads/file/3898202/vimium_ff-1.67.1.xpi";
+              sha256 = "EnQIAnSOer/48TAUyEXbGCtSZvKA4vniL64K+CeJ/m0=";
+            })
           ];
 
           # see https://github.com/mozilla/policy-templates/blob/master/README.md
@@ -65,6 +73,58 @@ in {
               ExtensionRecommendations = false;
               SkipOnboarding = true;
             };
+            Preferences = {
+              "browser.newtab.extensionControlled" = false;
+              "browser.newtabpage.activity-stream.feeds.topsites" = false;
+              "browser.newtabpage.activity-stream.showSponsoredTopSites" =
+                false;
+            };
+            ExtensionSettings = {
+              # @ytb  -->  YouTube
+              # @bili  -->  BiliBili
+              # @gh  -->  GitHub
+              # @nix  -->  Nix Package
+              # @ghnix  -->  Nix Code in Github
+              "github@search" = {
+                installation_mode = "force_installed";
+                install_url =
+                  "https://raw.githubusercontent.com/mlyxshi/FFExtension/main/github-search.xpi";
+              };
+
+              "youtube@search" = {
+                installation_mode = "force_installed";
+                install_url =
+                  "https://raw.githubusercontent.com/mlyxshi/FFExtension/main/youtube-search.xpi";
+              };
+
+              "nix.package@search" = {
+                installation_mode = "force_installed";
+                install_url =
+                  "https://raw.githubusercontent.com/mlyxshi/FFExtension/main/nix-search.xpi";
+              };
+
+              "github.nix@search" = {
+                installation_mode = "force_installed";
+                install_url =
+                  "https://raw.githubusercontent.com/mlyxshi/FFExtension/main/github-nix.xpi";
+              };
+
+              # Uninstall all build-in search shortcuts except google <-- my default search engine
+
+              "ebay@search.mozilla.org" = { installation_mode = "blocked"; };
+
+              "amazondotcom@search.mozilla.org" = {
+                installation_mode = "blocked";
+              };
+
+              "bing@search.mozilla.org" = { installation_mode = "blocked"; };
+
+              "ddg@search.mozilla.org" = { installation_mode = "blocked"; };
+
+              "wikipedia@search.mozilla.org" = {
+                installation_mode = "blocked";
+              };
+            };
           };
 
           extraPrefs = ''
@@ -73,15 +133,12 @@ in {
           '';
         };
 
-      profiles.default = {
+      profiles.privacy = {
         settings = {
           "browser.send_pings" = false;
           "browser.urlbar.speculativeConnect.enabled" = false;
-          "dom.event.clipboardevents.enabled" = true;
           "media.navigator.enabled" = false;
-          "network.cookie.cookieBehavior" = 1;
-          "network.http.referer.XOriginPolicy" = 2;
-          "network.http.referer.XOriginTrimmingPolicy" = 2;
+          "network.http.referer.XOriginPolicy" = 0;
           "beacon.enabled" = false;
           "browser.safebrowsing.downloads.remote.enabled" = false;
           "network.IDN_show_punycode" = true;
@@ -97,6 +154,14 @@ in {
           "browser.ping-centre.telemetry" = false;
           "browser.tabs.crashReporting.sendReport" = false;
           "devtools.onboarding.telemetry.logged" = false;
+          "privacy.resistFingerprinting" = false;
+          "dom.event.clipboardevents.enabled" = false;
+          "dom.battery.enabled" = false;
+          "privacy.resistFingerprinting.letterboxing" = true;
+          "general.useragent.override" =
+            "Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:103.0) Gecko/20100101 Firefox/103.0";
+          "privacy.window.maxInnerWidth" = 1800;
+          "privacy.window.maxInnerHeight" = 900;
           "toolkit.telemetry.enabled" = false;
           "toolkit.telemetry.unified" = false;
           "toolkit.telemetry.server" = "";
@@ -123,6 +188,12 @@ in {
           # Extra
           "identity.fxaccounts.enabled" = false;
           "browser.search.suggest.enabled" = false;
+          "privacy.trackingprotection.fingerprinting.enabled" = true;
+          "privacy.trackingprotection.cryptomining.enabled" = true;
+          "privacy.trackingprotection.enabled" = true;
+          "privacy.clearOnShutdown.history" = true;
+          "privacy.clearOnShutdown.formdata" = true;
+          "privacy.clearOnShutdown.downloads" = true;
           "browser.urlbar.shortcuts.bookmarks" = false;
           "browser.urlbar.shortcuts.history" = false;
           "browser.urlbar.shortcuts.tabs" = false;
@@ -135,10 +206,33 @@ in {
           "media.autoplay.enabled" = false;
           "toolkit.zoomManager.zoomValues" = ".8,.90,.95,1,1.1,1.2";
 
-          "privacy.firstparty.isolate" = true;
-          "network.http.sendRefererHeader" = 0;
+          "general.smoothScroll.lines.durationMaxMS" = 125;
+          "general.smoothScroll.lines.durationMinMS" = 125;
+          "general.smoothScroll.mouseWheel.durationMaxMS" = 200;
+          "general.smoothScroll.mouseWheel.durationMinMS" = 100;
+          "general.smoothScroll.other.durationMaxMS" = 125;
+          "general.smoothScroll.other.durationMinMS" = 125;
+          "general.smoothScroll.pages.durationMaxMS" = 125;
+          "general.smoothScroll.pages.durationMinMS" = 125;
+          "mousewheel.system_scroll_override_on_root_content.horizontal.factor" =
+            175;
+          "mousewheel.system_scroll_override_on_root_content.vertical.factor" =
+            175;
+          "toolkit.scrollbox.horizontalScrollDistance" = 6;
+          "toolkit.scrollbox.verticalScrollDistance" = 2;
+          "ui.key.menuAccessKeyFocuses" = false;
+
+          "webgl.disabled" = true;
+          "security.dialog_enable_delay" = 1000;
+          "privacy.firstparty.isolate" = false;
+          "security.tls.version.enable-deprecated" = false;
         };
-        userChrome = builtins.readFile ./userChrome.css;
+        isDefault = true;
+        userChrome = ''
+          #webrtcIndicator {
+            display: none;
+          }
+        '';
       };
     };
   };

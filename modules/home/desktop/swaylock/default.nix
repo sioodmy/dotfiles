@@ -35,10 +35,36 @@ in {
         bs-hl-color = "bf616a";
         line-uses-ring = false;
         grace = 2;
+        grace-no-mouse = true;
+        grace-no-touch = true;
         datestr = "%d.%m";
         fade-in = "0.1";
       };
     };
 
+    services.swayidle = {
+      enable = true;
+      events = [
+        {
+          event = "before-sleep";
+          command = "swaylock";
+        }
+        {
+          event = "lock";
+          command = "swaylock";
+        }
+      ];
+      timeouts = [
+        {
+          timeout = 300;
+          command = "hyprctl dispatch dpms off";
+          resumeCommand = "hyprctl dispatch dpms on";
+        }
+        {
+          timeout = 310;
+          command = "loginctl lock-session";
+        }
+      ];
+    };
   };
 }

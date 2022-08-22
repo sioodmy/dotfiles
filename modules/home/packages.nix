@@ -6,15 +6,19 @@
     inputs.eww.packages."${system}".eww-wayland
     wf-recorder
     pfetch
-    firefox-bin
+    nordzy-icon-theme
+    bottom
     wofi
     imv
     hyperfine
     waybar
     swappy
+    gimp
+    kdenlive
     swaybg
     slurp
     grim
+    pngquant
     wl-clipboard
     proxychains-ng
     # cli tools

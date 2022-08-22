@@ -5,6 +5,7 @@ in {
   options.modules.desktop.gtk = { enable = mkEnableOption "gtk"; };
 
   config = mkIf cfg.enable {
+
     gtk = {
       enable = true;
       theme = {
