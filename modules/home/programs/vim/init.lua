@@ -271,4 +271,10 @@ require("lualine").setup({
 	},
 })
 
+require("nvim-tree").setup()
 require("toggleterm").setup()
+require("nvim-treesitter.configs").setup({
+	ensure_installed = { "c", "lua", "rust", "python", "bash", "nix", "html", "javascript" },
+	sync_install = false,
+	auto_install = false,
+})

@@ -49,6 +49,7 @@ in {
         impatient-nvim
         indent-blankline-nvim
         nvim-cmp
+        nvim-tree-lua
         cmp-nvim-lsp
         cmp-buffer
         cmp-path
@@ -59,6 +60,7 @@ in {
         alpha-nvim
         toggleterm-nvim
         vim-sayonara
+        (nvim-treesitter.withPlugins (plugins: pkgs.tree-sitter.allGrammars))
       ];
       extraConfig = ''
         luafile ~/.config/nvim/settings.lua
