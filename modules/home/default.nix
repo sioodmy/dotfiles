@@ -13,6 +13,7 @@
     ./desktop/hyprland
 
     ./programs/vim
+    ./programs/tmux
     ./programs/wofi
     ./programs/foot
     ./programs/firefox

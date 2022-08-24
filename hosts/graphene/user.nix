@@ -12,6 +12,7 @@
       firefox.enable = true;
       foot.enable = true;
       mako.enable = true;
+      tmux.enable = true;
       zathura.enable = false;
       wofi.enable = true;
       mpv.enable = true;
