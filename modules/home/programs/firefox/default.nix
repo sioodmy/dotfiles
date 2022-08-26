@@ -53,6 +53,36 @@ in {
                 "https://addons.mozilla.org/firefox/downloads/file/3898202/vimium_ff-1.67.1.xpi";
               sha256 = "EnQIAnSOer/48TAUyEXbGCtSZvKA4vniL64K+CeJ/m0=";
             })
+            (pkgs.fetchFirefoxAddon {
+              name = "save-webp-as-png-or-jpeg";
+              url =
+                "https://addons.mozilla.org/firefox/downloads/file/3919488/save_webp_as_png_or_jpeg-1.2.xpi";
+              sha256 = "UO5Br7PQjPViAWjZsjcxih7W408/KfJsVBwVcKakmtI=";
+            })
+            (pkgs.fetchFirefoxAddon {
+              name = "single-file";
+              url =
+                "https://addons.mozilla.org/firefox/downloads/file/3990955/single_file-1.21.21.xpi";
+              sha256 = "aLgfonqihTWGPUEhHa93tvnEcrdA3d0s7FRhugX2obE=";
+            })
+            (pkgs.fetchFirefoxAddon {
+              name = "h264ify";
+              url =
+                "https://addons.mozilla.org/firefox/downloads/file/3398929/h264ify-1.1.0.xpi";
+              sha256 = "h708SrGiNZwBodhU19uEKLRDFv71sqwJ4ijFMYxXpRU=";
+            })
+            (pkgs.fetchFirefoxAddon {
+              name = "copy-plaintext";
+              url =
+                "https://addons.mozilla.org/firefox/downloads/file/3854095/copy_plaintext-1.13.xpi";
+              sha256 = "6cRs2Y41r2iZNJ2Mkvy6FtL/bcMbqLDiETyfRe25eJY=";
+            })
+            (pkgs.fetchFirefoxAddon {
+              name = "fastforwardteam";
+              url =
+                "https://addons.mozilla.org/firefox/downloads/file/3976538/fastforwardteam-0.2039.xpi";
+              sha256 = "OHyo3Kn9snO0hzR7YTwV41FfV1HAnC09WyAHgRihyVI=";
+            })
           ];
 
           # see https://github.com/mozilla/policy-templates/blob/master/README.md
@@ -81,7 +111,6 @@ in {
             };
             ExtensionSettings = {
               # @ytb  -->  YouTube
-              # @bili  -->  BiliBili
               # @gh  -->  GitHub
               # @nix  -->  Nix Package
               # @ghnix  -->  Nix Code in Github
@@ -146,18 +175,20 @@ in {
           "app.shield.optoutstudies.enabled" = false;
           "dom.security.https_only_mode_ever_enabled" = true;
           "toolkit.legacyUserProfileCustomizations.stylesheets" = true;
+          "browser.compactmode.show" = true;
           "browser.toolbars.bookmarks.visibility" = "never";
           "geo.enabled" = false;
 
           # Disable telemetry
           "browser.newtabpage.activity-stream.feeds.telemetry" = false;
+          "browser.backspace_action" = 0;
           "browser.ping-centre.telemetry" = false;
           "browser.tabs.crashReporting.sendReport" = false;
           "devtools.onboarding.telemetry.logged" = false;
           "privacy.resistFingerprinting" = false;
           "dom.event.clipboardevents.enabled" = false;
           "dom.battery.enabled" = false;
-          "privacy.resistFingerprinting.letterboxing" = true;
+          "privacy.resistFingerprinting.letterboxing" = false;
           "general.useragent.override" =
             "Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:103.0) Gecko/20100101 Firefox/103.0";
           "privacy.window.maxInnerWidth" = 1800;
@@ -228,11 +259,7 @@ in {
           "security.tls.version.enable-deprecated" = false;
         };
         isDefault = true;
-        userChrome = ''
-          #webrtcIndicator {
-            display: none;
-          }
-        '';
+        userChrome = builtins.readFile ./userChrome.css;
       };
     };
   };

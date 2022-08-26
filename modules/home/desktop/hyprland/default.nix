@@ -2,7 +2,6 @@
 with lib;
 let
   cfg = config.modules.desktop.hyprland;
-  eww = inputs.eww.packages."x86_64-linux".eww-wayland;
   mkService = lib.recursiveUpdate {
     Unit.PartOf = [ "graphical-session.target" ];
     Unit.After = [ "graphical-session.target" ];
@@ -26,7 +25,7 @@ in {
     home.pointerCursor.size = 16;
     home.pointerCursor.gtk.enable = true;
 
-    home.file."pics/walls/underwater.png".source = ./underwater.png;
+    home.file."pics/walls/wall.png".source = ./wall.png;
     home.file.".config/wlogout/icons".source = ./icons;
     home.file = {
       ".config/wlogout/style.css".text = ''
@@ -108,11 +107,18 @@ in {
       '';
     };
 
+    services.wlsunset = {
+      enable = true;
+      latitude = "52.14";
+      longitude = "21.07";
+      systemdTarget = "graphical-session.target";
+    };
+
     systemd.user.services = {
       swaybg = mkService {
         Unit.Description = "Wallpaper chooser";
         Service.ExecStart =
-          "${pkgs.swaybg}/bin/swaybg -i /home/sioodmy/pics/walls/underwater.png";
+          "${pkgs.swaybg}/bin/swaybg -i /home/sioodmy/pics/walls/wall.png";
       };
     };
   };

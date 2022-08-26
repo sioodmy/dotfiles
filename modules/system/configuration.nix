@@ -298,7 +298,7 @@ in {
           "Iosevka Nerd Font"
           "Noto Color Emoji"
         ];
-        sansSerif = [ "Iosevka Nerd Font" "Noto Color Emoji" ];
+        sansSerif = [ "Lato" "Noto Color Emoji" ];
         serif = [ "Iosevka Nerd Font" "Noto Color Emoji" ];
         emoji = [ "Noto Color Emoji" ];
       };

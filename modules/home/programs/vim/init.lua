@@ -27,9 +27,12 @@ map("n", "<C-k>", "<C-w>k", opts)
 map("n", "<C-l>", "<C-w>l", opts)
 map("n", "<C-n>", ":Telescope live_grep <CR>", opts)
 map("n", "<C-f>", ":Telescope find_files <CR>", opts)
+map("n", "<C-w>", ":NvimTreeToggle <CR>", opts)
 map("n", "j", "gj", opts)
 map("n", "k", "gk", opts)
 map("n", ";", ":", { noremap = true })
+map("n", "[b", ":BufferLineCycleNext <CR> ", opts)
+map("n", "]b", ":BufferLineCyclePrev <CR> ", opts)
 
 g.mapleader = " "
 
@@ -201,6 +204,7 @@ cmp.setup({
 	sources = cmp.config.sources({
 		{ name = "nvim_lsp" },
 		{ name = "buffer" },
+		{ name = "org" },
 		{ name = "path" },
 	}),
 })
@@ -222,8 +226,8 @@ cmp.setup.cmdline(":", {
 })
 
 vim.g.nord_contrast = true
-vim.g.nord_borders = false
-vim.g.nord_disable_background = true
+vim.g.nord_borders = true
+vim.g.nord_disable_background = false
 vim.g.nord_italic = true
 vim.g.nord_uniform_diff_background = true
 
@@ -254,7 +258,7 @@ dashboard.section.buttons.val = {
 	dashboard.button("q", "  Quit        ", ":qa<CR>"),
 }
 
-local datetime = os.date(" %d-%m-%Y   %H:%M")
+local datetime = os.date(" %d-%m-%Y")
 
 dashboard.section.footer.val = {
 	datetime,
@@ -265,16 +269,120 @@ alpha.setup(dashboard.opts)
 -- Load the colorscheme
 require("nord").set()
 
+require("bufferline").setup({
+	options = {
+		mode = "tabs",
+		show_close_icon = false,
+		separator_style = "thick",
+	},
+})
+require("nvim-web-devicons").setup({})
 require("lualine").setup({
 	options = {
 		disabled_filetypes = { "alpha", "dashboard", "Outline" },
 	},
 })
 
-require("nvim-tree").setup()
-require("toggleterm").setup()
+require("nvim-tree").setup({
+	filters = {
+		dotfiles = false,
+		exclude = { vim.fn.stdpath("config") .. "/lua/custom" },
+	},
+	disable_netrw = true,
+	hijack_netrw = true,
+	open_on_setup = false,
+	ignore_ft_on_setup = { "alpha" },
+	hijack_cursor = true,
+	hijack_unnamed_buffer_when_opening = false,
+	update_cwd = true,
+	update_focused_file = {
+		enable = true,
+		update_cwd = false,
+	},
+	view = {
+		adaptive_size = true,
+		side = "left",
+		width = 25,
+		hide_root_folder = true,
+	},
+	git = {
+		enable = false,
+		ignore = true,
+	},
+	filesystem_watchers = {
+		enable = true,
+	},
+	actions = {
+		open_file = {
+			resize_window = true,
+		},
+	},
+	renderer = {
+		highlight_git = false,
+		highlight_opened_files = "none",
+
+		indent_markers = {
+			enable = false,
+		},
+
+		icons = {
+			show = {
+				file = true,
+				folder = true,
+				folder_arrow = true,
+				git = false,
+			},
+			glyphs = {
+				default = "",
+				symlink = "",
+				folder = {
+					default = "",
+					empty = "",
+					empty_open = "",
+					open = "",
+					symlink = "",
+					symlink_open = "",
+					arrow_open = "",
+					arrow_closed = "",
+				},
+				git = {
+					unstaged = "✗",
+					staged = "✓",
+					unmerged = "",
+					renamed = "➜",
+					untracked = "★",
+					deleted = "",
+					ignored = "◌",
+				},
+			},
+		},
+	},
+})
+require("toggleterm").setup({
+	size = function(term)
+		if term.direction == "horizontal" then
+			return 15
+		elseif term.direction == "vertical" then
+			return vim.o.columns * 0.4
+		end
+	end,
+	open_mapping = [[<c-\>]],
+	shade_terminals = false,
+	close_on_exit = true,
+	shell = vim.o.shell,
+	auto_scroll = true,
+	float_opts = {
+		border = "single",
+	},
+	winbar = {
+		enabled = false,
+		name_formatter = function(term) --  term: Terminal
+			return term.name
+		end,
+	},
+})
+
 require("nvim-treesitter.configs").setup({
-	ensure_installed = { "c", "lua", "rust", "python", "bash", "nix", "html", "javascript" },
 	sync_install = false,
 	auto_install = false,
 })
