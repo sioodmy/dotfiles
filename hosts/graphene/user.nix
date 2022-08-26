@@ -15,7 +15,6 @@
       tmux.enable = true;
       zathura.enable = false;
       wofi.enable = true;
-      mpv.enable = true;
       vim.enable = true;
       tools.enable = true;
       shell.enable = true;

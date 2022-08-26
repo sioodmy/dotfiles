@@ -3,12 +3,14 @@
 {
   nixpkgs.config.allowUnfree = true;
   home.packages = with pkgs; [
-    inputs.eww.packages."${system}".eww-wayland
     wf-recorder
+    discord
     pfetch
+    vlc
     nordzy-icon-theme
     bottom
     wofi
+    mpv
     imv
     hyperfine
     waybar
@@ -21,7 +23,6 @@
     pngquant
     wl-clipboard
     proxychains-ng
-    # cli tools
     exa
     ffmpeg
     unzip
@@ -42,11 +43,8 @@
     jq
     figlet
     lm_sensors
-    # gui apps
     keepassxc
-    # unfree apps (sorry daddy stallman)
     minecraft
-    # dev tools
     python3
     git
     jdk

@@ -38,12 +38,15 @@ in {
     programs.neovim = {
       enable = true;
       package = pkgs.neovim-nightly;
+      vimAlias = true;
+      viAlias = true;
       plugins = with pkgs.vimPlugins; [
         vim-nix
         null-ls-nvim
         neorg
         nvim-colorizer-lua
         telescope-nvim
+        nvim-web-devicons
         vim-commentary
         lualine-nvim
         impatient-nvim
@@ -56,11 +59,12 @@ in {
         nord-nvim
         lspkind-nvim
         nvim-lspconfig
+        vim-surround
         bufferline-nvim
         alpha-nvim
         toggleterm-nvim
         vim-sayonara
-        (nvim-treesitter.withPlugins (plugins: pkgs.tree-sitter.allGrammars))
+        (nvim-treesitter.withPlugins (p: builtins.attrValues p))
       ];
       extraConfig = ''
         luafile ~/.config/nvim/settings.lua

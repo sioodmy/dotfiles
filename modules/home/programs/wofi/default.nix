@@ -26,7 +26,7 @@ in {
     home.file.".config/wofi/style.css".text = ''
       * {
         all: unset;
-        font-family: "monospace";
+        font-family: sans-serif;
         font-size: 18px;
       }
 

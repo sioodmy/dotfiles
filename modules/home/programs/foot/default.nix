@@ -15,7 +15,6 @@ in {
           pad = "30x30";
         };
         colors = {
-          alpha = "0.90";
           foreground = "d8dee9";
           background = "2e3440";
           regular0 = "3b4252";
