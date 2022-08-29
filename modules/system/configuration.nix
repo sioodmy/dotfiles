@@ -199,7 +199,6 @@ in {
   environment.etc."greetd/environments".text = ''
     Hyprland
   '';
-
   services = {
     greetd = {
       enable = true;

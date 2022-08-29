@@ -20,6 +20,7 @@
     swaybg
     slurp
     grim
+    transmission-gtk
     polymc
     pngquant
     wl-clipboard
