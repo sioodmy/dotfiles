@@ -37,7 +37,7 @@ in {
 
     programs.neovim = {
       enable = true;
-      package = pkgs.neovim-nightly;
+      #      package = pkgs.neovim-nightly;
       vimAlias = true;
       viAlias = true;
       plugins = with pkgs.vimPlugins; [
@@ -64,7 +64,6 @@ in {
         alpha-nvim
         toggleterm-nvim
         vim-sayonara
-        (nvim-treesitter.withPlugins (p: builtins.attrValues p))
       ];
       extraConfig = ''
         luafile ~/.config/nvim/settings.lua
