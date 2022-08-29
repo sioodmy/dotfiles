@@ -118,6 +118,77 @@ in {
               ExtensionRecommendations = false;
               SkipOnboarding = true;
             };
+            Bookmarks = [
+              # crypto
+              {
+                Title = "Pancake swap";
+                URL = "https://pancakeswap.finance";
+                Placement = "menu";
+                Folder = "crypto";
+              }
+              {
+                Title = "Binance";
+                URL = "https://accounts.binance.com/en/login";
+                Placement = "menu";
+                Folder = "crypto";
+              }
+              {
+                Title = "TradingView";
+                URL = "https://www.tradingview.com/";
+                Placement = "menu";
+                Folder = "crypto";
+              }
+              {
+                Title = "coin360";
+                URL = "https://coin360.com/";
+                Placement = "menu";
+                Folder = "crypto";
+              }
+              {
+                Title = "Crypto Bubbles";
+                URL = "https://cryptobubbles.net/";
+                Placement = "menu";
+                Folder = "crypto";
+              }
+              {
+                Title = "r/cryptocurrency";
+                URL = "https://www.reddit.com/r/CryptoCurrency";
+                Placement = "menu";
+                Folder = "crypto";
+              }
+
+              # social 
+              {
+                Title = "Discord";
+                URL = "https://discord.com/login";
+                Placement = "menu";
+                Folder = "social";
+              }
+              {
+                Title = "Telegram";
+                URL = "https://web.telegram.org";
+                Placement = "menu";
+                Folder = "social";
+              }
+              {
+                Title = "Youtube";
+                URL = "https://www.youtube.com/";
+                Placement = "menu";
+                Folder = "social";
+              }
+              {
+                Title = "Twitter";
+                URL = "https://twitter.com/home";
+                Placement = "menu";
+                Folder = "social";
+              }
+              {
+                Title = "/g/";
+                URL = "https://boards.4channel.org/g/";
+                Placement = "menu";
+                Folder = "social";
+              }
+            ];
             Preferences = {
               "browser.newtab.extensionControlled" = false;
               "browser.newtabpage.activity-stream.feeds.topsites" = false;

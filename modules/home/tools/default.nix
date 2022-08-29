@@ -5,13 +5,12 @@ in {
   options.modules.programs.tools = { enable = mkEnableOption "programs"; };
 
   config = mkIf cfg.enable {
-    programs.gpg = { enable = true; };
-
+    programs.gpg.enable = true;
     services.gpg-agent = {
       enable = true;
-      pinentryFlavor = "qt";
+      pinentryFlavor = "gnome3";
+      enableZshIntegration = true;
     };
-
     programs.bat = {
       enable = true;
       config.theme = "Nord";
