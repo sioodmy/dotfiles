@@ -83,6 +83,18 @@ in {
                 "https://addons.mozilla.org/firefox/downloads/file/3976538/fastforwardteam-0.2039.xpi";
               sha256 = "OHyo3Kn9snO0hzR7YTwV41FfV1HAnC09WyAHgRihyVI=";
             })
+            (pkgs.fetchFirefoxAddon {
+              name = "don-t-fuck-with-paste";
+              url =
+                "https://addons.mozilla.org/firefox/downloads/file/3630212/don_t_fuck_with_paste-2.7.xpi";
+              sha256 = "7xfc734gNKJZgqEG5U0Z4kyfImQ0o5aoCBle8N4CGkA=";
+            })
+            (pkgs.fetchFirefoxAddon {
+              name = "temporary-containers";
+              url =
+                "https://addons.mozilla.org/firefox/downloads/file/3723251/temporary_containers-1.9.2.xpi";
+              sha256 = "M0CgjCm+fIO9D+o/wn/eceRgikUy2TIRS0OappDn7cA=";
+            })
           ];
 
           # see https://github.com/mozilla/policy-templates/blob/master/README.md
@@ -92,6 +104,9 @@ in {
             DisablePocket = true;
             DisableTelemetry = true;
             DisableFirefoxAccounts = true;
+            DisableFormHistory = true;
+            DisplayBookmarksToolbar = true;
+            BlockAboutConfig = true;
             DontCheckDefaultBrowser = true;
             FirefoxHome = {
               Pocket = false;
@@ -108,6 +123,104 @@ in {
               "browser.newtabpage.activity-stream.feeds.topsites" = false;
               "browser.newtabpage.activity-stream.showSponsoredTopSites" =
                 false;
+              "browser.send_pings" = false;
+              "browser.urlbar.speculativeConnect.enabled" = false;
+              "media.navigator.enabled" = false;
+              "network.http.referer.XOriginPolicy" = 0;
+              "beacon.enabled" = false;
+              "browser.safebrowsing.downloads.remote.enabled" = false;
+              "network.IDN_show_punycode" = true;
+              "extensions.activeThemeID" = "firefox-compact-dark@mozilla.org";
+              "app.shield.optoutstudies.enabled" = false;
+              "dom.security.https_only_mode_ever_enabled" = true;
+              "toolkit.legacyUserProfileCustomizations.stylesheets" = true;
+              "browser.compactmode.show" = true;
+              "browser.toolbars.bookmarks.visibility" = "never";
+              "geo.enabled" = false;
+
+              # Disable telemetry
+              "browser.newtabpage.activity-stream.feeds.telemetry" = false;
+              "browser.backspace_action" = 0;
+              "browser.ping-centre.telemetry" = false;
+              "browser.tabs.crashReporting.sendReport" = false;
+              "devtools.onboarding.telemetry.logged" = false;
+              "privacy.resistFingerprinting" = false;
+              "dom.event.clipboardevents.enabled" = false;
+              "dom.battery.enabled" = false;
+              "privacy.resistFingerprinting.letterboxing" = false;
+              "general.useragent.override" =
+                "Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:103.0) Gecko/20100101 Firefox/103.0";
+              "privacy.window.maxInnerWidth" = 1800;
+              "privacy.window.maxInnerHeight" = 900;
+              "toolkit.telemetry.enabled" = false;
+              "toolkit.telemetry.unified" = false;
+              "toolkit.telemetry.server" = "";
+
+              # Disable Pocket
+              "browser.newtabpage.activity-stream.feeds.discoverystreamfeed" =
+                false;
+              "browser.newtabpage.activity-stream.feeds.section.topstories" =
+                false;
+              "browser.newtabpage.activity-stream.section.highlights.includePocket" =
+                false;
+              "browser.newtabpage.activity-stream.showSponsored" = false;
+              "extensions.pocket.enabled" = false;
+
+              # Disable prefetching
+              "network.dns.disablePrefetch" = true;
+              "network.prefetch-next" = false;
+
+              # Disable JS in PDFs
+              "pdfjs.enableScripting" = false;
+
+              # Harden SSL 
+              "security.ssl.require_safe_negotiation" = true;
+
+              # Extra
+              "identity.fxaccounts.enabled" = false;
+              "browser.search.suggest.enabled" = false;
+              "privacy.trackingprotection.fingerprinting.enabled" = true;
+              "privacy.trackingprotection.cryptomining.enabled" = true;
+              "privacy.trackingprotection.enabled" = true;
+              "privacy.clearOnShutdown.history" = true;
+              "privacy.clearOnShutdown.formdata" = true;
+              "privacy.clearOnShutdown.downloads" = true;
+              "browser.urlbar.shortcuts.bookmarks" = false;
+              "browser.urlbar.shortcuts.history" = false;
+              "browser.urlbar.shortcuts.tabs" = false;
+              "browser.urlbar.suggest.bookmark" = false;
+              "browser.urlbar.suggest.engines" = false;
+              "browser.urlbar.suggest.history" = false;
+              "browser.urlbar.suggest.openpage" = false;
+              "browser.urlbar.suggest.topsites" = false;
+              "browser.uidensity" = 1;
+              "media.autoplay.enabled" = false;
+              "toolkit.zoomManager.zoomValues" = ".8,.90,.95,1,1.1,1.2";
+
+              "general.smoothScroll.lines.durationMaxMS" = 125;
+              "general.smoothScroll.lines.durationMinMS" = 125;
+              "general.smoothScroll.mouseWheel.durationMaxMS" = 200;
+              "general.smoothScroll.mouseWheel.durationMinMS" = 100;
+              "general.smoothScroll.other.durationMaxMS" = 125;
+              "general.smoothScroll.other.durationMinMS" = 125;
+              "general.smoothScroll.pages.durationMaxMS" = 125;
+              "general.smoothScroll.pages.durationMinMS" = 125;
+              "mousewheel.system_scroll_override_on_root_content.horizontal.factor" =
+                175;
+              "mousewheel.system_scroll_override_on_root_content.vertical.factor" =
+                175;
+              "toolkit.scrollbox.horizontalScrollDistance" = 6;
+              "toolkit.scrollbox.verticalScrollDistance" = 2;
+              "ui.key.menuAccessKeyFocuses" = false;
+
+              "webgl.disabled" = true;
+              "security.dialog_enable_delay" = 1000;
+              "privacy.firstparty.isolate" = false;
+              "security.identityblock.show_extended_validation" = true;
+              "security.tls.version.enable-deprecated" = false;
+              "browser.uiCustomization.state" = ''
+                {"placements":{"widget-overflow-fixed-list":["nixos_ublock-origin-browser-action","nixos_sponsorblock-browser-action","nixos_localcdn-fork-of-decentraleyes-browser-action"],"nav-bar":["back-button","forward-button","stop-reload-button","customizableui-special-spring1","urlbar-container","customizableui-special-spring2","save-to-pocket-button","nixos_temporary-containers-browser-action","fxa-toolbar-menu-button","nixos_cookie-autodelete-browser-action"],"toolbar-menubar":["menubar-items"],"TabsToolbar":["tabbrowser-tabs","new-tab-button","nixos_ether_metamask-browser-action","alltabs-button"],"PersonalToolbar":["import-button","personal-bookmarks"]},"seen":["developer-button","nixos_sponsorblock-browser-action","nixos_clearurls-browser-action","nixos_cookie-autodelete-browser-action","nixos_ether_metamask-browser-action","nixos_ublock-origin-browser-action","nixos_localcdn-fork-of-decentraleyes-browser-action","nixos_vimium-browser-action","nixos_copy-plaintext-browser-action","nixos_h264ify-browser-action","nixos_fastforwardteam-browser-action","nixos_single-file-browser-action","treestyletab_piro_sakura_ne_jp-browser-action","nixos_don-t-fuck-with-paste-browser-action","nixos_temporary-containers-browser-action"],"dirtyAreaCache":["nav-bar","PersonalToolbar","toolbar-menubar","TabsToolbar","widget-overflow-fixed-list"],"currentVersion":17,"newElementCount":14}
+              '';
             };
             ExtensionSettings = {
               # @ytb  -->  YouTube
@@ -155,109 +268,10 @@ in {
               };
             };
           };
-
-          extraPrefs = ''
-            // Show more ssl cert infos
-            lockPref("security.identityblock.show_extended_validation", true);
-          '';
         };
 
       profiles.privacy = {
-        settings = {
-          "browser.send_pings" = false;
-          "browser.urlbar.speculativeConnect.enabled" = false;
-          "media.navigator.enabled" = false;
-          "network.http.referer.XOriginPolicy" = 0;
-          "beacon.enabled" = false;
-          "browser.safebrowsing.downloads.remote.enabled" = false;
-          "network.IDN_show_punycode" = true;
-          "extensions.activeThemeID" = "firefox-compact-dark@mozilla.org";
-          "app.shield.optoutstudies.enabled" = false;
-          "dom.security.https_only_mode_ever_enabled" = true;
-          "toolkit.legacyUserProfileCustomizations.stylesheets" = true;
-          "browser.compactmode.show" = true;
-          "browser.toolbars.bookmarks.visibility" = "never";
-          "geo.enabled" = false;
-
-          # Disable telemetry
-          "browser.newtabpage.activity-stream.feeds.telemetry" = false;
-          "browser.backspace_action" = 0;
-          "browser.ping-centre.telemetry" = false;
-          "browser.tabs.crashReporting.sendReport" = false;
-          "devtools.onboarding.telemetry.logged" = false;
-          "privacy.resistFingerprinting" = false;
-          "dom.event.clipboardevents.enabled" = false;
-          "dom.battery.enabled" = false;
-          "privacy.resistFingerprinting.letterboxing" = false;
-          "general.useragent.override" =
-            "Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:103.0) Gecko/20100101 Firefox/103.0";
-          "privacy.window.maxInnerWidth" = 1800;
-          "privacy.window.maxInnerHeight" = 900;
-          "toolkit.telemetry.enabled" = false;
-          "toolkit.telemetry.unified" = false;
-          "toolkit.telemetry.server" = "";
-
-          # Disable Pocket
-          "browser.newtabpage.activity-stream.feeds.discoverystreamfeed" =
-            false;
-          "browser.newtabpage.activity-stream.feeds.section.topstories" = false;
-          "browser.newtabpage.activity-stream.section.highlights.includePocket" =
-            false;
-          "browser.newtabpage.activity-stream.showSponsored" = false;
-          "extensions.pocket.enabled" = false;
-
-          # Disable prefetching
-          "network.dns.disablePrefetch" = true;
-          "network.prefetch-next" = false;
-
-          # Disable JS in PDFs
-          "pdfjs.enableScripting" = false;
-
-          # Harden SSL 
-          "security.ssl.require_safe_negotiation" = true;
-
-          # Extra
-          "identity.fxaccounts.enabled" = false;
-          "browser.search.suggest.enabled" = false;
-          "privacy.trackingprotection.fingerprinting.enabled" = true;
-          "privacy.trackingprotection.cryptomining.enabled" = true;
-          "privacy.trackingprotection.enabled" = true;
-          "privacy.clearOnShutdown.history" = true;
-          "privacy.clearOnShutdown.formdata" = true;
-          "privacy.clearOnShutdown.downloads" = true;
-          "browser.urlbar.shortcuts.bookmarks" = false;
-          "browser.urlbar.shortcuts.history" = false;
-          "browser.urlbar.shortcuts.tabs" = false;
-          "browser.urlbar.suggest.bookmark" = false;
-          "browser.urlbar.suggest.engines" = false;
-          "browser.urlbar.suggest.history" = false;
-          "browser.urlbar.suggest.openpage" = false;
-          "browser.urlbar.suggest.topsites" = false;
-          "browser.uidensity" = 1;
-          "media.autoplay.enabled" = false;
-          "toolkit.zoomManager.zoomValues" = ".8,.90,.95,1,1.1,1.2";
-
-          "general.smoothScroll.lines.durationMaxMS" = 125;
-          "general.smoothScroll.lines.durationMinMS" = 125;
-          "general.smoothScroll.mouseWheel.durationMaxMS" = 200;
-          "general.smoothScroll.mouseWheel.durationMinMS" = 100;
-          "general.smoothScroll.other.durationMaxMS" = 125;
-          "general.smoothScroll.other.durationMinMS" = 125;
-          "general.smoothScroll.pages.durationMaxMS" = 125;
-          "general.smoothScroll.pages.durationMinMS" = 125;
-          "mousewheel.system_scroll_override_on_root_content.horizontal.factor" =
-            175;
-          "mousewheel.system_scroll_override_on_root_content.vertical.factor" =
-            175;
-          "toolkit.scrollbox.horizontalScrollDistance" = 6;
-          "toolkit.scrollbox.verticalScrollDistance" = 2;
-          "ui.key.menuAccessKeyFocuses" = false;
-
-          "webgl.disabled" = true;
-          "security.dialog_enable_delay" = 1000;
-          "privacy.firstparty.isolate" = false;
-          "security.tls.version.enable-deprecated" = false;
-        };
+        settings = { };
         isDefault = true;
         userChrome = builtins.readFile ./userChrome.css;
       };

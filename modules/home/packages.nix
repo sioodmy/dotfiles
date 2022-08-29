@@ -20,6 +20,7 @@
     swaybg
     slurp
     grim
+    polymc
     pngquant
     wl-clipboard
     proxychains-ng
