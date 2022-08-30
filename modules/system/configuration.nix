@@ -341,6 +341,7 @@ in {
     "hfs"
     "hfsplus"
     "squashfs"
+    "uas"
     "udf"
     "bluetooth"
     "btusb"

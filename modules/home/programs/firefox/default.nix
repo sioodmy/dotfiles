@@ -188,6 +188,14 @@ in {
                 Placement = "menu";
                 Folder = "social";
               }
+
+              # Code
+              {
+                Title = "Github";
+                URL = "https://github.com/";
+                Placement = "menu";
+                Folder = "code";
+              }
             ];
             Preferences = {
               "browser.newtab.extensionControlled" = false;
@@ -249,7 +257,7 @@ in {
 
               # Extra
               "identity.fxaccounts.enabled" = false;
-              "browser.search.suggest.enabled" = false;
+              "browser.search.suggest.enabled" = true;
               "privacy.trackingprotection.fingerprinting.enabled" = true;
               "privacy.trackingprotection.cryptomining.enabled" = true;
               "privacy.trackingprotection.enabled" = true;
@@ -259,7 +267,7 @@ in {
               "browser.urlbar.shortcuts.bookmarks" = false;
               "browser.urlbar.shortcuts.history" = false;
               "browser.urlbar.shortcuts.tabs" = false;
-              "browser.urlbar.suggest.bookmark" = false;
+              "browser.urlbar.suggest.bookmark" = true;
               "browser.urlbar.suggest.engines" = false;
               "browser.urlbar.suggest.history" = false;
               "browser.urlbar.suggest.openpage" = false;
