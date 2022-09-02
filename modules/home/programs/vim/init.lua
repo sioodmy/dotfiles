@@ -1,6 +1,7 @@
 local o = vim.opt
 local g = vim.g
 
+vim.g.mapleader = ","
 require("impatient")
 
 -- Autocmds
@@ -379,5 +380,18 @@ require("toggleterm").setup({
 		name_formatter = function(term) --  term: Terminal
 			return term.name
 		end,
+	},
+})
+
+require("neorg").setup({
+	load = {
+		["core.defaults"] = {},
+		["core.norg.dirman"] = {
+			config = {
+				workspaces = {
+					notes = "~/docs/notes",
+				},
+			},
+		},
 	},
 })

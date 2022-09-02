@@ -23,6 +23,7 @@ in {
       black # python
       shellcheck # bash
       shfmt
+      nodejs
       nodePackages.pyright
       nodePackages.prettier
       nodePackages.jsonlint # JSON
@@ -32,19 +33,17 @@ in {
       nodePackages.yarn
       nodePackages.bash-language-server
       nodePackages.node2nix # Bash
-
     ];
 
     programs.neovim = {
       enable = true;
-      #      package = pkgs.neovim-nightly;
+      package = pkgs.neovim-nightly;
       vimAlias = true;
       viAlias = true;
       plugins = with pkgs.vimPlugins; [
         vim-nix
         null-ls-nvim
-        neorg
-        nvim-colorizer-lua
+        gruvbox-nvim
         telescope-nvim
         nvim-web-devicons
         vim-commentary
@@ -63,7 +62,31 @@ in {
         bufferline-nvim
         alpha-nvim
         toggleterm-nvim
-        vim-sayonara
+        neorg
+        (nvim-treesitter.withPlugins (_: [ pkgs.tree-sitter-org ]))
+        {
+          plugin = orgmode;
+          config = ''
+            lua <<EOF
+              require('orgmode').setup_ts_grammar()
+              require('nvim-treesitter.configs').setup({
+                highlight = {
+                  enable = true,
+                  additional_vim_regex_highlighting = { 'org' }
+                }
+              })
+              require('orgmode').setup({})
+            EOF
+          '';
+        }
+        # (nvim-treesitter.withPlugins (plugins:
+        #   with plugins; [
+        #     tree-sitter-nix
+        #     tree-sitter-python
+        #     tree-sitter-norg
+        #     tree-sitter-org
+        #     tree-sitter-html
+        #   ]))
       ];
       extraConfig = ''
         luafile ~/.config/nvim/settings.lua

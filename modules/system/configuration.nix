@@ -200,6 +200,16 @@ in {
     Hyprland
   '';
   services = {
+    syncthing = {
+      enable = true;
+      openDefaultPorts = true;
+      user = "sioodmy";
+      group = "wheel";
+      dataDir = "/home/sioodmy/syncthing";
+      configDir = "/home/sioodmy/.config/syncthing/";
+      systemService = true;
+
+    };
     greetd = {
       enable = true;
       settings = rec {
@@ -225,7 +235,7 @@ in {
     };
 
     lorri.enable = true;
-
+    udisks2.enable = true;
     printing.enable = true;
     fstrim.enable = true;
 
@@ -248,6 +258,7 @@ in {
         enable = true;
         support32Bit = true;
       };
+      wireplumber.enable = true;
       pulse.enable = true;
       jack.enable = true;
     };
@@ -272,6 +283,7 @@ in {
 
   fonts = {
     fonts = with pkgs; [
+      material-icons
       material-design-icons
       roboto
       work-sans
@@ -298,18 +310,14 @@ in {
           "Iosevka Nerd Font"
           "Noto Color Emoji"
         ];
-        sansSerif = [ "Lato" "Noto Color Emoji" ];
-        serif = [ "Iosevka Nerd Font" "Noto Color Emoji" ];
+        sansSerif = [ "Noto Sans" "Noto Color Emoji" ];
+        serif = [ "Noto Serif" "Noto Color Emoji" ];
         emoji = [ "Noto Color Emoji" ];
       };
     };
   };
 
-  system.autoUpgrade = {
-    enable = true;
-    dates = "daily";
-    allowReboot = false;
-  };
+  system.autoUpgrade.enable = false;
 
   # Security
   boot.blacklistedKernelModules = [
@@ -341,7 +349,6 @@ in {
     "hfs"
     "hfsplus"
     "squashfs"
-    "uas"
     "udf"
     "bluetooth"
     "btusb"
@@ -355,7 +362,6 @@ in {
     "qnx4"
     "qnx6"
     "sysv"
-    "ufs"
   ];
 
   security = {
