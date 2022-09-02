@@ -11,6 +11,7 @@
     programs = {
       firefox.enable = true;
       foot.enable = true;
+      kitty.enable = true;
       mako.enable = true;
       tmux.enable = true;
       zathura.enable = false;

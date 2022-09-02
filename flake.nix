@@ -2,15 +2,10 @@
   description = "My NixOS configuration";
 
   inputs = {
-    nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
+    nixpkgs.url = "github:nixos/nixpkgs";
 
     home-manager = {
       url = "github:nix-community/home-manager";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
-
-    nur = {
-      url = "github:nix-community/NUR";
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
@@ -25,7 +20,7 @@
     };
 
     hyprland = {
-      url = "github:hyprwm/Hyprland";
+      url = "github:hyprwm/Hyprland/5da114477fdb1c806f5ad6f6fbb22903481f24c1";
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
@@ -33,13 +28,27 @@
       url = "github:Alexays/Waybar";
       flake = false;
     };
+
+    orgmode = {
+      url = "github:nvim-orgmode/orgmode";
+      flake = false;
+    };
+    nvim-treesitter = {
+      url = "github:nvim-treesitter/nvim-treesitter";
+      flake = false;
+    };
+    tree-sitter-org = {
+      url = "github:milisims/tree-sitter-org";
+      flake = false;
+    };
+
     nixpkgs-wayland.url = "github:nix-community/nixpkgs-wayland";
     nixpkgs-f2k.url = "github:fortuneteller2k/nixpkgs-f2k";
-    eww.url = "github:elkowar/eww";
+    webcord.url = "github:fufexan/webcord-flake";
     neovim-nightly-overlay.url = "github:nix-community/neovim-nightly-overlay";
 
   };
-  outputs = inputs@{ self, nixpkgs, home-manager, nur, eww, ... }:
+  outputs = inputs@{ self, nixpkgs, home-manager, ... }:
     let
       system = "x86_64-linux";
       pkgs = inputs.nixpkgs.legacyPackages.x86_64-linux;
@@ -65,8 +74,6 @@
               };
               nixpkgs.overlays = [
                 (final: prev: {
-                  catppuccin-cursors =
-                    prev.callPackage ./overlays/catppuccin-cursors.nix { };
                   wlroots = prev.wlroots.overrideAttrs (oldAttrs: {
                     patchPhase = ''
                       substituteInPlace render/gles2/renderer.c --replace "glFlush();" "glFinish();"
@@ -78,6 +85,26 @@
                     };
                 })
                 (self: super: {
+                  vimPlugins = super.vimPlugins // (with super.vimPlugins; {
+                    orgmode =
+                      orgmode.overrideAttrs (old: { src = inputs.orgmode; });
+                    nvim-treesitter = nvim-treesitter.overrideAttrs
+                      (old: { src = inputs.nvim-treesitter; });
+                  });
+                  tree-sitter-org = let
+                    actualRev = inputs.tree-sitter-org.rev;
+                    ntsExpected = (super.lib.importJSON
+                      "${inputs.nvim-treesitter}/lockfile.json").org.revision;
+                    orgmodeExpected = builtins.readFile
+                      (super.runCommand "orgmodeExpectedRev" { } ''
+                        sed -n -e "2s/^local ts_revision = '\([^']\+\)'$/\1/p" \
+                            ${inputs.orgmode}/lua/orgmode/init.lua \
+                            | tr -d '\n' > $out
+                      '');
+                  in assert actualRev == ntsExpected;
+                  assert actualRev == orgmodeExpected;
+                  super.tree-sitter-grammars.tree-sitter-org-nvim.overrideAttrs
+                  (old: { src = inputs.tree-sitter-org; });
                   waybar = super.waybar.overrideAttrs (oldAttrs: {
                     src = inputs.waybar;
                     mesonFlags = oldAttrs.mesonFlags
@@ -88,7 +115,6 @@
                   });
                 })
                 inputs.nixpkgs-wayland.overlay
-                nur.overlay
                 inputs.discord-overlay.overlay
 
                 inputs.nixpkgs-f2k.overlays.default
