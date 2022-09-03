@@ -62,31 +62,37 @@ in {
         bufferline-nvim
         alpha-nvim
         toggleterm-nvim
-        neorg
-        (nvim-treesitter.withPlugins (_: [ pkgs.tree-sitter-org ]))
-        {
-          plugin = orgmode;
-          config = ''
-            lua <<EOF
-              require('orgmode').setup_ts_grammar()
-              require('nvim-treesitter.configs').setup({
-                highlight = {
-                  enable = true,
-                  additional_vim_regex_highlighting = { 'org' }
-                }
-              })
-              require('orgmode').setup({})
-            EOF
-          '';
-        }
-        # (nvim-treesitter.withPlugins (plugins:
-        #   with plugins; [
-        #     tree-sitter-nix
-        #     tree-sitter-python
-        #     tree-sitter-norg
-        #     tree-sitter-org
-        #     tree-sitter-html
-        #   ]))
+        orgmode
+        (nvim-treesitter.withPlugins (plugins:
+          with plugins; [
+            pkgs.tree-sitter-org
+            tree-sitter-python
+            tree-sitter-c
+            tree-sitter-nix
+            tree-sitter-cpp
+            tree-sitter-rust
+            tree-sitter-toml
+            tree-sitter-json
+            tree-sitter-lua
+            tree-sitter-bash
+            tree-sitter-go
+            tree-sitter-java
+            tree-sitter-typescript
+            tree-sitter-javascript
+            tree-sitter-cmake
+            tree-sitter-comment
+            tree-sitter-http
+            tree-sitter-markdown
+            tree-sitter-regex
+            tree-sitter-dart
+            tree-sitter-make
+            tree-sitter-latex
+            tree-sitter-bibtex
+            tree-sitter-php
+            tree-sitter-sql
+            tree-sitter-zig
+            tree-sitter-dockerfile
+          ]))
       ];
       extraConfig = ''
         luafile ~/.config/nvim/settings.lua

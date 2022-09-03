@@ -95,6 +95,24 @@ in {
                 "https://addons.mozilla.org/firefox/downloads/file/3723251/temporary_containers-1.9.2.xpi";
               sha256 = "M0CgjCm+fIO9D+o/wn/eceRgikUy2TIRS0OappDn7cA=";
             })
+            (pkgs.fetchFirefoxAddon {
+              name = "bttv";
+              url =
+                "https://addons.mozilla.org/firefox/downloads/file/3984942/betterttv-7.4.35.xpi";
+              sha256 = "w0db+Kwvbl15na1rScCX/QTqzoeoJHHukiS0oZTWT+M=";
+            })
+            (pkgs.fetchFirefoxAddon {
+              name = "webarchive";
+              url =
+                "https://addons.mozilla.org/firefox/downloads/file/3894402/view_page_archive-3.1.0.xpi";
+              sha256 = "uCdkebx7KszyNLsbRVuUlprN8esgWdgAIKtD6/SJSdQ=";
+            })
+            (pkgs.fetchFirefoxAddon {
+              name = "image-search";
+              url =
+                "https://addons.mozilla.org/firefox/downloads/file/3988785/search_by_image-5.2.0.xpi";
+              sha256 = "NAyyKKnvL5UG4xTzs3LEBBuP1FnVxlNAGeHVRtPtWC8=";
+            })
           ];
 
           # see https://github.com/mozilla/policy-templates/blob/master/README.md
@@ -298,7 +316,7 @@ in {
               "security.identityblock.show_extended_validation" = true;
               "security.tls.version.enable-deprecated" = false;
               "browser.uiCustomization.state" = ''
-                {"placements":{"widget-overflow-fixed-list":["nixos_ublock-origin-browser-action","nixos_sponsorblock-browser-action","nixos_localcdn-fork-of-decentraleyes-browser-action"],"nav-bar":["back-button","forward-button","stop-reload-button","customizableui-special-spring1","urlbar-container","customizableui-special-spring2","save-to-pocket-button","nixos_temporary-containers-browser-action","fxa-toolbar-menu-button","nixos_cookie-autodelete-browser-action"],"toolbar-menubar":["menubar-items"],"TabsToolbar":["tabbrowser-tabs","new-tab-button","nixos_ether_metamask-browser-action","alltabs-button"],"PersonalToolbar":["import-button","personal-bookmarks"]},"seen":["developer-button","nixos_sponsorblock-browser-action","nixos_clearurls-browser-action","nixos_cookie-autodelete-browser-action","nixos_ether_metamask-browser-action","nixos_ublock-origin-browser-action","nixos_localcdn-fork-of-decentraleyes-browser-action","nixos_vimium-browser-action","nixos_copy-plaintext-browser-action","nixos_h264ify-browser-action","nixos_fastforwardteam-browser-action","nixos_single-file-browser-action","treestyletab_piro_sakura_ne_jp-browser-action","nixos_don-t-fuck-with-paste-browser-action","nixos_temporary-containers-browser-action"],"dirtyAreaCache":["nav-bar","PersonalToolbar","toolbar-menubar","TabsToolbar","widget-overflow-fixed-list"],"currentVersion":17,"newElementCount":14}
+                {"placements":{"widget-overflow-fixed-list":["nixos_ublock-origin-browser-action","nixos_sponsorblock-browser-action","nixos_localcdn-fork-of-decentraleyes-browser-action","nixos_image-search-browser-action","nixos_webarchive-browser-action"],"nav-bar":["back-button","forward-button","stop-reload-button","customizableui-special-spring1","urlbar-container","customizableui-special-spring2","save-to-pocket-button","nixos_temporary-containers-browser-action","fxa-toolbar-menu-button","nixos_cookie-autodelete-browser-action","nixos_absolute-copy-browser-action"],"toolbar-menubar":["menubar-items"],"TabsToolbar":["tabbrowser-tabs","new-tab-button","nixos_ether_metamask-browser-action","alltabs-button"],"PersonalToolbar":["import-button","personal-bookmarks"]},"seen":["developer-button","nixos_sponsorblock-browser-action","nixos_clearurls-browser-action","nixos_cookie-autodelete-browser-action","nixos_ether_metamask-browser-action","nixos_ublock-origin-browser-action","nixos_localcdn-fork-of-decentraleyes-browser-action","nixos_vimium-browser-action","nixos_copy-plaintext-browser-action","nixos_h264ify-browser-action","nixos_fastforwardteam-browser-action","nixos_single-file-browser-action","treestyletab_piro_sakura_ne_jp-browser-action","nixos_don-t-fuck-with-paste-browser-action","nixos_temporary-containers-browser-action","nixos_absolute-copy-browser-action","nixos_image-search-browser-action","nixos_webarchive-browser-action"],"dirtyAreaCache":["nav-bar","PersonalToolbar","toolbar-menubar","TabsToolbar","widget-overflow-fixed-list"],"currentVersion":17,"newElementCount":15}
               '';
             };
             ExtensionSettings = {

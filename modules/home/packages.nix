@@ -15,7 +15,6 @@
     imv
     hyperfine
     waybar
-    swappy
     gimp
     kdenlive
     swaybg
@@ -47,7 +46,6 @@
     figlet
     lm_sensors
     keepassxc
-    minecraft
     python3
     git
     jdk
