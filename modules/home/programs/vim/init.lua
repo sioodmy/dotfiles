@@ -382,16 +382,11 @@ require("toggleterm").setup({
 		end,
 	},
 })
-
-require("neorg").setup({
-	load = {
-		["core.defaults"] = {},
-		["core.norg.dirman"] = {
-			config = {
-				workspaces = {
-					notes = "~/docs/notes",
-				},
-			},
-		},
+require("orgmode").setup_ts_grammar()
+require("nvim-treesitter.configs").setup({
+	highlight = {
+		enable = true,
+		additional_vim_regex_highlighting = { "org" },
 	},
 })
+require("orgmode").setup({})

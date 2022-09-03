@@ -36,7 +36,7 @@ in {
         bind -r h select-pane -L
         bind -r l select-pane -R
         # styling
-        set -g pane-active-border-style bg=default,fg=blue
+        set -g pane-active-border-style bg=default,fg=brightblack
         set -g pane-border-style fg=brightblack
       '';
     };
