@@ -24,6 +24,7 @@ in {
     variables = {
       NIXOS_CONFIG = "$HOME/.config/nixos/configuration.nix";
       NIXOS_CONFIG_DIR = "$HOME/.config/nixos/";
+      NIXOS_OZONE_WL = "1";
       EDITOR = "nvim";
       TERMINAL = "st";
       BROWSER = "brave";

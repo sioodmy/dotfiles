@@ -7,6 +7,7 @@ let
     Unit.After = [ "graphical-session.target" ];
     Install.WantedBy = [ "graphical-session.target" ];
   };
+
 in {
   options.modules.desktop.hyprland = { enable = mkEnableOption "hyprland"; };
 
@@ -17,6 +18,9 @@ in {
       pamixer
       python39Packages.requests
       sway-contrib.grimshot
+      slurp
+      tesseract5
+      grim
       wlogout
     ];
 
@@ -107,11 +111,9 @@ in {
       '';
     };
 
-    services.wlsunset = {
+    services.gammastep = {
       enable = true;
-      latitude = "52.14";
-      longitude = "21.07";
-      systemdTarget = "graphical-session.target";
+      provider = "geoclue2";
     };
 
     systemd.user.services = {

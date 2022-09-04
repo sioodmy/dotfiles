@@ -62,12 +62,14 @@ in {
         bufferline-nvim
         alpha-nvim
         toggleterm-nvim
-        orgmode
         nvim-autopairs
         nvim-colorizer-lua
+        zen-mode-nvim
+        neorg
         (nvim-treesitter.withPlugins (plugins:
           with plugins; [
-            pkgs.tree-sitter-org
+            #            pkgs.tree-sitter-org
+            tree-sitter-norg
             tree-sitter-python
             tree-sitter-c
             tree-sitter-nix

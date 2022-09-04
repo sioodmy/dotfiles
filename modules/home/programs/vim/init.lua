@@ -226,7 +226,7 @@ cmp.setup({
 	sources = cmp.config.sources({
 		{ name = "nvim_lsp" },
 		{ name = "buffer" },
-		{ name = "org" },
+		{ name = "neorg" },
 		{ name = "path" },
 	}),
 })
@@ -318,15 +318,34 @@ require("toggleterm").setup({
 		},
 	},
 })
-require("orgmode").setup_ts_grammar()
+require("neorg").setup({
+	load = {
+		["core.defaults"] = {},
+		["core.norg.concealer"] = {},
+		["core.presenter"] = {
+			config = {
+				zen_mode = "zen-mode",
+			},
+		},
+		["core.norg.completion"] = {
+			config = {
+				engine = "nvim-cmp",
+			},
+		},
+		["core.norg.dirman"] = {
+			config = {
+				workspaces = {
+					notes = "~/docs/notes",
+				},
+			},
+		},
+	},
+})
 require("nvim-treesitter.configs").setup({
 	highlight = {
 		enable = true,
-		additional_vim_regex_highlighting = { "org" },
 	},
 })
-require("orgmode").setup({})
-
 require("nvim-autopairs").setup({
 	check_ts = true,
 	ts_config = {
