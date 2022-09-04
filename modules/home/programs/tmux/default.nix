@@ -12,7 +12,7 @@ in {
       clock24 = true;
       plugins = with pkgs.tmuxPlugins; [ nord urlview extrakto ];
       extraConfig = ''
-        set -g default-terminal "screen-256color"
+        set -g default-terminal "xterm-256color"
         set -sa terminal-overrides ',xterm-256color:RGB'
         # so that escapes register immidiately in vim
         set -sg escape-time 1
