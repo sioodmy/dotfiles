@@ -39,6 +39,7 @@ in {
         grace-no-touch = true;
         datestr = "%d.%m";
         fade-in = "0.1";
+        ignore-empty-password = true;
       };
     };
 
