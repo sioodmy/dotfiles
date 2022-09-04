@@ -63,6 +63,8 @@ in {
         alpha-nvim
         toggleterm-nvim
         orgmode
+        nvim-autopairs
+        nvim-colorizer-lua
         (nvim-treesitter.withPlugins (plugins:
           with plugins; [
             pkgs.tree-sitter-org
