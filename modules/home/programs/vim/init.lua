@@ -28,6 +28,8 @@ map("n", "<C-k>", "<C-w>k", opts)
 map("n", "<C-l>", "<C-w>l", opts)
 map("n", "<C-n>", ":Telescope live_grep <CR>", opts)
 map("n", "<C-f>", ":Telescope find_files <CR>", opts)
+map("n", "<C-f>", ":Telescope find_files <CR>", opts)
+map("n", "<C-b>", ":Telescope neorg find_linkable <CR>", opts)
 map("n", "<C-w>", ":NvimTreeToggle <CR>", opts)
 map("n", "j", "gj", opts)
 map("n", "k", "gk", opts)
@@ -228,6 +230,7 @@ cmp.setup({
 		{ name = "buffer" },
 		{ name = "neorg" },
 		{ name = "path" },
+		{ name = "latex_symbols" },
 	}),
 })
 
@@ -321,15 +324,80 @@ require("toggleterm").setup({
 require("neorg").setup({
 	load = {
 		["core.defaults"] = {},
-		["core.norg.concealer"] = {},
+		["core.integrations.telescope"] = {},
 		["core.presenter"] = {
 			config = {
 				zen_mode = "zen-mode",
+				slide_count = {
+					enable = true,
+					position = "top",
+					count_format = "[%d/%d]",
+				},
 			},
 		},
 		["core.norg.completion"] = {
 			config = {
 				engine = "nvim-cmp",
+			},
+		},
+		["core.norg.concealer"] = {
+			config = {
+				icon_preset = "diamond",
+				markup_preset = "varied",
+				icons = {
+					marker = {
+						enabled = true,
+						icon = " ",
+					},
+					todo = {
+						enable = true,
+						pending = {
+							icon = "פֿ",
+						},
+						uncertain = {
+							icon = "?",
+						},
+						urgent = {
+							icon = "",
+						},
+						on_hold = {
+							icon = "",
+						},
+						cancelled = {
+							icon = "",
+						},
+					},
+					heading = {
+						enabled = true,
+						level_1 = {
+							icon = "◈",
+						},
+
+						level_2 = {
+							icon = " ◇",
+						},
+
+						level_3 = {
+							icon = "  ◆",
+						},
+						level_4 = {
+							icon = "   ❖",
+						},
+						level_5 = {
+							icon = "    ⟡",
+						},
+						level_6 = {
+							icon = "     ⋄",
+						},
+					},
+				},
+			},
+		},
+		["core.highlights"] = {
+			config = {
+				highlights = {
+					Keyword = "+Keyword2",
+				},
 			},
 		},
 		["core.norg.dirman"] = {
