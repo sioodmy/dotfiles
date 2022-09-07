@@ -2,7 +2,7 @@
   description = "My NixOS configuration";
 
   inputs = {
-    nixpkgs.url = "github:nixos/nixpkgs";
+    nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
 
     home-manager = {
       url = "github:nix-community/home-manager";
@@ -26,6 +26,11 @@
 
     waybar = {
       url = "github:Alexays/Waybar";
+      flake = false;
+    };
+
+    neorg-telescope-nvim = {
+      url = "github:nvim-neorg/neorg-telescope";
       flake = false;
     };
 

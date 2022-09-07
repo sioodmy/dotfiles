@@ -4,7 +4,6 @@
   nixpkgs.config.allowUnfree = true;
   home.packages = with pkgs; [
     wf-recorder
-    discord
     inputs.webcord.packages.${pkgs.system}.default
     pfetch
     vlc

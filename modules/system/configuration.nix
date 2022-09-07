@@ -26,6 +26,7 @@ in {
       NIXOS_CONFIG_DIR = "$HOME/.config/nixos/";
       NIXOS_OZONE_WL = "1";
       EDITOR = "nvim";
+      GTK_USE_PORTAL = "0";
       TERMINAL = "st";
       BROWSER = "brave";
       GBM_BACKEND = "nvidia-drm";

@@ -437,6 +437,22 @@
         "type": "indirect"
       }
     },
+    "neorg-telescope-nvim": {
+      "flake": false,
+      "locked": {
+        "lastModified": 1652854631,
+        "narHash": "sha256-DzdmTQBNMJpp2Pnjy32a7AJrST+GLb0Hy5+tTjd8a5Q=",
+        "owner": "nvim-neorg",
+        "repo": "neorg-telescope",
+        "rev": "b61ff59c7008fabe0ead42adb1a1498aec2b6fe1",
+        "type": "github"
+      },
+      "original": {
+        "owner": "nvim-neorg",
+        "repo": "neorg-telescope",
+        "type": "github"
+      }
+    },
     "neovim-flake": {
       "inputs": {
         "flake-utils": "flake-utils",
@@ -580,15 +596,16 @@
     },
     "nixpkgs_2": {
       "locked": {
-        "lastModified": 1662034832,
-        "narHash": "sha256-aJcVpByYI5Y9OoUaXKsFx53TdaqJ4DHSbI409XvGKTI=",
+        "lastModified": 1662019588,
+        "narHash": "sha256-oPEjHKGGVbBXqwwL+UjsveJzghWiWV0n9ogo1X6l4cw=",
         "owner": "nixos",
         "repo": "nixpkgs",
-        "rev": "8682bea25461ecd959bce8957a0b69848ba3a0e7",
+        "rev": "2da64a81275b68fdad38af669afeda43d401e94b",
         "type": "github"
       },
       "original": {
         "owner": "nixos",
+        "ref": "nixos-unstable",
         "repo": "nixpkgs",
         "type": "github"
       }
@@ -760,6 +777,7 @@
         "discord-overlay": "discord-overlay",
         "home-manager": "home-manager",
         "hyprland": "hyprland",
+        "neorg-telescope-nvim": "neorg-telescope-nvim",
         "neovim-nightly-overlay": "neovim-nightly-overlay",
         "nixpkgs": "nixpkgs_2",
         "nixpkgs-f2k": "nixpkgs-f2k",
