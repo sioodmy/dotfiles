@@ -130,7 +130,7 @@ in {
             DisableFirefoxAccounts = true;
             DisableFormHistory = true;
             DisplayBookmarksToolbar = true;
-            BlockAboutConfig = false;
+            BlockAboutConfig = true;
             DontCheckDefaultBrowser = true;
             FirefoxHome = {
               Pocket = false;
