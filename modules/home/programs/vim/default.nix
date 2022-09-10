@@ -64,6 +64,7 @@ in {
         lspkind-nvim
         nvim-lspconfig
         vim-surround
+        hop-nvim
         bufferline-nvim
         alpha-nvim
         toggleterm-nvim

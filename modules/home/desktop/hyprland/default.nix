@@ -7,6 +7,10 @@ let
     Unit.After = [ "graphical-session.target" ];
     Install.WantedBy = [ "graphical-session.target" ];
   };
+  ocr = pkgs.writeShellScriptBin "ocr" ''
+    #!/bin/bash
+    grim -g "$(slurp)" /tmp/ocr.png && tesseract /tmp/ocr.png /tmp/ocr-output && wl-copy < /tmp/ocr-output.txt && notify-send "Text copied!" && rm /tmp/ocr-output.txt -f
+  '';
 
 in {
   options.modules.desktop.hyprland = { enable = mkEnableOption "hyprland"; };
@@ -20,6 +24,7 @@ in {
       sway-contrib.grimshot
       slurp
       tesseract5
+      ocr
       grim
       wlogout
     ];
