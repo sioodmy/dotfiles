@@ -78,13 +78,6 @@
                 users.sioodmy = (./. + "/hosts/${hostname}/user.nix");
               };
               nixpkgs.overlays = [
-
-                #                   wlroots = prev.wlroots.overrideAttrs (oldAttrs: {
-                #                     patchPhase = ''
-                #                       substituteInPlace render/gles2/renderer.c --replace "glFlush();" "glFinish();"
-                #                     '';
-                #                   });
-
                 (final: prev: {
                   hyprland-nvidia =
                     inputs.hyprland.packages.${prev.system}.default.override {
