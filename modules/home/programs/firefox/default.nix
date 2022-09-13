@@ -249,6 +249,7 @@ in {
               "devtools.onboarding.telemetry.logged" = false;
               "privacy.resistFingerprinting" = false;
               "dom.event.clipboardevents.enabled" = false;
+              "browser.downloads.start_downloads_in_tmp_dir" = true;
               "dom.battery.enabled" = false;
               "privacy.resistFingerprinting.letterboxing" = false;
               "general.useragent.override" =
@@ -258,6 +259,8 @@ in {
               "toolkit.telemetry.enabled" = false;
               "toolkit.telemetry.unified" = false;
               "toolkit.telemetry.server" = "";
+
+              "browser.sessionstore.resume_from_crash" = false;
 
               # Disable Pocket
               "browser.newtabpage.activity-stream.feeds.discoverystreamfeed" =

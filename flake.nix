@@ -20,7 +20,7 @@
     };
 
     hyprland = {
-      url = "github:hyprwm/Hyprland/5da114477fdb1c806f5ad6f6fbb22903481f24c1";
+      url = "github:hyprwm/Hyprland/";
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
@@ -78,15 +78,17 @@
                 users.sioodmy = (./. + "/hosts/${hostname}/user.nix");
               };
               nixpkgs.overlays = [
+
+                #                   wlroots = prev.wlroots.overrideAttrs (oldAttrs: {
+                #                     patchPhase = ''
+                #                       substituteInPlace render/gles2/renderer.c --replace "glFlush();" "glFinish();"
+                #                     '';
+                #                   });
+
                 (final: prev: {
-                  wlroots = prev.wlroots.overrideAttrs (oldAttrs: {
-                    patchPhase = ''
-                      substituteInPlace render/gles2/renderer.c --replace "glFlush();" "glFinish();"
-                    '';
-                  });
                   hyprland-nvidia =
-                    inputs.hyprland.packages.${system}.default.override {
-                      inherit (final) wlroots;
+                    inputs.hyprland.packages.${prev.system}.default.override {
+                      nvidiaPatches = true;
                     };
                 })
                 (self: super: {

@@ -45,35 +45,35 @@ in {
             background-color: #2e3440;
         }
         button {
-            color: #d8dee9;
-            background-color: #434c5e;
+        color: #eceff4;
+            background-color: #2e3440;
+            border-style: solid;
+            border-width: 2px;
             background-repeat: no-repeat;
             background-position: center;
             background-size: 25%;
-            border-radius: 15px;
-            margin: 7px;
-            shadown: none;
         }
         button:focus, button:active, button:hover {
-            background-color: #81a1c1;
+            background-color: #4c566a;
+            outline-style: none;
         }
         #lock {
-            background-image: url("./icons/lock.svg");
+            background-image: image(url("${pkgs.wlogout}/share/wlogout/icons/lock.png"), url("/usr/local/share/wlogout/icons/lock.png"));
         }
         #logout {
-            background-image: url("./icons/logout.svg");
+            background-image: image(url("${pkgs.wlogout}/share/wlogout/icons/logout.png"), url("/usr/local/share/wlogout/icons/logout.png"));
         }
         #suspend {
-            background-image: url("./icons/suspend.svg");
+            background-image: image(url("${pkgs.wlogout}/share/wlogout/icons/suspend.png"), url("/usr/local/share/wlogout/icons/suspend.png"));
         }
         #hibernate {
-            background-image: url("./icons/hibernate.svg");
+            background-image: image(url("${pkgs.wlogout}/share/wlogout/icons/hibernate.png"), url("/usr/local/share/wlogout/icons/hibernate.png"));
         }
         #shutdown {
-            background-image: url("./icons/shutdown.svg");
+            background-image: image(url("${pkgs.wlogout}/share/wlogout/icons/shutdown.png"), url("/usr/local/share/wlogout/icons/shutdown.png"));
         }
         #reboot {
-            background-image: url("./icons/reboot.svg");
+            background-image: image(url("${pkgs.wlogout}/share/wlogout/icons/reboot.png"), url("/usr/local/share/wlogout/icons/reboot.png"));
         }
       '';
       ".config/wlogout/layout".text = ''
