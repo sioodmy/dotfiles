@@ -5,6 +5,7 @@
   home.packages = with pkgs; [
     wf-recorder
     inputs.webcord.packages.${pkgs.system}.default
+    todo
     pfetch
     vlc
     nordzy-icon-theme
@@ -40,6 +41,7 @@
     bandwhich
     grex
     fd
+    dolphin
     xh
     jq
     figlet

@@ -89,6 +89,7 @@ in {
     enable = true;
     extraPortals = [
       (pkgs.xdg-desktop-portal-gtk.override { buildPortalsInGnome = false; })
+      pkgs.xdg-desktop-portal-wlr
     ];
     wlr = {
       enable = true;
@@ -113,6 +114,7 @@ in {
   hardware = {
     nvidia = {
       open = true;
+      package = config.boot.kernelPackages.nvidia_is_evil.unfucked;
       modesetting.enable = true;
     };
     opengl.driSupport32Bit = true;
@@ -121,6 +123,7 @@ in {
 
   environment.defaultPackages = [ ];
   nixpkgs.config.allowUnfree = true;
+  nixpkgs.config.allowBroken = true;
 
   boot = {
     cleanTmpDir = true;
@@ -146,6 +149,24 @@ in {
     ];
     consoleLogLevel = 0;
     initrd.verbose = false;
+    kernelPackages = let
+      linux_six_pkg = { fetchurl, buildLinux, ... }@args:
+        buildLinux (args // rec {
+          version = "6.0.0-rc5";
+          modDirVersion = version;
+          src = fetchurl {
+            url = "https://git.kernel.org/torvalds/t/linux-6.0-rc5.tar.gz";
+            sha256 = "GELU1ZEOM5gGUJxG54JoiI9qLQXJ2Cd/kyOLcp0AWgc=";
+          };
+
+          kernelPatches = [ ];
+
+          extraMeta.branch = "master";
+        } // (args.argsOverride or { }));
+      linux_six = pkgs.callPackage linux_six_pkg { };
+    in pkgs.recurseIntoAttrs ((pkgs.linuxPackagesFor linux_six).extend
+      (f: p: { nvidia_is_evil = f.callPackage ./nvidia-x11 { }; }));
+    extraModprobeConfig = "options hid_apple fnmode=1";
     loader = {
       systemd-boot.enable = false;
       efi.canTouchEfiVariables = true;
@@ -263,6 +284,19 @@ in {
       wireplumber.enable = true;
       pulse.enable = true;
       jack.enable = true;
+    };
+  };
+  systemd.services = {
+    seatd = {
+      enable = true;
+      description = "Seat management daemon";
+      script = "${pkgs.seatd}/bin/seatd -g wheel";
+      serviceConfig = {
+        Type = "simple";
+        Restart = "always";
+        RestartSec = "1";
+      };
+      wantedBy = [ "multi-user.target" ];
     };
   };
 

@@ -31,6 +31,7 @@ map("n", "<C-f>", ":Telescope find_files <CR>", opts)
 map("n", "<C-f>", ":Telescope find_files <CR>", opts)
 map("n", "<C-b>", ":Telescope neorg find_linkable <CR>", opts)
 map("n", "<C-w>", ":NvimTreeToggle <CR>", opts)
+map("n", "<C-j>", ":HopWord <CR>", opts)
 map("n", "j", "gj", opts)
 map("n", "k", "gk", opts)
 map("n", ";", ":", { noremap = true })
@@ -435,6 +436,7 @@ require("nvim-autopairs").setup({
 	},
 })
 
+require("hop").setup()
 require("colorizer").setup({ "*" }, {
 	{
 		RGB = true, -- #RGB hex codes
