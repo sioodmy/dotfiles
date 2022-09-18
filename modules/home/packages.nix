@@ -7,6 +7,7 @@
     inputs.webcord.packages.${pkgs.system}.default
     todo
     pfetch
+    rofi-wayland
     vlc
     nordzy-icon-theme
     bottom
@@ -19,8 +20,10 @@
     kdenlive
     swaybg
     slurp
+    brave
     grim
     transmission-gtk
+    fzf
     polymc
     pngquant
     wl-clipboard

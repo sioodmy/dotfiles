@@ -158,7 +158,8 @@ in {
               }
               {
                 Title = "TradingView";
-                URL = "https://www.tradingview.com/";
+                URL =
+                  "https://www.tradingview.com/chart/rwZ5GJdv/?symbol=BITSTAMP%3ABTCUSD";
                 Placement = "menu";
                 Folder = "crypto";
               }

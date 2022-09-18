@@ -9,7 +9,7 @@ let
   };
   ocr = pkgs.writeShellScriptBin "ocr" ''
     #!/bin/bash
-    grim -g "$(slurp)" /tmp/ocr.png && tesseract /tmp/ocr.png /tmp/ocr-output && wl-copy < /tmp/ocr-output.txt && notify-send "Text copied!" && rm /tmp/ocr-output.txt -f
+    grim -g "$(slurp -c d8dee9ee -b 2e3440dd -w 2)" /tmp/ocr.png && tesseract /tmp/ocr.png /tmp/ocr-output && wl-copy < /tmp/ocr-output.txt && notify-send "OCR" "Text copied!" && rm /tmp/ocr-output.txt -f
   '';
 
 in {
