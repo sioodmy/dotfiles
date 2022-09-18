@@ -154,12 +154,9 @@ in {
         buildLinux (args // rec {
           version = "6.0.0-rc5";
           modDirVersion = version;
-          src = fetchurl {
-            url = "https://git.kernel.org/torvalds/t/linux-6.0-rc5.tar.gz";
-            sha256 = "GELU1ZEOM5gGUJxG54JoiI9qLQXJ2Cd/kyOLcp0AWgc=";
-          };
-
+          src = inputs.kernel;
           kernelPatches = [ ];
+          configFile = ./kernel.config;
 
           extraMeta.branch = "master";
         } // (args.argsOverride or { }));

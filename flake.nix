@@ -9,21 +9,6 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
-    pre-commit-hooks = {
-      url = "github:cachix/pre-commit-hooks.nix";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
-
-    discord-overlay = {
-      url = "github:InternetUnexplorer/discord-overlay";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
-
-    hyprland = {
-      url = "github:hyprwm/Hyprland/";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
-
     waybar = {
       url = "github:Alexays/Waybar";
       flake = false;
@@ -34,10 +19,6 @@
       flake = false;
     };
 
-    orgmode = {
-      url = "github:nvim-orgmode/orgmode";
-      flake = false;
-    };
     nvim-treesitter = {
       url = "github:nvim-treesitter/nvim-treesitter";
       flake = false;
@@ -46,8 +27,14 @@
       url = "github:milisims/tree-sitter-org";
       flake = false;
     };
+    kernel = {
+      url = "https://git.kernel.org/torvalds/t/linux-6.0-rc5.tar.gz";
+      flake = false;
+    };
 
     nixpkgs-wayland.url = "github:nix-community/nixpkgs-wayland";
+    hyprland.url = "github:hyprwm/Hyprland/";
+    hypr-contrib.url = "github:hyprwm/contrib";
     nixpkgs-f2k.url = "github:fortuneteller2k/nixpkgs-f2k";
     webcord.url = "github:fufexan/webcord-flake";
     neovim-nightly-overlay.url = "github:nix-community/neovim-nightly-overlay";
@@ -115,9 +102,8 @@
                   });
                 })
                 inputs.nixpkgs-wayland.overlay
-                inputs.discord-overlay.overlay
-
                 inputs.nixpkgs-f2k.overlays.default
+                inputs.hypr-contrib.overlays.default
                 inputs.neovim-nightly-overlay.overlay
               ];
             }
@@ -135,12 +121,5 @@
         packages = [ pkgs.nixpkgs-fmt ];
         inherit (self.checks.${system}.pre-commit-check) shellHook;
       };
-
-      checks.${system}.pre-commit-check =
-        inputs.pre-commit-hooks.lib.${system}.run {
-          src = self;
-          hooks.nixpkgs-fmt.enable = true;
-          hooks.shellcheck.enable = true;
-        };
     };
 }

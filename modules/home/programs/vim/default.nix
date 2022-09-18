@@ -32,7 +32,6 @@ in {
       nodePackages.pyright
       nodePackages.prettier
       nodePackages.jsonlint # JSON
-      nodePackages.typescript
       nodePackages.typescript-language-server # Typescript
       nodePackages.vscode-langservers-extracted # HTML, CSS, JavaScript
       nodePackages.yarn
