@@ -26,7 +26,6 @@ in {
       NIXOS_CONFIG_DIR = "$HOME/.config/nixos/";
       NIXOS_OZONE_WL = "1";
       EDITOR = "nvim";
-      GTK_USE_PORTAL = "0";
       TERMINAL = "st";
       BROWSER = "brave";
       GBM_BACKEND = "nvidia-drm";
@@ -85,20 +84,11 @@ in {
     };
   };
 
-  xdg.portal = {
-    enable = true;
-    extraPortals = [
-      (pkgs.xdg-desktop-portal-gtk.override { buildPortalsInGnome = false; })
-      pkgs.xdg-desktop-portal-wlr
-    ];
-    wlr = {
-      enable = true;
-      settings.screencast = {
-        chooser_type = "simple";
-        chooser_cmd = "${pkgs.slurp}/bin/slurp -f %o -or";
-      };
-    };
-  };
+  documentation.enable = false;
+  services.journald.extraConfig = ''
+    SystemMaxUse=50M
+    RuntimeMaxUse=10M
+  '';
 
   services.dbus.enable = true;
   services.dbus.packages = with pkgs; [ dconf ];
@@ -339,6 +329,7 @@ in {
     fontconfig = {
       defaultFonts = {
         monospace = [
+          "Iosevka Term"
           "Iosevka Term Nerd Font Complete Mono"
           "Iosevka Nerd Font"
           "Noto Color Emoji"

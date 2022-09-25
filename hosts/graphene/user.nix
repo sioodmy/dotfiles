@@ -10,7 +10,6 @@
     };
     programs = {
       firefox.enable = true;
-      foot.enable = true;
       rofi.enable = true;
       kitty.enable = true;
       mako.enable = true;

@@ -36,10 +36,10 @@ in {
               sha256 = "TS472KTMNbY2iWV5G+UA5GChMxEsiCoipab6nGzmh4I=";
             })
             (pkgs.fetchFirefoxAddon {
-              name = "nord123";
+              name = "catpuccin";
               url =
-                "https://addons.mozilla.org/firefox/downloads/file/3692469/nord123-1.1.xpi";
-              sha256 = "CAFrUxw8Y7Mg8GXxFb0yalaFahxOPLRC1NFMmYzNcBI=";
+                "https://github.com/catppuccin/firefox/releases/download/old/catppuccin_frappe_flamingo.xpi";
+              sha256 = "KLWPuMCxbkUNG8zYGDEGdOtqcv9HalgDYnpQ4ldVJA8=";
             })
             (pkgs.fetchFirefoxAddon {
               name = "clearurls";

@@ -16,7 +16,6 @@
     ./programs/rofi
     ./programs/tmux
     ./programs/wofi
-    ./programs/foot
     ./programs/kitty
     ./programs/firefox
     ./programs/zathura
