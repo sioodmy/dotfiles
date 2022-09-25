@@ -1,13 +1,10 @@
-{ pkgs, lib, config, ... }:
+{ config, lib, pkgs, ... }:
 with lib;
 let cfg = config.modules.programs.kitty;
 in {
-
   options.modules.programs.kitty = { enable = mkEnableOption "kitty"; };
 
   config = mkIf cfg.enable {
-
-    home.packages = [ pkgs.tdrop ];
     programs.kitty = {
       enable = true;
       settings = {
@@ -80,11 +77,6 @@ in {
         "ctrl+alt+v" = "paste_from_clipboard";
         "ctrl+v" = "paste_from_clipboard";
       };
-    };
-
-    services.sxhkd.keybindings = {
-      "super + Return" = "kitty --single-instance";
-      "alt + grave" = "tdrop -ma -y 50% -x 25% -w 50% -n dropdownterminal kitty";
     };
   };
 }

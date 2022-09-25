@@ -9,16 +9,16 @@
   <div align="center">
    <p></p>
    <a href="">
-      <img src="https://img.shields.io/github/issues/sioodmy/dotfiles?color=f5a97f&labelColor=24273a&style=for-the-badge">
+      <img src="https://img.shields.io/github/issues/sioodmy/dotfiles?color=fab387&labelColor=1e1e2e&style=for-the-badge">
    </a>
    <a href="https://github.com/sioodmy/dotfiles/stargazers">
-      <img src="https://img.shields.io/github/stars/sioodmy/dotfiles?color=c6a0f6&labelColor=24273a&style=for-the-badge">
+      <img src="https://img.shields.io/github/stars/sioodmy/dotfiles?color=cba6f7&labelColor=1e1e2e&style=for-the-badge">
    </a>
    <a href="https://github.com/sioodmy/dotfiles/">
-      <img src="https://img.shields.io/github/repo-size/sioodmy/dotfiles?color=ee99a0&labelColor=24273a&style=for-the-badge">
+      <img src="https://img.shields.io/github/repo-size/sioodmy/dotfiles?color=eba0ac&labelColor=1e1e2e&style=for-the-badge">
    </a>
 
-  <img alt="" src="https://badges.pufler.dev/visits/sioodmy/dotfiles?style=for-the-badge&color=a6da95&logoColor=white&labelColor=24273a"/>
+  <img alt="" src="https://badges.pufler.dev/visits/sioodmy/dotfiles?style=for-the-badge&color=a6e3a1&logoColor=white&labelColor=1e1e2e"/>
    <br>
 </div>
 </h1>
@@ -86,4 +86,4 @@ SIOODMY'S NIXOS CONFIGURATION
 <br />
   <img src="https://raw.githubusercontent.com/catppuccin/catppuccin/c9d3d7de6ab8cb2609b37c4b79b026a2c7784b6f/assets/footers/gray0_ctp_on_line.svg?sanitize=true" alt="" /> <br />
   Copyright © 2021-present <a href="https://github.com/sioodmy">sioodmy</a>
-  <p align="center"><a href="https://github.com/sioodmy/dotfiles/blob/main/LICENSE"><img src="https://img.shields.io/static/v1.svg?style=for-the-badge&label=License&message=GPL-3&logoColor=d9e0ee&colorA=363a4f&colorB=c6a0f6"/></a></p>
+  <p align="center"><a href="https://github.com/sioodmy/dotfiles/blob/main/LICENSE"><img src="https://img.shields.io/static/v1.svg?style=for-the-badge&label=License&message=GPL-3&logoColor=d9e0ee&colorA=313244&colorB=cba6f7"/></a></p>

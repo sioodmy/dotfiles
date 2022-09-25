@@ -9,11 +9,6 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
-    nur = {
-      url = "github:nix-community/NUR";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
-
     pre-commit-hooks = {
       url = "github:cachix/pre-commit-hooks.nix";
       inputs.nixpkgs.follows = "nixpkgs";
@@ -24,16 +19,41 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
-    discocss.url = "github:mlvzk/discocss/flake";
+    hyprland = {
+      url = "github:hyprwm/Hyprland/";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+
+    waybar = {
+      url = "github:Alexays/Waybar";
+      flake = false;
+    };
+
+    neorg-telescope-nvim = {
+      url = "github:nvim-neorg/neorg-telescope";
+      flake = false;
+    };
+
+    orgmode = {
+      url = "github:nvim-orgmode/orgmode";
+      flake = false;
+    };
+    nvim-treesitter = {
+      url = "github:nvim-treesitter/nvim-treesitter";
+      flake = false;
+    };
+    tree-sitter-org = {
+      url = "github:milisims/tree-sitter-org";
+      flake = false;
+    };
+
+    nixpkgs-wayland.url = "github:nix-community/nixpkgs-wayland";
     nixpkgs-f2k.url = "github:fortuneteller2k/nixpkgs-f2k";
-    eww.url = "github:elkowar/eww";
+    webcord.url = "github:fufexan/webcord-flake";
     neovim-nightly-overlay.url = "github:nix-community/neovim-nightly-overlay";
-    todo.url = "github:sioodmy/todo";
-    st.url = "github:siduck/st";
-    fetch.url = "github:sioodmy/fetch";
 
   };
-  outputs = inputs@{ self, nixpkgs, home-manager, nur, eww, ... }:
+  outputs = inputs@{ self, nixpkgs, home-manager, ... }:
     let
       system = "x86_64-linux";
       pkgs = inputs.nixpkgs.legacyPackages.x86_64-linux;
@@ -48,6 +68,7 @@
             (./. + "/hosts/${hostname}/hardware-configuration.nix")
             ./modules/system/configuration.nix
             ./modules/system/adblock.nix
+            inputs.hyprland.nixosModules.default
             home-manager.nixosModules.home-manager
             {
               home-manager = {
@@ -55,14 +76,45 @@
                 useGlobalPkgs = true;
                 extraSpecialArgs = { inherit inputs; };
                 users.sioodmy = (./. + "/hosts/${hostname}/user.nix");
-                sharedModules = with inputs; [ discocss.hmModule ];
               };
               nixpkgs.overlays = [
                 (final: prev: {
-                  catppuccin-cursors =
-                    prev.callPackage ./overlays/catppuccin-cursors.nix { };
+                  hyprland-nvidia =
+                    inputs.hyprland.packages.${prev.system}.default.override {
+                      nvidiaPatches = true;
+                    };
                 })
-                nur.overlay
+                (self: super: {
+                  vimPlugins = super.vimPlugins // (with super.vimPlugins; {
+                    orgmode =
+                      orgmode.overrideAttrs (old: { src = inputs.orgmode; });
+                    nvim-treesitter = nvim-treesitter.overrideAttrs
+                      (old: { src = inputs.nvim-treesitter; });
+                  });
+                  tree-sitter-org = let
+                    actualRev = inputs.tree-sitter-org.rev;
+                    ntsExpected = (super.lib.importJSON
+                      "${inputs.nvim-treesitter}/lockfile.json").org.revision;
+                    orgmodeExpected = builtins.readFile
+                      (super.runCommand "orgmodeExpectedRev" { } ''
+                        sed -n -e "2s/^local ts_revision = '\([^']\+\)'$/\1/p" \
+                            ${inputs.orgmode}/lua/orgmode/init.lua \
+                            | tr -d '\n' > $out
+                      '');
+                  in assert actualRev == ntsExpected;
+                  assert actualRev == orgmodeExpected;
+                  super.tree-sitter-grammars.tree-sitter-org-nvim.overrideAttrs
+                  (old: { src = inputs.tree-sitter-org; });
+                  waybar = super.waybar.overrideAttrs (oldAttrs: {
+                    src = inputs.waybar;
+                    mesonFlags = oldAttrs.mesonFlags
+                      ++ [ "-Dexperimental=true" ];
+                    patchPhase = ''
+                      substituteInPlace src/modules/wlr/workspace_manager.cpp --replace "zext_workspace_handle_v1_activate(workspace_handle_);" "const std::string command = \"hyprctl dispatch workspace \" + name_; system(command.c_str());"
+                    '';
+                  });
+                })
+                inputs.nixpkgs-wayland.overlay
                 inputs.discord-overlay.overlay
 
                 inputs.nixpkgs-f2k.overlays.default
