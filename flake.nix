@@ -34,7 +34,6 @@
 
     nixpkgs-wayland.url = "github:nix-community/nixpkgs-wayland";
     hyprland.url = "github:hyprwm/Hyprland/";
-    hypr-contrib.url = "github:hyprwm/contrib";
     nixpkgs-f2k.url = "github:fortuneteller2k/nixpkgs-f2k";
     webcord.url = "github:fufexan/webcord-flake";
     neovim-nightly-overlay.url = "github:nix-community/neovim-nightly-overlay";
@@ -66,6 +65,8 @@
               };
               nixpkgs.overlays = [
                 (final: prev: {
+                  catppuccin-cursors =
+                    prev.callPackage ./overlays/catppuccin-cursors.nix { };
                   hyprland-nvidia =
                     inputs.hyprland.packages.${prev.system}.default.override {
                       nvidiaPatches = true;
@@ -103,7 +104,6 @@
                 })
                 inputs.nixpkgs-wayland.overlay
                 inputs.nixpkgs-f2k.overlays.default
-                inputs.hypr-contrib.overlays.default
                 inputs.neovim-nightly-overlay.overlay
               ];
             }

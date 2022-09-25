@@ -29,93 +29,14 @@ in {
       wlogout
     ];
 
-    home.pointerCursor.package = pkgs.nordzy-cursor-theme;
-    home.pointerCursor.name = "Nordzy-cursors";
-    home.pointerCursor.size = 16;
+    home.pointerCursor = {
+      package = pkgs.catppuccin-cursors;
+      name = "Catppuccin-Dark-Cursors";
+      size = 16;
+    };
     home.pointerCursor.gtk.enable = true;
 
     home.file."pics/walls/wall.png".source = ./wall.png;
-    home.file.".config/wlogout/icons".source = ./icons;
-    home.file = {
-      ".config/wlogout/style.css".text = ''
-        * {
-            background-image: none;
-        }
-        window {
-            background-color: #2e3440;
-        }
-        button {
-        color: #eceff4;
-            background-color: #2e3440;
-            border-style: solid;
-            border-width: 2px;
-            background-repeat: no-repeat;
-            background-position: center;
-            background-size: 25%;
-        }
-        button:focus, button:active, button:hover {
-            background-color: #4c566a;
-            outline-style: none;
-        }
-        #lock {
-            background-image: image(url("${pkgs.wlogout}/share/wlogout/icons/lock.png"), url("/usr/local/share/wlogout/icons/lock.png"));
-        }
-        #logout {
-            background-image: image(url("${pkgs.wlogout}/share/wlogout/icons/logout.png"), url("/usr/local/share/wlogout/icons/logout.png"));
-        }
-        #suspend {
-            background-image: image(url("${pkgs.wlogout}/share/wlogout/icons/suspend.png"), url("/usr/local/share/wlogout/icons/suspend.png"));
-        }
-        #hibernate {
-            background-image: image(url("${pkgs.wlogout}/share/wlogout/icons/hibernate.png"), url("/usr/local/share/wlogout/icons/hibernate.png"));
-        }
-        #shutdown {
-            background-image: image(url("${pkgs.wlogout}/share/wlogout/icons/shutdown.png"), url("/usr/local/share/wlogout/icons/shutdown.png"));
-        }
-        #reboot {
-            background-image: image(url("${pkgs.wlogout}/share/wlogout/icons/reboot.png"), url("/usr/local/share/wlogout/icons/reboot.png"));
-        }
-      '';
-      ".config/wlogout/layout".text = ''
-        {
-            "label" : "lock",
-            "action" : "swaylock",
-            "text" : "Lock",
-            "keybind" : "l"
-        }
-        {
-            "label" : "hibernate",
-            "action" : "systemctl hibernate",
-            "text" : "Hibernate",
-            "keybind" : "h"
-        }
-        {
-            "label" : "logout",
-            "action" : "loginctl terminate-user $USER",
-            "text" : "Logout",
-            "keybind" : "e"
-        }
-        {
-            "label" : "shutdown",
-            "action" : "systemctl poweroff",
-            "text" : "Shutdown",
-            "keybind" : "s"
-        }
-        {
-            "label" : "suspend",
-            "action" : "swaylock & systemctl suspend",
-            "text" : "Suspend",
-            "keybind" : "u"
-        }
-        {
-            "label" : "reboot",
-            "action" : "systemctl reboot",
-            "text" : "Reboot",
-            "keybind" : "r"
-        }
-      '';
-    };
-
     services.gammastep = {
       enable = true;
       provider = "geoclue2";

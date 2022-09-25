@@ -8,8 +8,9 @@ in {
     programs.kitty = {
       enable = true;
       settings = {
+        background_opacity = "1.0";
         font_family = "monospace";
-        font_size = 12;
+        font_size = 14;
         cursor_blink_interval = "0.5";
         cursor_stop_blinking_after = "15.0";
         scrollback_lines = 2000;
@@ -30,42 +31,42 @@ in {
         window_padding_width = 15;
         window_margin_width = 10;
         disable_ligatures = "never";
-        foreground = "#CAD3F5";
-        background = "#24273A";
+        foreground = "#C6D0F5";
+        background = "#303446";
 
-        selection_foreground = "#24273A";
-        selection_background = "#F4DBD6";
+        selection_foreground = "#303446";
+        selection_background = "#F2D5CF";
 
-        cursor = "#F4DBD6";
-        cursor_text_color = "#24273A";
-        url_color = "#F4DBD6";
+        cursor = "#F2D5CF";
+        cursor_text_color = "#303446";
+        url_color = "#F2D5CF";
 
-        mark1_foreground = "#24273A";
-        mark1_background = "#B7BDF8";
-        mark2_foreground = "#24273A";
-        mark2_background = "#C6A0F6";
-        mark3_foreground = "#24273A";
-        mark3_background = "#7DC4E4";
+        mark1_foreground = "#303446";
+        mark1_background = "#BABBF1";
+        mark2_foreground = "#303446";
+        mark2_background = "#CA9EE6";
+        mark3_foreground = "#303446";
+        mark3_background = "#85C1DC";
 
-        active_border_color = "#B7BDF8";
-        inactive_border_color = "#6E738D";
+        active_border_color = "#BABBF1";
+        inactive_border_color = "#737994";
 
-        color0 = "#494D64";
-        color1 = "#ED8796";
-        color2 = "#A6DA95";
-        color3 = "#EED49F";
-        color4 = "#8AADF4";
-        color5 = "#F5BDE6";
-        color6 = "#8BD5CA";
-        color7 = "#B8C0E0";
-        color8 = "#5B6078";
-        color9 = "#ED8796";
-        color10 = "#A6DA95";
-        color11 = "#EED49F";
-        color12 = "#8AADF4";
-        color13 = "#F5BDE6";
-        color14 = "#8BD5CA";
-        color15 = "#A5ADCB";
+        color0 = "#51576D";
+        color1 = "#E78284";
+        color2 = "#A6D189";
+        color3 = "#E5C890";
+        color4 = "#8CAAEE";
+        color5 = "#F4B8E4";
+        color6 = "#81C8BE";
+        color7 = "#B5BFE2";
+        color8 = "#626880";
+        color9 = "#E78284";
+        color10 = "#A6D189";
+        color11 = "#E5C890";
+        color12 = "#8CAAEE";
+        color13 = "#F4B8E4";
+        color14 = "#81C8BE";
+        color15 = "#A5ADCE";
       };
 
       keybindings = {

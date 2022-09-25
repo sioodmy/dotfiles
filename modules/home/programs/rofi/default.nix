@@ -10,7 +10,7 @@ in {
       package = pkgs.rofi-wayland;
       font = "Lato 14";
       extraConfig = {
-        modi = "drun,run,combi,filebrowser";
+        modi = "drun,filebrowser";
         drun-display-format = " {name} ";
         sidebar-mode = true;
         matching = "prefix";
@@ -28,104 +28,173 @@ in {
       theme = let inherit (config.lib.formats.rasi) mkLiteral;
       in {
         "*" = {
-          bg = mkLiteral "#303446";
-          fg = mkLiteral "#c6d0f5";
-          button = mkLiteral "#8caaee";
-          background-color = mkLiteral "@bg";
-          text-color = mkLiteral "@fg";
-        };
-        "element-text,element-icon,mode-switcher" = {
-          background-color = mkLiteral "inherit";
-          text-color = mkLiteral "inherit";
+          background = mkLiteral "#292c3c";
+          background-alt = mkLiteral "#292c3c";
+          foreground = mkLiteral "#c6d0f5";
+          selected = mkLiteral "#303446";
+          active = mkLiteral "#8caaee";
+          urgent = mkLiteral "#303446";
         };
         "window" = {
           transparency = "real";
-          width = mkLiteral "30%";
-          border = mkLiteral "0px";
-          border-radius = mkLiteral "15px";
-          height = mkLiteral "50%";
+          location = mkLiteral "center";
+          anchor = mkLiteral "center";
+          fullscreen = mkLiteral "false";
+          width = mkLiteral "600px";
+          x-offset = mkLiteral "0px";
+          y-offset = mkLiteral "0px";
+          enabled = mkLiteral "true";
+          border-radius = mkLiteral "20px";
+          cursor = "default";
+          background-color = mkLiteral "@background";
         };
-        "prompt" = {
+        "mainbox" = {
           enabled = true;
-          background-color = mkLiteral "@bg";
-          padding = mkLiteral "12px 22px 12px 16px";
-          text-color = mkLiteral "@fg";
-          border-radius = mkLiteral "50%";
-          expand = false;
-          font = "Iosevka Nerd Font 14";
+          spacing = mkLiteral "0px";
+          background-color = mkLiteral "transparent";
+          orientation = mkLiteral "vertical";
+          children = mkLiteral "[inputbar,listbox]";
         };
-        "entry" = {
-          placeholder = "Search";
-          placeholder-color = mkLiteral "#8caaee";
-          text-color = mkLiteral "#8caaee";
-          expand = true;
-          padding = mkLiteral "12px 15px";
-          border-radius = mkLiteral "100%";
+        "listbox" = {
+          spacing = mkLiteral "10px";
+          padding = mkLiteral "10px 10px 10px 15px";
+          background-color = mkLiteral "transparent";
+          orientation = mkLiteral "vertical";
+          children = mkLiteral "[message,listview]";
         };
         "inputbar" = {
-          children = mkLiteral "[entry,mode-switcher]";
-          background-image = mkLiteral ''url("bg.jpg", width)'';
-          expand = false;
-          border-radius = mkLiteral "10px 10px 0 0px";
-          font = "Lato 14";
-          margin = mkLiteral "0 0 20px 0";
+          enabled = true;
           spacing = mkLiteral "10px";
-          padding = mkLiteral "30px 30px 20px 20px";
-        };
-        "listview" = {
-          columns = 1;
-          lines = 7;
-          cycle = false;
-          dynamic = true;
-          layout = mkLiteral "vertical";
-          padding = mkLiteral "0 15px 0 15px";
-          scrollbar = false;
-        };
-        "mainbox" = { children = mkLiteral "[inputbar,listview]"; };
-        "element" = {
-          #          orientation = mkLiteral "vertical";
-          padding = mkLiteral "7px";
-          #          font = "Lato 14";
-          #          margin = mkLiteral "5px 5px 5px 5px";
-          spacing = mkLiteral "75px";
-          border-radius = mkLiteral "100%";
+          padding = mkLiteral "50px 40px 50px 30px";
           background-color = mkLiteral "transparent";
+          background-image = mkLiteral ''url("bg.jpg", width)'';
+          text-color = mkLiteral "@foreground";
+          orientation = mkLiteral "horizontal";
+          children =
+            mkLiteral "[textbox-prompt-colon,entry,dummy,mode-switcher]";
+        };
+        "textbox-prompt-colon" = {
+          enabled = true;
+          expand = false;
+          str = "";
+          font = "Iosevka Nerd Font 14";
+          padding = mkLiteral "12px 22px 12px 16px";
+          border-radius = mkLiteral "100%";
+          background-color = mkLiteral "@background-alt";
+          text-color = mkLiteral "inherit";
+        };
+        "entry" = {
+          enabled = true;
+          expand = false;
+          width = mkLiteral "300px";
+          padding = mkLiteral "12px 15px";
+          border-radius = mkLiteral "100%";
+          background-color = mkLiteral "@background-alt";
+          text-color = mkLiteral "inherit";
+          cursor = mkLiteral "text";
+          placeholder = "Search";
+          placeholder-color = mkLiteral "inherit";
+        };
+        "dummy" = {
+          expand = true;
+          background-color = mkLiteral "transparent";
+        };
+        "mode-switcher" = {
+          enabled = true;
+          spacing = mkLiteral "10px";
+          background-color = mkLiteral "transparent";
+          text-color = mkLiteral "@foreground";
+        };
+        "button" = {
+          width = mkLiteral "48px";
+          font = "Iosevka Nerd Font 14";
+          padding = mkLiteral "8px 5px 8px 8px";
+          border-radius = mkLiteral "100%";
+          background-color = mkLiteral "@background-alt";
+          text-color = mkLiteral "inherit";
           cursor = mkLiteral "pointer";
         };
-        "element-text" = {
-          expand = true;
-          vertical-align = mkLiteral "0.5";
-          margin = mkLiteral "0% 1% 0% 1%";
-          font = "Lato 14";
-          cursor = mkLiteral "inherit";
+        "button selected" = {
+          background-color = mkLiteral "@selected";
+          text-color = mkLiteral "@foreground";
+        };
+        "listview" = {
+          enabled = true;
+          columns = 1;
+          lines = 7;
+          cycle = true;
+          dynamic = true;
+          srollbar = false;
+          layout = mkLiteral "vertical";
+          reverse = false;
+          fixed-height = true;
+          fixed-columns = true;
+          spacing = mkLiteral "5px";
+          background-color = mkLiteral "transparent";
+          text-color = mkLiteral "@foreground";
+          cursor = mkLiteral "default";
+        };
+        "element" = {
+          enabled = true;
+          spacing = mkLiteral "15px";
+          padding = mkLiteral "7px";
+          border-radius = mkLiteral "100%";
+          background-color = mkLiteral "transparent";
+          text-color = mkLiteral "@foreground";
+          cursor = mkLiteral "pointer";
+        };
+        "element normal.normal" = {
           background-color = mkLiteral "inherit";
           text-color = mkLiteral "inherit";
         };
+        "element normal.urgent" = {
+          background-color = mkLiteral "@urgent";
+          text-color = mkLiteral "@foreground";
+        };
+        "element normal.active" = {
+          background-color = mkLiteral "@background";
+          text-color = mkLiteral "@active";
+        };
+        "element selected.normal" = {
+          background-color = mkLiteral "@selected";
+          text-color = mkLiteral "@foreground";
+        };
+        "element selected.urgent" = {
+          background-color = mkLiteral "@urgent";
+          text-color = mkLiteral "@foreground";
+        };
+        "element selected.active" = {
+          background-color = mkLiteral "@urgent";
+          text-color = mkLiteral "@active";
+        };
         "element-icon" = {
+          background-color = mkLiteral "transparent";
+          text-color = mkLiteral "inherit";
           size = mkLiteral "32px";
           cursor = mkLiteral "inherit";
         };
-        "element selected" = {
-          background-color = mkLiteral "@button";
-          font = "Lato 14";
-          text-color = mkLiteral "@bg";
-          border-radius = mkLiteral "10px";
-        };
-        "mode-switcher" = {
-          spacing = 0;
-          border-radius = mkLiteral "10px";
+        "element-text" = {
           background-color = mkLiteral "transparent";
-          margin = mkLiteral "0 20px 20px 20px";
+          text-color = mkLiteral "inherit";
+          cursor = mkLiteral "inherit";
+          vertical-align = mkLiteral "0.5";
+          horizontal-align = mkLiteral "0.0";
         };
-
-        "button" = {
-          padding = mkLiteral "8px 5px 8px 8px";
-          margin = mkLiteral "3px";
-          width = mkLiteral "48px";
+        "message" = { background-color = mkLiteral "transparent"; };
+        "textbox" = {
+          padding = mkLiteral "12px";
           border-radius = mkLiteral "100%";
-          font = "Lato, Iosevka Nerd Font 14";
+          background-color = mkLiteral "@background-alt";
+          text-color = mkLiteral "@foreground";
+          vertical-align = mkLiteral "0.5";
+          horizontal-align = mkLiteral "0.0";
         };
-        "button selected" = { background-color = mkLiteral "#414559"; };
+        "error-message" = {
+          padding = mkLiteral "12px";
+          border-radius = mkLiteral "20px";
+          background-color = mkLiteral "@background";
+          text-color = mkLiteral "@foreground";
+        };
 
       };
     };

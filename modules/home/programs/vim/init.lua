@@ -251,11 +251,9 @@ cmp.setup.cmdline(":", {
 	}),
 })
 
-vim.g.nord_contrast = true
-vim.g.nord_borders = true
-vim.g.nord_disable_background = false
-vim.g.nord_italic = true
-vim.g.nord_uniform_diff_background = true
+vim.g.catppuccin_flavour = "frappe"
+require("catppuccin").setup({})
+vim.cmd([[colorscheme catppuccin]])
 
 local alpha = require("alpha")
 local dashboard = require("alpha.themes.dashboard")
@@ -291,9 +289,6 @@ dashboard.section.footer.val = {
 }
 
 alpha.setup(dashboard.opts)
-
--- Load the colorscheme
-require("nord").set()
 
 require("bufferline").setup({
 	options = {
@@ -437,16 +432,4 @@ require("nvim-autopairs").setup({
 })
 
 require("hop").setup()
-require("colorizer").setup({ "*" }, {
-	{
-		RGB = true, -- #RGB hex codes
-		RRGGBB = true, -- #RRGGBB hex codes
-		names = false, -- "Name" codes like Blue
-		RRGGBBAA = false, -- #RRGGBBAA hex codes
-		rgb_fn = false, -- CSS rgb() and rgba() functions
-		hsl_fn = false, -- CSS hsl() and hsla() functions
-		css = false, -- Enable all css features: rgb_fn, hsl_fn, names, RGB, RRGGBB
-		css_fn = false, -- Enable all CSS *functions*: rgb_fn, hsl_fn
-		mode = "background", -- Set the display mode
-	},
-})
+require("colorizer").setup()

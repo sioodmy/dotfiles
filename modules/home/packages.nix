@@ -44,7 +44,7 @@
     bandwhich
     grex
     fd
-    dolphin
+    xfce.thunar
     xh
     jq
     figlet
