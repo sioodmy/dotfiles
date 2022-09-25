@@ -1,15 +1,16 @@
-{ pkgs, lib, config, fetchzip, ... }:
+{ pkgs, lib, config, fetchzip, inputs, ... }:
 with lib;
 let cfg = config.modules.desktop.gtk;
 in {
   options.modules.desktop.gtk = { enable = mkEnableOption "gtk"; };
 
   config = mkIf cfg.enable {
+
     gtk = {
       enable = true;
       theme = {
-        name = "Catppuccin-dark";
-        package = pkgs.catppuccin-gtk;
+        name = "Nordic";
+        package = pkgs.nordic;
       };
       iconTheme = {
         name = "Papirus-Dark";

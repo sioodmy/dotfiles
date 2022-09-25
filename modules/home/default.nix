@@ -4,40 +4,22 @@
   home.stateVersion = "22.05";
   imports = [
     ./packages.nix
+    ./tools
+    ./shell
 
-    ./desktop/bspwm
-    ./desktop/awesome
     ./desktop/gtk
-    ./desktop/picom
     ./desktop/xresources
-    ./desktop/eww
-    ./desktop/lockscreen
+    ./desktop/swaylock
+    ./desktop/hyprland
 
-    ./cli/bat
-    ./cli/fzf
-    ./cli/git
-    ./cli/gpg
-    ./cli/lf
-    ./cli/cava
-    ./cli/music
-    ./cli/btm
-    ./cli/nvim
-    ./cli/xdg
-    ./cli/zsh
-
+    ./programs/vim
+    ./programs/tmux
+    ./programs/wofi
+    ./programs/foot
     ./programs/kitty
-    ./programs/dunst
-    ./programs/chromium
-    ./programs/qutebrowser
-    ./programs/rofi
+    ./programs/firefox
     ./programs/zathura
-    ./programs/discocss
-    ./programs/mpv
-
-    ./services/udiskie
-    ./services/sxhkd
-    ./services/fusuma
-    ./services/redshift
+    ./programs/mako
   ];
 
 }

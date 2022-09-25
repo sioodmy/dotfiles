@@ -3,46 +3,50 @@
 {
   nixpkgs.config.allowUnfree = true;
   home.packages = with pkgs; [
-    inputs.todo.packages."${system}".todo
-    inputs.st.packages."${system}".st-snazzy
-    maim
-    # cli tools
+    wf-recorder
+    inputs.webcord.packages.${pkgs.system}.default
+    todo
+    pfetch
+    vlc
+    nordzy-icon-theme
+    bottom
+    wofi
+    mpv
+    imv
+    hyperfine
+    waybar
+    gimp
+    kdenlive
+    swaybg
+    slurp
+    grim
+    transmission-gtk
+    polymc
+    pngquant
+    wl-clipboard
+    proxychains-ng
+    exa
     ffmpeg
     unzip
-    xclip
     libnotify
     gnupg
     yt-dlp
     ripgrep
     rsync
     imagemagick
-    scrot
-    newsboat
     unrar
     tealdeer
     killall
-    onefetch
-    neofetch
     du-dust
-    bunnyfetch
-    tokei
     bandwhich
     grex
     fd
+    dolphin
     xh
-    direnv
+    jq
     figlet
     lm_sensors
-    wifite2
-    # gui apps
-    nsxiv
-    transmission-gtk
-    pavucontrol
     keepassxc
-    xfce.thunar
-    # unfree apps (sorry daddy stallman)
-    minecraft
-    # dev tools
     python3
     git
     jdk
