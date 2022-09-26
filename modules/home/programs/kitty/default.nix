@@ -76,7 +76,7 @@ in {
         "ctrl+shift+backspace" = "restore_font_size";
         "ctrl+alt+c" = "copy_to_clipboard";
         "ctrl+alt+v" = "paste_from_clipboard";
-        "ctrl+v" = "paste_from_clipboard";
+        "ctrl+shift+v" = "paste_from_clipboard";
       };
     };
   };
