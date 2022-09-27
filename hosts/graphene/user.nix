@@ -7,6 +7,7 @@
       gtk.enable = true;
       hyprland.enable = true;
       swaylock.enable = true;
+      waybar.enable = true;
     };
     programs = {
       firefox.enable = true;

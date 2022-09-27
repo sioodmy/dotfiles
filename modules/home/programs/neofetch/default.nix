@@ -6,9 +6,6 @@ in {
 
   config = mkIf cfg.enable {
     home.packages = [ pkgs.neofetch ];
-    home.file = {
-      ".config/neofetch/config.conf".source = ./config.conf;
-      ".config/neofetch/images/sakurafetch.png".source = ./sakurafetch.png;
-    };
+    home.file.".config/neofetch/config.conf".text = import ./config.nix;
   };
 }

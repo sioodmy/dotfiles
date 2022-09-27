@@ -1,7 +1,12 @@
 { pkgs, lib, config, inputs, ... }:
 
 with lib;
-let cfg = config.modules.programs.vim;
+let
+  cfg = config.modules.programs.vim;
+  neorg-telescope-nvim = pkgs.vimUtils.buildVimPlugin {
+    name = "neorg-telescope-nvim";
+    src = inputs.neorg-telescope-nvim;
+  };
 in {
   options.modules.programs.vim = { enable = mkEnableOption "vim"; };
 
@@ -68,6 +73,7 @@ in {
         nvim-autopairs
         nvim-colorizer-lua
         zen-mode-nvim
+        neorg-telescope-nvim
         cmp-latex-symbols
         vim-pandoc
         vim-pandoc-syntax

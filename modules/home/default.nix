@@ -10,6 +10,7 @@
     ./desktop/gtk
     ./desktop/xresources
     ./desktop/swaylock
+    ./desktop/waybar
     ./desktop/hyprland
 
     ./programs/vim
