@@ -10,13 +10,15 @@
     ./desktop/gtk
     ./desktop/xresources
     ./desktop/swaylock
+    ./desktop/waybar
     ./desktop/hyprland
 
     ./programs/vim
+    ./programs/rofi
     ./programs/tmux
     ./programs/wofi
-    ./programs/foot
     ./programs/kitty
+    ./programs/neofetch
     ./programs/firefox
     ./programs/zathura
     ./programs/mako

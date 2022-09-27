@@ -29,9 +29,8 @@ map("n", "<C-l>", "<C-w>l", opts)
 map("n", "<C-n>", ":Telescope live_grep <CR>", opts)
 map("n", "<C-f>", ":Telescope find_files <CR>", opts)
 map("n", "<C-f>", ":Telescope find_files <CR>", opts)
-map("n", "<C-b>", ":Telescope neorg find_linkable <CR>", opts)
 map("n", "<C-w>", ":NvimTreeToggle <CR>", opts)
-map("n", "<C-j>", ":HopWord <CR>", opts)
+map("n", "<C-s>", ":HopWord <CR>", opts)
 map("n", "j", "gj", opts)
 map("n", "k", "gk", opts)
 map("n", ";", ":", { noremap = true })
@@ -229,9 +228,9 @@ cmp.setup({
 	sources = cmp.config.sources({
 		{ name = "nvim_lsp" },
 		{ name = "buffer" },
-		{ name = "neorg" },
 		{ name = "path" },
 		{ name = "latex_symbols" },
+		{ name = "pandoc_references" },
 	}),
 })
 
@@ -251,11 +250,9 @@ cmp.setup.cmdline(":", {
 	}),
 })
 
-vim.g.nord_contrast = true
-vim.g.nord_borders = true
-vim.g.nord_disable_background = false
-vim.g.nord_italic = true
-vim.g.nord_uniform_diff_background = true
+vim.g.catppuccin_flavour = "frappe"
+require("catppuccin").setup({})
+vim.cmd([[colorscheme catppuccin]])
 
 local alpha = require("alpha")
 local dashboard = require("alpha.themes.dashboard")
@@ -292,9 +289,6 @@ dashboard.section.footer.val = {
 
 alpha.setup(dashboard.opts)
 
--- Load the colorscheme
-require("nord").set()
-
 require("bufferline").setup({
 	options = {
 		mode = "tabs",
@@ -313,100 +307,13 @@ require("toggleterm").setup({
 	size = 10,
 	open_mapping = [[<c-\>]],
 	shading_factor = 2,
+	shell = "tmux",
 	direction = "float",
 	float_opts = {
 		border = "curved",
 		highlights = {
 			border = "Normal",
 			background = "Normal",
-		},
-	},
-})
-require("neorg").setup({
-	load = {
-		["core.defaults"] = {},
-		["core.integrations.telescope"] = {},
-		["core.presenter"] = {
-			config = {
-				zen_mode = "zen-mode",
-				slide_count = {
-					enable = true,
-					position = "top",
-					count_format = "[%d/%d]",
-				},
-			},
-		},
-		["core.norg.completion"] = {
-			config = {
-				engine = "nvim-cmp",
-			},
-		},
-		["core.norg.concealer"] = {
-			config = {
-				icon_preset = "diamond",
-				markup_preset = "varied",
-				icons = {
-					marker = {
-						enabled = true,
-						icon = " ",
-					},
-					todo = {
-						enable = true,
-						pending = {
-							icon = "פֿ",
-						},
-						uncertain = {
-							icon = "?",
-						},
-						urgent = {
-							icon = "",
-						},
-						on_hold = {
-							icon = "",
-						},
-						cancelled = {
-							icon = "",
-						},
-					},
-					heading = {
-						enabled = true,
-						level_1 = {
-							icon = "◈",
-						},
-
-						level_2 = {
-							icon = " ◇",
-						},
-
-						level_3 = {
-							icon = "  ◆",
-						},
-						level_4 = {
-							icon = "   ❖",
-						},
-						level_5 = {
-							icon = "    ⟡",
-						},
-						level_6 = {
-							icon = "     ⋄",
-						},
-					},
-				},
-			},
-		},
-		["core.highlights"] = {
-			config = {
-				highlights = {
-					Keyword = "+Keyword2",
-				},
-			},
-		},
-		["core.norg.dirman"] = {
-			config = {
-				workspaces = {
-					notes = "~/docs/notes",
-				},
-			},
 		},
 	},
 })
@@ -437,16 +344,4 @@ require("nvim-autopairs").setup({
 })
 
 require("hop").setup()
-require("colorizer").setup({ "*" }, {
-	{
-		RGB = true, -- #RGB hex codes
-		RRGGBB = true, -- #RRGGBB hex codes
-		names = false, -- "Name" codes like Blue
-		RRGGBBAA = false, -- #RRGGBBAA hex codes
-		rgb_fn = false, -- CSS rgb() and rgba() functions
-		hsl_fn = false, -- CSS hsl() and hsla() functions
-		css = false, -- Enable all css features: rgb_fn, hsl_fn, names, RGB, RRGGBB
-		css_fn = false, -- Enable all CSS *functions*: rgb_fn, hsl_fn
-		mode = "background", -- Set the display mode
-	},
-})
+require("colorizer").setup()
