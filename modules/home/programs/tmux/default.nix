@@ -1,6 +1,18 @@
 { config, lib, pkgs, ... }:
 with lib;
-let cfg = config.modules.programs.tmux;
+let
+  cfg = config.modules.programs.tmux;
+  catppuccin-tmux = pkgs.tmuxPlugins.mkTmuxPlugin rec {
+    pluginName = "catppuccin";
+    rtpFilePath = "catppuccin.tmux";
+    version = "1.0";
+    src = pkgs.fetchFromGitHub {
+      owner = "catppuccin";
+      repo = "tmux";
+      rev = "8820440bb70e6b1a79fc372edad1c28e2a670528";
+      sha256 = "tTev7pkB4U0ztSi49rQKHXmLdd5+V64qODpG2EaBGbw=";
+    };
+  };
 in {
   options.modules.programs.tmux = { enable = mkEnableOption "tmux"; };
 
@@ -10,9 +22,13 @@ in {
       keyMode = "vi";
       aggressiveResize = true;
       clock24 = true;
-      plugins = with pkgs.tmuxPlugins; [ nord urlview extrakto ];
+      plugins = [{
+        plugin = catppuccin-tmux;
+        extraConfig = "set -g @catppuccin_flavour 'frappe'";
+      }] ++ (with pkgs.tmuxPlugins; [ urlview extrakto ]);
       extraConfig = ''
         set -g default-terminal "xterm-256color"
+        set -ga terminal-overrides ',*:Ss=\E[%p1%d q:Se=\E[2 q'
         set -sa terminal-overrides ',xterm-256color:RGB'
         # so that escapes register immidiately in vim
         set -sg escape-time 1

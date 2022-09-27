@@ -1,12 +1,7 @@
 { pkgs, lib, config, inputs, ... }:
 
 with lib;
-let
-  cfg = config.modules.programs.vim;
-  neorg-telescope-nvim = pkgs.vimUtils.buildVimPlugin {
-    name = "neorg-telescope-nvim";
-    src = inputs.neorg-telescope-nvim;
-  };
+let cfg = config.modules.programs.vim;
 in {
   options.modules.programs.vim = { enable = mkEnableOption "vim"; };
 
@@ -38,6 +33,8 @@ in {
       nodePackages.yarn
       nodePackages.bash-language-server
       nodePackages.node2nix # Bash
+      pandoc
+      texlive.combined.scheme-basic
     ];
 
     programs.neovim = {
@@ -71,13 +68,13 @@ in {
         nvim-autopairs
         nvim-colorizer-lua
         zen-mode-nvim
-        neorg-telescope-nvim
         cmp-latex-symbols
-        neorg
+        vim-pandoc
+        vim-pandoc-syntax
+        ultisnips
+        cmp-pandoc-references
         (nvim-treesitter.withPlugins (plugins:
           with plugins; [
-            #            pkgs.tree-sitter-org
-            tree-sitter-norg
             tree-sitter-python
             tree-sitter-c
             tree-sitter-nix

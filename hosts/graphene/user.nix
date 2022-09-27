@@ -14,6 +14,7 @@
       kitty.enable = true;
       mako.enable = true;
       tmux.enable = true;
+      neofetch.enable = true;
       zathura.enable = false;
       wofi.enable = true;
       vim.enable = true;
