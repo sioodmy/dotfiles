@@ -9,15 +9,15 @@ in {
     gtk = {
       enable = true;
       theme = {
-        name = "Nordic";
-        package = pkgs.nordic;
+        name = "Catppuccin";
+        package = pkgs.catppuccin-gtk.override { size = "compact"; };
       };
       iconTheme = {
         name = "Papirus-Dark";
         package = pkgs.papirus-icon-theme;
       };
       font = {
-        name = "Iosevka Nerd Font";
+        name = "Lato";
         size = 13;
       };
       gtk3.extraConfig = {

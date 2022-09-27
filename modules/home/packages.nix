@@ -6,7 +6,9 @@
     wf-recorder
     inputs.webcord.packages.${pkgs.system}.default
     todo
-    pfetch
+    calcurse
+    neofetch
+    rofi-wayland
     vlc
     nordzy-icon-theme
     bottom
@@ -19,8 +21,10 @@
     kdenlive
     swaybg
     slurp
+    brave
     grim
     transmission-gtk
+    fzf
     polymc
     pngquant
     wl-clipboard
@@ -41,7 +45,7 @@
     bandwhich
     grex
     fd
-    dolphin
+    xfce.thunar
     xh
     jq
     figlet

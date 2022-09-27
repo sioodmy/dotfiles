@@ -11,7 +11,7 @@ in {
   options.modules.programs.vim = { enable = mkEnableOption "vim"; };
 
   config = mkIf cfg.enable {
-    home.file.".config/nvim/settings.lua".source = ./init.lua;
+    home.file.".config/nvim/init.lua".source = ./init.lua;
 
     home.packages = with pkgs; [
       rnix-lsp
@@ -31,13 +31,15 @@ in {
       nodejs
       nodePackages.pyright
       nodePackages.prettier
+      nodePackages.stylelint
       nodePackages.jsonlint # JSON
-      nodePackages.typescript
       nodePackages.typescript-language-server # Typescript
       nodePackages.vscode-langservers-extracted # HTML, CSS, JavaScript
       nodePackages.yarn
       nodePackages.bash-language-server
       nodePackages.node2nix # Bash
+      pandoc
+      texlive.combined.scheme-basic
     ];
 
     programs.neovim = {
@@ -60,7 +62,7 @@ in {
         cmp-nvim-lsp
         cmp-buffer
         cmp-path
-        nord-nvim
+        catppuccin-nvim
         lspkind-nvim
         nvim-lspconfig
         vim-surround
@@ -73,11 +75,12 @@ in {
         zen-mode-nvim
         neorg-telescope-nvim
         cmp-latex-symbols
-        neorg
+        vim-pandoc
+        vim-pandoc-syntax
+        ultisnips
+        cmp-pandoc-references
         (nvim-treesitter.withPlugins (plugins:
           with plugins; [
-            #            pkgs.tree-sitter-org
-            tree-sitter-norg
             tree-sitter-python
             tree-sitter-c
             tree-sitter-nix
@@ -106,9 +109,8 @@ in {
             tree-sitter-dockerfile
           ]))
       ];
-      extraConfig = ''
-        luafile ~/.config/nvim/settings.lua
-      '';
+      #      extraConfig = builtins.readFile ./init.lua;
+      # extraConfig = ":luafile ${./init.lua}";
 
     };
 

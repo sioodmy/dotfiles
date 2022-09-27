@@ -8,9 +8,9 @@ in {
     programs.mako = {
       enable = true;
 
-      backgroundColor = "#3b4252";
-      textColor = "#d8dee9";
-      borderColor = "#434c5e";
+      backgroundColor = "#303446";
+      textColor = "#c6d0f5";
+      borderColor = "#8caaee";
       padding = "15";
       defaultTimeout = 7000;
       borderSize = 3;
@@ -20,7 +20,7 @@ in {
 
       extraConfig = ''
         [urgency=high]
-        border-color=#bf616a
+        border-color=#ef9f76
       '';
 
     };
