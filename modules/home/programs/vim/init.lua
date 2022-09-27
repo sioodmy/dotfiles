@@ -29,7 +29,6 @@ map("n", "<C-l>", "<C-w>l", opts)
 map("n", "<C-n>", ":Telescope live_grep <CR>", opts)
 map("n", "<C-f>", ":Telescope find_files <CR>", opts)
 map("n", "<C-f>", ":Telescope find_files <CR>", opts)
-map("n", "<C-b>", ":Telescope neorg find_linkable <CR>", opts)
 map("n", "<C-w>", ":NvimTreeToggle <CR>", opts)
 map("n", "<C-s>", ":HopWord <CR>", opts)
 map("n", "j", "gj", opts)
@@ -229,9 +228,9 @@ cmp.setup({
 	sources = cmp.config.sources({
 		{ name = "nvim_lsp" },
 		{ name = "buffer" },
-		{ name = "neorg" },
 		{ name = "path" },
 		{ name = "latex_symbols" },
+		{ name = "pandoc_references" },
 	}),
 })
 
@@ -308,100 +307,13 @@ require("toggleterm").setup({
 	size = 10,
 	open_mapping = [[<c-\>]],
 	shading_factor = 2,
+	shell = "tmux",
 	direction = "float",
 	float_opts = {
 		border = "curved",
 		highlights = {
 			border = "Normal",
 			background = "Normal",
-		},
-	},
-})
-require("neorg").setup({
-	load = {
-		["core.defaults"] = {},
-		["core.integrations.telescope"] = {},
-		["core.presenter"] = {
-			config = {
-				zen_mode = "zen-mode",
-				slide_count = {
-					enable = true,
-					position = "top",
-					count_format = "[%d/%d]",
-				},
-			},
-		},
-		["core.norg.completion"] = {
-			config = {
-				engine = "nvim-cmp",
-			},
-		},
-		["core.norg.concealer"] = {
-			config = {
-				icon_preset = "diamond",
-				markup_preset = "varied",
-				icons = {
-					marker = {
-						enabled = true,
-						icon = " ",
-					},
-					todo = {
-						enable = true,
-						pending = {
-							icon = "פֿ",
-						},
-						uncertain = {
-							icon = "?",
-						},
-						urgent = {
-							icon = "",
-						},
-						on_hold = {
-							icon = "",
-						},
-						cancelled = {
-							icon = "",
-						},
-					},
-					heading = {
-						enabled = true,
-						level_1 = {
-							icon = "◈",
-						},
-
-						level_2 = {
-							icon = " ◇",
-						},
-
-						level_3 = {
-							icon = "  ◆",
-						},
-						level_4 = {
-							icon = "   ❖",
-						},
-						level_5 = {
-							icon = "    ⟡",
-						},
-						level_6 = {
-							icon = "     ⋄",
-						},
-					},
-				},
-			},
-		},
-		["core.highlights"] = {
-			config = {
-				highlights = {
-					Keyword = "+Keyword2",
-				},
-			},
-		},
-		["core.norg.dirman"] = {
-			config = {
-				workspaces = {
-					notes = "~/docs/notes",
-				},
-			},
 		},
 	},
 })

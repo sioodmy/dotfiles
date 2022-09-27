@@ -17,6 +17,7 @@
     ./programs/tmux
     ./programs/wofi
     ./programs/kitty
+    ./programs/neofetch
     ./programs/firefox
     ./programs/zathura
     ./programs/mako

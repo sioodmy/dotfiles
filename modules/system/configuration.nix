@@ -390,7 +390,7 @@ in {
 
   security = {
     protectKernelImage = true;
-    lockKernelModules = true;
+    lockKernelModules = false;
     rtkit.enable = true;
     apparmor = {
       enable = true;
