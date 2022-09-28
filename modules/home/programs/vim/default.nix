@@ -7,6 +7,11 @@ let
     name = "neorg-telescope-nvim";
     src = inputs.neorg-telescope-nvim;
   };
+  tex = (pkgs.texlive.combine {
+    inherit (pkgs.texlive)
+      scheme-basic dvisvgm dvipng # for preview and export as html
+      xcolor wrapfig amsmath ulem hyperref capt-of;
+  });
 in {
   options.modules.programs.vim = { enable = mkEnableOption "vim"; };
 
@@ -39,7 +44,7 @@ in {
       nodePackages.bash-language-server
       nodePackages.node2nix # Bash
       pandoc
-      texlive.combined.scheme-basic
+      tex
     ];
 
     programs.neovim = {
@@ -109,10 +114,6 @@ in {
             tree-sitter-dockerfile
           ]))
       ];
-      #      extraConfig = builtins.readFile ./init.lua;
-      # extraConfig = ":luafile ${./init.lua}";
-
     };
-
   };
 }
