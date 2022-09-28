@@ -67,6 +67,8 @@
                 (final: prev: {
                   catppuccin-cursors =
                     prev.callPackage ./overlays/catppuccin-cursors.nix { };
+                  catppuccin-gtk =
+                    prev.callPackage ./overlays/catppuccin-gtk.nix { };
                   hyprland-nvidia =
                     inputs.hyprland.packages.${prev.system}.default.override {
                       nvidiaPatches = true;

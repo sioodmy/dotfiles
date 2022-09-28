@@ -31,7 +31,7 @@ in {
 
     home.pointerCursor = {
       package = pkgs.catppuccin-cursors;
-      name = "Catppuccin-Dark-Cursors";
+      name = "Catppuccin-Frappe-Dark";
       size = 16;
     };
     home.pointerCursor.gtk.enable = true;
