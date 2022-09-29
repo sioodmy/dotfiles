@@ -28,7 +28,7 @@
       flake = false;
     };
     kernel = {
-      url = "https://git.kernel.org/torvalds/t/linux-6.0-rc6.tar.gz";
+      url = "https://git.kernel.org/torvalds/t/linux-6.0-rc7.tar.gz";
       flake = false;
     };
 
