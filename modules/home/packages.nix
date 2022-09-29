@@ -10,7 +10,6 @@
     neofetch
     rofi-wayland
     vlc
-    nordzy-icon-theme
     pavucontrol
     bottom
     wofi
