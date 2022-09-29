@@ -230,7 +230,6 @@ in {
               "browser.send_pings" = false;
               "browser.urlbar.speculativeConnect.enabled" = false;
               "media.navigator.enabled" = false;
-              "network.http.referer.XOriginPolicy" = 0;
               "beacon.enabled" = false;
               "browser.safebrowsing.downloads.remote.enabled" = false;
               "network.IDN_show_punycode" = true;
@@ -249,7 +248,7 @@ in {
               "browser.tabs.crashReporting.sendReport" = false;
               "devtools.onboarding.telemetry.logged" = false;
               "privacy.resistFingerprinting" = false;
-              "dom.event.clipboardevents.enabled" = false;
+              "dom.event.clipboardevents.enabled" = true;
               "browser.downloads.start_downloads_in_tmp_dir" = true;
               "dom.battery.enabled" = false;
               "privacy.resistFingerprinting.letterboxing" = false;
@@ -272,10 +271,6 @@ in {
                 false;
               "browser.newtabpage.activity-stream.showSponsored" = false;
               "extensions.pocket.enabled" = false;
-
-              # Disable prefetching
-              "network.dns.disablePrefetch" = true;
-              "network.prefetch-next" = false;
 
               # Disable JS in PDFs
               "pdfjs.enableScripting" = false;
@@ -320,11 +315,6 @@ in {
               "toolkit.scrollbox.verticalScrollDistance" = 2;
               "ui.key.menuAccessKeyFocuses" = false;
 
-              "webgl.disabled" = true;
-              "security.dialog_enable_delay" = 1000;
-              "privacy.firstparty.isolate" = false;
-              "security.identityblock.show_extended_validation" = true;
-              "security.tls.version.enable-deprecated" = false;
               "browser.uiCustomization.state" = ''
                 {"placements":{"widget-overflow-fixed-list":["nixos_ublock-origin-browser-action","nixos_sponsorblock-browser-action","nixos_localcdn-fork-of-decentraleyes-browser-action","nixos_image-search-browser-action","nixos_webarchive-browser-action"],"nav-bar":["back-button","forward-button","stop-reload-button","customizableui-special-spring1","urlbar-container","customizableui-special-spring2","save-to-pocket-button","nixos_temporary-containers-browser-action","fxa-toolbar-menu-button","nixos_cookie-autodelete-browser-action","nixos_absolute-copy-browser-action"],"toolbar-menubar":["menubar-items"],"TabsToolbar":["tabbrowser-tabs","new-tab-button","nixos_ether_metamask-browser-action","alltabs-button"],"PersonalToolbar":["import-button","personal-bookmarks"]},"seen":["developer-button","nixos_sponsorblock-browser-action","nixos_clearurls-browser-action","nixos_cookie-autodelete-browser-action","nixos_ether_metamask-browser-action","nixos_ublock-origin-browser-action","nixos_localcdn-fork-of-decentraleyes-browser-action","nixos_vimium-browser-action","nixos_copy-plaintext-browser-action","nixos_h264ify-browser-action","nixos_fastforwardteam-browser-action","nixos_single-file-browser-action","treestyletab_piro_sakura_ne_jp-browser-action","nixos_don-t-fuck-with-paste-browser-action","nixos_temporary-containers-browser-action","nixos_absolute-copy-browser-action","nixos_image-search-browser-action","nixos_webarchive-browser-action","nixos_unstoppable-browser-action"],"dirtyAreaCache":["nav-bar","PersonalToolbar","toolbar-menubar","TabsToolbar","widget-overflow-fixed-list"],"currentVersion":17,"newElementCount":15}
               '';

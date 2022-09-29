@@ -27,11 +27,14 @@ in {
       ocr
       grim
       wlogout
+      xdg-desktop-portal-gtk
+      xdg-desktop-portal-wlr
+      xdg-desktop-portal
     ];
 
     home.pointerCursor = {
       package = pkgs.catppuccin-cursors;
-      name = "Catppuccin-Dark-Cursors";
+      name = "Catppuccin-Frappe-Dark";
       size = 16;
     };
     home.pointerCursor.gtk.enable = true;
