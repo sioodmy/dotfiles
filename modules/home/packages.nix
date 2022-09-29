@@ -10,10 +10,9 @@
     neofetch
     rofi-wayland
     vlc
-    nordzy-icon-theme
+    pavucontrol
     bottom
     wofi
-    mpv
     imv
     hyperfine
     waybar

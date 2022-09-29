@@ -16,7 +16,7 @@
       mako.enable = true;
       tmux.enable = true;
       neofetch.enable = true;
-      zathura.enable = false;
+      zathura.enable = true;
       wofi.enable = true;
       vim.enable = true;
       tools.enable = true;

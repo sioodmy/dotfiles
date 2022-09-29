@@ -28,7 +28,7 @@
       flake = false;
     };
     kernel = {
-      url = "https://git.kernel.org/torvalds/t/linux-6.0-rc6.tar.gz";
+      url = "https://git.kernel.org/torvalds/t/linux-6.0-rc7.tar.gz";
       flake = false;
     };
 
@@ -67,6 +67,8 @@
                 (final: prev: {
                   catppuccin-cursors =
                     prev.callPackage ./overlays/catppuccin-cursors.nix { };
+                  catppuccin-gtk =
+                    prev.callPackage ./overlays/catppuccin-gtk.nix { };
                   hyprland-nvidia =
                     inputs.hyprland.packages.${prev.system}.default.override {
                       nvidiaPatches = true;

@@ -100,7 +100,7 @@ in {
             scroll-step = 5;
             format = "{icon}";
             format-icons = { default = [ "" "" "" ]; };
-            on-click = "pavucontrol";
+            on-click = "killall pavucontrol || pavucontrol";
           };
         };
 
