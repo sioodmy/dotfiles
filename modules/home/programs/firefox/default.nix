@@ -241,6 +241,7 @@ in {
               "browser.compactmode.show" = true;
               "browser.toolbars.bookmarks.visibility" = "never";
               "geo.enabled" = false;
+              "geo.provider.use_corelocation" = false;
 
               # Disable telemetry
               "browser.newtabpage.activity-stream.feeds.telemetry" = false;
@@ -304,6 +305,7 @@ in {
               "media.autoplay.enabled" = false;
               "toolkit.zoomManager.zoomValues" = ".8,.90,.95,1,1.1,1.2";
 
+              "intl.accept_languages" = "en-US, en";
               "general.smoothScroll.lines.durationMaxMS" = 125;
               "general.smoothScroll.lines.durationMinMS" = 125;
               "general.smoothScroll.mouseWheel.durationMaxMS" = 200;

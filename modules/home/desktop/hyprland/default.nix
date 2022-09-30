@@ -36,7 +36,6 @@ in {
     };
     home.pointerCursor.gtk.enable = true;
 
-    home.file."pics/walls/wall.png".source = ./wall.png;
     services.gammastep = {
       enable = true;
       provider = "geoclue2";
@@ -45,8 +44,7 @@ in {
     systemd.user.services = {
       swaybg = mkService {
         Unit.Description = "Wallpaper chooser";
-        Service.ExecStart =
-          "${pkgs.swaybg}/bin/swaybg -i /home/sioodmy/pics/walls/wall.png";
+        Service.ExecStart = "${pkgs.swaybg}/bin/swaybg -i ${./wall.png}";
       };
     };
   };

@@ -67,7 +67,7 @@ in {
           spacing = mkLiteral "10px";
           padding = mkLiteral "50px 40px 50px 30px";
           background-color = mkLiteral "transparent";
-          background-image = mkLiteral ''url("bg.jpg", width)'';
+          background-image = mkLiteral ''url("${./bg.png}", width)'';
           text-color = mkLiteral "@foreground";
           orientation = mkLiteral "horizontal";
           children =
