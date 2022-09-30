@@ -7,6 +7,7 @@ let
     name = "catppuccin-nvim";
     src = inputs.catppuccin-nvim;
   };
+let cfg = config.modules.programs.vim;
 in {
   options.modules.programs.vim = { enable = mkEnableOption "vim"; };
 
@@ -38,8 +39,6 @@ in {
       nodePackages.yarn
       nodePackages.bash-language-server
       nodePackages.node2nix # Bash
-      pandoc
-      texlive.combined.scheme-basic
     ];
 
     programs.neovim = {
@@ -74,8 +73,6 @@ in {
         zen-mode-nvim
         vim-pandoc
         vim-pandoc-syntax
-        ultisnips
-        cmp-pandoc-references
         (nvim-treesitter.withPlugins (plugins:
           with plugins; [
             tree-sitter-python
@@ -108,10 +105,6 @@ in {
             tree-sitter-dockerfile
           ]))
       ];
-      #      extraConfig = builtins.readFile ./init.lua;
-      # extraConfig = ":luafile ${./init.lua}";
-
     };
-
   };
 }

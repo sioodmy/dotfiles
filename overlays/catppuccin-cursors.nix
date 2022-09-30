@@ -2,17 +2,17 @@
 
 stdenv.mkDerivation rec {
   pname = "cattpuccin-cursors";
-  version = "0.2.0";
+  version = "0.2.7";
 
   src = fetchzip {
     url =
-      "https://github.com/catppuccin/cursors/raw/1df332a406916a89a07be93adaf785236728077f/cursors/Catppuccin-Macchiato-Dark-Cursors.zip";
-    sha256 = "y1Pozu+wPRGl4ICtYuH6rl5B0b5YvbbTTEm48OollsQ=";
+      "https://github.com/catppuccin/cursors/raw/21942800ad34b357a12079718a1faa88f0bccf28/cursors/Catppuccin-Frappe-Dark-Cursors.zip";
+    sha256 = "RCEVxeo3oBNqHogxWM/YqfPoQotirSQTMw15zCahWto=";
   };
 
   installPhase = ''
-    mkdir -p $out/share/icons/Catppuccin-Dark-Cursors
-    cp -va index.theme cursors $out/share/icons/Catppuccin-Dark-Cursors
+    mkdir -p $out/share/icons/Catppuccin-Frappe-Dark
+    cp -va index.theme cursors $out/share/icons/Catppuccin-Frappe-Dark
   '';
 
   meta = {

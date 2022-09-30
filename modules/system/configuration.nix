@@ -142,7 +142,7 @@ in {
     kernelPackages = let
       linux_six_pkg = { fetchurl, buildLinux, ... }@args:
         buildLinux (args // rec {
-          version = "6.0.0-rc6";
+          version = "6.0.0-rc7";
           modDirVersion = version;
           src = inputs.kernel;
           kernelPatches = [ ];
