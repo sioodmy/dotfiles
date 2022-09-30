@@ -14,19 +14,26 @@
       flake = false;
     };
 
+    nvim-treesitter = {
+      url = "github:nvim-treesitter/nvim-treesitter";
+      flake = false;
+    };
+
     neorg-telescope-nvim = {
       url = "github:nvim-neorg/neorg-telescope";
       flake = false;
     };
 
-    nvim-treesitter = {
-      url = "github:nvim-treesitter/nvim-treesitter";
+    catppuccin-nvim = {
+      url = "github:catppuccin/nvim";
       flake = false;
     };
+
     tree-sitter-org = {
       url = "github:milisims/tree-sitter-org";
       flake = false;
     };
+
     kernel = {
       url = "https://git.kernel.org/torvalds/t/linux-6.0-rc6.tar.gz";
       flake = false;

@@ -40,6 +40,22 @@
         "type": "github"
       }
     },
+    "catppuccin-nvim": {
+      "flake": false,
+      "locked": {
+        "lastModified": 1664552708,
+        "narHash": "sha256-jLa2t1VYCNfULRNcdfaG4wBRt53LgDsKkxNFFaX8qUY=",
+        "owner": "catppuccin",
+        "repo": "nvim",
+        "rev": "79ae9396bda299041be70c6bb0ccee07a846a6ff",
+        "type": "github"
+      },
+      "original": {
+        "owner": "catppuccin",
+        "repo": "nvim",
+        "type": "github"
+      }
+    },
     "crane": {
       "inputs": {
         "flake-compat": "flake-compat_2",
@@ -650,11 +666,11 @@
     "nvim-treesitter": {
       "flake": false,
       "locked": {
-        "lastModified": 1664250910,
-        "narHash": "sha256-9vXqLEO4K2t7XNarHHm9m5v7HwKefZ0XkpmXSRMC6DA=",
+        "lastModified": 1664538540,
+        "narHash": "sha256-jIPisyE3RF+5KsF7KW5RAcvRAKKOkOLSOCEpvxZ1cis=",
         "owner": "nvim-treesitter",
         "repo": "nvim-treesitter",
-        "rev": "0289160c963fac1d0330966a798acacf85a43a88",
+        "rev": "aebc6cf6bd4675ac86629f516d612ad5288f7868",
         "type": "github"
       },
       "original": {
@@ -727,6 +743,7 @@
     },
     "root": {
       "inputs": {
+        "catppuccin-nvim": "catppuccin-nvim",
         "home-manager": "home-manager",
         "hyprland": "hyprland",
         "kernel": "kernel",

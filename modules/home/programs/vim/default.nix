@@ -3,9 +3,9 @@
 with lib;
 let
   cfg = config.modules.programs.vim;
-  neorg-telescope-nvim = pkgs.vimUtils.buildVimPlugin {
-    name = "neorg-telescope-nvim";
-    src = inputs.neorg-telescope-nvim;
+  catppuccin-nvim-git = pkgs.vimUtils.buildVimPlugin {
+    name = "catppuccin-nvim";
+    src = inputs.catppuccin-nvim;
   };
 in {
   options.modules.programs.vim = { enable = mkEnableOption "vim"; };
@@ -50,7 +50,6 @@ in {
       plugins = with pkgs.vimPlugins; [
         vim-nix
         null-ls-nvim
-        gruvbox-nvim
         telescope-nvim
         nvim-web-devicons
         vim-commentary
@@ -62,7 +61,7 @@ in {
         cmp-nvim-lsp
         cmp-buffer
         cmp-path
-        catppuccin-nvim
+        catppuccin-nvim-git
         lspkind-nvim
         nvim-lspconfig
         vim-surround
@@ -73,8 +72,6 @@ in {
         nvim-autopairs
         nvim-colorizer-lua
         zen-mode-nvim
-        neorg-telescope-nvim
-        cmp-latex-symbols
         vim-pandoc
         vim-pandoc-syntax
         ultisnips
@@ -101,6 +98,8 @@ in {
             tree-sitter-regex
             tree-sitter-dart
             tree-sitter-make
+            tree-sitter-html
+            tree-sitter-css
             tree-sitter-latex
             tree-sitter-bibtex
             tree-sitter-php
