@@ -7,7 +7,6 @@ let
     name = "catppuccin-nvim";
     src = inputs.catppuccin-nvim;
   };
-let cfg = config.modules.programs.vim;
 in {
   options.modules.programs.vim = { enable = mkEnableOption "vim"; };
 

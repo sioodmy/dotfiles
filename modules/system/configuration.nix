@@ -71,18 +71,22 @@ in {
       auto-optimise-store = true;
       allowed-users = [ "sioodmy" ];
       substituters = [
-        "https://cache.nixos.org?priority=10"
+        "https://cache.nixos.org"
         "https://fortuneteller2k.cachix.org"
         "https://nixpkgs-wayland.cachix.org"
+        "https://nix-community.cachix.org"
       ];
 
       trusted-public-keys = [
         "cache.nixos.org-1:6NCHdD59X431o0gWypbMrAURkbJ16ZPMQFGspcDShjY="
         "fortuneteller2k.cachix.org-1:kXXNkMV5yheEQwT0I4XYh1MaCSz+qg72k8XAi2PthJI="
         "nixpkgs-wayland.cachix.org-1:3lwxaILxMRkVhehr5StQprHdEo4IrE8sRho9R9HOLYA="
+        "nix-community.cachix.org-1:mB9FSh9qf2dCimDSUo8Zy7bkq5CX+/rkCWyvRCYg3Fs="
       ];
     };
   };
+
+  xdg.portal.enable = true;
 
   documentation.enable = false;
   services.journald.extraConfig = ''
@@ -104,10 +108,18 @@ in {
   hardware = {
     nvidia = {
       open = true;
-      package = config.boot.kernelPackages.nvidia_is_evil.unfucked;
       modesetting.enable = true;
     };
-    opengl.driSupport32Bit = true;
+    opengl = {
+      enable = true;
+      driSupport = true;
+      driSupport32Bit = true;
+      extraPackages = with pkgs; [
+        vaapiVdpau
+        libvdpau-va-gl
+        nvidia-vaapi-driver
+      ];
+    };
     pulseaudio.support32Bit = true;
   };
 
@@ -139,20 +151,21 @@ in {
     ];
     consoleLogLevel = 0;
     initrd.verbose = false;
-    kernelPackages = let
-      linux_six_pkg = { fetchurl, buildLinux, ... }@args:
-        buildLinux (args // rec {
-          version = "6.0.0-rc7";
-          modDirVersion = version;
-          src = inputs.kernel;
-          kernelPatches = [ ];
-          configFile = ./kernel.config;
+    kernelPackages = pkgs.linuxPackages_testing;
+    # kernelPackages = let
+    #   linux_six_pkg = { fetchurl, buildLinux, ... }@args:
+    #     buildLinux (args // rec {
+    #       version = "6.0.0-rc7";
+    #       modDirVersion = version;
+    #       src = inputs.kernel;
+    #       kernelPatches = [ ];
+    #       configFile = ./kernel.config;
 
-          extraMeta.branch = "master";
-        } // (args.argsOverride or { }));
-      linux_six = pkgs.callPackage linux_six_pkg { };
-    in pkgs.recurseIntoAttrs ((pkgs.linuxPackagesFor linux_six).extend
-      (f: p: { nvidia_is_evil = f.callPackage ./nvidia-x11 { }; }));
+    #       extraMeta.branch = "master";
+    #     } // (args.argsOverride or { }));
+    #   linux_six = pkgs.callPackage linux_six_pkg { };
+    # in pkgs.recurseIntoAttrs ((pkgs.linuxPackagesFor linux_six).extend
+    #   (f: p: { nvidia_is_evil = f.callPackage ./nvidia-x11 { }; }));
     extraModprobeConfig = "options hid_apple fnmode=1";
     loader = {
       systemd-boot.enable = false;
@@ -180,6 +193,7 @@ in {
     networkmanager = {
       enable = true;
       unmanaged = [ "docker0" "rndis0" ];
+      wifi.macAddress = "random";
     };
     firewall = {
       enable = true;
@@ -200,10 +214,12 @@ in {
     mediaKeys.enable = true;
   };
 
-  programs.xwayland.enable = true;
-  programs.hyprland = {
-    enable = true;
-    package = pkgs.hyprland-nvidia;
+  programs = {
+    ccache.enable = true;
+    hyprland = {
+      enable = true;
+      package = pkgs.hyprland-nvidia;
+    };
   };
 
   environment.etc."greetd/environments".text = ''

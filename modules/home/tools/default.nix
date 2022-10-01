@@ -31,25 +31,30 @@ in {
   options.modules.programs.tools = { enable = mkEnableOption "programs"; };
 
   config = mkIf cfg.enable {
-    programs.gpg.enable = true;
     services.gpg-agent = {
       enable = true;
       pinentryFlavor = "gnome3";
       enableZshIntegration = true;
     };
-    programs.bat = {
-      enable = true;
-      themes = {
-        Catppuccin-frappe = builtins.readFile (pkgs.fetchFromGitHub {
-          owner = "catppuccin";
-          repo = "bat";
-          rev = "00bd462e8fab5f74490335dcf881ebe7784d23fa";
-          sha256 = "yzn+1IXxQaKcCK7fBdjtVohns0kbN+gcqbWVE4Bx7G8=";
-        } + "/Catppuccin-frappe.tmTheme");
+    programs = {
+      bat = {
+        enable = true;
+        themes = {
+          Catppuccin-frappe = builtins.readFile (pkgs.fetchFromGitHub {
+            owner = "catppuccin";
+            repo = "bat";
+            rev = "00bd462e8fab5f74490335dcf881ebe7784d23fa";
+            sha256 = "yzn+1IXxQaKcCK7fBdjtVohns0kbN+gcqbWVE4Bx7G8=";
+          } + "/Catppuccin-frappe.tmTheme");
+        };
+        config.theme = "Catppuccin-frappe";
       };
-      config.theme = "Catppuccin-frappe";
+      gpg.enable = true;
+      exa = {
+        enable = true;
+        enableAliases = true;
+      };
     };
-
     xdg = {
       userDirs = {
         enable = true;

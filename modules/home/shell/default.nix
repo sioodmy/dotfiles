@@ -90,9 +90,6 @@ in {
         ps = "procs";
         m = "mkdir -p";
         fcd = "cd $(find -type d | fzf)";
-        ls = "exa --icons --group-directories-first";
-        la = "exa -lah";
-        tree = "exa --tree --icons";
 
       };
 

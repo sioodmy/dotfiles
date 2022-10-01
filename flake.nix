@@ -34,11 +34,6 @@
       flake = false;
     };
 
-    kernel = {
-      url = "https://git.kernel.org/torvalds/t/linux-6.0-rc7.tar.gz";
-      flake = false;
-    };
-
     nixpkgs-wayland.url = "github:nix-community/nixpkgs-wayland";
     hyprland.url = "github:hyprwm/Hyprland/";
     nixpkgs-f2k.url = "github:fortuneteller2k/nixpkgs-f2k";
