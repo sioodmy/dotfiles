@@ -38,7 +38,8 @@
     hyprland.url = "github:hyprwm/Hyprland/";
     nixpkgs-f2k.url = "github:fortuneteller2k/nixpkgs-f2k";
     webcord.url = "github:fufexan/webcord-flake";
-    neovim-nightly-overlay.url = "github:nix-community/neovim-nightly-overlay";
+    neovim-nightly-overlay.url =
+      "github:nix-community/neovim-nightly-overlay/167ec1a6047ef9051c709e4115fb5f4f90c5feb";
 
   };
   outputs = inputs@{ self, nixpkgs, home-manager, ... }:
