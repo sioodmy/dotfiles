@@ -5,6 +5,7 @@ in {
   options.modules.programs.shell = { enable = mkEnableOption "shell"; };
 
   config = mkIf cfg.enable {
+    programs.exa.enable = true;
     programs.zoxide = {
       enable = true;
       enableZshIntegration = true;
@@ -90,6 +91,9 @@ in {
         ps = "procs";
         m = "mkdir -p";
         fcd = "cd $(find -type d | fzf)";
+        ls = "exa --icons --group-directories-first";
+        la = "exa -lah";
+        tree = "exa --tree --icons";
 
       };
 

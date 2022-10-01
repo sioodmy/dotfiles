@@ -50,10 +50,6 @@ in {
         config.theme = "Catppuccin-frappe";
       };
       gpg.enable = true;
-      exa = {
-        enable = true;
-        enableAliases = true;
-      };
     };
     xdg = {
       userDirs = {

@@ -21,6 +21,7 @@
     swaybg
     slurp
     brave
+    obs-studio
     grim
     transmission-gtk
     fzf
