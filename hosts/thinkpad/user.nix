@@ -2,42 +2,25 @@
 
 {
   imports = [ ../../modules/default.nix ];
-
   config.modules = {
     desktop = {
-      awesome.enable = true;
       gtk.enable = true;
-      picom.enable = true;
-      xresources.enable = true;
-      lockscreen.enable = true;
-      eww.enable = true;
+      hyprland.enable = true;
+      swaylock.enable = true;
+      waybar.enable = true;
     };
     programs = {
-      discocss.enable = true;
-      chromium.enable = true;
-      zathura.enable = true;
+      firefox.enable = true;
       rofi.enable = true;
-      dunst.enable = true;
-      mpv.enable = true;
-    };
-    services = {
-      sxhkd.enable = true;
-      redshift.enable = true;
-      fusuma.enable = true;
-      udiskie.enable = true;
-    };
-    cli = {
-      nvim.enable = true;
-      bat.enable = true;
-      btm.enable = true;
-      cava.enable = true;
-      fzf.enable = true;
-      git.enable = true;
-      music.enable = true;
-      zsh.enable = true;
-      gpg.enable = true;
-      lf.enable = true;
-      xdg.enable = true;
+      kitty.enable = true;
+      mako.enable = true;
+      tmux.enable = true;
+      neofetch.enable = true;
+      zathura.enable = true;
+      wofi.enable = true;
+      vim.enable = true;
+      tools.enable = true;
+      shell.enable = true;
     };
   };
 }
