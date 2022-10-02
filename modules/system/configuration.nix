@@ -3,6 +3,17 @@
 with lib;
 
 let
+  dbus-hyprland-environment = pkgs.writeTextFile {
+    name = "dbus-hyprland-environment";
+    destination = "/bin/dbus-hyprland-environment";
+    executable = true;
+
+    text = ''
+      dbus-update-activation-environment --systemd WAYLAND_DISPLAY XDG_CURRENT_DESKTOP=hyprland
+      systemctl --user stop pipewire pipewire-media-session xdg-desktop-portal xdg-desktop-portal-wlr
+      systemctl --user start pipewire pipewire-media-session xdg-desktop-portal xdg-desktop-portal-wlr
+    '';
+  };
   configure-gtk = pkgs.writeTextFile {
     name = "configure-gtk";
     destination = "/bin/configure-gtk";
@@ -86,8 +97,6 @@ in {
     };
   };
 
-  xdg.portal.enable = true;
-
   documentation.enable = false;
   services.journald.extraConfig = ''
     SystemMaxUse=50M
@@ -95,11 +104,18 @@ in {
   '';
 
   services.dbus.enable = true;
+  xdg.portal = {
+    enable = true;
+    wlr.enable = true;
+    extraPortals = [ pkgs.xdg-desktop-portal-gtk ];
+  };
+
   services.dbus.packages = with pkgs; [ dconf ];
   services.udev.packages = with pkgs; [ gnome.gnome-settings-daemon ];
 
   environment.systemPackages = with pkgs; [
     gnome.adwaita-icon-theme
+    dbus-hyprland-environment
     configure-gtk
     cryptsetup
   ];
@@ -152,20 +168,6 @@ in {
     consoleLogLevel = 0;
     initrd.verbose = false;
     kernelPackages = pkgs.linuxPackages_testing;
-    # kernelPackages = let
-    #   linux_six_pkg = { fetchurl, buildLinux, ... }@args:
-    #     buildLinux (args // rec {
-    #       version = "6.0.0-rc7";
-    #       modDirVersion = version;
-    #       src = inputs.kernel;
-    #       kernelPatches = [ ];
-    #       configFile = ./kernel.config;
-
-    #       extraMeta.branch = "master";
-    #     } // (args.argsOverride or { }));
-    #   linux_six = pkgs.callPackage linux_six_pkg { };
-    # in pkgs.recurseIntoAttrs ((pkgs.linuxPackagesFor linux_six).extend
-    #   (f: p: { nvidia_is_evil = f.callPackage ./nvidia-x11 { }; }));
     extraModprobeConfig = "options hid_apple fnmode=1";
     loader = {
       systemd-boot.enable = false;
@@ -332,6 +334,7 @@ in {
       comfortaa
       inter
       lato
+      dejavu_fonts
       iosevka-bin
       noto-fonts
       noto-fonts-cjk

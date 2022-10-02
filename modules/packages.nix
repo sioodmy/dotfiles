@@ -15,13 +15,9 @@
     wofi
     imv
     hyperfine
-    waybar
-    gimp
-    kdenlive
     swaybg
     slurp
     brave
-    obs-studio
     grim
     transmission-gtk
     fzf

@@ -1,7 +1,7 @@
 { config, lib, inputs, ... }:
 
 {
-  imports = [ ../../modules/home/default.nix ];
+  imports = [ ../../modules/default.nix ];
   config.modules = {
     desktop = {
       gtk.enable = true;

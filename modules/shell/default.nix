@@ -94,6 +94,7 @@ in {
         ls = "exa --icons --group-directories-first";
         la = "exa -lah";
         tree = "exa --tree --icons";
+        http = "python3 -m http.server";
 
       };
 

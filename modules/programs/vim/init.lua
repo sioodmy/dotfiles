@@ -4,17 +4,11 @@ local g = vim.g
 vim.g.mapleader = ","
 require("impatient")
 
--- -- Autocmds
--- vim.cmd([[
--- augroup CursorLine
---     au!
---     au VimEnter * setlocal cursorline
---     au WinEnter * setlocal cursorline
---     au BufWinEnter * setlocal cursorline
---     au WinLeave * setlocal nocursorline
--- augroup END
--- autocmd FileType nix setlocal shiftwidth=4
--- ]])
+vim.cmd([[
+augroup pandoc_syntax
+    au! BufNewFile,BufFilePre,BufRead *.md set filetype=markdown.pandoc
+augroup END
+]])
 
 -- Keybinds
 local map = vim.api.nvim_set_keymap
@@ -30,6 +24,8 @@ map("n", "<C-n>", ":Telescope live_grep <CR>", opts)
 map("n", "<C-f>", ":Telescope find_files <CR>", opts)
 map("n", "<C-f>", ":Telescope find_files <CR>", opts)
 map("n", "<C-w>", ":NvimTreeToggle <CR>", opts)
+map("n", "<leader>mp", ":!mkpandoc % & <CR><CR>", opts)
+map("n", "<leader>mpo", ":!mkpandoc % -o & <CR><CR>", opts)
 map("n", "<C-s>", ":HopWord <CR>", opts)
 map("n", "j", "gj", opts)
 map("n", "k", "gk", opts)
@@ -194,6 +190,40 @@ local feedkey = function(key, mode)
 	vim.api.nvim_feedkeys(vim.api.nvim_replace_termcodes(key, true, true, true), mode, true)
 end
 
+-- snippets stuff
+local ls = require("luasnip")
+local s = ls.snippet
+local t = ls.text_node
+local i = ls.insert_node
+
+ls.add_snippets("all", {
+	s({ trig = "frac", dscr = "Fraction" }, {
+		t("\\frac{"),
+		i(1),
+		t("}"),
+		t("{"),
+		i(2),
+		t("}"),
+		i(0),
+	}),
+	s({ trig = "sqrt", dscr = "Square root" }, {
+		t("\\sqrt["),
+		i(1),
+		t("]"),
+		t("{"),
+		i(2),
+		t("}"),
+		i(0),
+	}),
+})
+
+require("luasnip.loaders.from_vscode").lazy_load()
+
+local has_words_before = function()
+	local line, col = unpack(vim.api.nvim_win_get_cursor(0))
+	return col ~= 0 and vim.api.nvim_buf_get_lines(0, line - 1, line, true)[1]:sub(col, col):match("%s") == nil
+end
+
 cmp.setup({
 	formatting = {
 		format = lspkind.cmp_format({
@@ -205,7 +235,7 @@ cmp.setup({
 	},
 	snippet = {
 		expand = function(args)
-			vim.fn["vsnip#anonymous"](args.body) -- For `vsnip` users.
+			require("luasnip").lsp_expand(args.body)
 		end,
 	},
 	mapping = {
@@ -219,10 +249,12 @@ cmp.setup({
 		}),
 		["<CR>"] = cmp.mapping.confirm({ select = true }), -- Accept currently selected item. Set `select` to `false` to only confirm explicitly selected items.
 		["<Tab>"] = cmp.mapping(function(fallback)
-			if cmp.visible() then
+			if ls.expand_or_jumpable() then
+				ls.expand_or_jump()
+			elseif cmp.visible() then
 				cmp.select_next_item()
-			elseif vim.fn["vsnip#available"](1) == 1 then
-				feedkey("<Plug>(vsnip-expand-or-jump)", "")
+			elseif has_words_before() then
+				cmp.complete()
 			else
 				fallback()
 			end
@@ -231,8 +263,8 @@ cmp.setup({
 		["<S-Tab>"] = cmp.mapping(function(fallback)
 			if cmp.visible() then
 				cmp.select_prev_item()
-			elseif vim.fn["vsnip#jumpable"](-1) == 1 then
-				feedkey("<Plug>(vsnip-jump-prev)", "")
+			elseif ls.jumpable(-1) then
+				ls.jump(-1)
 			else
 				fallback()
 			end
@@ -240,10 +272,10 @@ cmp.setup({
 	},
 	sources = cmp.config.sources({
 		{ name = "nvim_lsp" },
+		{ name = "luasnip" },
 		{ name = "buffer" },
 		{ name = "path" },
 		{ name = "pandoc_references" },
-		{ name = "vsnip" },
 	}),
 })
 
@@ -264,7 +296,11 @@ cmp.setup.cmdline(":", {
 })
 
 vim.g.catppuccin_flavour = "frappe"
-require("catppuccin").setup({})
+require("catppuccin").setup({
+	styles = {
+		keywords = { "bold" },
+	},
+})
 vim.cmd([[colorscheme catppuccin]])
 
 local alpha = require("alpha")
@@ -330,7 +366,9 @@ require("nvim-treesitter.configs").setup({
 		enable = true,
 	},
 })
-require("nvim-autopairs").setup({
+local npairs = require("nvim-autopairs")
+
+npairs.setup({
 	check_ts = true,
 	ts_config = {
 		lua = { "string", "source" },
@@ -349,6 +387,30 @@ require("nvim-autopairs").setup({
 		highlight = "PmenuSel",
 		highlight_grey = "LineNr",
 	},
+})
+
+local Rule = require("nvim-autopairs.rule")
+local cond = require("nvim-autopairs.conds")
+npairs.add_rules({
+	Rule("$", "$", { "tex", "latex", "markdown", "markdown.pandoc" })
+		-- don't add a pair if the next character is %
+		:with_pair(cond.not_after_regex("%%"))
+		-- don't add a pair if  the previous character is xxx
+		:with_pair(cond.not_before_regex("xxx", 3))
+		-- don't move right when repeat character
+		:with_move(cond.none())
+		-- don't delete if the next character is xx
+		:with_del(cond.not_after_regex("xx"))
+		-- disable adding a newline when you press <cr>
+		:with_cr(cond.none()),
+}, {
+	Rule("$$", "$$", { "tex", "latex", "markdown", "markdown.pandoc" }):with_pair(function(opts)
+		print(vim.inspect(opts))
+		if opts.line == "aa $$" then
+			-- don't add pair on that line
+			return false
+		end
+	end),
 })
 
 require("hop").setup()
@@ -443,7 +505,7 @@ ins_left({
 ins_left({
 	-- mode component
 	function()
-		return ""
+		return ""
 	end,
 	color = function()
 		-- auto change color according to neovims mode

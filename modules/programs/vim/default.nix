@@ -7,6 +7,28 @@ let
     name = "catppuccin-nvim";
     src = inputs.catppuccin-nvim;
   };
+  tex = (pkgs.texlive.combine {
+    inherit (pkgs.texlive)
+      scheme-small dvisvgm dvipng fontspec euenc unicode-math;
+  });
+  mkpandoc = pkgs.writeShellScriptBin "mkpandoc" ''
+    #!/bin/bash
+    INPUT=$1
+    OUTPUT="$(basename "$INPUT" .md).pdf"
+    pandoc "$INPUT" \
+    	--pdf-engine xelatex \
+    	-V 'geometry:margin=1in' \
+    	-V 'mainfont:DejaVu Serif' \
+    	-V 'sansfont:DejaVu Sans' \
+    	-V 'fontsize=12pt' \
+    	-o "$OUTPUT"
+
+    if [ "$2" = "-o" ]; then
+    	zathura "$OUTPUT" &
+    fi
+
+  '';
+
 in {
   options.modules.programs.vim = { enable = mkEnableOption "vim"; };
 
@@ -38,13 +60,21 @@ in {
       nodePackages.yarn
       nodePackages.bash-language-server
       nodePackages.node2nix # Bash
+      pandoc
+      tex
+      mkpandoc
     ];
 
     programs.neovim = {
       enable = true;
-      package = pkgs.neovim-nightly;
+      package = inputs.neovim-nightly-overlay.packages.${pkgs.system}.neovim;
+      #      package = pkgs.neovim-nightly;
       vimAlias = true;
       viAlias = true;
+      vimdiffAlias = true;
+      withRuby = false;
+      withNodeJs = false;
+      withPython3 = false;
       plugins = with pkgs.vimPlugins; [
         vim-nix
         null-ls-nvim
@@ -59,7 +89,7 @@ in {
         cmp-nvim-lsp
         cmp-buffer
         cmp-path
-        catppuccin-nvim-git
+        catppuccin-nvim
         lspkind-nvim
         nvim-lspconfig
         vim-surround
@@ -70,8 +100,10 @@ in {
         nvim-autopairs
         nvim-colorizer-lua
         zen-mode-nvim
-        vim-pandoc
         vim-pandoc-syntax
+        luasnip
+        cmp_luasnip
+        cmp-pandoc-references
         (nvim-treesitter.withPlugins (plugins:
           with plugins; [
             tree-sitter-python
@@ -90,7 +122,6 @@ in {
             tree-sitter-cmake
             tree-sitter-comment
             tree-sitter-http
-            tree-sitter-markdown
             tree-sitter-regex
             tree-sitter-dart
             tree-sitter-make

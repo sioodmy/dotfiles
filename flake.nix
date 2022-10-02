@@ -1,5 +1,6 @@
 {
   description = "My NixOS configuration";
+  # https://github.com/sioodmy/dotfiles
 
   inputs = {
     nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";

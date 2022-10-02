@@ -31,6 +31,7 @@ in {
   options.modules.programs.tools = { enable = mkEnableOption "programs"; };
 
   config = mkIf cfg.enable {
+    xdg.configFile."bottom/bottom.toml".source = ./bottom.toml;
     services.gpg-agent = {
       enable = true;
       pinentryFlavor = "gnome3";
@@ -49,6 +50,7 @@ in {
         };
         config.theme = "Catppuccin-frappe";
       };
+      bottom.enable = true;
       gpg.enable = true;
     };
     xdg = {
