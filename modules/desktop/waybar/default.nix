@@ -99,7 +99,7 @@ in {
           pulseaudio = {
             scroll-step = 5;
             format = "{icon}";
-            format-icons = { default = [ "" "" "" ]; };
+            format-icons = { default = [ "" "" "墳" ]; };
             on-click = "killall pavucontrol || pavucontrol";
           };
         };

@@ -36,6 +36,9 @@ in {
     };
     home.pointerCursor.gtk.enable = true;
 
+    #xdg.configFile."hypr/hyprland.conf".source = ./hyprland.conf;
+    home.file.".config/hypr/hyprland.conf".source = ./hyprland.conf;
+
     services.gammastep = {
       enable = true;
       provider = "geoclue2";

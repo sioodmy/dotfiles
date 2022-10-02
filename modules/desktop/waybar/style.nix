@@ -108,4 +108,14 @@
   #battery.critical:not(.charging) {
     color: #e78284;
   }
+  tooltip {
+    font-family: 'Lato', sans-serif;
+    border-radius: 15px;
+    padding: 20px;
+    margin: 30px;
+  }
+  tooltip label {
+    font-family: 'Lato', sans-serif;
+    padding: 20px;
+  }
 ''
