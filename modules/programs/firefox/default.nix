@@ -158,8 +158,7 @@ in {
               }
               {
                 Title = "TradingView";
-                URL =
-                  "https://www.tradingview.com/chart/rwZ5GJdv/?symbol=BITSTAMP%3ABTCUSD";
+                URL = "https://www.tradingview.com/chart/rwZ5GJdv/";
                 Placement = "menu";
                 Folder = "crypto";
               }
@@ -208,8 +207,14 @@ in {
                 Folder = "social";
               }
               {
-                Title = "/g/";
+                Title = "g/";
                 URL = "https://boards.4channel.org/g/";
+                Placement = "menu";
+                Folder = "social";
+              }
+              {
+                Title = "Netflix";
+                URL = "https://netflix.com";
                 Placement = "menu";
                 Folder = "social";
               }
@@ -223,81 +228,6 @@ in {
               }
             ];
             Preferences = {
-              "browser.newtab.extensionControlled" = false;
-              "browser.newtabpage.activity-stream.feeds.topsites" = false;
-              "browser.newtabpage.activity-stream.showSponsoredTopSites" =
-                false;
-              "browser.send_pings" = false;
-              "browser.urlbar.speculativeConnect.enabled" = false;
-              "media.navigator.enabled" = false;
-              "beacon.enabled" = false;
-              "browser.safebrowsing.downloads.remote.enabled" = false;
-              "network.IDN_show_punycode" = true;
-              "extensions.activeThemeID" = "firefox-compact-dark@mozilla.org";
-              "app.shield.optoutstudies.enabled" = false;
-              "dom.security.https_only_mode_ever_enabled" = true;
-              "toolkit.legacyUserProfileCustomizations.stylesheets" = true;
-              "browser.compactmode.show" = true;
-              "browser.toolbars.bookmarks.visibility" = "never";
-              "geo.enabled" = false;
-              "geo.provider.use_corelocation" = false;
-
-              # Disable telemetry
-              "browser.newtabpage.activity-stream.feeds.telemetry" = false;
-              "browser.backspace_action" = 0;
-              "browser.ping-centre.telemetry" = false;
-              "browser.tabs.crashReporting.sendReport" = false;
-              "devtools.onboarding.telemetry.logged" = false;
-              "privacy.resistFingerprinting" = false;
-              "dom.event.clipboardevents.enabled" = true;
-              "browser.downloads.start_downloads_in_tmp_dir" = true;
-              "dom.battery.enabled" = false;
-              "privacy.resistFingerprinting.letterboxing" = false;
-              "general.useragent.override" =
-                "Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:103.0) Gecko/20100101 Firefox/103.0";
-              "privacy.window.maxInnerWidth" = 1800;
-              "privacy.window.maxInnerHeight" = 900;
-              "toolkit.telemetry.enabled" = false;
-              "toolkit.telemetry.unified" = false;
-              "toolkit.telemetry.server" = "";
-
-              "browser.sessionstore.resume_from_crash" = false;
-
-              # Disable Pocket
-              "browser.newtabpage.activity-stream.feeds.discoverystreamfeed" =
-                false;
-              "browser.newtabpage.activity-stream.feeds.section.topstories" =
-                false;
-              "browser.newtabpage.activity-stream.section.highlights.includePocket" =
-                false;
-              "browser.newtabpage.activity-stream.showSponsored" = false;
-              "extensions.pocket.enabled" = false;
-
-              # Disable JS in PDFs
-              "pdfjs.enableScripting" = false;
-
-              # Harden SSL 
-              "security.ssl.require_safe_negotiation" = true;
-
-              # Extra
-              "identity.fxaccounts.enabled" = false;
-              "browser.search.suggest.enabled" = true;
-              "privacy.trackingprotection.fingerprinting.enabled" = true;
-              "privacy.trackingprotection.cryptomining.enabled" = true;
-              "privacy.trackingprotection.enabled" = true;
-              "privacy.clearOnShutdown.history" = true;
-              "privacy.clearOnShutdown.formdata" = true;
-              "privacy.clearOnShutdown.downloads" = true;
-              "browser.urlbar.shortcuts.bookmarks" = false;
-              "browser.urlbar.shortcuts.history" = false;
-              "browser.urlbar.shortcuts.tabs" = false;
-              "browser.urlbar.suggest.bookmark" = true;
-              "browser.urlbar.suggest.engines" = false;
-              "browser.urlbar.suggest.history" = false;
-              "browser.urlbar.suggest.openpage" = false;
-              "browser.urlbar.suggest.topsites" = false;
-              "browser.uidensity" = 1;
-              "media.autoplay.enabled" = false;
               "toolkit.zoomManager.zoomValues" = ".8,.90,.95,1,1.1,1.2";
 
               "intl.accept_languages" = "en-US, en";

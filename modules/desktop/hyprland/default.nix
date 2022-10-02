@@ -27,9 +27,6 @@ in {
       ocr
       grim
       wlogout
-      xdg-desktop-portal-gtk
-      xdg-desktop-portal-wlr
-      xdg-desktop-portal
     ];
 
     home.pointerCursor = {
