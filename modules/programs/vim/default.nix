@@ -7,6 +7,7 @@ let
     name = "catppuccin-nvim";
     src = inputs.catppuccin-nvim;
   };
+
   tex = (pkgs.texlive.combine {
     inherit (pkgs.texlive)
       scheme-small dvisvgm dvipng fontspec euenc unicode-math;
@@ -102,6 +103,7 @@ in {
         zen-mode-nvim
         vim-pandoc-syntax
         luasnip
+        nvim-tree-lua
         cmp_luasnip
         cmp-pandoc-references
         (nvim-treesitter.withPlugins (plugins:
