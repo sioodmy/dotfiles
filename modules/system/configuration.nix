@@ -267,11 +267,6 @@ in {
     printing.enable = true;
     fstrim.enable = true;
 
-    tor = {
-      enable = true;
-      torsocks.enable = true;
-    };
-
     # enable and secure ssh
     openssh = {
       enable = false;
