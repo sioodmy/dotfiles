@@ -6,6 +6,12 @@
 {
   imports = [ (modulesPath + "/installer/scan/not-detected.nix") ];
 
+  boot.initrd.luks.devices.luksroot = {
+    device = "/dev/disk/by-label/cryptroot";
+    preLVM = true;
+    allowDiscards = true;
+  };
+
   boot.initrd.availableKernelModules = [
     "xhci_pci"
     "ahci"
@@ -21,17 +27,16 @@
   boot.extraModulePackages = [ ];
 
   fileSystems."/" = {
-    device = "/dev/disk/by-uuid/8a216227-fc28-4bea-87d9-5b6c73aead3a";
+    device = "/dev/disk/by-label/root";
     fsType = "ext4";
   };
 
   fileSystems."/boot" = {
-    device = "/dev/disk/by-uuid/C27B-8AB0";
+    device = "/dev/disk/by-label/boot";
     fsType = "vfat";
   };
 
-  swapDevices =
-    [{ device = "/dev/disk/by-uuid/94588e74-0519-4c29-ae1c-419e1b499444"; }];
+  swapDevices = [{ device = "/dev/disk/by-label/swap"; }];
 
   hardware.cpu.amd.updateMicrocode =
     lib.mkDefault config.hardware.enableRedistributableFirmware;
