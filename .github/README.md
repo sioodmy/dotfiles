@@ -43,7 +43,7 @@
 > discourse](https://discourse.nixos.org) instead.
 
 
-<div align="center">
+
 
 
 |                |                                                          |
@@ -56,6 +56,75 @@
 | **Browser:**   | firefox esr                                              |
 | **Channel:**   | nixos-unstable                                           |
 | **Theme:** | Catppuccin                                                   |
+
+# Installation</h2>
+
+1. Read the disclaimer 
+
+2. Download iso
+   ```sh
+   # Yoink nixos-unstable
+   wget -O nixos.iso https://channels.nixos.org/nixos-unstable/latest-nixos-minimal-x86_64-linux.iso
+   
+   # Write it to a flash drive
+   cp nixos.iso /dev/sdX
+   ```
+
+3. Boot into the installer.
+
+4. Switch to root user: `sudo su -`
+  
+5. Partitioning
+
+    We create a 512MB EFI boot partition (`/dev/sda1`) and the rest will be our LUKS encrypted physical volume for LVM (`/dev/sda2`).
+    ```
+    $ gdisk /dev/sda
+    ```
+    - `o` (create new empty partition table)
+    - `n` (add partition, 512M, type ef00 EFI)
+    - `n` (add partition, remaining space, type 8300 Linux LVM)
+    - `w` (write partition table and exit)
+    
+    Setup the encrypted LUKS partition and open it:
+    ```
+    $ cryptsetup luksFormat /dev/sda2
+    $ cryptsetup config /dev/sda2 --label cryptroot
+    $ cryptsetup luksOpen /dev/sda2 enc-pv
+    ```
+    We create two logical volumes, a 16GB swap parition and the rest will be our root filesystem
+    ```
+    $ pvcreate /dev/mapper/enc-pv
+    $ vgcreate vg /dev/mapper/enc-pv
+    $ lvcreate -L 16G -n swap vg
+    $ lvcreate -l '100%FREE' -n root vg
+    ```
+    Format paritions
+    ```
+    $ mkfs.fat /dev/sda1 -n boot
+    $ mkfs.ext4 -L root /dev/vg/root
+    $ mkswap -L swap /dev/vg/swap
+    ```
+    Mount paritions
+    ```
+    $ mount /dev/vg/root /mnt
+    $ mkdir /mnt/boot
+    $ mount /dev/sda1 /mnt/boot
+    $ swapon /dev/vg/swap
+    ```
+    
+6. Fix "too many files open"
+    
+    ```
+    
+    $ ulimit -n 500000
+    ```
+    
+7. Install nixos from flake
+    ```
+    $ nixos-install --flake github:sioodmy/dotfiles#graphene --impure
+    ```
+<div align="center">
+
 <br clear="right"/>
 
  <div align="left">
