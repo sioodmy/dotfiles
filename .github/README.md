@@ -115,11 +115,14 @@
 6. Fix "too many files open"
     
     ```
-    
     $ ulimit -n 500000
     ```
+7. Enable flakes
+    ```
+    $ nix-shell -p nixFlakes
+    ```
     
-7. Install nixos from flake
+8. Install nixos from flake
     ```
     $ nixos-install --flake github:sioodmy/dotfiles#graphene --impure
     ```
