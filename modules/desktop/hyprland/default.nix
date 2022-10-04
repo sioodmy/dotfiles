@@ -11,6 +11,10 @@ let
     #!/bin/bash
     grim -g "$(slurp -w 0 -b eebebed2)" /tmp/ocr.png && tesseract /tmp/ocr.png /tmp/ocr-output && wl-copy < /tmp/ocr-output.txt && notify-send "OCR" "Text copied!" && rm /tmp/ocr-output.txt -f
   '';
+  screenshot = pkgs.writeShellScriptBin "screenshot" ''
+    #!/bin/bash
+    hyprctl keyword animation "fadeOut,0,8,slow" && grim -g "$(slurp -w 0 -b 5e81acd2)" - | wl-copy --type image/png; hyprctl keyword animation "fadeOut,1,8,slow"
+  '';
 
 in {
   options.modules.desktop.hyprland = { enable = mkEnableOption "hyprland"; };
@@ -26,6 +30,7 @@ in {
       tesseract5
       ocr
       grim
+      screenshot
       wlogout
     ];
 
