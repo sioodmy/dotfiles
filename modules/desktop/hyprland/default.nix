@@ -25,7 +25,6 @@ in {
       brightnessctl
       pamixer
       python39Packages.requests
-      sway-contrib.grimshot
       slurp
       tesseract5
       ocr
