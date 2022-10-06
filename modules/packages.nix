@@ -49,7 +49,6 @@
     keepassxc
     python3
     git
-    jdk
     dconf
     gcc
     rustc
