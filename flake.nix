@@ -39,7 +39,6 @@
     hyprland.url = "github:hyprwm/Hyprland/";
     nixpkgs-f2k.url = "github:fortuneteller2k/nixpkgs-f2k";
     webcord.url = "github:fufexan/webcord-flake";
-    neovim-nightly-overlay.url = "github:nix-community/neovim-nightly-overlay";
 
   };
   outputs = inputs@{ self, nixpkgs, home-manager, ... }:
@@ -109,7 +108,6 @@
                 })
                 inputs.nixpkgs-wayland.overlay
                 inputs.nixpkgs-f2k.overlays.default
-                inputs.neovim-nightly-overlay.overlay
               ];
             }
 

@@ -68,8 +68,7 @@ in {
 
     programs.neovim = {
       enable = true;
-      package = inputs.neovim-nightly-overlay.packages.${pkgs.system}.neovim;
-      #      package = pkgs.neovim-nightly;
+      package = pkgs.neovim-unwrapped;
       vimAlias = true;
       viAlias = true;
       vimdiffAlias = true;
