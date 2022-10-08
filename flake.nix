@@ -35,6 +35,11 @@
       flake = false;
     };
 
+    nur = {
+      url = "github:nix-community/NUR";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+
     nixpkgs-wayland.url = "github:nix-community/nixpkgs-wayland";
     hyprland.url = "github:hyprwm/Hyprland/";
     nixpkgs-f2k.url = "github:fortuneteller2k/nixpkgs-f2k";
@@ -108,6 +113,7 @@
                 })
                 inputs.nixpkgs-wayland.overlay
                 inputs.nixpkgs-f2k.overlays.default
+                inputs.nur.overlay
               ];
             }
 
