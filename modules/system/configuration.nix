@@ -69,7 +69,7 @@ in {
   nix = {
     gc = {
       automatic = true;
-      dates = "weekly";
+      dates = "daily";
       options = "--delete-older-than 4d";
     };
     package = pkgs.nixUnstable;
@@ -86,6 +86,7 @@ in {
         "https://fortuneteller2k.cachix.org"
         "https://nixpkgs-wayland.cachix.org"
         "https://nix-community.cachix.org"
+        "https://hyprland.cachix.org"
       ];
 
       trusted-public-keys = [
@@ -93,6 +94,7 @@ in {
         "fortuneteller2k.cachix.org-1:kXXNkMV5yheEQwT0I4XYh1MaCSz+qg72k8XAi2PthJI="
         "nixpkgs-wayland.cachix.org-1:3lwxaILxMRkVhehr5StQprHdEo4IrE8sRho9R9HOLYA="
         "nix-community.cachix.org-1:mB9FSh9qf2dCimDSUo8Zy7bkq5CX+/rkCWyvRCYg3Fs="
+        "hyprland.cachix.org-1:a7pgxzMz7+chwVL3/pzj6jIBMioiJM7ypFP8PwtkuGc="
       ];
     };
   };
