@@ -11,107 +11,11 @@ in {
         wrapFirefox firefox-esr-102-unwrapped {
           forceWayland = true;
           nixExtensions = [
-            (pkgs.fetchFirefoxAddon {
-              name = "ublock-origin";
+            (fetchFirefoxAddon {
+              name = "ublock"; # Has to be unique!
               url =
-                "https://addons.mozilla.org/firefox/downloads/file/3989793/ublock_origin-1.44.0.xpi";
-              sha256 = "rnYf5AFOMo/e+Di4HUPDDIRCLLgUDM7t8O16fB+OcKo=";
-            })
-            (pkgs.fetchFirefoxAddon {
-              name = "sponsorblock";
-              url =
-                "https://addons.mozilla.org/firefox/downloads/file/3978884/sponsorblock-4.7.1.xpi";
-              sha256 = "APXLszXW9A4BnyiovABJncXxu5rGzrZMEorzpqCqABU=";
-            })
-            (pkgs.fetchFirefoxAddon {
-              name = "localcdn-fork-of-decentraleyes";
-              url =
-                "https://addons.mozilla.org/firefox/downloads/file/3985626/localcdn_fork_of_decentraleyes-2.6.32.xpi";
-              sha256 = "IPJgB47N9hSKknvS0i3mUaMk3Ki35gGbSyaEdtsGexA=";
-            })
-            (pkgs.fetchFirefoxAddon {
-              name = "ether_metamask";
-              url =
-                "https://addons.mozilla.org/firefox/downloads/file/3987382/ether_metamask-10.18.3.xpi";
-              sha256 = "TS472KTMNbY2iWV5G+UA5GChMxEsiCoipab6nGzmh4I=";
-            })
-            (pkgs.fetchFirefoxAddon {
-              name = "catpuccin";
-              url =
-                "https://github.com/catppuccin/firefox/releases/download/old/catppuccin_frappe_flamingo.xpi";
-              sha256 = "KLWPuMCxbkUNG8zYGDEGdOtqcv9HalgDYnpQ4ldVJA8=";
-            })
-            (pkgs.fetchFirefoxAddon {
-              name = "clearurls";
-              url =
-                "https://addons.mozilla.org/firefox/downloads/file/3980848/clearurls-1.25.0.xpi";
-              sha256 = "lr+DCSgwo0Qnrk8QXc4EIsMG2dlWacDJP05VgEmTQ1w=";
-            })
-            (pkgs.fetchFirefoxAddon {
-              name = "vimium";
-              url =
-                "https://addons.mozilla.org/firefox/downloads/file/3898202/vimium_ff-1.67.1.xpi";
-              sha256 = "EnQIAnSOer/48TAUyEXbGCtSZvKA4vniL64K+CeJ/m0=";
-            })
-            (pkgs.fetchFirefoxAddon {
-              name = "save-webp-as-png-or-jpeg";
-              url =
-                "https://addons.mozilla.org/firefox/downloads/file/3919488/save_webp_as_png_or_jpeg-1.2.xpi";
-              sha256 = "UO5Br7PQjPViAWjZsjcxih7W408/KfJsVBwVcKakmtI=";
-            })
-            (pkgs.fetchFirefoxAddon {
-              name = "single-file";
-              url =
-                "https://addons.mozilla.org/firefox/downloads/file/3990955/single_file-1.21.21.xpi";
-              sha256 = "aLgfonqihTWGPUEhHa93tvnEcrdA3d0s7FRhugX2obE=";
-            })
-            (pkgs.fetchFirefoxAddon {
-              name = "h264ify";
-              url =
-                "https://addons.mozilla.org/firefox/downloads/file/3398929/h264ify-1.1.0.xpi";
-              sha256 = "h708SrGiNZwBodhU19uEKLRDFv71sqwJ4ijFMYxXpRU=";
-            })
-            (pkgs.fetchFirefoxAddon {
-              name = "copy-plaintext";
-              url =
-                "https://addons.mozilla.org/firefox/downloads/file/3854095/copy_plaintext-1.13.xpi";
-              sha256 = "6cRs2Y41r2iZNJ2Mkvy6FtL/bcMbqLDiETyfRe25eJY=";
-            })
-            (pkgs.fetchFirefoxAddon {
-              name = "fastforwardteam";
-              url =
-                "https://addons.mozilla.org/firefox/downloads/file/3976538/fastforwardteam-0.2039.xpi";
-              sha256 = "OHyo3Kn9snO0hzR7YTwV41FfV1HAnC09WyAHgRihyVI=";
-            })
-            (pkgs.fetchFirefoxAddon {
-              name = "don-t-fuck-with-paste";
-              url =
-                "https://addons.mozilla.org/firefox/downloads/file/3630212/don_t_fuck_with_paste-2.7.xpi";
-              sha256 = "7xfc734gNKJZgqEG5U0Z4kyfImQ0o5aoCBle8N4CGkA=";
-            })
-            (pkgs.fetchFirefoxAddon {
-              name = "temporary-containers";
-              url =
-                "https://addons.mozilla.org/firefox/downloads/file/3723251/temporary_containers-1.9.2.xpi";
-              sha256 = "M0CgjCm+fIO9D+o/wn/eceRgikUy2TIRS0OappDn7cA=";
-            })
-            (pkgs.fetchFirefoxAddon {
-              name = "webarchive";
-              url =
-                "https://addons.mozilla.org/firefox/downloads/file/3894402/view_page_archive-3.1.0.xpi";
-              sha256 = "uCdkebx7KszyNLsbRVuUlprN8esgWdgAIKtD6/SJSdQ=";
-            })
-            (pkgs.fetchFirefoxAddon {
-              name = "unstoppable";
-              url =
-                "https://addons.mozilla.org/firefox/downloads/file/3882243/unstoppable_extension-2.2.3.xpi";
-              sha256 = "qEAZj82IgV9HW51lbdEg2uyr4kFX9lu+uPMlII7iVMI=";
-            })
-            (pkgs.fetchFirefoxAddon {
-              name = "image-search";
-              url =
-                "https://addons.mozilla.org/firefox/downloads/file/3988785/search_by_image-5.2.0.xpi";
-              sha256 = "NAyyKKnvL5UG4xTzs3LEBBuP1FnVxlNAGeHVRtPtWC8=";
+                "https://addons.mozilla.org/firefox/downloads/file/3679754/ublock_origin-1.31.0-an+fx.xpi";
+              sha256 = "1h768ljlh3pi23l27qp961v1hd0nbj2vasgy11bmcrlqp40zgvnr";
             })
           ];
 
@@ -222,29 +126,88 @@ in {
               }
             ];
             Preferences = {
-              "toolkit.zoomManager.zoomValues" = ".8,.90,.95,1,1.1,1.2";
-
-              "intl.accept_languages" = "en-US, en";
-              "general.smoothScroll.lines.durationMaxMS" = 125;
-              "general.smoothScroll.lines.durationMinMS" = 125;
-              "general.smoothScroll.mouseWheel.durationMaxMS" = 200;
-              "general.smoothScroll.mouseWheel.durationMinMS" = 100;
-              "general.smoothScroll.other.durationMaxMS" = 125;
-              "general.smoothScroll.other.durationMinMS" = 125;
-              "general.smoothScroll.pages.durationMaxMS" = 125;
-              "general.smoothScroll.pages.durationMinMS" = 125;
-              "mousewheel.system_scroll_override_on_root_content.horizontal.factor" =
-                175;
-              "mousewheel.system_scroll_override_on_root_content.vertical.factor" =
-                175;
-              "toolkit.scrollbox.horizontalScrollDistance" = 6;
-              "toolkit.scrollbox.verticalScrollDistance" = 2;
-              "ui.key.menuAccessKeyFocuses" = false;
-
+              "browser.toolbars.bookmarks.visibility" = "never";
               "toolkit.legacyUserProfileCustomizations.stylesheets" = true;
               "browser.uiCustomization.state" = ''
                 {"placements":{"widget-overflow-fixed-list":["nixos_ublock-origin-browser-action","nixos_sponsorblock-browser-action","nixos_localcdn-fork-of-decentraleyes-browser-action","nixos_image-search-browser-action","nixos_webarchive-browser-action"],"nav-bar":["back-button","forward-button","stop-reload-button","customizableui-special-spring1","urlbar-container","customizableui-special-spring2","save-to-pocket-button","nixos_temporary-containers-browser-action","fxa-toolbar-menu-button","nixos_cookie-autodelete-browser-action","nixos_absolute-copy-browser-action"],"toolbar-menubar":["menubar-items"],"TabsToolbar":["tabbrowser-tabs","new-tab-button","nixos_ether_metamask-browser-action","alltabs-button"],"PersonalToolbar":["import-button","personal-bookmarks"]},"seen":["developer-button","nixos_sponsorblock-browser-action","nixos_clearurls-browser-action","nixos_cookie-autodelete-browser-action","nixos_ether_metamask-browser-action","nixos_ublock-origin-browser-action","nixos_localcdn-fork-of-decentraleyes-browser-action","nixos_vimium-browser-action","nixos_copy-plaintext-browser-action","nixos_h264ify-browser-action","nixos_fastforwardteam-browser-action","nixos_single-file-browser-action","treestyletab_piro_sakura_ne_jp-browser-action","nixos_don-t-fuck-with-paste-browser-action","nixos_temporary-containers-browser-action","nixos_absolute-copy-browser-action","nixos_image-search-browser-action","nixos_webarchive-browser-action","nixos_unstoppable-browser-action"],"dirtyAreaCache":["nav-bar","PersonalToolbar","toolbar-menubar","TabsToolbar","widget-overflow-fixed-list"],"currentVersion":17,"newElementCount":15}
               '';
+
+              "browser.shell.checkDefaultBrowser" = false;
+              "browser.startup.page" = "0";
+              "browser.startup.homepage" = "about:blank";
+              "browser.newtabpage.enabled" = false;
+              "browser.newtabpage.activity-stream.showSponsored" = false;
+              "browser.newtabpage.activity-stream.showSponsoredTopSites" =
+                false;
+              "browser.newtabpage.activity-stream.default.sites" = "";
+              "browser.search.region" = "US";
+              "intl.accept_languages" = "en-US, en, pl";
+              "javascript.use_us_english_locale" = true;
+              "extensions.getAddons.showPane" = false;
+              "extensions.htmlaboutaddons.recommendations.enabled" = false;
+              "browser.discovery.enabled" = false;
+              "datareporting.policy.dataSubmissionEnabled" = false;
+              "datareporting.healthreport.uploadEnabled" = false;
+              "toolkit.telemetry.unified" = false;
+              "toolkit.telemetry.enabled" = false;
+              "toolkit.telemetry.server" = "data:,";
+              "toolkit.telemetry.archive.enabled" = false;
+              "toolkit.telemetry.newProfilePing.enabled" = false;
+              "toolkit.telemetry.shutdownPingSender.enabled" = false;
+              "toolkit.telemetry.updatePing.enabled" = false;
+              "toolkit.telemetry.bhrPing.enabled" = false;
+              "toolkit.telemetry.firstShutdownPing.enabled" = false;
+              "toolkit.telemetry.coverage.opt-out" = true;
+              "toolkit.coverage.opt-out" = true;
+              "toolkit.coverage.endpoint.base" = "";
+              "browser.ping-centre.telemetry" = false;
+              "browser.newtabpage.activity-stream.feeds.telemetry" = false;
+              "browser.newtabpage.activity-stream.telemetry" = false;
+              "app.shield.optoutstudies.enabled" = false;
+              "app.normandy.enabled" = false;
+              "app.normandy.api_url" = "";
+              "breakpad.reportURL" = "";
+              "browser.tabs.crashReporting.sendReport" = false;
+              "browser.crashReports.unsubmittedCheck.enabled" = false;
+              "browser.crashReports.unsubmittedCheck.autoSubmit2" = false;
+              "captivedetect.canonicalURL" = "";
+              "network.captive-portal-service.enabled" = false;
+              "network.connectivity-service.enabled" = false;
+              "browser.safebrowsing.malware.enabled" = false;
+              "browser.safebrowsing.phishing.enabled" = false;
+              "browser.safebrowsing.downloads.enabled" = false;
+              "browser.safebrowsing.downloads.remote.enabled" = false;
+              "browser.safebrowsing.downloads.remote.url" = "";
+              "browser.safebrowsing.downloads.remote.block_potentially_unwanted" =
+                false;
+              "browser.safebrowsing.downloads.remote.block_uncommon" = false;
+              "browser.safebrowsing.allowOverride" = false;
+              "network.prefetch-next" = false;
+              "network.dns.disablePrefetch" = true;
+              "network.dns.disablePrefetchFromHTTPS" = true;
+              "network.predictor.enabled" = false;
+              "network.predictor.enable-prefetch" = false;
+              "network.http.speculative-parallel-limit" = "0";
+              "browser.places.speculativeConnect.enabled" = false;
+              "browser.send_pings" = false;
+              "network.dns.disableIPv6" = true;
+              "network.proxy.socks_remote_dns" = true;
+              "network.file.disable_unc_paths" = true;
+              "network.gio.supported-protocols" = "";
+              "network.proxy.failover_direct" = false;
+              "network.proxy.allow_bypass" = false;
+              "network.trr.mode" = "5";
+              "keyword.enabled" = false;
+              "browser.fixup.alternate.enabled" = false;
+              "browser.search.suggest.enabled" = false;
+              "browser.urlbar.suggest.searches" = false;
+              "browser.urlbar.speculativeConnect.enabled" = false;
+              "browser.urlbar.dnsResolveSingleWordsAfterSearch" = "0";
+              "browser.urlbar.suggest.quicksuggest.nonsponsored" = false;
+              "browser.urlbar.suggest.quicksuggest.sponsored" = false;
+              "browser.urlbar.suggest.engines" = false;
+              "browser.formfill.enable" = false;
+              "layout.css.visited_links_enabled" = false;
             };
             ExtensionSettings = {
               # @ytb  -->  YouTube

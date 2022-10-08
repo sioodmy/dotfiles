@@ -10,7 +10,8 @@
       waybar.enable = true;
     };
     programs = {
-      firefox.enable = false;
+      firefox.enable = true;
+      brave.enable = true;
       rofi.enable = true;
       kitty.enable = true;
       mako.enable = true;
