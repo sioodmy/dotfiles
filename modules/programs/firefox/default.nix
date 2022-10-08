@@ -26,12 +26,6 @@ in {
               sha256 = "UMkjWqNUzk72ZlP1roh1e4xlUpfDYrkKidRTIfAem9M=";
             })
             (fetchFirefoxAddon {
-              name = "darkreader";
-              url =
-                "https://addons.mozilla.org/firefox/downloads/file/4005595/darkreader-4.9.58.xpi";
-              sha256 = "Kt9/UzBV5QpdeED16nOFd9WMFPrBX8OmL7VZgp7bZbo=";
-            })
-            (fetchFirefoxAddon {
               name = "dontcare";
               url =
                 "https://addons.mozilla.org/firefox/downloads/file/4002797/i_dont_care_about_cookies-3.4.3.xpi";
@@ -228,8 +222,11 @@ in {
               "toolkit.legacyUserProfileCustomizations.stylesheets" = true;
               "toolkit.zoomManager.zoomValues" = ".8,.90,.95,1,1.1,1.2";
               "browser.uidensity" = 1;
+              # normie ass useragnet
+              "general.useragent.override" =
+                "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/105.0.0.0 Safari/537.36";
               "browser.uiCustomization.state" = ''
-                {"placements":{"widget-overflow-fixed-list":["nixos_ublock-origin-browser-action","nixos_sponsorblock-browser-action","nixos_ublock-browser-action","screenshot-button","panic-button","nixos_localcdn-fork-of-decentraleyes-browser-action","nixos_image-search-browser-action","nixos_webarchive-browser-action","nixos_darkreader-browser-action","nixos_dontcare-browser-action"],"nav-bar":["back-button","forward-button","stop-reload-button","customizableui-special-spring1","urlbar-container","customizableui-special-spring2","save-to-pocket-button","nixos_temporary-containers-browser-action","fxa-toolbar-menu-button","nixos_cookie-autodelete-browser-action","nixos_absolute-copy-browser-action"],"toolbar-menubar":["menubar-items"],"TabsToolbar":["tabbrowser-tabs","new-tab-button","nixos_ether_metamask-browser-action","alltabs-button"],"PersonalToolbar":["import-button","personal-bookmarks"]},"seen":["developer-button","nixos_sponsorblock-browser-action","nixos_clearurls-browser-action","nixos_cookie-autodelete-browser-action","nixos_ether_metamask-browser-action","nixos_ublock-origin-browser-action","nixos_localcdn-fork-of-decentraleyes-browser-action","nixos_vimium-browser-action","nixos_copy-plaintext-browser-action","nixos_h264ify-browser-action","nixos_fastforwardteam-browser-action","nixos_single-file-browser-action","treestyletab_piro_sakura_ne_jp-browser-action","nixos_don-t-fuck-with-paste-browser-action","nixos_temporary-containers-browser-action","nixos_absolute-copy-browser-action","nixos_image-search-browser-action","nixos_webarchive-browser-action","nixos_unstoppable-browser-action","nixos_dontcare-browser-action","nixos_skipredirect-browser-action","nixos_ublock-browser-action","nixos_darkreader-browser-action","nixos_fb-container-browser-action"],"dirtyAreaCache":["nav-bar","PersonalToolbar","toolbar-menubar","TabsToolbar","widget-overflow-fixed-list"],"currentVersion":17,"newElementCount":17}
+                {"placements":{"widget-overflow-fixed-list":["nixos_ublock-origin-browser-action","nixos_sponsorblock-browser-action","nixos_ublock-browser-action","nixos_ether_metamask-browser-action","nixos_temporary-containers-browser-action","screenshot-button","panic-button","nixos_localcdn-fork-of-decentraleyes-browser-action","nixos_image-search-browser-action","nixos_webarchive-browser-action","nixos_darkreader-browser-action","nixos_dontcare-browser-action"],"nav-bar":["back-button","forward-button","stop-reload-button","customizableui-special-spring1","urlbar-container","customizableui-special-spring2","save-to-pocket-button","fxa-toolbar-menu-button","nixos_cookie-autodelete-browser-action","nixos_absolute-copy-browser-action"],"toolbar-menubar":["menubar-items"],"TabsToolbar":["tabbrowser-tabs","new-tab-button","alltabs-button"],"PersonalToolbar":["import-button","personal-bookmarks"]},"seen":["developer-button","nixos_sponsorblock-browser-action","nixos_clearurls-browser-action","nixos_cookie-autodelete-browser-action","nixos_ether_metamask-browser-action","nixos_ublock-origin-browser-action","nixos_localcdn-fork-of-decentraleyes-browser-action","nixos_vimium-browser-action","nixos_copy-plaintext-browser-action","nixos_h264ify-browser-action","nixos_fastforwardteam-browser-action","nixos_single-file-browser-action","treestyletab_piro_sakura_ne_jp-browser-action","nixos_don-t-fuck-with-paste-browser-action","nixos_temporary-containers-browser-action","nixos_absolute-copy-browser-action","nixos_image-search-browser-action","nixos_webarchive-browser-action","nixos_unstoppable-browser-action","nixos_dontcare-browser-action","nixos_skipredirect-browser-action","nixos_ublock-browser-action","nixos_darkreader-browser-action","nixos_fb-container-browser-action"],"dirtyAreaCache":["nav-bar","PersonalToolbar","toolbar-menubar","TabsToolbar","widget-overflow-fixed-list"],"currentVersion":17,"newElementCount":18}
               '';
 
               # Arkenfox stuff
@@ -331,7 +328,7 @@ in {
               "privacy.userContext.ui.enabled" = true;
               "media.peerconnection.ice.proxy_only_if_behind_proxy" = true;
               "media.peerconnection.ice.default_address_only" = true;
-              "media.eme.enabled" = false;
+              "media.eme.enabled" = true;
               "dom.disable_beforeunload" = true;
               "dom.disable_window_move_resize" = true;
               "dom.disable_open_during_load" = true;
@@ -367,12 +364,12 @@ in {
               "privacy.partition.always_partition_third_party_non_cookie_storage.exempt_sessionstorage" =
                 false;
               "privacy.sanitize.sanitizeOnShutdown" = true;
-              "privacy.clearOnShutdown.cache" = true;
+              "privacy.clearOnShutdown.cache" = false;
               "privacy.clearOnShutdown.downloads" = true;
               "privacy.clearOnShutdown.formdata" = true;
               "privacy.clearOnShutdown.history" = true;
-              "privacy.clearOnShutdown.sessions" = true;
-              "privacy.clearOnShutdown.cookies" = true;
+              "privacy.clearOnShutdown.sessions" = false;
+              "privacy.clearOnShutdown.cookies" = false;
               "privacy.clearOnShutdown.offlineApps" = true;
               "privacy.cpd.cache" = true;
               "privacy.cpd.formdata" = true;
