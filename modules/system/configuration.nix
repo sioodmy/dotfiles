@@ -38,7 +38,7 @@ in {
       NIXOS_OZONE_WL = "1";
       EDITOR = "nvim";
       TERMINAL = "st";
-      BROWSER = "brave";
+      BROWSER = "firefox";
       GBM_BACKEND = "nvidia-drm";
       __GL_GSYNC_ALLOWED = "0";
       __GL_VRR_ALLOWED = "0";
