@@ -50,10 +50,10 @@
 |----------------|----------------------------------------------------------|
 | **Shell:**     | zsh                                                      |
 | **WM:**        | Hyprland + Waybar                                        |
-| **Editor:**    | neovim                                                   |
-| **Terminal:**  | kitt                                                     |
+| **Editor:**    | neovim 0.8                                               |
+| **Terminal:**  | kitty                                                    |
 | **Launcher:**  | rofi                                                     |
-| **Browser:**   | firefox esr                                              |
+| **Browser:**   | Firefox ESR 102                                          |
 | **Channel:**   | nixos-unstable                                           |
 | **Theme:** | Catppuccin                                                   |
 
