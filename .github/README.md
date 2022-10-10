@@ -31,6 +31,7 @@
 <p align="center">
 <img src="https://media.discordapp.net/attachments/1020403449092911186/1024341925630844939/unknown.png?width=1122&height=631" width="700" alt="" />
 <img src="https://cdn.discordapp.com/attachments/635625917623828520/1026557593767903292/nvim.png?width=1122&height=631" width="700" alt="" />
+<img src="https://media.discordapp.net/attachments/635625917623828520/1028413483580137503/unknown.png?width=1158&height=631" width="700" alt="" />
 </p>
 
 > **Disclaimer:** _This is not a community framework or distribution._ It's a
