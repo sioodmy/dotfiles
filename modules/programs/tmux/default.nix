@@ -28,8 +28,7 @@ in {
       }] ++ (with pkgs.tmuxPlugins; [ urlview extrakto ]);
       extraConfig = ''
         set -g default-terminal "xterm-256color"
-        set -ga terminal-overrides ',*:Ss=\E[%p1%d q:Se=\E[2 q'
-        set -sa terminal-overrides ',xterm-256color:RGB'
+        set -ga terminal-overrides 'xterm-256color,*:Ss=\E[%p1%d q:Se=\E[2 q'
         # so that escapes register immidiately in vim
         set -sg escape-time 1
         set -g focus-events on

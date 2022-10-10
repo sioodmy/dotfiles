@@ -64,6 +64,7 @@ o.mouse = "a"
 -- Nicer UI settings
 o.cursorline = true
 o.relativenumber = true
+o.hlsearch = false
 o.number = true
 
 -- Miscellaneous quality of life

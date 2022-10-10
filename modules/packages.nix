@@ -17,7 +17,6 @@
     hyperfine
     swaybg
     slurp
-    brave
     grim
     transmission-gtk
     fzf
