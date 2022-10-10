@@ -98,6 +98,7 @@ in {
           };
           pulseaudio = {
             scroll-step = 5;
+            tooltip = false;
             format = "{icon}";
             format-icons = { default = [ "" "" "墳" ]; };
             on-click = "killall pavucontrol || pavucontrol";
