@@ -20,6 +20,7 @@
     grim
     transmission-gtk
     fzf
+    gum
     polymc
     pngquant
     wl-clipboard

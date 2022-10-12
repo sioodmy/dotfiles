@@ -159,6 +159,7 @@ in {
       "page_alloc.shuffle=1"
       "slub_debug=FZP"
       "sysrq_always_enabled=1"
+      "processor.max_cstate=1"
       "rootflags=noatime"
       "iommu=pt"
       "usbcore.autosuspend=-1"

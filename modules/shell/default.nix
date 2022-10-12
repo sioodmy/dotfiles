@@ -1,10 +1,15 @@
 { config, lib, pkgs, ... }:
 with lib;
-let cfg = config.modules.programs.shell;
+let
+  cfg = config.modules.programs.shell;
+  cht = pkgs.writeShellScriptBin "cht" ''
+    curl -s cht.sh/$(gum input --placeholder "Query" | tr " " "+") | bat --style=plain --paging=always
+  '';
 in {
   options.modules.programs.shell = { enable = mkEnableOption "shell"; };
 
   config = mkIf cfg.enable {
+    home.packages = [ cht ];
     programs.exa.enable = true;
     programs.zoxide = {
       enable = true;
@@ -59,6 +64,7 @@ in {
       initExtra = ''
         autoload -U url-quote-magic
         zle -N self-insert url-quote-magic
+        cht(){tmux neww bash -c 'curl -s cht.sh/$(gum input --placeholder "Query" | tr " " "+") | bat --style=plain --paging=always'}
       '';
       history = {
         save = 1000;
@@ -79,7 +85,7 @@ in {
 
       shellAliases = {
         rebuild =
-          "sudo nix-store --verify; sudo nixos-rebuild switch --flake .#";
+          "sudo nix-store --verify; sudo nixos-rebuild --install-bootloader switch --flake .#; bat cache --build";
         cleanup = "sudo nix-collect-garbage --delete-older-than 7d";
         nixtest = "sudo nixos-rebuild test --flake .#graphene --fast";
         bloat = "nix path-info -Sh /run/current-system";
