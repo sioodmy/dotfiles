@@ -170,7 +170,7 @@ in {
     ];
     consoleLogLevel = 0;
     initrd.verbose = false;
-    kernelPackages = pkgs.linuxPackages_testing;
+    kernelPackages = pkgs.linuxPackages_latest;
     extraModprobeConfig = "options hid_apple fnmode=1";
     loader = {
       systemd-boot.enable = false;
