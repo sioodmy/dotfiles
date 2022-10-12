@@ -50,6 +50,7 @@ in {
         bind -r j select-pane -D
         bind -r h select-pane -L
         bind -r l select-pane -R
+        bind-key -r I run-shell "tmux neww cht"
         # styling
         set -g pane-active-border-style bg=default,fg=brightblack
         set -g pane-border-style fg=brightblack
