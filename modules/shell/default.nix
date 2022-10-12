@@ -64,7 +64,6 @@ in {
       initExtra = ''
         autoload -U url-quote-magic
         zle -N self-insert url-quote-magic
-        cht(){tmux neww bash -c 'curl -s cht.sh/$(gum input --placeholder "Query" | tr " " "+") | bat --style=plain --paging=always'}
       '';
       history = {
         save = 1000;

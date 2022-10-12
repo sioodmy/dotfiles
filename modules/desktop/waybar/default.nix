@@ -33,7 +33,9 @@ in {
           modules-left = [
             "custom/search"
             "wlr/workspaces"
+            "custom/lock"
             "custom/weather"
+            "custom/todo"
             "backlight"
             "battery"
           ];
@@ -53,6 +55,14 @@ in {
             tooltip = false;
             on-click = "killall rofi || rofi -show drun";
           };
+          "custom/todo" = {
+            format = "{}";
+            tooltip = true;
+            interval = 7;
+            exec = "${./todo.sh}";
+            return-type = "json";
+          };
+
           "custom/weather" = {
             format = "{}";
             tooltip = true;
@@ -60,9 +70,14 @@ in {
             exec = "waybar-wttr";
             return-type = "json";
           };
+          "custom/lock" = {
+            tooltip = false;
+            on-click = "sh -c '(sleep 0.5s; swaylock)' & disown";
+            format = "";
+          };
           "custom/power" = {
             tooltip = false;
-            on-click = "wlogout";
+            on-click = "wlogout &";
             format = "襤";
           };
           clock = {

@@ -50,6 +50,10 @@
       color: #e78284;
   }
 
+  #custom-lock {
+      color: #8caaee;
+  }
+
   #workspaces button.active {
     color: #8caaee;
   }
@@ -67,6 +71,8 @@
   #workspaces,
   #custom-search,
   #custom-power,
+  #custom-todo,
+  #custom-lock,
   #custom-weather,
   #custom-btc,
   #custom-eth,
