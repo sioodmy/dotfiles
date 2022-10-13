@@ -159,6 +159,9 @@ Good luck and ~~have fun~~
    </ul>
   </div>
 <br />
+<pre>
+ETH: 0x430de39c494E40808F9d8A50958Eec622C3B5577
+</pre>
   <img src="https://raw.githubusercontent.com/catppuccin/catppuccin/c9d3d7de6ab8cb2609b37c4b79b026a2c7784b6f/assets/footers/gray0_ctp_on_line.svg?sanitize=true" alt="" /> <br />
   Copyright © 2021-present <a href="https://github.com/sioodmy">sioodmy</a>
   <p align="center"><a href="https://github.com/sioodmy/dotfiles/blob/main/LICENSE"><img src="https://img.shields.io/static/v1.svg?style=for-the-badge&label=License&message=GPL-3&logoColor=d9e0ee&colorA=313244&colorB=cba6f7"/></a></p>
