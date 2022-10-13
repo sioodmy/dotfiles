@@ -59,8 +59,18 @@
 | **Theme:** | Catppuccin                                                   |
 
 # Installation</h2>
+Here are the installation instructions for my configuration.
+I wrote this so you don't forget it in the future, please don't install it "as is".
+Make your own configuration. 
 
-1. Read the disclaimer 
+>How to get started?
+
+Use google and find out for yourself, you'll get used to it.
+
+:fire: Welcome to the undocumented hell of NixOS. 
+
+Good luck and ~~have fun~~
+1. **Read the disclaimer** (tldr: use your own configuration or I will have ssh keys for your machine)
 
 2. Download iso
    ```sh
