@@ -131,6 +131,7 @@ in {
       delta = { enable = true; };
       aliases = {
         co = "checkout";
+        ca = "commit -am";
         d = "diff";
         ps = "!git push origin $(git rev-parse --abbrev-ref HEAD)";
         pl = "!git pull origin $(git rev-parse --abbrev-ref HEAD)";

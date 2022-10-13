@@ -66,6 +66,7 @@ o.cursorline = true
 o.relativenumber = true
 o.hlsearch = false
 o.number = true
+o.colorcolumn = "80"
 
 -- Miscellaneous quality of life
 o.ignorecase = true
@@ -89,7 +90,6 @@ local null_ls = require("null-ls")
 local lsp_formatting = function(bufnr)
 	vim.lsp.buf.format({
 		filter = function(client)
-			-- apply whatever logic you want (in this example, we'll only use null-ls)
 			return client.name == "null-ls"
 		end,
 		bufnr = bufnr,

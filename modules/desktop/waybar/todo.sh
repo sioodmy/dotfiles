@@ -20,7 +20,7 @@ if [[ $total_todo -gt 0 ]]; then
 		export output=" 🎉 \\n ${left}"
 	fi
 else
-	export tooltip="${header}❌ No todos found :("
+	export tooltip=""
 	export output=""
 fi
 
