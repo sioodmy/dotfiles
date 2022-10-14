@@ -72,7 +72,7 @@ in {
           };
           "custom/lock" = {
             tooltip = false;
-            on-click = "sh -c '(sleep 0.5s; swaylock)' & disown";
+            on-click = "sh -c '(sleep 0.5s; swaylock --grace 0)' & disown";
             format = "";
           };
           "custom/power" = {
