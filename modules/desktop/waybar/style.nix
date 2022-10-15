@@ -36,12 +36,13 @@
 
   #workspaces button {
     background-color: transparent;
-    color: #d8dee9;
     /* Use box-shadow instead of border so the text isn't offset */
+    color: #8caaee;
+    font-size: 21px;
     box-shadow: inset 0 -3px transparent;
   }
 
-  /* https://github.com/Alexays/Waybar/wiki/FAQ#the-workspace-buttons-have-a-strange-hover-effect */
+  /* https://git/Alexays/Waybar/wiki/FAQ#the-workspace-buttons-have-a-strange-hover-effect */
   #workspaces button:hover {
     color: #85c1dc;
   }
@@ -55,7 +56,7 @@
   }
 
   #workspaces button.active {
-    color: #8caaee;
+    color: #e5c890;
   }
 
   #workspaces button.urgent {

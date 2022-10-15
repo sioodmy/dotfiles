@@ -46,8 +46,8 @@ in {
             format = "{icon}";
             active-only = false;
             format-icons = {
-              default = "";
-              focused = "";
+              default = "";
+              active = " 󰮯";
             };
           };
           "custom/search" = {

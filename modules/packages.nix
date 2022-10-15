@@ -7,6 +7,7 @@
     inputs.webcord.packages.${pkgs.system}.default
     todo
     calcurse
+    gimp
     neofetch
     rofi-wayland
     vlc
