@@ -37,7 +37,6 @@
 
     nixpkgs-wayland.url = "github:nix-community/nixpkgs-wayland";
     hyprland.url = "github:hyprwm/Hyprland/";
-    nixpkgs-f2k.url = "github:fortuneteller2k/nixpkgs-f2k";
     webcord.url = "github:fufexan/webcord-flake";
 
   };
@@ -107,7 +106,6 @@
                   });
                 })
                 inputs.nixpkgs-wayland.overlay
-                inputs.nixpkgs-f2k.overlays.default
               ];
             }
 
