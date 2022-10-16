@@ -20,10 +20,22 @@ in {
               sha256 = "C+VQyaJ8BA0ErXGVTdnppJZ6J9SP+izf6RFxdS4VJoU=";
             })
             (fetchFirefoxAddon {
+              name = "cookie-autodelete";
+              url =
+                "https://addons.mozilla.org/firefox/downloads/file/3971429/cookie_autodelete-3.8.1.xpi";
+              sha256 = "RD1LB0m2kgKAlZffu1WAwEbdc5xmZsTGpcHcbv4aQpQ=";
+            })
+            (fetchFirefoxAddon {
               name = "catppuccin-frappe-pink";
               url =
                 "https://github.com/catppuccin/firefox/releases/download/old/catppuccin_frappe_pink.xpi";
               sha256 = "UMkjWqNUzk72ZlP1roh1e4xlUpfDYrkKidRTIfAem9M=";
+            })
+            (fetchFirefoxAddon {
+              name = "dark-reader";
+              url =
+                "https://addons.mozilla.org/firefox/downloads/file/4005595/darkreader-4.9.58.xpi";
+              sha256 = "Kt9/UzBV5QpdeED16nOFd9WMFPrBX8OmL7VZgp7bZbo=";
             })
             (fetchFirefoxAddon {
               name = "port-authority";
@@ -42,12 +54,6 @@ in {
               url =
                 "https://addons.mozilla.org/firefox/downloads/file/4011816/sponsorblock-5.0.7.xpi";
               sha256 = "/XqkOnjPiHJyyNJt6cJnqbiWBbQRj5zh/XwbdfYx6uQ=";
-            })
-            (pkgs.fetchFirefoxAddon {
-              name = "df-yt";
-              url =
-                "https://addons.mozilla.org/firefox/downloads/file/3449086/df_youtube-1.13.504.xpi";
-              sha256 = "WxCuNFwv4RUbt2AxNzi5s4YKeBu8VCdulc/tumXyzfM=";
             })
             (pkgs.fetchFirefoxAddon {
               name = "localcdn-fork-of-decentraleyes";
@@ -255,13 +261,6 @@ in {
                 Placement = "menu";
                 Folder = "social";
               }
-              {
-                Title = "Netflix";
-                URL = "https://netflix.com";
-                Placement = "menu";
-                Folder = "social";
-              }
-
               # Code
               {
                 Title = "Github";
@@ -280,9 +279,9 @@ in {
                 "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/105.0.0.0 Safari/537.36";
 
               # remove useless stuff from the bar
-              # "browser.uiCustomization.state" = ''
-              #   {"placements":{"widget-overflow-fixed-list":["nixos_ublock-origin-browser-action","nixos_sponsorblock-browser-action","nixos_temporary-containers-browser-action","nixos_ublock-browser-action","nixos_ether_metamask-browser-action","screenshot-button","panic-button","nixos_localcdn-fork-of-decentraleyes-browser-action","nixos_sponsor-block-browser-action","nixos_image-search-browser-action","nixos_webarchive-browser-action","nixos_darkreader-browser-action","bookmarks-menu-button","nixos_df-yt-browser-action","nixos_proxy-switcher-browser-action","nixos_port-authority-browser-action"],"nav-bar":["back-button","forward-button","stop-reload-button","customizableui-special-spring1","urlbar-container","customizableui-special-spring2","save-to-pocket-button","fxa-toolbar-menu-button","nixos_cookie-autodelete-browser-action","nixos_absolute-copy-browser-action"],"toolbar-menubar":["menubar-items"],"TabsToolbar":["tabbrowser-tabs","new-tab-button","alltabs-button"],"PersonalToolbar":["import-button","personal-bookmarks"]},"seen":["developer-button","nixos_sponsorblock-browser-action","nixos_clearurls-browser-action","nixos_cookie-autodelete-browser-action","nixos_ether_metamask-browser-action","nixos_ublock-origin-browser-action","nixos_localcdn-fork-of-decentraleyes-browser-action","nixos_vimium-browser-action","nixos_copy-plaintext-browser-action","nixos_h264ify-browser-action","nixos_fastforwardteam-browser-action","nixos_single-file-browser-action","treestyletab_piro_sakura_ne_jp-browser-action","nixos_don-t-fuck-with-paste-browser-action","nixos_temporary-containers-browser-action","nixos_absolute-copy-browser-action","nixos_image-search-browser-action","nixos_webarchive-browser-action","nixos_unstoppable-browser-action","nixos_dontcare-browser-action","nixos_skipredirect-browser-action","nixos_ublock-browser-action","nixos_darkreader-browser-action","nixos_fb-container-browser-action","nixos_vimium-ff-browser-action","nixos_df-yt-browser-action","nixos_sponsor-block-browser-action","nixos_proxy-switcher-browser-action","nixos_port-authority-browser-action"],"dirtyAreaCache":["nav-bar","PersonalToolbar","toolbar-menubar","TabsToolbar","widget-overflow-fixed-list"],"currentVersion":17,"newElementCount":22}
-              # '';
+              "browser.uiCustomization.state" = ''
+                {"placements":{"widget-overflow-fixed-list":["nixos_ublock-origin-browser-action","nixos_sponsorblock-browser-action","nixos_temporary-containers-browser-action","nixos_ublock-browser-action","nixos_ether_metamask-browser-action","nixos_cookie-autodelete-browser-action","screenshot-button","panic-button","nixos_localcdn-fork-of-decentraleyes-browser-action","nixos_sponsor-block-browser-action","nixos_image-search-browser-action","nixos_webarchive-browser-action","nixos_darkreader-browser-action","bookmarks-menu-button","nixos_df-yt-browser-action","nixos_i-hate-usa-browser-action","nixos_qr-browser-action","nixos_proxy-switcher-browser-action","nixos_port-authority-browser-action"],"nav-bar":["back-button","forward-button","stop-reload-button","urlbar-container","save-to-pocket-button","fxa-toolbar-menu-button","nixos_absolute-copy-browser-action"],"toolbar-menubar":["menubar-items"],"TabsToolbar":["tabbrowser-tabs","new-tab-button","alltabs-button"],"PersonalToolbar":["import-button","personal-bookmarks"]},"seen":["developer-button","nixos_sponsorblock-browser-action","nixos_clearurls-browser-action","nixos_cookie-autodelete-browser-action","nixos_ether_metamask-browser-action","nixos_ublock-origin-browser-action","nixos_localcdn-fork-of-decentraleyes-browser-action","nixos_vimium-browser-action","nixos_copy-plaintext-browser-action","nixos_h264ify-browser-action","nixos_fastforwardteam-browser-action","nixos_single-file-browser-action","treestyletab_piro_sakura_ne_jp-browser-action","nixos_don-t-fuck-with-paste-browser-action","nixos_temporary-containers-browser-action","nixos_absolute-copy-browser-action","nixos_image-search-browser-action","nixos_webarchive-browser-action","nixos_unstoppable-browser-action","nixos_dontcare-browser-action","nixos_skipredirect-browser-action","nixos_ublock-browser-action","nixos_darkreader-browser-action","nixos_fb-container-browser-action","nixos_vimium-ff-browser-action","nixos_df-yt-browser-action","nixos_sponsor-block-browser-action","nixos_proxy-switcher-browser-action","nixos_port-authority-browser-action","nixos_i-hate-usa-browser-action","nixos_qr-browser-action"],"dirtyAreaCache":["nav-bar","PersonalToolbar","toolbar-menubar","TabsToolbar","widget-overflow-fixed-list"],"currentVersion":17,"newElementCount":28}
+              '';
               "browser.startup.homepage" = "file://${./startpage.html}";
 
               # Arkenfox stuff
@@ -463,7 +462,7 @@ in {
               "security.ask_for_password" = 2;
               "security.password_lifetime" = 5;
               "dom.storage.next_gen" = true;
-              "network.cookie.lifetimePolicy" = 2;
+              "network.cookie.lifetimePolicy" = 0;
               "security.pki.sha1_enforcement_level" = 1;
             };
             ExtensionSettings = {
