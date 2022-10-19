@@ -22,7 +22,6 @@
     transmission-gtk
     fzf
     gum
-    polymc
     pngquant
     wl-clipboard
     proxychains-ng
