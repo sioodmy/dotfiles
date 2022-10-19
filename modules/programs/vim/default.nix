@@ -105,6 +105,7 @@ in {
         nvim-tree-lua
         cmp_luasnip
         cmp-pandoc-references
+        gitsigns-nvim
         (nvim-treesitter.withPlugins (plugins:
           with plugins; [
             tree-sitter-python

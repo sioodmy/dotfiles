@@ -175,7 +175,7 @@ local servers = {
 	"dartls",
 }
 
-local capabilities = require("cmp_nvim_lsp").update_capabilities(vim.lsp.protocol.make_client_capabilities())
+local capabilities = require("cmp_nvim_lsp").default_capabilities(vim.lsp.protocol.make_client_capabilities())
 
 for _, lsp in pairs(servers) do
 	require("lspconfig")[lsp].setup({
@@ -415,6 +415,7 @@ npairs.add_rules({
 })
 
 require("hop").setup()
+require("gitsigns").setup()
 require("colorizer").setup()
 
 local lualine = require("lualine")
@@ -652,7 +653,7 @@ require("nvim-tree").setup({
 	view = {
 		adaptive_size = true,
 		side = "left",
-		width = 25,
+		width = 30,
 		hide_root_folder = true,
 	},
 	git = {
