@@ -137,14 +137,6 @@ null_ls.builtins.formatting.rustfmt.with({
 	extra_args = { "--edition=2021" },
 })
 
-require("lsp_lines").setup()
-vim.diagnostic.config({
-	virtual_text = false,
-	virtual_lines = true,
-})
-
-vim.keymap.set("", "<Leader>l", require("lsp_lines").toggle, { desc = "Toggle lsp_lines" })
-
 local cmp = require("cmp")
 local lspkind = require("lspkind")
 lspkind.init({
@@ -718,5 +710,3 @@ require("nvim-tree").setup({
 		},
 	},
 })
-
-require("auto-save").setup()
