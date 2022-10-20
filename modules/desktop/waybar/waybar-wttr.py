@@ -89,7 +89,7 @@ def format_chances(hour):
 
 tempint = int(weather['current_condition'][0]['FeelsLikeC'])
 extrachar = ''
-if tempint >= 0 and tempint < 10:
+if tempint > 0 and tempint < 10:
     extrachar = '+'
 
 
