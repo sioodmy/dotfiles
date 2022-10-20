@@ -107,8 +107,6 @@ in {
         cmp_luasnip
         cmp-pandoc-references
         gitsigns-nvim
-        lsp_lines-nvim
-        auto-save-nvim
         nvim-notify
         (nvim-treesitter.withPlugins (plugins:
           with plugins; [
