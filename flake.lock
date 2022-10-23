@@ -43,11 +43,11 @@
     "catppuccin-nvim": {
       "flake": false,
       "locked": {
-        "lastModified": 1666318155,
-        "narHash": "sha256-cCy5kcoKDVxRyoiU6cmkr+0CmG2Et6BPhZp95gt4MwU=",
+        "lastModified": 1666537248,
+        "narHash": "sha256-7ELYQYgfV8CUR0sgnfH0NUeAu8hEV0Ix5zkXSQV8THc=",
         "owner": "catppuccin",
         "repo": "nvim",
-        "rev": "c9c272f8f53968473873478591bfb4f5c1418370",
+        "rev": "294bdbe14047590fd03ff97a57ae8f6ffbb98174",
         "type": "github"
       },
       "original": {
@@ -227,11 +227,11 @@
         "utils": "utils"
       },
       "locked": {
-        "lastModified": 1666253070,
-        "narHash": "sha256-MtaNgghmfp+ywh5mv9FcspFT4ACaYINSN+D98PCkrP0=",
+        "lastModified": 1666463764,
+        "narHash": "sha256-NmayV9S0s7CgNEA2QbIxDU0VCIiX6bIHu8PCQPnYHDM=",
         "owner": "nix-community",
         "repo": "home-manager",
-        "rev": "c485669ca529e01c1505429fa9017c9a93f15559",
+        "rev": "69d19b9839638fc487b370e0600a03577a559081",
         "type": "github"
       },
       "original": {
@@ -246,11 +246,11 @@
         "wlroots": "wlroots"
       },
       "locked": {
-        "lastModified": 1666345512,
-        "narHash": "sha256-/45v91bYl9hbEJSgYu51ep9ZyoEHlZDE44gotGZfO4M=",
+        "lastModified": 1666473034,
+        "narHash": "sha256-UfnSWkp4gWf2AA6hyru9Gv1Rb5Ixvsx1RkZ2iVhgC3w=",
         "owner": "hyprwm",
         "repo": "Hyprland",
-        "rev": "b71d7c9007d77f78a403075b99adf8e9d43bf125",
+        "rev": "10303259f7c6f3e64e74e9ca8a31d4223071d5f0",
         "type": "github"
       },
       "original": {
@@ -311,11 +311,11 @@
     },
     "nixpkgs": {
       "locked": {
-        "lastModified": 1665643254,
-        "narHash": "sha256-IBVWNJxGCsshwh62eRfR6+ry3bSXmulB3VQRzLQo3hk=",
+        "lastModified": 1666377499,
+        "narHash": "sha256-dZZCGvWcxc7oGnUgFVf0UeNHsJ4VhkTM0v5JRe8EwR8=",
         "owner": "NixOS",
         "repo": "nixpkgs",
-        "rev": "ba187fbdc5e35322c7dff556ef2c47bddfd6e8d7",
+        "rev": "301aada7a64812853f2e2634a530ef5d34505048",
         "type": "github"
       },
       "original": {
@@ -363,11 +363,11 @@
     },
     "nixpkgs_2": {
       "locked": {
-        "lastModified": 1666282307,
-        "narHash": "sha256-O1T2HGLARLKDLfdOmjPBfn3eC4cSIaQD71wUN4I/6/s=",
+        "lastModified": 1666447894,
+        "narHash": "sha256-i9WHX4w/et4qPMzEXd9POmnO0/bthjr7R4cblKNHGms=",
         "owner": "nixos",
         "repo": "nixpkgs",
-        "rev": "b7d8c687782c8f9a1d425a7e486eb989654f6468",
+        "rev": "95aeaf83c247b8f5aa561684317ecd860476fcd6",
         "type": "github"
       },
       "original": {
@@ -411,11 +411,11 @@
     "nvim-treesitter": {
       "flake": false,
       "locked": {
-        "lastModified": 1666298463,
-        "narHash": "sha256-p2GgibDg/AikgjYtv8lPge1lq50jPSVdM0TXUqi1HfM=",
+        "lastModified": 1666519076,
+        "narHash": "sha256-U5OKprevIcm2QpIf2ozDc8I+Ls4Hh8B9dQxXvi0p1Js=",
         "owner": "nvim-treesitter",
         "repo": "nvim-treesitter",
-        "rev": "c4c358e9badb181f4a05a4d8fd0c986a1cf5001b",
+        "rev": "2d7249409dd3f6e4a4642e6b435a2d93c08c8b36",
         "type": "github"
       },
       "original": {
@@ -502,11 +502,11 @@
     "tree-sitter-org": {
       "flake": false,
       "locked": {
-        "lastModified": 1662999138,
-        "narHash": "sha256-Lzxh64pFFHfsuV8mVNDc740ZXX55MQ0H4k7a70SSki4=",
+        "lastModified": 1666409009,
+        "narHash": "sha256-tD9sL84LKvkhBzTU40pfd32ggxAcPG2Qk9HIhNXKM0E=",
         "owner": "milisims",
         "repo": "tree-sitter-org",
-        "rev": "eb1e080361ad885e3885d1037d9b57f81b579de8",
+        "rev": "081179c52b3e8175af62b9b91dc099d010c38770",
         "type": "github"
       },
       "original": {
@@ -586,11 +586,11 @@
       "flake": false,
       "locked": {
         "host": "gitlab.freedesktop.org",
-        "lastModified": 1665405587,
-        "narHash": "sha256-lVL48azhjGA/oEIcUSZQNwomNs0EzPxCcjgzyDST0PM=",
+        "lastModified": 1666466001,
+        "narHash": "sha256-ZjxAnqtcGmHQHKL1Z9sIraDnzIqrJleWcJXfPtzAm74=",
         "owner": "wlroots",
         "repo": "wlroots",
-        "rev": "221ee83d440fb7dcbfd141ef3a459a5a973331b6",
+        "rev": "c2d2773df57750081b16d56da13b5015d752cbd7",
         "type": "gitlab"
       },
       "original": {

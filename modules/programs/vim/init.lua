@@ -251,10 +251,10 @@ cmp.setup({
 		}),
 		["<CR>"] = cmp.mapping.confirm({ select = true }), -- Accept currently selected item. Set `select` to `false` to only confirm explicitly selected items.
 		["<Tab>"] = cmp.mapping(function(fallback)
-			if ls.expand_or_jumpable() then
-				ls.expand_or_jump()
-			elseif cmp.visible() then
+			if cmp.visible() then
 				cmp.select_next_item()
+			elseif ls.expand_or_jumpable() then
+				ls.expand_or_jump()
 			elseif has_words_before() then
 				cmp.complete()
 			else
