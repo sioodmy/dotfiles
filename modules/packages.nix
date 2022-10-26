@@ -4,6 +4,7 @@
   nixpkgs.config.allowUnfree = true;
   home.packages = with pkgs; [
     wf-recorder
+    brave
     inputs.webcord.packages.${pkgs.system}.default
     todo
     calcurse

@@ -116,12 +116,6 @@ in {
               sha256 = "SS4WAkKCxvGyY6KwUMsqI5h7xE+9VeCrc46FeSDDxMs=";
             })
             (pkgs.fetchFirefoxAddon {
-              name = "4chanx";
-              url =
-                "https://addons.mozilla.org/firefox/downloads/file/922561/4chanx-1.13.15.10.xpi";
-              sha256 = "Ar7X8qYVV+VOdGYQortIqz++ITaJrROk0gAWGnyPTyM=";
-            })
-            (pkgs.fetchFirefoxAddon {
               name = "fb-container";
               url =
                 "https://addons.mozilla.org/firefox/downloads/file/4000006/facebook_container-2.3.4.xpi";
