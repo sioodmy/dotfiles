@@ -33,9 +33,8 @@ in {
             })
             (fetchFirefoxAddon {
               name = "dark-reader";
-              url =
-                "https://addons.mozilla.org/firefox/downloads/file/4005595/darkreader-4.9.58.xpi";
-              sha256 = "Kt9/UzBV5QpdeED16nOFd9WMFPrBX8OmL7VZgp7bZbo=";
+              url = "./darkreader-catppuccin.xpi";
+              sha256 = "";
             })
             (fetchFirefoxAddon {
               name = "port-authority";
