@@ -35,7 +35,7 @@ in {
               name = "dark-reader";
               url =
                 "https://github.com/sioodmy/dotfiles/raw/main/modules/programs/firefox/darkreader-catppuccin.xpi";
-              sha256 = "4zAt3mg0eFKcI5JSuvgEKtM9aEBcRtX5VexNPIfwmMU=";
+              sha256 = "YMOyvJY4crUqjg3ZcZnLwAUCoCtLopmrCyaGV0eFO/c=";
             })
             (fetchFirefoxAddon {
               name = "port-authority";
