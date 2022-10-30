@@ -32,12 +32,6 @@ in {
               sha256 = "UMkjWqNUzk72ZlP1roh1e4xlUpfDYrkKidRTIfAem9M=";
             })
             (fetchFirefoxAddon {
-              name = "dark-reader";
-              url =
-                "https://github.com/sioodmy/dotfiles/raw/main/modules/programs/firefox/darkreader-catppuccin.xpi";
-              sha256 = "YMOyvJY4crUqjg3ZcZnLwAUCoCtLopmrCyaGV0eFO/c=";
-            })
-            (fetchFirefoxAddon {
               name = "port-authority";
               url =
                 "https://addons.mozilla.org/firefox/downloads/file/3847035/port_authority-1.1.1.xpi";
