@@ -155,6 +155,7 @@ Good luck and ~~have fun~~
      <li><a href="https://github.com/owl4ce">owl4ce</a></li>
      <li><a href="https://gitlab.com/luca.py/">luca.py</a></li>
      <li><a href="https://github.com/JavaCafe01">JavaCafe</a></li>
+     <li><a href="https://github.com/FromSyntax">FromSyntax</a></li>
      <li><a href="https://discord.gg/Rk8VsHef3G">NixOS discord community</li>
    </ul>
   </div>
