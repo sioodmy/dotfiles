@@ -408,21 +408,6 @@
         "type": "github"
       }
     },
-    "nur": {
-      "locked": {
-        "lastModified": 1667138094,
-        "narHash": "sha256-9D5YZlgXR4qdTff7DNoyANyH0v+ad+Ipom0A23BCUlA=",
-        "owner": "nix-community",
-        "repo": "NUR",
-        "rev": "50c60a363e0e1e7423d29efd11f7882bfe8f6bdd",
-        "type": "github"
-      },
-      "original": {
-        "owner": "nix-community",
-        "repo": "NUR",
-        "type": "github"
-      }
-    },
     "nvim-treesitter": {
       "flake": false,
       "locked": {
@@ -491,7 +476,6 @@
         "neorg-telescope-nvim": "neorg-telescope-nvim",
         "nixpkgs": "nixpkgs_2",
         "nixpkgs-wayland": "nixpkgs-wayland",
-        "nur": "nur",
         "nvim-treesitter": "nvim-treesitter",
         "tree-sitter-org": "tree-sitter-org",
         "waybar": "waybar",
