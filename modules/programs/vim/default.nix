@@ -1,41 +1,12 @@
 { pkgs, lib, config, inputs, ... }:
 
 with lib;
-let
-  cfg = config.modules.programs.vim;
-  catppuccin-nvim-git = pkgs.vimUtils.buildVimPlugin {
-    name = "catppuccin-nvim";
-    src = inputs.catppuccin-nvim;
-
-  };
-
-  tex = (pkgs.texlive.combine {
-    inherit (pkgs.texlive)
-      scheme-small dvisvgm dvipng fontspec euenc unicode-math;
-  });
-  mkpandoc = pkgs.writeShellScriptBin "mkpandoc" ''
-    #!/bin/bash
-    INPUT=$1
-    OUTPUT="$(basename "$INPUT" .md).pdf"
-    pandoc "$INPUT" \
-    	--pdf-engine xelatex \
-    	-V 'geometry:margin=1in' \
-    	-V 'mainfont:DejaVu Serif' \
-    	-V 'sansfont:DejaVu Sans' \
-    	-V 'fontsize=12pt' \
-    	-o "$OUTPUT"
-
-    if [ "$2" = "-o" ]; then
-    	zathura "$OUTPUT" &
-    fi
-
-  '';
-
+let cfg = config.modules.programs.vim;
 in {
   options.modules.programs.vim = { enable = mkEnableOption "vim"; };
 
   config = mkIf cfg.enable {
-    home.file.".config/nvim/init.lua".source = ./init.lua;
+    xdg.configFile."nvim".source = ./nvim;
 
     home.packages = with pkgs; [
       rnix-lsp
@@ -62,9 +33,6 @@ in {
       nodePackages.yarn
       nodePackages.bash-language-server
       nodePackages.node2nix # Bash
-      pandoc
-      tex
-      mkpandoc
     ];
 
     programs.neovim = {
@@ -77,37 +45,34 @@ in {
       withNodeJs = false;
       withPython3 = false;
       plugins = with pkgs.vimPlugins; [
+        lsp_lines-nvim
         vim-nix
+        nvim-ts-autotag
+        cmp-nvim-lsp-signature-help
+        cmp-buffer
+        comment-nvim
+        lsp_lines-nvim
         null-ls-nvim
-        telescope-nvim
-        nvim-web-devicons
-        vim-commentary
-        lualine-nvim
+        vim-fugitive
+        friendly-snippets
+        luasnip
+        cmp_luasnip
+        nvim-cmp
         impatient-nvim
         indent-blankline-nvim
-        nvim-cmp
         nvim-tree-lua
+        telescope-nvim
+        nvim-web-devicons
         cmp-nvim-lsp
-        cmp-buffer
         cmp-path
         catppuccin-nvim
         lspkind-nvim
         nvim-lspconfig
-        vim-surround
         hop-nvim
-        bufferline-nvim
         alpha-nvim
-        toggleterm-nvim
         nvim-autopairs
         nvim-colorizer-lua
-        zen-mode-nvim
-        vim-pandoc-syntax
-        luasnip
-        nvim-tree-lua
-        cmp_luasnip
-        cmp-pandoc-references
         gitsigns-nvim
-        nvim-notify
         (nvim-treesitter.withPlugins (plugins:
           with plugins; [
             tree-sitter-python
