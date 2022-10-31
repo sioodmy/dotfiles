@@ -31,6 +31,24 @@ in {
   options.modules.programs.tools = { enable = mkEnableOption "programs"; };
 
   config = mkIf cfg.enable {
+    home.packages = with pkgs; [
+      unzip
+      zip
+      unrar
+      killall
+      grex # generating regular expressions from user-provided test cases
+      bandwhich
+      wl-clipboard
+      fd
+      xh
+      ripgrep
+      jq
+      figlet
+      lm_sensors
+      libnotify
+      gnupg
+      yt-dlp
+    ];
     xdg.configFile."bottom/bottom.toml".source = ./bottom.toml;
     services.gpg-agent = {
       enable = true;

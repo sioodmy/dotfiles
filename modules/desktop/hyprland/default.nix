@@ -9,11 +9,11 @@ let
   };
   ocr = pkgs.writeShellScriptBin "ocr" ''
     #!/bin/bash
-    grim -g "$(slurp -w 0 -b eebebed2)" /tmp/ocr.png && tesseract /tmp/ocr.png /tmp/ocr-output && wl-copy < /tmp/ocr-output.txt && notify-send "OCR" "Text copied!" && rm /tmp/ocr-output.txt -f
+    ${pkgs.grim}/bin/grim -g "$(${pkgs.slurp}/bin/slurp -w 0 -b eebebed2)" /tmp/ocr.png && ${pkgs.tesseract5}/bin/tesseract /tmp/ocr.png /tmp/ocr-output && ${pkgs.wl-clipboard}/bin/wl-copy < /tmp/ocr-output.txt && ${pkgs.libnotify}/bin/notify-send "OCR" "Text copied!" && rm /tmp/ocr-output.txt -f
   '';
   screenshot = pkgs.writeShellScriptBin "screenshot" ''
     #!/bin/bash
-    hyprctl keyword animation "fadeOut,0,8,slow" && grim -g "$(slurp -w 0 -b 5e81acd2)" - | wl-copy --type image/png; hyprctl keyword animation "fadeOut,1,8,slow"
+    hyprctl keyword animation "fadeOut,0,8,slow" && ${pkgs.grim}/bin/grim -g "$(${pkgs.slurp}/bin/slurp -w 0 -b 5e81acd2)" - | ${pkgs.wl-clipboard}/bin/wl-copy --type image/png; hyprctl keyword animation "fadeOut,1,8,slow"
   '';
 
 in {
@@ -21,16 +21,17 @@ in {
 
   config = mkIf cfg.enable {
     home.packages = with pkgs; [
-      swaybg
       brightnessctl
       pamixer
       python39Packages.requests
       slurp
-      tesseract5
       ocr
-      grim
       screenshot
       wlogout
+      xdg-desktop-portal
+      xdg-desktop-portal-gtk
+      xdg-desktop-portal-wlr
+      wf-recorder
     ];
 
     home.pointerCursor = {

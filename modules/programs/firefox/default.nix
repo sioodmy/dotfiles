@@ -4,7 +4,9 @@ let cfg = config.modules.programs.firefox;
 in {
   options.modules.programs.firefox = { enable = mkEnableOption "firefox"; };
 
-  # Most schizo-privacy friendly firefox configuration 
+  # Shizo-privacy friendly firefox configuration 
+  # - vim bindings
+  # - discord screenshare works
 
   config = mkIf cfg.enable {
     programs.firefox = {
@@ -12,146 +14,6 @@ in {
       package = with pkgs;
         wrapFirefox firefox-esr-102-unwrapped {
           forceWayland = true;
-          nixExtensions = [
-            (fetchFirefoxAddon {
-              name = "ublock";
-              url =
-                "https://addons.mozilla.org/firefox/downloads/file/4003969/ublock_origin-1.44.4.xpi";
-              sha256 = "C+VQyaJ8BA0ErXGVTdnppJZ6J9SP+izf6RFxdS4VJoU=";
-            })
-            (fetchFirefoxAddon {
-              name = "cookie-autodelete";
-              url =
-                "https://addons.mozilla.org/firefox/downloads/file/3971429/cookie_autodelete-3.8.1.xpi";
-              sha256 = "RD1LB0m2kgKAlZffu1WAwEbdc5xmZsTGpcHcbv4aQpQ=";
-            })
-            (fetchFirefoxAddon {
-              name = "catppuccin-frappe-pink";
-              url =
-                "https://github.com/catppuccin/firefox/releases/download/old/catppuccin_frappe_pink.xpi";
-              sha256 = "UMkjWqNUzk72ZlP1roh1e4xlUpfDYrkKidRTIfAem9M=";
-            })
-            (fetchFirefoxAddon {
-              name = "port-authority";
-              url =
-                "https://addons.mozilla.org/firefox/downloads/file/3847035/port_authority-1.1.1.xpi";
-              sha256 = "34lEwmBaE6zBYX0+1CiDQmrWyegb6QKH28cqGYTtCIw=";
-            })
-            (fetchFirefoxAddon {
-              name = "dontcare";
-              url =
-                "https://addons.mozilla.org/firefox/downloads/file/4002797/i_dont_care_about_cookies-3.4.3.xpi";
-              sha256 = "B1jga6WbGD55M9qx1ja5t0EDbSTjCealgwJtXRrnR9c=";
-            })
-            (pkgs.fetchFirefoxAddon {
-              name = "sponsor-block";
-              url =
-                "https://addons.mozilla.org/firefox/downloads/file/4011816/sponsorblock-5.0.7.xpi";
-              sha256 = "/XqkOnjPiHJyyNJt6cJnqbiWBbQRj5zh/XwbdfYx6uQ=";
-            })
-            (pkgs.fetchFirefoxAddon {
-              name = "localcdn-fork-of-decentraleyes";
-              url =
-                "https://addons.mozilla.org/firefox/downloads/file/3985626/localcdn_fork_of_decentraleyes-2.6.32.xpi";
-              sha256 = "IPJgB47N9hSKknvS0i3mUaMk3Ki35gGbSyaEdtsGexA=";
-            })
-            (pkgs.fetchFirefoxAddon {
-              name = "ether_metamask";
-              url =
-                "https://addons.mozilla.org/firefox/downloads/file/3987382/ether_metamask-10.18.3.xpi";
-              sha256 = "TS472KTMNbY2iWV5G+UA5GChMxEsiCoipab6nGzmh4I=";
-            })
-            (pkgs.fetchFirefoxAddon {
-              name = "qr";
-              url =
-                "https://addons.mozilla.org/firefox/downloads/file/3661148/qr-1.0.2020.190.xpi";
-              sha256 = "nKFG09YnsdId5DImQhVuv6G46ovKL7qy6yhI/m9CynM=";
-            })
-            (pkgs.fetchFirefoxAddon {
-              name = "save-webp-as-png-or-jpeg";
-              url =
-                "https://addons.mozilla.org/firefox/downloads/file/3919488/save_webp_as_png_or_jpeg-1.2.xpi";
-              sha256 = "UO5Br7PQjPViAWjZsjcxih7W408/KfJsVBwVcKakmtI=";
-            })
-            (pkgs.fetchFirefoxAddon {
-              name = "single-file";
-              url =
-                "https://addons.mozilla.org/firefox/downloads/file/3990955/single_file-1.21.21.xpi";
-              sha256 = "aLgfonqihTWGPUEhHa93tvnEcrdA3d0s7FRhugX2obE=";
-            })
-            (pkgs.fetchFirefoxAddon {
-              name = "skipredirect";
-              url =
-                "https://addons.mozilla.org/firefox/downloads/file/3920533/skip_redirect-2.3.6.xpi";
-              sha256 = "2+iVAkXB9HXFwcbaq4nHm4O6RoBiHJHoDxW+ewm2GK4=";
-            })
-            (pkgs.fetchFirefoxAddon {
-              name = "vimium-ff";
-              url =
-                "https://addons.mozilla.org/firefox/downloads/file/3898202/vimium_ff-1.67.1.xpi";
-              sha256 = "EnQIAnSOer/48TAUyEXbGCtSZvKA4vniL64K+CeJ/m0=";
-            })
-            (pkgs.fetchFirefoxAddon {
-              name = "don-t-fuck-with-paste";
-              url =
-                "https://addons.mozilla.org/firefox/downloads/file/3630212/don_t_fuck_with_paste-2.7.xpi";
-              sha256 = "7xfc734gNKJZgqEG5U0Z4kyfImQ0o5aoCBle8N4CGkA=";
-            })
-            (pkgs.fetchFirefoxAddon {
-              name = "temporary-containers";
-              url =
-                "https://addons.mozilla.org/firefox/downloads/file/3723251/temporary_containers-1.9.2.xpi";
-              sha256 = "M0CgjCm+fIO9D+o/wn/eceRgikUy2TIRS0OappDn7cA=";
-            })
-            (pkgs.fetchFirefoxAddon {
-              name = "i-hate-usa";
-              url =
-                "https://addons.mozilla.org/firefox/downloads/file/3416661/everything_metric_converter-3.4.xpi";
-              sha256 = "SS4WAkKCxvGyY6KwUMsqI5h7xE+9VeCrc46FeSDDxMs=";
-            })
-            (pkgs.fetchFirefoxAddon {
-              name = "fb-container";
-              url =
-                "https://addons.mozilla.org/firefox/downloads/file/4000006/facebook_container-2.3.4.xpi";
-              sha256 = "kBP5Hx5eza/cnrPLdeOhlH1aE7VRxr1qeGJZcukCTWE=";
-            })
-            (pkgs.fetchFirefoxAddon {
-              name = "webarchive";
-              url =
-                "https://addons.mozilla.org/firefox/downloads/file/3894402/view_page_archive-3.1.0.xpi";
-              sha256 = "uCdkebx7KszyNLsbRVuUlprN8esgWdgAIKtD6/SJSdQ=";
-            })
-            (pkgs.fetchFirefoxAddon {
-              name = "unstoppable";
-              url =
-                "https://addons.mozilla.org/firefox/downloads/file/3882243/unstoppable_extension-2.2.3.xpi";
-              sha256 = "qEAZj82IgV9HW51lbdEg2uyr4kFX9lu+uPMlII7iVMI=";
-            })
-            (pkgs.fetchFirefoxAddon {
-              name = "image-search";
-              url =
-                "https://addons.mozilla.org/firefox/downloads/file/3988785/search_by_image-5.2.0.xpi";
-              sha256 = "NAyyKKnvL5UG4xTzs3LEBBuP1FnVxlNAGeHVRtPtWC8=";
-            })
-            (pkgs.fetchFirefoxAddon {
-              name = "buster-captcha";
-              url =
-                "https://addons.mozilla.org/firefox/downloads/file/3997075/buster_captcha_solver-1.3.2.xpi";
-              sha256 = "vYsTrrt0N7V6zYmMXwoTJuWvYaxBMWq7yjDAdWNvofc=";
-            })
-            (pkgs.fetchFirefoxAddon {
-              name = "clearurls";
-              url =
-                "https://addons.mozilla.org/firefox/downloads/file/3980848/clearurls-1.25.0.xpi";
-              sha256 = "lr+DCSgwo0Qnrk8QXc4EIsMG2dlWacDJP05VgEmTQ1w=";
-            })
-            (fetchFirefoxAddon {
-              name = "h264ify";
-              url =
-                "https://addons.mozilla.org/firefox/downloads/file/3398929/h264ify-1.1.0.xpi";
-              sha256 = "h708SrGiNZwBodhU19uEKLRDFv71sqwJ4ijFMYxXpRU=";
-            })
-          ];
 
           # see https://github.com/mozilla/policy-templates/blob/master/README.md
           extraPolicies = {
@@ -163,6 +25,90 @@ in {
             DisableFormHistory = true;
             DisplayBookmarksToolbar = true;
             DontCheckDefaultBrowser = true;
+            SearchEngines = {
+              Add = [
+                {
+                  Name = "Searx";
+                  Description = "Decentralized search engine";
+                  Alias = "sx";
+                  Method = "GET";
+                  URLTemplate =
+                    "https://search.unlocked.link/?preferences=eJx1V82SpDYMfppwobYrmz2kcuhTKtkHyOZMCVsNGmyL9U_TzNNHbqAxw-QwVFu25U9_nzQKInbsCcO1Q4ceTGXAdQk6vKL78u8_lWEFJi8qSJEV29FgxGvH3BmsyMrJZvT8mK8_fMLKYuxZX7__9aMKcMOA4FV__bWKPVq8BsrXK48hmRgado3DqYnQXv8GE7DSTI1ssrmjvzLI8sK-q5ZrTYizIMkwKoUuom_AUOes_F7vg76DU6ib9d1F-jOhnxtyTaQoChYhuRs5iqJVeTZmA0ABWiMK0HXkxCt_dNA1TWBFYGqLmuCX3_6Ecagtec--aW5kMDxlArGWbx0ieyw2BAjdsabQNKuPRdqS647r2CY1YGwairJWSn2J96a5k0bOanhEJ14Jovnp9CwT5CF4vAlARSiGi2zGsdSrkjeEpUQjvovrGpsCqbzWXa3x6QxidwCJnifSTcMSPS_riQbSEOGgTlDnv44_l9YL2gJ1sTchZNX7C4sXLYxyQb4Zg-U3GrPj91NfH4W6m_acQW7-vnnEOvAtTuCx1uRRSUDm1a83T24gUIWCjjqJOYRYGtBJqkC7BYM1tui7dbnkfj0amHPAw_52uWP5TtnuVwS7kbUuPd9D6yF_Vr1kdbsbSQ6Ky-TkJ3EKn8s2lW8Uet51DKQGCAVAQ_Kkn-tsaKByg9sQ8eLDigXezexJFaod4v0QeTfa9bCbAXZVOVM9jlxoH0FwdBS27B5Te9F4X1dLsWYn1_nzihRYyHjxdcyCi6TqoHo24MusDxF8HDMXFQAjDzNHFo8M4HYwcaKYyeNjVc_Q8yGJJ2rncm3BCykIpoMbhB0f4LQ_SnOptMxD-CgUwhNZ_q6Cn4kjfjwVOHl1kub6pzifxDx_sPzrt2-_P3aLddLo9qwI-O7AHizjN8ThEFy4ZxftAp_auUO75ceI6GNqsUjHpx_liUHyfpqwLbZ8ssKqhWDiBw3sJAnqMDt2s8UC39t4GSd35B0rBHUgTC8IS8GIMVN4TqX_EZ-pqNw8BEbybq-FJRh9emZvhe7YIZ6XDbn0qDPOrX68ZGrxEvgH3cuMbSVnFNhxL7B8eyW6Y584435KD4CfksW9hZvbqKnr9kSQbuDl_fnYD-4kdSWAS45m6UW-7tNGgVFsnQ_-xjhbdmJ4EbmbEcLxJbeio5KfZB1zkS08SnF_YKHOAwUvZHoyfpUfzF9lJwes8k8Yo1_fez7-_mUlxjNT8k1IyXUylZQYxOzuyIaWHspw0rutwlYD4UbumRVBmlHunwFl-CmwbHtCi-JAWPvwcT9E6WtReuLWGEedq28_NPbCde61S15GuxYKi0S7lOjhyjxu-fpzkhwo7XkKjk5eRKd4LOKT68VUTfHEsgFHgq1MX4elxKQcjv4TTlcDCw3dDE9bWYUhtcnFtJVmGtGn8PKyjI6kpd1Llsei_yQXpCeHvkD9ZPujfTOnD5T2kryGJSAjaZ8jVBy7k0Uu2Y2GfOKZTy8OY7N0tLEvJhlNKr6zO-S9FTK0MrHU0YMLRsJYjmDstaOhEMToL7SR5T7AjiYJP4VrdvXjsq4uRng0rk2glAc0N5mQb3zaEWc2qkc1vIjvc819du-yOOnoOUTpOCizvYRhadiHAwzNMvpPXuB9gu6ZLuJztfy_MsuAb2SuO6P1kImrkalXtNmcPaczEq1GamXAOVQyIkhpXf8DAvvsTg==&q={searchTerms}";
+                }
+                {
+                  Name = "GHnix";
+                  Description = "Github nix search";
+                  Alias = "ghnix";
+                  Method = "GET";
+                  URLTemplate =
+                    "https://github.com/search?l=nix&type=code&q=%7B{searchTerms}%7D";
+                }
+                {
+                  Name = "NixSearch";
+                  Description = "Nixpkgs query";
+                  Alias = "nix";
+                  Method = "GET";
+                  URLTemplate =
+                    "https://search.nixos.org/packages?&query={searchTerms}";
+                }
+                {
+                  Name = "Librex";
+                  Description =
+                    "A privacy respecting free as in freedom meta search engine for Google and popular torrent sites ";
+                  Alias = "librex";
+                  Method = "GET";
+                  URLTemplate =
+                    "https://librex.beparanoid.de/search.php?q={searchTerms}&p=0&t=0";
+                }
+              ];
+              Default = "Searx";
+              Remove = [ "Google" "Bing" "Amazon.com" "eBay" "Twitter" ];
+            };
+
+            ExtensionSettings = let
+              mkForceInstalled = extensions:
+                builtins.mapAttrs
+                (name: cfg: { installation_mode = "force_installed"; } // cfg)
+                extensions;
+            in mkForceInstalled {
+              "addon@darkreader.org".install_url =
+                "https://addons.mozilla.org/firefox/downloads/latest/darkreader/latest.xpi";
+              "jid1-Om7eJGwA1U8Akg@jetpack".install_url =
+                "https://addons.mozilla.org/firefox/downloads/latest/octotree/latest.xpi";
+              "{d7742d87-e61d-4b78-b8a1-b469842139fa}".install_url =
+                "https://addons.mozilla.org/firefox/downloads/latest/vimium-ff/latest.xpi";
+              "uBlock0@raymondhill.net".install_url =
+                "https://addons.mozilla.org/firefox/downloads/latest/ublock-origin/latest.xpi";
+              "{36bdf805-c6f2-4f41-94d2-9b646342c1dc}".install_url =
+                "https://addons.mozilla.org/firefox/downloads/latest/export-cookies-txt/latest.xpi";
+              "{74145f27-f039-47ce-a470-a662b129930a}".install_url =
+                "https://addons.mozilla.org/firefox/downloads/latest/clearurls/latest.xpi";
+              "7esoorv3@alefvanoon.anonaddy.me".install_url =
+                "https://addons.mozilla.org/firefox/downloads/latest/libredirect/latest.xpi";
+              "{b86e4813-687a-43e6-ab65-0bde4ab75758}".install_url =
+                "https://addons.mozilla.org/firefox/downloads/latest/localcdn-fork-of-decentraleyes/latest.xpi";
+              "webextension@metamask.io".install_url =
+                "https://addons.mozilla.org/firefox/downloads/latest/ether-metamask/latest.xpi";
+              "CookieAutoDelete@kennydo.com".install_url =
+                "https://addons.mozilla.org/firefox/downloads/latest/cookie-autodelete/latest.xpi";
+              "DontFuckWithPaste@raim.ist".install_url =
+                "https://addons.mozilla.org/firefox/downloads/latest/don-t-fuck-with-paste/latest.xpi";
+              "{ffd50a6d-1702-4d87-83c3-ec468f67de6a}".install_url =
+                "https://addons.mozilla.org/firefox/downloads/latest/everything-metric-converter/latest.xpi";
+              "{531906d3-e22f-4a6c-a102-8057b88a1a63}".install_url =
+                "https://addons.mozilla.org/firefox/downloads/latest/single-file/latest.xpi";
+              "ryan@unstoppabledomains.com".install_url =
+                "https://addons.mozilla.org/firefox/downloads/latest/unstoppable-extension/latest.xpi";
+              "{c607c8df-14a7-4f28-894f-29e8722976af}".install_url =
+                "https://addons.mozilla.org/firefox/downloads/latest/temporary-containers/latest.xpi";
+              "skipredirect@sblask".install_url =
+                "https://addons.mozilla.org/firefox/downloads/latest/skip-redirect/latest.xpi";
+              "sponsorBlocker@ajay.app".install_url =
+                "https://addons.mozilla.org/firefox/downloads/latest/sponsorblock/latest.xpi";
+              "{b6129aa9-e45d-4280-aac8-3654e9d89d21}".install_url =
+                "https://github.com/catppuccin/firefox/releases/download/old/catppuccin_frappe_pink.xpi";
+            };
+
             FirefoxHome = {
               Pocket = false;
               Snippets = false;
@@ -173,84 +119,15 @@ in {
               ExtensionRecommendations = false;
               SkipOnboarding = true;
             };
-            Bookmarks = [
-              # crypto
-              {
-                Title = "Pancake swap";
-                URL = "https://pancakeswap.finance";
-                Placement = "menu";
-                Folder = "crypto";
-              }
-              {
-                Title = "Binance";
-                URL = "https://accounts.binance.com/en/login";
-                Placement = "menu";
-                Folder = "crypto";
-              }
-              {
-                Title = "TradingView";
-                URL = "https://www.tradingview.com/chart/rwZ5GJdv/";
-                Placement = "menu";
-                Folder = "crypto";
-              }
-              {
-                Title = "coin360";
-                URL = "https://coin360.com/";
-                Placement = "menu";
-                Folder = "crypto";
-              }
-              {
-                Title = "Crypto Bubbles";
-                URL = "https://cryptobubbles.net/";
-                Placement = "menu";
-                Folder = "crypto";
-              }
-              {
-                Title = "r/cryptocurrency";
-                URL = "https://www.reddit.com/r/CryptoCurrency";
-                Placement = "menu";
-                Folder = "crypto";
-              }
-
-              # social 
-              {
-                Title = "Discord";
-                URL = "https://discord.com/login";
-                Placement = "menu";
-                Folder = "social";
-              }
-              {
-                Title = "Telegram";
-                URL = "https://web.telegram.org";
-                Placement = "menu";
-                Folder = "social";
-              }
-              {
-                Title = "Youtube";
-                URL = "https://www.youtube.com/";
-                Placement = "menu";
-                Folder = "social";
-              }
-              {
-                Title = "Twitter";
-                URL = "https://twitter.com/home";
-                Placement = "menu";
-                Folder = "social";
-              }
-              {
-                Title = "g/";
-                URL = "https://boards.4channel.org/g/";
-                Placement = "menu";
-                Folder = "social";
-              }
-              # Code
-              {
-                Title = "Github";
-                URL = "https://github.com/";
-                Placement = "menu";
-                Folder = "code";
-              }
-            ];
+            SanitizeOnShutdown = {
+              Cache = true;
+              History = true;
+              Cookies = false;
+              Downloads = true;
+              FormData = true;
+              Sessions = true;
+              OfflineApps = true;
+            };
             Preferences = {
               "browser.toolbars.bookmarks.visibility" = "never";
               "toolkit.legacyUserProfileCustomizations.stylesheets" = true;
@@ -262,7 +139,7 @@ in {
 
               # remove useless stuff from the bar
               "browser.uiCustomization.state" = ''
-                {"placements":{"widget-overflow-fixed-list":["nixos_ublock-origin-browser-action","nixos_sponsorblock-browser-action","nixos_temporary-containers-browser-action","nixos_ublock-browser-action","nixos_ether_metamask-browser-action","nixos_cookie-autodelete-browser-action","screenshot-button","panic-button","nixos_localcdn-fork-of-decentraleyes-browser-action","nixos_sponsor-block-browser-action","nixos_image-search-browser-action","nixos_webarchive-browser-action","nixos_darkreader-browser-action","bookmarks-menu-button","nixos_df-yt-browser-action","nixos_i-hate-usa-browser-action","nixos_qr-browser-action","nixos_proxy-switcher-browser-action","nixos_port-authority-browser-action"],"nav-bar":["back-button","forward-button","stop-reload-button","urlbar-container","save-to-pocket-button","fxa-toolbar-menu-button","nixos_absolute-copy-browser-action"],"toolbar-menubar":["menubar-items"],"TabsToolbar":["tabbrowser-tabs","new-tab-button","alltabs-button"],"PersonalToolbar":["import-button","personal-bookmarks"]},"seen":["developer-button","nixos_sponsorblock-browser-action","nixos_clearurls-browser-action","nixos_cookie-autodelete-browser-action","nixos_ether_metamask-browser-action","nixos_ublock-origin-browser-action","nixos_localcdn-fork-of-decentraleyes-browser-action","nixos_vimium-browser-action","nixos_copy-plaintext-browser-action","nixos_h264ify-browser-action","nixos_fastforwardteam-browser-action","nixos_single-file-browser-action","treestyletab_piro_sakura_ne_jp-browser-action","nixos_don-t-fuck-with-paste-browser-action","nixos_temporary-containers-browser-action","nixos_absolute-copy-browser-action","nixos_image-search-browser-action","nixos_webarchive-browser-action","nixos_unstoppable-browser-action","nixos_dontcare-browser-action","nixos_skipredirect-browser-action","nixos_ublock-browser-action","nixos_darkreader-browser-action","nixos_fb-container-browser-action","nixos_vimium-ff-browser-action","nixos_df-yt-browser-action","nixos_sponsor-block-browser-action","nixos_proxy-switcher-browser-action","nixos_port-authority-browser-action","nixos_i-hate-usa-browser-action","nixos_qr-browser-action"],"dirtyAreaCache":["nav-bar","PersonalToolbar","toolbar-menubar","TabsToolbar","widget-overflow-fixed-list"],"currentVersion":17,"newElementCount":28}
+                {"placements":{"widget-overflow-fixed-list":["nixos_ublock-origin-browser-action","nixos_sponsorblock-browser-action","nixos_temporary-containers-browser-action","nixos_ublock-browser-action","nixos_ether_metamask-browser-action","nixos_cookie-autodelete-browser-action","screenshot-button","panic-button","nixos_localcdn-fork-of-decentraleyes-browser-action","nixos_sponsor-block-browser-action","nixos_image-search-browser-action","nixos_webarchive-browser-action","nixos_darkreader-browser-action","bookmarks-menu-button","nixos_df-yt-browser-action","nixos_i-hate-usa-browser-action","nixos_qr-browser-action","nixos_proxy-switcher-browser-action","nixos_port-authority-browser-action","sponsorblocker_ajay_app-browser-action","jid1-om7ejgwa1u8akg_jetpack-browser-action","dontfuckwithpaste_raim_ist-browser-action","ryan_unstoppabledomains_com-browser-action","_d7742d87-e61d-4b78-b8a1-b469842139fa_-browser-action","7esoorv3_alefvanoon_anonaddy_me-browser-action","_36bdf805-c6f2-4f41-94d2-9b646342c1dc_-browser-action","_ffd50a6d-1702-4d87-83c3-ec468f67de6a_-browser-action","addon_darkreader_org-browser-action","cookieautodelete_kennydo_com-browser-action","_b86e4813-687a-43e6-ab65-0bde4ab75758_-browser-action","_531906d3-e22f-4a6c-a102-8057b88a1a63_-browser-action","skipredirect_sblask-browser-action","ublock0_raymondhill_net-browser-action"],"nav-bar":["back-button","forward-button","stop-reload-button","urlbar-container","save-to-pocket-button","fxa-toolbar-menu-button","nixos_absolute-copy-browser-action","webextension_metamask_io-browser-action"],"toolbar-menubar":["menubar-items"],"TabsToolbar":["tabbrowser-tabs","new-tab-button","alltabs-button","_c607c8df-14a7-4f28-894f-29e8722976af_-browser-action"],"PersonalToolbar":["import-button","personal-bookmarks"]},"seen":["developer-button","nixos_sponsorblock-browser-action","nixos_clearurls-browser-action","nixos_cookie-autodelete-browser-action","nixos_ether_metamask-browser-action","nixos_ublock-origin-browser-action","nixos_localcdn-fork-of-decentraleyes-browser-action","nixos_vimium-browser-action","nixos_copy-plaintext-browser-action","nixos_h264ify-browser-action","nixos_fastforwardteam-browser-action","nixos_single-file-browser-action","treestyletab_piro_sakura_ne_jp-browser-action","nixos_don-t-fuck-with-paste-browser-action","nixos_temporary-containers-browser-action","nixos_absolute-copy-browser-action","nixos_image-search-browser-action","nixos_webarchive-browser-action","nixos_unstoppable-browser-action","nixos_dontcare-browser-action","nixos_skipredirect-browser-action","nixos_ublock-browser-action","nixos_darkreader-browser-action","nixos_fb-container-browser-action","nixos_vimium-ff-browser-action","nixos_df-yt-browser-action","nixos_sponsor-block-browser-action","nixos_proxy-switcher-browser-action","nixos_port-authority-browser-action","nixos_i-hate-usa-browser-action","nixos_qr-browser-action","dontfuckwithpaste_raim_ist-browser-action","jid1-om7ejgwa1u8akg_jetpack-browser-action","ryan_unstoppabledomains_com-browser-action","_36bdf805-c6f2-4f41-94d2-9b646342c1dc_-browser-action","_d7742d87-e61d-4b78-b8a1-b469842139fa_-browser-action","_ffd50a6d-1702-4d87-83c3-ec468f67de6a_-browser-action","7esoorv3_alefvanoon_anonaddy_me-browser-action","addon_darkreader_org-browser-action","cookieautodelete_kennydo_com-browser-action","skipredirect_sblask-browser-action","ublock0_raymondhill_net-browser-action","_531906d3-e22f-4a6c-a102-8057b88a1a63_-browser-action","webextension_metamask_io-browser-action","_74145f27-f039-47ce-a470-a662b129930a_-browser-action","_b86e4813-687a-43e6-ab65-0bde4ab75758_-browser-action","_c607c8df-14a7-4f28-894f-29e8722976af_-browser-action","sponsorblocker_ajay_app-browser-action"],"dirtyAreaCache":["nav-bar","PersonalToolbar","toolbar-menubar","TabsToolbar","widget-overflow-fixed-list"],"currentVersion":17,"newElementCount":29}
               '';
               "browser.startup.homepage" = "file://${./startpage.html}";
 
@@ -399,21 +276,12 @@ in {
                 true;
               "privacy.partition.always_partition_third_party_non_cookie_storage.exempt_sessionstorage" =
                 false;
-              "privacy.sanitize.sanitizeOnShutdown" = true;
-              "privacy.clearOnShutdown.cache" = false;
-              "privacy.clearOnShutdown.downloads" = true;
-              "privacy.clearOnShutdown.formdata" = true;
-              "privacy.clearOnShutdown.history" = true;
-              "privacy.clearOnShutdown.sessions" = false;
-              "privacy.clearOnShutdown.cookies" = false;
-              "privacy.clearOnShutdown.offlineApps" = true;
               "privacy.cpd.cache" = true;
               "privacy.cpd.formdata" = true;
               "privacy.cpd.history" = true;
               "privacy.cpd.sessions" = true;
               "privacy.cpd.offlineApps" = false;
               "privacy.cpd.cookies" = false;
-              "privacy.sanitize.timeSpan" = 0;
               "privacy.resistFingerprinting" = true;
               "privacy.window.maxInnerWidth" = 1600;
               "privacy.window.maxInnerHeight" = 900;
@@ -446,51 +314,6 @@ in {
               "dom.storage.next_gen" = true;
               "network.cookie.lifetimePolicy" = 0;
               "security.pki.sha1_enforcement_level" = 1;
-            };
-            ExtensionSettings = {
-              # @ytb  -->  YouTube
-              # @gh  -->  GitHub
-              # @nix  -->  Nix Package
-              # @ghnix  -->  Nix Code in Github
-              "github@search" = {
-                installation_mode = "force_installed";
-                install_url =
-                  "https://raw.githubusercontent.com/mlyxshi/FFExtension/main/github-search.xpi";
-              };
-
-              "youtube@search" = {
-                installation_mode = "force_installed";
-                install_url =
-                  "https://raw.githubusercontent.com/mlyxshi/FFExtension/main/youtube-search.xpi";
-              };
-
-              "nix.package@search" = {
-                installation_mode = "force_installed";
-                install_url =
-                  "https://raw.githubusercontent.com/mlyxshi/FFExtension/main/nix-search.xpi";
-              };
-
-              "github.nix@search" = {
-                installation_mode = "force_installed";
-                install_url =
-                  "https://raw.githubusercontent.com/mlyxshi/FFExtension/main/github-nix.xpi";
-              };
-
-              # Uninstall all build-in search shortcuts except google <-- my default search engine
-
-              "ebay@search.mozilla.org" = { installation_mode = "blocked"; };
-
-              "amazondotcom@search.mozilla.org" = {
-                installation_mode = "blocked";
-              };
-
-              "bing@search.mozilla.org" = { installation_mode = "blocked"; };
-
-              "ddg@search.mozilla.org" = { installation_mode = "blocked"; };
-
-              "wikipedia@search.mozilla.org" = {
-                installation_mode = "blocked";
-              };
             };
           };
         };
