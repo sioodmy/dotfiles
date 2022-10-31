@@ -31,6 +31,7 @@
 
   #custom-search,
   #clock {
+    color: #c6d0f5;
     background-color: #414559;
   }
 
@@ -61,6 +62,10 @@
 
   #workspaces button.urgent {
     background-color: #e78284;
+  }
+  #custom-weather,
+  #custom-todo {
+    color: #c6d0f5;
   }
 
   #clock,

@@ -125,6 +125,7 @@ in {
   hardware = {
     nvidia = {
       open = true;
+      powerManagement.enable = true;
       modesetting.enable = true;
     };
     opengl = {

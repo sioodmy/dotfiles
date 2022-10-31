@@ -24,6 +24,7 @@ in {
     home.packages = [ waybar-wttr ];
     programs.waybar = {
       enable = true;
+      package = inputs.hyprland.packages.${pkgs.system}.waybar-hyprland;
       settings = {
         mainBar = {
           layer = "top";
