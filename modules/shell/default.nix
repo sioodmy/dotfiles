@@ -128,7 +128,8 @@ in {
           line-numbers = true;
         };
       };
-      delta = { enable = true; };
+      lfs.enable = true;
+      delta.enable = true;
       aliases = {
         co = "checkout";
         ca = "commit -am";

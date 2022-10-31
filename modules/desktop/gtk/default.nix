@@ -13,8 +13,8 @@ in {
         package = pkgs.catppuccin-gtk.override { size = "compact"; };
       };
       iconTheme = {
-        name = "Papirus-Dark";
-        package = pkgs.papirus-icon-theme;
+        package = pkgs.catppuccin-folders;
+        name = "Papirus";
       };
       font = {
         name = "Lato";

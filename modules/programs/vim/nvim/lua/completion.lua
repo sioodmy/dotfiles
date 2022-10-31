@@ -10,6 +10,10 @@ require("lsp_lines").setup()
 require("hop").setup()
 require("luasnip.loaders.from_vscode").lazy_load()
 
+vim.diagnostic.config({
+	virtual_text = false,
+})
+
 cmp.setup({
 	formatting = {
 		format = lspkind.cmp_format({

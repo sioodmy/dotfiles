@@ -66,13 +66,22 @@
               };
               nixpkgs.overlays = [
                 (final: prev: {
+                  catppuccin-folders =
+                    final.callPackage ./overlays/catppuccin-folders.nix { };
                   catppuccin-cursors =
                     prev.callPackage ./overlays/catppuccin-cursors.nix { };
                   catppuccin-gtk =
                     prev.callPackage ./overlays/catppuccin-gtk.nix { };
                   hyprland-nvidia =
-                    inputs.hyprland.packages.${prev.system}.default.override {
+                    inputs.hyprland.packages.${system}.default.override {
                       nvidiaPatches = true;
+                      wlroots =
+                        inputs.hyprland.packages.${system}.wlroots-hyprland.overrideAttrs
+                        (old: {
+                          patches = (old.patches or [ ])
+                            ++ [ ./overlays/screenshare-patch.diff ];
+                        });
+
                     };
                 })
                 (self: super: {
@@ -81,28 +90,6 @@
                       orgmode.overrideAttrs (old: { src = inputs.orgmode; });
                     nvim-treesitter = nvim-treesitter.overrideAttrs
                       (old: { src = inputs.nvim-treesitter; });
-                  });
-                  tree-sitter-org = let
-                    actualRev = inputs.tree-sitter-org.rev;
-                    ntsExpected = (super.lib.importJSON
-                      "${inputs.nvim-treesitter}/lockfile.json").org.revision;
-                    orgmodeExpected = builtins.readFile
-                      (super.runCommand "orgmodeExpectedRev" { } ''
-                        sed -n -e "2s/^local ts_revision = '\([^']\+\)'$/\1/p" \
-                            ${inputs.orgmode}/lua/orgmode/init.lua \
-                            | tr -d '\n' > $out
-                      '');
-                  in assert actualRev == ntsExpected;
-                  assert actualRev == orgmodeExpected;
-                  super.tree-sitter-grammars.tree-sitter-org-nvim.overrideAttrs
-                  (old: { src = inputs.tree-sitter-org; });
-                  waybar = super.waybar.overrideAttrs (oldAttrs: {
-                    src = inputs.waybar;
-                    mesonFlags = oldAttrs.mesonFlags
-                      ++ [ "-Dexperimental=true" ];
-                    patchPhase = ''
-                      substituteInPlace src/modules/wlr/workspace_manager.cpp --replace "zext_workspace_handle_v1_activate(workspace_handle_);" "const std::string command = \"hyprctl dispatch workspace \" + name_; system(command.c_str());"
-                    '';
                   });
                 })
                 inputs.nixpkgs-wayland.overlay

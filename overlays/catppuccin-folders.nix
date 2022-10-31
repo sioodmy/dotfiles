@@ -1,43 +1,20 @@
-{ lib, stdenv, fetchFromGitHub, gtk3, pantheon, breeze-icons, gnome-icon-theme
-, hicolor-icon-theme }:
-
+{ lib, stdenv, fetchFromGitHub, papirus-icon-theme, }:
 stdenv.mkDerivation rec {
-  pname = "papirus-icon-theme";
-  version = "20220302";
+  pname = "catppuccin-folders";
+  version = "unstable";
 
   src = fetchFromGitHub {
-    owner = "PapirusDevelopmentTeam";
-    repo = pname;
-    rev = version;
-    sha256 = "sha256-X92an2jGRgZ/Q3cr6Q729DA2hs/2y34HoRpB1rxk0hI=";
+    owner = "catppuccin";
+    repo = "papirus-folders";
+    rev = "5b1e93fa40cbc63e158ac4aa4f453e8028941ab4";
+    sha256 = "sha256-9IRGxQ3IyOIaXSMKYdZIbuhPNzmuT/zIcAAmyPbXktk=";
   };
-
-  nativeBuildInputs = [ gtk3 ];
-
-  propagatedBuildInputs = [
-    pantheon.elementary-icon-theme
-    breeze-icons
-    gnome-icon-theme
-    hicolor-icon-theme
-  ];
-
-  dontDropIconThemeCache = true;
 
   installPhase = ''
-    runHook preInstall
-    mkdir -p $out/share/icons
-    mv {,e}Papirus* $out/share/icons
-    for theme in $out/share/icons/*; do
-      gtk-update-icon-cache $theme
-    done
-    runHook postInstall
+    mkdir -p $out/share/icons/Papirus
+    cp -r ${papirus-icon-theme}/share/icons/Papirus $out/share/icons
+    chmod -R u+rw $out
+    cp -r src/* $out/share/icons/Papirus
+    bash ./papirus-folders -C cat-frappe-pink --theme $out/share/icons/Papirus -o
   '';
-
-  meta = with lib; {
-    description = "Catppuccin Papirus icon theme";
-    homepage = "https://github.com/catppuccin/papirus-folders";
-    license = licenses.mit;
-    platforms = platforms.linux;
-    #maintainers = with maintainers; [ romildo fortuneteller2k ];
-  };
 }

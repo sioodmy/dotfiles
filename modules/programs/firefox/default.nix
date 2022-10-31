@@ -140,12 +140,6 @@ in {
               sha256 = "vYsTrrt0N7V6zYmMXwoTJuWvYaxBMWq7yjDAdWNvofc=";
             })
             (pkgs.fetchFirefoxAddon {
-              name = "proxy-switcher";
-              url =
-                "https://addons.mozilla.org/firefox/downloads/file/1056777/switchyomega-2.5.20.xpi";
-              sha256 = "Ng2mH5CKAKGQAkHt4g+KP4JnWyNlz984bvo1+yhMyjg=";
-            })
-            (pkgs.fetchFirefoxAddon {
               name = "clearurls";
               url =
                 "https://addons.mozilla.org/firefox/downloads/file/3980848/clearurls-1.25.0.xpi";
@@ -500,12 +494,6 @@ in {
             };
           };
         };
-
-      profiles.privacy = {
-        settings = { };
-        isDefault = true;
-        userChrome = builtins.readFile ./userChrome.css;
-      };
     };
   };
 }
