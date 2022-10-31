@@ -4,41 +4,10 @@
 
   inputs = {
     nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
-
-    home-manager = {
-      url = "github:nix-community/home-manager";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
-
-    waybar = {
-      url = "github:Alexays/Waybar";
-      flake = false;
-    };
-
-    nvim-treesitter = {
-      url = "github:nvim-treesitter/nvim-treesitter";
-      flake = false;
-    };
-
-    neorg-telescope-nvim = {
-      url = "github:nvim-neorg/neorg-telescope";
-      flake = false;
-    };
-
-    catppuccin-nvim = {
-      url = "github:catppuccin/nvim";
-      flake = false;
-    };
-
-    tree-sitter-org = {
-      url = "github:milisims/tree-sitter-org";
-      flake = false;
-    };
-
-    nixpkgs-wayland.url = "github:nix-community/nixpkgs-wayland";
+    home-manager.url = "github:nix-community/home-manager";
+    home-manager.inputs.nixpkgs.follows = "nixpkgs";
     hyprland.url = "github:hyprwm/Hyprland/";
     webcord.url = "github:fufexan/webcord-flake";
-
   };
   outputs = inputs@{ self, nixpkgs, home-manager, ... }:
     let
@@ -84,15 +53,6 @@
 
                     };
                 })
-                (self: super: {
-                  vimPlugins = super.vimPlugins // (with super.vimPlugins; {
-                    orgmode =
-                      orgmode.overrideAttrs (old: { src = inputs.orgmode; });
-                    nvim-treesitter = nvim-treesitter.overrideAttrs
-                      (old: { src = inputs.nvim-treesitter; });
-                  });
-                })
-                inputs.nixpkgs-wayland.overlay
               ];
             }
 
