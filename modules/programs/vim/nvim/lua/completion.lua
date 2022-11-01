@@ -12,6 +12,7 @@ require("luasnip.loaders.from_vscode").lazy_load()
 
 vim.diagnostic.config({
 	virtual_text = false,
+	virtual_lines = { only_current_line = true },
 })
 
 cmp.setup({
@@ -20,22 +21,6 @@ cmp.setup({
 			mode = "symbol",
 			with_text = true,
 			maxwidth = 60,
-			before = function(entry, vim_item)
-				local source = ({
-					nvim_lsp = "",
-					nvim_lua = "",
-					treesitter = "",
-					path = "ﱮ",
-					buffer = "﬘",
-					zsh = "",
-					luasnip = "",
-					spell = "暈",
-				})[entry.source.name]
-				if source then
-					vim_item.menu = " " .. source
-				end
-				return vim_item
-			end,
 		}),
 	},
 	window = {

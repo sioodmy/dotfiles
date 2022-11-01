@@ -41,17 +41,6 @@
                     prev.callPackage ./overlays/catppuccin-cursors.nix { };
                   catppuccin-gtk =
                     prev.callPackage ./overlays/catppuccin-gtk.nix { };
-                  hyprland-nvidia =
-                    inputs.hyprland.packages.${system}.default.override {
-                      nvidiaPatches = true;
-                      wlroots =
-                        inputs.hyprland.packages.${system}.wlroots-hyprland.overrideAttrs
-                        (old: {
-                          patches = (old.patches or [ ])
-                            ++ [ ./overlays/screenshare-patch.diff ];
-                        });
-
-                    };
                 })
               ];
             }
