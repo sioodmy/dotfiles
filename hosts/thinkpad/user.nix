@@ -11,7 +11,6 @@
     };
     programs = {
       firefox.enable = true;
-      brave.enable = false;
       rofi.enable = true;
       kitty.enable = true;
       mako.enable = true;

@@ -16,7 +16,6 @@
     ./programs/vim
     ./programs/rofi
     ./programs/tmux
-    ./programs/brave
     ./programs/wofi
     ./programs/kitty
     ./programs/neofetch

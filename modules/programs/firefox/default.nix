@@ -38,7 +38,7 @@ in {
                 {
                   Name = "Github/Nix";
                   Description = "Github nix search";
-                  Alias = "ghnix";
+                  Alias = "!ghnix";
                   Method = "GET";
                   URLTemplate =
                     "https://github.com/search?l=nix&type=code&q=%7B{searchTerms}%7D";
@@ -46,7 +46,7 @@ in {
                 {
                   Name = "Etherscan";
                   Description = "Checking balances";
-                  Alias = "eth";
+                  Alias = "!eth";
                   Method = "GET";
                   URLTemplate =
                     "https://etherscan.io/search?f=0&q={searchTerms}";
@@ -54,7 +54,7 @@ in {
                 {
                   Name = "Stackoverflow";
                   Description = "Stealing code";
-                  Alias = "so";
+                  Alias = "!so";
                   Method = "GET";
                   URLTemplate =
                     "https://stackoverflow.com/search?q={searchTerms}";
@@ -62,7 +62,7 @@ in {
                 {
                   Name = "Wikipedia";
                   Description = "Wikiless";
-                  Alias = "wiki";
+                  Alias = "!wiki";
                   Method = "GET";
                   URLTemplate =
                     "https://wikiless.org/w/index.php?search=%7B{searchTerms}%7D&title=Special%3ASearch&profile=default&fulltext=1";
@@ -72,12 +72,23 @@ in {
                   Description = "Rust crates";
                   Alias = "crates";
                   Method = "GET";
-                  URLTemplate = "https://crates.io/search?q=%7BsearchTerms%7D";
+                  URLTemplate =
+                    "https://crates.io/search?q=%7B{searchTerms}%7D";
                 }
                 {
-                  Name = "NixSearch";
+                  Name = "LibreTranslate";
+                  Description = "Open source translation API";
+                  Alias = "!t";
+                  Method = "GET";
+                  URLTemplate = let
+                    source_lang = "en";
+                    target_lang = "pl";
+                  in "https://libretranslate.com/?source=${source_lang}&target=${target_lang}&q={searchTerms}";
+                }
+                {
+                  Name = "nixpkgs";
                   Description = "Nixpkgs query";
-                  Alias = "nix";
+                  Alias = "!nix";
                   Method = "GET";
                   URLTemplate =
                     "https://search.nixos.org/packages?&query={searchTerms}";
@@ -86,7 +97,7 @@ in {
                   Name = "Librex";
                   Description =
                     "A privacy respecting free as in freedom meta search engine for Google and popular torrent sites ";
-                  Alias = "librex";
+                  Alias = "!librex";
                   Method = "GET";
                   URLTemplate =
                     "https://librex.beparanoid.de/search.php?q={searchTerms}&p=0&t=0";
