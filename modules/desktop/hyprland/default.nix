@@ -13,7 +13,7 @@ let
   '';
   screenshot = pkgs.writeShellScriptBin "screenshot" ''
     #!/bin/bash
-    hyprctl keyword animation "fadeOut,0,8,slow" && ${pkgs.grim}/bin/grim -g "$(${pkgs.slurp}/bin/slurp -w 0 -b 5e81acd2)" - | ${pkgs.wl-clipboard}/bin/wl-copy --type image/png; hyprctl keyword animation "fadeOut,1,8,slow"
+    hyprctl keyword animation "fadeOut,0,8,slow" && ${pkgs.grim}/bin/grim -g "$(${pkgs.slurp}/bin/slurp -w 0 -b 5e81acd2)" - | pngquant -q 75 | ${pkgs.wl-clipboard}/bin/wl-copy --type image/png; hyprctl keyword animation "fadeOut,1,8,slow"
   '';
 
 in {
@@ -22,6 +22,7 @@ in {
   config = mkIf cfg.enable {
     home.packages = with pkgs; [
       brightnessctl
+      pngquant
       pamixer
       python39Packages.requests
       slurp
@@ -32,6 +33,7 @@ in {
       xdg-desktop-portal-gtk
       xdg-desktop-portal-wlr
       wf-recorder
+      wl-clipboard
     ];
 
     home.pointerCursor = {
