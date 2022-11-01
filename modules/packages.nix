@@ -8,19 +8,42 @@ let
       sha256 = "sha256-6qbv34ysNQbI/zff6rAnVW4z6yfm2t/XL/PF7D/tjv4=";
     };
   });
-
 in {
   nixpkgs.config.allowUnfree = true;
   home.packages = with pkgs; [
+    xdg-desktop-portal
+    xdg-desktop-portal-gtk
+    xdg-desktop-portal-wlr
+    wf-recorder
     todo
     mpv-unwrapped
+    rofi-wayland
     pavucontrol
     imv
     hyperfine
-    swaybg
+    slurp
+    grim
     transmission-gtk
+    fzf
+    gum
+    unzip
+    libnotify
+    gnupg
+    ripgrep
+    rsync
+    imagemagick
+    unrar
+    tealdeer
+    killall
+    du-dust
+    bandwhich
+    grex
+    fd
     xfce.thunar
-    pngquant
+    xh
+    jq
+    figlet
+    lm_sensors
     keepassxc
     dconf
     gcc

@@ -6,6 +6,6 @@ in {
 
   config = mkIf cfg.enable {
     home.packages = [ pkgs.neofetch ];
-    xdg.configFile."neofetch/config.conf".text = import ./config.nix;
+    home.file.".config/neofetch/config.conf".text = import ./config.nix;
   };
 }

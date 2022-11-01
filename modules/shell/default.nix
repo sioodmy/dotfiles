@@ -3,13 +3,13 @@ with lib;
 let
   cfg = config.modules.programs.shell;
   cht = pkgs.writeShellScriptBin "cht" ''
-    curl -s cht.sh/$(${pkgs.gum}/bin/gum input --placeholder "Query" | tr " " "+") | ${pkgs.bat}/bin/bat --style=plain --paging=always
+    curl -s cht.sh/$(gum input --placeholder "Query" | tr " " "+") | bat --style=plain --paging=always
   '';
 in {
   options.modules.programs.shell = { enable = mkEnableOption "shell"; };
 
   config = mkIf cfg.enable {
-    home.packages = [ cht pkgs.ripgrep ];
+    home.packages = [ cht ];
     programs.exa.enable = true;
     programs.zoxide = {
       enable = true;
@@ -86,20 +86,20 @@ in {
         rebuild =
           "sudo nix-store --verify; sudo nixos-rebuild --install-bootloader switch --flake .#; bat cache --build";
         cleanup = "sudo nix-collect-garbage --delete-older-than 7d";
-        nixtest = "sudo nixos-rebuild test --flake .# --fast";
+        nixtest = "sudo nixos-rebuild test --flake .#graphene --fast";
         bloat = "nix path-info -Sh /run/current-system";
         ytmp3 = ''
           ${pkgs.yt-dlp}/bin/yt-dlp -x --continue --add-metadata --embed-thumbnail --audio-format mp3 --audio-quality 0 --metadata-from-title="%(artist)s - %(title)s" --prefer-ffmpeg -o "%(title)s.%(ext)s"'';
-        cat = "${pkgs.bat}/bin/bat --style=plain";
+        cat = "{pkgs.bat}/bin/bat --style=plain";
         grep = "${pkgs.ripgrep}/bin/rg";
         du = "${pkgs.du-dust}/bin/dust";
         ps = "${pkgs.procs}/bin/procs";
         m = "mkdir -p";
-        fcd = "cd $(find -type d | ${pkgs.fzf}/bin/fzf)";
+        fcd = "cd $(find -type d | fzf)";
         ls = "${pkgs.exa}/bin/exa --icons --group-directories-first";
         la = "${pkgs.exa}/bin/exa -lah";
         tree = "${pkgs.exa}/bin/exa --tree --icons";
-        http = "${pkgs.python}/bin/python3 -m http.server";
+        http = "${pkgs.python3}/bin/python3 -m http.server";
 
       };
 
