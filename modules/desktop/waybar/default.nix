@@ -24,12 +24,10 @@ in {
     home.packages = [ waybar-wttr ];
     programs.waybar = {
       enable = true;
-      package = pkgs.waybar.overrideAttrs (oldAttrs: {
-        mesonFlags = oldAttrs.mesonFlags ++ [ "-Dexperimental=true" ];
-      });
+      # package = inputs.hyprland.packages.${pkgs.system}.waybar-hyprland;
       settings = {
         mainBar = {
-          layer = "bottom";
+          layer = "top";
           position = "left";
           width = 60;
           spacing = 7;
