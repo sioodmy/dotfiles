@@ -23,7 +23,6 @@
             (./. + "/hosts/${hostname}/system.nix")
             (./. + "/hosts/${hostname}/hardware-configuration.nix")
             ./modules/system/configuration.nix
-            ./modules/system/adblock.nix
             inputs.hyprland.nixosModules.default
             home-manager.nixosModules.home-manager
             {
