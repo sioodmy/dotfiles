@@ -44,6 +44,15 @@ in {
                     "https://github.com/search?l=nix&type=code&q=%7B{searchTerms}%7D";
                 }
                 {
+                  Name = "Torrent search";
+                  Description = "Searching for legal linux isos ";
+                  # feds go away
+                  Alias = "!torrent";
+                  Method = "GET";
+                  URLTemplate =
+                    "https://librex.beparanoid.de/search.php?q={searchTerms}&t=3&p=0";
+                }
+                {
                   Name = "Etherscan";
                   Description = "Checking balances";
                   Alias = "!eth";
@@ -104,7 +113,15 @@ in {
                 }
               ];
               Default = "Searx";
-              Remove = [ "Google" "Bing" "Amazon.com" "eBay" "Twitter" ];
+              Remove = [
+                "Google"
+                "Bing"
+                "Amazon.com"
+                "eBay"
+                "Twitter"
+                "DuckDuckGo"
+                "Wikipedia"
+              ];
             };
 
             ExtensionSettings = let

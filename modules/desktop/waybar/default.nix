@@ -24,7 +24,9 @@ in {
     home.packages = [ waybar-wttr ];
     programs.waybar = {
       enable = true;
-      package = pkgs.waybar;
+      package = pkgs.waybar.overrideAttrs (oldAttrs: {
+        mesonFlags = oldAttrs.mesonFlags ++ [ "-Dexperimental=true" ];
+      });
       settings = {
         mainBar = {
           layer = "bottom";
