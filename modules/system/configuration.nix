@@ -29,8 +29,8 @@ let
   };
 
 in {
-  disabledModules = [ "services/hardware/udev.nix" ];
-  imports = [ ./udev.nix ];
+  # disabledModules = [ "services/hardware/udev.nix" ];
+  # imports = [ ./udev.nix ];
   environment = {
     variables = {
       NIXOS_CONFIG = "$HOME/.config/nixos/configuration.nix";
