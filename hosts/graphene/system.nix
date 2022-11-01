@@ -1,4 +1,4 @@
-{ pkgs, system, config, ... }: {
-  programs.steam.enable = true;
+{ pkgs, system, config, ... }:
+{
 
 }
