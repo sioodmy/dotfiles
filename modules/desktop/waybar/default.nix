@@ -24,12 +24,12 @@ in {
     home.packages = [ waybar-wttr ];
     programs.waybar = {
       enable = true;
-      package = inputs.hyprland.packages.${pkgs.system}.waybar-hyprland;
+      package = pkgs.waybar;
       settings = {
         mainBar = {
-          layer = "top";
+          layer = "bottom";
           position = "left";
-          width = 57;
+          width = 60;
           spacing = 7;
           modules-left = [
             "custom/search"
