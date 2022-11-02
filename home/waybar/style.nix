@@ -25,6 +25,8 @@
   #pulseaudio {
     color: #a6d189;
   }
+
+  #custom-swallow,
   #network {
     color: #8caaee;
   }
@@ -72,6 +74,7 @@
 
   #clock,
   #network,
+  #custom-swallow,
   #cpu,
   #battery,
   #backlight,
