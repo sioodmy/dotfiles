@@ -1,11 +1,14 @@
-{ config, lib, pkgs, ... }:
-let
+{
+  config,
+  lib,
+  pkgs,
+  ...
+}: let
   cht = pkgs.writeShellScriptBin "cht" ''
     curl -s cht.sh/$(gum input --placeholder "Query" | tr " " "+") | bat --style=plain --paging=always
   '';
 in {
-
-  home.packages = [ cht ];
+  home.packages = [cht];
   programs.exa.enable = true;
   programs.zoxide = {
     enable = true;
@@ -28,7 +31,7 @@ in {
         vicmd_symbol = "[](bold yellow)";
         format = "$symbol [|](bold bright-black) ";
       };
-      git_commit = { commit_hash_length = 4; };
+      git_commit = {commit_hash_length = 4;};
       line_break.disabled = false;
       lua.symbol = "[](blue) ";
       hostname = {
@@ -44,7 +47,7 @@ in {
     enableCompletion = true;
     enableAutosuggestions = true;
     enableSyntaxHighlighting = true;
-    sessionVariables = { LC_ALL = "en_US.UTF-8"; };
+    sessionVariables = {LC_ALL = "en_US.UTF-8";};
     completionInit = ''
       autoload -U compinit
       zstyle ':completion:*' menu select
@@ -79,8 +82,7 @@ in {
     };
 
     shellAliases = {
-      rebuild =
-        "sudo nix-store --verify; sudo nixos-rebuild --install-bootloader switch --flake .#; bat cache --build";
+      rebuild = "sudo nix-store --verify; sudo nixos-rebuild --install-bootloader switch --flake .#; bat cache --build";
       cleanup = "sudo nix-collect-garbage --delete-older-than 7d";
       nixtest = "sudo nixos-rebuild test --flake .#graphene --fast";
       bloat = "nix path-info -Sh /run/current-system";
@@ -96,7 +98,6 @@ in {
       la = "${pkgs.exa}/bin/exa -lah";
       tree = "${pkgs.exa}/bin/exa --tree --icons";
       http = "${pkgs.python3}/bin/python3 -m http.server";
-
     };
 
     plugins = with pkgs; [
@@ -118,7 +119,7 @@ in {
     userName = "sioodmy";
     userEmail = "sioodmy@tuta.io";
     extraConfig = {
-      init = { defaultBranch = "main"; };
+      init = {defaultBranch = "main";};
       delta = {
         syntax-theme = "Nord";
         line-numbers = true;
@@ -139,8 +140,7 @@ in {
         log --pretty=format:"%Cgreen%h %Creset%cd %Cblue[%cn] %Creset%s%C(yellow)%d%C(reset)" --graph --date=relative --decorate --all'';
       llog = ''
         log --graph --name-status --pretty=format:"%C(red)%h %C(reset)(%cd) %C(green)%an %Creset%s %C(yellow)%d%Creset" --date=relative'';
-      edit-unmerged =
-        "!f() { git ls-files --unmerged | cut -f2 | sort -u ; }; vim `f`";
+      edit-unmerged = "!f() { git ls-files --unmerged | cut -f2 | sort -u ; }; vim `f`";
     };
   };
 }

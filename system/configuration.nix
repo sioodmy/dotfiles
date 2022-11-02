@@ -1,8 +1,11 @@
-{ config, pkgs, lib, inputs, ... }:
-
-with lib;
-
-let
+{
+  config,
+  pkgs,
+  lib,
+  inputs,
+  ...
+}:
+with lib; let
   # this is required for wayland stuff
   dbus-hyprland-environment = pkgs.writeTextFile {
     name = "dbus-hyprland-environment";
@@ -28,7 +31,6 @@ let
       gesettings set $gnome_schema gtk-theme 'Adwaita'
     '';
   };
-
 in {
   # disabledModules = [ "services/hardware/udev.nix" ];
   imports = [
@@ -58,7 +60,7 @@ in {
     '';
     settings = {
       auto-optimise-store = true;
-      allowed-users = [ "sioodmy" ];
+      allowed-users = ["sioodmy"];
       # use binary cache, its not gentoo
       substituters = [
         "https://cache.nixos.org"
@@ -87,8 +89,8 @@ in {
 
   services.dbus.enable = true;
 
-  services.dbus.packages = with pkgs; [ dconf ];
-  services.udev.packages = with pkgs; [ gnome.gnome-settings-daemon ];
+  services.dbus.packages = with pkgs; [dconf];
+  services.udev.packages = with pkgs; [gnome.gnome-settings-daemon];
 
   environment.systemPackages = with pkgs; [
     gnome.adwaita-icon-theme
@@ -97,7 +99,7 @@ in {
     cryptsetup
   ];
 
-  environment.defaultPackages = [ ]; # this removes bloat (not really)
+  environment.defaultPackages = []; # this removes bloat (not really)
   nixpkgs.config.allowUnfree = true;
   nixpkgs.config.allowBroken = true;
 
@@ -125,15 +127,15 @@ in {
         wlroots =
           inputs.hyprland.packages.${pkgs.system}.wlroots-hyprland.overrideAttrs
           (old: {
-            patches = (old.patches or [ ]) ++ [
-              (pkgs.fetchpatch {
-                url =
-                  "https://aur.archlinux.org/cgit/aur.git/plain/0001-nvidia-format-workaround.patch?h=hyprland-nvidia-screenshare-git";
-                sha256 = "A9f1p5EW++mGCaNq8w7ZJfeWmvTfUm4iO+1KDcnqYX8=";
-              })
-            ];
+            patches =
+              (old.patches or [])
+              ++ [
+                (pkgs.fetchpatch {
+                  url = "https://aur.archlinux.org/cgit/aur.git/plain/0001-nvidia-format-workaround.patch?h=hyprland-nvidia-screenshare-git";
+                  sha256 = "A9f1p5EW++mGCaNq8w7ZJfeWmvTfUm4iO+1KDcnqYX8=";
+                })
+              ];
           });
-
       };
     };
   };
@@ -151,7 +153,7 @@ in {
         Restart = "always";
         RestartSec = "1";
       };
-      wantedBy = [ "multi-user.target" ];
+      wantedBy = ["multi-user.target"];
     };
   };
 
@@ -169,7 +171,6 @@ in {
     ];
     uid = 1000;
     shell = pkgs.zsh;
-
   };
 
   system.autoUpgrade.enable = false;

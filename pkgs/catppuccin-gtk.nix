@@ -1,12 +1,16 @@
-{ lib, stdenv, fetchzip, pkgs, ... }:
-
+{
+  lib,
+  stdenv,
+  fetchzip,
+  pkgs,
+  ...
+}:
 stdenv.mkDerivation rec {
   pname = "cattpuccin-gtk";
   version = "0.2.7";
 
   src = fetchzip {
-    url =
-      "https://github.com/catppuccin/gtk/releases/download/v-0.2.7/Catppuccin-Frappe-Pink.zip";
+    url = "https://github.com/catppuccin/gtk/releases/download/v-0.2.7/Catppuccin-Frappe-Pink.zip";
     sha256 = "w7yv9e9MuZgmCdr/RdDxg2hAeIhb1f82idUj4diI8v8=";
     stripRoot = false;
   };
@@ -26,6 +30,6 @@ stdenv.mkDerivation rec {
     homepage = "https://github.com/catppuccin/gtk";
     license = lib.licenses.gpl3;
     platforms = lib.platforms.unix;
-    maintainers = [ lib.maintainers.sioodmy ];
+    maintainers = [lib.maintainers.sioodmy];
   };
 }

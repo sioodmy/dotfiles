@@ -1,6 +1,8 @@
-{ config, pkgs, ... }:
-
 {
+  config,
+  pkgs,
+  ...
+}: {
   boot = {
     cleanTmpDir = true;
     # some kernel parameters, i dont remember what half of this shit does but who cares

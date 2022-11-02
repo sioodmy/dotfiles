@@ -1,5 +1,9 @@
-{ pkgs, lib, config, ... }: {
-
+{
+  pkgs,
+  lib,
+  config,
+  ...
+}: {
   programs.zathura = {
     enable = true;
     options = {
@@ -55,7 +59,6 @@
       scroll-step = "50";
       zoom-min = "10";
       guioptions = "none";
-
     };
   };
 }

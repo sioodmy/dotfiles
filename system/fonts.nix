@@ -1,6 +1,8 @@
-{ config, pkgs, ... }:
-
 {
+  config,
+  pkgs,
+  ...
+}: {
   fonts = {
     fonts = with pkgs; [
       material-icons
@@ -19,7 +21,7 @@
       noto-fonts-cjk
       noto-fonts-emoji
       jetbrains-mono
-      (nerdfonts.override { fonts = [ "Iosevka" "JetBrainsMono" ]; })
+      (nerdfonts.override {fonts = ["Iosevka" "JetBrainsMono"];})
     ];
 
     enableDefaultFonts = false;
@@ -33,9 +35,9 @@
           "Iosevka Nerd Font"
           "Noto Color Emoji"
         ];
-        sansSerif = [ "Noto Sans" "Noto Color Emoji" ];
-        serif = [ "Noto Serif" "Noto Color Emoji" ];
-        emoji = [ "Noto Color Emoji" ];
+        sansSerif = ["Noto Sans" "Noto Color Emoji"];
+        serif = ["Noto Serif" "Noto Color Emoji"];
+        emoji = ["Noto Color Emoji"];
       };
     };
   };
