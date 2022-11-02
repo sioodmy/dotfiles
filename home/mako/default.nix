@@ -1,5 +1,9 @@
-{ config, lib, pkgs, ... }: {
-
+{
+  config,
+  lib,
+  pkgs,
+  ...
+}: {
   programs.mako = {
     enable = true;
 
@@ -17,6 +21,5 @@
       [urgency=high]
       border-color=#ef9f76
     '';
-
   };
 }

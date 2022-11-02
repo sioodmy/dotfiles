@@ -1,8 +1,10 @@
-{ config, pkgs, ... }:
-
+{
+  config,
+  pkgs,
+  ...
+}:
 # Fix nvidia stuff on wayland
 {
-
   # Set required env variables from hyprland's wiki
   environment = {
     variables = {
@@ -37,10 +39,10 @@
   xdg.portal = {
     enable = true;
     wlr.enable = true;
-    extraPortals = [ pkgs.xdg-desktop-portal-gtk ];
+    extraPortals = [pkgs.xdg-desktop-portal-gtk];
   };
 
-  services.xserver.videoDrivers = [ "nvidia" ];
+  services.xserver.videoDrivers = ["nvidia"];
 
   hardware = {
     nvidia = {
@@ -60,5 +62,4 @@
     };
     pulseaudio.support32Bit = true;
   };
-
 }

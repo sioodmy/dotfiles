@@ -33,12 +33,10 @@ null_ls.setup({
 		null_ls.builtins.diagnostics.shellcheck,
 		null_ls.builtins.diagnostics.stylelint,
 		null_ls.builtins.diagnostics.jsonlint,
+		null_ls.builtins.diagnostics.alejandra,
 		null_ls.builtins.formatting.shfmt,
 		null_ls.builtins.formatting.rustfmt.with({
 			extra_args = { "--edition=2021" },
-		}),
-		null_ls.builtins.formatting.nixfmt.with({
-			extra_args = { "-w=80" },
 		}),
 	},
 	on_attach = on_attach,

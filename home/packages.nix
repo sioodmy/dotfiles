@@ -1,5 +1,9 @@
-{ inputs, pkgs, config, ... }:
-let
+{
+  inputs,
+  pkgs,
+  config,
+  ...
+}: let
   mpv-unwrapped = pkgs.mpv-unwrapped.overrideAttrs (o: {
     src = pkgs.fetchFromGitHub {
       owner = "mpv-player";

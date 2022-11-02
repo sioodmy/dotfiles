@@ -1,5 +1,9 @@
-{ config, lib, pkgs, ... }:
-let
+{
+  config,
+  lib,
+  pkgs,
+  ...
+}: let
   cfg = config.modules.programs.tmux;
   catppuccin-tmux = pkgs.tmuxPlugins.mkTmuxPlugin rec {
     pluginName = "catppuccin";
@@ -18,10 +22,14 @@ in {
     keyMode = "vi";
     aggressiveResize = true;
     clock24 = true;
-    plugins = [{
-      plugin = catppuccin-tmux;
-      extraConfig = "set -g @catppuccin_flavour 'frappe'";
-    }] ++ (with pkgs.tmuxPlugins; [ urlview extrakto ]);
+    plugins =
+      [
+        {
+          plugin = catppuccin-tmux;
+          extraConfig = "set -g @catppuccin_flavour 'frappe'";
+        }
+      ]
+      ++ (with pkgs.tmuxPlugins; [urlview extrakto]);
     extraConfig = ''
       set -g default-terminal "xterm-256color"
       set -ga terminal-overrides 'xterm-256color,*:Ss=\E[%p1%d q:Se=\E[2 q'

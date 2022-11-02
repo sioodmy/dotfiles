@@ -1,7 +1,10 @@
-{ config, lib, inputs, ... }:
-
 {
-  imports = [ ../../modules/default.nix ../../home ];
+  config,
+  lib,
+  inputs,
+  ...
+}: {
+  imports = [../../modules/default.nix ../../home];
   config.modules = {
     desktop.hyprland.enable = true;
     programs = {
