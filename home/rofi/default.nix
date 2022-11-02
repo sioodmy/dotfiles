@@ -1,5 +1,9 @@
-{ config, lib, pkgs, ... }: {
-
+{
+  config,
+  lib,
+  pkgs,
+  ...
+}: {
   programs.rofi = {
     enable = true;
     package = pkgs.rofi-wayland;
@@ -18,9 +22,9 @@
       display-filebrowser = " ";
       display-combi = " ";
       display-emoji = "ﲃ ";
-
     };
-    theme = let inherit (config.lib.formats.rasi) mkLiteral;
+    theme = let
+      inherit (config.lib.formats.rasi) mkLiteral;
     in {
       "*" = {
         background = mkLiteral "#292c3c";
@@ -174,7 +178,7 @@
         vertical-align = mkLiteral "0.5";
         horizontal-align = mkLiteral "0.0";
       };
-      "message" = { background-color = mkLiteral "transparent"; };
+      "message" = {background-color = mkLiteral "transparent";};
       "textbox" = {
         padding = mkLiteral "12px";
         border-radius = mkLiteral "100%";
@@ -189,7 +193,6 @@
         background-color = mkLiteral "@background";
         text-color = mkLiteral "@foreground";
       };
-
     };
   };
 }

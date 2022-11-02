@@ -1,12 +1,15 @@
-{ lib, stdenv, fetchzip, ... }:
-
+{
+  lib,
+  stdenv,
+  fetchzip,
+  ...
+}:
 stdenv.mkDerivation rec {
   pname = "cattpuccin-cursors";
   version = "0.2.7";
 
   src = fetchzip {
-    url =
-      "https://github.com/catppuccin/cursors/raw/21942800ad34b357a12079718a1faa88f0bccf28/cursors/Catppuccin-Frappe-Dark-Cursors.zip";
+    url = "https://github.com/catppuccin/cursors/raw/21942800ad34b357a12079718a1faa88f0bccf28/cursors/Catppuccin-Frappe-Dark-Cursors.zip";
     sha256 = "RCEVxeo3oBNqHogxWM/YqfPoQotirSQTMw15zCahWto=";
   };
 
@@ -20,6 +23,6 @@ stdenv.mkDerivation rec {
     homepage = "https://github.com/catppuccin/cursors";
     license = lib.licenses.gpl3;
     platforms = lib.platforms.unix;
-    maintainers = [ lib.maintainers.sioodmy ];
+    maintainers = [lib.maintainers.sioodmy];
   };
 }

@@ -1,10 +1,14 @@
-{ pkgs, lib, config, ... }:
-let
+{
+  pkgs,
+  lib,
+  config,
+  ...
+}: let
   waybar-wttr = pkgs.stdenv.mkDerivation {
     name = "waybar-wttr";
     buildInputs = [
       (pkgs.python39.withPackages
-        (pythonPackages: with pythonPackages; [ requests ]))
+        (pythonPackages: with pythonPackages; [requests]))
     ];
     unpackPhase = "true";
     installPhase = ''
@@ -13,10 +17,9 @@ let
       chmod +x $out/bin/waybar-wttr
     '';
   };
-
 in {
   xdg.configFile."waybar/style.css".text = import ./style.nix;
-  home.packages = [ waybar-wttr ];
+  home.packages = [waybar-wttr];
   programs.waybar = {
     enable = true;
     package = pkgs.waybar.overrideAttrs (oldAttrs: {
@@ -26,7 +29,7 @@ in {
         rev = "afa590f781c85a95c45138727510244b66ca674c";
         sha256 = "R8/X+mTDAMyFUp6czi6+afD+IP1MAu6xw+ysSEb/r8w=";
       };
-      mesonFlags = oldAttrs.mesonFlags ++ [ "-Dexperimental=true" ];
+      mesonFlags = oldAttrs.mesonFlags ++ ["-Dexperimental=true"];
       patchPhase = ''
         substituteInPlace src/modules/wlr/workspace_manager.cpp --replace "zext_workspace_handle_v1_activate(workspace_handle_);" "const std::string command = \"hyprctl dispatch workspace \" + name_; system(command.c_str());"
       '';
@@ -47,8 +50,8 @@ in {
           "backlight"
           "battery"
         ];
-        modules-center = [ ];
-        modules-right = [ "pulseaudio" "network" "clock" "custom/power" ];
+        modules-center = [];
+        modules-right = ["pulseaudio" "network" "clock" "custom/power"];
         "wlr/workspaces" = {
           on-click = "activate";
           format = "{icon}";
@@ -98,7 +101,7 @@ in {
         };
         backlight = {
           format = "{icon}";
-          format-icons = [ "" "" "" "" "" "" "" "" "" ];
+          format-icons = ["" "" "" "" "" "" "" "" ""];
         };
         battery = {
           states = {
@@ -109,7 +112,7 @@ in {
           format-charging = "";
           format-plugged = "";
           format-alt = "{icon}";
-          format-icons = [ "" "" "" "" "" "" "" "" "" "" "" "" ];
+          format-icons = ["" "" "" "" "" "" "" "" "" "" "" ""];
         };
         network = {
           format-wifi = "󰤨";
@@ -122,11 +125,10 @@ in {
           scroll-step = 5;
           tooltip = false;
           format = "{icon}";
-          format-icons = { default = [ "" "" "墳" ]; };
+          format-icons = {default = ["" "" "墳"];};
           on-click = "killall pavucontrol || pavucontrol";
         };
       };
-
     };
   };
 }

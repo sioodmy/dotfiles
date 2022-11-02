@@ -1,9 +1,12 @@
-{ pkgs, lib, ... }: {
-
+{
+  pkgs,
+  lib,
+  ...
+}: {
   # undervolting and power saving stuff
   services.thermald.enable = true;
   services.upower.enable = true;
-  environment.systemPackages = [ pkgs.tpacpi-bat ];
+  environment.systemPackages = [pkgs.tpacpi-bat];
 
   networking.networkmanager = {
     wifi = {
@@ -54,7 +57,6 @@
     coreOffset = -70;
     gpuOffset = -50;
   };
-  systemd.services.undervolt.wantedBy =
-    [ "post-resume.target" "multi-user.target" ];
-  systemd.services.undervolt.after = [ "post-resume.target" ];
+  systemd.services.undervolt.wantedBy = ["post-resume.target" "multi-user.target"];
+  systemd.services.undervolt.after = ["post-resume.target"];
 }

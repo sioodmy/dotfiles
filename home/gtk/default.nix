@@ -1,5 +1,10 @@
-{ self, pkgs, config, inputs, ... }: {
-
+{
+  self,
+  pkgs,
+  config,
+  inputs,
+  ...
+}: {
   gtk = {
     enable = true;
     theme = {
@@ -26,6 +31,5 @@
       gtk-xft-hintstyle="hintslight"
       gtk-xft-rgba="rgb"
     '';
-
   };
 }

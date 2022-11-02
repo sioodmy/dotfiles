@@ -1,5 +1,8 @@
-{ config, pkgs, ... }: {
-
+{
+  config,
+  pkgs,
+  ...
+}: {
   services = {
     syncthing = {
       enable = true;
@@ -9,7 +12,6 @@
       dataDir = "/home/sioodmy/syncthing";
       configDir = "/home/sioodmy/.config/syncthing/";
       systemService = true;
-
     };
     greetd = {
       enable = true;
