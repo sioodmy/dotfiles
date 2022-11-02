@@ -1,4 +1,4 @@
-{ pkgs, lib, config, fetchzip, inputs, stdenv, ... }:
+{ pkgs, lib, config, inputs, ... }:
 with lib;
 let
   cfg = config.modules.desktop.hyprland;
@@ -21,6 +21,11 @@ in {
 
   config = mkIf cfg.enable {
     home.packages = with pkgs; [
+      xdg-desktop-portal
+      xdg-desktop-portal-gtk
+      xdg-desktop-portal-wlr
+      libnotify
+      wf-recorder
       brightnessctl
       pamixer
       python39Packages.requests
@@ -35,7 +40,7 @@ in {
     ];
 
     home.pointerCursor = {
-      package = pkgs.catppuccin-cursors;
+      package = inputs.self.packages.${pkgs.system}.catppuccin-cursors;
       name = "Catppuccin-Frappe-Dark";
       size = 16;
     };

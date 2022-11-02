@@ -12,10 +12,6 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
-    waybar = {
-      url = "github:Alexays/Waybar";
-      flake = false;
-    };
   };
   outputs = inputs@{ self, nixpkgs, home-manager, ... }:
     let
@@ -40,17 +36,7 @@
                 extraSpecialArgs = { inherit inputs; };
                 users.sioodmy = (./. + "/hosts/${hostname}/user.nix");
               };
-              nixpkgs.overlays = [
-                (final: prev: {
-                  catppuccin-folders =
-                    final.callPackage ./overlays/catppuccin-folders.nix { };
-                  catppuccin-cursors =
-                    prev.callPackage ./overlays/catppuccin-cursors.nix { };
-                  catppuccin-gtk =
-                    prev.callPackage ./overlays/catppuccin-gtk.nix { };
-                })
-                inputs.nixpkgs-wayland.overlay
-              ];
+              nixpkgs.overlays = [ inputs.nixpkgs-wayland.overlay ];
             }
 
           ];
@@ -60,6 +46,11 @@
       nixosConfigurations = {
         graphene = mkSystem inputs.nixpkgs "x86_64-linux" "graphene";
         thinkpad = mkSystem inputs.nixpkgs "x86_64-linux" "thinkpad";
+      };
+
+      packages.${system} = {
+        catppuccin-folders = pkgs.callPackage ./pkgs/catppuccin-folders.nix { };
+        catppuccin-cursors = pkgs.callPackage ./pkgs/catppuccin-cursors.nix { };
       };
 
       devShells.${system}.default =

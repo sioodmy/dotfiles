@@ -11,31 +11,20 @@ let
 in {
   nixpkgs.config.allowUnfree = true;
   home.packages = with pkgs; [
-    xdg-desktop-portal
-    xdg-desktop-portal-gtk
-    xdg-desktop-portal-wlr
-    wf-recorder
     todo
     mpv-unwrapped
-    rofi-wayland
     pavucontrol
     imv
     hyperfine
-    slurp
-    grim
-    transmission-gtk
     fzf
     gum
     unzip
-    libnotify
     gnupg
     ripgrep
     rsync
     imagemagick
     unrar
-    tealdeer
     killall
-    du-dust
     bandwhich
     grex
     fd
@@ -48,7 +37,6 @@ in {
     dconf
     gcc
     rustc
-    rustfmt
     cargo
   ];
 }
