@@ -195,8 +195,7 @@
         "home-manager": "home-manager",
         "hyprland": "hyprland",
         "nixpkgs": "nixpkgs_2",
-        "nixpkgs-wayland": "nixpkgs-wayland",
-        "waybar": "waybar"
+        "nixpkgs-wayland": "nixpkgs-wayland"
       }
     },
     "utils": {
@@ -211,22 +210,6 @@
       "original": {
         "owner": "numtide",
         "repo": "flake-utils",
-        "type": "github"
-      }
-    },
-    "waybar": {
-      "flake": false,
-      "locked": {
-        "lastModified": 1666961088,
-        "narHash": "sha256-WTdy9zGhidk56CjmSuFDigfa64O9ZNd5GpfpCVrL8i0=",
-        "owner": "Alexays",
-        "repo": "Waybar",
-        "rev": "ebdf575d45c0e4f8c6f6ce484fbbf5375ed8dbba",
-        "type": "github"
-      },
-      "original": {
-        "owner": "Alexays",
-        "repo": "Waybar",
         "type": "github"
       }
     },

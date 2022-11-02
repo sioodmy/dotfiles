@@ -12,10 +12,6 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
-    waybar = {
-      url = "github:Alexays/Waybar";
-      flake = false;
-    };
   };
   outputs = inputs@{ self, nixpkgs, home-manager, ... }:
     let
@@ -30,7 +26,7 @@
             { networking.hostName = hostname; }
             (./. + "/hosts/${hostname}/system.nix")
             (./. + "/hosts/${hostname}/hardware-configuration.nix")
-            ./modules/system/configuration.nix
+            ./system/configuration.nix
             inputs.hyprland.nixosModules.default
             home-manager.nixosModules.home-manager
             {
@@ -40,36 +36,7 @@
                 extraSpecialArgs = { inherit inputs; };
                 users.sioodmy = (./. + "/hosts/${hostname}/user.nix");
               };
-              nixpkgs.overlays = [
-                (final: prev: {
-                  catppuccin-folders =
-                    final.callPackage ./overlays/catppuccin-folders.nix { };
-                  catppuccin-cursors =
-                    prev.callPackage ./overlays/catppuccin-cursors.nix { };
-                  catppuccin-gtk =
-                    prev.callPackage ./overlays/catppuccin-gtk.nix { };
-                  waybar = prev.waybar.overrideAttrs (oldAttrs: {
-                    src = inputs.waybar;
-                    mesonFlags = oldAttrs.mesonFlags
-                      ++ [ "-Dexperimental=true" ];
-                    patchPhase = ''
-                      substituteInPlace src/modules/wlr/workspace_manager.cpp --replace "zext_workspace_handle_v1_activate(workspace_handle_);" "const std::string command = \"hyprctl dispatch workspace \" + name_; system(command.c_str());"
-                    '';
-                  });
-                  hyprland-nvidia =
-                    inputs.hyprland.packages.${system}.default.override {
-                      nvidiaPatches = true;
-                      wlroots =
-                        inputs.hyprland.packages.${system}.wlroots-hyprland.overrideAttrs
-                        (old: {
-                          patches = (old.patches or [ ])
-                            ++ [ ./overlays/screenshare-patch.diff ];
-                        });
-
-                    };
-                })
-                inputs.nixpkgs-wayland.overlay
-              ];
+              nixpkgs.overlays = [ inputs.nixpkgs-wayland.overlay ];
             }
 
           ];
@@ -79,6 +46,12 @@
       nixosConfigurations = {
         graphene = mkSystem inputs.nixpkgs "x86_64-linux" "graphene";
         thinkpad = mkSystem inputs.nixpkgs "x86_64-linux" "thinkpad";
+      };
+
+      packages.${system} = {
+        catppuccin-folders = pkgs.callPackage ./pkgs/catppuccin-folders.nix { };
+        catppuccin-gtk = pkgs.callPackage ./pkgs/catppuccin-gtk.nix { };
+        catppuccin-cursors = pkgs.callPackage ./pkgs/catppuccin-cursors.nix { };
       };
 
       devShells.${system}.default =
