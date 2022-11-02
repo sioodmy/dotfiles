@@ -40,12 +40,14 @@
     /* Use box-shadow instead of border so the text isn't offset */
     color: #8caaee;
     font-size: 21px;
+    padding-left: 6px;
     box-shadow: inset 0 -3px transparent;
   }
 
-  /* https://git/Alexays/Waybar/wiki/FAQ#the-workspace-buttons-have-a-strange-hover-effect */
   #workspaces button:hover {
     color: #85c1dc;
+    box-shadow: inherit;
+    text-shadow: inherit;
   }
 
   #custom-power {
