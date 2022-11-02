@@ -81,9 +81,7 @@
         thinkpad = mkSystem inputs.nixpkgs "x86_64-linux" "thinkpad";
       };
 
-      devShell.${system} = pkgs.mkShell {
-        packages = [ pkgs.nixpkgs-fmt ];
-        inherit (self.checks.${system}.pre-commit-check) shellHook;
-      };
+      devShells.${system}.default =
+        pkgs.mkShell { packages = [ pkgs.alejandra ]; };
     };
 }
