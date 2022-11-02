@@ -146,6 +146,7 @@ Good luck and ~~have fun~~
    <ul>
      <li><a href="https://github.com/siduck">siduck</a></li>
      <li><a href="https://github.com/rxyhn">rxyhn</a></li>
+     <li><a href="https://github.com/fufexan">fufexan</a></li>
      <li><a href="https://github.com/NobbZ">NobbZ</a></li>
      <li><a href="https://github.com/hlissner">hlissner</a></li>
      <li><a href="https://github.com/pupbrained">pupbrained</a></li>
