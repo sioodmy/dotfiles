@@ -1,4 +1,4 @@
-{ pkgs, config, inputs, ... }: {
+{ self, pkgs, config, inputs, ... }: {
 
   gtk = {
     enable = true;
@@ -7,7 +7,7 @@
       package = pkgs.catppuccin-gtk.override { size = "compact"; };
     };
     iconTheme = {
-      package = pkgs.catppuccin-folders;
+      package = inputs.self.packages.${pkgs.system}.catppuccin-folders;
       name = "Papirus";
     };
     font = {
