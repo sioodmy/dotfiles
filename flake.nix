@@ -48,25 +48,6 @@
                     prev.callPackage ./overlays/catppuccin-cursors.nix { };
                   catppuccin-gtk =
                     prev.callPackage ./overlays/catppuccin-gtk.nix { };
-                  waybar = prev.waybar.overrideAttrs (oldAttrs: {
-                    src = inputs.waybar;
-                    mesonFlags = oldAttrs.mesonFlags
-                      ++ [ "-Dexperimental=true" ];
-                    patchPhase = ''
-                      substituteInPlace src/modules/wlr/workspace_manager.cpp --replace "zext_workspace_handle_v1_activate(workspace_handle_);" "const std::string command = \"hyprctl dispatch workspace \" + name_; system(command.c_str());"
-                    '';
-                  });
-                  hyprland-nvidia =
-                    inputs.hyprland.packages.${system}.default.override {
-                      nvidiaPatches = true;
-                      wlroots =
-                        inputs.hyprland.packages.${system}.wlroots-hyprland.overrideAttrs
-                        (old: {
-                          patches = (old.patches or [ ])
-                            ++ [ ./overlays/screenshare-patch.diff ];
-                        });
-
-                    };
                 })
                 inputs.nixpkgs-wayland.overlay
               ];
