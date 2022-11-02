@@ -40,6 +40,7 @@ in {
     ./network.nix
     ./schizo.nix
     ./services.nix
+    ./blocker.nix
   ];
   environment.variables = {
     EDITOR = "nvim";
