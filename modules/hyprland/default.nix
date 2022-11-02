@@ -1,11 +1,16 @@
-{ pkgs, lib, config, inputs, ... }:
-with lib;
-let
+{
+  pkgs,
+  lib,
+  config,
+  inputs,
+  ...
+}:
+with lib; let
   cfg = config.modules.desktop.hyprland;
   mkService = lib.recursiveUpdate {
-    Unit.PartOf = [ "graphical-session.target" ];
-    Unit.After = [ "graphical-session.target" ];
-    Install.WantedBy = [ "graphical-session.target" ];
+    Unit.PartOf = ["graphical-session.target"];
+    Unit.After = ["graphical-session.target"];
+    Install.WantedBy = ["graphical-session.target"];
   };
   ocr = pkgs.writeShellScriptBin "ocr" ''
     #!/bin/bash
@@ -15,9 +20,8 @@ let
     #!/bin/bash
     hyprctl keyword animation "fadeOut,0,8,slow" && ${pkgs.grim}/bin/grim -g "$(${pkgs.slurp}/bin/slurp -w 0 -b 5e81acd2)" - | pngquant -q 75 | ${pkgs.wl-clipboard}/bin/wl-copy --type image/png; hyprctl keyword animation "fadeOut,1,8,slow"
   '';
-
 in {
-  options.modules.desktop.hyprland = { enable = mkEnableOption "hyprland"; };
+  options.modules.desktop.hyprland = {enable = mkEnableOption "hyprland";};
 
   config = mkIf cfg.enable {
     home.packages = with pkgs; [

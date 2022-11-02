@@ -1,4 +1,8 @@
-{ config, pkgs, ... }:
+{
+  config,
+  pkgs,
+  ...
+}:
 # this makes our system more secure
 # note that it might break some stuff, eg webcam
 {
@@ -9,7 +13,7 @@
     apparmor = {
       enable = true;
       killUnconfinedConfinables = true;
-      packages = [ pkgs.apparmor-profiles ];
+      packages = [pkgs.apparmor-profiles];
     };
     pam.services = {
       login.enableGnomeKeyring = true;

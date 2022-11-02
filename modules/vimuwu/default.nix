@@ -1,9 +1,14 @@
-{ pkgs, lib, config, inputs, ... }:
-
-with lib;
-let cfg = config.modules.programs.vimuwu;
+{
+  pkgs,
+  lib,
+  config,
+  inputs,
+  ...
+}:
+with lib; let
+  cfg = config.modules.programs.vimuwu;
 in {
-  options.modules.programs.vimuwu = { enable = mkEnableOption "vimuwu"; };
+  options.modules.programs.vimuwu = {enable = mkEnableOption "vimuwu";};
 
   config = mkIf cfg.enable {
     xdg.configFile."nvim".source = ./nvim;

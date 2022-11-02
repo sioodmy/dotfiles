@@ -1,6 +1,11 @@
-{ config, lib, pkgs, ... }:
-with lib;
-let cfg = config.modules.programs.btm;
+{
+  config,
+  lib,
+  pkgs,
+  ...
+}:
+with lib; let
+  cfg = config.modules.programs.btm;
 in {
   options.modules.programs.btm = {
     enable = mkEnableOption ''
@@ -52,7 +57,7 @@ in {
   };
 
   config = mkIf cfg.enable {
-    home.packages = [ cfg.package ];
+    home.packages = [cfg.package];
     xdg.configFile."bottom/bottom.toml".text = cfg.settings;
   };
 }

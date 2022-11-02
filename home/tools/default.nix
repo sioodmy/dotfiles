@@ -1,7 +1,11 @@
-{ pkgs, lib, config, ... }:
-with lib;
-let
-  browser = [ "firefox.desktop" ];
+{
+  pkgs,
+  lib,
+  config,
+  ...
+}:
+with lib; let
+  browser = ["firefox.desktop"];
 
   associations = {
     "text/html" = browser;
@@ -17,17 +21,16 @@ let
     "application/x-extension-xhtml" = browser;
     "application/x-extension-xht" = browser;
 
-    "audio/*" = [ "mpv.desktop" ];
-    "video/*" = [ "mpv.dekstop" ];
-    "image/*" = [ "imv.desktop" ];
+    "audio/*" = ["mpv.desktop"];
+    "video/*" = ["mpv.dekstop"];
+    "image/*" = ["imv.desktop"];
     "application/json" = browser;
-    "application/pdf" = [ "org.pwmt.zathura.desktop.desktop" ];
-    "x-scheme-handler/tg" = [ "telegramdesktop.desktop" ];
-    "x-scheme-handler/spotify" = [ "spotify.desktop" ];
-    "x-scheme-handler/discord" = [ "WebCord.desktop" ];
+    "application/pdf" = ["org.pwmt.zathura.desktop.desktop"];
+    "x-scheme-handler/tg" = ["telegramdesktop.desktop"];
+    "x-scheme-handler/spotify" = ["spotify.desktop"];
+    "x-scheme-handler/discord" = ["WebCord.desktop"];
   };
 in {
-
   services.gpg-agent = {
     enable = true;
     pinentryFlavor = "gnome3";
@@ -38,11 +41,12 @@ in {
       enable = true;
       themes = {
         Catppuccin-frappe = builtins.readFile (pkgs.fetchFromGitHub {
-          owner = "catppuccin";
-          repo = "bat";
-          rev = "00bd462e8fab5f74490335dcf881ebe7784d23fa";
-          sha256 = "yzn+1IXxQaKcCK7fBdjtVohns0kbN+gcqbWVE4Bx7G8=";
-        } + "/Catppuccin-frappe.tmTheme");
+            owner = "catppuccin";
+            repo = "bat";
+            rev = "00bd462e8fab5f74490335dcf881ebe7784d23fa";
+            sha256 = "yzn+1IXxQaKcCK7fBdjtVohns0kbN+gcqbWVE4Bx7G8=";
+          }
+          + "/Catppuccin-frappe.tmTheme");
       };
       config.theme = "Catppuccin-frappe";
     };

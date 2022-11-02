@@ -1,5 +1,9 @@
-{ inputs, pkgs, config, ... }:
-
+{
+  inputs,
+  pkgs,
+  config,
+  ...
+}:
 # glue all configs together
 {
   home.stateVersion = "22.05";
