@@ -1,14 +1,8 @@
-{
-  pkgs,
-  lib,
-  config,
-  inputs,
-  ...
-}:
-with lib; let
-  cfg = config.modules.programs.vimuwu;
+{ pkgs, lib, config, inputs, ... }:
+with lib;
+let cfg = config.modules.programs.vimuwu;
 in {
-  options.modules.programs.vimuwu = {enable = mkEnableOption "vimuwu";};
+  options.modules.programs.vimuwu = { enable = mkEnableOption "vimuwu"; };
 
   config = mkIf cfg.enable {
     xdg.configFile."nvim".source = ./nvim;
@@ -21,7 +15,7 @@ in {
       shellcheck
       rust-analyzer
       rustfmt
-      nixfmt # Nix
+      alejandra # Nix
       gopls # go
       asmfmt
       ccls # cpp
