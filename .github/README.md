@@ -139,8 +139,9 @@ Good luck and ~~have fun~~
 <div align="center">
 
 <br clear="right"/>
-
  <div align="left">
+ <h3>Misc</h3>
+ <a href="https://github.com/sioodmy/dotfiles/commit/033cc8d66271729d3222827048cc011fd5296089.patch">patch to remove nvidia stuff by Ludovico</a>
     <h3> ♥️ Thanks to</h3>
    <ul>
      <li><a href="https://github.com/siduck">siduck</a></li>
