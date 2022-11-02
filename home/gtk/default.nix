@@ -4,7 +4,7 @@
     enable = true;
     theme = {
       name = "Catppuccin-Frappe-Pink";
-      package = pkgs.catppuccin-gtk.override { size = "compact"; };
+      package = inputs.self.packages.${pkgs.system}.catppuccin-gtk;
     };
     iconTheme = {
       package = inputs.self.packages.${pkgs.system}.catppuccin-folders;
