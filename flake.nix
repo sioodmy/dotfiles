@@ -30,7 +30,7 @@
             { networking.hostName = hostname; }
             (./. + "/hosts/${hostname}/system.nix")
             (./. + "/hosts/${hostname}/hardware-configuration.nix")
-            ./modules/system/configuration.nix
+            ./system/configuration.nix
             inputs.hyprland.nixosModules.default
             home-manager.nixosModules.home-manager
             {
