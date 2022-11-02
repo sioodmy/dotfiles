@@ -2,6 +2,7 @@
 
 <h1 align="center">
   <img src="https://camo.githubusercontent.com/8c73ac68e6db84a5c58eef328946ba571a92829b3baaa155b7ca5b3521388cc9/68747470733a2f2f692e696d6775722e636f6d2f367146436c41312e706e67" width="100px" /> <br>
+  
   sioodmy's dotfiles <br>
   <img src="../assets/colors.png" width="600px" /> <br>
   <div align="center">
@@ -43,10 +44,6 @@
 > authority or expert in the NixOS space. Seek help on [the NixOS
 > discourse](https://discourse.nixos.org) instead.
 
-
-
-
-
 |                |                                                          |
 |----------------|----------------------------------------------------------|
 | **Shell:**     | zsh                                                      |
@@ -62,6 +59,8 @@
 Here are the installation instructions for my configuration.
 I wrote this so you don't forget it in the future, please don't install it "as is".
 Make your own configuration. 
+
+<img src="https://github.com/sioodmy/dotfiles/actions/workflows/check.yml/badge.svg" />
 
 >How to get started?
 
