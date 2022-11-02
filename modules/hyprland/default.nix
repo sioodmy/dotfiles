@@ -21,7 +21,6 @@ in {
 
   config = mkIf cfg.enable {
     home.packages = with pkgs; [
-      swaybg
       brightnessctl
       pamixer
       python39Packages.requests
@@ -42,8 +41,7 @@ in {
     };
     home.pointerCursor.gtk.enable = true;
 
-    #xdg.configFile."hypr/hyprland.conf".source = ./hyprland.conf;
-    home.file.".config/hypr/hyprland.conf".source = ./hyprland.conf;
+    xdg.configFile."hypr/hyprland.conf".source = ./hyprland.conf;
 
     services.gammastep = {
       enable = true;
