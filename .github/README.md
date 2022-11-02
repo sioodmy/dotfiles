@@ -51,10 +51,10 @@
 |----------------|----------------------------------------------------------|
 | **Shell:**     | zsh                                                      |
 | **WM:**        | Hyprland + Waybar                                        |
-| **Editor:**    | neovim 0.8                                               |
+| **Editor:**    | vimuwu                                                   |
 | **Terminal:**  | kitty                                                    |
 | **Launcher:**  | rofi                                                     |
-| **Browser:**   | Firefox ESR 102                                          |
+| **Browser:**   | Schizofox                                                |
 | **Channel:**   | nixos-unstable                                           |
 | **Theme:** | Catppuccin                                                   |
 
