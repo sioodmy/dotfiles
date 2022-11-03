@@ -1,6 +1,6 @@
 local servers = {
 	"pyright",
-	"rnix",
+	"nil_ls",
 	"rust_analyzer",
 	"tsserver",
 	"gopls",

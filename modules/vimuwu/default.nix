@@ -14,7 +14,7 @@ in {
     xdg.configFile."nvim".source = ./nvim;
 
     home.packages = with pkgs; [
-      rnix-lsp
+      nil
       sumneko-lua-language-server
       stylua # Lua
       uncrustify
@@ -88,7 +88,6 @@ in {
             tree-sitter-toml
             tree-sitter-json
             tree-sitter-lua
-            tree-sitter-bash
             tree-sitter-go
             tree-sitter-java
             tree-sitter-typescript
