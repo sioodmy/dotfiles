@@ -51,7 +51,7 @@ in {
           "battery"
         ];
         modules-center = [];
-        modules-right = ["pulseaudio" "network" "clock" "custom/power"];
+        modules-right = ["pulseaudio" "network" "custom/swallow" "clock" "custom/power"];
         "wlr/workspaces" = {
           on-click = "activate";
           format = "{icon}";
@@ -85,6 +85,20 @@ in {
           tooltip = false;
           on-click = "sh -c '(sleep 0.5s; swaylock --grace 0)' & disown";
           format = "";
+        };
+        "custom/swallow" = {
+          tooltip = false;
+          on-click = "${pkgs.writeShellScript "waybar-swallow" ''
+            #!/bin/sh
+            if hyprctl getoption misc:enable_swallow | rg -q "int: 1"; then
+            	hyprctl keyword misc:enable_swallow false >/dev/null &&
+            	notify-send "Hyprland" "Turned off swallowing"
+            else
+            	hyprctl keyword misc:enable_swallow true >/dev/null &&
+            	notify-send "Hyprland" "Turned on swallowing"
+            fi
+          ''}";
+          format = " 綠 ";
         };
         "custom/power" = {
           tooltip = false;
