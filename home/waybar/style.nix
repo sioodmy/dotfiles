@@ -26,10 +26,6 @@
     color: #a6d189;
   }
 
-  #custom-swallow {
-    color: #ca9ee6;
-    padding-left: 7px;
-  }
   #network {
     color: #8caaee;
   }
@@ -96,6 +92,11 @@
     margin: 0px 7px 0px 7px;
     background-color: #414559;
     padding: 10px 0px 10px 0px;
+  }
+
+  #custom-swallow {
+    color: #ca9ee6;
+    padding-right: 3px;
   }
 
   #custom-power {

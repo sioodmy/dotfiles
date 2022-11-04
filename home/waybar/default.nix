@@ -98,7 +98,7 @@ in {
             	notify-send "Hyprland" "Turned on swallowing"
             fi
           ''}";
-          format = " 綠 ";
+          format = "";
         };
         "custom/power" = {
           tooltip = false;
