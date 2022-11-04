@@ -14,7 +14,7 @@
     ];
     font = "Lato 14";
     extraConfig = {
-      modi = "drun,filebrowser,calc";
+      modi = "drun,filebrowser,calc,emoji";
       drun-display-format = " {name} ";
       sidebar-mode = true;
       matching = "prefix";
@@ -27,7 +27,7 @@
       display-filebrowser = " Files";
       display-calc = " Calculator";
       display-combi = " ";
-      display-emoji = "ﲃ ";
+      display-emoji = "💀 Emoji";
     };
     theme = let
       inherit (config.lib.formats.rasi) mkLiteral;

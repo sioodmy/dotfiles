@@ -10,8 +10,7 @@
   libnotify,
   rofi-wayland-unwrapped,
   wl-clipboard,
-  xclip,
-  xsel,
+  wtype,
 }:
 stdenv.mkDerivation rec {
   pname = "rofi-emoji-wayland";
@@ -36,7 +35,7 @@ stdenv.mkDerivation rec {
   postFixup = ''
     chmod +x $out/share/rofi-emoji/clipboard-adapter.sh
     wrapProgram $out/share/rofi-emoji/clipboard-adapter.sh \
-      --prefix PATH ":" ${lib.makeBinPath [libnotify wl-clipboard xclip xsel]}
+      --prefix PATH ":" ${lib.makeBinPath [libnotify wl-clipboard wtype]}
   '';
 
   nativeBuildInputs = [
@@ -51,8 +50,7 @@ stdenv.mkDerivation rec {
     libnotify
     rofi-wayland-unwrapped
     wl-clipboard
-    xclip
-    xsel
+    wtype
   ];
 
   meta = with lib; {
