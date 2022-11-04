@@ -12,7 +12,7 @@
       rofi-calc-wayland
       rofi-emoji-wayland
     ];
-    font = "Lato 14";
+    font = "Iosevka Nerd Font 13";
     extraConfig = {
       modi = "drun,filebrowser,calc,emoji";
       drun-display-format = " {name} ";
@@ -91,9 +91,9 @@
         placeholder-color = mkLiteral "inherit";
       };
       "prompt" = {
-        width = mkLiteral "48px";
-        font = "Iosevka Nerd Font 14";
-        padding = mkLiteral "8px 20px 8px 20px";
+        width = mkLiteral "64px";
+        font = "Iosevka Nerd Font 13";
+        padding = mkLiteral "10px 20px 10px 20px";
         border-radius = mkLiteral "15px";
         background-color = mkLiteral "@background-alt";
         text-color = mkLiteral "inherit";
