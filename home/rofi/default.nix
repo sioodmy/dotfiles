@@ -8,8 +8,9 @@
   programs.rofi = {
     enable = true;
     package = pkgs.rofi-wayland;
-    plugins = [
-      inputs.self.packages.${pkgs.system}.rofi-calc-wayland
+    plugins = with inputs.self.packages.${pkgs.system}; [
+      rofi-calc-wayland
+      rofi-emoji-wayland
     ];
     font = "Lato 14";
     extraConfig = {
