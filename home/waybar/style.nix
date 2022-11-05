@@ -55,10 +55,6 @@
       color: #e78284;
   }
 
-  #custom-lock {
-      color: #8caaee;
-  }
-
   #workspaces button.active {
     color: #e5c890;
   }
@@ -67,9 +63,6 @@
     background-color: #e78284;
   }
   #custom-weather,
-  #custom-todo {
-    color: #c6d0f5;
-  }
 
   #clock,
   #network,
@@ -97,6 +90,17 @@
   #custom-swallow {
     color: #ca9ee6;
     padding-right: 3px;
+  }
+
+
+  #custom-lock {
+      color: #8caaee;
+      padding-right: 1px;
+  }
+
+  #custom-todo {
+    color: #c6d0f5;
+    padding-left: 2px;
   }
 
   #custom-power {
