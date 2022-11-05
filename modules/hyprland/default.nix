@@ -38,7 +38,6 @@ in {
       ocr
       grim
       screenshot
-      wlogout
       wl-clipboard
       pngquant
     ];

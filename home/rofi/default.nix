@@ -128,7 +128,7 @@
         layout = mkLiteral "vertical";
         reverse = false;
         fixed-height = true;
-        fixed-columns = true;
+        fixed-columns = false;
         spacing = mkLiteral "5px";
         background-color = mkLiteral "transparent";
         text-color = mkLiteral "@foreground";

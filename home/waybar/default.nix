@@ -102,7 +102,7 @@ in {
         };
         "custom/power" = {
           tooltip = false;
-          on-click = "wlogout &";
+          on-click = "${./shutdown.sh} &";
           format = "襤";
         };
         clock = {

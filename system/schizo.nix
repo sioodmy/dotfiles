@@ -23,7 +23,12 @@
         '';
       };
     };
-    sudo.execWheelOnly = true;
+    sudo = {
+      execWheelOnly = true;
+      extraConfig = ''
+        ALL ALL = (root) NOPASSWD: ${pkgs.systemd}/bin/shutdown
+        ALL ALL = (root) NOPASSWD: ${pkgs.systemd}/bin/reboot '';
+    };
   };
 
   boot.kernel.sysctl = {
