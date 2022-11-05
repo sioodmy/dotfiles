@@ -18,6 +18,7 @@
     ./swaylock
     ./tmux
     ./tools
+    ./mpd
     ./waybar
     ./zathura
     ./zathura
