@@ -161,6 +161,7 @@ Good luck and ~~have fun~~
    </ul>
   </div>
 <br />
+<i>I would kill for a framework laptop</i>
 <pre>
 ETH: 0x430de39c494E40808F9d8A50958Eec622C3B5577
 </pre>
