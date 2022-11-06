@@ -45,8 +45,9 @@
       };
   in {
     nixosConfigurations = {
-      graphene = mkSystem inputs.nixpkgs "x86_64-linux" "graphene";
-      thinkpad = mkSystem inputs.nixpkgs "x86_64-linux" "thinkpad";
+      # https://wikiless.org/wiki/Moons_of_Saturn?lang=en
+      anthe = mkSystem inputs.nixpkgs "x86_64-linux" "anthe";
+      io = mkSystem inputs.nixpkgs "x86_64-linux" "io";
     };
 
     packages.${system} = {
