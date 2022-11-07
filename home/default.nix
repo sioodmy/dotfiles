@@ -16,7 +16,6 @@
     ./rofi
     ./shell
     ./swaylock
-    ./tmux
     ./tools
     ./waybar
     ./zathura
