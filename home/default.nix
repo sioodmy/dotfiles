@@ -18,7 +18,7 @@
     ./swaylock
     ./tools
     ./waybar
-    ./zathura
-    ./zathura
+    ./hyprland
+    inputs.hyprland.homeManagerModules.default
   ];
 }

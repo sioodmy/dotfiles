@@ -33,6 +33,14 @@
     '';
   };
 
+  # cursor theme
+  home.pointerCursor = {
+    package = inputs.self.packages.${pkgs.system}.catppuccin-cursors;
+    name = "Catppuccin-Frappe-Dark";
+    size = 16;
+  };
+  home.pointerCursor.gtk.enable = true;
+
   # credits: bruhvko
   # catppuccin theme for qt-apps
   home.packages = with pkgs; [libsForQt5.qtstyleplugin-kvantum];
