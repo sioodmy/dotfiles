@@ -35,6 +35,7 @@ in {
     EDITOR = "nvim";
     TERMINAL = "kitty";
     BROWSER = "firefox";
+    QT_STYLE_OVERRIDE = "kvantum";
   };
   nix = {
     gc = {
@@ -107,6 +108,7 @@ in {
   };
 
   programs = {
+    wireshark.enable = true;
     ccache.enable = true;
   };
 
@@ -134,6 +136,7 @@ in {
       "wheel"
       "systemd-journal"
       "audio"
+      "wireshark"
       "video"
       "input"
       "lp"
