@@ -18,6 +18,9 @@
    <a href="https://github.com/sioodmy/dotfiles/">
       <img src="https://img.shields.io/github/repo-size/sioodmy/dotfiles?color=eba0ac&labelColor=1e1e2e&style=for-the-badge">
    </a>
+   <a href="https://github.com/sioodmy/dotfiles/blob/main/LICENSE">
+    <img src="https://img.shields.io/static/v1.svg?style=for-the-badge&label=License&message=GPL-3&logoColor=d9e0ee&colorA=313244&colorB=cba6f7"/>
+   </a>
 
   <img alt="" src="https://badges.pufler.dev/visits/sioodmy/dotfiles?style=for-the-badge&color=a6e3a1&logoColor=white&labelColor=1e1e2e"/>
    <br>
@@ -29,114 +32,42 @@
 
 <p align="center">
 <img src="https://media.discordapp.net/attachments/1020403449092911186/1024341925630844939/unknown.png?width=1122&height=631" width="700" alt="" />
-<img src="https://cdn.discordapp.com/attachments/635625917623828520/1026557593767903292/nvim.png?width=1122&height=631" width="700" alt="" />
-<img src="https://media.discordapp.net/attachments/635625917623828520/1028413483580137503/unknown.png?width=1158&height=631" width="700" alt="" />
 </p>
 
-> **Disclaimer:** _This is not a community framework or distribution._ It's a
-> private configuration and an ongoing experiment to feel out NixOS. I make no
-> guarantees that it will work out of the box for anyone but myself. It may also
-> change drastically and without warning. 
-> 
-> Until I can bend spoons with my nix-fu, please don't treat me like an
-> authority or expert in the NixOS space. Seek help on [the NixOS
-> discourse](https://discourse.nixos.org) instead.
+```
+.
+├── home          # my home-manager configuration 
+├── modules       # home-manager modules
+│   ├── vimuwu    # ide-like nvim config
+│   ├── schizofox # privacy-oriented firefox esr configuration
+├── system        # basically configuration.nix split into pieces 
+├── hosts         # per host configuration
+│   ├── anthe     # desktop (amd/nvidia)
+│   ├── iapetus   # pi home server
+│   └── io        # thinkpad t440 (currently dead)
+└──  pkgs         # extracted packages
+```
 
+```
+My workflow / setup / rice
 
-|                |                                                          |
-|----------------|----------------------------------------------------------|
-| **Shell:**     | zsh                                                      |
-| **WM:**        | Hyprland + Waybar                                        |
-| **Editor:**    | vimuwu                                                   |
-| **Terminal:**  | kitty                                                    |
-| **Launcher:**  | rofi                                                     |
-| **Browser:**   | Schizofox                                                |
-| **Channel:**   | nixos-unstable                                           |
-| **Theme:** | Catppuccin                                                   |
+- wayland compositor (its not wm): hyprland
+- terminal: kitty
+- font: Iosevka
+- theme: Catppuccin
+- editor/ide: vimuwu
+- browser: schizofox
+- launcher: rofi
+- bar: waybar
+```
 
-# Installation
-Here are the installation instructions for my configuration.
-I wrote this so you don't forget it in the future, please don't install it "as is".
-Make your own configuration. 
+```
+If you would like to support my work, you can donate me in crypto <3
 
-<img src="https://github.com/sioodmy/dotfiles/actions/workflows/check.yml/badge.svg" />
-
->How to get started?
-
-Use google and find out for yourself, you'll get used to it.
-
-:fire: Welcome to the undocumented hell of NixOS. 
-
-Good luck and ~~have fun~~
-1. **Read the disclaimer** (tldr: use your own configuration or I will have ssh keys for your machine)
-
-2. Download iso
-   ```sh
-   # Yoink nixos-unstable
-   wget -O nixos.iso https://channels.nixos.org/nixos-unstable/latest-nixos-minimal-x86_64-linux.iso
-   
-   # Write it to a flash drive
-   cp nixos.iso /dev/sdX
-   ```
-
-3. Boot into the installer.
-
-4. Switch to root user: `sudo su -`
-  
-5. Partitioning
-
-    We create a 512MB EFI boot partition (`/dev/sda1`) and the rest will be our LUKS encrypted physical volume for LVM (`/dev/sda2`).
-    ```
-    $ gdisk /dev/sda
-    ```
-    - `o` (create new empty partition table)
-    - `n` (add partition, 512M, type ef00 EFI)
-    - `n` (add partition, remaining space, type 8300 Linux LVM)
-    - `w` (write partition table and exit)
-    
-    Setup the encrypted LUKS partition and open it:
-    ```
-    $ cryptsetup luksFormat /dev/sda2
-    $ cryptsetup config /dev/sda2 --label cryptroot
-    $ cryptsetup luksOpen /dev/sda2 enc-pv
-    ```
-    We create two logical volumes, a 16GB swap parition and the rest will be our root filesystem
-    ```
-    $ pvcreate /dev/mapper/enc-pv
-    $ vgcreate vg /dev/mapper/enc-pv
-    $ lvcreate -L 16G -n swap vg
-    $ lvcreate -l '100%FREE' -n root vg
-    ```
-    Format paritions
-    ```
-    $ mkfs.fat /dev/sda1 -n boot
-    $ mkfs.ext4 -L root /dev/vg/root
-    $ mkswap -L swap /dev/vg/swap
-    ```
-    Mount paritions
-    ```
-    $ mount /dev/vg/root /mnt
-    $ mkdir /mnt/boot
-    $ mount /dev/sda1 /mnt/boot
-    $ swapon /dev/vg/swap
-    ```
-    
-6. Fix "too many files open"
-    
-    ```
-    $ ulimit -n 500000
-    ```
-7. Enable flakes
-    ```
-    $ nix-shell -p nixFlakes
-    ```
-    
-8. Install nixos from flake
-    ```
-    $ nixos-install --flake github:sioodmy/dotfiles#graphene --impure
-    ```
-<div align="center">
-
+ETH: 0x430de39c494E40808F9d8A50958Eec622C3B5577
+XMR: 84XFcVUGNg5HDGuJqWsu7uD9TGhJFyfE2VfHEN5EWHfFL6HB4nDrP4ThWyNtQfFnNQhn58kRsie1mNx25aAU81D2TeFQwDk
+BTC: 1781yHtiPrNd9yAqq4rhvhTuYBgbgQQFYy
+```
 <br clear="right"/>
  <div align="left">
  <h3>Misc</h3>
@@ -160,10 +91,7 @@ Good luck and ~~have fun~~
    </ul>
   </div>
 <br />
-<i>I would kill for a framework laptop</i>
 <pre>
 ETH: 0x430de39c494E40808F9d8A50958Eec622C3B5577
 </pre>
-  <img src="https://raw.githubusercontent.com/catppuccin/catppuccin/c9d3d7de6ab8cb2609b37c4b79b026a2c7784b6f/assets/footers/gray0_ctp_on_line.svg?sanitize=true" alt="" /> <br />
-  Copyright © 2021-present <a href="https://github.com/sioodmy">sioodmy</a>
-  <p align="center"><a href="https://github.com/sioodmy/dotfiles/blob/main/LICENSE"><img src="https://img.shields.io/static/v1.svg?style=for-the-badge&label=License&message=GPL-3&logoColor=d9e0ee&colorA=313244&colorB=cba6f7"/></a></p>
+
