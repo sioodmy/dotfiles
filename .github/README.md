@@ -70,8 +70,6 @@ BTC: 1781yHtiPrNd9yAqq4rhvhTuYBgbgQQFYy
 ```
 <br clear="right"/>
  <div align="left">
- <h3>Misc</h3>
- <a href="../modules/schizofox">Schizofox</a>
     <h3> ♥️ Thanks to</h3>
    <ul>
      <li><a href="https://github.com/siduck">siduck</a></li>
