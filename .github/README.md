@@ -24,8 +24,6 @@
 </div>
 </h1>
 
-
-
 <br>
 </div>
 
@@ -44,6 +42,7 @@
 > authority or expert in the NixOS space. Seek help on [the NixOS
 > discourse](https://discourse.nixos.org) instead.
 
+
 |                |                                                          |
 |----------------|----------------------------------------------------------|
 | **Shell:**     | zsh                                                      |
@@ -55,7 +54,7 @@
 | **Channel:**   | nixos-unstable                                           |
 | **Theme:** | Catppuccin                                                   |
 
-# Installation</h2>
+# Installation
 Here are the installation instructions for my configuration.
 I wrote this so you don't forget it in the future, please don't install it "as is".
 Make your own configuration. 
@@ -141,7 +140,7 @@ Good luck and ~~have fun~~
 <br clear="right"/>
  <div align="left">
  <h3>Misc</h3>
- <a href="https://github.com/sioodmy/dotfiles/commit/033cc8d66271729d3222827048cc011fd5296089.patch">patch to remove nvidia stuff by Ludovico</a>
+ <a href="../modules/schizofox">Schizofox</a>
     <h3> ♥️ Thanks to</h3>
    <ul>
      <li><a href="https://github.com/siduck">siduck</a></li>
