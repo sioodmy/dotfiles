@@ -15,9 +15,20 @@ in {
       type = types.str;
       example = "Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:106.0) Gecko/20100101 Firefox/106.0";
       default = "Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:106.0) Gecko/20100101 Firefox/106.0";
-      description = ''
-        Spoof user agent
-      '';
+      description = "Spoof user agent";
+    };
+
+    clearCookies = mkOption {
+      type = types.bool;
+      default = false;
+      description = "Clear cookies on shutdown";
+    };
+
+    netflixCuckFix = mkOption {
+      type = types.bool;
+      default = false;
+      description = "
+      Enable drm content for netflix cucks (literally just torrent stuff)";
     };
 
     translate = {
@@ -71,7 +82,7 @@ in {
                   Description = "Github nix search";
                   Alias = "!ghnix";
                   Method = "GET";
-                  URLTemplate = "https://github.com/search?l=nix&type=code&q=%7B{searchTerms}%7D";
+                  URLTemplate = "https://github.com/search?l=nix&type=code&q={searchTerms}";
                 }
                 {
                   Name = "Torrent search";
@@ -100,14 +111,14 @@ in {
                   Description = "Wikiless";
                   Alias = "!wiki";
                   Method = "GET";
-                  URLTemplate = "https://wikiless.org/w/index.php?search=%7B{searchTerms}%7D&title=Special%3ASearch&profile=default&fulltext=1";
+                  URLTemplate = "https://wikiless.org/w/index.php?search={searchTerms}title=Special%3ASearch&profile=default&fulltext=1";
                 }
                 {
                   Name = "Crates.io";
                   Description = "Rust crates";
                   Alias = "crates";
                   Method = "GET";
-                  URLTemplate = "https://crates.io/search?q=%7B{searchTerms}%7D";
+                  URLTemplate = "https://crates.io/search?q={searchTerms}";
                 }
                 {
                   Name = "nixpkgs";
@@ -168,8 +179,8 @@ in {
               "ryan@unstoppabledomains.com".install_url = "https://addons.mozilla.org/firefox/downloads/latest/unstoppable-extension/latest.xpi";
               "{c607c8df-14a7-4f28-894f-29e8722976af}".install_url = "https://addons.mozilla.org/firefox/downloads/latest/temporary-containers/latest.xpi";
               "skipredirect@sblask".install_url = "https://addons.mozilla.org/firefox/downloads/latest/skip-redirect/latest.xpi";
-              "sponsorBlocker@ajay.app".install_url = "https://addons.mozilla.org/firefox/downloads/latest/sponsorblock/latest.xpi";
               "{b6129aa9-e45d-4280-aac8-3654e9d89d21}".install_url = "https://github.com/catppuccin/firefox/releases/download/old/catppuccin_frappe_pink.xpi";
+              "smart-referer@meh.paranoid.pk".install_url = "https://github.com/catppuccin/firefox/releases/download/old/smart-referer.xpi";
             };
 
           FirefoxHome = {
@@ -182,15 +193,17 @@ in {
             ExtensionRecommendations = false;
             SkipOnboarding = true;
           };
+
           SanitizeOnShutdown = {
             Cache = true;
             History = true;
-            Cookies = false;
+            Cookies = cfg.clearCookies;
             Downloads = true;
             FormData = true;
             Sessions = true;
             OfflineApps = true;
           };
+
           Preferences = {
             "browser.toolbars.bookmarks.visibility" = "never";
             "toolkit.legacyUserProfileCustomizations.stylesheets" = true;
@@ -302,7 +315,7 @@ in {
             "privacy.userContext.ui.enabled" = true;
             "media.peerconnection.ice.proxy_only_if_behind_proxy" = true;
             "media.peerconnection.ice.default_address_only" = true;
-            "media.eme.enabled" = true;
+            "media.eme.enabled" = cfg.netflixCuckFix;
             "dom.disable_beforeunload" = true;
             "dom.disable_window_move_resize" = true;
             "dom.disable_open_during_load" = true;
@@ -352,7 +365,7 @@ in {
             "widget.non-native-theme.enabled" = true;
             "browser.link.open_newwindow" = 3;
             "browser.link.open_newwindow.restriction" = 0;
-            "webgl.disabled" = false;
+            "webgl.disabled" = true;
             "extensions.blocklist.enabled" = true;
             "network.http.referer.spoofSource" = false;
             "security.dialog_enable_delay" = 1000;
