@@ -91,7 +91,3 @@ BTC: 1781yHtiPrNd9yAqq4rhvhTuYBgbgQQFYy
    </ul>
   </div>
 <br />
-<pre>
-ETH: 0x430de39c494E40808F9d8A50958Eec622C3B5577
-</pre>
-
