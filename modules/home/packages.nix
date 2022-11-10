@@ -27,7 +27,6 @@ in {
     ripgrep
     rsync
     imagemagick
-    unrar
     killall
     bandwhich
     grex

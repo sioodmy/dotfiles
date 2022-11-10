@@ -12,43 +12,16 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
   };
-  outputs = inputs @ {
+  outputs = {
     self,
     nixpkgs,
     home-manager,
     ...
-  }: let
+  } @ inputs: let
     system = "x86_64-linux";
     pkgs = inputs.nixpkgs.legacyPackages.x86_64-linux;
-
-    mkSystem = pkgs: system: hostname:
-      pkgs.lib.nixosSystem {
-        system = system;
-        modules = [
-          {networking.hostName = hostname;}
-          (./. + "/hosts/${hostname}/system.nix")
-          (./. + "/hosts/${hostname}/hardware-configuration.nix")
-          ./system
-          inputs.hyprland.nixosModules.default
-          home-manager.nixosModules.home-manager
-          {
-            home-manager = {
-              useUserPackages = true;
-              useGlobalPkgs = true;
-              extraSpecialArgs = {inherit inputs;};
-              users.sioodmy = ./. + "/hosts/${hostname}/user.nix";
-            };
-            nixpkgs.overlays = [inputs.nixpkgs-wayland.overlay];
-          }
-        ];
-        specialArgs = {inherit inputs;};
-      };
   in {
-    nixosConfigurations = {
-      # https://wikiless.org/wiki/Moons_of_Saturn?lang=en
-      anthe = mkSystem inputs.nixpkgs "x86_64-linux" "anthe";
-      io = mkSystem inputs.nixpkgs "x86_64-linux" "io";
-    };
+    nixosConfigurations = import ./hosts inputs;
 
     packages.${system} = {
       catppuccin-folders = pkgs.callPackage ./pkgs/catppuccin-folders.nix {};
@@ -57,8 +30,5 @@
       rofi-calc-wayland = pkgs.callPackage ./pkgs/rofi-calc-wayland.nix {};
       rofi-emoji-wayland = pkgs.callPackage ./pkgs/rofi-emoji-wayland.nix {};
     };
-
-    devShells.${system}.default =
-      pkgs.mkShell {packages = [pkgs.alejandra];};
   };
 }
