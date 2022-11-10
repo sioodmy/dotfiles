@@ -2,13 +2,13 @@
   config,
   lib,
   pkgs,
-  inputs,
+  self,
   ...
 }: {
   programs.rofi = {
     enable = true;
     package = pkgs.rofi-wayland;
-    plugins = with inputs.self.packages.${pkgs.system}; [
+    plugins = with self.packages.${pkgs.system}; [
       rofi-calc-wayland
       rofi-emoji-wayland
     ];
