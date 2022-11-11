@@ -23,16 +23,6 @@
         '';
       };
     };
-    doas = {
-      enable = true;
-      extraRules = [
-        {
-          groups = ["doas"];
-          noPass = false;
-          keepEnv = true;
-        }
-      ];
-    };
     sudo = {
       execWheelOnly = true;
       extraConfig = ''
