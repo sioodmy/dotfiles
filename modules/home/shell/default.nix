@@ -134,6 +134,7 @@ in {
       d = "diff";
       ps = "!git push origin $(git rev-parse --abbrev-ref HEAD)";
       pl = "!git pull origin $(git rev-parse --abbrev-ref HEAD)";
+      af = "!git add $(git ls-files -m -o --exclude-standard | fzf -m)";
       st = "status";
       br = "branch";
       df = "!git hist | peco | awk '{print $2}' | xargs -I {} git diff {}^ {}";
