@@ -1,10 +1,8 @@
-
-
 <h1 align="center">
   <img src="https://camo.githubusercontent.com/8c73ac68e6db84a5c58eef328946ba571a92829b3baaa155b7ca5b3521388cc9/68747470733a2f2f692e696d6775722e636f6d2f367146436c41312e706e67" width="100px" /> <br>
   
   sioodmy's dotfiles <br>
-  <img src="../assets/colors.png" width="600px" /> <br>
+  <img src="./colors.png" width="600px" /> <br>
   <div align="center">
 
   <div align="center">
@@ -36,11 +34,11 @@
 
 ```
 .
-├── home          # my home-manager configuration 
+├── home          # my home-manager configuration
 ├── modules       # home-manager modules
 │   ├── vimuwu    # ide-like nvim config
 │   ├── schizofox # privacy-oriented firefox esr configuration
-├── system        # basically configuration.nix split into pieces 
+├── system        # basically configuration.nix split into pieces
 ├── hosts         # per host configuration
 │   ├── anthe     # desktop (amd/nvidia)
 │   ├── iapetus   # pi home server
@@ -68,6 +66,7 @@ ETH: 0x430de39c494E40808F9d8A50958Eec622C3B5577
 XMR: 84XFcVUGNg5HDGuJqWsu7uD9TGhJFyfE2VfHEN5EWHfFL6HB4nDrP4ThWyNtQfFnNQhn58kRsie1mNx25aAU81D2TeFQwDk
 BTC: 1781yHtiPrNd9yAqq4rhvhTuYBgbgQQFYy
 ```
+
 <br clear="right"/>
  <div align="left">
     <h3> ♥️ Thanks to</h3>
