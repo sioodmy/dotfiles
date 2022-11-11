@@ -34,21 +34,10 @@
     kernelPackages = pkgs.linuxPackages_latest;
     extraModprobeConfig = "options hid_apple fnmode=1";
 
-    # Change default bootloader to grub
     loader = {
-      systemd-boot.enable = false;
+      systemd-boot.enable = true;
       efi.canTouchEfiVariables = true;
       timeout = 1;
-      grub = {
-        enable = true;
-        useOSProber = true;
-        efiSupport = true;
-        enableCryptodisk = true;
-        device = "nodev";
-        theme = null;
-        backgroundColor = null;
-        splashImage = null;
-      };
     };
   };
 }
