@@ -3,16 +3,21 @@
   pkgs,
   ...
 }: {
-  services = {
-    syncthing = {
+  systemd.services = {
+    seatd = {
       enable = true;
-      openDefaultPorts = true;
-      user = "sioodmy";
-      group = "wheel";
-      dataDir = "/home/sioodmy/syncthing";
-      configDir = "/home/sioodmy/.config/syncthing/";
-      systemService = true;
+      description = "Seat management daemon";
+      script = "${pkgs.seatd}/bin/seatd -g wheel";
+      serviceConfig = {
+        Type = "simple";
+        Restart = "always";
+        RestartSec = "1";
+      };
+      wantedBy = ["multi-user.target"];
     };
+  };
+
+  services = {
     greetd = {
       enable = true;
       settings = rec {
@@ -41,13 +46,6 @@
     udisks2.enable = true;
     printing.enable = true;
     fstrim.enable = true;
-
-    # enable and secure ssh
-    openssh = {
-      enable = false;
-      permitRootLogin = "no";
-      passwordAuthentication = true;
-    };
 
     # Use pipewire instead of soyaudio
     pipewire = {

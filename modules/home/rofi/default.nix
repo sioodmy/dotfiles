@@ -2,13 +2,13 @@
   config,
   lib,
   pkgs,
-  inputs,
+  self,
   ...
 }: {
   programs.rofi = {
     enable = true;
     package = pkgs.rofi-wayland;
-    plugins = with inputs.self.packages.${pkgs.system}; [
+    plugins = with self.packages.${pkgs.system}; [
       rofi-calc-wayland
       rofi-emoji-wayland
     ];
@@ -17,16 +17,15 @@
       modi = "drun,filebrowser,calc,emoji";
       drun-display-format = " {name} ";
       sidebar-mode = true;
-      matching = "prefix";
+      matching = "fuzzy";
       scroll-method = 0;
-      disable-history = true;
+      disable-history = false;
       show-icons = true;
 
       display-drun = " Run";
       display-run = " Run";
       display-filebrowser = " Files";
       display-calc = " Calculator";
-      display-combi = " ";
       display-emoji = "💀 Emoji";
     };
     theme = let
