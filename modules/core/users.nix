@@ -7,7 +7,6 @@
     isNormalUser = true;
     # Enable ‘sudo’ for the user.
     extraGroups = [
-      "doas"
       "wheel"
       "systemd-journal"
       "audio"
