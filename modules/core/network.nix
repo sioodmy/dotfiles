@@ -1,6 +1,7 @@
 {
   config,
   pkgs,
+  lib,
   ...
 }: {
   networking = {
@@ -21,4 +22,6 @@
       logReversePathDrops = true;
     };
   };
+  # slows down boot time
+  systemd.services.NetworkManager-wait-online.enable = false;
 }
