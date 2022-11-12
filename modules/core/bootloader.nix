@@ -1,9 +1,11 @@
 {
   config,
   pkgs,
+  lib,
   ...
 }: {
   boot = {
+    binfmt.emulatedSystems = ["aarch64-linux"];
     cleanTmpDir = true;
     # some kernel parameters, i dont remember what half of this shit does but who cares
     kernelParams = [

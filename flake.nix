@@ -1,10 +1,12 @@
 {
   description = "My NixOS configuration";
   # https://github.com/sioodmy/dotfiles
+  # TODO: rpi server with image, custom iso
 
   inputs = {
     nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
     nixpkgs-wayland.url = "github:nix-community/nixpkgs-wayland";
+    nixos-hardware.url = "github:nixos/nixos-hardware";
     hyprland.url = "github:hyprwm/Hyprland/";
 
     home-manager = {
@@ -18,6 +20,18 @@
   in {
     nixosConfigurations = import ./hosts inputs;
 
+    # sd card image for raspberry pi (Iapetus host)
+    # build with `nix build .#images.iapetus`
+    images = {
+      iapetus =
+        (self.nixosConfigurations.iapetus.extendModules {
+          modules = ["${inputs.nixpkgs}/nixos/modules/installer/sd-card/sd-image-aarch64.nix"];
+        })
+        .config
+        .system
+        .build
+        .sdImage;
+    };
     packages.${system} = {
       catppuccin-folders = pkgs.callPackage ./pkgs/catppuccin-folders.nix {};
       catppuccin-gtk = pkgs.callPackage ./pkgs/catppuccin-gtk.nix {};

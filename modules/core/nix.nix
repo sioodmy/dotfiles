@@ -1,11 +1,19 @@
 {
   config,
   pkgs,
+  lib,
   ...
 }: {
   environment.defaultPackages = [];
   nixpkgs.config.allowUnfree = false;
   nixpkgs.config.allowBroken = true;
+
+  nixpkgs.overlays = [
+    (final: super: {
+      makeModulesClosure = x:
+        super.makeModulesClosure (x // {allowMissing = true;});
+    })
+  ];
 
   # faster rebuilding
   documentation = {
@@ -22,14 +30,19 @@
       options = "--delete-older-than 4d";
     };
     package = pkgs.nixUnstable;
+
+    # Free up to 1GiB whenever there is less than 100MiB left.
     extraOptions = ''
       experimental-features = nix-command flakes
       keep-outputs = true
       keep-derivations = true
+      min-free = ${toString (100 * 1024 * 1024)}
+      max-free = ${toString (1024 * 1024 * 1024)}
     '';
     settings = {
       auto-optimise-store = true;
       allowed-users = ["sioodmy"];
+      max-jobs = lib.mkDefault 6;
       # use binary cache, its not gentoo
       substituters = [
         "https://cache.nixos.org"
