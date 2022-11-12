@@ -73,11 +73,11 @@
         "wlroots": "wlroots"
       },
       "locked": {
-        "lastModified": 1668170625,
-        "narHash": "sha256-1zqkkpNH3N3IajTSKpcHmWwEn5sjZyD7N6XmBOXWFpI=",
+        "lastModified": 1668210064,
+        "narHash": "sha256-O0m1nGeNY7li8uv9FgtCYEQsL7vZoKiRZdZJJtBVdoE=",
         "owner": "hyprwm",
         "repo": "Hyprland",
-        "rev": "13befbd26636076caeb148f343144fda76fcffb5",
+        "rev": "dd11434e901ec616a5acc1008bb1ce4c1ef33a65",
         "type": "github"
       },
       "original": {
@@ -124,6 +124,21 @@
       "original": {
         "owner": "nix-community",
         "repo": "nix-eval-jobs",
+        "type": "github"
+      }
+    },
+    "nixos-hardware": {
+      "locked": {
+        "lastModified": 1668157555,
+        "narHash": "sha256-s5rt2FSmV4PWt89rjt4cvBGOhPizStsinkIB0BXnKrk=",
+        "owner": "nixos",
+        "repo": "nixos-hardware",
+        "rev": "062c3cca468a4b404ddd964fb444b665e4da982e",
+        "type": "github"
+      },
+      "original": {
+        "owner": "nixos",
+        "repo": "nixos-hardware",
         "type": "github"
       }
     },
@@ -215,6 +230,7 @@
       "inputs": {
         "home-manager": "home-manager",
         "hyprland": "hyprland",
+        "nixos-hardware": "nixos-hardware",
         "nixpkgs": "nixpkgs_2",
         "nixpkgs-wayland": "nixpkgs-wayland"
       }
