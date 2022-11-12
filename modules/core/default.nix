@@ -4,7 +4,6 @@
   ...
 }: {
   imports = [
-    ./bootloader.nix
     ./system.nix
     ./schizo.nix
     ./network.nix
