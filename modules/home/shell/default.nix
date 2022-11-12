@@ -98,9 +98,10 @@ in {
       la = "${pkgs.exa}/bin/exa -lah";
       tree = "${pkgs.exa}/bin/exa --tree --icons";
       http = "${pkgs.python3}/bin/python3 -m http.server";
+      v = "nvim";
     };
 
-    plugins = with pkgs; [
+    plugins = [
       {
         name = "zsh-nix-shell";
         src = pkgs.zsh-nix-shell;
