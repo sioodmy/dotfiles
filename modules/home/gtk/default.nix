@@ -44,6 +44,8 @@
   # credits: bruhvko
   # catppuccin theme for qt-apps
   home.packages = with pkgs; [libsForQt5.qtstyleplugin-kvantum];
+  home.sessionVariables."QT_STYLE_OVERRIDE" = "kvantum";
+
   xdg.configFile."Kvantum/catppuccin/catppuccin.kvconfig".source = builtins.fetchurl {
     url = "https://raw.githubusercontent.com/catppuccin/Kvantum/main/src/Catppuccin-Frappe-Pink/Catppuccin-Frappe-Pink.kvconfig";
     sha256 = "0pl936nchif2zsgzy4asrlc3gvv4fv2ln2myrqx13r6xra1vkcqs";

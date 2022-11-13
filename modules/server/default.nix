@@ -1,6 +1,7 @@
 {
   config,
   pkgs,
+  lib,
   ...
 }: {
   # replace openssl with FUCKING BASED LIBRESSL AAAAAAAAAAA
@@ -63,5 +64,21 @@
     settings.ui.DEFAULT_THEME = "arc-green";
     settings.session.COOKIE_SECURE = true;
     # settings.service.DISABLE_REGISTRATION = true;
+  };
+
+  services.tor = {
+    enable = true;
+    relay.onionServices = {
+      "gitea".map = lib.singleton {
+        port = 80;
+        version = 3;
+        target.port = 7000;
+      };
+      "website".map = lib.singleton {
+        port = 80;
+        version = 3;
+        target.port = 80;
+      };
+    };
   };
 }
