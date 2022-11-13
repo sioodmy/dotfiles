@@ -10,7 +10,7 @@
     openFirewall = true;
     forwardX11 = false;
     useDns = false;
-    ports = [1337];
+    ports = [22];
     passwordAuthentication = lib.mkForce false;
     kbdInteractiveAuthentication = false;
     banner = ''
