@@ -42,7 +42,9 @@ in {
     specialArgs = {inherit inputs;};
   };
 
-  # laptop
+  # framework laptop
+  # note that i dont actually have a framework laptop so i have no idea
+  # if this configuration works
   io = nixpkgs.lib.nixosSystem {
     system = "x86_64-linux";
     modules = [
@@ -50,6 +52,7 @@ in {
       ./io/hardware-configuration.nix
       core
       bootloader
+      hw.framework
       nvidia
       wayland
       hmModule
