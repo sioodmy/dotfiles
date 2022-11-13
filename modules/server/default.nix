@@ -69,15 +69,30 @@
   services.tor = {
     enable = true;
     relay.onionServices = {
-      "gitea".map = lib.singleton {
+      "gitea" = {
         port = 80;
         version = 3;
-        target.port = 7000;
+        map = [
+          {
+            port = 25565;
+            target = {
+              addr = "127.0.0.1";
+              port = 7000;
+            };
+          }
+        ];
       };
-      "website".map = lib.singleton {
-        port = 80;
+      "website" = {
         version = 3;
-        target.port = 80;
+        map = [
+          {
+            port = 25565;
+            target = {
+              addr = "127.0.0.1";
+              port = 80;
+            };
+          }
+        ];
       };
     };
   };
