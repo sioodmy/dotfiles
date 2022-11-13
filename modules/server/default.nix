@@ -65,35 +65,4 @@
     settings.session.COOKIE_SECURE = true;
     # settings.service.DISABLE_REGISTRATION = true;
   };
-
-  services.tor = {
-    enable = true;
-    relay.onionServices = {
-      "gitea" = {
-        port = 80;
-        version = 3;
-        map = [
-          {
-            port = 25565;
-            target = {
-              addr = "127.0.0.1";
-              port = 7000;
-            };
-          }
-        ];
-      };
-      "website" = {
-        version = 3;
-        map = [
-          {
-            port = 25565;
-            target = {
-              addr = "127.0.0.1";
-              port = 80;
-            };
-          }
-        ];
-      };
-    };
-  };
 }
