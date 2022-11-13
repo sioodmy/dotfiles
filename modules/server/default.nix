@@ -17,10 +17,6 @@
       group = "nginx";
       email = "hello@sioodmy.dev";
     };
-    certs."git.sioodmy.dev" = {
-      group = "gitea";
-      email = "hello@sioodmy.dev";
-    };
   };
 
   services.nginx = {
