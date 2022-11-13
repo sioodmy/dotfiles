@@ -66,7 +66,6 @@
     rootUrl = "https://git.sioodmy.dev";
     httpPort = 7000;
     settings.ui.DEFAULT_THEME = "arc-green";
-    settings.session.COOKIE_SECURE = true;
-    # settings.service.DISABLE_REGISTRATION = true;
+    settings.service.DISABLE_REGISTRATION = true;
   };
 }
