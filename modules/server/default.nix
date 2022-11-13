@@ -33,6 +33,7 @@
     };
     virtualHosts."git.sioodmy.dev" = {
       enableACME = true;
+      addSSL = true;
       forceSSL = true;
       locations."/" = {
         proxyPass = "http://localhost:7000/";
