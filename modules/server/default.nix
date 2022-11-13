@@ -19,6 +19,17 @@
     };
   };
 
+  services.openssh.extraConfig = ''
+    Match User git
+      AuthorizedKeysCommandUser git
+      AuthorizedKeysCommand ${pkgs.gitea}/bin/gitea keys -e git -u %u -t %t -k %k
+    Match all
+  '';
+
+  systemd.services.gitea.serviceConfig.SystemCallFilter =
+    lib.mkForce
+    "~@clock @cpu-emulation @debug @keyring @memlock @module @obsolete @raw-io @reboot @resources @setuid @swap";
+
   services.nginx = {
     enable = true;
     recommendedTlsSettings = true;
@@ -62,7 +73,18 @@
     domain = "git.sioodmy.dev";
     rootUrl = "https://git.sioodmy.dev";
     httpPort = 7000;
-    settings.ui.DEFAULT_THEME = "arc-green";
-    settings.service.DISABLE_REGISTRATION = true;
+    settings = {
+      repository.PREFERRED_LICENSES = "GPL-3.0,GPL-2.0,LGPL-3.0,LGPL-2.1";
+      server = {
+        START_SSH_SERVER = false;
+        BUILTIN_SSH_SERVER_USER = "git";
+        SSH_PORT = 22;
+        DISABLE_ROUTER_LOG = true;
+        SSH_CREATE_AUTHORIZED_KEYS_FILE = false;
+      };
+      attachment.ALLOWED_TYPES = "*/*";
+      service.DISABLE_REGISTRATION = true;
+      ui.DEFAULT_THEME = "arc-green";
+    };
   };
 }
