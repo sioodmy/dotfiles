@@ -18,12 +18,6 @@ in {
       description = "Spoof user agent";
     };
 
-    clearCookies = mkOption {
-      type = types.bool;
-      default = false;
-      description = "Clear cookies on shutdown";
-    };
-
     netflixCuckFix = mkOption {
       type = types.bool;
       default = false;
@@ -172,7 +166,6 @@ in {
               "7esoorv3@alefvanoon.anonaddy.me".install_url = "https://addons.mozilla.org/firefox/downloads/latest/libredirect/latest.xpi";
               "{b86e4813-687a-43e6-ab65-0bde4ab75758}".install_url = "https://addons.mozilla.org/firefox/downloads/latest/localcdn-fork-of-decentraleyes/latest.xpi";
               "webextension@metamask.io".install_url = "https://addons.mozilla.org/firefox/downloads/latest/ether-metamask/latest.xpi";
-              "CookieAutoDelete@kennydo.com".install_url = "https://addons.mozilla.org/firefox/downloads/latest/cookie-autodelete/latest.xpi";
               "DontFuckWithPaste@raim.ist".install_url = "https://addons.mozilla.org/firefox/downloads/latest/don-t-fuck-with-paste/latest.xpi";
               "{ffd50a6d-1702-4d87-83c3-ec468f67de6a}".install_url = "https://addons.mozilla.org/firefox/downloads/latest/everything-metric-converter/latest.xpi";
               "{531906d3-e22f-4a6c-a102-8057b88a1a63}".install_url = "https://addons.mozilla.org/firefox/downloads/latest/single-file/latest.xpi";
@@ -197,7 +190,7 @@ in {
           SanitizeOnShutdown = {
             Cache = true;
             History = true;
-            Cookies = cfg.clearCookies;
+            Cookies = true;
             Downloads = true;
             FormData = true;
             Sessions = true;
