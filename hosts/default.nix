@@ -33,7 +33,6 @@ in {
       ./anthe/hardware-configuration.nix
       core
       bootloader
-      server
       nvidia
       wayland
       hmModule
