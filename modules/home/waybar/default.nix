@@ -65,7 +65,7 @@ in {
         "custom/search" = {
           format = " ";
           tooltip = false;
-          on-click = "killall rofi || ${pkgs.rofi}/bin/rofi -show drun";
+          on-click = "killall rofi || rofi -show drun";
         };
         "custom/todo" = {
           format = "{}";
