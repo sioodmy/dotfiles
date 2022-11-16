@@ -1,12 +1,12 @@
 {
   description = "My NixOS configuration";
-  # https://github.com/sioodmy/dotfiles
-  # TODO: rpi server with image, custom iso
+  # https://dotfiles.sioodmy.dev
 
   inputs = {
     nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
     nixpkgs-wayland.url = "github:nix-community/nixpkgs-wayland";
     nixos-hardware.url = "github:nixos/nixos-hardware";
+    ragenix.url = "github:yaxitech/ragenix";
     hyprland.url = "github:hyprwm/Hyprland/";
 
     home-manager = {
