@@ -21,6 +21,7 @@
     ./tools
     ./waybar
     ./hyprland
+    ./mpd
     ./vimuwu
     ./schizofox
     inputs.hyprland.homeManagerModules.default
