@@ -23,11 +23,6 @@
         tags = ["news" "twitter"];
         url = "https://weekly.nixos.org/feeds/all.rss.xml";
       }
-      {
-        title = "NixOS weekly";
-        tags = ["crypto" "twitter"];
-        url = "https://nitter.net/WatcherGuru/rss";
-      }
     ];
     extraConfig = ''
       download-full-page yes
@@ -53,12 +48,13 @@
       bind-key U show-urls
       bind-key x pb-delete
 
-      color listnormal cyan default
-      color listfocus black yellow standout bold
-      color listnormal_unread blue default
-      color listfocus_unread yellow default bold
-      color info red black bold
+      color listnormal black default
+      color listfocus white standout bold
+      color listnormal_unread white default
+      color listfocus_unread magenta default bold
+      color info white black bold
       color article white default bold
+      user-agent "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/107.0.0.0 Safari/537.36"
     '';
   };
 }
