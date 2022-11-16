@@ -20,6 +20,7 @@
     ./swaylock
     ./tools
     ./waybar
+    ./newsboat
     ./hyprland
     ./mpd
     ./vimuwu
