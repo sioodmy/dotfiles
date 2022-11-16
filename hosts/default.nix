@@ -10,8 +10,10 @@
   wayland = ../modules/wayland;
   server = ../modules/server;
   hw = inputs.nixos-hardware.nixosModules;
-
+  ragenix = inputs.ragenix.nixosModules.age;
   hmModule = inputs.home-manager.nixosModules.home-manager;
+
+  shared = [core ragenix];
 
   home-manager = {
     useUserPackages = true;
@@ -28,16 +30,17 @@ in {
   # desktop
   anthe = nixpkgs.lib.nixosSystem {
     system = "x86_64-linux";
-    modules = [
-      {networking.hostName = "anthe";}
-      ./anthe/hardware-configuration.nix
-      core
-      bootloader
-      nvidia
-      wayland
-      hmModule
-      {inherit home-manager;}
-    ];
+    modules =
+      [
+        {networking.hostName = "anthe";}
+        ./anthe/hardware-configuration.nix
+        bootloader
+        nvidia
+        wayland
+        hmModule
+        {inherit home-manager;}
+      ]
+      ++ shared;
     specialArgs = {inherit inputs;};
   };
 
@@ -46,29 +49,31 @@ in {
   # if this configuration works
   io = nixpkgs.lib.nixosSystem {
     system = "x86_64-linux";
-    modules = [
-      {networking.hostName = "anthe";}
-      ./io/hardware-configuration.nix
-      core
-      bootloader
-      hw.framework
-      nvidia
-      wayland
-      hmModule
-      {inherit home-manager;}
-    ];
+    modules =
+      [
+        {networking.hostName = "anthe";}
+        ./io/hardware-configuration.nix
+        bootloader
+        hw.framework
+        nvidia
+        wayland
+        hmModule
+        {inherit home-manager;}
+      ]
+      ++ shared;
     specialArgs = {inherit inputs;};
   };
 
   # server
   iapetus = nixpkgs.lib.nixosSystem {
     system = "aarch64-linux";
-    modules = [
-      hw.raspberry-pi-4
-      ./iapetus
-      core
-      server
-    ];
+    modules =
+      [
+        hw.raspberry-pi-4
+        ./iapetus
+        server
+      ]
+      ++ shared;
     specialArgs = {inherit inputs;};
   };
 }
