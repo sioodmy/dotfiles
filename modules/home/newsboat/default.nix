@@ -27,7 +27,7 @@
     extraConfig = ''
       download-full-page yes
       download-retries 3
-      error-log /var/log/newsboat-error.log
+      error-log /dev/null
       max-items 0
       bind-key j down
       bind-key k up
@@ -49,7 +49,7 @@
       bind-key x pb-delete
 
       color listnormal black default
-      color listfocus white standout bold
+      color listfocus white default
       color listnormal_unread white default
       color listfocus_unread magenta default bold
       color info white black bold

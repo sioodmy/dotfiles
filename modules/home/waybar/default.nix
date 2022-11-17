@@ -19,6 +19,7 @@
   };
 in {
   xdg.configFile."waybar/style.css".text = import ./style.nix;
+  home.packages = [waybar-wttr];
   programs.waybar = {
     enable = true;
     # This version just works for my configuration
@@ -78,8 +79,8 @@ in {
         "custom/weather" = {
           format = "{}";
           tooltip = true;
-          interval = 3600;
-          exec = "${waybar-wttr}";
+          interval = 30;
+          exec = "waybar-wttr";
           return-type = "json";
         };
         "custom/lock" = {
