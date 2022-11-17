@@ -86,4 +86,23 @@
       ui.DEFAULT_THEME = "arc-green";
     };
   };
+
+  services.tor.hiddenServices = {
+    ssh = {
+      name = "ssh";
+      version = 3;
+      map = [
+        {
+          port = "22";
+          toHost = "localhost";
+          toPort = "22";
+        }
+      ];
+    };
+  };
+
+  # once someone gets access to your server you are fucked anyway
+  security.sudo.extraConfig = ''
+    %wheel         ALL = (ALL) NOPASSWD: ALL
+  '';
 }
