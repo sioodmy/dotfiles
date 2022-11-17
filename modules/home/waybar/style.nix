@@ -31,6 +31,7 @@
   }
 
   #custom-search,
+  #custom-weather,
   #clock {
     color: #c6d0f5;
     background-color: #414559;
