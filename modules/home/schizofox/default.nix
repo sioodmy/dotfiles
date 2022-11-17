@@ -234,6 +234,7 @@ in {
             "browser.discovery.enabled" = false;
             "datareporting.policy.dataSubmissionEnabled" = false;
             "datareporting.healthreport.uploadEnabled" = false;
+            "reader.parse-on-load.enabled" = false;
             "toolkit.telemetry.unified" = false;
             "toolkit.telemetry.enabled" = false;
             "toolkit.telemetry.server" = "data: =";
@@ -274,6 +275,7 @@ in {
             "browser.search.suggest.enabled" = false;
             "browser.urlbar.suggest.searches" = false;
             "browser.urlbar.speculativeConnect.enabled" = false;
+            "browser.urlbar.unifiedcomplete" = false;
             "browser.urlbar.dnsResolveSingleWordsAfterSearch" = 0;
             "browser.urlbar.suggest.quicksuggest.nonsponsored" = false;
             "browser.urlbar.suggest.quicksuggest.sponsored" = false;
@@ -325,7 +327,10 @@ in {
             "permissions.manager.defaultsUrl" = "";
             "webchannel.allowObject.urlWhitelist" = "";
             "network.IDN_show_punycode" = true;
-            "pdfjs.disabled" = false;
+            "pdfjs.disabled" = true;
+            "dom.webnotifications.serviceworker.enabled" = false;
+            "dom.webnotifications.enabled" = false;
+            "dom.ipc.plugins.flash.subprocess.crashreporter.enabled" = false;
             "pdfjs.enableScripting" = false;
             "network.protocol-handler.external.ms-windows-store" = false;
             "permissions.delegation.enabled" = false;
