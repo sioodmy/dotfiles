@@ -98,10 +98,6 @@
       version = 3;
       map = [{port = 80;}];
     };
-    gitea = {
-      version = 3;
-      map = [{port = 7000;}];
-    };
   };
   services.tor.settings = {
     DnsPort = 9053;
