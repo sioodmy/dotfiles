@@ -39,7 +39,6 @@ in {
     keepassxc
     dconf
     gcc
-    rustc
-    cargo
+    rust-bin.stable.latest.default
   ];
 }

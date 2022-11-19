@@ -50,7 +50,6 @@ in {
   config = mkIf cfg.enable {
     home.packages = with pkgs; [
       (wrapFirefox firefox-esr-102-unwrapped {
-        forceWayland = true;
         # see https://github.com/mozilla/policy-templates/blob/master/README.md
         extraPolicies = {
           CaptivePortal = false;
