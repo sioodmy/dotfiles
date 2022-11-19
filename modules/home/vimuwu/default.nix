@@ -19,7 +19,9 @@ in {
       stylua # Lua
       uncrustify
       shellcheck
-      rust-bin.stable.latest.default
+      # Rust nightly
+      (rust-bin.selectLatestNightlyWith
+        (toolchain: toolchain.default))
       alejandra # Nix
       gopls # go
       asmfmt
