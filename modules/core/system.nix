@@ -15,6 +15,10 @@
     '';
   };
 
+  environment.variables = {
+    EDITOR = "nvim";
+    BROWSER = "firefox";
+  };
   environment.systemPackages = with pkgs; [
     neovim
     git

@@ -2,17 +2,15 @@
   config,
   pkgs,
   lib,
+  inputs,
   ...
 }: {
   environment.defaultPackages = [];
   nixpkgs.config.allowUnfree = false;
   nixpkgs.config.allowBroken = true;
 
-  nixpkgs.overlays = [
-    (final: super: {
-      makeModulesClosure = x:
-        super.makeModulesClosure (x // {allowMissing = true;});
-    })
+  nixpkgs.overlays = with inputs; [
+    rust-overlay.overlays.default
   ];
 
   # faster rebuilding
