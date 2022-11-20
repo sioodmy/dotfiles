@@ -51,7 +51,7 @@ If you would like to support me you can sponsor me via [liberapay.com/sioodmy](h
 
 <a href="https://liberapay.com/sioodmy/donate"><img alt="Donate using Liberapay" src="https://liberapay.com/assets/widgets/donate.svg"></a>
 
-... or if you preffer crypto
+... or if you prefer crypto
 
 Ethereum: `0x430de39c494E40808F9d8A50958Eec622C3B5577`
 
