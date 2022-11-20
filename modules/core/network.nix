@@ -4,6 +4,7 @@
   lib,
   ...
 }: {
+  virtualisation.docker.enable = true;
   networking = {
     # dns
     nameservers = ["1.1.1.1" "1.0.0.1"];
@@ -16,7 +17,7 @@
       enable = true;
       # if your minecraft server is not worky
       # this is probably why
-      allowedTCPPorts = [443 80 22 7000 8080];
+      allowedTCPPorts = [443 80 22 7000 8080 5432];
       allowedUDPPorts = [443 80 44857 8080];
       allowPing = false;
       logReversePathDrops = true;
