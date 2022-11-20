@@ -17,6 +17,7 @@ in {
   home.packages = with pkgs; [
     todo
     mpv-unwrapped
+    yt-dlp
     pavucontrol
     imv
     hyperfine
