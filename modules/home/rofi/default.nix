@@ -17,7 +17,7 @@
       modi = "drun,filebrowser,calc,emoji";
       drun-display-format = " {name} ";
       sidebar-mode = true;
-      matching = "fuzzy";
+      matching = "prefix";
       scroll-method = 0;
       disable-history = false;
       show-icons = true;

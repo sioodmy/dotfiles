@@ -17,7 +17,7 @@ with lib; let
   '';
   screenshot = pkgs.writeShellScriptBin "screenshot" ''
     #!/bin/bash
-    hyprctl keyword animation "fadeOut,0,8,slow" && ${pkgs.grim}/bin/grim -g "$(${pkgs.slurp}/bin/slurp -w 0 -b 5e81acd2)" - | pngquant -q 75 | ${pkgs.wl-clipboard}/bin/wl-copy --type image/png; hyprctl keyword animation "fadeOut,1,8,slow"
+    hyprctl keyword animation "fadeOut,0,8,slow" && ${pkgs.grim}/bin/grim -g "$(${pkgs.slurp}/bin/slurp -w 0 -b 5e81acd2)" - | swappy -f -; hyprctl keyword animation "fadeOut,1,8,slow"
   '';
 in {
   home.packages = with pkgs; [
@@ -31,6 +31,7 @@ in {
     python39Packages.requests
     slurp
     tesseract5
+    swappy
     ocr
     grim
     screenshot
