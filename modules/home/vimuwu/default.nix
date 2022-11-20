@@ -22,6 +22,7 @@ in {
       # Rust nightly
       (rust-bin.selectLatestNightlyWith
         (toolchain: toolchain.default))
+      rust-analyzer
       alejandra # Nix
       gopls # go
       asmfmt

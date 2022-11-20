@@ -8,6 +8,7 @@
     extraGroups = [
       "wheel"
       "gitea"
+      "docker"
       "systemd-journal"
       "audio"
       "wireshark"
