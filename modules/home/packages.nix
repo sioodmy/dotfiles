@@ -13,7 +13,7 @@
     };
   });
 in {
-  nixpkgs.config.allowUnfree = true;
+  nixpkgs.config.allowUnfree = false;
   home.packages = with pkgs; [
     todo
     mpv-unwrapped
