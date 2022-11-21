@@ -23,6 +23,7 @@
     ./newsboat
     ./hyprland
     ./mpd
+    ./zathura
     ./vimuwu
     ./schizofox
     inputs.hyprland.homeManagerModules.default

@@ -7,7 +7,7 @@
   programs.zathura = {
     enable = true;
     options = {
-      font = "monospace 13";
+      font = "Iosevka 15";
 
       default-fg = "#C6D0F5";
       default-bg = "#303446";
@@ -56,7 +56,8 @@
       pages-per-row = "1";
       scroll-page-aware = "true";
       scroll-full-overlap = "0.01";
-      scroll-step = "50";
+      scroll-step = "100";
+      smooth-scroll = true;
       zoom-min = "10";
       guioptions = "none";
     };
