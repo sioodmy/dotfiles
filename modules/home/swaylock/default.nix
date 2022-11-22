@@ -70,4 +70,6 @@
       }
     ];
   };
+
+  systemd.user.services.swayidle.Install.WantedBy = lib.mkForce ["hyprland-session.target"];
 }
