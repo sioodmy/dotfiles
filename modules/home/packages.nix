@@ -19,7 +19,6 @@ in {
     mpv-unwrapped
     yt-dlp
     pavucontrol
-    imv
     hyperfine
     fzf
     gum
