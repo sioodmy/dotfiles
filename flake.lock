@@ -97,6 +97,21 @@
         "type": "github"
       }
     },
+    "flake-utils_5": {
+      "locked": {
+        "lastModified": 1667395993,
+        "narHash": "sha256-nuEHfE/LcWyuSWnS8t12N1wc105Qtau+/OdUAjtQ0rA=",
+        "owner": "numtide",
+        "repo": "flake-utils",
+        "rev": "5aed5285a952e0b949eb3ba02c12fa4fcfef535f",
+        "type": "github"
+      },
+      "original": {
+        "owner": "numtide",
+        "repo": "flake-utils",
+        "type": "github"
+      }
+    },
     "home-manager": {
       "inputs": {
         "nixpkgs": [
@@ -293,6 +308,21 @@
         "type": "github"
       }
     },
+    "nixpkgs_5": {
+      "locked": {
+        "lastModified": 1668994630,
+        "narHash": "sha256-1lqx6HLyw6fMNX/hXrrETG1vMvZRGm2XVC9O/Jt0T6c=",
+        "owner": "NixOS",
+        "repo": "nixpkgs",
+        "rev": "af50806f7c6ab40df3e6b239099e8f8385f6c78b",
+        "type": "github"
+      },
+      "original": {
+        "id": "nixpkgs",
+        "ref": "nixos-unstable",
+        "type": "indirect"
+      }
+    },
     "ragenix": {
       "inputs": {
         "agenix": "agenix",
@@ -322,7 +352,8 @@
         "nixpkgs": "nixpkgs_2",
         "nixpkgs-wayland": "nixpkgs-wayland",
         "ragenix": "ragenix",
-        "rust-overlay": "rust-overlay_2"
+        "rust-overlay": "rust-overlay_2",
+        "sioodmy-dev": "sioodmy-dev"
       }
     },
     "rust-overlay": {
@@ -369,6 +400,25 @@
         "owner": "oxalica",
         "repo": "rust-overlay",
         "type": "github"
+      }
+    },
+    "sioodmy-dev": {
+      "inputs": {
+        "flake-utils": "flake-utils_5",
+        "nixpkgs": "nixpkgs_5"
+      },
+      "locked": {
+        "lastModified": 1669207652,
+        "narHash": "sha256-oXGr8CR1u15lToqIbciJjNGAH6nVFB1naV326xKm+u4=",
+        "ref": "refs/heads/main",
+        "rev": "e7edd14f1643eae214efe656639ee7e0db85724c",
+        "revCount": 4,
+        "type": "git",
+        "url": "https://git.sioodmy.dev/sioodmy/sioodmy.dev"
+      },
+      "original": {
+        "type": "git",
+        "url": "https://git.sioodmy.dev/sioodmy/sioodmy.dev"
       }
     },
     "utils": {
