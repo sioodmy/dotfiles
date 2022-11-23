@@ -8,6 +8,7 @@
     nixos-hardware.url = "github:nixos/nixos-hardware";
     ragenix.url = "github:yaxitech/ragenix";
     hyprland.url = "github:hyprwm/Hyprland/";
+    sioodmy-dev.url = "git+https://git.sioodmy.dev/sioodmy/sioodmy.dev";
 
     home-manager = {
       url = "github:nix-community/home-manager";

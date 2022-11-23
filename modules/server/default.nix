@@ -2,6 +2,7 @@
   config,
   pkgs,
   lib,
+  inputs,
   ...
 }: {
   # replace openssl with FUCKING BASED LIBRESSL AAAAAAAAAAA
@@ -40,7 +41,9 @@
       addSSL = true;
       serverAliases = ["www.sioodmy.dev"];
       enableACME = true;
-      root = "/srv/www/sioodmy.dev";
+      extraConfig = "error_page 404 /404.html;";
+      # deploy my website
+      locations."/".root = inputs.sioodmy-dev.defaultPackage.${pkgs.system};
     };
     virtualHosts."git.sioodmy.dev" = {
       enableACME = true;
