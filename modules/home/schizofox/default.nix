@@ -71,11 +71,11 @@ in {
                   URLTemplate = "https://search.unlocked.link/?preferences=eJx1V82SpDYMfppwobYrmz2kcuhTKtkHyOZMCVsNGmyL9U_TzNNHbqAxw-QwVFu25U9_nzQKInbsCcO1Q4ceTGXAdQk6vKL78u8_lWEFJi8qSJEV29FgxGvH3BmsyMrJZvT8mK8_fMLKYuxZX7__9aMKcMOA4FV__bWKPVq8BsrXK48hmRgado3DqYnQXv8GE7DSTI1ssrmjvzLI8sK-q5ZrTYizIMkwKoUuom_AUOes_F7vg76DU6ib9d1F-jOhnxtyTaQoChYhuRs5iqJVeTZmA0ABWiMK0HXkxCt_dNA1TWBFYGqLmuCX3_6Ecagtec--aW5kMDxlArGWbx0ieyw2BAjdsabQNKuPRdqS647r2CY1YGwairJWSn2J96a5k0bOanhEJ14Jovnp9CwT5CF4vAlARSiGi2zGsdSrkjeEpUQjvovrGpsCqbzWXa3x6QxidwCJnifSTcMSPS_riQbSEOGgTlDnv44_l9YL2gJ1sTchZNX7C4sXLYxyQb4Zg-U3GrPj91NfH4W6m_acQW7-vnnEOvAtTuCx1uRRSUDm1a83T24gUIWCjjqJOYRYGtBJqkC7BYM1tui7dbnkfj0amHPAw_52uWP5TtnuVwS7kbUuPd9D6yF_Vr1kdbsbSQ6Ky-TkJ3EKn8s2lW8Uet51DKQGCAVAQ_Kkn-tsaKByg9sQ8eLDigXezexJFaod4v0QeTfa9bCbAXZVOVM9jlxoH0FwdBS27B5Te9F4X1dLsWYn1_nzihRYyHjxdcyCi6TqoHo24MusDxF8HDMXFQAjDzNHFo8M4HYwcaKYyeNjVc_Q8yGJJ2rncm3BCykIpoMbhB0f4LQ_SnOptMxD-CgUwhNZ_q6Cn4kjfjwVOHl1kub6pzifxDx_sPzrt2-_P3aLddLo9qwI-O7AHizjN8ThEFy4ZxftAp_auUO75ceI6GNqsUjHpx_liUHyfpqwLbZ8ssKqhWDiBw3sJAnqMDt2s8UC39t4GSd35B0rBHUgTC8IS8GIMVN4TqX_EZ-pqNw8BEbybq-FJRh9emZvhe7YIZ6XDbn0qDPOrX68ZGrxEvgH3cuMbSVnFNhxL7B8eyW6Y584435KD4CfksW9hZvbqKnr9kSQbuDl_fnYD-4kdSWAS45m6UW-7tNGgVFsnQ_-xjhbdmJ4EbmbEcLxJbeio5KfZB1zkS08SnF_YKHOAwUvZHoyfpUfzF9lJwes8k8Yo1_fez7-_mUlxjNT8k1IyXUylZQYxOzuyIaWHspw0rutwlYD4UbumRVBmlHunwFl-CmwbHtCi-JAWPvwcT9E6WtReuLWGEedq28_NPbCde61S15GuxYKi0S7lOjhyjxu-fpzkhwo7XkKjk5eRKd4LOKT68VUTfHEsgFHgq1MX4elxKQcjv4TTlcDCw3dDE9bWYUhtcnFtJVmGtGn8PKyjI6kpd1Llsei_yQXpCeHvkD9ZPujfTOnD5T2kryGJSAjaZ8jVBy7k0Uu2Y2GfOKZTy8OY7N0tLEvJhlNKr6zO-S9FTK0MrHU0YMLRsJYjmDstaOhEMToL7SR5T7AjiYJP4VrdvXjsq4uRng0rk2glAc0N5mQb3zaEWc2qkc1vIjvc819du-yOOnoOUTpOCizvYRhadiHAwzNMvpPXuB9gu6ZLuJztfy_MsuAb2SuO6P1kImrkalXtNmcPaczEq1GamXAOVQyIkhpXf8DAvvsTg==&q={searchTerms}";
                 }
                 {
-                  Name = "Github/Nix";
-                  Description = "Github nix search";
-                  Alias = "!ghnix";
+                  Name = "Sourcegraph/Nix";
+                  Description = "Sourcegraph nix search";
+                  Alias = "!snix";
                   Method = "GET";
-                  URLTemplate = "https://github.com/search?l=nix&type=code&q={searchTerms}";
+                  URLTemplate = "https://sourcegraph.com/search?q=context:global+file:.nix%24+{searchTerms}&patternType=literal";
                 }
                 {
                   Name = "Torrent search";
