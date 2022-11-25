@@ -21,7 +21,6 @@
       packages = [pkgs.apparmor-profiles];
     };
     pam.services = {
-      login.enableGnomeKeyring = true;
       swaylock = {
         text = ''
           auth include login

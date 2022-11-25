@@ -23,7 +23,6 @@ in {
     fzf
     gum
     unzip
-    gnupg
     ripgrep
     rsync
     imagemagick
