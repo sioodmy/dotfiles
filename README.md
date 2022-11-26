@@ -55,7 +55,7 @@ If you would like to support me you can sponsor me via [liberapay.com/sioodmy](h
 
 Ethereum: `0x430de39c494E40808F9d8A50958Eec622C3B5577`
 
-Monero: `84XFcVUGNg5HDGuJqWsu7uD9TGhJFyfE2VfHEN5EWHfFL6HB4nDrP4ThWyNtQfFnNQhn58kRsie1mNx25aAU81D2TeFQwDk`
+Monero: sioodmy.dev
 
 ## ❤️ Special thanks to
 
@@ -68,3 +68,4 @@ Monero: `84XFcVUGNg5HDGuJqWsu7uD9TGhJFyfE2VfHEN5EWHfFL6HB4nDrP4ThWyNtQfFnNQhn58k
 [luca.py](https://gitlab.com/luca.py/) -
 [FromSyntax](https://github.com/FromSyntax) -
 [pupbrained](https://github.com/pupbrained) -
+[ini](https://github.com/InioX)

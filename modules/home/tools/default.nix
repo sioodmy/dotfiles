@@ -32,7 +32,7 @@ with lib; let
   };
 in {
   programs = {
-    gnupg.enable = true;
+    gpg.enable = true;
     bat = {
       enable = true;
       themes = {
