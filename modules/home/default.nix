@@ -14,7 +14,8 @@
 
     ./gtk
     ./kitty
-    ./mako
+    # ./mako
+    ./dunst
     ./rofi
     ./shell
     ./swaylock
