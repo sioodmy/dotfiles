@@ -5,13 +5,28 @@
   inputs,
   ...
 }: {
-  environment.defaultPackages = [];
-  nixpkgs.config.allowUnfree = false;
-  nixpkgs.config.allowBroken = true;
+  environment = {
+    # set channels (backwards compatibility)
+    etc = {
+      "nix/flake-channels/nixpkgs".source = inputs.nixpkgs;
+      "nix/flake-channels/home-manager".source = inputs.home-manager;
+    };
 
-  nixpkgs.overlays = with inputs; [
-    rust-overlay.overlays.default
-  ];
+    # we need git for flakes
+    systemPackages = [pkgs.git];
+    defaultPackages = [];
+  };
+
+  nixpkgs = {
+    config = {
+      allowUnfree = false;
+      allowBroken = true;
+    };
+
+    overlays = with inputs; [
+      rust-overlay.overlays.default
+    ];
+  };
 
   # faster rebuilding
   documentation = {
@@ -29,6 +44,15 @@
     };
     package = pkgs.nixUnstable;
 
+    # pin the registry to avoid downloading and evaling a new nixpkgs version every time
+    registry = lib.mapAttrs (_: v: {flake = v;}) inputs;
+
+    # set the path for channels compat
+    nixPath = [
+      "nixpkgs=/etc/nix/flake-channels/nixpkgs"
+      "home-manager=/etc/nix/flake-channels/home-manager"
+    ];
+
     # Free up to 1GiB whenever there is less than 100MiB left.
     extraOptions = ''
       experimental-features = nix-command flakes
@@ -39,8 +63,9 @@
     '';
     settings = {
       auto-optimise-store = true;
-      allowed-users = ["sioodmy"];
-      max-jobs = lib.mkDefault 6;
+      builders-use-substitutes = true;
+      trusted-users = ["root" "@wheel"];
+      max-jobs = "auto";
       # use binary cache, its not gentoo
       substituters = [
         "https://cache.nixos.org"
