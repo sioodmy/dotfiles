@@ -150,6 +150,10 @@ in {
     enable = true;
     userName = "sioodmy";
     userEmail = "hello@sioodmy.dev";
+    signing = {
+      key = "056CFD15A9F99B0E";
+      signByDefault = true;
+    };
     extraConfig = {
       init = {defaultBranch = "main";};
       delta = {
