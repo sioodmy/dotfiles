@@ -15,7 +15,7 @@
 
     ./gtk
     ./kitty
-    # ./mako
+    ./foot
     ./dunst
     ./rofi
     ./shell
