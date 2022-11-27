@@ -15,6 +15,13 @@
     '';
   };
 
+  programs = {
+    bash.promptInit = ''eval "$(${pkgs.starship}/bin/starship init bash)"'';
+  };
+
+  # compresses half the ram for use as swap
+  zramSwap.enable = true;
+
   environment.variables = {
     EDITOR = "nvim";
     BROWSER = "firefox";

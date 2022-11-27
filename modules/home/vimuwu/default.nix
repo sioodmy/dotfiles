@@ -20,11 +20,9 @@ in {
       uncrustify
       shellcheck
       # Rust nightly
-      (rust-bin.stable.latest.default.override {
-        extensions = ["clippy"];
-        targets = ["arm-unknown-linux-gnueabihf"];
-      })
-      rust-analyzer
+      (rust-bin.selectLatestNightlyWith
+        (toolchain: toolchain.minimal))
+      # rust-analyzer
       alejandra # Nix
       gopls # go
       asmfmt
