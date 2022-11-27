@@ -11,10 +11,6 @@
     client.enable = true;
     torsocks.enable = true;
   };
-  gnupg.agent = {
-    enable = true;
-    enableSSHSupport = true;
-  };
   security = {
     protectKernelImage = true;
     lockKernelModules = false;
@@ -25,6 +21,7 @@
       packages = [pkgs.apparmor-profiles];
     };
     pam.services = {
+      login.enableGnomeKeyring = true;
       swaylock = {
         text = ''
           auth include login
