@@ -9,6 +9,7 @@
 # glue all configs together
 {
   config.home.stateVersion = "22.05";
+  config.home.extraOutputsToInstall = ["doc" "devdoc"];
   imports = [
     ./packages.nix
 

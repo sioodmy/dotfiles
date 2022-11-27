@@ -30,7 +30,7 @@
 
   # faster rebuilding
   documentation = {
-    enable = false;
+    enable = true;
     doc.enable = false;
     man.enable = true;
     dev.enable = false;

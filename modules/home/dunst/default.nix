@@ -44,6 +44,7 @@
         format = "<b>%a</b>\n%s";
         highlight = "#f4b8e4";
       };
+      fullscreen_delay_everything.fullscreen = "delay";
       urgency_low = {
         background = "#303446";
         foreground = "#C6D0F5";

@@ -154,11 +154,14 @@ in {
       init = {defaultBranch = "main";};
       delta = {
         syntax-theme = "Nord";
+        plus-style = "syntax #a6d189";
+        minus-style = "syntax #e78284";
         line-numbers = true;
       };
     };
     lfs.enable = true;
     delta.enable = true;
+    ignores = ["*~" "*.swp" "*result*" ".direnv" "node_modules"];
     aliases = {
       co = "checkout";
       fuck = "commit --amend -m";
