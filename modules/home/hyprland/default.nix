@@ -68,7 +68,10 @@ in {
   systemd.user.services = {
     swaybg = mkService {
       Unit.Description = "Wallpaper chooser";
-      Service.ExecStart = "${pkgs.swaybg}/bin/swaybg -i ${./wall.png}";
+      Service = {
+        ExecStart = "${pkgs.swaybg}/bin/swaybg -i ${./wall.png}";
+        Restart = "on-failure";
+      };
     };
   };
 }
