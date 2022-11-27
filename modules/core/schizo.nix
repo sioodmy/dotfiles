@@ -11,6 +11,10 @@
     client.enable = true;
     torsocks.enable = true;
   };
+  gnupg.agent = {
+    enable = true;
+    enableSSHSupport = true;
+  };
   security = {
     protectKernelImage = true;
     lockKernelModules = false;
