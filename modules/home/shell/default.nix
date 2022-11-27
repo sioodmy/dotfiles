@@ -86,7 +86,7 @@
         }
 
         command_not_found_handler() {
-          printf 'Command not found ->\033[32;05;16m %s\033[0m \n' "$0" >&2
+          printf 'Command not found ->\033[01;32m %s\033[0m \n' "$0" >&2
           return 127
         }
       '';
