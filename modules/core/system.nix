@@ -5,7 +5,7 @@
 }: {
   services = {
     dbus = {
-      packages = with pkgs; [dconf];
+      packages = with pkgs; [dconf gcr];
       enable = true;
     };
     udev.packages = with pkgs; [gnome.gnome-settings-daemon];

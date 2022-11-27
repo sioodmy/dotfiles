@@ -37,8 +37,8 @@
     };
     loginShellInit = ''
       dbus-update-activation-environment --systemd DISPLAY
+      eval $(gnome-keyring-daemon --start)
       eval $(ssh-agent)
-      export GPG_TTY=$TTY
     '';
   };
 
