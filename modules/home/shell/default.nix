@@ -67,8 +67,8 @@ in {
       export FZF_DEFAULT_OPTS="
       --color fg:#c6d0f5
       --color fg+:#51576d
-      --color bg:#292c3c
-      --color bg+:#292c3c
+      --color bg:#303446
+      --color bg+:#303446
       --color hl:#8caaee
       --color hl+:#8caaee
       --color info:#626880
@@ -83,6 +83,7 @@ in {
       --layout=reverse
       --border horizontal
       --height 40
+      "
 
       function run() {
         nix run nixpkgs#$@
@@ -92,7 +93,6 @@ in {
         printf 'Command not found ->\033[32;05;16m %s\033[0m \n' "$0" >&2
         return 127
       }
-      "
     '';
     history = {
       save = 1000;
@@ -149,7 +149,7 @@ in {
   programs.git = {
     enable = true;
     userName = "sioodmy";
-    userEmail = "sioodmy@tuta.io";
+    userEmail = "hello@sioodmy.dev";
     extraConfig = {
       init = {defaultBranch = "main";};
       delta = {

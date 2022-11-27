@@ -55,7 +55,7 @@ If you would like to support me you can sponsor me via [liberapay.com/sioodmy](h
 
 Ethereum: `0x430de39c494E40808F9d8A50958Eec622C3B5577`
 
-Monero: sioodmy.dev
+Monero/Bitcoin: sioodmy.dev
 
 ## ❤️ Special thanks to
 
