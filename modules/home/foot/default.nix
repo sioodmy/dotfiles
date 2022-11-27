@@ -9,7 +9,7 @@
     settings = {
       main = {
         term = "xterm-256color";
-        font = "monospace:size=13:line-height=15px";
+        font = "monospace:size=14";
         pad = "24x24";
         dpi-aware = "yes";
       };
