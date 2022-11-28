@@ -6,12 +6,14 @@
 }: {
   services.dunst = {
     enable = true;
-    package = pkgs.fetchFromGitHub {
-      owner = "k-vernooy";
-      repo = "dunst";
-      rev = "61567d58855ba872f8237861ddcd786d03dd2631";
-      sha256 = "ttaaomjb3CclZG9JPdzDBj5XXlqRaKGPBY3ahFofqVM=";
-    };
+    package = pkgs.dunst.overrideAttrs (oldAttrs: {
+      src = pkgs.fetchFromGitHub {
+        owner = "k-vernooy";
+        repo = "dunst";
+        rev = "61567d58855ba872f8237861ddcd786d03dd2631";
+        sha256 = "ttaaomjb3CclZG9JPdzDBj5XXlqRaKGPBY3ahFofqVM=";
+      };
+    });
     iconTheme = {
       package = self.packages.${pkgs.system}.catppuccin-folders;
       name = "Papirus";
@@ -41,7 +43,7 @@
         transparency = 10;
         progress_bar = true;
         progress_bar_frame_width = 2;
-        format = "<b>%a</b>\n%s";
+        format = "<b>%a</b>\\n%s";
         highlight = "#f4b8e4";
       };
       fullscreen_delay_everything.fullscreen = "delay";

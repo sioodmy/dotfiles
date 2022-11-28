@@ -14,7 +14,6 @@
     ./packages.nix
 
     ./gtk
-    ./kitty
     ./foot
     ./dunst
     ./rofi

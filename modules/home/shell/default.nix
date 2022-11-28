@@ -89,6 +89,8 @@
           printf 'Command not found ->\033[01;32m %s\033[0m \n' "$0" >&2
           return 127
         }
+
+        clear
       '';
       history = {
         save = 1000;
@@ -110,7 +112,6 @@
       shellAliases = {
         rebuild = "sudo nix-store --verify; sudo nixos-rebuild --install-bootloader switch --flake .#; bat cache --build";
         cleanup = "sudo nix-collect-garbage --delete-older-than 7d";
-        nixtest = "sudo nixos-rebuild test --flake .#graphene --fast";
         bloat = "nix path-info -Sh /run/current-system";
         ytmp3 = ''
           ${pkgs.yt-dlp}/bin/yt-dlp -x --continue --add-metadata --embed-thumbnail --audio-format mp3 --audio-quality 0 --metadata-from-title="%(artist)s - %(title)s" --prefer-ffmpeg -o "%(title)s.%(ext)s"'';
@@ -125,7 +126,6 @@
         tree = "${pkgs.exa}/bin/exa --tree --icons";
         http = "${pkgs.python3}/bin/python3 -m http.server";
         v = "nvim";
-        ssh = "kitty +kitten ssh";
       };
 
       plugins = [
