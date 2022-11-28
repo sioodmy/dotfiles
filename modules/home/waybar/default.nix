@@ -19,11 +19,11 @@
   };
 in {
   xdg.configFile."waybar/style.css".text = import ./style.nix;
-  home.packages = [waybar-wttr];
   programs.waybar = {
     enable = true;
+    systemd.enable = true;
     # This version just works for my configuration
-    # also this is not gentoo, I dont want to compile EVERYSINGLE WAYBAR UPDATE
+    # also this is not gentoo, I dont want to compile EVERY SINGLE WAYBAR UPDATE
     package = pkgs.waybar.overrideAttrs (oldAttrs: {
       src = pkgs.fetchFromGitHub {
         owner = "Alexays";
@@ -68,13 +68,46 @@ in {
         "custom/search" = {
           format = " ";
           tooltip = false;
-          on-click = "killall rofi || rofi -show drun";
+          on-click = "${pkgs.killall}/bin/killall rofi || ${config.programs.rofi.package}/bin/rofi -show drun";
         };
         "custom/todo" = {
           format = "{}";
           tooltip = true;
           interval = 7;
-          exec = "${./todo.sh}";
+          exec = let
+            todo = pkgs.todo + "/bin/todo";
+            sed = pkgs.gnused + "/bin/sed";
+            wc = pkgs.coreutils + "/bin/wc";
+          in
+            pkgs.writeShellScript "todo-waybar" ''
+              #!/bin/sh
+
+              total_todo=$(${todo} | ${wc} -l)
+              todo_raw_done=$(${todo} raw done | ${sed} 's/^/      ◉ /' | ${sed} -z 's/\n/\\n/g')
+              todo_raw_undone=$(${todo} raw todo | ${sed} 's/^/     ◉ /' | ${sed} -z 's/\n/\\n/g')
+              done=$(${todo} raw done | ${wc} -l)
+              undone=$(${todo} raw todo | ${wc} -l)
+              tooltip=$(${todo})
+
+              left="$done/$total_todo"
+
+              header="<b>todo</b>\\n\\n"
+              tooltip=""
+              if [[ $total_todo -gt 0 ]]; then
+              	if [[ $undone -gt 0 ]]; then
+              		export tooltip="$header👷 Today, you need to do:\\n\\n $(echo $todo_raw_undone)\\n\\n✅ You have already done:\\n\\n $(echo $todo_raw_done)"
+              		export output=" 🗒️ \\n $left"
+              	else
+              		export tooltip="$header✅ All done!\\n🥤 Remember to stay hydrated!"
+              		export output=" 🎉 \\n $left"
+              	fi
+              else
+              	export tooltip=""
+              	export output=""
+              fi
+
+              printf '{"text": "%s", "tooltip": "%s" }' "$output" "$tooltip"
+            '';
           return-type = "json";
         };
 
@@ -82,7 +115,7 @@ in {
           format = "{}";
           tooltip = true;
           interval = 30;
-          exec = "waybar-wttr";
+          exec = "${waybar-wttr}/bin/waybar-wttr";
           return-type = "json";
         };
         "custom/lock" = {
@@ -92,12 +125,47 @@ in {
         };
         "custom/swallow" = {
           tooltip = false;
-          on-click = "${./waybar-swallow.sh}";
+          on-click = let
+            hyprctl = config.wayland.windowManager.hyprland.package + "/bin/hyprctl";
+            notify-send = pkgs.libnotify + "/bin/notify-send";
+            rg = pkgs.ripgrep + "/bin/rg";
+          in
+            pkgs.writeShellScript "waybar-swallow" ''
+              #!/bin/sh
+              if ${hyprctl} getoption misc:enable_swallow | ${rg}/bin/rg -q "int: 1"; then
+              	${hyprctl} keyword misc:enable_swallow false >/dev/null &&
+              		${notify-send} "Hyprland" "Turned off swallowing"
+              else
+              	${hyprctl} keyword misc:enable_swallow true >/dev/null &&
+              		${notify-send} "Hyprland" "Turned on swallowing"
+              fi
+            '';
           format = "";
         };
         "custom/power" = {
           tooltip = false;
-          on-click = "${./shutdown.sh} &";
+          on-click = let
+            doas = pkgs.doas + "/bin/doas";
+            rofi = config.programs.rofi.package + "/bin/rofi";
+            systemctl = pkgs.systemd + "/bin/systemctl";
+          in
+            pkgs.writeShellScript "shutdown-waybar" ''
+
+              #!/bin/sh
+
+              off=" Shutdown"
+              reboot=" Reboot"
+              cancel=" Cancel"
+
+              sure="$(printf '%s\n%s\n%s' "$off" "$reboot" "$cancel" |
+              	${rofi} -dmenu -p ' Are you sure?')"
+
+              if [ "$sure" = "$off" ]; then
+              	${doas} ${systemctl} poweroff
+              elif [ "$sure" = "$reboot" ]; then
+              	${doas} ${systemctl} reboot
+              fi
+            '';
           format = "襤";
         };
         clock = {

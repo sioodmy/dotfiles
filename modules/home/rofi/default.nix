@@ -7,11 +7,12 @@
 }: {
   programs.rofi = {
     enable = true;
-    package = pkgs.rofi-wayland;
-    plugins = with self.packages.${pkgs.system}; [
-      rofi-calc-wayland
-      rofi-emoji-wayland
-    ];
+    package = pkgs.rofi-wayland.override {
+      plugins = with self.packages.${pkgs.system}; [
+        rofi-calc-wayland
+        rofi-emoji-wayland
+      ];
+    };
     font = "Iosevka Nerd Font 13";
     extraConfig = {
       modi = "drun,filebrowser,calc,emoji";
