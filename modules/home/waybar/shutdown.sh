@@ -8,7 +8,7 @@ sure="$(printf '%s\n%s\n%s' "${off}" "${reboot}" "${cancel}" |
 	rofi -dmenu -p ' Are you sure?')"
 
 if [ "${sure}" = "${off}" ]; then
-	sudo shutdown now
+	doas shutdown now
 elif [ "${sure}" = "${reboot}" ]; then
-	sudo reboot now
+	doas reboot now
 fi
