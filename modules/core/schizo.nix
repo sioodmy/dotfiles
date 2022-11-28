@@ -28,12 +28,37 @@
         '';
       };
     };
-    sudo = {
-      execWheelOnly = true;
-      extraConfig = ''
-        ALL ALL = (root) NOPASSWD: ${pkgs.systemd}/bin/shutdown
-        ALL ALL = (root) NOPASSWD: ${pkgs.systemd}/bin/reboot '';
+    doas = {
+      enable = true;
+      extraRules = [
+        {
+          groups = ["wheel"];
+          persist = true;
+          keepEnv = false;
+        }
+        {
+          groups = ["wheel"];
+          cmd = "reboot";
+          noPass = true;
+        }
+        {
+          groups = ["wheel"];
+          cmd = "shutdown";
+          noPass = true;
+        }
+        {
+          groups = ["wheel"];
+          cmd = "nix-collect-garbage";
+          noPass = true;
+        }
+        {
+          groups = ["wheel"];
+          cmd = "nixos-rebuild";
+          keepEnv = true;
+        }
+      ];
     };
+    sudo.enable = false;
   };
 
   boot.kernel.sysctl = {

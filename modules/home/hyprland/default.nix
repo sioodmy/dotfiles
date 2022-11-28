@@ -70,7 +70,7 @@ in {
       Unit.Description = "Wallpaper chooser";
       Service = {
         ExecStart = "${pkgs.swaybg}/bin/swaybg -i ${./wall.png}";
-        Restart = "on-failure";
+        Restart = "always";
       };
     };
   };

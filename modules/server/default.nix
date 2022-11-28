@@ -112,9 +112,4 @@
     NewCircuitPeriod = 120;
     DNSPort = 9053;
   };
-
-  # once someone gets access to your server you are fucked anyway
-  security.sudo.extraConfig = ''
-    %wheel         ALL = (ALL) NOPASSWD: ALL
-  '';
 }
