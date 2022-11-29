@@ -16,6 +16,8 @@
       "input"
       "lp"
       "networkmanager"
+      "power"
+      "nix"
     ];
     uid = 1000;
     shell = pkgs.zsh;

@@ -147,7 +147,8 @@ in {
           on-click = let
             doas = pkgs.doas + "/bin/doas";
             rofi = config.programs.rofi.package + "/bin/rofi";
-            systemctl = pkgs.systemd + "/bin/systemctl";
+            poweroff = pkgs.systemd + "/bin/poweroff";
+            reboot = pkgs.systemd + "/bin/reboot";
           in
             pkgs.writeShellScript "shutdown-waybar" ''
 
@@ -161,9 +162,9 @@ in {
               	${rofi} -dmenu -p ' Are you sure?')"
 
               if [ "$sure" = "$off" ]; then
-              	${doas} ${systemctl} poweroff
+              	${doas} ${poweroff}
               elif [ "$sure" = "$reboot" ]; then
-              	${doas} ${systemctl} reboot
+              	${doas} ${reboot}
               fi
             '';
           format = "襤";

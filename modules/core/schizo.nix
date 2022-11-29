@@ -37,22 +37,22 @@
           keepEnv = false;
         }
         {
-          groups = ["wheel"];
-          cmd = "reboot";
+          groups = ["power"];
           noPass = true;
+          cmd = "${pkgs.systemd}/bin/poweroff";
         }
         {
-          groups = ["wheel"];
-          cmd = "shutdown";
+          groups = ["power"];
           noPass = true;
+          cmd = "${pkgs.systemd}/bin/reboot";
         }
         {
-          groups = ["wheel"];
+          groups = ["nix"];
           cmd = "nix-collect-garbage";
           noPass = true;
         }
         {
-          groups = ["wheel"];
+          groups = ["nix"];
           cmd = "nixos-rebuild";
           keepEnv = true;
         }
