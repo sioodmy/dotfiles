@@ -20,12 +20,14 @@
               -a "Volume" \
               "Muted" \
               -i ${./mute.svg} \
+              -t 888 \
               -u low
       else
           ${notify-send} -r 69 \
               -a "Volume" "Currently at $volume" \
               -h int:value:"$volume" \
               -i ${./volume.svg} \
+              -t 888 \
               -u low
       fi
     '';
