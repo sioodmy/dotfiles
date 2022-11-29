@@ -3,7 +3,32 @@
   self,
   pkgs,
   ...
-}: {
+}: let
+  volume = let
+    pamixer = pkgs.pamixer + "/bin/pamixer";
+    notify-send = pkgs.libnotify + "/bin/notify-send";
+  in
+    pkgs.writeShellScriptBin "volume" ''
+      #!/bin/sh
+
+      ${pamixer} "$@"
+
+      volume="$(${pamixer} --get-volume-human)"
+
+      if [ "$volume" = "muted" ]; then
+          ${notify-send} -r 69 \
+              -a "Volume" \
+              "Muted" \
+              -u low
+      else
+          ${notify-send} -r 69 \
+              -a "Volume" "Currently at $volume" \
+              -h int:value:"$volume" \
+              -u low
+      fi
+    '';
+in {
+  home.packages = [volume];
   services.dunst = {
     enable = true;
     package = pkgs.dunst.overrideAttrs (oldAttrs: {
@@ -42,8 +67,7 @@
         frame_width = 3;
         transparency = 10;
         progress_bar = true;
-        progress_bar_frame_width = 2;
-        format = "<b>%a</b>\\n%s";
+        progress_bar_frame_width = 0;
         highlight = "#f4b8e4";
       };
       fullscreen_delay_everything.fullscreen = "delay";
