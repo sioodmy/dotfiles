@@ -103,6 +103,7 @@
       dirHashes = {
         docs = "$HOME/docs";
         notes = "$HOME/docs/notes";
+        dotfiles = "$HOME/dotfiles";
         dl = "$HOME/download";
         vids = "$HOME/vids";
         music = "$HOME/music";
@@ -110,7 +111,7 @@
       };
 
       shellAliases = {
-        rebuild = "doas nix-store --verify; doas nixos-rebuild --install-bootloader switch --flake .#; bat cache --build";
+        rebuild = "doas nix-store --verify; pushd ~dotfiles && doas nixos-rebuild --install-bootloader switch --flake .# && bat cache --build; popd";
         cleanup = "doas nix-collect-garbage --delete-older-than 7d";
         bloat = "nix path-info -Sh /run/current-system";
         ytmp3 = ''
