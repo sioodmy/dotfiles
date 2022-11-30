@@ -22,15 +22,7 @@ in {
   programs.waybar = {
     enable = true;
     systemd.enable = true;
-    # This version just works for my configuration
-    # also this is not gentoo, I dont want to compile EVERY SINGLE WAYBAR UPDATE
     package = pkgs.waybar.overrideAttrs (oldAttrs: {
-      src = pkgs.fetchFromGitHub {
-        owner = "Alexays";
-        repo = "Waybar";
-        rev = "cfef78a5bc8df6a29e06ec128f7a6075425db402";
-        sha256 = "XMpl1soXKFe1NOux4HRBrmMrANgcnjGeGsUUKOzOFkE=";
-      };
       mesonFlags = oldAttrs.mesonFlags ++ ["-Dexperimental=true"];
       patchPhase = ''
         substituteInPlace src/modules/wlr/workspace_manager.cpp --replace "zext_workspace_handle_v1_activate(workspace_handle_);" "const std::string command = \"${config.wayland.windowManager.hyprland.package}/bin/hyprctl dispatch workspace \" + name_; system(command.c_str());"
