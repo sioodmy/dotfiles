@@ -3,7 +3,7 @@
   # https://dotfiles.sioodmy.dev
 
   inputs = {
-    nixpkgs.url = "github:nixos/nixpkgs/nixos-22.11";
+    nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
     nixpkgs-wayland.url = "github:nix-community/nixpkgs-wayland";
     nixos-hardware.url = "github:nixos/nixos-hardware";
     ragenix.url = "github:yaxitech/ragenix";
