@@ -408,11 +408,11 @@
         "nixpkgs": "nixpkgs_5"
       },
       "locked": {
-        "lastModified": 1669207652,
-        "narHash": "sha256-oXGr8CR1u15lToqIbciJjNGAH6nVFB1naV326xKm+u4=",
+        "lastModified": 1669846570,
+        "narHash": "sha256-nK8Z9ZwiJwt/bKrOC8AXup0M9naGTzqauu/3T8+Fr1c=",
         "ref": "refs/heads/main",
-        "rev": "e7edd14f1643eae214efe656639ee7e0db85724c",
-        "revCount": 4,
+        "rev": "9d92da9c249f67097e235a7592ce89e1cbf0ac0f",
+        "revCount": 7,
         "type": "git",
         "url": "https://git.sioodmy.dev/sioodmy/sioodmy.dev"
       },
