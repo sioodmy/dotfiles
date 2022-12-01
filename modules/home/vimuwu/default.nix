@@ -80,6 +80,7 @@ in {
         nvim-autopairs
         nvim-colorizer-lua
         gitsigns-nvim
+        nvim-ts-rainbow
         (nvim-treesitter.withPlugins (plugins:
           with plugins; [
             tree-sitter-python

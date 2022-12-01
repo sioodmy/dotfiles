@@ -6,6 +6,7 @@ require("catppuccin").setup({
 		gitsigns = true,
 		telescope = true,
 		treesitter = true,
+        ts_rainbow = true,
 		hop = true,
 	},
 })
