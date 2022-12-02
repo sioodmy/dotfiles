@@ -127,6 +127,7 @@
         tree = "${pkgs.exa}/bin/exa --tree --icons";
         http = "${pkgs.python3}/bin/python3 -m http.server";
         v = "nvim";
+        g = "git";
         sudo = "doas";
       };
 
