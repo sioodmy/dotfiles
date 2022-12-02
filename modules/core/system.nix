@@ -29,6 +29,7 @@
   environment.systemPackages = with pkgs; [
     neovim
     git
+    (writeScriptBin "sudo" ''exec doas "$@"'')
   ];
 
   time.timeZone = "Europe/Warsaw";
