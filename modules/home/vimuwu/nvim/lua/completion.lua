@@ -72,6 +72,9 @@ cmp.setup({
 			end
 		end, { "i", "s" }),
 	},
+	experimental = {
+		ghost_text = true,
+	},
 	sources = cmp.config.sources({
 		{ name = "nvim_lsp", priority = 8 },
 		{ name = "buffer", priority = 4 },
