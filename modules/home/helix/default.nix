@@ -14,6 +14,13 @@
         space.space = "file_picker";
         space.w = ":w";
         space.q = ":q";
+        "C-d" = ["half_page_down" "align_view_center"];
+        "C-u" = ["half_page_up" "align_view_center"];
+space.u = {
+        f = ":format"; # format using LSP formatter
+        w = ":set whitespace.render all";
+        W = ":set whitespace.render none";
+      };
       };
       editor = {
         color-modes = true;
@@ -22,7 +29,6 @@
         line-number = "relative";
         scrolloff = 10;
         bufferline = "always";
-        sticky-context = true;
         popup-border = "all";
         true-color = true;
         rulers = [80];
@@ -60,16 +66,7 @@
           select = "underline";
         };
       };
-      keys.normal = {
-        "C-d" = ["half_page_down" "align_view_center"];
-        "C-u" = ["half_page_up" "align_view_center"];
       };
-      keys.normal.space.u = {
-        f = ":format"; # format using LSP formatter
-        w = ":set whitespace.render all";
-        W = ":set whitespace.render none";
-      };
-    };
 
     # credits: fuf <3
     languages = with pkgs; [
@@ -91,7 +88,7 @@
       {
         name = "nix";
         language-server = {command = lib.getExe inputs.nil.packages.${pkgs.system}.default;};
-        config.nil.formatting.command = ["alejandra" "-q"];
+         config.nil.formatting.command = ["alejandra" "-q"];
       }
       {
         name = "clojure";
