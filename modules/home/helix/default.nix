@@ -16,11 +16,12 @@
         space.q = ":q";
         "C-d" = ["half_page_down" "align_view_center"];
         "C-u" = ["half_page_up" "align_view_center"];
-space.u = {
-        f = ":format"; # format using LSP formatter
-        w = ":set whitespace.render all";
-        W = ":set whitespace.render none";
-      };
+        "C-q" = ":bc";
+        space.u = {
+          f = ":format"; # format using LSP formatter
+          w = ":set whitespace.render all";
+          W = ":set whitespace.render none";
+        };
       };
       editor = {
         color-modes = true;
@@ -29,7 +30,6 @@ space.u = {
         line-number = "relative";
         scrolloff = 10;
         bufferline = "always";
-        popup-border = "all";
         true-color = true;
         rulers = [80];
         indent-guides = {
@@ -56,54 +56,53 @@ space.u = {
           newline = "⤶";
         };
 
-        explorer = {
-          position = "embed";
-        };
-
         cursor-shape = {
           insert = "bar";
           normal = "block";
           select = "underline";
         };
       };
+      
+      
       };
 
-    # credits: fuf <3
-    languages = with pkgs; [
-      {
-        name = "bash";
-        language-server = {
-          command = "${nodePackages.bash-language-server}/bin/bash-language-server";
-          args = ["start"];
-        };
-        auto-format = true;
-      }
-      {
-        name = "cpp";
-        language-server = {
-          command = "${clang-tools}/bin/clangd";
-          clangd.fallbackFlags = ["-std=c++2b"];
-        };
-      }
-      {
-        name = "nix";
-        language-server = {command = lib.getExe inputs.nil.packages.${pkgs.system}.default;};
-         config.nil.formatting.command = ["alejandra" "-q"];
-      }
-      {
-        name = "clojure";
-        scope = "source.clojure";
-        injection-regex = "(clojure|clj|edn|boot|yuck)";
-        file-types = ["clj" "cljs" "cljc" "clje" "cljr" "cljx" "edn" "boot" "yuck"];
-        roots = ["project.clj" "build.boot" "deps.edn" "shadow-cljs.edn"];
-        comment-token = ";";
-        language-server = {command = "clojure-lsp";};
-        indent = {
-          tab-width = 2;
-          unit = "  ";
-        };
-      }
-    ];
+      # credits: fuf <3
+      languages = with pkgs; [
+        {
+          name = "bash";
+          language-server = {
+            command = "${nodePackages.bash-language-server}/bin/bash-language-server";
+            args = ["start"];
+          };
+          auto-format = true;
+        }
+        {
+          name = "cpp";
+          language-server = {
+            command = "${clang-tools}/bin/clangd";
+            clangd.fallbackFlags = ["-std=c++2b"];
+          };
+        }
+        {
+          name = "nix";
+          language-server = {command = lib.getExe inputs.nil.packages.${pkgs.system}.default;};
+          config.nil.formatting.command = ["alejandra" "-q"];
+        }
+        {
+          name = "clojure";
+          scope = "source.clojure";
+          injection-regex = "(clojure|clj|edn|boot|yuck)";
+          file-types = ["clj" "cljs" "cljc" "clje" "cljr" "cljx" "edn" "boot" "yuck"];
+          roots = ["project.clj" "build.boot" "deps.edn" "shadow-cljs.edn"];
+          comment-token = ";";
+          language-server = {command = "clojure-lsp";};
+          indent = {
+            tab-width = 2;
+            unit = "  ";
+          };
+        }
+      ];
+    
   };
 
   home.packages = with pkgs; [
@@ -123,8 +122,5 @@ space.u = {
     nodePackages.yarn
     sumneko-lua-language-server
     nodePackages.vscode-langservers-extracted
-    # Rust nightly
-    (rust-bin.selectLatestNightlyWith
-      (toolchain: toolchain.minimal))
   ];
 }
