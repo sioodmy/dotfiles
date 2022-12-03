@@ -59,7 +59,6 @@
       initExtra = ''
         autoload -U url-quote-magic
         zle -N self-insert url-quote-magic
-        setopt share_history
         export FZF_DEFAULT_OPTS="
         --color fg:#c6d0f5
         --color fg+:#51576d
@@ -111,7 +110,7 @@
       };
 
       shellAliases = {
-        rebuild = "doas nix-store --verify; pushd ~dotfiles && doas nixos-rebuild switch --flake .# && bat cache --build; popd";
+        rebuild = "doas nix-store --verify; pushd ~dotfiles && doas nixos-rebuild switch --flake .# && notify-send \"Done\"&& bat cache --build; popd";
         cleanup = "doas nix-collect-garbage --delete-older-than 7d";
         bloat = "nix path-info -Sh /run/current-system";
         ytmp3 = ''
@@ -122,10 +121,21 @@
         ps = "${pkgs.procs}/bin/procs";
         m = "mkdir -p";
         fcd = "cd $(find -type d | fzf)";
-        ls = "${pkgs.exa}/bin/exa --icons --group-directories-first";
+        ls = "${pkgs.exa}/bin/exa -h --git --color=auto --group-directories-first -s extension";
+        l = "ls -lF --time-style=long-iso";
+        sc = "sudo systemctl";
+    scu = "systemctl --user ";
         la = "${pkgs.exa}/bin/exa -lah";
         tree = "${pkgs.exa}/bin/exa --tree --icons";
         http = "${pkgs.python3}/bin/python3 -m http.server";
+        burn = "pkill -9";
+        diff = "diff --color=auto";
+        killall = "pkill";
+            ".." = "cd ..";
+    "..." = "cd ../../";
+    "...." = "cd ../../../";
+    "....." = "cd ../../../../";
+    "......" = "cd ../../../../../";
         # helix > nvim
         v = "hx";
         nvim = "hx";

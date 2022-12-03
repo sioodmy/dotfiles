@@ -21,12 +21,10 @@ in {
     pavucontrol
     hyperfine
     fzf
-    gum
     unzip
     ripgrep
     rsync
     imagemagick
-    killall
     bandwhich
     grex
     fd
