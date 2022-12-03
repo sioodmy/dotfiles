@@ -67,7 +67,7 @@
       locked_screen_width_part = "50";
       ask_for_locked_screen_width_part = "yes";
       display_bitrate = "no";
-      external_editor = "nvim";
+      external_editor = "hx";
       main_window_color = "default";
       startup_screen = "playlist";
       visualizer_data_source = "/tmp/mpd.fifo";
