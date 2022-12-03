@@ -8,6 +8,7 @@
     nixos-hardware.url = "github:nixos/nixos-hardware";
     ragenix.url = "github:yaxitech/ragenix";
     hyprland.url = "github:hyprwm/Hyprland/";
+    helix.url = "github:SoraTenshi/helix/experimental";
     sioodmy-dev.url = "git+https://git.sioodmy.dev/sioodmy/sioodmy.dev";
 
     home-manager = {
@@ -18,6 +19,12 @@
     rust-overlay = {
       url = "github:oxalica/rust-overlay";
       inputs.nixpkgs.follows = "nixpkgs";
+    };
+
+    nil = {
+      url = "github:oxalica/nil";
+      inputs.nixpkgs.follows = "nixpkgs";
+      inputs.rust-overlay.follows = "rust-overlay";
     };
   };
   outputs = {self, ...} @ inputs: let

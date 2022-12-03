@@ -25,7 +25,7 @@
     ./hyprland
     ./mpd
     ./zathura
-    ./vimuwu
+    ./helix
     ./schizofox
     inputs.hyprland.homeManagerModules.default
   ];
@@ -39,7 +39,6 @@
           targetLang = "pl";
         };
       };
-      vimuwu.enable = true;
     };
   };
 }
