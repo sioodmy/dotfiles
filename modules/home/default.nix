@@ -25,6 +25,7 @@
     ./hyprland
     ./mpd
     ./zathura
+    ./helix
     ./vimuwu
     ./schizofox
     inputs.hyprland.homeManagerModules.default
