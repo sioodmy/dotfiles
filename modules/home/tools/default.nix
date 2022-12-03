@@ -4,7 +4,7 @@
   config,
   ...
 }:
-with lib; let
+let
   browser = ["firefox.desktop"];
 
   associations = {
