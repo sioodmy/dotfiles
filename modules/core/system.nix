@@ -23,11 +23,10 @@
   zramSwap.enable = true;
 
   environment.variables = {
-    EDITOR = "nvim";
+    EDITOR = "hx";
     BROWSER = "firefox";
   };
   environment.systemPackages = with pkgs; [
-    neovim
     git
     (writeScriptBin "sudo" ''exec doas "$@"'')
   ];
