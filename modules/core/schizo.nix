@@ -11,6 +11,18 @@
     client.enable = true;
     torsocks.enable = true;
   };
+  # Firefox cache on tmpfs
+  fileSystems."/home/sioodmy/.cache/mozilla/firefox" = {
+    device = "tmpfs";
+    fsType = "tmpfs";
+    noCheck = true;
+    options = [
+      "noatime"
+      "nodev"
+      "nosuid"
+      "size=128M"
+    ];
+  };
   programs.ssh.startAgent = true;
   security = {
     protectKernelImage = true;
