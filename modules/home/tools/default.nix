@@ -31,11 +31,14 @@ let
     "x-scheme-handler/discord" = ["WebCord.desktop"];
   };
 in {
-  services.gpg-agent = {
+  services = { 
+  udiskie.enable = true;
+  gpg-agent = {
     enable = true;
     pinentryFlavor = "gnome3";
     enableSshSupport = true;
     enableZshIntegration = true;
+  };
   };
   programs = {
     gpg.enable = true;
