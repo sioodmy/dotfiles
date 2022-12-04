@@ -13,6 +13,7 @@
       SystemMaxUse=50M
       RuntimeMaxUse=10M
     '';
+    udisks2.enable = true;
   };
 
   programs = {

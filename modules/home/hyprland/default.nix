@@ -24,6 +24,7 @@ in {
     xdg-desktop-portal
     xdg-desktop-portal-gtk
     xdg-desktop-portal-wlr
+    inputs.xdg-portal-hyprland.packages.${pkgs.system}.default
     libnotify
     wf-recorder
     brightnessctl
