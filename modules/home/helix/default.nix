@@ -11,6 +11,8 @@
       theme = "catppuccin_frappe";
       editor.lsp.display-messages = true;
       keys.normal = {
+        "{" = "goto_prev_paragraph";
+        "}" = "goto_next_paragraph";
         space.space = "file_picker";
         space.w = ":w";
         space.q = ":q";
@@ -62,47 +64,33 @@
           select = "underline";
         };
       };
-      
-      
-      };
+    };
 
-      # credits: fuf <3
-      languages = with pkgs; [
-        {
-          name = "bash";
-          language-server = {
-            command = "${nodePackages.bash-language-server}/bin/bash-language-server";
-            args = ["start"];
-          };
-          auto-format = true;
-        }
-        {
-          name = "cpp";
-          language-server = {
-            command = "${clang-tools}/bin/clangd";
-            clangd.fallbackFlags = ["-std=c++2b"];
-          };
-        }
-        {
-          name = "nix";
-          language-server = {command = lib.getExe inputs.nil.packages.${pkgs.system}.default;};
-          config.nil.formatting.command = ["alejandra" "-q"];
-        }
-        {
-          name = "clojure";
-          scope = "source.clojure";
-          injection-regex = "(clojure|clj|edn|boot|yuck)";
-          file-types = ["clj" "cljs" "cljc" "clje" "cljr" "cljx" "edn" "boot" "yuck"];
-          roots = ["project.clj" "build.boot" "deps.edn" "shadow-cljs.edn"];
-          comment-token = ";";
-          language-server = {command = "clojure-lsp";};
-          indent = {
-            tab-width = 2;
-            unit = "  ";
-          };
-        }
-      ];
-    
+    languages = with pkgs; [
+      {
+        name = "cpp";
+        auto-format = true;
+        language-server = {
+          command = "${clang-tools}/bin/clangd";
+          clangd.fallbackFlags = ["-std=c++2b"];
+        };
+      }
+      {
+        name = "nix";
+        language-server.command = with pkgs;
+          lib.getExe
+          inputs.nil.packages.${pkgs.system}.default;
+        auto-format = true;
+        formatter = {
+          command = lib.getExe alejandra;
+          args = ["-q"];
+        };
+      }
+      {
+        name = "rust";
+        auto-format = true;
+      }
+    ];
   };
 
   home.packages = with pkgs; [
@@ -114,9 +102,16 @@
     zls
     elixir_ls
     black
+    alejandra
     shellcheck
+    taplo
+    solc
+    gawk
     haskellPackages.haskell-language-server
     nodePackages.typescript-language-server
+    java-language-server
+    kotlin-language-server
+    nodePackages.vls
     nodePackages.yaml-language-server
     nodePackages.jsonlint
     nodePackages.yarn
