@@ -9,7 +9,6 @@
     package = inputs.helix.packages."x86_64-linux".default;
     settings = {
       theme = "catppuccin_frappe";
-      editor.lsp.display-messages = true;
       keys.normal = {
         "{" = "goto_prev_paragraph";
         "}" = "goto_next_paragraph";
@@ -24,6 +23,9 @@
           w = ":set whitespace.render all";
           W = ":set whitespace.render none";
         };
+        keys.select = {
+          "%" = "match_brackets";
+        };
       };
       editor = {
         color-modes = true;
@@ -33,6 +35,7 @@
         scrolloff = 10;
         bufferline = "always";
         true-color = true;
+        lsp.display-messages = true;
         rulers = [80];
         indent-guides = {
           render = true;
@@ -61,7 +64,7 @@
         cursor-shape = {
           insert = "bar";
           normal = "block";
-          select = "underline";
+          select = "block";
         };
       };
     };
