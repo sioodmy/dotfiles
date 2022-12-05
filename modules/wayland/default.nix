@@ -58,8 +58,11 @@
 
   xdg.portal = {
     enable = true;
-    wlr.enable = true;
-    extraPortals = [pkgs.xdg-desktop-portal-gtk];
+    wlr.enable = false;
+    extraPortals = [
+     pkgs.xdg-desktop-portal-gtk
+     inputs.xdg-portal-hyprland.packages.${pkgs.system}.default
+    ];
   };
 
   sound = {
