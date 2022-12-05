@@ -18,7 +18,7 @@
         dpi-aware = "yes";
       };
       colors = {
-        alpha = "1.0";
+        alpha = "0.9";
         foreground = "c6d0f5";
         background = "303446";
 
