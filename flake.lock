@@ -709,11 +709,11 @@
         "nixpkgs": "nixpkgs_6"
       },
       "locked": {
-        "lastModified": 1670274006,
-        "narHash": "sha256-7Ww4khCL2FbA8zzjveQn9P1L0AFeroBcw43/85BlTfE=",
+        "lastModified": 1670276159,
+        "narHash": "sha256-USTONoLOLbVO5admE7V4Lx9YuGD+Xji09eZRglFPUeI=",
         "ref": "refs/heads/main",
-        "rev": "1bd98404dcd9f433cf44580d983c894c8952de65",
-        "revCount": 8,
+        "rev": "bd03c165eea4cf3c9289eb0be7a3de61721d824a",
+        "revCount": 9,
         "type": "git",
         "url": "https://git.sioodmy.dev/sioodmy/sioodmy.dev"
       },
