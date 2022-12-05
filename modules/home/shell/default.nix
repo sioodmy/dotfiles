@@ -124,18 +124,18 @@
         ls = "${pkgs.exa}/bin/exa -h --git --color=auto --group-directories-first -s extension";
         l = "ls -lF --time-style=long-iso";
         sc = "sudo systemctl";
-    scu = "systemctl --user ";
+        scu = "systemctl --user ";
         la = "${pkgs.exa}/bin/exa -lah";
         tree = "${pkgs.exa}/bin/exa --tree --icons";
         http = "${pkgs.python3}/bin/python3 -m http.server";
         burn = "pkill -9";
         diff = "diff --color=auto";
         killall = "pkill";
-            ".." = "cd ..";
-    "..." = "cd ../../";
-    "...." = "cd ../../../";
-    "....." = "cd ../../../../";
-    "......" = "cd ../../../../../";
+        ".." = "cd ..";
+        "..." = "cd ../../";
+        "...." = "cd ../../../";
+        "....." = "cd ../../../../";
+        "......" = "cd ../../../../../";
         # helix > nvim
         v = "hx";
         nvim = "hx";
@@ -145,16 +145,26 @@
         sudo = "doas";
       };
 
-      plugins = [
+      plugins = with pkgs; [
         {
           name = "zsh-nix-shell";
-          src = pkgs.zsh-nix-shell;
+          src = zsh-nix-shell;
           file = "share/zsh-nix-shell/nix-shell.plugin.zsh";
         }
         {
           name = "zsh-vi-mode";
-          src = pkgs.zsh-vi-mode;
+          src = zsh-vi-mode;
           file = "share/zsh-vi-mode/zsh-vi-mode.plugin.zsh";
+        }
+        {
+          name = "zsh-autopair";
+          file = "zsh-autopair.plugin.zsh";
+          src = fetchFromGitHub {
+            owner = "hlissner";
+            repo = "zsh-autopair";
+            rev = "34a8bca0c18fcf3ab1561caef9790abffc1d3d49";
+            sha256 = "1h0vm2dgrmb8i2pvsgis3lshc5b0ad846836m62y8h3rdb3zmpy1";
+          };
         }
       ];
     };
