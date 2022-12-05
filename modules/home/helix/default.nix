@@ -8,7 +8,7 @@
     enable = true;
     package = inputs.helix.packages."x86_64-linux".default;
     settings = {
-      theme = "catppuccin_frappe";
+      theme = "catppuccin_frappe_transparent";
       keys.normal = {
         "{" = "goto_prev_paragraph";
         "}" = "goto_next_paragraph";
@@ -23,16 +23,16 @@
           w = ":set whitespace.render all";
           W = ":set whitespace.render none";
         };
-        keys.select = {
-          "%" = "match_brackets";
-        };
+      };
+      keys.select = {
+        "%" = "match_brackets";
       };
       editor = {
         color-modes = true;
         cursorline = true;
         idle-timeout = 1;
         line-number = "relative";
-        scrolloff = 10;
+        scrolloff = 5;
         bufferline = "always";
         true-color = true;
         lsp.display-messages = true;
@@ -66,6 +66,14 @@
           normal = "block";
           select = "block";
         };
+      };
+    };
+
+    # override catppuccin theme and remove background to fix transparency
+    themes = {
+      catppuccin_frappe_transparent = {
+        "inherits" = "catppuccin_frappe";
+        "ui.background" = "{}";
       };
     };
 
