@@ -44,6 +44,7 @@
     font-size: 21px;
     padding-left: 6px;
     box-shadow: inset 0 -3px transparent;
+    transition: all 0.5s cubic-bezier(.55,-0.68,.48,1.68);
   }
 
   #workspaces button:hover {
@@ -58,6 +59,7 @@
 
   #workspaces button.active {
     color: #e5c890;
+    transition: all 0.3s cubic-bezier(.55,-0.68,.48,1.682);
   }
 
   #workspaces button.urgent {
