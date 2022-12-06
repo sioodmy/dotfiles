@@ -43,7 +43,10 @@
       enableCompletion = true;
       enableAutosuggestions = true;
       enableSyntaxHighlighting = true;
-      sessionVariables = {LC_ALL = "en_US.UTF-8";};
+      sessionVariables = {
+        LC_ALL = "en_US.UTF-8";
+        SSH_AUTH_SOCK = "/run/user/1000/keyring/ssh";
+      };
       completionInit = ''
         autoload -U compinit
         zstyle ':completion:*' menu select

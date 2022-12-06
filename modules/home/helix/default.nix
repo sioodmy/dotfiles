@@ -99,6 +99,7 @@
       }
       {
         name = "rust";
+        formatter.command = lib.getExe rustfmt;
         auto-format = true;
       }
     ];

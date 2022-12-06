@@ -34,7 +34,6 @@
       CLUTTER_BACKEND = "wayland";
       GTK_THEME = "Catppuccin-Frappe-Pink";
       WLR_DRM_DEVICES = "/dev/dri/card1:/dev/dri/card0";
-      SSH_AUTH_SOCK = "/run/user/1000/keyring/ssh";
     };
     loginShellInit = ''
       dbus-update-activation-environment --systemd DISPLAY
