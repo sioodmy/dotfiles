@@ -14,6 +14,7 @@
     ./packages.nix
 
     ./gtk
+    ./git
     ./foot
     ./dunst
     ./rofi
