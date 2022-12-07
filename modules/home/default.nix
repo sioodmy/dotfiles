@@ -17,6 +17,7 @@
     ./foot
     ./dunst
     ./rofi
+    ./bottom
     ./shell
     ./swaylock
     ./tools
