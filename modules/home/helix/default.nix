@@ -106,13 +106,14 @@
   };
 
   home.packages = with pkgs; [
-    # some other lsp related packages
+    # some other lsp related packages / dev tools
     lldb
     gopls
     rust-analyzer
     texlab
     zls
     elixir_ls
+    gcc
     black
     alejandra
     shellcheck
@@ -129,5 +130,7 @@
     nodePackages.yarn
     sumneko-lua-language-server
     nodePackages.vscode-langservers-extracted
+    (rust-bin.selectLatestNightlyWith
+      (toolchain: toolchain.default))
   ];
 }

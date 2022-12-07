@@ -36,7 +36,5 @@ in {
     keepassxc
     dconf
     gcc
-    (rust-bin.selectLatestNightlyWith
-      (toolchain: toolchain.default))
   ];
 }
