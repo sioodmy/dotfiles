@@ -3,8 +3,7 @@
   lib,
   config,
   ...
-}:
-let
+}: let
   browser = ["firefox.desktop"];
 
   associations = {
@@ -31,17 +30,21 @@ let
     "x-scheme-handler/discord" = ["WebCord.desktop"];
   };
 in {
-  services = { 
-  udiskie.enable = true;
-  gpg-agent = {
-    enable = true;
-    pinentryFlavor = "gnome3";
-    enableSshSupport = true;
-    enableZshIntegration = true;
-  };
+  services = {
+    udiskie.enable = true;
+    gpg-agent = {
+      enable = true;
+      pinentryFlavor = "gnome3";
+      enableSshSupport = true;
+      enableZshIntegration = true;
+    };
   };
   programs = {
     gpg.enable = true;
+    direnv = {
+      enable = true;
+      nix-direnv.enable = true;
+    };
     tealdeer = {
       enable = true;
       settings = {

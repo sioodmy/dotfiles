@@ -117,7 +117,6 @@
     black
     alejandra
     shellcheck
-    taplo
     solc
     gawk
     haskellPackages.haskell-language-server

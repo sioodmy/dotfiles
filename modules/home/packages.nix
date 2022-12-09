@@ -15,6 +15,7 @@
 in {
   nixpkgs.config.allowUnfree = false;
   home.packages = with pkgs; [
+    cached-nix-shell
     todo
     mpv-unwrapped
     yt-dlp
