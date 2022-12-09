@@ -7,7 +7,6 @@
   virtualisation.docker.enable = true;
   networking = {
     # dns
-    nameservers = ["1.1.1.1" "1.0.0.1"];
     networkmanager = {
       enable = true;
       unmanaged = ["docker0" "rndis0"];
