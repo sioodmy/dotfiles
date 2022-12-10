@@ -26,6 +26,7 @@ in {
     ripgrep
     rsync
     imagemagick
+    transmission-gtk
     bandwhich
     grex
     fd
