@@ -114,6 +114,7 @@
     zls
     elixir_ls
     gcc
+    uncrustify
     black
     alejandra
     shellcheck
@@ -129,7 +130,6 @@
     nodePackages.yarn
     sumneko-lua-language-server
     nodePackages.vscode-langservers-extracted
-    (rust-bin.selectLatestNightlyWith
-      (toolchain: toolchain.default))
+    cargo
   ];
 }
