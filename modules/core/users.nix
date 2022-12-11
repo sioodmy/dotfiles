@@ -11,6 +11,7 @@
       "docker"
       "systemd-journal"
       "audio"
+      "plugdev"
       "wireshark"
       "video"
       "input"
