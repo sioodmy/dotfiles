@@ -25,6 +25,7 @@ in {
     unzip
     ripgrep
     rsync
+    ttyper
     imagemagick
     transmission-gtk
     bandwhich
