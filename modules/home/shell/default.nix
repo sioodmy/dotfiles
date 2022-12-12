@@ -30,6 +30,7 @@
         git_commit = {commit_hash_length = 4;};
         line_break.disabled = false;
         lua.symbol = "[](blue) ";
+        python.symbol = "[](blue) ";
         hostname = {
           ssh_only = true;
           format = "[$hostname](bold blue) ";
