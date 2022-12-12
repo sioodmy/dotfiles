@@ -37,9 +37,18 @@
     extraModprobeConfig = "options hid_apple fnmode=1";
 
     loader = {
-      systemd-boot.enable = true;
+      systemd-boot.enable = false;
       efi.canTouchEfiVariables = true;
       timeout = 1;
+      grub = {
+        enable = true;
+        useOSProber = true;
+        efiSupport = true;
+        device = "nodev";
+        theme = null;
+        backgroundColor = null;
+        splashImage = null;
+      };
     };
   };
 }
