@@ -57,11 +57,15 @@ in {
     extraConfig = builtins.readFile ./hyprland.conf;
   };
 
-  services.gammastep = {
+  services.wlsunset = {
     enable = true;
-    provider = "geoclue2";
+    latitude = "52.0";
+    longitude = "21.0";
+    temperature = {
+      day = 6200;
+      night = 3750;
+    };
   };
-
   systemd.user.services = {
     swaybg = mkService {
       Unit.Description = "Wallpaper chooser";
