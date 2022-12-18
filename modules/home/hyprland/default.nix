@@ -40,18 +40,6 @@ in {
     enable = true;
     package = inputs.hyprland.packages.${pkgs.system}.default.override {
       nvidiaPatches = true;
-      wlroots =
-        inputs.hyprland.packages.${pkgs.system}.wlroots-hyprland.overrideAttrs
-        (old: {
-          patches =
-            (old.patches or [])
-            ++ [
-              (pkgs.fetchpatch {
-                url = "https://aur.archlinux.org/cgit/aur.git/plain/0001-nvidia-format-workaround.patch?h=hyprland-nvidia-screenshare-git";
-                sha256 = "A9f1p5EW++mGCaNq8w7ZJfeWmvTfUm4iO+1KDcnqYX8=";
-              })
-            ];
-        });
     };
     systemdIntegration = true;
     extraConfig = builtins.readFile ./hyprland.conf;
