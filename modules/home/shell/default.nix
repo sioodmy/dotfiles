@@ -113,25 +113,25 @@
         media = "/run/media/$USER";
       };
 
-      shellAliases = {
+      shellAliases = with pkgs; {
         rebuild = "doas nix-store --verify; pushd ~dotfiles && doas nixos-rebuild switch --flake .# && notify-send \"Done\"&& bat cache --build; popd";
         cleanup = "doas nix-collect-garbage --delete-older-than 7d";
         bloat = "nix path-info -Sh /run/current-system";
         ytmp3 = ''
-          ${pkgs.yt-dlp}/bin/yt-dlp -x --continue --add-metadata --embed-thumbnail --audio-format mp3 --audio-quality 0 --metadata-from-title="%(artist)s - %(title)s" --prefer-ffmpeg -o "%(title)s.%(ext)s"'';
-        cat = "${pkgs.bat}/bin/bat --style=plain";
-        grep = "${pkgs.ripgrep}/bin/rg";
-        du = "${pkgs.du-dust}/bin/dust";
-        ps = "${pkgs.procs}/bin/procs";
+          ${lib.getExe yt-dlp} -x --continue --add-metadata --embed-thumbnail --audio-format mp3 --audio-quality 0 --metadata-from-title="%(artist)s - %(title)s" --prefer-ffmpeg -o "%(title)s.%(ext)s"'';
+        cat = "${lib.getExe bat} --style=plain";
+        grep = lib.getExe ripgrep;
+        du = lib.getExe du-dust;
+        ps = lib.getExe procs;
         m = "mkdir -p";
         fcd = "cd $(find -type d | fzf)";
-        ls = "${pkgs.exa}/bin/exa -h --git --color=auto --group-directories-first -s extension";
+        ls = "${lib.getExe exa} -h --git --color=auto --group-directories-first -s extension";
         l = "ls -lF --time-style=long-iso";
         sc = "sudo systemctl";
         scu = "systemctl --user ";
-        la = "${pkgs.exa}/bin/exa -lah";
-        tree = "${pkgs.exa}/bin/exa --tree --icons";
-        http = "${pkgs.python3}/bin/python3 -m http.server";
+        la = "${lib.getExe exa} -lah";
+        tree = "${lib.getExe exa}--tree --icons";
+        http = "${lib.getExe python3}-m http.server";
         burn = "pkill -9";
         diff = "diff --color=auto";
         killall = "pkill";
