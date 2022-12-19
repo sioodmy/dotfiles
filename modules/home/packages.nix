@@ -17,6 +17,7 @@ in {
   home.packages = with pkgs; [
     cached-nix-shell
     todo
+    libreoffice-fresh
     mpv-unwrapped
     yt-dlp
     pavucontrol
