@@ -8,7 +8,7 @@
     background-color: #303446;
     border-radius: 0px;
     color: #c6d0f5;
-    font-size: 20px;
+    font-size: 16px;
     /* transition-property: background-color; */
     transition-duration: 0.5s;
   }
@@ -18,7 +18,7 @@
   }
 
   #workspaces {
-    font-size: 15px;
+    font-size: 12px;
     background-color: #414559;
   }
 
@@ -85,25 +85,23 @@
   #volume,
   #pulseaudio {
     border-radius: 15px;
-    margin: 0px 7px 0px 7px;
     background-color: #414559;
-    padding: 10px 0px 10px 0px;
+    padding: 0px 10px 0px 10px;
+    margin: 5px 0px 5px 0px;
   }
 
   #custom-swallow {
     color: #ca9ee6;
-    padding-right: 3px;
   }
 
 
   #custom-lock {
       color: #8caaee;
-      padding-right: 1px;
+      padding: 0 20px 0 20px;
   }
 
   #custom-todo {
     color: #c6d0f5;
-    padding-left: 2px;
   }
 
   #custom-power {
@@ -114,12 +112,11 @@
     background-size: 60%;
     background-position: center;
     background-repeat: no-repeat;
-    margin-top: 7px;
   }
   #clock {
     font-weight: 700;
     font-size: 20px;
-    padding: 5px 0px 5px 0px;
+    padding: 0px 5px 0px 5px;
     font-family: "Iosevka Term";
   }
   #backlight {

@@ -32,8 +32,8 @@ in {
     settings = {
       mainBar = {
         layer = "top";
-        position = "left";
-        width = 60;
+        position = "top";
+        height = 45;
         spacing = 7;
         fixed-center = true;
         exclusive = true;
@@ -122,9 +122,7 @@ in {
           format = "襤";
         };
         clock = {
-          format = ''
-            {:%H
-            %M}'';
+          format = "{:%H:%M}";
           tooltip-format = ''
             <big>{:%Y %B}</big>
             <tt><small>{calendar}</small></tt>'';
@@ -138,10 +136,10 @@ in {
             warning = 30;
             critical = 15;
           };
-          format = "{icon}";
+          format = "{icon} {capacity}%";
           format-charging = "";
           format-plugged = "";
-          format-alt = "{icon}";
+          format-alt = "{icon} {capacity}%";
           format-icons = ["" "" "" "" "" "" "" "" "" "" "" ""];
         };
         network = {
@@ -154,7 +152,7 @@ in {
         pulseaudio = {
           scroll-step = 5;
           tooltip = false;
-          format = "{icon}";
+          format = "{icon} {volume}%";
           format-icons = {default = ["" "" "墳"];};
           on-click = "${pkgs.killall}/bin/killall pavucontrol || ${pkgs.pavucontrol}/bin/pavucontrol";
         };
