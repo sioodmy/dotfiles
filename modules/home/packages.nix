@@ -21,6 +21,7 @@ in {
     mpv-unwrapped
     yt-dlp
     pavucontrol
+    tdesktop
     hyperfine
     fzf
     unzip

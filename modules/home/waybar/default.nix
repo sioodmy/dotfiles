@@ -33,21 +33,23 @@ in {
       mainBar = {
         layer = "top";
         position = "top";
-        height = 45;
+        height = 40;
         spacing = 7;
-        fixed-center = true;
+        fixed-center = false;
         exclusive = true;
         modules-left = [
           "custom/search"
           "wlr/workspaces"
           "custom/lock"
-          "custom/weather"
           "custom/todo"
           "backlight"
           "battery"
         ];
-        modules-center = [];
-        modules-right = ["pulseaudio" "network" "custom/swallow" "clock" "custom/power"];
+        modules-center = [
+          "custom/weather"
+          "clock"
+        ];
+        modules-right = ["pulseaudio" "network" "custom/swallow" "custom/power"];
         "wlr/workspaces" = {
           on-click = "activate";
           format = "{icon}";
@@ -119,10 +121,10 @@ in {
               	${doas} ${reboot}
               fi
             '';
-          format = "襤";
+          format = "襤 ";
         };
         clock = {
-          format = "{:%H:%M}";
+          format = "{:%b %d %H:%M}";
           tooltip-format = ''
             <big>{:%Y %B}</big>
             <tt><small>{calendar}</small></tt>'';
@@ -143,9 +145,9 @@ in {
           format-icons = ["" "" "" "" "" "" "" "" "" "" "" ""];
         };
         network = {
-          format-wifi = "󰤨";
-          format-ethernet = "󰤨";
-          format-alt = "󰤨";
+          format-wifi = "󰤨 {essid} {signalStrength}%";
+          format-ethernet = "󰤨 {ipaddr}";
+          format-alt = "󰤨 {ipaddr}/{ifname}";
           format-disconnected = "󰤭";
           tooltip-format = "{ipaddr}/{ifname} via {gwaddr} ({signalStrength}%)";
         };
