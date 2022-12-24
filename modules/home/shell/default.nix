@@ -46,11 +46,40 @@
       enableSyntaxHighlighting = true;
       sessionVariables = {
         LC_ALL = "en_US.UTF-8";
+        ZSH_AUTOSUGGEST_USE_ASYNC = "true";
         SSH_AUTH_SOCK = "/run/user/1000/keyring/ssh";
       };
       completionInit = ''
         autoload -U compinit
         zstyle ':completion:*' menu select
+        zstyle ':completion:*:functions' ignored-patterns '(_*|pre(cmd|exec))'
+        zstyle ':completion:*' completer _complete _match _approximate
+        zstyle ':completion:*:match:*' original only
+        zstyle ':completion:*:approximate:*' max-errors 1 numeric
+        zstyle ':completion:*' sort false
+        zstyle ':completion:complete:*:options' sort false
+        zstyle ':completion:*' matcher-list 'm:{[:lower:][:upper:]}={[:upper:][:lower:]}' 'm:{[:lower:][:upper:]}={[:upper:][:lower:]} l:|=* r:|=*' 'm:{[:lower:][:upper:]}={[:upper:][:lower:]} l:|=* r:|=*' 'm:{[:lower:][:upper:]}={[:upper:][:lower:]} l:|=* r:|=*'
+        zstyle ':completion:*' special-dirs true
+        zstyle ':completion:*' rehash true
+        zstyle ':completion:*' menu yes select # search
+        zstyle ':completion:*' list-grouped false
+        zstyle ':completion:*' list-separator '''
+        zstyle ':completion:*' group-name '''
+        zstyle ':completion:*' verbose yes
+        zstyle ':completion:*:matches' group 'yes'
+        zstyle ':completion:*:warnings' format '%F{red}%B-- No match for: %d --%b%f'
+        zstyle ':completion:*:messages' format '%d'
+        zstyle ':completion:*:corrections' format '%B%d (errors: %e)%b'
+        zstyle ':completion:*:descriptions' format '[%d]'
+        zstyle ':fzf-tab:*' command $FZF_TAB_COMMAND
+        zstyle ':fzf-tab:*' switch-group ',' '.'
+        zstyle ':fzf-tab:complete:_zlua:*' query-string input
+        zstyle ':fzf-tab:complete:*:*' fzf-preview 'preview.sh $realpath'
+        zstyle ":completion:*:git-checkout:*" sort false
+        zstyle ':completion:*' file-sort modification
+        zstyle ':completion:*:exa' sort false
+        zstyle ':completion:files' sort false
+
         zmodload zsh/complist
         compinit
         _comp_options+=(globdots)
@@ -83,6 +112,18 @@
         --border horizontal
         --height 40
         "
+
+        # fzf-tab
+        FZF_TAB_COMMAND=(
+          ${pkgs.fzf}/bin/fzf
+          --ansi
+          --expect='$continuous_trigger' # For continuous completion
+          --nth=2,3 --delimiter='\x00'  # Don't search prefix
+          --layout=reverse --height="''${FZF_TMUX_HEIGHT:=50%}"
+          --tiebreak=begin -m --bind=tab:down,btab:up,change:top,ctrl-space:toggle --cycle
+          '--query=$query'   # $query will be expanded to query string at runtime.
+          '--header-lines=$#headers' # $#headers will be expanded to lines of headers at runtime
+        )
 
         function run() {
           nix run nixpkgs#$@

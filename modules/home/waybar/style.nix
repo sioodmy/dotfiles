@@ -1,4 +1,10 @@
-''
+let
+  snowflake = builtins.fetchurl rec {
+    name = "Logo-${sha256}.svg";
+    url = "https://raw.githubusercontent.com/NixOS/nixos-artwork/master/logo/nix-snowflake.svg";
+    sha256 = "14mbpw8jv1w2c5wvfvj8clmjw0fi956bq5xf9s2q3my14far0as8";
+  };
+in ''
   * {
     /* `otf-font-awesome` is required to be installed for icons */
     font-family: Material Design Icons, Iosevka Nerd Font;
@@ -18,7 +24,6 @@
   }
 
   #workspaces {
-    font-size: 12px;
     background-color: #414559;
   }
 
@@ -30,7 +35,6 @@
     color: #8caaee;
   }
 
-  #custom-search,
   #custom-weather,
   #clock {
     color: #c6d0f5;
@@ -41,7 +45,6 @@
     background-color: transparent;
     /* Use box-shadow instead of border so the text isn't offset */
     color: #8caaee;
-    font-size: 21px;
     padding-left: 6px;
     box-shadow: inset 0 -3px transparent;
     transition: all 0.5s cubic-bezier(.55,-0.68,.48,1.68);
@@ -55,6 +58,8 @@
 
   #custom-power {
       color: #e78284;
+      margin: 7px;
+      font-size: 24px;
   }
 
   #workspaces button.active {
@@ -75,8 +80,6 @@
   #backlight,
   #memory,
   #workspaces,
-  #custom-search,
-  #custom-power,
   #custom-todo,
   #custom-lock,
   #custom-weather,
@@ -104,20 +107,13 @@
     color: #c6d0f5;
   }
 
-  #custom-power {
-    margin-bottom: 7px;
-  }
   #custom-search {
-    background-image: url("${./sakura.png}");
-    background-size: 60%;
+    background-image: url("${snowflake}");
+    background-size: 65%;
+    padding: 0 15px 0 15px;
+    margin: 5px;
     background-position: center;
     background-repeat: no-repeat;
-  }
-  #clock {
-    font-weight: 700;
-    font-size: 20px;
-    padding: 0px 5px 0px 5px;
-    font-family: "Iosevka Term";
   }
   #backlight {
     color: #e5c890;
