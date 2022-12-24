@@ -402,11 +402,11 @@
         ]
       },
       "locked": {
-        "lastModified": 1670595719,
-        "narHash": "sha256-9jvA0QdcZtGWImiRZ8KRhXNsy5NxgZBm0TXtNLmFbyM=",
+        "lastModified": 1671916144,
+        "narHash": "sha256-TLcfy7T0Q2crxAp0jVXghJXGYzlBgjrZbOYIxGxAnN8=",
         "owner": "oxalica",
         "repo": "nil",
-        "rev": "1c122ae707c6365ea731565daf307844df03e95e",
+        "rev": "cac705a23380f7de79302c7d6850ddfdf29de70d",
         "type": "github"
       },
       "original": {
@@ -491,11 +491,11 @@
         "nixpkgs": "nixpkgs_4"
       },
       "locked": {
-        "lastModified": 1671812211,
-        "narHash": "sha256-CrQzrd2S05/c4r7Gvk11O/W2JTHqZ0VVqOPjsPuZWxU=",
+        "lastModified": 1671894739,
+        "narHash": "sha256-3XIrF9EdDhhKM9nJ+yoJQAzQRgLR86lsRPa/vV8eUvw=",
         "owner": "nix-community",
         "repo": "nixpkgs-wayland",
-        "rev": "2b322f2ae98af4daf4ad5a761480fc87e8de5f74",
+        "rev": "5f1c6e31c79de9734055c8837b0bc153f92d79ed",
         "type": "github"
       },
       "original": {
@@ -709,11 +709,11 @@
         "nixpkgs": "nixpkgs_6"
       },
       "locked": {
-        "lastModified": 1670276159,
-        "narHash": "sha256-USTONoLOLbVO5admE7V4Lx9YuGD+Xji09eZRglFPUeI=",
+        "lastModified": 1671920619,
+        "narHash": "sha256-f8QkM75n7dr61qMVkG+PIFPNNwDdp8DmreBXveKCvvs=",
         "ref": "refs/heads/main",
-        "rev": "bd03c165eea4cf3c9289eb0be7a3de61721d824a",
-        "revCount": 9,
+        "rev": "9588f25c371dfa945c2c358beae5772c298c8040",
+        "revCount": 10,
         "type": "git",
         "url": "https://git.sioodmy.dev/sioodmy/sioodmy.dev"
       },
