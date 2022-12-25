@@ -34,6 +34,7 @@ in {
     screenshot
     wl-clipboard
     pngquant
+    cliphist
   ];
 
   wayland.windowManager.hyprland = {
@@ -58,7 +59,14 @@ in {
     swaybg = mkService {
       Unit.Description = "Wallpaper chooser";
       Service = {
-        ExecStart = "${pkgs.swaybg}/bin/swaybg -i ${./wall.png}";
+        ExecStart = "${lib.getExe pkgs.swaybg} -i ${./wall.png}";
+        Restart = "always";
+      };
+    };
+    cliphist = mkService {
+      Unit.Description = "Clipboard history";
+      Service = {
+        ExecStart = "${pkgs.wl-clipboard}/bin/wl-paste --watch ${lib.getExe pkgs.cliphist} store";
         Restart = "always";
       };
     };
