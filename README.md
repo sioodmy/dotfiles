@@ -19,7 +19,6 @@
    <a href="https://github.com/sioodmy/dotfiles/blob/main/LICENSE">
     <img src="https://img.shields.io/static/v1.svg?style=for-the-badge&label=License&message=GPL-3&logoColor=ca9ee6&colorA=313244&colorB=cba6f7"/>
    </a>
-   <a href="https://liberapay.com/sioodmy/donate"><img src="https://img.shields.io/liberapay/patrons/sioodmy.svg?logo=liberapay?color=e5c890&labelColor=303446&style=for-the-badge"></a>
    <br>
 </div>
 </h1>
@@ -47,15 +46,15 @@
 
 ## 💛 Donate
 
-If you would like to support me you can sponsor me via [liberapay.com/sioodmy](https://en.liberapay.com/sioodmy/)
+If you would like to support me you can sponsor me via ko-fi
 
-<a href="https://liberapay.com/sioodmy/donate"><img alt="Donate using Liberapay" src="https://liberapay.com/assets/widgets/donate.svg"></a>
+<a href="https://ko-fi.com/sioodmy"><img src="https://ko-fi.com/img/githubbutton_sm.svg" alt="Support me on kofi" /> </a>
 
 ... or if you prefer crypto
 
 Ethereum: `0x430de39c494E40808F9d8A50958Eec622C3B5577`
 
-Monero/Bitcoin: sioodmy.dev
+Monero/Bitcoin (OpenAlias): sioodmy.dev
 
 ## ❤️ Special thanks to
 
