@@ -41,7 +41,6 @@ in {
           "custom/search"
           "wlr/workspaces"
           "custom/lock"
-          "custom/todo"
           "backlight"
           "battery"
         ];
@@ -49,7 +48,7 @@ in {
           "custom/weather"
           "clock"
         ];
-        modules-right = ["pulseaudio" "network" "custom/swallow" "custom/power"];
+        modules-right = ["pulseaudio" "network" "custom/power"];
         "wlr/workspaces" = {
           on-click = "activate";
           format = "{icon}";
@@ -146,7 +145,7 @@ in {
         };
         network = {
           format-wifi = "󰤨 {essid} {signalStrength}%";
-          format-ethernet = "󰤨 {ipaddr}";
+          format-ethernet = "󰤨 {bandwidthTotalBytes}";
           format-alt = "󰤨 {ipaddr}/{ifname}";
           format-disconnected = "󰤭";
           tooltip-format = "{ipaddr}/{ifname} via {gwaddr} ({signalStrength}%)";
