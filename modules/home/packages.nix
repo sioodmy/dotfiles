@@ -23,6 +23,7 @@ in {
     pavucontrol
     tdesktop
     hyperfine
+    imv
     fzf
     unzip
     ripgrep
