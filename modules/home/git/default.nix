@@ -49,6 +49,7 @@
     aliases = {
       co = "checkout";
       fuck = "commit --amend -m";
+      c = "commit -m";
       ca = "commit -am";
       d = "diff";
       ps = "!git push origin $(git rev-parse --abbrev-ref HEAD)";
