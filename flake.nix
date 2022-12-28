@@ -9,7 +9,7 @@
     ragenix.url = "github:yaxitech/ragenix";
     hyprland.url = "github:hyprwm/Hyprland/";
     xdg-portal-hyprland.url = "github:hyprwm/xdg-desktop-portal-hyprland";
-    helix.url = "github:SoraTenshi/helix/experimental";
+    helix.url = "github:SoraTenshi/helix/experimental-22.12";
     sioodmy-dev.url = "git+https://git.sioodmy.dev/sioodmy/sioodmy.dev";
 
     home-manager = {

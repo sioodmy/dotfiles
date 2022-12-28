@@ -41,6 +41,7 @@ in {
   };
   programs = {
     gpg.enable = true;
+    man.enable = true;
     direnv = {
       enable = true;
       nix-direnv.enable = true;
