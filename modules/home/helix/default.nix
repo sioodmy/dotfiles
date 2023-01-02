@@ -17,8 +17,6 @@
         space.space = "file_picker";
         space.w = ":w";
         space.q = ":bc";
-        "C-d" = ["half_page_down" "align_view_center"];
-        "C-u" = ["half_page_up" "align_view_center"];
         "C-q" = ":xa";
         space.u = {
           f = ":format"; # format using LSP formatter
@@ -37,6 +35,7 @@
         line-number = "relative";
         scrolloff = 5;
         bufferline = "always";
+        lsp.display-messages = true;
         true-color = true;
         rulers = [80];
         indent-guides = {
