@@ -17,11 +17,14 @@ in {
   home.packages = with pkgs; [
     cached-nix-shell
     todo
+    brave
     libreoffice-fresh
     mpv-unwrapped
     yt-dlp
     pavucontrol
     tdesktop
+    obs-studio
+    tracy
     hyperfine
     imv
     fzf
