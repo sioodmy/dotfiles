@@ -357,7 +357,7 @@ in {
             "widget.non-native-theme.enabled" = true;
             "browser.link.open_newwindow" = 3;
             "browser.link.open_newwindow.restriction" = 0;
-            "webgl.disabled" = true;
+            "webgl.disabled" = false;
             "extensions.blocklist.enabled" = true;
             "network.http.referer.spoofSource" = false;
             "security.dialog_enable_delay" = 1000;
