@@ -178,10 +178,11 @@
           sc = "sudo systemctl";
           scu = "systemctl --user ";
           la = "${lib.getExe exa} -lah";
-          tree = "${lib.getExe exa}--tree --icons";
-          http = "${lib.getExe python3}-m http.server";
+          tree = "${lib.getExe exa} --tree --icons";
+          http = "${lib.getExe python3} -m http.server";
           burn = "pkill -9";
           diff = "diff --color=auto";
+          kys = "doas shutdown now";
           killall = "pkill";
           gpl3init = "cp ${gpl3} LICENSE";
           ".." = "cd ..";
