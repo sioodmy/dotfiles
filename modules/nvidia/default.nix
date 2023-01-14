@@ -18,6 +18,12 @@
     __GLX_VENDOR_LIBRARY_NAME = "nvidia";
   };
 
+  environment.systemPackages = with pkgs; [
+    vulkan-loader
+    vulkan-validation-layers
+    vulkan-tools
+  ];
+
   hardware = {
     nvidia = {
       open = true;
