@@ -23,6 +23,7 @@
     mpv
     rsync
     ttyper
+    gimp
     imagemagick
     transmission-gtk
     bandwhich
