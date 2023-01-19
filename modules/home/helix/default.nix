@@ -90,9 +90,7 @@
       }
       {
         name = "nix";
-        language-server.command = with pkgs;
-          lib.getExe
-          inputs.nil.packages.${pkgs.system}.default;
+        language-server.command = pkgs.nil;
         auto-format = true;
         formatter = {
           command = lib.getExe alejandra;
