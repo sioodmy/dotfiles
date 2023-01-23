@@ -118,7 +118,6 @@
     black
     alejandra
     shellcheck
-    solc
     gawk
     haskellPackages.haskell-language-server
     nodePackages.typescript-language-server
