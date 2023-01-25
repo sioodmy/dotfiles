@@ -23,6 +23,7 @@
     mpv
     rsync
     ttyper
+    ffmpeg
     gimp
     imagemagick
     transmission-gtk
