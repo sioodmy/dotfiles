@@ -23,6 +23,7 @@
     mpv
     rsync
     ttyper
+    wine
     ffmpeg
     gimp
     imagemagick
