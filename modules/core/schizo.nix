@@ -77,6 +77,7 @@
   boot.kernel.sysctl = {
     "kernel.yama.ptrace_scope" = 2;
     "kernel.kptr_restrict" = 2;
+    "kernel.sysrq" = 0;
     "net.core.bpf_jit_enable" = false;
     "kernel.ftrace_enabled" = false;
     "net.ipv4.conf.all.log_martians" = true;
@@ -97,6 +98,9 @@
     "net.ipv4.tcp_syncookies" = 1;
     "net.ipv4.tcp_timestamps" = 0;
     "net.ipv4.tcp_rfc1337" = 1;
+    "net.ipv4.tcp_fastopen" = 3;
+    "net.ipv4.tcp_congestion_control" = "bbr";
+    "net.core.default_qdisc" = "cake";
   };
 
   # Security
