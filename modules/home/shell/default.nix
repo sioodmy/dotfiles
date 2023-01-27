@@ -197,12 +197,12 @@ in {
           ps = lib.getExe procs;
           m = "mkdir -p";
           fcd = "cd $(find -type d | fzf)";
-          ls = "${lib.getExe exa} -h --git --color=auto --group-directories-first -s extension";
-          l = "ls -lF --time-style=long-iso";
+          ls = "${lib.getExe exa} -h --git --icons --color=auto --group-directories-first -s extension";
+          l = "ls -lF --time-style=long-iso --icons";
           sc = "sudo systemctl";
           scu = "systemctl --user ";
-          la = "${lib.getExe exa} -lah";
-          tree = "${lib.getExe exa} --tree --icons";
+          la = "${lib.getExe exa} -lah --tree";
+          tree = "${lib.getExe exa} --tree --icons --tree";
           http = "${lib.getExe python3} -m http.server";
           burn = "pkill -9";
           diff = "diff --color=auto";
