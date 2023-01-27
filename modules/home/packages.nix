@@ -10,16 +10,12 @@
     todo
     brave
     yt-dlp
-    pavucontrol
     tdesktop
-    obs-studio
     tracy
     hyperfine
-    imv
     fzf
     unzip
     ripgrep
-    mpv
     rsync
     ttyper
     wine

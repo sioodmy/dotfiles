@@ -3,6 +3,17 @@
   pkgs,
   ...
 }: {
+  home.packages = with pkgs; [mpc_cli playerctl pavucontrol pulsemixer imv];
+  programs = {
+    mpv = {
+      enable = true;
+      defaultProfiles = ["gpu-hq"];
+      config.osc = false;
+      scripts = with pkgs.mpvScripts; [mpris thumbnail sponsorblock];
+    };
+
+    obs-studio.enable = true;
+  };
   services.mpd = {
     enable = true;
     network = {
@@ -24,8 +35,6 @@
       host = "127.0.0.1";
     };
   };
-
-  home.packages = with pkgs; [mpc_cli];
 
   programs.ncmpcpp = {
     enable = true;
@@ -49,7 +58,7 @@
       song_window_title_format = "Now Playing ..";
       now_playing_prefix = "$b$6 ";
       now_playing_suffix = "  $/b$8";
-      current_item_prefix = "$b$6$/b$3 ";
+      current_item_prefix = "$b$6$/b$6";
       current_item_suffix = "  $8";
       statusbar_color = "white";
       color1 = "white";

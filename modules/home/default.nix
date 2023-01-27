@@ -25,7 +25,7 @@
     ./waybar
     ./newsboat
     ./hyprland
-    ./mpd
+    ./media
     ./zathura
     ./helix
     ./schizofox
