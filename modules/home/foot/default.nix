@@ -9,6 +9,7 @@
   ];
   programs.foot = {
     enable = true;
+    # doesnt work properly
     server.enable = false;
     settings = {
       main = {
