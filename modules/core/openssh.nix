@@ -6,13 +6,15 @@
 }: {
   services.openssh = {
     enable = true;
-    permitRootLogin = lib.mkForce "no";
+    settings = {
+      PermitRootLogin = lib.mkForce "no";
+      UseDns = false;
+      PasswordAuthentication = lib.mkForce false;
+      KbdInteractiveAuthentication = false;
+    };
     openFirewall = true;
     forwardX11 = false;
-    useDns = false;
     ports = [22];
-    passwordAuthentication = lib.mkForce false;
-    kbdInteractiveAuthentication = false;
     banner = ''
       ⣿⣿⣿⣿⣿⣿⣿⣿⡿⠿⠛⠛⠛⠋⠉⠈⠉⠉⠉⠉⠛⠻⢿⣿⣿⣿⣿⣿⣿⣿
       ⣿⣿⣿⣿⣿⡿⠋⠁⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠉⠛⢿⣿⣿⣿⣿

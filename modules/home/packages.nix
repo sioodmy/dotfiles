@@ -9,7 +9,6 @@
     cached-nix-shell
     todo
     brave
-    libreoffice-fresh
     yt-dlp
     pavucontrol
     tdesktop
@@ -24,6 +23,7 @@
     rsync
     ttyper
     wine
+    alacritty
     ffmpeg
     gimp
     imagemagick
