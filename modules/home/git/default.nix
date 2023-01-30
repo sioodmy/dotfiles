@@ -3,6 +3,7 @@
   pkgs,
   ...
 }: {
+  home.packages = with pkgs; [zsh-forgit gitflow];
   programs.git = {
     enable = true;
     userName = "sioodmy";
