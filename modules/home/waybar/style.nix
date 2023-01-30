@@ -35,6 +35,10 @@ in ''
     color: #8caaee;
   }
 
+  #cpu {
+    color: #e5c890;
+  }
+
   #custom-weather,
   #clock {
     color: #c6d0f5;
