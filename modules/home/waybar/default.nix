@@ -48,7 +48,7 @@ in {
           "custom/weather"
           "clock"
         ];
-        modules-right = ["pulseaudio" "network" "custom/power"];
+        modules-right = ["pulseaudio" "cpu" "network" "custom/power"];
         "wlr/workspaces" = {
           on-click = "activate";
           format = "{icon}";
@@ -131,6 +131,10 @@ in {
         backlight = {
           format = "{icon}";
           format-icons = ["" "" "" "" "" "" "" "" ""];
+        };
+        cpu = {
+          interval = 5;
+          format = "  {}%";
         };
         battery = {
           states = {
