@@ -58,10 +58,10 @@ in {
             active = " 󰮯";
           };
         };
-        "custom/search" = {
+        "custom/search" = with pkgs; {
           format = " ";
           tooltip = false;
-          on-click = "${pkgs.killall}/bin/killall rofi || ${config.programs.rofi.package}/bin/rofi -show drun";
+          on-click = "${killall}/bin/killall tofi || ${tofi}/bin/tofi-drun";
         };
 
         "custom/weather" = {
@@ -97,29 +97,7 @@ in {
         };
         "custom/power" = {
           tooltip = false;
-          on-click = let
-            doas = pkgs.doas + "/bin/doas";
-            rofi = config.programs.rofi.package + "/bin/rofi";
-            poweroff = pkgs.systemd + "/bin/poweroff";
-            reboot = pkgs.systemd + "/bin/reboot";
-          in
-            pkgs.writeShellScript "shutdown-waybar" ''
-
-              #!/bin/sh
-
-              off=" Shutdown"
-              reboot=" Reboot"
-              cancel=" Cancel"
-
-              sure="$(printf '%s\n%s\n%s' "$off" "$reboot" "$cancel" |
-              	${rofi} -dmenu -p ' Are you sure?')"
-
-              if [ "$sure" = "$off" ]; then
-              	${doas} ${poweroff}
-              elif [ "$sure" = "$reboot" ]; then
-              	${doas} ${reboot}
-              fi
-            '';
+          # TODO
           format = "襤 ";
         };
         clock = {

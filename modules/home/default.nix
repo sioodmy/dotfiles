@@ -17,7 +17,7 @@
     ./git
     ./foot
     ./dunst
-    ./rofi
+    ./tofi
     ./bottom
     ./shell
     ./swaylock
