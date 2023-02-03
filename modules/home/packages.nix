@@ -23,6 +23,7 @@
     ffmpeg
     gimp
     imagemagick
+    aseprite
     transmission-gtk
     bandwhich
     grex
