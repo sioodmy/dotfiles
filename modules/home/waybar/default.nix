@@ -17,11 +17,18 @@
       chmod +x $out/bin/waybar-wttr
     '';
   };
+
+  get-crypto-price =
+    pkgs.writeShellScriptBin "get-crypto-price"
+    ''
+      #!/bin/sh
+      price="$(curl -s https://api.binance.com/api/v3/ticker/price?symbol=$1 | ${lib.getExe pkgs.jq} '.price' | sed 's/\"//g')"
+      printf "%.2f" $price
+    '';
 in {
   xdg.configFile."waybar/style.css".text = import ./style.nix;
   programs.waybar = {
     enable = true;
-    systemd.enable = true;
     package = pkgs.waybar.overrideAttrs (oldAttrs: {
       mesonFlags = oldAttrs.mesonFlags ++ ["-Dexperimental=true"];
       patchPhase = ''
@@ -43,6 +50,7 @@ in {
           "custom/lock"
           "backlight"
           "battery"
+          "custom/eth"
         ];
         modules-center = [
           "custom/weather"
@@ -70,6 +78,12 @@ in {
           interval = 30;
           exec = "${waybar-wttr}/bin/waybar-wttr";
           return-type = "json";
+        };
+        "custom/eth" = {
+          format = "󰡪 {}";
+          tooltip = true;
+          interval = 30;
+          exec = "${lib.getExe get-crypto-price} ETHBUSD";
         };
         "custom/lock" = {
           tooltip = false;

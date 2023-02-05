@@ -87,7 +87,6 @@ in ''
   #custom-todo,
   #custom-lock,
   #custom-weather,
-  #custom-btc,
   #custom-eth,
   #volume,
   #pulseaudio {
@@ -101,6 +100,10 @@ in ''
     color: #ca9ee6;
   }
 
+
+  #custom-eth {
+    color: #8caaee;
+  }
 
   #custom-lock {
       color: #8caaee;
