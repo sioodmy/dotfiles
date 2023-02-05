@@ -8,6 +8,7 @@
   home.packages = with pkgs; [
     cached-nix-shell
     todo
+    qalculate-gtk
     brave
     yt-dlp
     tdesktop
