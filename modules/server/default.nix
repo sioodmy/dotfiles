@@ -23,7 +23,7 @@
   services.openssh.extraConfig = ''
     Match User git
       AuthorizedKeysCommandUser git
-      AuthorizedKeysCommand ${pkgs.gitea}/bin/gitea keys -e git -u %u -t %t -k %k
+      AuthorizedKeysCommand ${lib.getExe pkgs.forgejo} keys -e git -u %u -t %t -k %k
     Match all
   '';
 
@@ -64,6 +64,7 @@
   # Gitea Settings
   services.gitea = {
     enable = true;
+    package = pkgs.forgejo;
     lfs.enable = true;
 
     # Security
