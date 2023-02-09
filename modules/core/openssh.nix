@@ -9,11 +9,11 @@
     settings = {
       PermitRootLogin = lib.mkForce "no";
       UseDns = false;
+      X11Forwarding = false;
       PasswordAuthentication = lib.mkForce false;
       KbdInteractiveAuthentication = false;
     };
     openFirewall = true;
-    forwardX11 = false;
     ports = [22];
     banner = ''
       ⣿⣿⣿⣿⣿⣿⣿⣿⡿⠿⠛⠛⠛⠋⠉⠈⠉⠉⠉⠉⠛⠻⢿⣿⣿⣿⣿⣿⣿⣿
