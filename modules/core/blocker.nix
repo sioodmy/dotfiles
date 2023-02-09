@@ -8,8 +8,8 @@
 {
   networking.extraHosts =
     builtins.readFile (pkgs.fetchurl {
-      url = "https://raw.githubusercontent.com/StevenBlack/hosts/e1bb5f08e6f9f4daef93cc327580a95f83959f38/alternates/fakenews-gambling-porn/hosts";
-      sha256 = "tqw5FwFkyTVRiKCbJM/GwDHfpg7gUYOSppS4RB80Y9Y=";
+      url = "https://raw.githubusercontent.com/StevenBlack/hosts/e1bb5f08e6f9f4daef93cc327580a95f83959f38/alternates/fakenews-gambling/hosts";
+      sha256 = "LZt3/AvsbYuW+TWsnGnRQNXhvGYO0tMc7uHY/A19bUc=";
       # blocks fakenews, gambling and coomer sites
     })
     + builtins.readFile (pkgs.fetchurl {
