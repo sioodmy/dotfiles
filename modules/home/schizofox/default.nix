@@ -321,7 +321,7 @@ in {
             "permissions.manager.defaultsUrl" = "";
             "webchannel.allowObject.urlWhitelist" = "";
             "network.IDN_show_punycode" = true;
-            "pdfjs.disabled" = true;
+            "pdfjs.disabled" = false;
             "dom.webnotifications.serviceworker.enabled" = false;
             "dom.webnotifications.enabled" = false;
             "dom.ipc.plugins.flash.subprocess.crashreporter.enabled" = false;
