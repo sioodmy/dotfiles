@@ -15,12 +15,13 @@
     tracy
     hyperfine
     fzf
+    glow
+    nmap
     unzip
     ripgrep
     rsync
     ttyper
     wine
-    alacritty
     ffmpeg
     gimp
     imagemagick
