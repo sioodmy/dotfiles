@@ -3,6 +3,7 @@
   pkgs,
   ...
 }: {
+  users.users.root.initialPassword = "changeme";
   users.users.sioodmy = {
     isNormalUser = true;
     extraGroups = [

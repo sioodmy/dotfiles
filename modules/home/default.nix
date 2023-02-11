@@ -13,7 +13,7 @@
   imports = [
     ./packages.nix
 
-    ./gtk
+    ./qt
     ./git
     ./foot
     ./dunst
