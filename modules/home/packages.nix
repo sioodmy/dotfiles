@@ -10,6 +10,7 @@
     todo
     qalculate-gtk
     brave
+    nheko
     yt-dlp
     tdesktop
     tracy
