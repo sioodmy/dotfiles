@@ -13,9 +13,10 @@
   imports = [
     ./packages.nix
 
-    ./qt
+    ./gtk
     ./git
     ./foot
+    ./easyeffects
     ./dunst
     ./tofi
     ./bottom
