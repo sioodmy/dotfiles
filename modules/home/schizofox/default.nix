@@ -337,6 +337,7 @@ in {
             "extensions.postDownloadThirdPartyPrompt" = false;
             "browser.contentblocking.category" = "strict";
             "privacy.partition.serviceWorkers" = true;
+            "privacy.webrtc.legacyGlobalIndicator" = false
             "privacy.partition.always_partition_third_party_non_cookie_storage" =
               true;
             "privacy.partition.always_partition_third_party_non_cookie_storage.exempt_sessionstorage" =
