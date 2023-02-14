@@ -80,7 +80,7 @@ in {
               {
                 Name = "Crates.io";
                 Description = "Rust crates";
-                Alias = "crates";
+                Alias = "!rs";
                 Method = "GET";
                 URLTemplate = "https://crates.io/search?q={searchTerms}";
               }
@@ -90,6 +90,13 @@ in {
                 Alias = "!nix";
                 Method = "GET";
                 URLTemplate = "https://search.nixos.org/packages?&query={searchTerms}";
+              }
+              {
+                Name = "youtube";
+                Description = "not really";
+                Alias = "!yt";
+                Method = "GET";
+                URLTemplate = "https://yt.femboy.hu/search?q={searchTerms}";
               }
               {
                 Name = "Librex";
