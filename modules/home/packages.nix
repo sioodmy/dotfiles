@@ -23,6 +23,10 @@
     rsync
     ttyper
     wine
+    session-desktop
+    tor-browser-bundle-bin
+    tessen
+    gopass
     ffmpeg
     gimp
     imagemagick
