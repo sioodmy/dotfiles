@@ -4,6 +4,35 @@
             "mpd",
             "mpd.pipewire"
         ],
+        "compressor#0": {
+            "attack": 19.969999999999995,
+            "boost-amount": 6.0,
+            "boost-threshold": -72.0,
+            "bypass": false,
+            "dry": -100.0,
+            "hpf-frequency": 10.0,
+            "hpf-mode": "off",
+            "input-gain": 14.9,
+            "knee": -6.499999999999998,
+            "lpf-frequency": 20000.0,
+            "lpf-mode": "off",
+            "makeup": 0.0,
+            "mode": "Upward",
+            "output-gain": -8.3,
+            "ratio": 3.9400000000000013,
+            "release": 100.0,
+            "release-threshold": -100.0,
+            "sidechain": {
+                "lookahead": 0.0,
+                "mode": "RMS",
+                "preamp": 0.0,
+                "reactivity": 10.0,
+                "source": "Middle",
+                "type": "Feed-forward"
+            },
+            "threshold": -12.0,
+            "wet": 0.0
+        },
         "multiband_compressor#0": {
             "band0": {
                 "attack-threshold": -12.0,
@@ -219,16 +248,17 @@
                 "solo": false,
                 "split-frequency": 16000.0
             },
-            "bypass": false,
+            "bypass": true,
             "compressor-mode": "Modern",
             "dry": -100.0,
             "envelope-boost": "None",
-            "input-gain": 26.1,
-            "output-gain": -18.0,
+            "input-gain": 19.2,
+            "output-gain": -0.8,
             "wet": 0.0
         },
         "plugins_order": [
-            "multiband_compressor#0"
+            "multiband_compressor#0",
+            "compressor#0"
         ]
     }
 }
