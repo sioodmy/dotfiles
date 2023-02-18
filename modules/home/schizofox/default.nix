@@ -14,8 +14,12 @@ in {
     userAgent = mkOption {
       type = types.str;
       example = "Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:106.0) Gecko/20100101 Firefox/106.0";
-      default = "Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:106.0) Gecko/20100101 Firefox/106.0";
+      default = "Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:110.0) Gecko/20100101 Firefox/110.0";
       description = "Spoof user agent";
+      # Some other user agnets
+      # Mozilla/5.0 (X11; Linux x86_64; rv:110.0) Gecko/20100101 Firefox/110.0
+      # Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:110.0) Gecko/20100101 Firefox/110.0
+      # Mozilla/5.0 (X11; Fedora; Linux x86_64; rv:110.0) Gecko/20100101 Firefox/110.0
     };
   };
 
@@ -380,8 +384,32 @@ in {
             "browser.contentblocking.report.vpn-android.url" = "";
             "browser.contentblocking.report.vpn-ios.url" = "";
             "browser.privatebrowsing.promoEnabled" = false;
-
             "browser.region.network.url" = "";
+            "dom.security.https_only_mode" = true;
+            "dom.security.https_only_mode_send_http_background_request" = false;
+            "browser.xul.error_pages.expert_bad_cert" = true;
+            "layout.css.font-visibility.private" = 1;
+            "layout.css.font-visibility.standard" = 1;
+            "layout.css.font-visibility.trackingprotection" = 1;
+            "privacy.userContext.enabled" = true;
+            "privacy.userContext.ui.enabled" = true;
+            "media.peerconnection.ice.proxy_only_if_behind_proxy" = true;
+            "media.peerconnection.ice.default_address_only" = true;
+            "dom.disable_window_move_resize" = true;
+            "accessibility.force_disabled" = 1;
+            "browser.helperApps.deleteTempFileOnExit" = true;
+            "browser.uitour.enabled" = false;
+            "devtools.debugger.remote-enabled" = false;
+            "webchannel.allowObject.urlWhitelist" = "";
+            "permissions.manager.defaultsUrl" = "";
+            "pdfjs.enableScripting" = false;
+            "permissions.delegation.enabled" = false;
+            "browser.contentblocking.category" = "strict";
+            "security.tls.version.enable-deprecated" = false;
+            "extensions.webcompat.enable_shims" = true;
+            "privacy.resistFingerprinting.letterboxing" = true;
+            "privacy.window.maxInnerWidth" = 1600;
+            "privacy.window.maxInnerHeight" = 900;
           };
         };
       })
