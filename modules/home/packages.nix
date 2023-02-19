@@ -9,7 +9,6 @@
     cached-nix-shell
     todo
     qalculate-gtk
-    brave
     nheko
     yt-dlp
     tdesktop

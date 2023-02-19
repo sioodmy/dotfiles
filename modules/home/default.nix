@@ -32,11 +32,4 @@
     ./schizofox
     inputs.hyprland.homeManagerModules.default
   ];
-  config.modules = {
-    programs = {
-      schizofox = {
-        enable = true;
-      };
-    };
-  };
 }
