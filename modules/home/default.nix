@@ -20,6 +20,7 @@
     ./dunst
     ./tofi
     ./bottom
+    ./discord
     ./shell
     ./swaylock
     ./tools

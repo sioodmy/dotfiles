@@ -120,7 +120,6 @@
     shellcheck
     gawk
     haskellPackages.haskell-language-server
-    nodePackages.typescript-language-server
     java-language-server
     kotlin-language-server
     nodePackages.vls

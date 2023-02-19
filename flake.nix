@@ -7,6 +7,7 @@
     nixpkgs-wayland.url = "github:nix-community/nixpkgs-wayland";
     nixos-hardware.url = "github:nixos/nixos-hardware";
     ragenix.url = "github:yaxitech/ragenix";
+    webcord.url = "github:fufexan/webcord-flake";
     hyprland.url = "github:hyprwm/Hyprland/";
     xdg-portal-hyprland.url = "github:hyprwm/xdg-desktop-portal-hyprland";
     helix.url = "github:SoraTenshi/helix/experimental-22.12";
