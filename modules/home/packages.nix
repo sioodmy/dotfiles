@@ -23,6 +23,7 @@
     ttyper
     wine
     session-desktop
+    fractal
     tor-browser-bundle-bin
     tessen
     gopass

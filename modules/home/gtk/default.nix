@@ -8,8 +8,12 @@
   gtk = {
     enable = true;
     theme = {
-      name = "Catppuccin-Frappe-Pink";
-      package = self.packages.${pkgs.system}.catppuccin-gtk;
+      name = "Catppuccin-Frappe-Compact-Pink-Dark";
+      package = pkgs.catppuccin-gtk.override {
+        accents = ["pink"];
+        size = "compact";
+        variant = "frappe";
+      };
     };
     iconTheme = {
       package = self.packages.${pkgs.system}.catppuccin-folders;
@@ -38,8 +42,9 @@
     package = self.packages.${pkgs.system}.catppuccin-cursors;
     name = "Catppuccin-Frappe-Dark";
     size = 16;
+    gtk.enable = true;
+    x11.enable = true;
   };
-  home.pointerCursor.gtk.enable = true;
 
   # credits: bruhvko
   # catppuccin theme for qt-apps

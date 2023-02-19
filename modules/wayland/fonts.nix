@@ -16,6 +16,7 @@
       inter
       lato
       lexend
+      jost
       dejavu_fonts
       iosevka-bin
       noto-fonts
