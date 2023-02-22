@@ -22,6 +22,7 @@
     ./bottom
     ./discord
     ./shell
+    ./pandoc
     ./swaylock
     ./tools
     ./waybar
