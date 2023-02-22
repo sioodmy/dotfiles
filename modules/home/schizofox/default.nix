@@ -235,7 +235,7 @@
           "network.http.sendRefererHeader" = 2;
           "network.http.referer.spoofSource" = true;
           "network.http.originextension" = false;
-          "dom.event.clipboardevents.enabled" = false;
+          "dom.event.clipboardevents.enabled" = true;
           "network.user_prefetch-next" = false;
           "network.dns.disablePrefetch" = true;
           "network.http.sendSecureXSiteReferrer" = false;
