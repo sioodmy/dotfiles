@@ -14,17 +14,6 @@
   # this is actually quite useful on servers
   systemd.services.NetworkManager-wait-online.enable = lib.mkOverride 900 true;
 
-  # hotspot
-  services.create_ap = {
-    enable = true;
-    settings = {
-      INTERNET_IFACE = "eth0";
-      WIFI_IFACE = "wlan0";
-      SSID = "NixOS hotspot";
-      PASSPHRASE = "12345678";
-    };
-  };
-
   nixpkgs.localSystem.system = "aarch64-linux";
 
   boot = {
