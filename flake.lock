@@ -1086,11 +1086,11 @@
         "nixpkgs": "nixpkgs_7"
       },
       "locked": {
-        "lastModified": 1672056404,
-        "narHash": "sha256-c7SNsURvwB9mrAIYsCs32VvGYT8TFpLSjkwc+NAWQyE=",
+        "lastModified": 1677179624,
+        "narHash": "sha256-WO1ZlOvNL6YaFI1w/5padhQLNEwAchQZQjBIhxs1hpA=",
         "ref": "refs/heads/main",
-        "rev": "71d9ae43f1eae03c3836c58800125197c3ab412f",
-        "revCount": 11,
+        "rev": "cb9478f2b83e11f5a878c7353fccb6fb29360f22",
+        "revCount": 22,
         "type": "git",
         "url": "https://git.sioodmy.dev/sioodmy/sioodmy.dev"
       },
