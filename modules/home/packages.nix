@@ -6,6 +6,7 @@
 }: {
   nixpkgs.config.allowUnfree = false;
   home.packages = with pkgs; [
+    catimg
     cached-nix-shell
     todo
     qalculate-gtk
