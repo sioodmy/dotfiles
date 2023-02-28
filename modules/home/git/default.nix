@@ -27,7 +27,7 @@
     extraConfig = {
       init = {defaultBranch = "main";};
       delta = {
-        syntax-theme = "Nord";
+        options.map-styles = "bold purple => syntax #ca9ee6, bold cyan => syntax #8caaee";
         line-numbers = true;
       };
       branch.autosetupmerge = "true";
@@ -52,6 +52,13 @@
       fuck = "commit --amend -m";
       c = "commit -m";
       ca = "commit -am";
+      forgor = "commit --amend --no-edit";
+      graph = "log --all --decorate --graph --oneline";
+      oops = "checkout --";
+      l = "log";
+      r = "rebase";
+      s = "status --short";
+      ss = "status";
       d = "diff";
       ps = "!git push origin $(git rev-parse --abbrev-ref HEAD)";
       pl = "!git pull origin $(git rev-parse --abbrev-ref HEAD)";
