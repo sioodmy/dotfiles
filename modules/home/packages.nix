@@ -7,6 +7,7 @@
   nixpkgs.config.allowUnfree = false;
   home.packages = with pkgs; [
     catimg
+    prismlauncher
     cached-nix-shell
     todo
     qalculate-gtk
