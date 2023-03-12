@@ -1,6 +1,7 @@
 {
   config,
   pkgs,
+  lib,
   ...
 }: {
   services = {
@@ -8,7 +9,7 @@
       packages = with pkgs; [dconf gcr udisks2];
       enable = true;
     };
-    udev.packages = with pkgs; [gnome.gnome-settings-daemon];
+    udev.packages = with pkgs; [gnome.gnome-settings-daemon android-udev-rules];
     journald.extraConfig = ''
       SystemMaxUse=50M
       RuntimeMaxUse=10M
@@ -29,12 +30,81 @@
   };
   environment.systemPackages = with pkgs; [
     git
+    steam-run
+    appimage-run
     (writeScriptBin "sudo" ''exec doas "$@"'')
   ];
 
   time.timeZone = "Europe/Warsaw";
-  i18n.defaultLocale = "en_US.UTF-8";
-  i18n.supportedLocales = ["en_US.UTF-8/UTF-8" "pl_PL.UTF-8/UTF-8"];
+  i18n = let
+    defaultLocale = "en_US.UTF-8";
+    pl = "pl_PL.UTF-8";
+  in {
+    inherit defaultLocale;
+    extraLocaleSettings = {
+      LANG = defaultLocale;
+      LC_COLLATE = defaultLocale;
+      LC_CTYPE = defaultLocale;
+      LC_MESSAGES = defaultLocale;
 
+      LC_ADDRESS = pl;
+      LC_IDENTIFICATION = pl;
+      LC_MEASUREMENT = pl;
+      LC_MONETARY = pl;
+      LC_NAME = pl;
+      LC_NUMERIC = pl;
+      LC_PAPER = pl;
+      LC_TELEPHONE = pl;
+      LC_TIME = pl;
+    };
+  };
   console.keyMap = "pl";
+
+  boot.binfmt.registrations = lib.genAttrs ["appimage" "AppImage"] (ext: {
+    recognitionType = "extension";
+    magicOrExtension = ext;
+    interpreter = "/run/current-system/sw/bin/appimage-run";
+  });
+
+  programs.nix-ld = {
+    enable = true;
+    libraries = with pkgs; [
+      stdenv.cc.cc
+      openssl
+      curl
+      glib
+      util-linux
+      glibc
+      icu
+      libunwind
+      libuuid
+      zlib
+      libsecret
+      # graphical
+      freetype
+      libglvnd
+      libnotify
+      SDL2
+      vulkan-loader
+      gdk-pixbuf
+      xorg.libX11
+    ];
+  };
+  systemd = let
+    extraConfig = ''
+      DefaultTimeoutStopSec=15s
+    '';
+  in {
+    inherit extraConfig;
+    user = {inherit extraConfig;};
+    services."getty@tty1".enable = false;
+    services."autovt@tty1".enable = false;
+    services."getty@tty7".enable = false;
+    services."autovt@tty7".enable = false;
+
+    # TODO channels-to-flakes
+    tmpfiles.rules = [
+      "D /nix/var/nix/profiles/per-user/root 755 root root - -"
+    ];
+  };
 }

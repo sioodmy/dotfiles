@@ -21,6 +21,13 @@
     config = {
       allowUnfree = false;
       allowBroken = true;
+      allowUnfreePredicate = pkg:
+        builtins.elem (lib.getName pkg) [
+          "steam-run"
+          "steam-original"
+          "nvidia-x11"
+          "nvidia-settings"
+        ];
     };
 
     overlays = with inputs; [
