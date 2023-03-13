@@ -51,7 +51,7 @@ in {
     settings = {
       global = {
         frame_color = "#f4b8e4";
-        separator_color = "#8CAAEE";
+        separator_color = "#f4b8e4";
         width = 220;
         height = 220;
         offset = "0x15";
@@ -77,19 +77,19 @@ in {
       };
       fullscreen_delay_everything.fullscreen = "delay";
       urgency_low = {
-        background = "#303446";
-        foreground = "#C6D0F5";
+        background = "#1e1e2e";
+        foreground = "#c6d0f5";
         timeout = 5;
       };
       urgency_normal = {
-        background = "#303446";
-        foreground = "#C6D0F5";
+        background = "#1e1e2e";
+        foreground = "#c6d0f5";
         timeout = 6;
       };
       urgency_critical = {
-        background = "#303446";
-        foreground = "#C6D0F5";
-        frame_color = "#EF9F76";
+        background = "#1e1e2e";
+        foreground = "#c6d0f5";
+        frame_color = "#ea999c";
         timeout = 0;
       };
     };

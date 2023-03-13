@@ -11,9 +11,9 @@ in ''
   }
 
   window#waybar {
-    background-color: #303446;
+    background-color: #1e1e2e;
     border-radius: 0px;
-    color: #c6d0f5;
+    color: #cdd6f4;
     font-size: 16px;
     /* transition-property: background-color; */
     transition-duration: 0.5s;
@@ -23,56 +23,46 @@ in ''
     opacity: 0.2;
   }
 
-  #workspaces {
-    background-color: #414559;
-  }
-
   #pulseaudio {
     color: #a6d189;
   }
 
   #network {
-    color: #8caaee;
+    color: #ca9ee6;
   }
 
   #cpu {
-    color: #e5c890;
-  }
-
-  #custom-weather,
-  #clock {
-    color: #c6d0f5;
-    background-color: #414559;
+    color: #ef9f76;
   }
 
   #workspaces button {
     background-color: transparent;
     /* Use box-shadow instead of border so the text isn't offset */
-    color: #8caaee;
+    color: #89b4fa;
     padding-left: 6px;
     box-shadow: inset 0 -3px transparent;
     transition: all 0.5s cubic-bezier(.55,-0.68,.48,1.68);
   }
 
   #workspaces button:hover {
-    color: #85c1dc;
+    color: #b4befe;
     box-shadow: inherit;
     text-shadow: inherit;
   }
 
   #custom-power {
-      color: #e78284;
+      color: #f38ba8;
       margin: 7px;
       font-size: 24px;
   }
 
   #workspaces button.active {
-    color: #e5c890;
+    color: #f9e2af;
     transition: all 0.3s cubic-bezier(.55,-0.68,.48,1.682);
   }
 
   #workspaces button.urgent {
-    background-color: #e78284;
+    background-color: #eba0ac;
   }
   #custom-weather,
 
@@ -91,27 +81,27 @@ in ''
   #volume,
   #pulseaudio {
     border-radius: 15px;
-    background-color: #414559;
+    background-color: #313244;
     padding: 0px 10px 0px 10px;
     margin: 5px 0px 5px 0px;
   }
 
   #custom-swallow {
-    color: #ca9ee6;
+    color: #94e2d5;
   }
 
 
   #custom-eth {
-    color: #8caaee;
+    color: #89b4fa;
   }
 
   #custom-lock {
-      color: #8caaee;
+      color: #89b4fa;
       padding: 0 20px 0 20px;
   }
 
   #custom-todo {
-    color: #c6d0f5;
+    color: #bac2de;
   }
 
   #custom-search {
@@ -123,18 +113,18 @@ in ''
     background-repeat: no-repeat;
   }
   #backlight {
-    color: #e5c890;
+    color: #f9e2af;
   }
   #battery {
-    color: #a6d189;
+    color: #a6e3a1;
   }
 
   #battery.warning {
-    color: #ef9f76;
+    color: #fab387;
   }
 
   #battery.critical:not(.charging) {
-    color: #e78284;
+    color: #f38ba8;
   }
   tooltip {
     font-family: 'Lato', sans-serif;

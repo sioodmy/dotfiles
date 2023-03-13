@@ -10,6 +10,8 @@
     prismlauncher
     cached-nix-shell
     todo
+    nodePackages_latest.peerflix
+    deadnix
     qalculate-gtk
     nheko
     yt-dlp
