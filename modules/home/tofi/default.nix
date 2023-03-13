@@ -42,20 +42,20 @@
     padding-right = 0
     prompt-text = " "
     prompt-padding = 30
-    background-color = #303446
-    text-color = #c6d0f5
-    prompt-color = #303446
-    prompt-background = #8caaee
+    background-color = #1e1e2e
+    text-color = #cdd6f4
+    prompt-color = #1e1e2e
+    prompt-background = #89b4fa
     prompt-background-padding = 4, 10
     prompt-background-corner-radius = 12
-    input-background = #414559
+    input-background = #313244
     input-background-padding = 4, 10
     input-background-corner-radius = 12
-    selection-color = #303446
-    selection-background = #8caaee
+    selection-color = #1e1e2e
+    selection-background = #89b4fa
     selection-background-padding = 4, 10
     selection-background-corner-radius = 12
-    selection-match-color = #c6d0f5
+    selection-match-color = #bac2de
     clip-to-padding = false
   '';
 }

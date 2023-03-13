@@ -118,18 +118,18 @@ in {
         zle -N self-insert url-quote-magic
         export FZF_DEFAULT_OPTS="
         --color fg:#c6d0f5
-        --color fg+:#51576d
-        --color bg:#303446
-        --color bg+:#303446
-        --color hl:#8caaee
-        --color hl+:#8caaee
-        --color info:#626880
+        --color fg+:#45475a
+        --color bg:#1e1e2e
+        --color bg+:#1e1e2e
+        --color hl:#89b4fa
+        --color hl+:#89b4fa
+        --color info:#585b70
         --color prompt:#a6d189
-        --color spinner:#8caaee
-        --color pointer:#8caaee
-        --color marker:#8caaee
-        --color border:#626880
-        --color header:#8caaee
+        --color spinner:#89b4fa
+        --color pointer:#89b4fa
+        --color marker:#89b4fa
+        --color border:#585b70
+        --color header:#89b4fa
         --prompt ' | '
         --pointer ''
         --layout=reverse
