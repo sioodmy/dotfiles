@@ -22,10 +22,10 @@
     glow
     nmap
     unzip
+    wineWowPackages.stable
     ripgrep
     rsync
     ttyper
-    wine
     session-desktop
     fractal
     tor-browser-bundle-bin
