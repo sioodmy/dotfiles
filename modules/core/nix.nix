@@ -47,18 +47,20 @@
     gc = {
       automatic = true;
       dates = "daily";
-      options = "--delete-older-than 4d";
+      options = "--delete-older-than 3d";
     };
     package = pkgs.nixUnstable;
+
+    # Make builds run with low priority so my system stays responsive
+    daemonCPUSchedPolicy = "idle";
+    daemonIOSchedClass = "idle";
 
     # pin the registry to avoid downloading and evaling a new nixpkgs version every time
     registry = lib.mapAttrs (_: v: {flake = v;}) inputs;
 
-    # set the path for channels compat
-    nixPath = [
-      "nixpkgs=/etc/nix/flake-channels/nixpkgs"
-      "home-manager=/etc/nix/flake-channels/home-manager"
-    ];
+    # This will additionally add your inputs to the system's legacy channels
+    # Making legacy nix commands consistent as well, awesome!
+    nixPath = lib.mapAttrsToList (key: value: "${key}=${value.to.path}") config.nix.registry;
 
     # Free up to 1GiB whenever there is less than 100MiB left.
     extraOptions = ''
@@ -71,9 +73,19 @@
     '';
     settings = {
       auto-optimise-store = true;
+      # use binary cache, its not gentoo
       builders-use-substitutes = true;
-      trusted-users = ["root" "@wheel"];
+      # allow sudo users to mark the following values as trusted
+      allowed-users = ["@wheel"];
+      # only allow sudo users to manage the nix store
+      trusted-users = ["@wheel"];
       max-jobs = "auto";
+      # continue building derivations if one fails
+      keep-going = true;
+      sandbox = true;
+      log-lines = 20;
+      extra-experimental-features = ["flakes" "nix-command" "recursive-nix" "ca-derivations"];
+
       # use binary cache, its not gentoo
       substituters = [
         "https://cache.nixos.org"
@@ -82,6 +94,7 @@
         "https://nix-community.cachix.org"
         "https://hyprland.cachix.org"
         "https://webcord.cachix.org"
+        "https://nixpkgs-unfree.cachix.org"
       ];
 
       trusted-public-keys = [
@@ -91,6 +104,7 @@
         "nix-community.cachix.org-1:mB9FSh9qf2dCimDSUo8Zy7bkq5CX+/rkCWyvRCYg3Fs="
         "hyprland.cachix.org-1:a7pgxzMz7+chwVL3/pzj6jIBMioiJM7ypFP8PwtkuGc="
         "webcord.cachix.org-1:l555jqOZGHd2C9+vS8ccdh8FhqnGe8L78QrHNn+EFEs="
+        "nixpkgs-unfree.cachix.org-1:hqvoInulhbV4nJ9yJOEr+4wxhDV4xq2d1DK7S6Nj6rs="
       ];
     };
   };

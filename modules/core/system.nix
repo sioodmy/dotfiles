@@ -21,8 +21,11 @@
     bash.promptInit = ''eval "$(${pkgs.starship}/bin/starship init bash)"'';
   };
 
-  # compresses half the ram for use as swap
-  zramSwap.enable = true;
+  # compress half of the ram to use as swap
+  zramSwap = {
+    enable = true;
+    algorithm = "zstd";
+  };
 
   environment.variables = {
     EDITOR = "hx";
@@ -35,7 +38,11 @@
     (writeScriptBin "sudo" ''exec doas "$@"'')
   ];
 
-  time.timeZone = "Europe/Warsaw";
+  time = {
+    timeZone = "Europe/Warsaw";
+    hardwareClockInLocalTime = true;
+  };
+
   i18n = let
     defaultLocale = "en_US.UTF-8";
     pl = "pl_PL.UTF-8";
@@ -58,7 +65,12 @@
       LC_TIME = pl;
     };
   };
-  console.keyMap = "pl";
+  console = let
+    variant = "u24n";
+  in {
+    font = "${pkgs.terminus_font}/share/consolefonts/ter-${variant}.psf.gz";
+    keyMap = "pl";
+  };
 
   boot.binfmt.registrations = lib.genAttrs ["appimage" "AppImage"] (ext: {
     recognitionType = "extension";
@@ -101,10 +113,36 @@
     services."autovt@tty1".enable = false;
     services."getty@tty7".enable = false;
     services."autovt@tty7".enable = false;
+    # Systemd OOMd
+    # Fedora enables these options by default. See the 10-oomd-* files here:
+    # https://src.fedoraproject.org/rpms/systemd/tree/acb90c49c42276b06375a66c73673ac3510255
+    oomd = {
+      enableRootSlice = true;
+      enableUserServices = true;
+    };
 
     # TODO channels-to-flakes
     tmpfiles.rules = [
       "D /nix/var/nix/profiles/per-user/root 755 root root - -"
     ];
+  };
+
+  programs = {
+    # type "fuck" to fix the last command that made you go "fuck"
+    thefuck.enable = true;
+
+    # allow users to mount fuse filesystems with allow_other
+    fuse.userAllowOther = true;
+
+    # help manage android devices via command line
+    adb.enable = true;
+
+    # "saying java is good because it runs on all systems is like saying
+    # anal sex is good because it works on all species"
+    # - sun tzu
+    java = {
+      enable = true;
+      package = pkgs.jre;
+    };
   };
 }
