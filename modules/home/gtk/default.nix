@@ -39,8 +39,8 @@
 
   # cursor theme
   home.pointerCursor = {
-    package = pkgs.bibata-cursors;
-    name = "Bibata-Modern-Classic";
+    package = pkgs.catppuccin-cursors.mochaDark;
+    name = "Catppuccin-Mocha-Dark-Cursors";
     size = 16;
     gtk.enable = true;
     x11.enable = true;
