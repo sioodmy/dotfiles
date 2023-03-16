@@ -48,12 +48,24 @@
       bind-key U show-urls
       bind-key x pb-delete
 
-      color listnormal black default
-      color listfocus white default
-      color listnormal_unread white default
-      color listfocus_unread magenta default bold
-      color info white black bold
-      color article white default bold
+      color listnormal         color15 default
+      color listnormal_unread  color2  default
+      color listfocus_unread   color2  color0
+      color listfocus          default color0
+      color background         default default
+      color article            default default
+      color end-of-text-marker color8  default
+      color info               color4  color8
+      color hint-separator     default color8
+      color hint-description   default color8
+      color title              color14 color8
+
+      highlight article "^(Feed|Title|Author|Link|Date): .+" color4 default bold
+      highlight article "^(Feed|Title|Author|Link|Date):" color14 default bold
+
+      highlight article "\\((link|image|video)\\)" color8 default
+      highlight article "https?://[^ ]+" color4 default
+      highlight article "\[[0-9]+\]" color6 default bold
       user-agent "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/107.0.0.0 Safari/537.36"
     '';
   };
