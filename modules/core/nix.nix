@@ -82,7 +82,6 @@
       max-jobs = "auto";
       # continue building derivations if one fails
       keep-going = true;
-      sandbox = true;
       log-lines = 20;
       extra-experimental-features = ["flakes" "nix-command" "recursive-nix" "ca-derivations"];
 
