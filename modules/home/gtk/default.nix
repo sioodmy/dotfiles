@@ -1,6 +1,7 @@
 {
   self,
   pkgs,
+  lib,
   config,
   inputs,
   ...
@@ -41,9 +42,13 @@
   home.pointerCursor = {
     package = pkgs.catppuccin-cursors.mochaDark;
     name = "Catppuccin-Mocha-Dark-Cursors";
-    size = 16;
     gtk.enable = true;
     x11.enable = true;
+  };
+
+  home.sessionVariables = {
+    # XCURSOR_SIZE = lib.mkOverride "16";
+    XCURSOR_SIZE = "16";
   };
 
   # credits: bruhvko
