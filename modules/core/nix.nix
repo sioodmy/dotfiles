@@ -29,10 +29,6 @@
           "nvidia-settings"
         ];
     };
-
-    overlays = with inputs; [
-      rust-overlay.overlays.default
-    ];
   };
 
   # faster rebuilding
