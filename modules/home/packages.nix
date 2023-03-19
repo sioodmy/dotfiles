@@ -10,7 +10,6 @@
     prismlauncher
     cached-nix-shell
     todo
-    nodePackages_latest.peerflix
     deadnix
     qalculate-gtk
     nheko
@@ -22,13 +21,9 @@
     glow
     nmap
     unzip
-    wineWowPackages.stable
     ripgrep
     rsync
     ttyper
-    session-desktop
-    fractal
-    tor-browser-bundle-bin
     tessen
     gopass
     ffmpeg
