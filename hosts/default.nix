@@ -3,7 +3,7 @@
   self,
   ...
 }: let
-  inputs = self.inputs;
+  inherit (self) inputs;
   bootloader = ../modules/core/bootloader.nix;
   core = ../modules/core;
   nvidia = ../modules/nvidia;
