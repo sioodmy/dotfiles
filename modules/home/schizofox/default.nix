@@ -103,10 +103,9 @@
         };
 
         ExtensionSettings = let
-          mkForceInstalled = extensions:
+          mkForceInstalled =
             builtins.mapAttrs
-            (name: cfg: {installation_mode = "force_installed";} // cfg)
-            extensions;
+            (name: cfg: {installation_mode = "force_installed";} // cfg);
         in
           mkForceInstalled {
             "addon@darkreader.org".install_url = "https://addons.mozilla.org/firefox/downloads/latest/darkreader/latest.xpi";

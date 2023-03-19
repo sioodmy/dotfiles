@@ -10,9 +10,7 @@
     prismlauncher
     cached-nix-shell
     todo
-    deadnix
     qalculate-gtk
-    nheko
     yt-dlp
     tdesktop
     tracy

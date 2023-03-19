@@ -41,5 +41,7 @@
       catppuccin-gtk = pkgs.callPackage ./pkgs/catppuccin-gtk.nix {};
       catppuccin-cursors = pkgs.callPackage ./pkgs/catppuccin-cursors.nix {};
     };
+
+    formatter.${system} = pkgs.alejandra;
   };
 }

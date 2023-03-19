@@ -12,8 +12,7 @@
       "nix/flake-channels/home-manager".source = inputs.home-manager;
     };
 
-    # we need git for flakes
-    systemPackages = [pkgs.git];
+    systemPackages = with pkgs; [git deadnix alejandra statix];
     defaultPackages = [];
   };
 
