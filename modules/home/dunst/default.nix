@@ -38,10 +38,10 @@ in {
     enable = true;
     package = pkgs.dunst.overrideAttrs (oldAttrs: {
       src = pkgs.fetchFromGitHub {
-        owner = "k-vernooy";
+        owner = "sioodmy";
         repo = "dunst";
-        rev = "61567d58855ba872f8237861ddcd786d03dd2631";
-        sha256 = "ttaaomjb3CclZG9JPdzDBj5XXlqRaKGPBY3ahFofqVM=";
+        rev = "6477864bd870dc74f9cf76bb539ef89051554525";
+        sha256 = "FCoGrYipNOZRvee6Ks5PQB5y2IvN+ptCAfNuLXcD8Sc=";
       };
     });
     iconTheme = {
