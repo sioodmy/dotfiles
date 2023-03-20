@@ -10,7 +10,7 @@
       font = "Iosevka 15";
 
       default-fg = "#CDD6F4";
-      default-bg = "#1E1E2E";
+      default-bg = "rgba(30, 30, 46, 0.8)";
 
       completion-bg = "#313244";
       completion-fg = "#CDD6F4";
@@ -33,18 +33,18 @@
       selection-notification = true;
 
       inputbar-fg = "#CDD6F4";
-      inputbar-bg = "#313244";
+      inputbar-bg = "rgba(30, 30, 46, 0.8)";
 
       recolor = true;
-      recolor-lightcolor = "#1E1E2E";
+      recolor-lightcolor = "rgba(0,0,0,0)";
       recolor-darkcolor = "#CDD6F4";
 
       index-fg = "#CDD6F4";
-      index-bg = "#1E1E2E";
+      index-bg = "rgba(30, 30, 46, 0.8)";
       index-active-fg = "#CDD6F4";
       index-active-bg = "#313244";
 
-      render-loading-bg = "#1E1E2E";
+      render-loading-bg = "rgba(30, 30, 46, 0.8)";
       render-loading-fg = "#CDD6F4";
 
       highlight-color = "#575268";
