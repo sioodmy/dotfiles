@@ -112,7 +112,6 @@
     rust-analyzer
     texlab
     zls
-    elixir_ls
     gcc
     uncrustify
     black
