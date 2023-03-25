@@ -22,6 +22,7 @@
     ripgrep
     rsync
     ttyper
+    brave
     tessen
     gopass
     ffmpeg
