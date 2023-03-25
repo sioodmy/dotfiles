@@ -42,7 +42,7 @@
     ];
     initrd.verbose = false;
     # switch from old ass lts kernel
-    kernelPackages = pkgs.linuxPackages_xanmod_latest;
+    kernelPackages = lib.mkDefault pkgs.linuxPackages_xanmod_latest;
     extraModprobeConfig = "options hid_apple fnmode=1";
 
     loader = {
