@@ -4,6 +4,7 @@
   ...
 }: {
   users.users.root.initialPassword = "changeme";
+  programs.zsh.enable = true;
   users.users.sioodmy = {
     isNormalUser = true;
     extraGroups = [
