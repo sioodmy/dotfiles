@@ -23,6 +23,7 @@
       allowUnfreePredicate = pkg:
         builtins.elem (lib.getName pkg) [
           "steam-run"
+          "steam"
           "steam-original"
           "nvidia-x11"
           "nvidia-settings"

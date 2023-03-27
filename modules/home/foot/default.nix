@@ -34,7 +34,7 @@
 
         bright0 = "585b70";
         bright1 = "f38ba8";
-        bright2 = "a6e3a1c";
+        bright2 = "a6e3a1";
         bright3 = "f9e2af";
         bright4 = "89b4fa";
         bright5 = "f5c2e7";

@@ -130,6 +130,7 @@
   programs = {
     # type "fuck" to fix the last command that made you go "fuck"
     thefuck.enable = true;
+    steam.enable = true;
 
     # allow users to mount fuse filesystems with allow_other
     fuse.userAllowOther = true;
