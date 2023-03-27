@@ -22,6 +22,8 @@
     ripgrep
     rsync
     ttyper
+    gamemode
+    mangohud
     brave
     tessen
     gopass
