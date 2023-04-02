@@ -122,7 +122,6 @@
     java-language-server
     kotlin-language-server
     nodePackages.vls
-    nodePackages.yaml-language-server
     nodePackages.jsonlint
     nodePackages.yarn
     sumneko-lua-language-server
