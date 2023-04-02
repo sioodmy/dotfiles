@@ -22,6 +22,7 @@
     ripgrep
     rsync
     ttyper
+    libreoffice-fresh-unwrapped
     gamemode
     mangohud
     brave
