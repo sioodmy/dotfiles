@@ -8,6 +8,8 @@
   home.packages = with pkgs; [
     catimg
     prismlauncher
+    jre8
+    ledger-live-desktop
     cached-nix-shell
     todo
     qalculate-gtk
