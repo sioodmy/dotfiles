@@ -4,9 +4,14 @@
   lib,
   ...
 }: {
+  environment.systemPackages = [
+    # For debugging and troubleshooting Secure Boot.
+    pkgs.sbctl
+  ];
   boot = {
     binfmt.emulatedSystems = ["aarch64-linux"];
     cleanTmpDir = true;
+    bootspec.enable = true;
     consoleLogLevel = 0;
     # some kernel parameters, i dont remember what half of this shit does but who cares
     kernelParams = [
