@@ -186,7 +186,7 @@ in {
         };
       in
         with pkgs; {
-          rebuild = "doas nix-store --verify; pushd ~dotfiles && doas nixos-rebuild switch --flake .# && notify-send \"Done\"&& bat cache --build; popd";
+          rebuild = "doas nix-store --verify; pushd ~/dev/dotfiles && doas nixos-rebuild switch --flake .# && notify-send \"Done\"&& bat cache --build; popd";
           cleanup = "doas nix-collect-garbage --delete-older-than 7d";
           bloat = "nix path-info -Sh /run/current-system";
           ytmp3 = ''
