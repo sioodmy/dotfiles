@@ -8,6 +8,7 @@
     nixos-hardware.url = "github:nixos/nixos-hardware";
     ragenix.url = "github:yaxitech/ragenix";
     webcord.url = "github:fufexan/webcord-flake";
+    helix.url = "github:helix-editor/helix";
     hyprland.url = "github:hyprwm/Hyprland/";
     xdg-portal-hyprland.url = "github:hyprwm/xdg-desktop-portal-hyprland";
     sioodmy-dev.url = "git+https://git.sioodmy.dev/sioodmy/sioodmy.dev";
