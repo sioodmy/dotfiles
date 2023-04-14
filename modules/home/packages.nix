@@ -7,9 +7,11 @@
   nixpkgs.config.allowUnfree = false;
   home.packages = with pkgs; [
     catimg
+    virtualbox
     prismlauncher
     jre8
     ledger-live-desktop
+    monero-gui
     cached-nix-shell
     todo
     qalculate-gtk
@@ -26,7 +28,6 @@
     ttyper
     libreoffice-fresh-unwrapped
     gamemode
-    mangohud
     brave
     tessen
     gopass
