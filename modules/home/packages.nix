@@ -6,11 +6,16 @@
 }: {
   nixpkgs.config.allowUnfree = false;
   home.packages = with pkgs; [
+    (symlinkJoin {
+      name = ledger-live-desktop.name;
+      paths = [ledger-live-desktop];
+      buildInputs = [makeWrapper];
+      postBuild = "wrapProgram $out/bin/ledger-live-desktop --add-flags --use-gl=desktop";
+    })
     catimg
     virtualbox
     prismlauncher
     jre8
-    ledger-live-desktop
     monero-gui
     cached-nix-shell
     todo
