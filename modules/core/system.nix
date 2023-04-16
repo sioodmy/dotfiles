@@ -4,6 +4,7 @@
   lib,
   ...
 }: {
+  virtualisation.virtualbox.host.enable = true;
   services = {
     dbus = {
       packages = with pkgs; [dconf gcr udisks2];

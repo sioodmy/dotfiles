@@ -12,6 +12,7 @@
       "gitea"
       "docker"
       "systemd-journal"
+      "vboxusers"
       "audio"
       "plugdev"
       "wireshark"

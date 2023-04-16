@@ -5,9 +5,10 @@
   inputs,
   ...
 }: {
-  home.packages = with pkgs; [swaylock-effects];
+  # home.packages = with pkgs; [swaylock-effects];
 
   programs.swaylock = {
+    package = pkgs.swaylock-effects;
     settings = {
       clock = true;
       color = "1e1e2e";
