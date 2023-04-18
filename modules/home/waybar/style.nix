@@ -27,6 +27,7 @@ in ''
     color: #a6d189;
   }
 
+  #custom-vpn,
   #network {
     color: #ca9ee6;
   }
@@ -76,6 +77,7 @@ in ''
   #workspaces,
   #custom-todo,
   #custom-lock,
+  #custom-vpn,
   #custom-weather,
   #custom-eth,
   #volume,

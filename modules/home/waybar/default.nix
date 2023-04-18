@@ -25,6 +25,13 @@
       price="$(curl -s https://api.binance.com/api/v3/ticker/price?symbol=$1 | ${lib.getExe pkgs.jq} '.price' | sed 's/\"//g')"
       printf "%.2f" $price
     '';
+
+  mullvad-status =
+    pkgs.writeShellScriptBin "mullvad-status"
+    ''
+      #!/bin/sh
+      mullvad status | awk '{print $1;}'
+    '';
 in {
   xdg.configFile."waybar/style.css".text = import ./style.nix;
   programs.waybar = {
@@ -56,7 +63,7 @@ in {
           "custom/weather"
           "clock"
         ];
-        modules-right = ["pulseaudio" "cpu" "network" "custom/power"];
+        modules-right = ["pulseaudio" "cpu" "custom/vpn" "network" "custom/power"];
         "wlr/workspaces" = {
           on-click = "activate";
           format = "{icon}";
@@ -84,6 +91,12 @@ in {
           tooltip = true;
           interval = 30;
           exec = "${lib.getExe get-crypto-price} ETHBUSD";
+        };
+        "custom/vpn" = {
+          format = " {}";
+          tooltip = true;
+          interval = 1;
+          exec = lib.getExe mullvad-status;
         };
         "custom/lock" = {
           tooltip = false;
