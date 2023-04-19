@@ -93,7 +93,7 @@ in {
           exec = "${lib.getExe get-crypto-price} ETHBUSD";
         };
         "custom/vpn" = {
-          format = " {}";
+          format = " VPN {}";
           tooltip = true;
           interval = 1;
           exec = lib.getExe mullvad-status;
