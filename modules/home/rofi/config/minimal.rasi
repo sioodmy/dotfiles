@@ -1,0 +1,55 @@
+* { 
+    primary: #1e1e2e;
+    secondary: #cdd6f4;
+    radius: 16px;
+    entries: 10;
+    font: "Lexend 11";
+    background-color: var(secondary);
+    text-color: var(primary);
+}
+
+window {
+    border-radius: var(radius);
+}
+
+mainbox {
+    spacing: 12px;
+    padding: 12px;
+}
+
+prompt {
+    padding: 8px;
+    background-color: var(primary);
+    text-color: var(secondary);
+    border-radius: var(radius);
+}
+
+entry {
+    placeholder-color: var(primary);
+    placeholder: "Search...";
+    padding: 8px;
+}
+
+inputbar {
+    children: [ prompt, entry ];
+    expand: false;
+    spacing: 6px;
+}
+
+listview {
+    scrollbar: false;
+    lines: var(entries);
+}
+
+element-text {
+    background-color: inherit;
+    text-color: inherit;
+    highlight: None;
+    margin: 6px 12px 6px 12px;
+}
+
+element.selected {
+    background-color: var(primary);
+    text-color: var(secondary);
+    border-radius: var(radius);
+}

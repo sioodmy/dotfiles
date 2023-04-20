@@ -18,7 +18,6 @@
     ./foot
     ./easyeffects
     ./dunst
-    ./tofi
     ./bottom
     ./discord
     ./shell
@@ -28,6 +27,7 @@
     ./waybar
     ./newsboat
     ./hyprland
+    ./rofi
     ./media
     ./zathura
     ./helix
