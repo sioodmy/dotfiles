@@ -76,7 +76,7 @@ in {
         "custom/search" = with pkgs; {
           format = " ";
           tooltip = false;
-          on-click = "${killall}/bin/killall tofi || ${tofi}/bin/tofi-drun";
+          on-click = "killall rofi || rofi -show drun";
         };
 
         "custom/weather" = {
