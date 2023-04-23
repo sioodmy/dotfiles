@@ -12,8 +12,8 @@
       buildInputs = [makeWrapper];
       postBuild = "wrapProgram $out/bin/ledger-live-desktop --add-flags --use-gl=desktop";
     })
+    macchina
     catimg
-    virtualbox
     prismlauncher
     jre8
     monero-gui
