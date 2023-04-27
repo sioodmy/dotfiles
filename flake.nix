@@ -8,13 +8,17 @@
     ragenix.url = "github:yaxitech/ragenix";
     webcord.url = "github:fufexan/webcord-flake";
     helix.url = "github:helix-editor/helix";
+    xdg-portal-hyprland.url = "github:hyprwm/xdg-desktop-portal-hyprland";
+    sioodmy-dev.url = "git+https://git.sioodmy.dev/sioodmy/sioodmy.dev";
+
+    anyrun = {
+      url = "github:Kirottu/anyrun";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
     hyprland = {
       url = "github:hyprwm/Hyprland/";
       inputs.nixpkgs.follows = "nixpkgs";
     };
-    xdg-portal-hyprland.url = "github:hyprwm/xdg-desktop-portal-hyprland";
-    sioodmy-dev.url = "git+https://git.sioodmy.dev/sioodmy/sioodmy.dev";
-
     home-manager = {
       url = "github:nix-community/home-manager";
       inputs.nixpkgs.follows = "nixpkgs";
