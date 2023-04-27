@@ -63,6 +63,27 @@
         "type": "github"
       }
     },
+    "anyrun": {
+      "inputs": {
+        "naersk": "naersk",
+        "nixpkgs": [
+          "nixpkgs"
+        ]
+      },
+      "locked": {
+        "lastModified": 1682601744,
+        "narHash": "sha256-ZkqGX3mUWPAjBhZ70+8P1sw1L0Y/9Si4qbHxTasQwKs=",
+        "owner": "Kirottu",
+        "repo": "anyrun",
+        "rev": "356d4f619a7c4efde9be4bbfd28057be5257b4ac",
+        "type": "github"
+      },
+      "original": {
+        "owner": "Kirottu",
+        "repo": "anyrun",
+        "type": "github"
+      }
+    },
     "crane": {
       "flake": false,
       "locked": {
@@ -625,6 +646,27 @@
         "type": "github"
       }
     },
+    "naersk": {
+      "inputs": {
+        "nixpkgs": [
+          "anyrun",
+          "nixpkgs"
+        ]
+      },
+      "locked": {
+        "lastModified": 1679567394,
+        "narHash": "sha256-ZvLuzPeARDLiQUt6zSZFGOs+HZmE+3g4QURc8mkBsfM=",
+        "owner": "nmattia",
+        "repo": "naersk",
+        "rev": "88cd22380154a2c36799fe8098888f0f59861a15",
+        "type": "github"
+      },
+      "original": {
+        "owner": "nmattia",
+        "repo": "naersk",
+        "type": "github"
+      }
+    },
     "nci": {
       "inputs": {
         "dream2nix": "dream2nix",
@@ -938,6 +980,7 @@
     },
     "root": {
       "inputs": {
+        "anyrun": "anyrun",
         "helix": "helix",
         "home-manager": "home-manager",
         "hyprland": "hyprland",

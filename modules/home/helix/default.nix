@@ -103,11 +103,30 @@
         formatter.command = lib.getExe rustfmt;
         auto-format = true;
       }
+      {
+        name = "typst";
+        scope = "source.typst";
+        injection-regex = "^typst$";
+        file-types = ["typ"];
+        comment-token = "//";
+        indent = {
+          tab-width = 2;
+          unit = "  ";
+        };
+        roots = [];
+
+        language-server = {
+          command = lib.getExe typst-lsp;
+        };
+        formatter.command = lib.getExe typst-fmt;
+        auto-format = true;
+      }
     ];
   };
 
   home.packages = with pkgs; [
     # some other lsp related packages / dev tools
+    typst
     lldb
     gopls
     rust-analyzer

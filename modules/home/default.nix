@@ -16,6 +16,7 @@
     ./gtk
     ./git
     ./foot
+    ./anyrun
     ./rnnoise
     ./dunst
     ./bottom
@@ -27,7 +28,6 @@
     ./waybar
     ./newsboat
     ./hyprland
-    ./rofi
     ./media
     ./zathura
     ./helix
