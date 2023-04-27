@@ -13,6 +13,7 @@
       postBuild = "wrapProgram $out/bin/ledger-live-desktop --add-flags --use-gl=desktop";
     })
     macchina
+    kdenlive
     catimg
     prismlauncher
     jre8

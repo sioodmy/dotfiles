@@ -4,7 +4,6 @@
 
   inputs = {
     nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
-    nixpkgs-wayland.url = "github:nix-community/nixpkgs-wayland";
     nixos-hardware.url = "github:nixos/nixos-hardware";
     ragenix.url = "github:yaxitech/ragenix";
     webcord.url = "github:fufexan/webcord-flake";

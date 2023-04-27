@@ -16,7 +16,7 @@
     ./gtk
     ./git
     ./foot
-    ./easyeffects
+    ./rnnoise
     ./dunst
     ./bottom
     ./discord

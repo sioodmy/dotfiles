@@ -185,25 +185,27 @@ in {
           sha256 = "OXLcl0T2SZ8Pmy2/dmlvKuetivmyPd5m1q+Gyd+zaYY=";
         };
       in
-        with pkgs; {
+        with pkgs;
+        with lib; {
           rebuild = "doas nix-store --verify; pushd ~/dev/dotfiles && doas nixos-rebuild switch --flake .# && notify-send \"Done\"&& bat cache --build; popd";
           cleanup = "doas nix-collect-garbage --delete-older-than 7d";
           bloat = "nix path-info -Sh /run/current-system";
           ytmp3 = ''
-            ${lib.getExe yt-dlp} -x --continue --add-metadata --embed-thumbnail --audio-format mp3 --audio-quality 0 --metadata-from-title="%(artist)s - %(title)s" --prefer-ffmpeg -o "%(title)s.%(ext)s"'';
-          cat = "${lib.getExe bat} --style=plain";
-          grep = lib.getExe ripgrep;
-          du = lib.getExe du-dust;
-          ps = lib.getExe procs;
+            ${getExe yt-dlp} -x --continue --add-metadata --embed-thumbnail --audio-format mp3 --audio-quality 0 --metadata-from-title="%(artist)s - %(title)s" --prefer-ffmpeg -o "%(title)s.%(ext)s"'';
+          cat = "${getExe bat} --style=plain";
+          vpn = getExe mullvad;
+          grep = getExe ripgrep;
+          du = getExe du-dust;
+          ps = getExe procs;
           m = "mkdir -p";
           fcd = "cd $(find -type d | fzf)";
-          ls = "${lib.getExe exa} -h --git --icons --color=auto --group-directories-first -s extension";
+          ls = "${getExe exa} -h --git --icons --color=auto --group-directories-first -s extension";
           l = "ls -lF --time-style=long-iso --icons";
           sc = "sudo systemctl";
           scu = "systemctl --user ";
-          la = "${lib.getExe exa} -lah --tree";
-          tree = "${lib.getExe exa} --tree --icons --tree";
-          http = "${lib.getExe python3} -m http.server";
+          la = "${getExe exa} -lah --tree";
+          tree = "${getExe exa} --tree --icons --tree";
+          http = "${getExe python3} -m http.server";
           burn = "pkill -9";
           diff = "diff --color=auto";
           kys = "doas shutdown now";
