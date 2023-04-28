@@ -68,3 +68,4 @@ Monero/Bitcoin (OpenAlias): sioodmy.dev
 [FromSyntax](https://github.com/FromSyntax) -
 [pupbrained](https://github.com/pupbrained) -
 [ini](https://github.com/InioX)
+[ozwaldorf.eth](https://ossian.dev/)
