@@ -76,6 +76,10 @@
     themes = {
       catppuccin_mocha_transparent = {
         "inherits" = "catppuccin_mocha";
+        "ui.virtual.inlay-hint" = {
+          fg = "surface1";
+          modifiers = ["italic"];
+        };
         "ui.background" = "{}";
       };
     };
@@ -127,6 +131,7 @@
   home.packages = with pkgs; [
     # some other lsp related packages / dev tools
     typst
+    shellcheck
     lldb
     gopls
     rust-analyzer
