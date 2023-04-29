@@ -4,6 +4,14 @@
   config,
   ...
 }: let
+  ocrScript = let
+    inherit (pkgs) grim libnotify slurp tesseract5 wl-clipboard;
+    _ = lib.getExe;
+  in
+    pkgs.writeShellScriptBin "wl-ocr" ''
+      ${_ grim} -g "$(${_ slurp})" -t ppm - | ${_ tesseract5} - - | ${wl-clipboard}/bin/wl-copy
+      ${_ libnotify} "$(${wl-clipboard}/bin/wl-paste)"
+    '';
   browser = ["firefox.desktop"];
 
   associations = {
@@ -30,6 +38,7 @@
     "x-scheme-handler/discord" = ["WebCord.desktop"];
   };
 in {
+  home.packages = [ocrScript];
   services = {
     udiskie.enable = true;
     gpg-agent = {
@@ -60,16 +69,16 @@ in {
     };
     bat = {
       enable = true;
-      themes = {
-        Catppuccin-frappe = builtins.readFile (pkgs.fetchFromGitHub {
-            owner = "catppuccin";
-            repo = "bat";
-            rev = "00bd462e8fab5f74490335dcf881ebe7784d23fa";
-            sha256 = "yzn+1IXxQaKcCK7fBdjtVohns0kbN+gcqbWVE4Bx7G8=";
-          }
-          + "/Catppuccin-frappe.tmTheme");
+      config = {
+        pager = "less -FR";
+        theme = "Catppuccin-mocha";
       };
-      config.theme = "Catppuccin-frappe";
+      themes = {
+        Catppuccin-mocha = builtins.readFile (pkgs.fetchurl {
+          url = "https://raw.githubusercontent.com/catppuccin/bat/main/Catppuccin-mocha.tmTheme";
+          hash = "sha256-qMQNJGZImmjrqzy7IiEkY5IhvPAMZpq0W6skLLsng/w=";
+        });
+      };
     };
   };
   xdg = {

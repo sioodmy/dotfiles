@@ -26,7 +26,7 @@
       bash -lc "exec ${apply-hm-env} $@"
   '';
 in {
-  home.packages = [run-as-service];
+  home.packages = [run-as-service pkgs.comma];
   home.sessionVariables.STARSHIP_CACHE = "${config.xdg.cacheHome}/starship";
   programs = {
     exa.enable = true;
@@ -38,6 +38,16 @@ in {
     dircolors = {
       enable = true;
       enableZshIntegration = true;
+    };
+
+    skim = {
+      enable = true;
+      enableZshIntegration = true;
+      defaultCommand = "rg --files --hidden";
+      changeDirWidgetOptions = [
+        "--preview 'exa --icons --git --color always -T -L 3 {} | head -200'"
+        "--exact"
+      ];
     };
 
     starship = {
@@ -115,54 +125,22 @@ in {
       '';
       initExtra = ''
         autoload -U url-quote-magic
+        # search history based on what's typed in the prompt
+        autoload -U history-search-end
+        zle -N history-beginning-search-backward-end history-search-end
+        zle -N history-beginning-search-forward-end history-search-end
+        bindkey "^[OA" history-beginning-search-backward-end
+        bindkey "^[OB" history-beginning-search-forward-end
         zle -N self-insert url-quote-magic
-        export FZF_DEFAULT_OPTS="
-        --color fg:#c6d0f5
-        --color fg+:#45475a
-        --color bg:#1e1e2e
-        --color bg+:#1e1e2e
-        --color hl:#89b4fa
-        --color hl+:#89b4fa
-        --color info:#585b70
-        --color prompt:#a6d189
-        --color spinner:#89b4fa
-        --color pointer:#89b4fa
-        --color marker:#89b4fa
-        --color border:#585b70
-        --color header:#89b4fa
-        --prompt ' | '
-        --pointer ''
-        --layout=reverse
-        --border horizontal
-        --height 40
-        "
-
-        # fzf-tab
-        FZF_TAB_COMMAND=(
-          ${pkgs.fzf}/bin/fzf
-          --ansi
-          --expect='$continuous_trigger' # For continuous completion
-          --nth=2,3 --delimiter='\x00'  # Don't search prefix
-          --layout=reverse --height="''${FZF_TMUX_HEIGHT:=50%}"
-          --tiebreak=begin -m --bind=tab:down,btab:up,change:top,ctrl-space:toggle --cycle
-          '--query=$query'   # $query will be expanded to query string at runtime.
-          '--header-lines=$#headers' # $#headers will be expanded to lines of headers at runtime
-        )
-
-        function run() {
-          nix run nixpkgs#$@
-        }
 
         command_not_found_handler() {
-          printf 'Command not found ->\033[01;32m %s\033[0m \n' "$0" >&2
-          return 127
+          ${pkgs.comma}/bin/comma "$@"
         }
 
-        clear
       '';
       history = {
-        save = 1000;
-        size = 1000;
+        save = 100;
+        size = 100;
         expireDuplicatesFirst = true;
         ignoreDups = true;
         ignoreSpace = true;
@@ -178,73 +156,40 @@ in {
         media = "/run/media/$USER";
       };
 
-      shellAliases = let
-        # for setting up license in new projects
-        gpl3 = pkgs.fetchurl {
-          url = "https://www.gnu.org/licenses/gpl-3.0.txt";
-          sha256 = "OXLcl0T2SZ8Pmy2/dmlvKuetivmyPd5m1q+Gyd+zaYY=";
-        };
-      in
-        with pkgs;
-        with lib; {
-          rebuild = "doas nix-store --verify; pushd ~/dev/dotfiles && doas nixos-rebuild switch --flake .# && notify-send \"Done\"&& bat cache --build; popd";
-          cleanup = "doas nix-collect-garbage --delete-older-than 7d";
-          bloat = "nix path-info -Sh /run/current-system";
-          ytmp3 = ''
-            ${getExe yt-dlp} -x --continue --add-metadata --embed-thumbnail --audio-format mp3 --audio-quality 0 --metadata-from-title="%(artist)s - %(title)s" --prefer-ffmpeg -o "%(title)s.%(ext)s"'';
-          cat = "${getExe bat} --style=plain";
-          vpn = getExe mullvad;
-          grep = getExe ripgrep;
-          du = getExe du-dust;
-          ps = getExe procs;
-          m = "mkdir -p";
-          fcd = "cd $(find -type d | fzf)";
-          ls = "${getExe exa} -h --git --icons --color=auto --group-directories-first -s extension";
-          l = "ls -lF --time-style=long-iso --icons";
-          sc = "sudo systemctl";
-          scu = "systemctl --user ";
-          la = "${getExe exa} -lah --tree";
-          tree = "${getExe exa} --tree --icons --tree";
-          http = "${getExe python3} -m http.server";
-          burn = "pkill -9";
-          diff = "diff --color=auto";
-          kys = "doas shutdown now";
-          killall = "pkill";
-          gpl3init = "cp ${gpl3} LICENSE";
-          ".." = "cd ..";
-          "..." = "cd ../../";
-          "...." = "cd ../../../";
-          "....." = "cd ../../../../";
-          "......" = "cd ../../../../../";
-          # helix > nvim
-          v = "hx";
-          nvim = "hx";
-          vim = "hx";
-
-          g = "git";
-          sudo = "doas";
-        };
-
+      shellAliases = with pkgs;
+      with lib; {
+        rebuild = "doas nix-store --verify; pushd ~/dev/dotfiles && doas nixos-rebuild switch --flake .# && notify-send \"Done\"&& bat cache --build; popd";
+        cleanup = "doas nix-collect-garbage --delete-older-than 7d";
+        bloat = "nix path-info -Sh /run/current-system";
+        ytmp3 = ''
+          ${getExe yt-dlp} -x --continue --add-metadata --embed-thumbnail --audio-format mp3 --audio-quality 0 --metadata-from-title="%(artist)s - %(title)s" --prefer-ffmpeg -o "%(title)s.%(ext)s"'';
+        cat = "${getExe bat} --style=plain";
+        vpn = getExe mullvad;
+        grep = getExe ripgrep;
+        du = getExe du-dust;
+        ps = getExe procs;
+        m = "mkdir -p";
+        fcd = "cd $(find -type d | fzf)";
+        l = "ls -lF --time-style=long-iso --icons";
+        sc = "sudo systemctl";
+        scu = "systemctl --user ";
+        la = "${getExe exa} -lah --tree";
+        ls = "${getExe exa} -h --git --icons --color=auto --group-directories-first -s extension";
+        tree = "${getExe exa} --tree --icons --tree";
+        http = "${getExe python3} -m http.server";
+        burn = "pkill -9";
+        diff = "diff --color=auto";
+        ".." = "cd ..";
+        "..." = "cd ../../";
+        "...." = "cd ../../../";
+        "....." = "cd ../../../../";
+        "......" = "cd ../../../../../";
+      };
       plugins = with pkgs; [
-        {
-          name = "zsh-nix-shell";
-          src = zsh-nix-shell;
-          file = "share/zsh-nix-shell/nix-shell.plugin.zsh";
-        }
         {
           name = "zsh-vi-mode";
           src = zsh-vi-mode;
           file = "share/zsh-vi-mode/zsh-vi-mode.plugin.zsh";
-        }
-        {
-          name = "zsh-autopair";
-          file = "zsh-autopair.plugin.zsh";
-          src = fetchFromGitHub {
-            owner = "hlissner";
-            repo = "zsh-autopair";
-            rev = "34a8bca0c18fcf3ab1561caef9790abffc1d3d49";
-            sha256 = "1h0vm2dgrmb8i2pvsgis3lshc5b0ad846836m62y8h3rdb3zmpy1";
-          };
         }
       ];
     };

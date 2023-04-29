@@ -33,5 +33,6 @@
     ./helix
     ./schizofox
     inputs.hyprland.homeManagerModules.default
+    inputs.nix-index-db.hmModules.nix-index
   ];
 }

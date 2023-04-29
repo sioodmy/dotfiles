@@ -12,7 +12,10 @@
       scripts = with pkgs.mpvScripts; [mpris thumbnail sponsorblock];
     };
 
-    obs-studio.enable = true;
+    obs-studio = {
+      enable = true;
+      plugins = with pkgs.obs-studio-plugins; [wlrobs];
+    };
   };
   services.mpd = {
     enable = true;
