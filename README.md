@@ -52,9 +52,7 @@ If you would like to support me you can sponsor me via ko-fi
 
 ... or if you prefer crypto
 
-Ethereum: `0x430de39c494E40808F9d8A50958Eec622C3B5577`
-
-Monero/Bitcoin (OpenAlias): sioodmy.dev
+Ethereum/EVM compatible: `0x2fa1e5e90c011d08bba1f6dbdc317fd293311c0d`
 
 ## ❤️ Special thanks to
 
