@@ -5,6 +5,7 @@
   ...
 }: {
   virtualisation.docker.enable = true;
+  environment.systemPackages = [pkgs.docker-compose];
   networking = {
     # dns
     networkmanager = {
