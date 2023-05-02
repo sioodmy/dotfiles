@@ -29,6 +29,7 @@ in {
   home.packages = [run-as-service pkgs.comma];
   home.sessionVariables.STARSHIP_CACHE = "${config.xdg.cacheHome}/starship";
   programs = {
+    nix-index.enable = false;
     exa.enable = true;
     zoxide = {
       enable = true;
@@ -83,7 +84,7 @@ in {
         ZSH_AUTOSUGGEST_USE_ASYNC = "true";
         SSH_AUTH_SOCK = "/run/user/1000/keyring/ssh";
       };
-      completionInit = ''
+      initExtra = ''
         autoload -U compinit
         zstyle ':completion:*' menu select
         zstyle ':completion:*:functions' ignored-patterns '(_*|pre(cmd|exec))'
@@ -122,8 +123,6 @@ in {
         bindkey -M menuselect 'l' vi-forward-char
         bindkey -M menuselect 'j' vi-down-line-or-history
         bindkey -v '^?' backward-delete-char
-      '';
-      initExtra = ''
         autoload -U url-quote-magic
         # search history based on what's typed in the prompt
         autoload -U history-search-end
@@ -134,7 +133,7 @@ in {
         zle -N self-insert url-quote-magic
 
         command_not_found_handler() {
-          ${pkgs.comma}/bin/comma "$@"
+          comma "$@"
         }
 
       '';
@@ -149,7 +148,7 @@ in {
       dirHashes = {
         docs = "$HOME/docs";
         notes = "$HOME/docs/notes";
-        dotfiles = "$HOME/dotfiles";
+        dotfiles = "$HOME/dev/dotfiles";
         dl = "$HOME/download";
         vids = "$HOME/vids";
         music = "$HOME/music";
