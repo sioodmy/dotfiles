@@ -11,6 +11,8 @@
   config.home.stateVersion = "22.05";
   config.home.extraOutputsToInstall = ["doc" "devdoc"];
   imports = [
+    inputs.hyprland.homeManagerModules.default
+    inputs.nix-index-db.hmModules.nix-index
     ./packages.nix
 
     ./gtk
@@ -29,7 +31,5 @@
     ./zathura
     ./helix
     ./schizofox
-    inputs.hyprland.homeManagerModules.default
-    inputs.nix-index-db.hmModules.nix-index
   ];
 }
