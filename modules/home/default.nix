@@ -20,7 +20,6 @@
     ./rnnoise
     ./dunst
     ./bottom
-    ./discord
     ./shell
     ./pandoc
     ./swaylock

@@ -40,6 +40,7 @@
     ffmpeg
     gimp
     imagemagick
+    bc
     aseprite
     transmission-gtk
     bandwhich
