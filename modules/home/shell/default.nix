@@ -166,6 +166,7 @@ in {
         cat = "${getExe bat} --style=plain";
         vpn = getExe mullvad;
         grep = getExe ripgrep;
+        fzf = getExe skim;
         du = getExe du-dust;
         ps = getExe procs;
         m = "mkdir -p";

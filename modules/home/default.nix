@@ -21,11 +21,9 @@
     ./dunst
     ./bottom
     ./shell
-    ./pandoc
     ./swaylock
     ./tools
     ./waybar
-    ./newsboat
     ./hyprland
     ./media
     ./zathura
