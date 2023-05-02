@@ -6,8 +6,7 @@
     nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
     nixos-hardware.url = "github:nixos/nixos-hardware";
     ragenix.url = "github:yaxitech/ragenix";
-    webcord.url = "github:fufexan/webcord-flake";
-    helix.url = "github:helix-editor/helix";
+    helix.url = "github:SoraTenshi/helix/new-daily-driver";
     xdg-portal-hyprland.url = "github:hyprwm/xdg-desktop-portal-hyprland";
     sioodmy-dev.url = "git+https://git.sioodmy.dev/sioodmy/sioodmy.dev";
 

@@ -34,19 +34,28 @@
         idle-timeout = 1;
         line-number = "relative";
         scrolloff = 5;
+        rainbow-brackets = true;
+        completion-replace = true;
+        cursor-word = true;
         bufferline = "always";
-        lsp = {
-          display-messages = true;
-          display-inlay-hints = true;
-        };
         true-color = true;
         rulers = [80];
         soft-wrap.enable = true;
         indent-guides = {
           render = true;
         };
+        sticky-context = {
+          enable = true;
+          indicator = true;
+        };
+        lsp = {
+          display-messages = true;
+          display-inlay-hints = true;
+        };
         gutters = ["diagnostics" "line-numbers" "spacer" "diff"];
         statusline = {
+          mode-separator = "";
+          separator = "";
           left = ["mode" "selections" "spinner" "file-name" "total-line-numbers"];
           center = [];
           right = ["diagnostics" "file-encoding" "file-line-ending" "file-type" "position-percentage" "position"];
@@ -135,6 +144,11 @@
     lldb
     gopls
     rust-analyzer
+    clang-tools
+    nodejs
+    guile
+    nim
+    zig
     texlab
     zls
     gcc
@@ -149,7 +163,7 @@
     nodePackages.vls
     nodePackages.jsonlint
     nodePackages.yarn
-    sumneko-lua-language-server
+    luajitPackages.lua-lsp
     nodePackages.vscode-langservers-extracted
     cargo
   ];
