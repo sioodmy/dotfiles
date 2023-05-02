@@ -25,7 +25,6 @@
     tdesktop
     tracy
     hyperfine
-    fzf
     glow
     nmap
     unzip
