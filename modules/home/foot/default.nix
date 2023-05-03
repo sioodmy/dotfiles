@@ -14,7 +14,7 @@
     settings = {
       main = {
         term = "xterm-256color";
-        font = "monospace:size=14";
+        font = "monospace:size=13";
         vertical-letter-offset = "-0.75";
         pad = "24x24";
         dpi-aware = "yes";
