@@ -15,7 +15,6 @@
     macchina
     kdenlive
     catimg
-    prismlauncher
     jre8
     monero-gui
     cached-nix-shell
