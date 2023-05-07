@@ -44,10 +44,7 @@
         indent-guides = {
           render = true;
         };
-        sticky-context = {
-          enable = true;
-          indicator = true;
-        };
+        sticky-context.enable = false;
         lsp = {
           display-messages = true;
           display-inlay-hints = true;
