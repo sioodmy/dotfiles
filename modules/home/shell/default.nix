@@ -166,6 +166,7 @@ in {
         vpn = getExe mullvad;
         grep = getExe ripgrep;
         fzf = getExe skim;
+        MANPAGER = "sh -c 'col -bx | bat -l man -p'";
         du = getExe du-dust;
         ps = getExe procs;
         m = "mkdir -p";

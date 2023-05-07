@@ -16,6 +16,7 @@ with lib; let
     hyprctl keyword animation "fadeOut,0,8,slow" && ${pkgs.grim}/bin/grim -g "$(${pkgs.slurp}/bin/slurp -w 0 -b 5e81acd2)" - | swappy -f -; hyprctl keyword animation "fadeOut,1,8,slow"
   '';
 in {
+  imports = [./config.nix];
   home.packages = with pkgs; [
     libnotify
     wf-recorder
@@ -37,7 +38,7 @@ in {
       nvidiaPatches = true;
     };
     systemdIntegration = true;
-    extraConfig = builtins.readFile ./hyprland.conf;
+    # extraConfig = builtins.readFile ./hyprland.conf;
   };
 
   services.wlsunset = {
