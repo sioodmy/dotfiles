@@ -13,13 +13,11 @@
       postBuild = "wrapProgram $out/bin/ledger-live-desktop --add-flags --use-gl=desktop";
     })
     macchina
-    kdenlive
     catimg
     jre8
     monero-gui
     cached-nix-shell
     todo
-    qalculate-gtk
     yt-dlp
     tdesktop
     tracy
