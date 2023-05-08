@@ -138,6 +138,8 @@ in {
 
     layerrule = blur, ^(gtk-layer-shell)$
     layerrule = ignorezero, ^(gtk-layer-shell)$
+    layerrule = blur, notifications
+    layerrule = ignorezero, notifications
 
 
 
