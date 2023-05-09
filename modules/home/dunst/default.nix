@@ -52,7 +52,7 @@ in {
       global = {
         frame_color = "#f4b8e495";
         separator_color = "#f4b8e4";
-        width = 420;
+        width = 220;
         height = 280;
         offset = "0x15";
         font = "Lexend 12";
