@@ -37,8 +37,25 @@
     "x-scheme-handler/spotify" = ["spotify.desktop"];
     "x-scheme-handler/discord" = ["WebCord.desktop"];
   };
+
+  texlive = pkgs.texlive.combine {
+    inherit
+      (pkgs.texlive)
+      scheme-small
+      noto
+      mweights
+      cm-super
+      cmbright
+      fontaxes
+      beamer
+      ;
+  };
+  pandoc-watch = pkgs.writeScriptBin "wpandoc" ''
+    #!/bin/sh
+    while inotifywait -e close_write $1; do pandoc $@; done
+  '';
 in {
-  home.packages = [ocrScript];
+  home.packages = [ocrScript texlive pkgs.pandoc pandoc-watch];
   services = {
     udiskie.enable = true;
     gpg-agent = {
