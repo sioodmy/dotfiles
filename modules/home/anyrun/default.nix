@@ -20,6 +20,8 @@ in {
         // Where Anyrun is located on the screen: Top, Center
         position: Top,
 
+        show_results_immediately: false,
+
         // How much the runner is shifted vertically
         vertical_offset: Absolute(15),
 
