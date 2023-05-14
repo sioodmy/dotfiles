@@ -81,7 +81,7 @@ in {
     }
 
     decoration {
-        rounding=16
+        rounding=12
         multisample_edges=true
         blur_new_optimizations=1
         blur=1
@@ -140,6 +140,8 @@ in {
     layerrule = ignorezero, ^(gtk-layer-shell)$
     layerrule = blur, notifications
     layerrule = ignorezero, notifications
+    layerrule = blur, ^(gtk-layer-shell|anyrun)$
+    layerrule = ignorezero, ^(gtk-layer-shell|anyrun)$
 
 
 

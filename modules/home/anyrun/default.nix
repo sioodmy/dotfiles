@@ -49,6 +49,8 @@ in {
           "${anyrun}/lib/libshell.so",
           "${anyrun}/lib/libsymbols.so",
           "${anyrun}/lib/libtranslate.so",
+          "${anyrun}/lib/libkidex.so",
+          "${anyrun}/lib/libshell.so",
         ],
       )
     '';
@@ -57,7 +59,7 @@ in {
       * {
         transition: 200ms ease-out;
         font-family: Lexend;
-        font-size: 1.3rem;
+        font-size: 1.1rem;
       }
 
       #window,
