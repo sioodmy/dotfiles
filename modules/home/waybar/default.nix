@@ -69,7 +69,7 @@ in {
           format = "{icon}";
           active-only = false;
           format-icons = {
-            default = "";
+            default = "󰊠";
             active = " 󰮯";
           };
         };
@@ -89,7 +89,7 @@ in {
         "custom/eth" = {
           format = "󰡪 {}";
           tooltip = true;
-          interval = 30;
+          interval = 5;
           exec = "${lib.getExe get-crypto-price} ETHBUSD";
         };
         "custom/vpn" = {
@@ -125,7 +125,7 @@ in {
         "custom/power" = {
           tooltip = false;
           # TODO
-          format = "襤 ";
+          format = " ";
         };
         clock = {
           format = "{:%b %d %H:%M}";
@@ -139,7 +139,7 @@ in {
         };
         cpu = {
           interval = 5;
-          format = "  {}%";
+          format = "  {}%";
         };
         battery = {
           states = {
