@@ -127,7 +127,8 @@ in {
 
     windowrulev2 = workspace special silent, title:^(Firefox — Sharing Indicator)$
     windowrulev2 = workspace special silent, title:^(.*is sharing (your screen|a window)\.)$
-
+    windowrulev2 = float, title:^(MetaMask Notification)$
+    windowrulev2 = center, title:^(MetaMask Notification)$
     windowrulev2 = idleinhibit focus, class:^(mpv|.+exe)$
     windowrulev2 = idleinhibit focus, class:^(firefox|brave)$, title:^(.*YouTube.*)$
     windowrulev2 = idleinhibit fullscreen, class:^(firefox|brave)$
