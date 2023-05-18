@@ -148,6 +148,7 @@
     zig
     texlab
     zls
+    jre8
     gcc
     uncrustify
     black
