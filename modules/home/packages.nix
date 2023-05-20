@@ -12,6 +12,7 @@
       buildInputs = [makeWrapper];
       postBuild = "wrapProgram $out/bin/ledger-live-desktop --add-flags --use-gl=desktop";
     })
+    ledger_agent
     catimg
     cached-nix-shell
     todo
