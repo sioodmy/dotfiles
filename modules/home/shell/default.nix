@@ -26,7 +26,7 @@
       bash -lc "exec ${apply-hm-env} $@"
   '';
 in {
-  home.packages = [run-as-service pkgs.comma];
+  home.packages = with pkgs; [run-as-service comma ripgrep];
   home.sessionVariables.STARSHIP_CACHE = "${config.xdg.cacheHome}/starship";
   programs = {
     nix-index.enable = false;
