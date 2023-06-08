@@ -1,6 +1,7 @@
 {
   config,
   pkgs,
+  lib,
   inputs,
   ...
 }: {
@@ -90,48 +91,46 @@
       };
     };
 
-    languages = with pkgs; [
+
+    languages = {
+    language = [
       {
-        name = "cpp";
-        auto-format = true;
-        language-server = {
-          command = "${clang-tools}/bin/clangd";
-          clangd.fallbackFlags = ["-std=c++2b"];
-        };
-      }
-      {
-        name = "nix";
-        language-server.command = pkgs.nil;
+        name = "bash";
         auto-format = true;
         formatter = {
-          command = lib.getExe alejandra;
-          args = ["-q"];
+          command = "${pkgs.shfmt}/bin/shfmt";
+          args = ["-i" "2" "-"];
         };
       }
       {
-        name = "rust";
-        formatter.command = lib.getExe rustfmt;
-        auto-format = true;
-      }
-      {
-        name = "typst";
-        scope = "source.typst";
-        injection-regex = "^typst$";
-        file-types = ["typ"];
-        comment-token = "//";
-        indent = {
-          tab-width = 2;
-          unit = "  ";
-        };
-        roots = [];
-
-        language-server = {
-          command = lib.getExe typst-lsp;
-        };
-        formatter.command = lib.getExe typst-fmt;
-        auto-format = true;
+        name = "clojure";
+        injection-regex = "(clojure|clj|edn|boot|yuck)";
+        file-types = ["clj" "cljs" "cljc" "clje" "cljr" "cljx" "edn" "boot" "yuck"];
       }
     ];
+
+    language-server = {
+      bash-language-server = {
+        command = "${pkgs.nodePackages.bash-language-server}/bin/bash-language-server";
+        args = ["start"];
+      };
+
+      clangd = {
+        command = "${pkgs.clang-tools}/bin/clangd";
+        clangd.fallbackFlags = ["-std=c++2b"];
+      };
+
+      nil = {
+        command = lib.getExe pkgs.nil;
+        config.nil.formatting.command = ["${lib.getExe pkgs.alejandra}" "-q"];
+      };
+
+      vscode-css-language-server = {
+        command = "${pkgs.nodePackages.vscode-css-languageserver-bin}/bin/css-languageserver";
+        args = ["--stdio"];
+      };
+    };
+  };
   };
 
   home.packages = with pkgs; [

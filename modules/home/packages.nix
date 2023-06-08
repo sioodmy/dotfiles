@@ -15,6 +15,8 @@
     ledger_agent
     catimg
     cached-nix-shell
+    prismlauncher
+    caprine-bin
     todo
     yt-dlp
     tdesktop
