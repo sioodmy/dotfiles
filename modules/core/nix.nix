@@ -25,6 +25,7 @@
           "steam-run"
           "steam"
           "steam-original"
+          "spotify"
           "nvidia-x11"
           "nvidia-settings"
         ];
