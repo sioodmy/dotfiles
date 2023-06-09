@@ -13,10 +13,12 @@
   imports = [
     inputs.hyprland.homeManagerModules.default
     inputs.nix-index-db.hmModules.nix-index
+    inputs.spicetify-nix.homeManagerModule
     ./packages.nix
 
     ./gtk
     ./git
+    ./spotify
     ./foot
     ./anyrun
     ./rnnoise
