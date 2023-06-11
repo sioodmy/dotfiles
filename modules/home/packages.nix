@@ -15,6 +15,7 @@
     ledger_agent
     catimg
     cached-nix-shell
+    firefox
     prismlauncher
     caprine-bin
     todo

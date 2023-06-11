@@ -32,6 +32,5 @@
     ./media
     ./zathura
     ./helix
-    ./schizofox
   ];
 }
