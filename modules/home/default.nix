@@ -13,6 +13,7 @@
   imports = [
     inputs.hyprland.homeManagerModules.default
     inputs.nix-index-db.hmModules.nix-index
+    inputs.anyrun.homeManagerModules.default
     inputs.spicetify-nix.homeManagerModule
     ./packages.nix
 
@@ -27,7 +28,6 @@
     ./shell
     ./swaylock
     ./tools
-    ./waybar
     ./hyprland
     ./media
     ./zathura

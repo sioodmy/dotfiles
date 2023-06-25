@@ -14,7 +14,7 @@
   };
   # tmpfs = /tmp is mounted in ram. Doing so makes temp file management speedy
   # on ssd systems, and volatile! Because it's wiped on reboot.
-  boot.tmp.useTmpfs = lib.mkDefault true;
+  boot.tmp.useTmpfs = lib.mkDefault false;
   # Firefox cache on tmpfs
   fileSystems."/home/sioodmy/.cache/mozilla/firefox" = {
     device = "tmpfs";

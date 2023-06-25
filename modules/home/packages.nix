@@ -1,6 +1,7 @@
 {
   inputs,
   pkgs,
+  self,
   config,
   ...
 }: {
@@ -13,11 +14,15 @@
       postBuild = "wrapProgram $out/bin/ledger-live-desktop --add-flags --use-gl=desktop";
     })
     ledger_agent
+    self.packages.${pkgs.system}.cutefetch
+    pulseaudio
+    socat
+    wget
+    python3
     catimg
     cached-nix-shell
     firefox
     prismlauncher
-    caprine-bin
     todo
     yt-dlp
     tdesktop

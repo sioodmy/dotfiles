@@ -17,10 +17,29 @@
         font = "monospace:size=13.5";
         vertical-letter-offset = "-0.75";
         pad = "24x24";
+        notify = "notify-send -a \${app-id} -i \${app-id} \${title} \${body}";
+        selection-target = "clipboard";
+        # box-drawings-uses-font-glyphs = "yes";
         dpi-aware = "yes";
       };
+      cursor = {
+        style = "beam";
+        beam-thickness = 2;
+      };
+      scrollback = {
+        lines = 10000;
+        multiplier = 3;
+      };
+
+      url = {
+        launch = "xdg-open \${url}";
+        label-letters = "sadfjklewcmpgh";
+        osc8-underline = "url-mode";
+        protocols = "http, https, ftp, ftps, file";
+        uri-characters = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789-_.,~:;/?#@!$&%*+=\"'()[]";
+      };
       colors = {
-        alpha = "0.93";
+        alpha = "0.7";
         foreground = "cdd6f4";
         background = "1e1e2e";
 

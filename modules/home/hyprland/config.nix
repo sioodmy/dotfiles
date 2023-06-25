@@ -3,7 +3,8 @@
   pkgs,
   ...
 }: let
-  propaganda = pkgs.writeTextFile {
+  # thanks vi-tality
+    propaganda = pkgs.writeTextFile {
     name = "propaganda";
     text = ''
       Nix advantages:
@@ -38,9 +39,18 @@
     '';
   };
 in {
+  # mostly borrwed from https://github.com/fufexan/dotfiles/blob/main/home/wayland/hyprland/config.nix
+  # thanks fufie <3
   wayland.windowManager.hyprland.extraConfig = ''
     monitor=DP-1,1920x1080@144,0x0,1shad
 
+    $mod = SUPER
+
+    env = _JAVA_AWT_WM_NONREPARENTING,1
+    env = QT_WAYLAND_DISABLE_WINDOWDECORATION,1
+
+    exec-once = run-as-service 'foot --server'
+    exec-once = eww open bar
 
     input {
         kb_layout=pl
@@ -57,7 +67,7 @@ in {
         sensitivity=0.6 # for mouse cursor
 
         gaps_in=5
-        gaps_out=5
+        gaps_out=11
         border_size=2
         col.active_border = rgb(89b4fa) rgb(cba6f7) 270deg
         col.inactive_border = rgb(11111b) rgb(b4befe) 270deg
@@ -72,6 +82,7 @@ in {
     misc {
         disable_hyprland_logo=true
         disable_splash_rendering=true
+        animate_mouse_windowdragging = false
         mouse_move_enables_dpms=true
         key_press_enables_dpms=true
         disable_hyprland_logo=true
@@ -125,10 +136,13 @@ in {
     $disable=act_opa=$(hyprctl getoption "decoration:active_opacity" -j | jq -r ".float");inact_opa=$(hyprctl getoption "decoration:inactive_opacity" -j | jq -r ".float");hyprctl --batch "keyword decoration:active_opacity 1;keyword decoration:inactive_opacity 1"
     $enable=hyprctl --batch "keyword decoration:active_opacity $act_opa;keyword decoration:inactive_opacity $inact_opa"
 
+    # only allow shadows for floating windows
+    windowrulev2 = noshadow, floating:0
+
     windowrulev2 = workspace special silent, title:^(Firefox — Sharing Indicator)$
     windowrulev2 = workspace special silent, title:^(.*is sharing (your screen|a window)\.)$
-    windowrulev2 = float, title:^(MetaMask Notification)$
-    windowrulev2 = center, title:^(MetaMask Notification)$
+    windowrulev2 = float, title:(?i)metamask
+    windowrulev2 = center, title:(?i)metamask
     windowrulev2 = idleinhibit focus, class:^(mpv|.+exe)$
     windowrulev2 = idleinhibit focus, class:^(firefox|brave)$, title:^(.*YouTube.*)$
     windowrulev2 = idleinhibit fullscreen, class:^(firefox|brave)$
@@ -141,6 +155,8 @@ in {
     layerrule = ignorezero, ^(gtk-layer-shell)$
     layerrule = blur, notifications
     layerrule = ignorezero, notifications
+    layerrule = blur, bar
+    layerrule = ignorezero, bar
     layerrule = blur, ^(gtk-layer-shell|anyrun)$
     layerrule = ignorezero, ^(gtk-layer-shell|anyrun)$
 
@@ -171,56 +187,50 @@ in {
     windowrule=move 75 44%,title:^(Volume Control)$
 
     # example binds
-    bind=SUPER,RETURN,exec,run-as-service footclient
-    bind=SUPER,C,killactive,
-    bind=SUPER,G,changegroupactive,
-    bind=SUPER,T,togglegroup,
-    bind=SUPER,M,exit,
-    bind=SUPER,E,exec,dolphin
-    bind=SUPERSHIFT,L,exec,swaylock
-    bind=SUPER,V,togglefloating,
-    bind=SUPER,F,fullscreen,
-    bind=SUPER,SPACE,exec,anyrun
-    bind=SUPERSHIFT,O,exec, ocr
-    bind=SUPER,P,pseudo,
+    bind=$mod,RETURN,exec,run-as-service footclient
+    bind=$mod,C,killactive,
+    bind=$mod,G,changegroupactive,
+    bind=$mod,T,togglegroup,
+    bind=$mod SHIFT,L,exec,swaylock
+    bind=$mod,V,togglefloating,
+    bind=$mod,F,fullscreen,
+    bind=$mod,SPACE,exec,anyrun
+    bind=$mod SHIFT,O,exec, ocr
+    bind=$mod,P,pseudo,
 
-    bind=SUPERSHIFT,P,exec,$disable; grim - | wl-copy --type image/png && notify-send "Screenshot" "Screenshot copied to clipboard"; $enable
-    bind=SUPERSHIFT,S,exec,$disable; screenshot; $enable
+    bind=$mod SHIFT,P,exec,$disable; grim - | wl-copy --type image/png && notify-send "Screenshot" "Screenshot copied to clipboard"; $enable
+    bind=$mod SHIFT,S,exec,$disable; screenshot; $enable
 
-    bind=SUPERSHIFT,H,exec,cat ${propaganda} | wl-copy && notify-send "Propaganda" "ready to spread!"
+    bind=$mod SHIFT,H,exec,cat ${propaganda} | wl-copy && notify-send "Propaganda" "ready to spread!"
 
-    bind=SUPER,h,movefocus,l
-    bind=SUPER,l,movefocus,r
-    bind=SUPER,k,movefocus,u
-    bind=SUPER,j,movefocus,d
+    bind=$mod,h,movefocus,l
+    bind=$mod,l,movefocus,r
+    bind=$mod,k,movefocus,u
+    bind=$mod,j,movefocus,d
 
-    bind=SUPER,1,workspace,1
-    bind=SUPER,2,workspace,2
-    bind=SUPER,3,workspace,3
-    bind=SUPER,4,workspace,4
-    bind=SUPER,5,workspace,5
-    bind=SUPER,6,workspace,6
-    bind=SUPER,7,workspace,7
-    bind=SUPER,8,workspace,8
-    bind=SUPER,9,workspace,9
-    bind=SUPER,0,workspace,10
+    ${builtins.concatStringsSep "\n" (builtins.genList (
+        x: let
+          ws = let
+            c = (x + 1) / 10;
+          in
+            builtins.toString (x + 1 - (c * 10));
+        in ''
+          bind = $mod, ${ws}, workspace, ${toString (x + 1)}
+          bind = $mod SHIFT, ${ws}, movetoworkspace, ${toString (x + 1)}
+        ''
+      )
+      10)}
+    bind=$mod SHIFT,right,movetoworkspace,+1
+    bind=$mod SHIFT,left,movetoworkspace,-1
 
-    # MOVING WINDOWS TO WS
-    bind=SUPERSHIFT,1,movetoworkspace,1
-    bind=SUPERSHIFT,2,movetoworkspace,2
-    bind=SUPERSHIFT,3,movetoworkspace,3
-    bind=SUPERSHIFT,4,movetoworkspace,4
-    bind=SUPERSHIFT,5,movetoworkspace,5
-    bind=SUPERSHIFT,6,movetoworkspace,6
-    bind=SUPERSHIFT,7,movetoworkspace,7
-    bind=SUPERSHIFT,8,movetoworkspace,8
-    bind=SUPERSHIFT,9,movetoworkspace,9
-    bind=SUPERSHIFT,0,movetoworkspace,10
-    bind=SUPERSHIFT,right,movetoworkspace,+1
-    bind=SUPERSHIFT,left,movetoworkspace,-1
 
-    bind=SUPER,mouse_down,workspace,e+1
-    bind=SUPER,mouse_up,workspace,e-1
+    # cycle workspaces
+    bind = $mod, bracketleft, workspace, m-1
+    bind = $mod, bracketright, workspace, m+1
+
+    # cycle monitors
+    bind = $mod SHIFT, braceleft, focusmonitor, l
+    bind = $mod SHIFT, braceright, focusmonitor, r
 
     bind=,XF86MonBrightnessUp,exec,brightnessctl set +5%
     bind=,XF86MonBrightnessDown,exec,brightnessctl set 5%-
@@ -235,7 +245,5 @@ in {
     bindl=, XF86AudioLowerVolume, exec, volume -d 5
     bindl=, XF86AudioMute, exec, volume -t
 
-    exec-once = run-as-service 'foot --server'
-    exec-once = run-as-service waybar
   '';
 }
