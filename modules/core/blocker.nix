@@ -1,10 +1,10 @@
 {
-  config,
   pkgs,
   ...
 }:
 # this should block *most* junk sites
-# make sure to ALWAYS lock commit hash
+# make sure to ALWAYS lock commit hash to avoid fed honeypots
+# three letter agencies go fuck yourself
 {
   networking.extraHosts =
     builtins.readFile (pkgs.fetchurl {

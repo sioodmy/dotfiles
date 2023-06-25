@@ -18,7 +18,7 @@
   };
 
   services = {
-    mullvad-vpn.enable = true;
+    mullvad-vpn.enable = false; # too broke rn :(
     greetd = {
       enable = true;
       settings = rec {
