@@ -5,6 +5,7 @@
   config,
   ...
 }: {
+
   nixpkgs.config.allowUnfree = false;
   home.packages = with pkgs; [
     (symlinkJoin {
@@ -15,6 +16,7 @@
     })
     ledger_agent
     self.packages.${pkgs.system}.cutefetch
+    inputs.eww.packages.${pkgs.hostPlatform.system}.eww-wayland
     pulseaudio
     socat
     wget
