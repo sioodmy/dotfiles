@@ -122,6 +122,10 @@
         };
       }
       {
+        name = "html";
+        file-types = ["html" "tera"];
+      }
+      {
         name = "clojure";
         injection-regex = "(clojure|clj|edn|boot|yuck)";
         file-types = ["clj" "cljs" "cljc" "clje" "cljr" "cljx" "edn" "boot" "yuck"];
