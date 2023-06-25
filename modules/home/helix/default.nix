@@ -1,5 +1,4 @@
 {
-  config,
   pkgs,
   lib,
   inputs,
@@ -7,7 +6,27 @@
 }: {
   programs.helix = {
     enable = true;
-    package = inputs.helix.packages."x86_64-linux".default;
+    package = inputs.helix.packages.${pkgs.hostPlatform.system}.default.overrideAttrs (self: {
+      makeWrapperArgs = with pkgs;
+        self.makeWrapperArgs
+        or []
+        ++ [
+          "--suffix"
+          "PATH"
+          ":"
+          (lib.makeBinPath [
+            clang-tools
+            marksman
+            nil
+            luajitPackages.lua-lsp
+            nodePackages.bash-language-server
+            nodePackages.vscode-css-languageserver-bin
+            nodePackages.vscode-langservers-extracted
+            shellcheck
+          ])
+        ];
+    });
+
     settings = {
       theme = "catppuccin_mocha_transparent";
       keys.normal = {
@@ -160,7 +179,6 @@
     nodePackages.vls
     nodePackages.jsonlint
     nodePackages.yarn
-    luajitPackages.lua-lsp
     nodePackages.vscode-langservers-extracted
     cargo
   ];
