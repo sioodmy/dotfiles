@@ -15,10 +15,10 @@
       postBuild = "wrapProgram $out/bin/ledger-live-desktop --add-flags --use-gl=desktop";
     })
     ledger_agent
-    self.packages.${pkgs.system}.cutefetch
     inputs.eww.packages.${pkgs.hostPlatform.system}.eww-wayland
     pulseaudio
     socat
+    transmission-gtk
     wget
     python3
     catimg
@@ -40,7 +40,6 @@
     imagemagick
     bc
     aseprite
-    transmission-gtk
     bandwhich
     grex
     fd

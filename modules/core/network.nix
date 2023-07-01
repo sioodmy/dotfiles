@@ -5,12 +5,13 @@
   ...
 }: {
   virtualisation.docker.enable = true;
-  environment.systemPackages = [pkgs.docker-compose];
+  environment.systemPackages = with pkgs; [docker-compose speedtest-cli];
   networking = {
     # dns
-    nameservers = [ "1.1.1.1" "1.0.0.1"];
+    nameservers = [ "1.1.1.1" "1.0.0.1" "8.8.8.8" "8.8.4.4"];
     networkmanager = {
       enable = true;
+      dns = "none";
       unmanaged = ["docker0" "rndis0"];
       wifi.macAddress = "random";
     };
