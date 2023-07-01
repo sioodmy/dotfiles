@@ -17,7 +17,7 @@
       };
     };
     iconTheme = {
-      package = self.packages.${pkgs.system}.catppuccin-folders;
+      package = pkgs.catppuccin-papirus-folders;
       name = "Papirus";
     };
     font = {
@@ -38,7 +38,6 @@
     '';
   };
 
-  # cursor theme
   home.pointerCursor = {
     package = pkgs.catppuccin-cursors.mochaDark;
     name = "Catppuccin-Mocha-Dark-Cursors";
@@ -51,23 +50,19 @@
     XCURSOR_SIZE = "16";
   };
 
-  # credits: bruhvko
-  # catppuccin theme for qt-apps
-  home.packages = with pkgs; [libsForQt5.qtstyleplugin-kvantum];
-
-  xdg.configFile."Kvantum/catppuccin/catppuccin.kvconfig".source = builtins.fetchurl {
-    url = "https://raw.githubusercontent.com/catppuccin/Kvantum/main/src/Catppuccin-Mocha-Pink/Catppuccin-Mocha-Pink.kvconfig";
-    sha256 = "13ci6bzi41pazvpbylwqxhwjv4w8af50g26qqfh3xbaxjwfgdk1d";
+  home.packages = with pkgs; [
+    libsForQt5.qtstyleplugin-kvantum
+    (catppuccin-kvantum.override {
+      accent = "Mauve";
+      variant = "Mocha";
+    })
+  ];
+  home.sessionVariables = {
+    QT_STYLE_OVERRIDE = "kvantum";
   };
-  xdg.configFile."Kvantum/catppuccin/catppuccin.svg".source = builtins.fetchurl {
-    url = "https://raw.githubusercontent.com/catppuccin/Kvantum/main/src/Catppuccin-Mocha-Pink/Catppuccin-Mocha-Pink.svg";
-    sha256 = "1rlxd9w2ifddc62rdyddzdbglc64wf7k6w7hlxfy85hwmn35m683";
-  };
-  xdg.configFile."Kvantum/kvantum.kvconfig".text = ''
-    [General]
-    theme=catppuccin
 
-    [Applications]
-    catppuccin=Dolphin, dolphin, Nextcloud, nextcloud, qt5ct, org.kde.dolphin, org.kde.kalendar, kalendar, Kalendar, qbittorrent, org.qbittorrent.qBittorrent
-  '';
+  xdg.configFile."Kvantum/kvantum.kvconfig".source = (pkgs.formats.ini {}).generate "kvantum.kvconfig" {
+    General.Theme = "Catppuccin-Mocha-Mauve";
+    Applications.catppuccin = "Dolphin, dolphin, Nextcloud, nextcloud, qt5ct, org.kde.dolphin, org.kde.kalendar, kalendar, Kalendar, qbittorrent, org.qbittorrent.qBittorrent";
+  };
 }

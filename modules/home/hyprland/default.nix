@@ -42,7 +42,8 @@ in {
   };
 
   services.wlsunset = {
-    enable = true;
+    # TODO: fix opaque red screen issue
+    enable = false;
     latitude = "52.0";
     longitude = "21.0";
     temperature = {
