@@ -49,7 +49,6 @@ in {
     env = _JAVA_AWT_WM_NONREPARENTING,1
     env = QT_WAYLAND_DISABLE_WINDOWDECORATION,1
 
-    exec-once = run-as-service 'foot --server'
     exec-once = eww open bar
 
     input {
@@ -187,7 +186,7 @@ in {
     windowrule=move 75 44%,title:^(Volume Control)$
 
     # example binds
-    bind=$mod,RETURN,exec,run-as-service footclient
+    bind=$mod,RETURN,exec,foot
     bind=$mod,C,killactive,
     bind=$mod,G,changegroupactive,
     bind=$mod,T,togglegroup,
