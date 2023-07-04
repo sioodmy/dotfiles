@@ -20,6 +20,9 @@
     config = {
       allowUnfree = false;
       allowBroken = true;
+      permittedInsecurePackages = [
+                "openssl-1.1.1u"
+      ];
       allowUnfreePredicate = pkg:
         builtins.elem (lib.getName pkg) [
           "steam-run"

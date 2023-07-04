@@ -1,0 +1,5 @@
+(defpoll weather :interval "30s" "curl 'wttr.in?format=%c+%C+%f'")
+
+(defwidget weather []
+  (label :text {weather} :limit-width "32")
+)

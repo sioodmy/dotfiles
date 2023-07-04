@@ -1,0 +1,19 @@
+
+.eth-logo {
+  color: $blue;
+  margin-right: 5px;
+}
+.btc-logo {
+  color: $peach;
+  // margin-right: 5px;
+}
+.eth-price, .btc-price, .gas{
+  font-family: Iosevka;
+}
+.eth-price, .btc-price {
+  margin-right: 15px;
+}
+.gas-logo {
+  color: $red;
+  margin: 0 5px 0 5px;
+}

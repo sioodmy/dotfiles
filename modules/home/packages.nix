@@ -15,15 +15,16 @@
       postBuild = "wrapProgram $out/bin/ledger-live-desktop --add-flags --use-gl=desktop";
     })
     ledger_agent
-    inputs.eww.packages.${pkgs.hostPlatform.system}.eww-wayland
+    
     pulseaudio
+    cinny-desktop
+    schildichat-desktop
     socat
     transmission-gtk
     wget
     python3
     catimg
     cached-nix-shell
-    firefox
     prismlauncher
     todo
     yt-dlp

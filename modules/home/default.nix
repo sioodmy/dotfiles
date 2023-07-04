@@ -19,6 +19,7 @@
 
     ./gtk
     ./git
+    ./eww
     ./spotify
     ./foot
     ./anyrun

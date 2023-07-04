@@ -1,5 +1,6 @@
 {
   config,
+  lib,
   pkgs,
   ...
 }: let
@@ -166,6 +167,9 @@ in {
     windowrule=fullscreen,wlogout
     windowrule=float,title:wlogout
     windowrule=float,udiskie
+    windowrulev2 = noanim,title:^(PAUSESHOT)$
+    windowrulev2 = nomaxsize,class:^(.*)$
+    windowrulev2 = fullscreen,title:^(PAUSESHOT)$
     windowrule=fullscreen,title:wlogout
     windowrule=float,pavucontrol-qt
     windowrule=float,qalculate-gtk
@@ -197,8 +201,10 @@ in {
     bind=$mod SHIFT,O,exec, ocr
     bind=$mod,P,pseudo,
 
-    bind=$mod SHIFT,P,exec,$disable; grim - | wl-copy --type image/png && notify-send "Screenshot" "Screenshot copied to clipboard"; $enable
-    bind=$mod SHIFT,S,exec,$disable; screenshot; $enable
+    bind=$mod,R,exec, ${lib.getExe pkgs.kooha}
+
+    bind=$mod SHIFT,P,exec,$disable; grimblast save active - | shadower | wl-copy -t image/png && notify-send 'Screenshot taken' --expire-time 1000; $enable
+    bind=$mod SHIFT,S,exec,$disable; pauseshot | shadower | wl-copy -t image/png && notify-send 'Screenshot taken' --expire-time 1000; $enable
 
     bind=$mod SHIFT,H,exec,cat ${propaganda} | wl-copy && notify-send "Propaganda" "ready to spread!"
 

@@ -1,0 +1,14 @@
+.launcher_box {
+  background-color: rgba($background, $alpha);
+  padding: .3rem;
+  margin: 0 5px 0 5px;
+  border-radius: 15px;
+  }
+.launcher_icon {
+  background-image: url("assets/nixos.png");
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center;
+  min-width: 30px;
+  margin: .4rem;
+}
