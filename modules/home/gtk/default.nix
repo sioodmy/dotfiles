@@ -12,6 +12,7 @@
       name = "Catppuccin-Mocha-Compact-Pink-dark";
       package = pkgs.catppuccin-gtk.override {
         accents = ["pink"];
+        tweaks = ["rimless"];
         size = "compact";
         variant = "mocha";
       };

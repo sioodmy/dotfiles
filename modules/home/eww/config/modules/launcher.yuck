@@ -1,0 +1,6 @@
+(defwidget launcher []
+  (box :space-evenly true
+    (button :class "launcher_icon" 
+		   	:onclick "scripts/launcher"  " ")
+  )
+)

@@ -1,0 +1,14 @@
+(defpoll eth :interval "7s" "curl -s https://api.binance.com/api/v3/ticker/price?symbol=ETHUSDC")
+(defpoll btc :interval "10s" "curl -s https://api.binance.com/api/v3/ticker/price?symbol=BTCUSDC")
+(defpoll gas :interval "7s" "curl -s https://ethgasstation.info/json/ethgasAPI.json")
+
+(defwidget crypto []
+  (box :space-evenly false
+    (label :text "󰠓 " :class "btc-logo")
+    (label :text "${round(btc.price, 0)}$" :class "btc-price")
+    (label :text "" :class "eth-logo")
+    (label :text "${round(eth.price, 0)}$" :class "eth-price")
+    (label :text "󰊘" :class "gas-logo")
+    (label :text "${round(gas.average/10, 1)}" :class "gas")
+  )
+)

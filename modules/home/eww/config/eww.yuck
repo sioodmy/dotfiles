@@ -1,0 +1,69 @@
+(include "./modules/launcher.yuck")
+(include "./modules/crypto.yuck")
+(include "./modules/workspaces.yuck")
+(include "./modules/music.yuck")
+(include "./modules/weather.yuck")
+(include "./modules/clock.yuck")
+
+(defwidget bar []
+  (box
+    :orientation "h"
+    :class "eww_bar" 
+      (left)
+      (center)
+      (right)
+   )
+)
+
+(defwidget left []
+  (box :space-evenly false
+    :halign "start"
+    :class "left "
+        (box :space-evenly false
+          (box :class "launcher_box" :halign "center" :space-evenly false
+            (launcher)
+          )
+        (box :class "panel" :halign "center" :space-evenly false
+          (workspaces))
+        )
+        (box :class "panel" :halign "center"
+          (crypto)
+        )
+  )
+)
+
+(defwidget center []
+  (box :space-evenly false
+    :halign "center"
+    :class "center"
+      (box :class "panel" :halign "center" :space-evenly false
+        (music)
+      )
+      (box :class "panel" :halign "center" :space-evenly false
+        (weather)
+      )
+  )
+)
+
+(defwidget right []
+  (box :space-evenly false
+    :halign "end"
+    :class "right panel"
+      (clock)
+   )
+)
+
+
+(defwindow bar
+  :reserve (struts :distance "50px" :side "top")
+  :stacking "fg"
+  :exclusive true
+	:geometry (geometry :x "0" 
+						:y "0" 
+						:height "47px" 
+						:width "100%"
+            :anchor "top center")
+	:monitor 0
+  :namespace "bar"
+    (bar)
+)

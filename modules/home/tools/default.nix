@@ -55,7 +55,7 @@
     while inotifywait -e close_write $1; do pandoc $@; done
   '';
 in {
-  home.packages = [ocrScript texlive pkgs.pandoc pandoc-watch];
+  home.packages = with pkgs; [ocrScript texlive pandoc pandoc-watch];
   services = {
     udiskie.enable = true;
     gpg-agent = {
