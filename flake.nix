@@ -5,12 +5,15 @@
   inputs = {
     nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
     nixos-hardware.url = "github:nixos/nixos-hardware";
-    ragenix.url = "github:yaxitech/ragenix";
     xdg-portal-hyprland.url = "github:hyprwm/xdg-desktop-portal-hyprland";
-    sioodmy-dev.url = "git+https://git.sioodmy.dev/sioodmy/sioodmy.dev";
+    impermanence.url = "github:nix-community/impermanence";
 
     anyrun = {
       url = "github:Kirottu/anyrun";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+    ragenix = {
+      url = "github:yaxitech/ragenix";
       inputs.nixpkgs.follows = "nixpkgs";
     };
     spicetify-nix = {
@@ -47,11 +50,6 @@
     shadower = {
       url = "github:n3oney/shadower";
       inputs.nixpkgs.follows = "nixpkgs";
-    };
-    agenix = {
-      url = "github:ryantm/agenix";
-      inputs.nixpkgs.follows = "nixpkgs";
-      inputs.home-manager.follows = "home-manager";
     };
     eww = {
       url = "github:elkowar/eww";

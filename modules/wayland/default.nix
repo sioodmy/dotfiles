@@ -18,7 +18,7 @@
       _JAVA_AWT_WM_NONEREPARENTING = "1";
       SSH_AUTH_SOCK = "/run/user/1000/keyring/ssh";
       DISABLE_QT5_COMPAT = "0";
-      GDK_BACKEND = "wayland";
+      GDK_BACKEND = "wayland,x11";
       ANKI_WAYLAND = "1";
       DIRENV_LOG_FORMAT = "";
       WLR_DRM_NO_ATOMIC = "1";
