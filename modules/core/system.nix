@@ -34,6 +34,7 @@
   environment.systemPackages = with pkgs; [
     git
     steam-run
+    btrfs-progs
     appimage-run
     (writeScriptBin "sudo" ''exec doas "$@"'')
   ];

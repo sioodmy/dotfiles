@@ -10,7 +10,7 @@
     userEmail = "hello@sioodmy.dev";
     signing = {
       key = "056CFD15A9F99B0E";
-      signByDefault = true;
+      signByDefault = false;
     };
     ignores = [
       ".cache/"
