@@ -8,6 +8,7 @@
     directories = ["/etc/nixos" "/etc/NetworkManager" "/var/log" "/var/lib" "/etc/nix" "/etc/ssh" "/var/db/sudo"];
     # files = ["/etc/machine-id"];
     users.sioodmy= {
+      files = [".database.kdbx"];
       directories = [
         "download"
         "music"
@@ -24,6 +25,8 @@
         ".local/share/TelegramDesktop"
         ".config/Caprine"
         ".config/WebCord"
+        ".config/BraveSoftware/"
+        ".cache/BraveSoftware/"
         ".cache/starship"
         ".local/share/nheko"
         ".config/nheko"
