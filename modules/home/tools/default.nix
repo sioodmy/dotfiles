@@ -12,7 +12,7 @@
       ${_ grim} -g "$(${_ slurp})" -t ppm - | ${_ tesseract5} - - | ${wl-clipboard}/bin/wl-copy
       ${_ libnotify} "$(${wl-clipboard}/bin/wl-paste)"
     '';
-  browser = ["firefox.desktop"];
+  browser = ["brave.desktop"];
 
   associations = {
     "text/html" = browser;
