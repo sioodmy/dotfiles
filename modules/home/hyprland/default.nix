@@ -17,8 +17,9 @@ with lib; let
   '';
 in {
   imports = [./config.nix];
-  home.packages = with pkgs; with inputs.hyprcontrib.packages.${pkgs.system};
-  with inputs.shadower.packages.${pkgs.system};[
+  home.packages = with pkgs;
+  with inputs.hyprcontrib.packages.${pkgs.system};
+  with inputs.shadower.packages.${pkgs.system}; [
     libnotify
     wf-recorder
     brightnessctl
@@ -27,22 +28,22 @@ in {
     slurp
     swappy
     grimblast
-    shadower   
+    shadower
     hyprpicker
     screenshot
     wl-clipboard
     pngquant
     cliphist
-        (writeShellScriptBin
-            "pauseshot"
-            ''
-              ${hyprpicker}/bin/hyprpicker -r -z &
-              picker_proc=$!
+    (writeShellScriptBin
+      "pauseshot"
+      ''
+        ${hyprpicker}/bin/hyprpicker -r -z &
+        picker_proc=$!
 
-              ${grimblast}/bin/grimblast save area -
+        ${grimblast}/bin/grimblast save area -
 
-              kill $picker_proc
-            '')
+        kill $picker_proc
+      '')
   ];
 
   wayland.windowManager.hyprland = {
@@ -51,12 +52,11 @@ in {
       nvidiaPatches = true;
     };
     systemdIntegration = true;
-    # extraConfig = builtins.readFile ./hyprland.conf;
   };
 
   services.wlsunset = {
     # TODO: fix opaque red screen issue
-    enable = false;
+    enable = true;
     latitude = "52.0";
     longitude = "21.0";
     temperature = {

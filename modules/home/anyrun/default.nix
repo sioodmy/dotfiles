@@ -5,9 +5,7 @@
 }: let
   anyrunPkgs = inputs.anyrun.packages.${pkgs.system};
 in {
-
-
- programs.anyrun = {
+  programs.anyrun = {
     enable = true;
 
     config = {
@@ -15,6 +13,10 @@ in {
         applications
         rink
         symbols
+        dictionary
+        kidex
+        stdin
+        shell
         translate
       ];
 
@@ -64,6 +66,5 @@ in {
         margin-top: 6px;
       }
     '';
-
-};
+  };
 }
