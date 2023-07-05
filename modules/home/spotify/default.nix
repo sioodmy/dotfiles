@@ -9,7 +9,6 @@
   in {
     enable = true;
 
-
     theme = spicePkgs.themes.catppuccin-mocha;
 
     colorScheme = "flamingo";

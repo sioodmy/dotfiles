@@ -8,16 +8,15 @@
 # note that it might break some stuff, eg webcam
 {
   services = {
-  
-     physlock = {
-        enable = true;
-        allowAnyUser = true;
-     };
-  tor = {
-    enable = true;
-    client.enable = true;
-    torsocks.enable = true;
-  };
+    physlock = {
+      enable = true;
+      allowAnyUser = true;
+    };
+    tor = {
+      enable = true;
+      client.enable = true;
+      torsocks.enable = true;
+    };
   };
   # tmpfs = /tmp is mounted in ram. Doing so makes temp file management speedy
   # on ssd systems, and volatile! Because it's wiped on reboot.
@@ -68,7 +67,6 @@
         };
       };
     };
-
 
     doas = {
       enable = true;

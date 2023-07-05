@@ -5,7 +5,7 @@
   ...
 }: let
   # thanks vi-tality
-    propaganda = pkgs.writeTextFile {
+  propaganda = pkgs.writeTextFile {
     name = "propaganda";
     text = ''
       Nix advantages:

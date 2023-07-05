@@ -5,7 +5,6 @@
   config,
   ...
 }: {
-
   nixpkgs.config.allowUnfree = false;
   home.packages = with pkgs; [
     (symlinkJoin {
@@ -21,7 +20,7 @@
       postBuild = "wrapProgram $out/bin/caprine --add-flags --no-sandbox --set GDK_BACKEND x11";
     })
     ledger_agent
-    
+
     pulseaudio
     cinny-desktop
     schildichat-desktop
