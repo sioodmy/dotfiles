@@ -8,10 +8,12 @@
   imports = [(modulesPath + "/installer/scan/not-detected.nix")];
 
   boot.initrd.luks.devices.luksroot = {
-    device = "/dev/disk/by-label/cryptroot";
+    device = "/dev/disk/by-label/NIXCRYPT";
     preLVM = true;
     allowDiscards = true;
   };
+
+  boot.tmp.useTmpfs = true;
 
   boot.initrd.availableKernelModules =
     [
@@ -30,13 +32,29 @@
   boot.extraModulePackages = [];
 
   fileSystems."/" = {
-    device = "/dev/disk/by-label/root";
-    fsType = "ext4";
+    device = "none";
+    fsType = "tmpfs";
+    options = ["size=8G" "mode=755"];
+  };
+
+  fileSystems."/persist" = {
+    neededForBoot = true;
+    device = "/dev/disk/by-label/NIXROOT";
+    fsType = "btrfs";
+    options = ["noatime" "discard" "subvol=@persist" "compress=zstd"];
+  };
+
+  fileSystems."/nix" = {
+    neededForBoot = true;
+    device = "/dev/disk/by-label/NIXROOT";
+    fsType = "btrfs";
+    options = ["noatime" "discard" "subvol=@nix" "compress=zstd"];
   };
 
   fileSystems."/boot" = {
-    device = "/dev/disk/by-label/boot";
+    device = "/dev/disk/by-label/NIXBOOT";
     fsType = "vfat";
+    options = ["noatime" "discard"];
   };
 
   swapDevices = [{device = "/dev/disk/by-label/swap";}];

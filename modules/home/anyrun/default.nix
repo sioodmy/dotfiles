@@ -13,15 +13,13 @@ in {
     config = {
       plugins = with anyrunPkgs; [
         applications
-        randr
         rink
-        shell
         symbols
         translate
       ];
 
-      width.fraction = 0.3;
-      verticalOffset.absolute = 15;
+      # width.fraction = 0.3;
+      # verticalOffset.absolute = 15;
       hidePluginInfo = true;
       closeOnClick = true;
     };

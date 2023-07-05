@@ -21,6 +21,7 @@
     ./git
     ./eww
     ./spotify
+    ./brave
     ./foot
     ./anyrun
     ./rnnoise
