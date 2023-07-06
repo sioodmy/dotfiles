@@ -1,0 +1,19 @@
+name: Nix Flake Check
+
+on: [push, pull_request, workflow_dispatch]
+
+jobs:
+  checks:
+    name: Check expressions
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v3
+      - uses: cachix/install-nix-action@v18
+        with:
+          install_url: https://nixos.org/nix/install
+          extra_nix_config: |
+            auto-optimise-store = true
+            experimental-features = nix-command flakes
+            access-tokens = ${{ secrets.AUTH_TOKEN }}
+      - run: nix flake check
