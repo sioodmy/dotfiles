@@ -18,21 +18,6 @@
       torsocks.enable = true;
     };
   };
-  # tmpfs = /tmp is mounted in ram. Doing so makes temp file management speedy
-  # on ssd systems, and volatile! Because it's wiped on reboot.
-  boot.tmp.useTmpfs = lib.mkDefault false;
-  # Firefox cache on tmpfs
-  fileSystems."/home/sioodmy/.cache/mozilla/firefox" = {
-    device = "tmpfs";
-    fsType = "tmpfs";
-    noCheck = true;
-    options = [
-      "noatime"
-      "nodev"
-      "nosuid"
-      "size=128M"
-    ];
-  };
   programs.ssh.startAgent = true;
   security = {
     protectKernelImage = true;

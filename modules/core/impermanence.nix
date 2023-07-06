@@ -43,6 +43,7 @@
         ".config/WebCord"
         ".config/BraveSoftware/"
         ".cache/BraveSoftware/"
+        ".cache/spotify"
         ".cache/starship"
         ".local/share/nheko"
         ".config/nheko"
