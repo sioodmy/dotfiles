@@ -2,8 +2,11 @@
   config,
   pkgs,
   lib,
+  inputs,
   ...
 }: {
+  imports = [inputs.lanzaboote.nixosModules.lanzaboote];
+
   environment.systemPackages = [
     # For debugging and troubleshooting Secure Boot.
     pkgs.sbctl
@@ -11,8 +14,6 @@
   boot = {
     binfmt.emulatedSystems = ["aarch64-linux"];
     tmp.cleanOnBoot = true;
-    bootspec.enable = true;
-    consoleLogLevel = 0;
     # some kernel parameters, i dont remember what half of this shit does but who cares
     kernelParams = [
       "pti=on"
@@ -38,7 +39,6 @@
       "loglevel=7"
       "rd.udev.log_priority=3"
       "noresume"
-      "quiet"
       "logo.nologo"
       "rd.systemd.show_status=auto"
       "rd.udev.log_level=3"
@@ -50,19 +50,11 @@
     kernelPackages = lib.mkDefault pkgs.linuxPackages_xanmod_latest;
     extraModprobeConfig = "options hid_apple fnmode=1";
 
-    loader = {
-      systemd-boot.enable = true;
-      efi.canTouchEfiVariables = true;
-      timeout = 1;
-      grub = {
-        enable = false;
-        useOSProber = true;
-        efiSupport = true;
-        device = "nodev";
-        theme = null;
-        backgroundColor = null;
-        splashImage = null;
+      bootspec.enable = true;
+      lanzaboote = {
+        enable = true;
+        pkiBundle = "/etc/secureboot";
       };
-    };
+      loader.efi.canTouchEfiVariables = true;
   };
 }
