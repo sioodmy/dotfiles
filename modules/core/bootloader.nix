@@ -50,11 +50,11 @@
     kernelPackages = lib.mkDefault pkgs.linuxPackages_xanmod_latest;
     extraModprobeConfig = "options hid_apple fnmode=1";
 
-      bootspec.enable = true;
-      lanzaboote = {
-        enable = true;
-        pkiBundle = "/etc/secureboot";
-      };
-      loader.efi.canTouchEfiVariables = true;
+    bootspec.enable = true;
+    lanzaboote = {
+      enable = true;
+      pkiBundle = "/etc/secureboot";
+    };
+    loader.efi.canTouchEfiVariables = true;
   };
 }
