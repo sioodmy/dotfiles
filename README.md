@@ -44,6 +44,12 @@
   - [io](hosts/io) 💻 Configs for my future framework laptop ([currently im kinda broke](https://en.liberapay.com/sioodmy/))
 - [pkgs](pkgs) 💿 exported packages
 
+## Notable features
+- Luks disk encryption with btrfs
+- Opt-in impermanence
+- Secureboot
+- Fully functional wayland + nvidia setup
+
 ## 💛 Donate
 
 If you would like to support me you can sponsor me via ko-fi
