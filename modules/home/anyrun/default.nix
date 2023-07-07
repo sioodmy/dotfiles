@@ -18,6 +18,7 @@ in {
         stdin
         shell
         translate
+        inputs.cryptorun.packages.${pkgs.system}.default
       ];
 
       # width.fraction = 0.3;
