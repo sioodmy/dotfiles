@@ -30,6 +30,7 @@ in {
     grimblast
     shadower
     hyprpicker
+    wl-clip-persist
     screenshot
     wl-clipboard
     pngquant
