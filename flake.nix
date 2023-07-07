@@ -61,6 +61,10 @@
       url = "github:nix-community/home-manager";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+    cryptorun = {
+      url = "github:sioodmy/anyrun-crypto";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
   };
   outputs = {self, ...} @ inputs: let
     system = "x86_64-linux";
