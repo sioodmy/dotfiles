@@ -51,6 +51,7 @@ in {
     env = QT_WAYLAND_DISABLE_WINDOWDECORATION,1
 
     exec-once = eww open bar
+    exec-once = wl-clip-persist --clipboard both
 
     input {
         kb_layout=pl
