@@ -98,11 +98,11 @@
         ]
       },
       "locked": {
-        "lastModified": 1688698974,
-        "narHash": "sha256-N6Tyqtwe6rtJCLQLxa5thRSXVmNobHLTUe2dnw+EGsg=",
+        "lastModified": 1688742760,
+        "narHash": "sha256-PGgyQo99oVt5l3eWal9m0G6Oe3fa3XmZNvtrYiiZfAo=",
         "owner": "sioodmy",
         "repo": "anyrun-crypto",
-        "rev": "a9f3881d6d0f592d700ed5ac03e911499a9063ff",
+        "rev": "57eeb2ceee6b67608735a4e7e56195bdb2799ab4",
         "type": "github"
       },
       "original": {
