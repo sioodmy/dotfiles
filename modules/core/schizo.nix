@@ -19,6 +19,30 @@
     };
   };
   programs.ssh.startAgent = true;
+  programs.firejail = let
+    profiles = "${lib.getExe pkgs.firejail}/etc/firejail";
+  in {
+    enable = true;
+    wrappedBinaries = with pkgs;
+    with lib; {
+      thunderbird = {
+        executable = getExe thunderbird;
+        profile = "${profiles}/thunderbird.profile";
+      };
+      spotify = {
+        executable = getExe spotify;
+        profile = "${profiles}/spotify.profile";
+      };
+      brave = {
+        executable = getExe brave;
+        profile = "${profiles}/brave-browser-stable.profile";
+      };
+      keepassxc = {
+        executable = getExe keepassxc;
+        profile = "${profiles}/keepassxc.profile";
+      };
+    };
+  };
   security = {
     protectKernelImage = true;
     lockKernelModules = false;
