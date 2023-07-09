@@ -22,8 +22,8 @@
     ledger_agent
 
     pulseaudio
-    cinny-desktop
-    schildichat-desktop
+    thunderbird
+    nheko
     socat
     transmission-gtk
     wget

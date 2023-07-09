@@ -119,6 +119,7 @@ in {
         compinit
         _comp_options+=(globdots)
         bindkey -M menuselect 'h' vi-backward-char
+        bindkey '^H' backward-kill-word
         bindkey -M menuselect 'k' vi-up-line-or-history
         bindkey -M menuselect 'l' vi-forward-char
         bindkey -M menuselect 'j' vi-down-line-or-history
@@ -165,7 +166,11 @@ in {
         cat = "${getExe bat} --style=plain";
         vpn = getExe mullvad;
         grep = getExe ripgrep;
+        gpl = "curl https://www.gnu.org/licenses/gpl-3.0.txt -o LICENSE";
+        wget = "wget --hsts-file=\"${config.xdg.dataHome}/wget-hsts\"";
         fzf = getExe skim;
+        untar = "tar -xvf";
+        untargz = "tar -xzf";
         MANPAGER = "sh -c 'col -bx | bat -l man -p'";
         du = getExe du-dust;
         ps = getExe procs;
