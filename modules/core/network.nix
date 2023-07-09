@@ -8,7 +8,8 @@
   environment.systemPackages = with pkgs; [docker-compose speedtest-cli];
   networking = {
     # dns
-    nameservers = ["1.1.1.1" "1.0.0.1" "8.8.8.8" "8.8.4.4"];
+    nameservers = [ "127.0.0.1" "::1" ];
+     dhcpcd.extraConfig = "nohook resolv.conf";
     networkmanager = {
       enable = true;
       dns = "none";
