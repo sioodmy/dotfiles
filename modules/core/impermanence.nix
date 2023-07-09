@@ -27,7 +27,7 @@
       "/var/cache/tailscale"
       "/var/lib/tailscale"
     ];
-    users.sioodmy = {
+    users.sioodmy = with lib; {
       files = [".database.kdbx"];
       directories = [
         "download"
@@ -62,6 +62,8 @@
         ".config/WebCord"
         ".config/BraveSoftware/"
         ".cache/BraveSoftware/"
+        ".cache/thunderbird/"
+        ".thunderbird"
         ".cache/spotify"
         ".cache/starship"
         ".local/share/nheko"
