@@ -52,11 +52,6 @@
       url = "github:n3oney/shadower";
       inputs.nixpkgs.follows = "nixpkgs";
     };
-    eww = {
-      url = "github:elkowar/eww";
-      inputs.nixpkgs.follows = "nixpkgs";
-      inputs.rust-overlay.follows = "rust-overlay";
-    };
     home-manager = {
       url = "github:nix-community/home-manager";
       inputs.nixpkgs.follows = "nixpkgs";

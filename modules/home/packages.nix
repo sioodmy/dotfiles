@@ -20,7 +20,6 @@
       postBuild = "wrapProgram $out/bin/caprine --add-flags --no-sandbox --set GDK_BACKEND x11";
     })
     ledger_agent
-
     pulseaudio
     thunderbird
     nheko

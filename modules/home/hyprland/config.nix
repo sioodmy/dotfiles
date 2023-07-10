@@ -50,7 +50,7 @@ in {
     env = _JAVA_AWT_WM_NONREPARENTING,1
     env = QT_WAYLAND_DISABLE_WINDOWDECORATION,1
 
-    exec-once = eww open bar
+    exec-once = run-as-service waybar
     exec-once = wl-clip-persist --clipboard both
 
     input {

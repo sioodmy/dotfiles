@@ -50,16 +50,28 @@
         profile = "${profiles}/thunderbird.profile";
       };
       spotify = {
-        executable = getExe spotify;
+        executable = getExe pkgs.spotify;
         profile = "${profiles}/spotify.profile";
       };
       brave = {
-        executable = getExe brave;
+        executable = getExe pkgs.brave;
         profile = "${profiles}/brave-browser-stable.profile";
       };
       keepassxc = {
         executable = getExe keepassxc;
         profile = "${profiles}/keepassxc.profile";
+      };
+      zathura = {
+        executable = getExe pkgs.zathura;
+        profile = "${profiles}/zathura.profile";
+      };
+      tor = {
+        executable = getExe pkgs.tor;
+        profile = "${profiles}/tor.profile";
+      };
+      transmission-gtk = {
+        executable = getExe pkgs.transmission-gtk;
+        profile = "${profiles}/transmission-gtk.profile";
       };
     };
   };

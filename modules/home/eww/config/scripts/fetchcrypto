@@ -1,5 +1,0 @@
-#!/bin/sh
-
-for ticker in BTC ETH ADA ARB XRP SOL; do
-  curl -s "https://api.binance.com/api/v3/ticker/price?symbol=${ticker}USDC"
-done

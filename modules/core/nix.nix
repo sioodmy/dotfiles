@@ -65,7 +65,7 @@
 
     # Free up to 1GiB whenever there is less than 100MiB left.
     extraOptions = ''
-      experimental-features = nix-command flakes
+      experimental-features = nix-command flakes recursive-nix
       keep-outputs = true
       warn-dirty = false
       keep-derivations = true
