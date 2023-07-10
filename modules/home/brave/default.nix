@@ -13,6 +13,7 @@
       {id = "eimadpbcbfnmbkopoojfekhnkhdbieeh";} # dark reader
       {id = "aaekanoannlhnajolbijaoflfhikcgng";} # dark theme for messenger
       {id = "cbghhgpcnddeihccjmnadmkaejncjndb";} # vencord
+      {id = "ojggmchlghnjlapmfbnjholfjkiidbch";} # venom wallet
     ];
   };
 }

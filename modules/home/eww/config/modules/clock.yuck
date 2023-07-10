@@ -1,6 +1,0 @@
-(defpoll hour	:interval "1s"	"date '+%H'")
-(defpoll min	:interval "1s"	"date '+%M'")
-
-(defwidget clock []
-  (label :text "${hour}:${min}" :class "clock")
-)
