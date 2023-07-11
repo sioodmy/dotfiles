@@ -39,7 +39,7 @@
     };
     loginShellInit = ''
       dbus-update-activation-environment --systemd DISPLAY
-      eval $(gnome-keyring-daemon --start --components=ssh)
+      eval $(gnome-keyring-daemon --start --components=ssh,secrets)
       eval $(ssh-agent)
     '';
   };

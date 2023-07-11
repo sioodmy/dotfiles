@@ -18,10 +18,10 @@
         directory = ".steam";
         method = "symlink";
       }
-      # ".local/share/Steam"
       ".local/share/direnv"
       ".local/share/PrismLauncher"
       ".local/share/TelegramDesktop"
+      ".local/share/keyrings"
       ".config/Caprine"
       ".config/WebCord"
       ".config/BraveSoftware/"
