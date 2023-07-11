@@ -22,6 +22,8 @@
     ledger_agent
     pulseaudio
     thunderbird
+    schildichat-desktop
+    qrcp
     nheko
     socat
     transmission-gtk

@@ -9,13 +9,8 @@
       "docs"
       "vids"
       "other"
-      ".local/share/Steam"
       {
         directory = ".local/share/zoxide";
-        method = "symlink";
-      }
-      {
-        directory = ".steam";
         method = "symlink";
       }
       ".ssh"
@@ -24,7 +19,9 @@
       ".local/share/TelegramDesktop"
       ".local/share/keyrings"
       ".config/Caprine"
+      ".cache/keepassxc"
       ".config/WebCord"
+      ".config/easyeffects"
       ".config/BraveSoftware/"
       ".cache/BraveSoftware/"
       ".cache/thunderbird/"
@@ -32,6 +29,7 @@
       ".cache/spotify"
       ".cache/starship"
       ".local/share/nheko"
+      ".cache/nheko"
       ".config/nheko"
       ".cache/nix-index"
       ".config/obs-studio"
