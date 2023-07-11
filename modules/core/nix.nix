@@ -73,6 +73,7 @@
       max-free = ${toString (1024 * 1024 * 1024)}
     '';
     settings = {
+      flake-registry = "/etc/nix/registry.json";
       auto-optimise-store = true;
       # use binary cache, its not gentoo
       builders-use-substitutes = true;
