@@ -11,7 +11,7 @@ in ''
   }
 
   window#waybar {
-    background-color: #1e1e2e;
+    background-color: rgba(30, 30, 46, 0.7);
     border-radius: 0px;
     color: #cdd6f4;
     font-size: 16px;
@@ -83,7 +83,7 @@ in ''
   #volume,
   #pulseaudio {
     border-radius: 15px;
-    background-color: #313244;
+    background-color: rgba(49, 50, 68, 0.8);
     padding: 0px 10px 0px 10px;
     margin: 5px 0px 5px 0px;
   }
