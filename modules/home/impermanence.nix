@@ -18,6 +18,7 @@
         directory = ".steam";
         method = "symlink";
       }
+      ".ssh"
       ".local/share/direnv"
       ".local/share/PrismLauncher"
       ".local/share/TelegramDesktop"
