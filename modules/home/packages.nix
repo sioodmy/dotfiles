@@ -21,7 +21,9 @@
     })
     ledger_agent
     pulseaudio
+    sherlock
     thunderbird
+    pfetch-rs
     schildichat-desktop
     qrcp
     nheko

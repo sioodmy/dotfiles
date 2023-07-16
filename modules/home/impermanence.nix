@@ -1,4 +1,4 @@
-{ ...}: {
+{...}: {
   home.persistence."/persist/home/sioodmy" = {
     allowOther = true;
     files = [".database.kdbx"];
@@ -13,6 +13,11 @@
         directory = ".local/share/zoxide";
         method = "symlink";
       }
+      {
+        directory = ".steam";
+        method = "symlink";
+      }
+      ".local/share/Steam"
       ".ssh"
       ".local/share/direnv"
       ".local/share/PrismLauncher"
