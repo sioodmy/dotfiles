@@ -40,7 +40,7 @@ nixpkgs.overlays = [(self: super: {
           "Iosevka Nerd Font"
           "Noto Color Emoji"
         ];
-        sansSerif = ["gg sans" "Noto Color Emoji"];
+        sansSerif = ["Lexend" "Noto Color Emoji"];
         serif = ["Noto Serif" "Noto Color Emoji"];
         emoji = ["Noto Color Emoji"];
       };

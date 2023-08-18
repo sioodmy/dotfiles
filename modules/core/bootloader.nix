@@ -31,6 +31,7 @@
       "sysrq_always_enabled=1"
       "processor.max_cstate=5"
       "idle=nomwait"
+      "quiet"
       "rootflags=noatime"
       "iommu=pt"
       "usbcore.autosuspend=-1"

@@ -4,7 +4,7 @@
   inputs,
   ...
 }: {
-  imports = [./fonts.nix ./services.nix ./pipewire.nix];
+  imports = [./fonts ./services.nix ./pipewire.nix];
   # nixpkgs.overlays = with inputs; [nixpkgs-wayland.overlay];
   environment.etc."greetd/environments".text = ''
     Hyprland
