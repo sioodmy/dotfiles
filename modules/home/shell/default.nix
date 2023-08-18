@@ -164,7 +164,7 @@ in {
         ytmp3 = ''
           ${getExe yt-dlp} -x --continue --add-metadata --embed-thumbnail --audio-format mp3 --audio-quality 0 --metadata-from-title="%(artist)s - %(title)s" --prefer-ffmpeg -o "%(title)s.%(ext)s"'';
         cat = "${getExe bat} --style=plain";
-        vpn = getExe mullvad;
+        vpn =  "${getBin mullvad}/mullvad";
         uuid = "cat /proc/sys/kernel/random/uuid";
         grep = getExe ripgrep;
         gpl = "curl https://www.gnu.org/licenses/gpl-3.0.txt -o LICENSE";

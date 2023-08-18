@@ -95,11 +95,6 @@ in {
     decoration {
         rounding=12
         multisample_edges=true
-        blur_new_optimizations=1
-        blur=1
-        blur_size=3
-        blur_passes=3
-
         drop_shadow = true
         shadow_ignore_window = true
         shadow_offset = 0 5

@@ -23,8 +23,6 @@
             nodePackages.vscode-css-languageserver-bin
             nodePackages.vscode-langservers-extracted
             nodePackages.prettier
-            rustfmt
-            rust-analyzer
             black
             alejandra
             shellcheck
@@ -34,6 +32,7 @@
 
     settings = {
       theme = "catppuccin_mocha_transparent";
+      icons = "nerdfonts";
       keys.normal = {
         "{" = "goto_prev_paragraph";
         "}" = "goto_next_paragraph";
@@ -69,7 +68,10 @@
         indent-guides = {
           render = true;
         };
-        sticky-context.enable = false;
+        sticky-context = {
+          enable = true;
+          indicator = false;
+        };
         lsp = {
           display-messages = true;
           display-inlay-hints = true;
