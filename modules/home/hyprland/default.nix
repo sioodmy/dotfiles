@@ -50,7 +50,7 @@ in {
   wayland.windowManager.hyprland = {
     enable = true;
     package = inputs.hyprland.packages.${pkgs.system}.default.override {
-      nvidiaPatches = true;
+      enableNvidiaPatches = true;
     };
     systemdIntegration = true;
   };
@@ -85,7 +85,7 @@ in {
     cliphist = mkService {
       Unit.Description = "Clipboard history";
       Service = {
-        ExecStart = "${pkgs.wl-clipboard}/bin/wl-paste --watch ${lib.getExe pkgs.cliphist} store";
+        ExecStart = "${pkgs.wl-clipboard}/bin/wl-paste --watch ${lib.getBin pkgs.cliphist}/cliphist store";
         Restart = "always";
       };
     };

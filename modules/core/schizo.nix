@@ -36,37 +36,38 @@
   };
   programs.ssh.startAgent = true;
   programs.firejail = let
-    profiles = "${lib.getExe pkgs.firejail}/etc/firejail";
-    inherit (lib) getExe;
+    profiles = "${pkgs.firejail}/etc/firejail";
+    inherit (lib) getBin;
   in {
     enable = true;
     wrappedBinaries = with pkgs; {
+      # FIXME: why did i think this was a good idea (too lazy to write a propper function tho)
       thunderbird = {
-        executable = getExe thunderbird;
+        executable = "${getBin thunderbird}/thunderbird";
         profile = "${profiles}/thunderbird.profile";
       };
       spotify = {
-        executable = getExe pkgs.spotify;
+        executable = "${getBin spotify}/spotify";
         profile = "${profiles}/spotify.profile";
       };
       brave = {
-        executable = getExe pkgs.brave;
+        executable = "${getBin brave}/brave";
         profile = "${profiles}/brave-browser-stable.profile";
       };
       keepassxc = {
-        executable = getExe keepassxc;
+        executable = "${getBin keepassxc}/keepassxc";
         profile = "${profiles}/keepassxc.profile";
       };
       zathura = {
-        executable = getExe pkgs.zathura;
+        executable = "${getBin zathura}/zathura";
         profile = "${profiles}/zathura.profile";
       };
       tor = {
-        executable = getExe pkgs.tor;
+        executable = "${getBin tor}/tor";
         profile = "${profiles}/tor.profile";
       };
       transmission-gtk = {
-        executable = getExe pkgs.transmission-gtk;
+        executable = "${getBin transmission-gtk}/transmission-gtk";
         profile = "${profiles}/transmission-gtk.profile";
       };
     };

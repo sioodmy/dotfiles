@@ -51,8 +51,9 @@
     extraModprobeConfig = "options hid_apple fnmode=1";
 
     bootspec.enable = true;
+    loader.systemd-boot.enable = true;
     lanzaboote = {
-      enable = true;
+      enable = false;
       pkiBundle = "/etc/secureboot";
     };
     loader.efi.canTouchEfiVariables = true;

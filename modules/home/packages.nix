@@ -22,6 +22,8 @@
     ledger_agent
     pulseaudio
     sherlock
+    # sorry bros
+    vscodium-fhs 
     thunderbird
     pfetch-rs
     schildichat-desktop

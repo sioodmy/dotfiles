@@ -1,7 +1,6 @@
 {
   description = "My NixOS configuration";
   # https://dotfiles.sioodmy.dev
-  # kc ania <3
 
   inputs = {
     nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
@@ -56,6 +55,11 @@
       url = "github:nix-community/home-manager";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+     home-manager-wsl = {
+      url = "github:viperML/home-manager-wsl";
+      inputs.nixpkgs.follows = "nixpkgs";
+      inputs.home-manager.follows = "home-manager";
+    };
     cryptorun = {
       url = "github:sioodmy/anyrun-crypto";
       inputs.nixpkgs.follows = "nixpkgs";
@@ -66,6 +70,12 @@
     pkgs = inputs.nixpkgs.legacyPackages.x86_64-linux;
   in {
     nixosConfigurations = import ./hosts inputs;
+     homeConfigurations."sioodmy" = inputs.home-manager.lib.homeManagerConfiguration {
+      modules = [
+        ./home
+        inputs.home-manager-wsl.homeModules.default
+      ];
+    };
 
     # sd card image for raspberry pi (Iapetus host)
     # build with `nix build .#images.iapetus`

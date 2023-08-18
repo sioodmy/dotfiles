@@ -36,13 +36,7 @@ in {
   xdg.configFile."waybar/style.css".text = import ./style.nix;
   programs.waybar = {
     enable = true;
-    package = pkgs.waybar.overrideAttrs (oldAttrs: {
-      mesonFlags = oldAttrs.mesonFlags ++ ["-Dexperimental=true"];
-      patchPhase = ''
-        substituteInPlace src/modules/wlr/workspace_manager.cpp --replace "zext_workspace_handle_v1_activate(workspace_handle_);" "const std::string command = \"${config.wayland.windowManager.hyprland.package}/bin/hyprctl dispatch workspace \" + name_; system(command.c_str());"
-      '';
-    });
-
+    package = pkgs.waybar-hyprland;
     settings = {
       mainBar = {
         layer = "top";
@@ -76,7 +70,7 @@ in {
         "custom/search" = {
           format = " ";
           tooltip = false;
-          on-click = lib.getExe config.programs.anyrun.package;
+          on-click = "lib.getBin config.programs.anyrun.package}/anyrun";
         };
 
         "custom/weather" = {
@@ -96,7 +90,7 @@ in {
           format = " VPN {}";
           tooltip = true;
           interval = 1;
-          exec = lib.getExe mullvad-status;
+          exec = "${lib.getBin mullvad-status}/mullvad-status";
         };
         "custom/lock" = {
           tooltip = false;
