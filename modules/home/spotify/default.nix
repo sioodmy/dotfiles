@@ -11,12 +11,30 @@
 
     theme = spicePkgs.themes.catppuccin-mocha;
 
-    colorScheme = "flamingo";
+    colorScheme = "pink";
 
     enabledExtensions = with spicePkgs.extensions; [
       fullAppDisplay
       hidePodcasts
       shuffle
+      skipStats
+      autoVolume
+      autoSkip
+      savePlaylists
+      phraseToPlaylist
+      groupSession
+      popupLyrics
+      loopyLoop
+      bookmark
+      keyboardShortcut
+      fullAppDisplayMod
+      # i aint paying for shit
+      adblock
+    ];
+    enabledCustomApps = with spicePkgs.apps; [
+      reddit
+      lyrics-plus
+      localFiles
     ];
   };
 }

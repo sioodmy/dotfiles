@@ -1,10 +1,9 @@
-{
-  pkgs,
-  ...
-}: {
-nixpkgs.overlays = [(self: super: { 
-  gg-sans = super.callPackage ./gg-sans {};
-})];
+{pkgs, ...}: {
+  nixpkgs.overlays = [
+    (self: super: {
+      gg-sans = super.callPackage ./gg-sans {};
+    })
+  ];
   fonts = {
     packages = with pkgs; [
       material-icons

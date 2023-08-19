@@ -1,10 +1,4 @@
-{
-  inputs,
-  pkgs,
-  self,
-  config,
-  ...
-}: {
+{pkgs, ...}: {
   nixpkgs.config.allowUnfree = false;
   home.packages = with pkgs; [
     (symlinkJoin {
@@ -23,7 +17,7 @@
     pulseaudio
     sherlock
     # sorry bros
-    vscodium-fhs 
+    vscodium-fhs
     thunderbird
     pfetch-rs
     schildichat-desktop

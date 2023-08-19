@@ -16,7 +16,7 @@
         term = "xterm-256color";
         font = "monospace:size=13.5";
         vertical-letter-offset = "-0.75";
-        pad = "24x24";
+        pad = "32x32";
         notify = "notify-send -a \${app-id} -i \${app-id} \${title} \${body}";
         selection-target = "clipboard";
         # box-drawings-uses-font-glyphs = "yes";
