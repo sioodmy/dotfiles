@@ -17,6 +17,7 @@
   };
 
   nixpkgs = {
+    overlays = [inputs.nur.overlay];
     config = {
       allowUnfree = false;
       allowBroken = true;

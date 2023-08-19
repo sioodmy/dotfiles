@@ -93,6 +93,11 @@ in {
     }
 
     decoration {
+        blur {
+          enabled = true
+          size = 3
+          passes = 3
+        }
         rounding=12
         multisample_edges=true
         drop_shadow = true
@@ -160,6 +165,13 @@ in {
 
     windowrule=tile,title:Spotify
     windowrule=float,*.exe
+    windowrulev2 = pin,title:Picture in picture
+    windowrulev2 = keepaspectratio,title:Picture in picture
+    windowrulev2 = noborder,title:Picture in picture
+    windowrulev2 = move 100%-271 100%-273,title:Picture in picture
+    windowrulev2 = float,title:Picture in picture
+    windowrulev2 = opacity 0.7 override 0.7 override,title:Picture in picture
+    windowrulev2 = nofocus,class:^(Picture in picture)$
     windowrule=fullscreen,wlogout
     windowrule=float,title:wlogout
     windowrule=float,udiskie

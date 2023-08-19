@@ -4,6 +4,7 @@
 
   inputs = {
     nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
+    nur.url = "github:nix-community/NUR";
     nixos-hardware.url = "github:nixos/nixos-hardware";
     xdg-portal-hyprland.url = "github:hyprwm/xdg-desktop-portal-hyprland";
     impermanence.url = "github:nix-community/impermanence";
@@ -55,7 +56,7 @@
       url = "github:nix-community/home-manager";
       inputs.nixpkgs.follows = "nixpkgs";
     };
-     home-manager-wsl = {
+    home-manager-wsl = {
       url = "github:viperML/home-manager-wsl";
       inputs.nixpkgs.follows = "nixpkgs";
       inputs.home-manager.follows = "home-manager";
@@ -70,7 +71,7 @@
     pkgs = inputs.nixpkgs.legacyPackages.x86_64-linux;
   in {
     nixosConfigurations = import ./hosts inputs;
-     homeConfigurations."sioodmy" = inputs.home-manager.lib.homeManagerConfiguration {
+    homeConfigurations."sioodmy" = inputs.home-manager.lib.homeManagerConfiguration {
       modules = [
         ./home
         inputs.home-manager-wsl.homeModules.default

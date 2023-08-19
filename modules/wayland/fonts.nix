@@ -1,10 +1,9 @@
-{
-  pkgs,
-  ...
-}: {
-nixpkgs.overlays = [(self: super: { 
-  gg-sans = super.callPackage ./gg-sans {};
-})];
+{pkgs, ...}: {
+  nixpkgs.overlays = [
+    (self: super: {
+      gg-sans = super.callPackage ./gg-sans {};
+    })
+  ];
   fonts = {
     packages = with pkgs; [
       material-icons
@@ -40,7 +39,7 @@ nixpkgs.overlays = [(self: super: {
           "Iosevka Nerd Font"
           "Noto Color Emoji"
         ];
-        sansSerif = ["gg sans" "Noto Color Emoji"];
+        sansSerif = ["Lexend" "Noto Color Emoji"];
         serif = ["Noto Serif" "Noto Color Emoji"];
         emoji = ["Noto Color Emoji"];
       };
