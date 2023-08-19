@@ -4,7 +4,6 @@
 
   inputs = {
     nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
-    nur.url = "github:nix-community/NUR";
     nixos-hardware.url = "github:nixos/nixos-hardware";
     xdg-portal-hyprland.url = "github:hyprwm/xdg-desktop-portal-hyprland";
     impermanence.url = "github:nix-community/impermanence";

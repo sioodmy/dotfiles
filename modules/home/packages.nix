@@ -7,12 +7,6 @@
       buildInputs = [makeWrapper];
       postBuild = "wrapProgram $out/bin/ledger-live-desktop --add-flags --use-gl=desktop";
     })
-    (symlinkJoin {
-      name = caprine-bin.name;
-      paths = [caprine-bin];
-      buildInputs = [makeWrapper];
-      postBuild = "wrapProgram $out/bin/caprine --add-flags --no-sandbox --set GDK_BACKEND x11";
-    })
     ledger_agent
     pulseaudio
     sherlock
