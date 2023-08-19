@@ -825,21 +825,6 @@
         "type": "github"
       }
     },
-    "nur": {
-      "locked": {
-        "lastModified": 1692455181,
-        "narHash": "sha256-XL4dXONV2sxtmYiIy9nGkAsI8L57SPbzrzSZp4yk+m4=",
-        "owner": "nix-community",
-        "repo": "NUR",
-        "rev": "37f30106cbd37398a53973fdc78a9fed152fc28b",
-        "type": "github"
-      },
-      "original": {
-        "owner": "nix-community",
-        "repo": "NUR",
-        "type": "github"
-      }
-    },
     "parts": {
       "inputs": {
         "nixpkgs-lib": [
@@ -949,7 +934,6 @@
         "nix-index-db": "nix-index-db",
         "nixos-hardware": "nixos-hardware",
         "nixpkgs": "nixpkgs",
-        "nur": "nur",
         "ragenix": "ragenix",
         "rust-overlay": "rust-overlay_2",
         "shadower": "shadower",

@@ -1,7 +1,10 @@
 {...}: {
   home.persistence."/persist/home/sioodmy" = {
     allowOther = true;
-    files = [".database.kdbx"];
+    files = [
+    ".database.kdbx"
+        ".cache/anyrun-ha-assist.sqlite3"
+    ];
     directories = [
       "download"
       "music"
@@ -32,6 +35,7 @@
       ".cache/thunderbird/"
       ".thunderbird"
       ".cache/spotify"
+      ".config/spotify"
       ".cache/starship"
       ".local/share/nheko"
       ".cache/nheko"

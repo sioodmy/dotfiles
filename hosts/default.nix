@@ -9,7 +9,6 @@
   nvidia = ../modules/nvidia;
   wayland = ../modules/wayland;
   hw = inputs.nixos-hardware.nixosModules;
-  nur = inputs.nur.nixosModules.nur;
   ragenix = inputs.ragenix.nixosModules.age;
   hmModule = inputs.home-manager.nixosModules.home-manager;
 
@@ -37,7 +36,6 @@ in {
         bootloader
         nvidia
         wayland
-        nur
         hmModule
         {inherit home-manager;}
       ]

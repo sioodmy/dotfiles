@@ -22,9 +22,14 @@
       autoSkip
       savePlaylists
       phraseToPlaylist
+      wikify
+      autoSkip
+      copyToClipboard
+      history
       groupSession
       popupLyrics
       loopyLoop
+      trashbin
       bookmark
       keyboardShortcut
       fullAppDisplayMod
