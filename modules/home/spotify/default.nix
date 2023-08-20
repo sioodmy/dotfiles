@@ -27,7 +27,6 @@
       copyToClipboard
       history
       groupSession
-      popupLyrics
       loopyLoop
       trashbin
       bookmark
