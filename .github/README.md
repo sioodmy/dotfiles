@@ -3,6 +3,7 @@
   
   sioodmy's dotfiles <br>
   <img src="https://raw.githubusercontent.com/catppuccin/catppuccin/main/assets/palette/macchiato.png" width="600px" /> <br>
+  <img src="./assets/spotify.png" width="600px" /> <br>
   <div align="center">
 
   <div align="center">
@@ -30,6 +31,15 @@
 <img src="https://media.discordapp.net/attachments/1020403449092911186/1024341925630844939/unknown.png?width=1122&height=631" width="600" alt="" />
 </p>
 
+## Notable features
+- 🔒 Luks disk encryption with btrfs
+- 🤫 Opt-in impermanence
+- 🚀 Secureboot
+- 🟢 Fully functional Wayland + Nvidia setup
+- 👮 Schizo options enabled (this will get you on CIA watchlist for sure lmao)
+- 🐱 Catppuccin themed (everything)
+- 🦀 Rust alternatives
+
 ## 📦 Contents
 
 - [modules](modules) 🍱 modularized NixOS configs
@@ -38,17 +48,12 @@
   - [nvidia](modules/nvidia) 💚 My next GPU won't be NVIDIA
   - [server](modules/server) ☁️ Server stuff for selfhosting on pi4
   - [wayland](modules/wayland) 🚀 Wayland configs and rice
-- [hosts](hosts) 🌳 per-host configuration
+- [hosts](hosts) 🌳 per-host configuration (All named after saturn moons 🪐)
   - [anthe](hosts/anthe) 🖥️ My desktop with nvidia gpu
-  - [iapetus](hosts/iapetus) 🍓 Raspberry pi server
-  - [io](hosts/io) 💻 Configs for my future framework laptop ([currently im kinda broke](https://en.liberapay.com/sioodmy/))
+  - [iapetus](hosts/iapetus) 🍓 Raspberry pi server [🚧]
+  - [io](hosts/io) 💻 Configs for my future framework laptop ([currently im kinda broke](https://en.liberapay.com/sioodmy/)) [🚧]
 - [pkgs](pkgs) 💿 exported packages
 
-## Notable features
-- Luks disk encryption with btrfs
-- Opt-in impermanence
-- Secureboot
-- Fully functional wayland + nvidia setup
 
 ## 💛 Donate
 
@@ -60,7 +65,7 @@ If you would like to support me you can sponsor me via ko-fi
 
 Ethereum/EVM compatible: `0x2fa1e5e90c011d08bba1f6dbdc317fd293311c0d`
 
-## ❤️ Special thanks to
+## ❤️ Special thanks tto (I love you guys)
 
 [notusknot](https://github.com/notusknot) -
 [siduck](https://github.com/siduck) -
@@ -71,5 +76,5 @@ Ethereum/EVM compatible: `0x2fa1e5e90c011d08bba1f6dbdc317fd293311c0d`
 [luca.py](https://gitlab.com/luca.py/) -
 [FromSyntax](https://github.com/FromSyntax) -
 [pupbrained](https://github.com/pupbrained) -
-[ini](https://github.com/InioX)
-[ozwaldorf.eth](https://ossian.dev/)
+[ini](https://github.com/InioX) -
+[ozwaldorf.eth](https://ossian.dev/) - [NotAShelf](https://github.com/NotAShelf)
