@@ -3,7 +3,6 @@
   
   sioodmy's dotfiles <br>
   <img src="https://raw.githubusercontent.com/catppuccin/catppuccin/main/assets/palette/macchiato.png" width="600px" /> <br>
-  <img src="./assets/spotify.png" width="600px" /> <br>
   <div align="center">
 
   <div align="center">
@@ -29,6 +28,7 @@
 
 <p align="center">
 <img src="https://media.discordapp.net/attachments/1020403449092911186/1024341925630844939/unknown.png?width=1122&height=631" width="600" alt="" />
+<img src="./assets/spotify.png" width="600px" /> <br>
 </p>
 
 ## Notable features
