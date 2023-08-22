@@ -42,6 +42,8 @@
       ".config/nheko"
       ".cache/nix-index"
       ".config/obs-studio"
+      ".mozilla"
+      ".cache/mozilla"
     ];
   };
 }

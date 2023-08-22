@@ -8,6 +8,11 @@
     xdg-portal-hyprland.url = "github:hyprwm/xdg-desktop-portal-hyprland";
     impermanence.url = "github:nix-community/impermanence";
 
+    schizofox = {
+      url = "github:sioodmy/schizofox";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+
     anyrun = {
       url = "github:Kirottu/anyrun";
       inputs.nixpkgs.follows = "nixpkgs";
