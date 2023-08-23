@@ -1032,15 +1032,15 @@
         ]
       },
       "locked": {
-        "lastModified": 1692730403,
-        "narHash": "sha256-toOFQ4EdzZPUFbMYT4HRRJu+VwMibP7hxK71LKVLzRU=",
-        "owner": "sioodmy",
+        "lastModified": 1692817835,
+        "narHash": "sha256-3zHDV6uyYNhzA4zbDrNmTUIUIjfH7vfUydNfcF614iM=",
+        "owner": "schizofox",
         "repo": "schizofox",
-        "rev": "336a89d83f5f100cddb7ba0bd0b002afeccb4593",
+        "rev": "06fd5a6c4de7381eeb466afaa5c7354374818019",
         "type": "github"
       },
       "original": {
-        "owner": "sioodmy",
+        "owner": "schizofox",
         "repo": "schizofox",
         "type": "github"
       }

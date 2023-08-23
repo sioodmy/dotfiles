@@ -9,7 +9,7 @@
     impermanence.url = "github:nix-community/impermanence";
 
     schizofox = {
-      url = "github:sioodmy/schizofox";
+      url = "github:schizofox/schizofox";
       inputs.nixpkgs.follows = "nixpkgs";
     };
 

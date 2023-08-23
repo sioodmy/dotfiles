@@ -5,7 +5,7 @@
   ...
 }: {
   imports = [inputs.impermanence.nixosModule];
-    environment.persistence."/persist" = {
+  environment.persistence."/persist" = {
     hideMounts = true;
     directories = [
       "/etc/nixos"
@@ -27,7 +27,7 @@
       "/var/cache/tailscale"
       "/var/lib/tailscale"
     ];
-    files = [ "/etc/machine-id"];
+    files = ["/etc/machine-id"];
   };
   # for some reason *this* is what makes networkmanager not get screwed completely instead of the impermanence module
   systemd.tmpfiles.rules = [

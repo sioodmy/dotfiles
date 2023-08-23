@@ -69,7 +69,7 @@
           render = true;
         };
         sticky-context = {
-          enable = true;
+          enable = false;
           indicator = false;
         };
         lsp = {
