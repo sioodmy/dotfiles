@@ -2,8 +2,8 @@
   home.persistence."/persist/home/sioodmy" = {
     allowOther = true;
     files = [
-    ".database.kdbx"
-        ".cache/anyrun-ha-assist.sqlite3"
+      ".database.kdbx"
+      ".cache/anyrun-ha-assist.sqlite3"
     ];
     directories = [
       "download"

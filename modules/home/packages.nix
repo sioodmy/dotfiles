@@ -9,12 +9,10 @@
     })
     ledger_agent
     pulseaudio
+    onefetch
     sherlock
-    # sorry bros
-    vscodium-fhs
     thunderbird
     pfetch-rs
-    schildichat-desktop
     qrcp
     nheko
     socat
