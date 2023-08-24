@@ -13,11 +13,7 @@ in {
         applications
         rink
         symbols
-        dictionary
-        kidex
         stdin
-        shell
-        translate
         inputs.cryptorun.packages.${pkgs.system}.default
       ];
 

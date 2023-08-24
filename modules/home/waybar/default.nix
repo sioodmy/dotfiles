@@ -36,7 +36,7 @@ in {
   xdg.configFile."waybar/style.css".text = import ./style.nix;
   programs.waybar = {
     enable = true;
-    package = pkgs.waybar-hyprland;
+    package = pkgs.waybar;
     settings = {
       mainBar = {
         layer = "top";
