@@ -10,6 +10,7 @@
 
     schizofox = {
       url = "github:schizofox/schizofox";
+      # url = "path:/home/sioodmy/dev/schizofox";
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
