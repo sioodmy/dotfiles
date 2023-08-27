@@ -13,6 +13,9 @@
     server.enable = true;
     settings = {
       main = {
+        app-id = "foot";
+        title = "foot";
+        locked-title = "no";
         term = "xterm-256color";
         font = "monospace:size=13.5";
         vertical-letter-offset = "-0.75";
@@ -39,7 +42,7 @@
         uri-characters = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789-_.,~:;/?#@!$&%*+=\"'()[]";
       };
       colors = {
-        alpha = "0.7";
+        alpha = "0.8";
         foreground = "cdd6f4";
         background = "1e1e2e";
 
