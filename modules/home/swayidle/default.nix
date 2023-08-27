@@ -4,7 +4,7 @@
   config,
   ...
 }: let
-  suspendScript = pkgs.writeShellScript "suspend-script" ''
+  _suspendScript = pkgs.writeShellScript "suspend-script" ''
     ${pkgs.pipewire}/bin/pw-cli i all | ${pkgs.ripgrep}/bin/rg running
     # only suspend if audio isn't running
     if [ $? == 1 ]; then
@@ -30,10 +30,11 @@ in {
         command = "${config.wayland.windowManager.hyprland.package}/bin/hyprctl dispatch dpms off";
         resumeCommand = "${config.wayland.windowManager.hyprland.package}/bin/hyprctl dispatch dpms on";
       }
-      {
-        timeout = 310;
-        command = suspendScript.outPath;
-      }
+      # suspend doesnt work properly on my machine
+      # {
+      #   timeout = 310;
+      #   command = suspendScript.outPath;
+      # }
     ];
   };
 

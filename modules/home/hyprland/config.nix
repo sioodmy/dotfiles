@@ -258,8 +258,8 @@ in {
 
         "workspace 4, title:^(.*(Disc|WebC)ord.*)$"
         "tile, class:^(Spotify)$"
-        "workspace 3 silent, class:^(Spotify)$"
-        "workspace 2 silent, class:^(Firefox)$"
+        "workspace 3, title:^(Spotify)$"
+        "workspace 2, class:^(firefox)$"
 
         "workspace 10 silent, class:^(Nextcloud)$"
       ];
