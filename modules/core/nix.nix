@@ -3,6 +3,7 @@
   pkgs,
   lib,
   inputs,
+  inputs',
   ...
 }: {
   imports = [inputs.nh.nixosModules.default];
@@ -44,6 +45,7 @@
       overlays = [
         (
           _: prev: {
+            nixSuper = inputs'.nix-super.packages.default;
             # temp fix until https://github.com/NixOS/nixpkgs/pull/249382 is merged
             gtklock = prev.gtklock.overrideAttrs (self: super: {
               nativeBuildInputs = super.nativeBuildInputs ++ [prev.wrapGAppsHook];
