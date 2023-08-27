@@ -41,7 +41,7 @@
   };
   pointer = config.home.pointerCursor;
 in {
-  # mostly borrwed from https://github.com/fufexan/dotfiles/blob/main/home/wayland/hyprland/config.nix
+  # mostly borrwed from https://github.com/fufexan/dotfiles/blob/main/home/wayland/hyprland/config.nix (and raf)
   # thanks fufie <3
   wayland.windowManager.hyprland = {
     settings = {
@@ -52,7 +52,11 @@ in {
         # set cursor for HL itself
         "hyprctl setcursor ${pointer.name} ${toString pointer.size}"
 
+        # bar
         "run-as-service waybar"
+
+        # foot terminal server
+        "${lib.optionalString config.programs.foot.server.enable ''run-as-service 'foot --server''}"
       ];
 
       gestures = {
@@ -130,7 +134,7 @@ in {
 
         # groupbar stuff
         # this removes the ugly gradient around grouped windows - which sucks
-        groupbar_titles_font_size = 16;
+        groupbar_titles_font_size = 13;
         groupbar_gradients = false;
       };
 
@@ -161,11 +165,9 @@ in {
       };
 
       "$kw" = "dwindle:no_gaps_when_only";
-      "$disable" = ''act_opa=$(hyprctl getoption "decoration:active_opacity" -j | jq -r ".float");inact_opa=$(hyprctl getoption "decoration:inactive_opacity" -j | jq -r ".float");hyprctl --batch "keyword decoration:active_opacity 1;keyword decoration:inactive_opacity 1"'';
-      "$enable" = ''hyprctl --batch "keyword decoration:active_opacity $act_opa;keyword decoration:inactive_opacity $inact_opa"'';
 
       bind = [
-        ''$MOD,RETURN,exec,run-as-service foot''
+        ''$MOD,RETURN,exec,run-as-service footclient''
 
         "$MOD,SPACE,exec,anyrun"
         "$MOD,C,killactive"
@@ -231,8 +233,6 @@ in {
         # telegram media viewer
         "float, title:^(Media viewer)$"
 
-        "float,class:Bitwarden"
-        "size 800 600,class:Bitwarden"
         "idleinhibit focus, class:^(mpv)$"
         "idleinhibit focus,class:foot"
 
@@ -258,6 +258,7 @@ in {
         "workspace 4, title:^(.*(Disc|WebC)ord.*)$"
         "tile, class:^(Spotify)$"
         "workspace 3 silent, class:^(Spotify)$"
+        "workspace 2 silent, class:^(Firefox)$"
 
         "workspace 10 silent, class:^(Nextcloud)$"
       ];

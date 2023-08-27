@@ -16,7 +16,6 @@
           ":"
           (lib.makeBinPath [
             clang-tools
-            marksman
             nil
             luajitPackages.lua-lsp
             nodePackages.bash-language-server

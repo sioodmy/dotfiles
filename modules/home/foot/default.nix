@@ -10,7 +10,7 @@
   programs.foot = {
     enable = true;
     # doesnt work properly
-    server.enable = false;
+    server.enable = true;
     settings = {
       main = {
         term = "xterm-256color";

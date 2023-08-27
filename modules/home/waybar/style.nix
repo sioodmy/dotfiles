@@ -13,7 +13,7 @@ in ''
   window#waybar {
     background-color: #181825;
     border-radius: 20px;
-    margin: 16px 16px;
+    margin: 32px 16px;
     color: #cdd6f4;
     box-shadow: 2px 3px 2px 2px #151515;
     font-size: 16px;
@@ -102,13 +102,12 @@ in ''
   #pulseaudio {
     border-radius: 15px;
     background-color: #1e1e2e;
-    padding: 10px 0px 10px 0px;
+    padding: 14px 0px 14px 0px;
     margin: 0px 7px 0px 7px;
   }
 
   #custom-swallow {
     color: #94e2d5;
-    padding: 14px 0px 14px 0px;
   }
 
   #workspaces {
@@ -121,7 +120,6 @@ in ''
 
   #custom-lock {
       color: #89b4fa;
-      padding: 20px 0 20px 0;
   }
 
   #custom-todo {
