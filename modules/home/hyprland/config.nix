@@ -182,6 +182,7 @@ in {
         "$MOD,T,togglegroup," # group focused window
         "$MODSHIFT,G,changegroupactive," # switch within the active group
         "$MOD,V,togglefloating," # toggle floating for the focused window
+        "$MOD,F,fullscreen," # fullscreen focused window
 
         # workspace controls
         "$MODSHIFT,right,movetoworkspace,+1" # move focused window to the next ws
