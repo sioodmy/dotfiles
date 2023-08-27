@@ -649,11 +649,11 @@
         ]
       },
       "locked": {
-        "lastModified": 1693108765,
-        "narHash": "sha256-U1btmyF7SMX+y80EXYva5Xj6lpn20xPbHbuoe/2bSIw=",
+        "lastModified": 1693125758,
+        "narHash": "sha256-7u591OQ1nzQ/IRMDBix8Ox1q+u3OyPQHs2HDZnR89qk=",
         "owner": "nix-community",
         "repo": "home-manager",
-        "rev": "9706fb8e441a7c56c68bb079480938ed505e8102",
+        "rev": "f8c5fd75092448ac134d7fb823556b37d3c821f5",
         "type": "github"
       },
       "original": {
@@ -986,11 +986,11 @@
         ]
       },
       "locked": {
-        "lastModified": 1692831528,
-        "narHash": "sha256-EG/hn6KpDCfQSVHoKoxU+4MgMs8gJzrrHtpo2atTvWo=",
+        "lastModified": 1693143003,
+        "narHash": "sha256-cZyuwPjWsepY+WmnNHcxiFFTYN2y3ovgN8eRrkpqAKQ=",
         "owner": "nixpak",
         "repo": "nixpak",
-        "rev": "8b331d0e2f46c72731303311f65f3690b1917816",
+        "rev": "9ab09758db0ff6bca6290939a8653f494f719531",
         "type": "github"
       },
       "original": {
@@ -1334,14 +1334,17 @@
         ]
       },
       "locked": {
-        "lastModified": 1693128362,
-        "narHash": "sha256-mxY5yrnG7NTDN2A7Ayr/MKCf4TrKgszPO29XxCtWu3s=",
-        "path": "/home/sioodmy/dev/schizofox",
-        "type": "path"
+        "lastModified": 1693151231,
+        "narHash": "sha256-FkdnL1Li25gj2QD8zCP00WHaurYrIFl8nKhjGYb00Go=",
+        "owner": "schizofox",
+        "repo": "schizofox",
+        "rev": "5ac8211af0d9e5957361d13dc76a95d2ca63d193",
+        "type": "github"
       },
       "original": {
-        "path": "/home/sioodmy/dev/schizofox",
-        "type": "path"
+        "owner": "schizofox",
+        "repo": "schizofox",
+        "type": "github"
       }
     },
     "shadower": {

@@ -79,11 +79,9 @@ in ''
     color: #f9e2af;
     transition: all 0.3s cubic-bezier(.55,-0.68,.48,1.682);
   }
-
   #workspaces button.urgent {
     background-color: #eba0ac;
   }
-  #custom-weather,
   #clock,
   #network,
   #custom-swallow,
