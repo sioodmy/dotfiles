@@ -1,4 +1,4 @@
-{...}: {
+_: {
   home.persistence."/persist/home/sioodmy" = {
     allowOther = true;
     files = [

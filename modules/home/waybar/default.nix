@@ -4,20 +4,6 @@
   config,
   ...
 }: let
-  waybar-wttr = pkgs.stdenv.mkDerivation {
-    name = "waybar-wttr";
-    buildInputs = [
-      (pkgs.python39.withPackages
-        (pythonPackages: with pythonPackages; [requests]))
-    ];
-    unpackPhase = "true";
-    installPhase = ''
-      mkdir -p $out/bin
-      cp ${./waybar-wttr.py} $out/bin/waybar-wttr
-      chmod +x $out/bin/waybar-wttr
-    '';
-  };
-
   get-crypto-price =
     pkgs.writeShellScriptBin "get-crypto-price"
     ''
@@ -40,31 +26,47 @@ in {
     settings = {
       mainBar = {
         layer = "top";
-        position = "top";
-        height = 40;
+        position = "left";
+        width = 55;
         spacing = 7;
         fixed-center = false;
+        margin-left = 6;
+        margin-top = 9;
+        margin-bottom = 9;
+        margin-right = null;
         exclusive = true;
         modules-left = [
           "custom/search"
-          "wlr/workspaces"
+          "hyprland/workspaces"
           "custom/lock"
           "backlight"
           "battery"
-          "custom/eth"
+          # "custom/eth"
         ];
         modules-center = [
           "custom/weather"
           "clock"
         ];
-        modules-right = ["pulseaudio" "cpu" "network" "custom/power"];
-        "wlr/workspaces" = {
+        modules-right = ["pulseaudio" "network" "custom/swallow" "custom/power"];
+        "hyprland/workspaces" = {
           on-click = "activate";
           format = "{icon}";
           active-only = false;
           format-icons = {
-            default = "󰊠";
-            active = " 󰮯";
+            "1" = "一";
+            "2" = "二";
+            "3" = "三";
+            "4" = "四";
+            "5" = "五";
+            "6" = "六";
+            "7" = "七";
+            "8" = "八";
+            "9" = "九";
+            "10" = "十";
+          };
+
+          persistent_workspaces = {
+            "*" = 5;
           };
         };
         "custom/search" = {
@@ -73,7 +75,21 @@ in {
           on-click = "lib.getBin config.programs.anyrun.package}/anyrun";
         };
 
-        "custom/weather" = {
+        "custom/weather" = let
+          waybar-wttr = pkgs.stdenv.mkDerivation {
+            name = "waybar-wttr";
+            buildInputs = [
+              (pkgs.python39.withPackages
+                (pythonPackages: with pythonPackages; [requests]))
+            ];
+            unpackPhase = "true";
+            installPhase = ''
+              mkdir -p $out/bin
+              cp ${./waybar-wttr.py} $out/bin/waybar-wttr
+              chmod +x $out/bin/waybar-wttr
+            '';
+          };
+        in {
           format = "{}";
           tooltip = true;
           interval = 30;
@@ -94,7 +110,7 @@ in {
         };
         "custom/lock" = {
           tooltip = false;
-          on-click = "sh -c '(sleep 0.5s; ${config.programs.swaylock.package}/bin/swaylock --grace 0)' & disown";
+          on-click = "sh -c '(sleep 0.5s; ${pkgs.gtklock}/bin/gtklock)' & disown";
           format = "";
         };
         "custom/swallow" = {
@@ -114,15 +130,17 @@ in {
               		${notify-send} "Hyprland" "Turned on swallowing"
               fi
             '';
-          format = "";
+          format = "󰘻";
         };
         "custom/power" = {
           tooltip = false;
           # TODO
-          format = "󰐥 ";
+          format = "󰐥";
         };
         clock = {
-          format = "{:%b %d %H:%M}";
+          format = ''
+            {:%H
+            %M}'';
           tooltip-format = ''
             <big>{:%Y %B}</big>
             <tt><small>{calendar}</small></tt>'';
@@ -146,19 +164,26 @@ in {
           format-alt = "{icon} {capacity}%";
           format-icons = ["" "" "" "" "" "" "" "" "" "" "" ""];
         };
-        network = {
-          format-wifi = "󰤨 {essid} {signalStrength}%";
-          format-ethernet = "󰤨 {bandwidthTotalBytes}";
-          format-alt = "󰤨 {ipaddr}/{ifname}";
+        network = let
+          nm-editor = "${pkgs.networkmanagerapplet}/bin/nm-connection-editor";
+        in {
+          format-wifi = "󰤨";
+          format-ethernet = "󰈀";
+          format-alt = "󱛇";
           format-disconnected = "󰤭";
           tooltip-format = "{ipaddr}/{ifname} via {gwaddr} ({signalStrength}%)";
+          on-click-right = "${nm-editor}";
         };
         pulseaudio = {
           scroll-step = 5;
-          tooltip = false;
-          format = "{icon} {volume}%";
-          format-icons = {default = ["" "" "󰕾"];};
+          tooltip = true;
+          tooltip-format = "{volume}";
           on-click = "${pkgs.killall}/bin/killall pavucontrol || ${pkgs.pavucontrol}/bin/pavucontrol";
+          format = "{icon}";
+          format-muted = "󰝟 ";
+          format-icons = {
+            default = [" " " " " "];
+          };
         };
       };
     };

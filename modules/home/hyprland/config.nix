@@ -39,224 +39,265 @@
       - People can test each other's configurations using `nix run` and `nix shell` by just having access to the source
     '';
   };
+  pointer = config.home.pointerCursor;
 in {
   # mostly borrwed from https://github.com/fufexan/dotfiles/blob/main/home/wayland/hyprland/config.nix
   # thanks fufie <3
-  wayland.windowManager.hyprland.extraConfig = ''
-    monitor=DP-1,1920x1080@144,0x0,1shad
+  wayland.windowManager.hyprland = {
+    settings = {
+      # define the mod key
+      "$MOD" = "SUPER";
 
-    $mod = SUPER
+      exec-once = [
+        # set cursor for HL itself
+        "hyprctl setcursor ${pointer.name} ${toString pointer.size}"
 
-    env = _JAVA_AWT_WM_NONREPARENTING,1
-    env = QT_WAYLAND_DISABLE_WINDOWDECORATION,1
+        "run-as-service waybar"
+      ];
 
-    exec-once = run-as-service waybar
-    exec-once = wl-clip-persist --clipboard both
+      gestures = {
+        workspace_swipe = true;
+        workspace_swipe_forever = true;
+      };
 
-    input {
-        kb_layout=pl
-        kb_options=caps:escape
+      input = {
+        # keyboard layout
+        kb_layout = "pl";
+        kb_options = "caps:escape";
+        # self explanatory, I hope?
+        follow_mouse = 1;
+        # do not imitate natural scroll
+        touchpad.natural_scroll = "no";
+      };
 
-        follow_mouse=1
+      general = {
+        # sensitivity of the mouse cursor
+        sensitivity = 0.6;
 
-        touchpad {
-            natural_scroll=no
-        }
-    }
+        # gaps
+        gaps_in = 6;
+        gaps_out = 11;
 
-    general {
-        sensitivity=0.6 # for mouse cursor
+        # border thiccness
+        border_size = 3;
 
-        gaps_in=5
-        gaps_out=11
-        border_size=2
-        col.active_border = rgb(89b4fa) rgb(cba6f7) 270deg
-        col.inactive_border = rgb(11111b) rgb(b4befe) 270deg
+        # active border color
+        "col.active_border" = "rgb(89b4fa) rgb(cba6f7) 270deg";
+        "col.group_border_active" = "rgba(88888888)";
+        "col.group_border" = "rgba(00000088)";
 
-        col.group_border = rgb(313244)
-        col.group_border_active = rgb(f5c2e7)
+        # whether to apply the sensitivity to raw input (e.g. used by games where you aim using your mouse)
+        apply_sens_to_raw = 0;
+      };
 
+      decoration = {
+        # fancy corners
+        rounding = 7;
+        multisample_edges = true; # fixes pixelated corners on relatively better monitors, useless on old monitors
 
-        apply_sens_to_raw=0
-    }
+        # blur
+        blur = {
+          enabled = true;
+          size = 4;
+          passes = 3;
+          ignore_opacity = true;
+          new_optimizations = 1;
+          xray = true;
+          contrast = 0.7;
+          brightness = 0.8;
+        };
 
-    misc {
-        disable_hyprland_logo=true
-        disable_splash_rendering=true
-        animate_mouse_windowdragging = false
-        mouse_move_enables_dpms=true
-        key_press_enables_dpms=true
-        disable_hyprland_logo=true
-        disable_splash_rendering=true
-        enable_swallow=true
-        swallow_regex=foot|thunar
-    }
+        # shadow config
+        drop_shadow = "yes";
+        shadow_range = 20;
+        shadow_render_power = 5;
+        "col.shadow" = "rgba(292c3cee)";
+      };
 
-    decoration {
-        blur {
-          enabled = true
-          size = 3
-          passes = 3
-        }
-        rounding=12
-        multisample_edges=true
-        drop_shadow = true
-        shadow_ignore_window = true
-        shadow_offset = 0 5
-        shadow_range = 50
-        shadow_render_power = 3
-        col.shadow = rgba(00000099)
-    }
+      misc = {
+        # disable redundant renders
+        disable_hyprland_logo = true; # wallpaper covers it anyway
+        disable_splash_rendering = true; # "
 
+        # window swallowing
+        enable_swallow = true; # hide windows that spawn other windows
+        swallow_regex = "foot|thunar|nemo"; # windows for which swallow is applied
 
-    animations {
-        enabled = true
+        # dpms
+        mouse_move_enables_dpms = true; # enable dpms on mouse/touchpad action
+        key_press_enables_dpms = true; # enable dpms on keyboard action
+        disable_autoreload = true; # autoreload is unnecessary on nixos, because the config is readonly anyway
 
-        bezier = smoothOut, 0.36, 0, 0.66, -0.56
-        bezier = smoothIn, 0.25, 1, 0.5, 1
-        bezier = overshot, 0.4, 0.8, 0.2, 1.2
+        # groupbar stuff
+        # this removes the ugly gradient around grouped windows - which sucks
+        groupbar_titles_font_size = 16;
+        groupbar_gradients = false;
+      };
 
-        animation = windows, 1, 4, overshot, slide
-        animation = windowsOut, 1, 4, smoothOut, slide
-        animation = border, 1, 10, default
-        animation = fade, 1, 3, smoothIn
-        animation = fadeDim, 1, 3, smoothIn
-        animation=workspaces,1,4,overshot,slidevert
-    }
+      animations = {
+        enabled = true; # we want animations, half the reason why we're on Hyprland innit
 
-    dwindle {
-        pseudotile = false
-        preserve_split = yes
-        no_gaps_when_only = false
-    }
+        bezier = [
+          "smoothOut, 0.36, 0, 0.66, -0.56"
+          "smoothIn, 0.25, 1, 0.5, 1"
+          "overshot, 0.4,0.8,0.2,1.2"
+        ];
 
-    gestures {
-        workspace_swipe=yes
-    }
+        animation = [
+          "windows, 1, 4, overshot, slide"
+          "windowsOut, 1, 4, smoothOut, slide"
+          "border,1,10,default"
 
-    $disable=act_opa=$(hyprctl getoption "decoration:active_opacity" -j | jq -r ".float");inact_opa=$(hyprctl getoption "decoration:inactive_opacity" -j | jq -r ".float");hyprctl --batch "keyword decoration:active_opacity 1;keyword decoration:inactive_opacity 1"
-    $enable=hyprctl --batch "keyword decoration:active_opacity $act_opa;keyword decoration:inactive_opacity $inact_opa"
+          "fade, 1, 10, smoothIn"
+          "fadeDim, 1, 10, smoothIn"
+          "workspaces,1,4,overshot,slidevert"
+        ];
+      };
 
-    # only allow shadows for floating windows
-    windowrulev2 = noshadow, floating:0
+      dwindle = {
+        pseudotile = false;
+        preserve_split = "yes";
+        no_gaps_when_only = false;
+      };
 
-    windowrulev2 = workspace special silent, title:^(Firefox — Sharing Indicator)$
-    windowrulev2 = workspace special silent, title:^(.*is sharing (your screen|a window)\.)$
-    windowrulev2 = float, title:(?i)metamask
-    windowrulev2 = center, title:(?i)metamask
-    windowrulev2 = idleinhibit focus, class:^(mpv|.+exe)$
-    windowrulev2 = idleinhibit focus, class:^(firefox|brave)$, title:^(.*YouTube.*)$
-    windowrulev2 = idleinhibit fullscreen, class:^(firefox|brave)$
+      "$kw" = "dwindle:no_gaps_when_only";
+      "$disable" = ''act_opa=$(hyprctl getoption "decoration:active_opacity" -j | jq -r ".float");inact_opa=$(hyprctl getoption "decoration:inactive_opacity" -j | jq -r ".float");hyprctl --batch "keyword decoration:active_opacity 1;keyword decoration:inactive_opacity 1"'';
+      "$enable" = ''hyprctl --batch "keyword decoration:active_opacity $act_opa;keyword decoration:inactive_opacity $inact_opa"'';
 
-    windowrulev2 = rounding 0, xwayland:1, floating:1
-    windowrulev2 = center, class:^(.*jetbrains.*)$, title:^(Confirm Exit|Open Project|win424|win201|splash)$
-    windowrulev2 = size 640 400, class:^(.*jetbrains.*)$, title:^(splash)$
+      bind = [
+        ''$MOD,RETURN,exec,run-as-service foot''
 
-    layerrule = blur, ^(gtk-layer-shell)$
-    layerrule = ignorezero, ^(gtk-layer-shell)$
-    layerrule = blur, notifications
-    layerrule = ignorezero, notifications
-    layerrule = blur, bar
-    layerrule = ignorezero, bar
-    layerrule = blur, ^(gtk-layer-shell|anyrun)$
-    layerrule = ignorezero, ^(gtk-layer-shell|anyrun)$
+        "$MOD,SPACE,exec,anyrun"
+        "$MOD,C,killactive"
+        "$MOD,P,pseudo"
 
+        "$MOD,H,movefocus,l"
+        "$MOD,L,movefocus,r"
+        "$MOD,K,movefocus,u"
+        "$MOD,J,movefocus,d"
 
+        "$MOD,M,exec,hyprctl keyword $kw $(($(hyprctl getoption $kw -j | jaq -r '.int') ^ 1))" # toggle no_gaps_when_only
+        "$MOD,T,togglegroup," # group focused window
+        "$MODSHIFT,G,changegroupactive," # switch within the active group
+        "$MOD,V,togglefloating," # toggle floating for the focused window
 
-    windowrule=tile,title:Spotify
-    windowrule=float,*.exe
-    windowrulev2 = pin,title:Picture in picture
-    windowrulev2 = keepaspectratio,title:Picture in picture
-    windowrulev2 = noborder,title:Picture in picture
-    windowrulev2 = move 100%-271 100%-273,title:Picture in picture
-    windowrulev2 = float,title:Picture in picture
-    windowrulev2 = opacity 0.7 override 0.7 override,title:Picture in picture
-    windowrulev2 = nofocus,class:^(Picture in picture)$
-    windowrule=fullscreen,wlogout
-    windowrule=float,title:wlogout
-    windowrule=float,udiskie
-    windowrulev2 = noanim,title:^(PAUSESHOT)$
-    windowrulev2 = nomaxsize,class:^(.*)$
-    windowrulev2 = fullscreen,title:^(PAUSESHOT)$
-    windowrule=fullscreen,title:wlogout
-    windowrule=float,pavucontrol-qt
-    windowrule=float,qalculate-gtk
-    windowrulev2 = opacity 0.7 override 0.7 override,class:^(qualculate-gtk)$
-    windowrule=float,qalculate-qt
-    windowrule=nofullscreenrequest,class:firefox
-    windowrule=idleinhibit focus,mpv
-    windowrule=idleinhibit fullscreen,firefox
+        # workspace controls
+        "$MODSHIFT,right,movetoworkspace,+1" # move focused window to the next ws
+        "$MODSHIFT,left,movetoworkspace,-1" # move focused window to the previous ws
+        "$MOD,mouse_down,workspace,e+1" # move to the next ws
+        "$MOD,mouse_up,workspace,e-1" # move to the previous ws
 
-    windowrule=float,title:^(Media viewer)$
-    windowrule=float,title:^(Transmission)$
-    windowrule=float,title:^(Volume Control)$
-    windowrule=float,title:^(Picture-in-Picture)$
-    windowrule=float,title:^(Firefox — Sharing Indicator)$
-    windowrule=move 0 0,title:^(Firefox — Sharing Indicator)$
+        "$MODSHIFT,S,exec,grimblast --notify --cursor copysave area" # screenshot and then pipe it to swappy
+      ];
 
-    windowrule=size 800 600,title:^(Volume Control)$
-    windowrule=move 75 44%,title:^(Volume Control)$
+      bindm = [
+        "$MOD,mouse:272,movewindow"
+        "$MOD,mouse:273,resizewindow"
+      ];
 
-    # example binds
-    bind=$mod,RETURN,exec,foot
-    bind=$mod,C,killactive,
-    bind=$mod,G,changegroupactive,
-    bind=$mod,T,togglegroup,
-    bind=$mod SHIFT,L,exec,swaylock
-    bind=$mod,V,togglefloating,
-    bind=$mod,F,fullscreen,
-    bind=$mod,SPACE,exec,anyrun
-    bind=$mod SHIFT,O,exec, ocr
-    bind=$mod,P,pseudo,
+      binde = [
+        # volume controls
+        ",XF86AudioRaiseVolume, exec, volume -i 5"
+        ",XF86AudioLowerVolume, exec, volume -d 5"
+        ",XF86AudioMute, exec, volume -t"
 
-    bind=$mod,R,exec, ${lib.getExe pkgs.kooha}
+        # brightness controls
+        ",XF86MonBrightnessUp,exec,brightness set +5%"
+        ",XF86MonBrightnessDown,exec,brightness set 5%-"
+      ];
+      # binds that are locked, a.k.a will activate even while an input inhibitor is active
+      bindl = [
+        # media controls
+        ",XF86AudioPlay,exec,playerctl play-pause"
+        ",XF86AudioPrev,exec,playerctl previous"
+        ",XF86AudioNext,exec,playerctl next"
+      ];
+      layerrule = [
+        "blur, ^(gtk-layer-shell)$"
+        "ignorezero, ^(gtk-layer-shell)$"
+        "ignorezero, notifications"
+        "blur, bar"
+        "ignorezero, bar"
+        "ignorezero, ^(gtk-layer-shell|anyrun)$"
+        "blur, ^(gtk-layer-shell|anyrun)$"
+      ];
+      windowrulev2 = [
+        # only allow shadows for floating windows
+        "noshadow, floating:0"
+        "tile, title:Spotify"
+        "fullscreen,class:wlogout"
+        "fullscreen,title:wlogout"
 
-    bind=$mod SHIFT,P,exec,$disable; grimblast save active - | shadower | wl-copy -t image/png && notify-send 'Screenshot taken' --expire-time 1000; $enable
-    bind=$mod SHIFT,S,exec,$disable; pauseshot | shadower | wl-copy -t image/png && notify-send 'Screenshot taken' --expire-time 1000; $enable
+        # telegram media viewer
+        "float, title:^(Media viewer)$"
 
-    bind=$mod SHIFT,H,exec,cat ${propaganda} | wl-copy && notify-send "Propaganda" "ready to spread!"
+        "float,class:Bitwarden"
+        "size 800 600,class:Bitwarden"
+        "idleinhibit focus, class:^(mpv)$"
+        "idleinhibit focus,class:foot"
 
-    bind=$mod,h,movefocus,l
-    bind=$mod,l,movefocus,r
-    bind=$mod,k,movefocus,u
-    bind=$mod,j,movefocus,d
+        "idleinhibit fullscreen, class:^(firefox)$"
+        "float,title:^(Firefox — Sharing Indicator)$"
+        "move 0 0,title:^(Firefox — Sharing Indicator)$"
+        "float, title:^(Picture-in-Picture)$"
+        "pin, title:^(Picture-in-Picture)$"
 
-    ${builtins.concatStringsSep "\n" (builtins.genList (
-        x: let
-          ws = let
-            c = (x + 1) / 10;
-          in
-            builtins.toString (x + 1 - (c * 10));
-        in ''
-          bind = $mod, ${ws}, workspace, ${toString (x + 1)}
-          bind = $mod SHIFT, ${ws}, movetoworkspace, ${toString (x + 1)}
-        ''
-      )
-      10)}
-    bind=$mod SHIFT,right,movetoworkspace,+1
-    bind=$mod SHIFT,left,movetoworkspace,-1
+        "float,class:udiskie"
 
+        # pavucontrol
+        "float,class:pavucontrol"
+        "float,title:^(Volume Control)$"
+        "size 800 600,title:^(Volume Control)$"
+        "move 75 44%,title:^(Volume Control)$"
+        "float, class:^(imv)$"
 
-    # cycle workspaces
-    bind = $mod, bracketleft, workspace, m-1
-    bind = $mod, bracketright, workspace, m+1
+        # throw sharing indicators away
+        "workspace special silent, title:^(Firefox — Sharing Indicator)$"
+        "workspace special silent, title:^(.*is sharing (your screen|a window)\.)$"
 
-    # cycle monitors
-    bind = $mod SHIFT, braceleft, focusmonitor, l
-    bind = $mod SHIFT, braceright, focusmonitor, r
+        "workspace 4, title:^(.*(Disc|WebC)ord.*)$"
+        "tile, class:^(Spotify)$"
+        "workspace 3 silent, class:^(Spotify)$"
 
-    bind=,XF86MonBrightnessUp,exec,brightnessctl set +5%
-    bind=,XF86MonBrightnessDown,exec,brightnessctl set 5%-
+        "workspace 10 silent, class:^(Nextcloud)$"
+      ];
+    };
+    extraConfig = ''
+      monitor=DP-1,1920x1080@144,0x0,1shad
+      # a submap for resizing windows
+      bind = $MOD, S, submap, resize # enter resize window to resize the active window
 
-    binde = SUPERALT, L, resizeactive, 80 0
-    binde = SUPERALT, H, resizeactive, -80 0
-    bindm=SUPER,mouse:272,movewindow
-    bindm=SUPER,mouse:273,resizewindow
+      submap=resize
+      binde=,right,resizeactive,10 0
+      binde=,left,resizeactive,-10 0
+      binde=,up,resizeactive,0 -10
+      binde=,down,resizeactive,0 10
+      bind=,escape,submap,reset
+      submap=reset
 
-    # Volume keys
-    binde=, XF86AudioRaiseVolume, exec, volume -i 5
-    bindl=, XF86AudioLowerVolume, exec, volume -d 5
-    bindl=, XF86AudioMute, exec, volume -t
+      # workspace binds
+      # binds * (asterisk) to special workspace
+      bind = $MOD, KP_Multiply, togglespecialworkspace
+      bind = $MODSHIFT, KP_Multiply, movetoworkspace, special
 
-  '';
+      # and mod + [shift +] {1..10} to [move to] ws {1..10}
+      ${
+        builtins.concatStringsSep
+        "\n"
+        (builtins.genList (
+            x: let
+              ws = let
+                c = (x + 1) / 10;
+              in
+                builtins.toString (x + 1 - (c * 10));
+            in ''
+              bind = $MOD, ${ws}, workspace, ${toString (x + 1)}
+              bind = $MOD SHIFT, ${ws}, movetoworkspace, ${toString (x + 1)}
+            ''
+          )
+          10)
+      }
+
+    '';
+  };
 }

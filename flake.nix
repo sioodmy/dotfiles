@@ -8,14 +8,28 @@
     xdg-portal-hyprland.url = "github:hyprwm/xdg-desktop-portal-hyprland";
     impermanence.url = "github:nix-community/impermanence";
 
-    schizofox = {
-      url = "github:schizofox/schizofox";
-      # url = "path:/home/sioodmy/dev/schizofox";
+    nixpak = {
+      url = "github:nixpak/nixpak";
       inputs.nixpkgs.follows = "nixpkgs";
+    };
+    hyprpicker = {
+      url = "github:hyprwm/hyprpicker";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+
+    schizofox = {
+      # url = "github:schizofox/schizofox";
+      url = "path:/home/sioodmy/dev/schizofox";
+      inputs.nixpkgs.follows = "nixpkgs";
+      inputs.nixpak.follows = "nixpak";
     };
 
     anyrun = {
       url = "github:Kirottu/anyrun";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+    nh = {
+      url = "github:viperML/nh";
       inputs.nixpkgs.follows = "nixpkgs";
     };
     ragenix = {

@@ -7,15 +7,18 @@ let
 in ''
   * {
     /* `otf-font-awesome` is required to be installed for icons */
-    font-family: Material Design Icons, Iosevka Nerd Font;
+    font-family: Material Design Icons, Lexend, Iosevka Nerd Font;
   }
 
   window#waybar {
     background-color: #181825;
-    border-radius: 0px;
+    border-radius: 20px;
+    margin: 16px 16px;
     color: #cdd6f4;
+    box-shadow: 2px 3px 2px 2px #151515;
     font-size: 16px;
     /* transition-property: background-color; */
+    transition-property: background-color;
     transition-duration: 0.5s;
   }
 
@@ -25,6 +28,13 @@ in ''
 
   #pulseaudio {
     color: #a6d189;
+    padding: 5px 0px 5px 0px;
+  }
+
+  #pulseaudio.source-muted,
+  #pulseaudio.muted {
+    padding: 16px 0px 16px 0px;
+    font-size: 15;
   }
 
   #custom-vpn,
@@ -34,6 +44,13 @@ in ''
 
   #cpu {
     color: #ef9f76;
+  }
+
+  #clock {
+    font-weight: 700;
+    font-size: 20px;
+    font-family: "Iosevka Term";
+    padding: 5px 0px 5px 0px;
   }
 
   #workspaces button {
@@ -53,7 +70,8 @@ in ''
 
   #custom-power {
       color: #f38ba8;
-      margin: 7px;
+      padding: 14px 0px 14px 0px;
+      margin-bottom: 20px;
       font-size: 24px;
   }
 
@@ -66,7 +84,6 @@ in ''
     background-color: #eba0ac;
   }
   #custom-weather,
-
   #clock,
   #network,
   #custom-swallow,
@@ -79,19 +96,24 @@ in ''
   #custom-lock,
   #custom-vpn,
   #custom-weather,
+  #custom-power,
   #custom-eth,
   #volume,
   #pulseaudio {
     border-radius: 15px;
     background-color: #1e1e2e;
-    padding: 0px 10px 0px 10px;
-    margin: 5px 0px 5px 0px;
+    padding: 10px 0px 10px 0px;
+    margin: 0px 7px 0px 7px;
   }
 
   #custom-swallow {
     color: #94e2d5;
+    padding: 14px 0px 14px 0px;
   }
 
+  #workspaces {
+    font-size: 15px;
+  }
 
   #custom-eth {
     color: #89b4fa;
@@ -99,17 +121,19 @@ in ''
 
   #custom-lock {
       color: #89b4fa;
-      padding: 0 20px 0 20px;
+      padding: 20px 0 20px 0;
   }
 
   #custom-todo {
     color: #bac2de;
+    padding-left: 2px;
   }
 
   #custom-search {
     background-image: url("${snowflake}");
     background-size: 65%;
-    padding: 0 15px 0 15px;
+    margin-top: 35px;
+    padding-top: 15px;
     margin: 5px;
     background-position: center;
     background-repeat: no-repeat;
