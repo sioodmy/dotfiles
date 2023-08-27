@@ -1,4 +1,4 @@
-{ ...}: {
+_: {
   programs.schizofox = {
     enable = true;
     security = {
@@ -12,6 +12,8 @@
       background = "1e1e2e";
       foreground = "cdd6f4";
       font = "Lexend";
+      simplefox.enable = true;
+      darkreader.enable = true;
     };
 
     extensions.extraExtensions = {

@@ -5,15 +5,23 @@
   inputs,
   ...
 }: {
+  imports = [inputs.nh.nixosModules.default];
   environment = {
     # set channels (backwards compatibility)
+    sessionVariables.FLAKE = "/home/sioodmy/dev/dotfiles";
     etc = {
       "nix/flake-channels/nixpkgs".source = inputs.nixpkgs;
       "nix/flake-channels/home-manager".source = inputs.home-manager;
     };
 
-    systemPackages = with pkgs; [git deadnix alejandra statix];
+    systemPackages = with pkgs; [git deadnix alejandra statix inputs.nh.packages.${pkgs.system}.default nix-output-monitor];
     defaultPackages = [];
+  };
+
+  nh = {
+    enable = true;
+    clean.enable = true;
+    clean.extraArgs = "--keep-since 4d --keep 3";
   };
 
   nixpkgs = {
@@ -33,6 +41,17 @@
           "nvidia-x11"
           "nvidia-settings"
         ];
+      overlays = [
+        (
+          _: prev: {
+            # temp fix until https://github.com/NixOS/nixpkgs/pull/249382 is merged
+            gtklock = prev.gtklock.overrideAttrs (self: super: {
+              nativeBuildInputs = super.nativeBuildInputs ++ [prev.wrapGAppsHook];
+              buildInputs = super.buildInputs ++ [prev.librsvg];
+            });
+          }
+        )
+      ];
     };
   };
 
@@ -97,6 +116,7 @@
         "https://hyprland.cachix.org"
         "https://nixpkgs-unfree.cachix.org"
         "https://anyrun.cachix.org"
+        "https://viperml.cachix.org"
       ];
 
       trusted-public-keys = [
@@ -107,6 +127,7 @@
         "hyprland.cachix.org-1:a7pgxzMz7+chwVL3/pzj6jIBMioiJM7ypFP8PwtkuGc="
         "nixpkgs-unfree.cachix.org-1:hqvoInulhbV4nJ9yJOEr+4wxhDV4xq2d1DK7S6Nj6rs="
         "anyrun.cachix.org-1:pqBobmOjI7nKlsUMV25u9QHa9btJK65/C8vnO3p346s="
+        "viperml.cachix.org-1:qZhKBMTfmcLL+OG6fj/hzsMEedgKvZVFRRAhq7j8Vh8="
       ];
     };
   };

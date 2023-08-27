@@ -11,27 +11,27 @@ with lib; let
     Unit.After = ["graphical-session.target"];
     Install.WantedBy = ["graphical-session.target"];
   };
-  screenshot = pkgs.writeShellScriptBin "screenshot" ''
-    #!/bin/bash
-    hyprctl keyword animation "fadeOut,0,8,slow" && ${pkgs.grim}/bin/grim -g "$(${pkgs.slurp}/bin/slurp -w 0 -b 5e81acd2)" - | swappy -f -; hyprctl keyword animation "fadeOut,1,8,slow"
-  '';
 in {
   imports = [./config.nix];
   home.packages = with pkgs;
   with inputs.hyprcontrib.packages.${pkgs.system};
+  with inputs.xdg-portal-hyprland.packages.${pkgs.system};
+  with inputs.hyprpicker.packages.${pkgs.system};
   with inputs.shadower.packages.${pkgs.system}; [
     libnotify
     wf-recorder
     brightnessctl
+    xdg-desktop-portal-hyprland
     pamixer
     python39Packages.requests
     slurp
+    grim
+    hyprpicker
     swappy
     grimblast
     shadower
     hyprpicker
     wl-clip-persist
-    screenshot
     wl-clipboard
     pngquant
     cliphist

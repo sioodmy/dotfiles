@@ -82,6 +82,7 @@
       packages = [pkgs.apparmor-profiles];
     };
     pam = {
+      services.gtklock.text = "auth include login";
       loginLimits = [
         {
           domain = "@wheel";
@@ -98,11 +99,6 @@
       ];
       services = {
         login.enableGnomeKeyring = true;
-        swaylock = {
-          text = ''
-            auth include login
-          '';
-        };
       };
     };
 
@@ -136,7 +132,7 @@
         }
       ];
     };
-    sudo.enable = false;
+    sudo.enable = true;
   };
 
   boot.kernel.sysctl = {
