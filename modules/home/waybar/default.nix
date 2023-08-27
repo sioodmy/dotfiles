@@ -76,24 +76,24 @@ in {
         };
 
         "custom/weather" = let
-          waybar-wttr = pkgs.stdenv.mkDerivation {
+          weather = pkgs.stdenv.mkDerivation {
             name = "waybar-wttr";
             buildInputs = [
               (pkgs.python39.withPackages
-                (pythonPackages: with pythonPackages; [requests]))
+                (pythonPackages: with pythonPackages; [requests pyquery]))
             ];
             unpackPhase = "true";
             installPhase = ''
               mkdir -p $out/bin
-              cp ${./waybar-wttr.py} $out/bin/waybar-wttr
-              chmod +x $out/bin/waybar-wttr
+              cp ${./weather.py} $out/bin/weather
+              chmod +x $out/bin/weather
             '';
           };
         in {
           format = "{}";
           tooltip = true;
           interval = 30;
-          exec = "${waybar-wttr}/bin/waybar-wttr";
+          exec = "${weather}/bin/weather";
           return-type = "json";
         };
         "custom/eth" = {
@@ -182,7 +182,7 @@ in {
           format = "{icon}";
           format-muted = "󰝟 ";
           format-icons = {
-            default = [" " " " " "];
+            default = ["" "" " "];
           };
         };
       };
