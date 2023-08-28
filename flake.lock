@@ -1396,17 +1396,14 @@
         ]
       },
       "locked": {
-        "lastModified": 1693151231,
-        "narHash": "sha256-FkdnL1Li25gj2QD8zCP00WHaurYrIFl8nKhjGYb00Go=",
-        "owner": "schizofox",
-        "repo": "schizofox",
-        "rev": "5ac8211af0d9e5957361d13dc76a95d2ca63d193",
-        "type": "github"
+        "lastModified": 1693217330,
+        "narHash": "sha256-eepakEBrzZOmL4Y9ROLZ9EiboqHeraEpVPOsL8sRsuA=",
+        "path": "/home/sioodmy/dev/schizofox",
+        "type": "path"
       },
       "original": {
-        "owner": "schizofox",
-        "repo": "schizofox",
-        "type": "github"
+        "path": "/home/sioodmy/dev/schizofox",
+        "type": "path"
       }
     },
     "shadower": {

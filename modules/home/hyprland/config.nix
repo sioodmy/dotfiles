@@ -191,6 +191,8 @@ in {
         "$MOD,mouse_up,workspace,e-1" # move to the previous ws
 
         "$MODSHIFT,S,exec,grimblast --notify --cursor copysave area" # screenshot and then pipe it to swappy
+
+        "$MODSHIF,L,exec,gtklock" # lock screen
       ];
 
       bindm = [
