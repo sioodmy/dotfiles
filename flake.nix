@@ -76,10 +76,10 @@
     };
     helix = {
       url = "github:SoraTenshi/helix/new-daily-driver";
-      inputs = { 
-       nixpkgs.follows = "nixpkgs";
-       rust-overlay.follows = "rust-overlay";
-       parts.follows = "flake-parts";
+      inputs = {
+        nixpkgs.follows = "nixpkgs";
+        rust-overlay.follows = "rust-overlay";
+        parts.follows = "flake-parts";
       };
     };
     rust-overlay = {
@@ -209,5 +209,5 @@
       };
     });
 }
-
 # see also: https://github.com/notashelf/nyx
+
