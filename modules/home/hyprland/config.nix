@@ -220,6 +220,7 @@ in {
       layerrule = [
         "blur, ^(gtk-layer-shell)$"
         "ignorezero, ^(gtk-layer-shell)$"
+        "blur, notifications"
         "ignorezero, notifications"
         "blur, bar"
         "ignorezero, bar"
