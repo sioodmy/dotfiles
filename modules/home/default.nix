@@ -1,9 +1,5 @@
 {
   inputs,
-  pkgs,
-  config,
-  lib,
-  self,
   ...
 }:
 # glue all configs together
@@ -24,7 +20,6 @@
     ./git
     ./schizofox
     ./spotify
-    ./brave
     ./waybar
     ./foot
     ./anyrun
