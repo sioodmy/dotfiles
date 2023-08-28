@@ -95,7 +95,7 @@ in ''
   #custom-vpn,
   #custom-weather,
   #custom-power,
-  #custom-eth,
+  #custom-crypto,
   #volume,
   #pulseaudio {
     border-radius: 15px;
@@ -112,7 +112,7 @@ in ''
     font-size: 15px;
   }
 
-  #custom-eth {
+  #custom-crypto {
     color: #89b4fa;
   }
 

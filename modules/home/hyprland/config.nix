@@ -192,7 +192,7 @@ in {
 
         "$MODSHIFT,S,exec,grimblast --notify --cursor copysave area" # screenshot and then pipe it to swappy
 
-        "$MODSHIF,L,exec,gtklock" # lock screen
+        "$MODSHIFT,L,exec,gtklock" # lock screen
       ];
 
       bindm = [

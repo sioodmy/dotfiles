@@ -39,6 +39,7 @@ in {
           "custom/search"
           "hyprland/workspaces"
           "custom/lock"
+          "custom/crypto"
           "backlight"
           "battery"
           # "custom/eth"
@@ -96,11 +97,26 @@ in {
           exec = "${weather}/bin/weather";
           return-type = "json";
         };
-        "custom/eth" = {
-          format = "󰡪 {}";
+        "custom/crypto" = let
+          crypto = pkgs.stdenv.mkDerivation {
+            name = "waybar-wttr";
+            buildInputs = [
+              (pkgs.python39.withPackages
+                (pythonPackages: with pythonPackages; [requests ]))
+            ];
+            unpackPhase = "true";
+            installPhase = ''
+              mkdir -p $out/bin
+              cp ${./crypto.py} $out/bin/crypto
+              chmod +x $out/bin/crypto
+            '';
+          };
+        in {
+          format = "{}";
           tooltip = true;
-          interval = 15;
-          exec = "${lib.getExe get-crypto-price} ETHUSDT";
+          interval = 30;
+          exec = "${crypto}/bin/crypto";
+          return-type = "json";
         };
         "custom/vpn" = {
           format = " VPN {}";
