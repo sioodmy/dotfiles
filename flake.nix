@@ -182,6 +182,8 @@
               glow # markdown viewer
               statix # lints and suggestions
               deadnix # clean up unused nix code
+              # some python stuff for waybar scripting
+              (python311.withPackages (p: with p; [requests]))
             ];
           };
 
@@ -191,6 +193,7 @@
 
           programs = {
             alejandra.enable = true;
+            black.enable = true;
             deadnix.enable = false;
             shellcheck.enable = true;
             shfmt = {
