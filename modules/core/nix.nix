@@ -41,6 +41,8 @@
           "spotify"
           "nvidia-x11"
           "nvidia-settings"
+          # they got fossed recently so idk
+          "Anytype"
         ];
       overlays = [
         (
