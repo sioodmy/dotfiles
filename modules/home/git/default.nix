@@ -48,6 +48,7 @@
     lfs.enable = true;
     delta.enable = true;
     aliases = {
+      essa = "push --force";
       co = "checkout";
       fuck = "commit --amend -m";
       c = "commit -m";
