@@ -209,6 +209,8 @@ in {
         # brightness controls
         ",XF86MonBrightnessUp,exec,brightness set +5%"
         ",XF86MonBrightnessDown,exec,brightness set 5%-"
+        "SUPERALT, L, resizeactive, 80 0"
+        "SUPERALT, H, resizeactive, -80 0"
       ];
       # binds that are locked, a.k.a will activate even while an input inhibitor is active
       bindl = [
@@ -259,6 +261,7 @@ in {
         "workspace special silent, title:^(Firefox — Sharing Indicator)$"
         "workspace special silent, title:^(.*is sharing (your screen|a window)\.)$"
 
+        "workspace 5, class:^(anytype)$"
         "workspace 4, title:^(.*(Disc|WebC)ord.*)$"
         "tile, class:^(Spotify)$"
         "workspace 3, title:^(Spotify)$"

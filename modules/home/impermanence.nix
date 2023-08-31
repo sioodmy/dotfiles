@@ -32,6 +32,7 @@ _: {
       ".config/easyeffects"
       ".config/BraveSoftware/"
       ".cache/BraveSoftware/"
+      ".cache/nix"
       ".cache/thunderbird/"
       ".thunderbird"
       ".cache/spotify"

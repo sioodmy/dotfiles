@@ -7,6 +7,7 @@
       buildInputs = [makeWrapper];
       postBuild = "wrapProgram $out/bin/ledger-live-desktop --add-flags --use-gl=desktop";
     })
+    anytype
     ledger_agent
     pulseaudio
     onefetch
@@ -35,7 +36,6 @@
     gimp
     imagemagick
     bc
-    aseprite
     bandwhich
     grex
     fd
