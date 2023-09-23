@@ -120,8 +120,8 @@ in {
 
       misc = {
         # disable redundant renders
-        disable_hyprland_logo = true; # wallpaper covers it anyway
-        disable_splash_rendering = true; # "
+        disable_hypr_chan = true;
+        disable_splash_rendering = true;
 
         # window swallowing
         enable_swallow = true; # hide windows that spawn other windows

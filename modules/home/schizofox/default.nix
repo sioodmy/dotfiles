@@ -1,6 +1,7 @@
-_: {
+{pkgs, ...}: {
   programs.schizofox = {
     enable = true;
+    package = pkgs.firefox-esr-115-unwrapped;
     security = {
       sanitizeOnShutdown = false;
       sandbox = true;
