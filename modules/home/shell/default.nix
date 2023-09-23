@@ -31,7 +31,7 @@ in {
   home.sessionVariables.STARSHIP_CACHE = "${config.xdg.cacheHome}/starship";
   programs = {
     nix-index.enable = false;
-    exa.enable = true;
+    eza.enable = true;
     zoxide = {
       enable = true;
       enableZshIntegration = true;
@@ -47,7 +47,7 @@ in {
       enableZshIntegration = true;
       defaultCommand = "rg --files --hidden";
       changeDirWidgetOptions = [
-        "--preview 'exa --icons --git --color always -T -L 3 {} | head -200'"
+        "--preview 'eza --icons --git --color always -T -L 3 {} | head -200'"
         "--exact"
       ];
     };
@@ -113,7 +113,7 @@ in {
         zstyle ':fzf-tab:complete:*:*' fzf-preview 'preview.sh $realpath'
         zstyle ":completion:*:git-checkout:*" sort false
         zstyle ':completion:*' file-sort modification
-        zstyle ':completion:*:exa' sort false
+        zstyle ':completion:*:eza' sort false
         zstyle ':completion:files' sort false
 
         zmodload zsh/complist
@@ -165,6 +165,7 @@ in {
         vpn = "${getBin mullvad}/mullvad";
         uuid = "cat /proc/sys/kernel/random/uuid";
         grep = getExe ripgrep;
+        nix = "nom";
         gpl = "curl https://www.gnu.org/licenses/gpl-3.0.txt -o LICENSE";
         wget = "wget --hsts-file=\"${config.xdg.dataHome}/wget-hsts\"";
         fzf = getExe skim;
@@ -178,9 +179,9 @@ in {
         l = "ls -lF --time-style=long-iso --icons";
         sc = "sudo systemctl";
         scu = "systemctl --user ";
-        la = "${getExe exa} -lah --tree";
-        ls = "${getExe exa} -h --git --icons --color=auto --group-directories-first -s extension";
-        tree = "${getExe exa} --tree --icons --tree";
+        la = "${getExe eza} -lah --tree";
+        ls = "${getExe eza} -h --git --icons --color=auto --group-directories-first -s extension";
+        tree = "${getExe eza} --tree --icons --tree";
         http = "${getExe python3} -m http.server";
         burn = "pkill -9";
         diff = "diff --color=auto";
