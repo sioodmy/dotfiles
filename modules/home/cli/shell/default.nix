@@ -165,8 +165,6 @@ in {
         vpn = "${getBin mullvad}/mullvad";
         uuid = "cat /proc/sys/kernel/random/uuid";
         grep = getExe ripgrep;
-        nix = "nom";
-        gpl = "curl https://www.gnu.org/licenses/gpl-3.0.txt -o LICENSE";
         wget = "wget --hsts-file=\"${config.xdg.dataHome}/wget-hsts\"";
         fzf = getExe skim;
         untar = "tar -xvf";
