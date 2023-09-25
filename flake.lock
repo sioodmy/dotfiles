@@ -358,6 +358,22 @@
         "type": "github"
       }
     },
+    "flake-compat_5": {
+      "flake": false,
+      "locked": {
+        "lastModified": 1673956053,
+        "narHash": "sha256-4gtG9iQuiKITOjNQQeQIpoIB6b16fm+504Ch3sNKLd8=",
+        "owner": "edolstra",
+        "repo": "flake-compat",
+        "rev": "35bb57c0c8d8b62bbfd284272c928ceb64ddbde9",
+        "type": "github"
+      },
+      "original": {
+        "owner": "edolstra",
+        "repo": "flake-compat",
+        "type": "github"
+      }
+    },
     "flake-parts": {
       "inputs": {
         "nixpkgs-lib": [
@@ -1227,6 +1243,22 @@
         "type": "github"
       }
     },
+    "nmd": {
+      "flake": false,
+      "locked": {
+        "lastModified": 1687627428,
+        "narHash": "sha256-7zGfXuNS5RHqhpEdz2fwrtqvF86JRo5U1hrxZSYgcm8=",
+        "owner": "~rycee",
+        "repo": "nmd",
+        "rev": "824a380546b5d0d0eb701ff8cd5dbafb360750ff",
+        "type": "sourcehut"
+      },
+      "original": {
+        "owner": "~rycee",
+        "repo": "nmd",
+        "type": "sourcehut"
+      }
+    },
     "parts": {
       "inputs": {
         "nixpkgs-lib": [
@@ -1406,6 +1438,7 @@
     },
     "schizofox": {
       "inputs": {
+        "flake-compat": "flake-compat_5",
         "flake-parts": [
           "flake-parts"
         ],
@@ -1415,18 +1448,20 @@
         ],
         "nixpkgs": [
           "nixpkgs"
-        ]
+        ],
+        "nmd": "nmd"
       },
       "locked": {
-        "lastModified": 1693418681,
-        "narHash": "sha256-Jaz8BeHNT7Nj0wPAo8h9xSTinDIRitn/s8/T8lG8yEA=",
+        "lastModified": 1695380956,
+        "narHash": "sha256-1yc/XmtRt/m+yebQCkd79lnB4M8G726cKoX1/6lMg9s=",
         "owner": "schizofox",
         "repo": "schizofox",
-        "rev": "dacd1e479991cb0365a2ac4429308f3dc0f6d996",
+        "rev": "f49ae6b5b65ad5cdad787e7c4fa683bb795f6a48",
         "type": "github"
       },
       "original": {
         "owner": "schizofox",
+        "ref": "gerg",
         "repo": "schizofox",
         "type": "github"
       }

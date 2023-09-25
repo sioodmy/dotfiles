@@ -13,23 +13,8 @@
     ./packages.nix
     ./impermanence.nix
 
-    ./gtk
-    ./git
-    ./schizofox
-    ./spotify
-    ./waybar
-    ./foot
-    ./anyrun
-    ./rnnoise
-    ./dunst
-    ./bottom
-    ./shell
-    ./swayidle
-    ./gtklock
-    ./tools
-    ./hyprland
-    ./media
-    ./zathura
-    ./helix
+    ./cli
+    ./rice
+    ./misc
   ];
 }
