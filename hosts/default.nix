@@ -4,10 +4,10 @@
   ...
 }: let
   inherit (self) inputs;
-  bootloader = ../modules/core/bootloader.nix;
-  core = ../modules/core;
-  nvidia = ../modules/nvidia;
-  wayland = ../modules/wayland;
+  bootloader = ../system/core/bootloader.nix;
+  core = ../system/core;
+  nvidia = ../system/nvidia;
+  wayland = ../system/wayland;
   hw = inputs.nixos-hardware.nixosModules;
   ragenix = inputs.ragenix.nixosModules.age;
   hmModule = inputs.home-manager.nixosModules.home-manager;
@@ -21,7 +21,7 @@
       inherit inputs;
       inherit self;
     };
-    users.sioodmy = ../modules/home;
+    users.sioodmy = ../home;
   };
 in {
   # all my hosts are named after saturn moons btw
