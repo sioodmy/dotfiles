@@ -34,6 +34,7 @@
     gamemode
     ffmpeg
     gimp
+    inkscape
     imagemagick
     bc
     bandwhich

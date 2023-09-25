@@ -21,7 +21,8 @@
       "webextension@metamask.io".install_url = "https://addons.mozilla.org/firefox/downloads/latest/ether-metamask/latest.xpi";
     };
     search = {
-      defaultSearchEngine = "Brave";
+      defaultSearchEngine = "Google";
+      removeEngines = ["Google" "Bing" "Amazon.com" "eBay" "Twitter" "Wikipedia"];
     };
   };
 }

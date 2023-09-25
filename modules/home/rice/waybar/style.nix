@@ -57,7 +57,7 @@ in ''
     background-color: transparent;
     /* Use box-shadow instead of border so the text isn't offset */
     color: #89b4fa;
-    padding-left: 6px;
+    padding-left: 10px;
     box-shadow: inset 0 -3px transparent;
     transition: all 0.5s cubic-bezier(.55,-0.68,.48,1.68);
   }
@@ -107,9 +107,12 @@ in ''
   #custom-swallow {
     color: #94e2d5;
   }
+  #custom-weather {
+    padding-left: 6px;
+  }
 
   #workspaces {
-    font-size: 15px;
+    font-size: 18px;
   }
 
   #custom-crypto {
