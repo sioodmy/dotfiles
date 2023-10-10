@@ -97,7 +97,6 @@ in {
       decoration = {
         # fancy corners
         rounding = 7;
-        multisample_edges = true; # fixes pixelated corners on relatively better monitors, useless on old monitors
 
         # blur
         blur = {
@@ -202,13 +201,13 @@ in {
 
       binde = [
         # volume controls
-        ",XF86AudioRaiseVolume, exec, volume -i 5"
-        ",XF86AudioLowerVolume, exec, volume -d 5"
-        ",XF86AudioMute, exec, volume -t"
+        ",XF86AudioRaiseVolume, exec, swayosd --output-volume raise"
+        ",XF86AudioLowerVolume, exec, swayosd --output-volume lower"
+        ",XF86AudioMute, exec, swayosd --output-volume mute-toggle"
 
         # brightness controls
-        ",XF86MonBrightnessUp,exec,brightness set +5%"
-        ",XF86MonBrightnessDown,exec,brightness set 5%-"
+        ",XF86MonBrightnessUp,exec,swayosd --brightness raise"
+        ",XF86MonBrightnessDownn,exec,swayosd --brightness lower"
         "SUPERALT, L, resizeactive, 80 0"
         "SUPERALT, H, resizeactive, -80 0"
       ];

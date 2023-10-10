@@ -1,15 +1,8 @@
-{
-  self,
-  pkgs,
-  lib,
-  config,
-  inputs,
-  ...
-}: {
+{pkgs, ...}: {
   gtk = {
     enable = true;
     theme = {
-      name = "Catppuccin-Mocha-Compact-Pink-dark";
+      name = "Catppuccin-Mocha-Compact-Pink-Dark";
       package = pkgs.catppuccin-gtk.override {
         accents = ["pink"];
         tweaks = ["rimless"];
@@ -17,6 +10,7 @@
         variant = "mocha";
       };
     };
+
     iconTheme = {
       package = pkgs.catppuccin-papirus-folders;
       name = "Papirus";
@@ -30,7 +24,9 @@
       gtk-xft-hinting = 1;
       gtk-xft-hintstyle = "hintslight";
       gtk-xft-rgba = "rgb";
+      gtk-application-prefer-dark-theme = 1;
     };
+    gtk4.extraConfig.gtk-application-prefer-dark-theme = 1;
     gtk2.extraConfig = ''
       gtk-xft-antialias=1
       gtk-xft-hinting=1
@@ -48,23 +44,6 @@
   };
 
   home.sessionVariables = {
-    # XCURSOR_SIZE = lib.mkOverride "16";
     XCURSOR_SIZE = "16";
-  };
-
-  home.packages = with pkgs; [
-    libsForQt5.qtstyleplugin-kvantum
-    (catppuccin-kvantum.override {
-      accent = "Mauve";
-      variant = "Mocha";
-    })
-  ];
-  home.sessionVariables = {
-    QT_STYLE_OVERRIDE = "kvantum";
-  };
-
-  xdg.configFile."Kvantum/kvantum.kvconfig".source = (pkgs.formats.ini {}).generate "kvantum.kvconfig" {
-    General.Theme = "Catppuccin-Mocha-Mauve";
-    Applications.catppuccin = "Dolphin, dolphin, Nextcloud, nextcloud, qt5ct, org.kde.dolphin, org.kde.kalendar, kalendar, Kalendar, qbittorrent, org.qbittorrent.qBittorrent";
   };
 }

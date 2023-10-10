@@ -4,8 +4,7 @@
   lib,
   ...
 }: {
-  virtualisation.docker.enable = true;
-  environment.systemPackages = with pkgs; [docker-compose speedtest-cli];
+  environment.systemPackages = with pkgs; [speedtest-cli];
   networking = {
     # dns
     nameservers = ["127.0.0.1" "::1"];
