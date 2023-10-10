@@ -8,10 +8,11 @@
       postBuild = "wrapProgram $out/bin/ledger-live-desktop --add-flags --use-gl=desktop";
     })
     anytype
+    brave
     ledger_agent
+    caprine-bin
     pulseaudio
     onefetch
-    sherlock
     thunderbird
     pfetch-rs
     qrcp

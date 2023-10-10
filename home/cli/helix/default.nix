@@ -31,7 +31,6 @@
 
     settings = {
       theme = "catppuccin_mocha_transparent";
-      icons = "nerdfonts";
       keys.normal = {
         "{" = "goto_prev_paragraph";
         "}" = "goto_next_paragraph";
@@ -77,8 +76,8 @@
         };
         gutters = ["diagnostics" "line-numbers" "spacer" "diff"];
         statusline = {
-          mode-separator = "";
-          separator = "";
+          # mode-separator = "";
+          # separator = "";
           left = ["mode" "selections" "spinner" "file-name" "total-line-numbers"];
           center = [];
           right = ["diagnostics" "file-encoding" "file-line-ending" "file-type" "position-percentage" "position"];
