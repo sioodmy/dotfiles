@@ -119,7 +119,6 @@ in {
 
       misc = {
         # disable redundant renders
-        disable_hypr_chan = true;
         disable_splash_rendering = true;
 
         # window swallowing
