@@ -9,6 +9,8 @@
     })
     anytype
     brave
+    gping
+    dogdns
     ledger_agent
     caprine-bin
     pulseaudio
