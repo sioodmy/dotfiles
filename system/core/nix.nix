@@ -43,6 +43,7 @@
           "nvidia-settings"
           # they got fossed recently so idk
           "Anytype"
+          "Anytype-0.35.4"
         ];
       overlays = [
         (
