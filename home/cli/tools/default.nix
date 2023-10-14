@@ -55,7 +55,38 @@
     while inotifywait -e close_write $1; do pandoc $@; done
   '';
 in {
-  home.packages = with pkgs; [ocrScript texlive pandoc pandoc-watch];
+ home = {
+    sessionPath = [
+      "${config.home.homeDirectory}/.local/bin"
+    ];
+
+    file = {
+      ".local/bin/updoot" = {
+        # Upload and get link
+        executable = true;
+        text = import ./updoot.nix {inherit lib pkgs;};
+      };
+
+      ".local/bin/preview" = {
+        # Preview script for fzf tab
+        executable = true;
+        text = import ./preview.nix {inherit lib pkgs;};
+      };
+
+      ".local/bin/extract" = {
+        # Extract the compressed file with the correct tool based on the extension
+        executable = true;
+        text = import ./extract.nix {inherit lib pkgs;};
+      };
+
+      ".local/bin/compilec" = {
+        executable = true;
+        text = import ./compilec.nix {};
+      };
+    };
+
+packages = with pkgs; [ocrScript texlive pandoc pandoc-watch];
+  };
   services = {
     udiskie.enable = true;
     gpg-agent = {
