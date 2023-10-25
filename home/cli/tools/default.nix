@@ -55,7 +55,7 @@
     while inotifywait -e close_write $1; do pandoc $@; done
   '';
 in {
- home = {
+  home = {
     sessionPath = [
       "${config.home.homeDirectory}/.local/bin"
     ];
@@ -85,7 +85,7 @@ in {
       };
     };
 
-packages = with pkgs; [ocrScript texlive pandoc pandoc-watch];
+    packages = with pkgs; [ocrScript texlive pandoc pandoc-watch];
   };
   services = {
     udiskie.enable = true;
