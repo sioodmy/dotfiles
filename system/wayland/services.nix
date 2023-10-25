@@ -1,5 +1,4 @@
 {
-  config,
   pkgs,
   ...
 }: {
@@ -18,7 +17,7 @@
   };
 
   services = {
-    mullvad-vpn.enable = false; # too broke rn :(
+    mullvad-vpn.enable = true;
     greetd = {
       enable = true;
       settings = rec {
