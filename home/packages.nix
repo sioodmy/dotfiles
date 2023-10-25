@@ -9,6 +9,8 @@
     })
     anytype
     brave
+    cargo-tauri
+    mullvad
     gping
     dogdns
     ledger_agent
