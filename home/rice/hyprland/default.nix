@@ -55,18 +55,18 @@ in {
     systemdIntegration = true;
   };
 
-  services = { 
-  swayosd.enable = true;
-  wlsunset = {
-    # TODO: fix opaque red screen issue
-    enable = true;
-    latitude = "52.0";
-    longitude = "21.0";
-    temperature = {
-      day = 6200;
-      night = 3750;
+  services = {
+    swayosd.enable = true;
+    wlsunset = {
+      # TODO: fix opaque red screen issue
+      enable = true;
+      latitude = "52.0";
+      longitude = "21.0";
+      temperature = {
+        day = 6200;
+        night = 3750;
+      };
     };
-  };
   };
   # fake a tray to let apps start
   # https://github.com/nix-community/home-manager/issues/2064

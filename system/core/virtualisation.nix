@@ -1,8 +1,10 @@
-{ config, pkgs, ... }:
-
 {
+  config,
+  pkgs,
+  ...
+}: {
   environment.systemPackages = with pkgs; [docker-compose];
-    virtualisation = {
+  virtualisation = {
     podman = {
       enable = true;
       dockerCompat = false;
@@ -15,9 +17,9 @@
       enable = true;
     };
   };
-    systemd.user.timers."distrobox-update" = {
+  systemd.user.timers."distrobox-update" = {
     enable = true;
-    wantedBy = [ "timers.target" ];
+    wantedBy = ["timers.target"];
     timerConfig = {
       OnBootSec = "1h";
       OnUnitActiveSec = "1d";
@@ -34,5 +36,4 @@
       Type = "oneshot";
     };
   };
-
 }

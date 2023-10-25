@@ -1,7 +1,4 @@
-{
-  pkgs,
-  ...
-}:{
+{pkgs, ...}: {
   services.dunst = {
     enable = true;
     package = pkgs.dunst.overrideAttrs (oldAttrs: {
