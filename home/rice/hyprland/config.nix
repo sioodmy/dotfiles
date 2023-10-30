@@ -108,9 +108,9 @@ in {
         # blur
         blur = {
           enabled = true;
-          size = 4;
-          passes = 3;
-          ignore_opacity = true;
+          size = 3;
+          passes = 2;
+          ignore_opacity = false;
           new_optimizations = 1;
           xray = true;
           contrast = 0.7;
@@ -174,9 +174,9 @@ in {
         "$MOD,P,pseudo"
 
         # scratchpads
-        "$MOD,Z,exec, pypr toggle term && hyprctl dispatch bringactivetotop"
+        "ALT,code:9,exec, pypr toggle term && hyprctl dispatch bringactivetotop"
         "$MOD,B,exec, pypr toggle btm && hyprctl dispatch bringactivetotop"
-        "$MOD,code:172,exec,pypr toggle pavucontrol && hyprctl dispatch bringactivetotop"
+        "$MOD,code:61,exec,pypr toggle spotify && hyprctl dispatch bringactivetotop"
         "$MOD,code:21,exec,pypr zoom"
         "$MOD,code:21,exec,hyprctl reload"
 
@@ -256,10 +256,11 @@ in {
         "idleinhibit focus,class:foot"
 
         "idleinhibit fullscreen, class:^(firefox)$"
-        "float,title:^(Firefox — Sharing Indicator)$"
-        "move 0 0,title:^(Firefox — Sharing Indicator)$"
         "float, title:^(Picture-in-Picture)$"
         "pin, title:^(Picture-in-Picture)$"
+
+        "workspace special silent, title:^(Firefox — Sharing Indicator)$"
+        ''workspace special silent, title:^(.*is sharing (your screen|a window)\.)$''
 
         "float,class:udiskie"
 
@@ -269,6 +270,8 @@ in {
         "move 50% 6%,$pavucontrol"
         "workspace special silent,$pavucontrol"
         "opacity 0.80,$pavucontrol"
+
+        "opacity 0.80,title:^(Spotify)$"
 
         "opacity 0.9,class:^(org.keepassxc.KeePassXC)$"
 
@@ -325,31 +328,30 @@ in {
 
     '';
   };
-  home.file.".config/hypr/pyprland.json".text = ''
-    {
-      "pyprland": {
-        "plugins": ["scratchpads", "magnify"]
-      },
-      "scratchpads": {
-        "term": {
-          "command": "foot --title scratchpad",
-          "margin": 50
-        },
-        "btm": {
-          "command": "foot --title scratchpad -e btm",
-          "margin": 50
-        },
-        "geary": {
-          "command": "geary",
-          "margin": 50
-        },
-        "pavucontrol": {
-          "command": "pavucontrol",
-          "margin": 50,
-          "unfocus": "hide",
-          "animation": "fromTop"
-        }
-      }
-    }
-  '';
+
+  xdg.configFile."hypr/pyprland.json".text = builtins.toJSON {
+    pyprland = {
+      plugins = ["scratchpads" "magnify"];
+    };
+    scratchpads = {
+      term = {
+        command = "foot --title scratchpad";
+        margin = 50;
+        unfocus = "hide";
+        animation = "fromTop";
+      };
+      btm = {
+        command = "foot --title scratchpad -e btm";
+        margin = 50;
+        unfocus = "hide";
+        animation = "fromTop";
+      };
+      spotify = {
+        command = "foot --title scratchpad -e spt";
+        margin = 50;
+        unfocus = "hide";
+        animation = "fromTop";
+      };
+    };
+  };
 }

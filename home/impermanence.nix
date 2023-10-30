@@ -35,7 +35,7 @@ _: {
       ".cache/nix"
       ".cache/thunderbird/"
       ".thunderbird"
-      ".cache/spotify"
+      ".cache/spotifyd"
       ".config/spotify"
       ".cache/starship"
       ".local/share/nheko"

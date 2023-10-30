@@ -18,6 +18,7 @@
             clang-tools
             nil
             luajitPackages.lua-lsp
+            typst-lsp
             nodePackages.bash-language-server
             nodePackages.vscode-css-languageserver-bin
             nodePackages.vscode-langservers-extracted
@@ -163,6 +164,7 @@
   home.packages = with pkgs; [
     # some other lsp related packages / dev tools
     typst
+    typst-lsp
     shellcheck
     lldb
     gopls
