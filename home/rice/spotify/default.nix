@@ -9,9 +9,9 @@
   in {
     enable = true;
 
-    theme = spicePkgs.themes.catppuccin-mocha;
+    theme = spicePkgs.themes.catppuccin;
 
-    colorScheme = "pink";
+    colorScheme = "mocha";
 
     enabledExtensions = with spicePkgs.extensions; [
       fullAppDisplay

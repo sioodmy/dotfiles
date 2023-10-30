@@ -47,6 +47,8 @@ in {
     settings = {
       # define the mod key
       "$MOD" = "SUPER";
+      "$scratchpad" = "title:^(scratchpad)$";
+      "$pavucontrol" = "class:^(pavucontrol)$";
 
       exec-once = [
         # set cursor for HL itself
@@ -57,11 +59,18 @@ in {
 
         # foot terminal server
         "${lib.optionalString config.programs.foot.server.enable ''run-as-service 'foot --server''}"
+
+        # scratchpads
+        "run-as-service pypr"
       ];
 
       gestures = {
         workspace_swipe = true;
         workspace_swipe_forever = true;
+      };
+
+      xwayland = {
+        force_zero_scaling = true;
       };
 
       input = {
@@ -164,6 +173,13 @@ in {
         "$MOD,C,killactive"
         "$MOD,P,pseudo"
 
+        # scratchpads
+        "$MOD,Z,exec, pypr toggle term && hyprctl dispatch bringactivetotop"
+        "$MOD,B,exec, pypr toggle btm && hyprctl dispatch bringactivetotop"
+        "$MOD,code:172,exec,pypr toggle pavucontrol && hyprctl dispatch bringactivetotop"
+        "$MOD,code:21,exec,pypr zoom"
+        "$MOD,code:21,exec,hyprctl reload"
+
         "$MOD,H,movefocus,l"
         "$MOD,L,movefocus,r"
         "$MOD,K,movefocus,u"
@@ -227,6 +243,12 @@ in {
         "fullscreen,class:wlogout"
         "fullscreen,title:wlogout"
 
+        # scratchpad
+        "float,$scratchpad"
+        "size 80% 85%,$scratchpad"
+        "workspace special silent,$scratchpad"
+        "center,$scratchpad"
+
         # telegram media viewer
         "float, title:^(Media viewer)$"
 
@@ -242,10 +264,14 @@ in {
         "float,class:udiskie"
 
         # pavucontrol
-        "float,class:pavucontrol"
-        "float,title:^(Volume Control)$"
-        "size 800 600,title:^(Volume Control)$"
-        "move 75 44%,title:^(Volume Control)$"
+        "float,$pavucontrol"
+        "size 86% 40%,$pavucontrol"
+        "move 50% 6%,$pavucontrol"
+        "workspace special silent,$pavucontrol"
+        "opacity 0.80,$pavucontrol"
+
+        "opacity 0.9,class:^(org.keepassxc.KeePassXC)$"
+
         "float, class:^(imv)$"
 
         # throw sharing indicators away
@@ -299,4 +325,31 @@ in {
 
     '';
   };
+  home.file.".config/hypr/pyprland.json".text = ''
+    {
+      "pyprland": {
+        "plugins": ["scratchpads", "magnify"]
+      },
+      "scratchpads": {
+        "term": {
+          "command": "foot --title scratchpad",
+          "margin": 50
+        },
+        "btm": {
+          "command": "foot --title scratchpad -e btm",
+          "margin": 50
+        },
+        "geary": {
+          "command": "geary",
+          "margin": 50
+        },
+        "pavucontrol": {
+          "command": "pavucontrol",
+          "margin": 50,
+          "unfocus": "hide",
+          "animation": "fromTop"
+        }
+      }
+    }
+  '';
 }
