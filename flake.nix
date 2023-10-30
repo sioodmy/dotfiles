@@ -75,7 +75,8 @@
       inputs.nixpkgs-lib.follows = "nixpkgs";
     };
     helix = {
-      url = "github:SoraTenshi/helix/new-daily-driver";
+      # Fork of SoraTenshi's helix fork with typst support
+      url = "github:sioodmy/helix/add-typst";
       inputs = {
         nixpkgs.follows = "nixpkgs";
         rust-overlay.follows = "rust-overlay";

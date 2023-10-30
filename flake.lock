@@ -551,16 +551,16 @@
         ]
       },
       "locked": {
-        "lastModified": 1695513385,
-        "narHash": "sha256-paMWWNgtycmzZe4ibkdr/IM661vMXhb9SgXnybSkeg0=",
-        "owner": "SoraTenshi",
+        "lastModified": 1698685190,
+        "narHash": "sha256-KYSxPFd91uvJyekhq3hVq40fkD82KMeuL/zslRieBvc=",
+        "owner": "sioodmy",
         "repo": "helix",
-        "rev": "f02dbced6791929d05028a50e998ec3f1565e349",
+        "rev": "1e7948bbdec1e207a1135080c5707c5c04f3bc44",
         "type": "github"
       },
       "original": {
-        "owner": "SoraTenshi",
-        "ref": "new-daily-driver",
+        "owner": "sioodmy",
+        "ref": "add-typst",
         "repo": "helix",
         "type": "github"
       }

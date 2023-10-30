@@ -15,8 +15,29 @@
       "nix/flake-channels/home-manager".source = inputs.home-manager;
     };
 
-    systemPackages = with pkgs; [git deadnix alejandra statix inputs.nh.packages.${pkgs.system}.default nix-output-monitor];
+    systemPackages = with pkgs; [
+      git
+      deadnix
+      alejandra
+      statix
+      inputs.nh.packages.${pkgs.system}.default
+      nix-output-monitor
+      inputs.ragenix.packages."${system}".default
+    ];
     defaultPackages = [];
+  };
+
+  # secrets
+  age.secrets.spotify = {
+    file = ../../secrets/spotify.age;
+    owner = "sioodmy";
+    group = "users";
+  };
+  age.secrets.spotify-tui = {
+    file = ../../secrets/spotify-tui.age;
+    path = "/home/sioodmy/.config/spotify-tui/client.yml";
+    owner = "sioodmy";
+    group = "users";
   };
 
   nh = {
