@@ -33,12 +33,6 @@
     owner = "sioodmy";
     group = "users";
   };
-  age.secrets.spotify-tui = {
-    file = ../../secrets/spotify-tui.age;
-    path = "/home/sioodmy/.config/spotify-tui/client.yml";
-    owner = "sioodmy";
-    group = "users";
-  };
 
   nh = {
     enable = true;
