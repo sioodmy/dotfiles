@@ -7,10 +7,10 @@
   users = {
     mutableUsers = false;
     users = {
-      root.passwordFile = "/persist/secrets/root";
+      root.hashedPasswordFile = "/persist/secrets/root";
       sioodmy = {
         isNormalUser = true;
-        passwordFile = "/persist/secrets/sioodmy";
+        hashedPasswordFile = "/persist/secrets/sioodmy";
         extraGroups = [
           "wheel"
           "gitea"

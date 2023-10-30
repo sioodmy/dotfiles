@@ -1,8 +1,9 @@
 {...}: {
   imports = [
-    ./media
-    ./schizofox
-    ./rnnoise
-    ./swayidle
+    ./media.nix
+    ./schizofox.nix
+    ./rnnoise.nix
+    ./syncthing.nix
+    ./swayidle.nix
   ];
 }
