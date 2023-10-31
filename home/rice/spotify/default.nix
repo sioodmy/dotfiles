@@ -21,7 +21,7 @@
         password_cmd = "head -1 /run/agenix/spotify";
         use_mpris = true;
         username_cmd = "tail -1 /run/agenix/spotify";
-        volume_normalisation = false;
+        volume_normalisation = true;
       };
     };
   };
@@ -42,5 +42,9 @@
       hovered: "245, 194, 231" # hovered pane border Pink
       selected: "180, 190, 254" # a) selected pane border, b) hovered item in list, & c) track title in player Lavender
       header: "180, 190, 254" # header text in panes (e.g. 'Title', 'Artist', etc.) Lavender
+
+    behavior:
+      set_window_title: true
+      show_loading_indicator: true
   '';
 }

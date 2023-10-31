@@ -9,10 +9,10 @@
   nvidia = ../system/nvidia;
   wayland = ../system/wayland;
   hw = inputs.nixos-hardware.nixosModules;
-  ragenix = inputs.ragenix.nixosModules.age;
+  agenix = inputs.agenix.nixosModules.age;
   hmModule = inputs.home-manager.nixosModules.home-manager;
 
-  shared = [core ragenix];
+  shared = [core agenix];
 
   home-manager = {
     useUserPackages = true;
