@@ -31,6 +31,7 @@ _: {
       ".config/WebCord"
       ".config/easyeffects"
       ".config/BraveSoftware/"
+      ".config/spotify-tui"
       ".cache/BraveSoftware/"
       ".cache/nix"
       ".cache/thunderbird/"

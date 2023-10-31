@@ -22,12 +22,17 @@
       statix
       inputs.nh.packages.${pkgs.system}.default
       nix-output-monitor
-      inputs.ragenix.packages."${system}".default
+      inputs.agenix.packages."${system}".default
     ];
     defaultPackages = [];
   };
 
-  # secrets
+  # secrets 
+  age.secrets.spotify-tui = {
+    file = ../../secrets/spotify-tui.age;
+    owner = "sioodmy";
+    group = "users";
+  };
   age.secrets.spotify = {
     file = ../../secrets/spotify.age;
     owner = "sioodmy";

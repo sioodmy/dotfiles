@@ -50,8 +50,8 @@
       url = "github:viperML/nh";
       inputs.nixpkgs.follows = "nixpkgs";
     };
-    ragenix = {
-      url = "github:yaxitech/ragenix";
+    agenix = {
+      url = "github:ryantm/agenix";
       inputs.nixpkgs.follows = "nixpkgs";
     };
     spicetify-nix = {
