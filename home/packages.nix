@@ -17,7 +17,6 @@
     caprine-bin
     pulseaudio
     onefetch
-    thunderbird
     pfetch-rs
     qrcp
     nheko
