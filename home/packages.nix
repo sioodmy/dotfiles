@@ -8,6 +8,8 @@
       postBuild = "wrapProgram $out/bin/ledger-live-desktop --add-flags --use-gl=desktop";
     })
     anytype
+    distrobox
+    gnome.geary
     brave
     cargo-tauri
     mullvad

@@ -4,7 +4,7 @@
     package = pkgs.firefox-esr-115-unwrapped;
     security = {
       sanitizeOnShutdown = false;
-      sandbox = true;
+      sandbox = false;
       userAgent = "Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:106.0) Gecko/20100101 Firefox/106.0";
     };
 
@@ -22,7 +22,16 @@
     };
     search = {
       defaultSearchEngine = "Google";
-      removeEngines = ["Google" "Bing" "Amazon.com" "eBay" "Twitter" "Wikipedia"];
+      removeEngines = [ "Bing" "Amazon.com" "eBay" "Twitter" "Wikipedia"];
+         addEngines = [
+      {
+        Name = "LibreY";
+        Description = "femboy search :3";
+        Alias = "!ly";
+        Method = "GET";
+        URLTemplate = "https://search.ahwx.org/search.php?q={searchTerms}&p=0&t=0";
+      }
+    ];
     };
   };
 }

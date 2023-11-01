@@ -28,6 +28,9 @@ in {
 
         # scratchpads
         "run-as-service pypr"
+
+        # dirty fix for spotifyd
+        "systemctl --user restart spotifyd.service"
       ];
 
       gestures = {

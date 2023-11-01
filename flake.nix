@@ -27,7 +27,7 @@
     nix-super.url = "github:privatevoid-net/nix-super";
 
     schizofox = {
-      url = "github:schizofox/schizofox/gerg";
+      url = "github:schizofox/schizofox";
       # url = "path:/home/sioodmy/dev/schizofox";
       inputs = {
         nixpkgs.follows = "nixpkgs";
@@ -52,6 +52,7 @@
     };
     agenix = {
       url = "github:ryantm/agenix";
+      inputs.home-manager.follows = "home-manager";
       inputs.nixpkgs.follows = "nixpkgs";
     };
     spicetify-nix = {
@@ -150,7 +151,7 @@
             commands = extra.shellCommands;
             env = extra.shellEnv;
             packages = with pkgs; [
-              inputs'.ragenix.packages.default # provide agenix CLI within flake shell
+              inputs'.agenix.packages.default # provide agenix CLI within flake shell
               config.treefmt.build.wrapper # treewide formatter
               nil # nix ls
               alejandra # nix formatter
@@ -185,5 +186,7 @@
       };
     });
 }
-# see also: https://github.com/notashelf/nyx
+# see also: 
+# - https://github.com/notashelf/nyx
+# - https://github.com/fufexan/dotfiles/
 

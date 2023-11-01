@@ -56,8 +56,6 @@
 
   xdg.portal = {
     enable = true;
-    wlr.enable = lib.mkForce false;
-    xdgOpenUsePortal = true;
     extraPortals = [
       pkgs.xdg-desktop-portal-gtk
     ];
