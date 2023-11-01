@@ -27,7 +27,7 @@
     defaultPackages = [];
   };
 
-  # secrets 
+  # secrets
   age.secrets.spotify-tui = {
     file = ../../secrets/spotify-tui.age;
     owner = "sioodmy";

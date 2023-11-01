@@ -1,7 +1,4 @@
-{
-  pkgs,
-  ...
-}: {
+{pkgs, ...}: {
   home.packages = with pkgs; [playerctl pavucontrol pulsemixer imv];
   programs = {
     mpv = {

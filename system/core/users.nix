@@ -26,6 +26,7 @@
           "networkmanager"
           "power"
           "nix"
+          "adbusers"
         ];
         uid = 1000;
         shell = pkgs.zsh;
