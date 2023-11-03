@@ -3,7 +3,7 @@
     ./helix.nix
     ./bottom.nix
     ./git.nix
-    ./shell
+    ./shell.nix
     ./tools
   ];
 }
