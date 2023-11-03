@@ -23,7 +23,7 @@ _: {
       ".local/share/Steam"
       ".ssh"
       ".local/share/direnv"
-      ".local/share/containers/"
+      ".local/share/distrobox"
       ".cache/containers"
       ".cache/flutter"
       ".config/syncthing"

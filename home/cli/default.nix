@@ -1,9 +1,9 @@
 {...}: {
   imports = [
-    ./helix
+    ./helix.nix
+    ./bottom.nix
+    ./git.nix
     ./shell
-    ./git
     ./tools
-    ./bottom
   ];
 }

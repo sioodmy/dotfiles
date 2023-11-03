@@ -22,16 +22,16 @@
     };
     search = {
       defaultSearchEngine = "Google";
-      removeEngines = [ "Bing" "Amazon.com" "eBay" "Twitter" "Wikipedia"];
-         addEngines = [
-      {
-        Name = "LibreY";
-        Description = "femboy search :3";
-        Alias = "!ly";
-        Method = "GET";
-        URLTemplate = "https://search.ahwx.org/search.php?q={searchTerms}&p=0&t=0";
-      }
-    ];
+      removeEngines = ["Bing" "Amazon.com" "eBay" "Twitter" "Wikipedia"];
+      addEngines = [
+        {
+          Name = "LibreY";
+          Description = "femboy search :3";
+          Alias = "!ly";
+          Method = "GET";
+          URLTemplate = "https://search.ahwx.org/search.php?q={searchTerms}&p=0&t=0";
+        }
+      ];
     };
   };
 }
