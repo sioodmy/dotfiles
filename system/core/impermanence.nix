@@ -5,6 +5,10 @@
   ...
 }: {
   imports = [inputs.impermanence.nixosModule];
+  fileSystems."/etc/ssh" = {
+    depends = ["/persist"];
+    neededForBoot = true;
+  };
   environment.persistence."/persist" = {
     hideMounts = true;
     directories = [
@@ -19,7 +23,6 @@
 
       "/etc/NetworkManager/system-connections"
       "/var/lib/flatpak"
-      "/run/agenix"
       "/var/lib/libvirt"
       "/var/lib/bluetooth"
       "/var/lib/nixos"

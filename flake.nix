@@ -186,7 +186,7 @@
       };
     });
 }
-# see also: 
+# see also:
 # - https://github.com/notashelf/nyx
 # - https://github.com/fufexan/dotfiles/
 
