@@ -110,6 +110,10 @@
       url = "github:sioodmy/anyrun-crypto";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+    pre-commit-hooks = {
+      url = "github:cachix/pre-commit-hooks.nix";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
   };
   outputs = {
     self,
@@ -119,18 +123,15 @@
   } @ inputs:
     flake-parts.lib.mkFlake {inherit inputs;} ({withSystem, ...}: {
       systems = [
-        # systems for which you want to build the `perSystem` attributes
         "x86_64-linux"
         "aarch64-linux"
-        # and more if they can be supported ...
       ];
 
       imports = [
-        # add self back to inputs, I depend on inputs.self at least once
         {config._module.args._inputs = inputs // {inherit (inputs) self;};}
 
-        # parts and modules from inputs
         inputs.flake-parts.flakeModules.easyOverlay
+        inputs.pre-commit-hooks.flakeModule
         inputs.treefmt-nix.flakeModule
       ];
 
@@ -143,6 +144,14 @@
         # provide the formatter for nix fmt
         formatter = pkgs.alejandra;
 
+        pre-commit = {
+          settings.excludes = ["flake.lock"];
+
+          settings.hooks = {
+            alejandra.enable = true;
+            prettier.enable = true;
+          };
+        };
         devShells.default = let
           extra = import ./devShell;
         in
@@ -189,4 +198,6 @@
 # see also:
 # - https://github.com/notashelf/nyx
 # - https://github.com/fufexan/dotfiles/
+# - https://github.com/n3oney/nixus
+# (I love you guys)
 
