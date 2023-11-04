@@ -24,6 +24,12 @@
       command = "git push";
       category = "source control";
     }
+    {
+      help = "Update flake inputs and commit changes";
+      name = "update";
+      command = ''nix flake update && git commit flake.lock -m "flake: bump inputs"'';
+      category = "utils";
+    }
   ];
 
   shellEnv = [
