@@ -66,6 +66,7 @@
           "Anytype-0.35.4"
         ];
       overlays = [
+        inputs.nixpkgs-wayland.overlay
         (
           _: prev: {
             nixSuper = inputs'.nix-super.packages.default;

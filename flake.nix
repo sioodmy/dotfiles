@@ -75,6 +75,10 @@
       url = "github:hercules-ci/flake-parts";
       inputs.nixpkgs-lib.follows = "nixpkgs";
     };
+    nixpkgs-wayland = {
+      url = "github:nix-community/nixpkgs-wayland";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
     helix = {
       # Fork of SoraTenshi's helix fork with typst support
       url = "github:sioodmy/helix/add-typst";
@@ -169,7 +173,6 @@
               statix # lints and suggestions
               deadnix # clean up unused nix code
               # some python stuff for waybar scripting
-              (python311.withPackages (p: with p; [requests]))
             ];
           };
 

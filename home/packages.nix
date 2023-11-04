@@ -10,7 +10,6 @@
     anytype
     distrobox
     gnome.geary
-    brave
     cargo-tauri
     mullvad
     gping
