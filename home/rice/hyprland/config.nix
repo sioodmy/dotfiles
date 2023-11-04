@@ -231,10 +231,10 @@ in {
         "float, title:^(Picture-in-Picture)$"
         "pin, title:^(Picture-in-Picture)$"
 
-        "workspace special silent, title:^(Firefox — Sharing Indicator)$"
-        ''workspace special silent, title:^(.*is sharing (your screen|a window)\.)$''
-
         "float,class:udiskie"
+
+        "opacity 0.85 0.85,class:^(firefox)$"
+        "opacity 0.8 0.8,class:^(org.keepassxc.KeePassXC)$"
 
         # pavucontrol
         "float,$pavucontrol"
