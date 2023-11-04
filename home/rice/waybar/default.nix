@@ -4,14 +4,6 @@
   config,
   ...
 }: let
-  get-crypto-price =
-    pkgs.writeShellScriptBin "get-crypto-price"
-    ''
-      #!/bin/sh
-      price="$(curl -s https://api.binance.com/api/v3/ticker/price?symbol=$1 | ${lib.getExe pkgs.jq} '.price' | sed 's/\"//g')"
-      printf "%.2f" $price
-    '';
-
   mullvad-status =
     pkgs.writeShellScriptBin "mullvad-status"
     ''
@@ -30,9 +22,9 @@ in {
         width = 55;
         spacing = 7;
         fixed-center = false;
-        margin-left = 6;
-        margin-top = 9;
-        margin-bottom = 9;
+        margin-left = null;
+        margin-top = null;
+        margin-bottom = null;
         margin-right = null;
         exclusive = true;
         modules-left = [
