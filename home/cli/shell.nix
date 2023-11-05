@@ -56,14 +56,14 @@ in {
       enable = true;
       settings = {
         add_newline = false;
-        scan_timeout = 5;
+        scan_timeout = 3;
         character = {
           error_symbol = "[󰊠](bold red)";
           success_symbol = "[󰊠](bold green)";
           vicmd_symbol = "[󰊠](bold yellow)";
           format = "$symbol [|](bold bright-black) ";
         };
-        git_commit = {commit_hash_length = 4;};
+        git_commit = {commit_hash_length = 7;};
         line_break.disabled = false;
         lua.symbol = "[](blue) ";
         python.symbol = "[](blue) ";
@@ -77,7 +77,6 @@ in {
 
     zsh = {
       enable = true;
-      enableCompletion = true;
       enableAutosuggestions = true;
       syntaxHighlighting.enable = true;
       sessionVariables = {
@@ -86,7 +85,6 @@ in {
         SSH_AUTH_SOCK = "/run/user/1000/keyring/ssh";
       };
       initExtra = ''
-        autoload -U compinit
         zstyle ':completion:*' menu select
         zstyle ':completion:*:functions' ignored-patterns '(_*|pre(cmd|exec))'
         zstyle ':completion:*' completer _complete _match _approximate
@@ -125,14 +123,12 @@ in {
         bindkey -M menuselect 'l' vi-forward-char
         bindkey -M menuselect 'j' vi-down-line-or-history
         bindkey -v '^?' backward-delete-char
-        autoload -U url-quote-magic
         # search history based on what's typed in the prompt
         autoload -U history-search-end
         zle -N history-beginning-search-backward-end history-search-end
         zle -N history-beginning-search-forward-end history-search-end
         bindkey "^[OA" history-beginning-search-backward-end
         bindkey "^[OB" history-beginning-search-forward-end
-        zle -N self-insert url-quote-magic
 
         command_not_found_handler() {
           comma "$@"
@@ -180,7 +176,6 @@ in {
         la = "${getExe eza} -lah --tree";
         ls = "${getExe eza} -h --git --icons --color=auto --group-directories-first -s extension";
         tree = "${getExe eza} --tree --icons --tree";
-        http = "${getExe python3} -m http.server";
         burn = "pkill -9";
         diff = "diff --color=auto";
         ".." = "cd ..";
@@ -189,13 +184,18 @@ in {
         "....." = "cd ../../../../";
         "......" = "cd ../../../../../";
       };
-      plugins = with pkgs; [
-        {
-          name = "zsh-vi-mode";
-          src = zsh-vi-mode;
-          file = "share/zsh-vi-mode/zsh-vi-mode.plugin.zsh";
-        }
-      ];
+       plugins = [
+      {
+        name = "zsh-nix-shell";
+        file = "nix-shell.plugin.zsh";
+        src = pkgs.fetchFromGitHub {
+          owner = "chisui";
+          repo = "zsh-nix-shell";
+          rev = "v0.7.0";
+          sha256 = "149zh2rm59blr2q458a5irkfh82y3dwdich60s9670kl3cl5h2m1";
+        };
+      }
+    ];
     };
   };
 }
