@@ -93,9 +93,7 @@
     };
     lanzaboote = {
       url = "github:nix-community/lanzaboote";
-      inputs = {
-        nixpkgs.follows = "nixpkgs";
-      };
+        inputs.nixpkgs.follows = "nixpkgs";
     };
     shadower = {
       url = "github:n3oney/shadower";
@@ -117,6 +115,12 @@
     pre-commit-hooks = {
       url = "github:cachix/pre-commit-hooks.nix";
       inputs.nixpkgs.follows = "nixpkgs";
+    };
+    # super usefull :3
+    blahaj = {
+      url = "github:sioodmy/blahaj";
+      inputs.nixpkgs.follows = "nixpkgs";
+      inputs.flake-parts.follows = "flake-parts";
     };
   };
   outputs = {

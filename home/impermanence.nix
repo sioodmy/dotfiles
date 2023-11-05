@@ -23,6 +23,7 @@ _: {
       ".local/share/Steam"
       ".ssh"
       ".local/share/direnv"
+      ".cache/tealdeer"
       ".local/share/distrobox"
       ".cache/containers"
       ".cache/flutter"

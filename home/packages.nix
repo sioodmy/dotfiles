@@ -1,4 +1,4 @@
-{pkgs, ...}: {
+{pkgs, inputs, ...}: {
   nixpkgs.config.allowUnfree = false;
   home.packages = with pkgs; [
     (symlinkJoin {
@@ -7,6 +7,7 @@
       buildInputs = [makeWrapper];
       postBuild = "wrapProgram $out/bin/ledger-live-desktop --add-flags --use-gl=desktop";
     })
+    inputs.blahaj.packages.${pkgs.system}.default
     anytype
     distrobox
     gnome.geary
