@@ -59,7 +59,7 @@ in ''
     color: #89b4fa;
     padding-left: 10px;
     box-shadow: inset 0 -3px transparent;
-    transition: all 0.5s cubic-bezier(.55,-0.68,.48,1.68);
+    transition: all 400ms cubic-bezier(0.250, 0.250, 0.555, 1.425);
   }
 
   #workspaces button:hover {
