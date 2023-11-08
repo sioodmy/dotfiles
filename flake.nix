@@ -89,7 +89,7 @@
     };
     lanzaboote = {
       url = "github:nix-community/lanzaboote";
-        inputs.nixpkgs.follows = "nixpkgs";
+      inputs.nixpkgs.follows = "nixpkgs";
     };
     shadower = {
       url = "github:n3oney/shadower";
