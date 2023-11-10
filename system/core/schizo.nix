@@ -1,5 +1,5 @@
 {
-  config,
+  inputs,
   pkgs,
   lib,
   ...
@@ -102,7 +102,33 @@
       };
     };
 
-    sudo.enable = true;
+    sudo.enable = lib.mkForce false;
+    sudo-rs = {
+      enable = true;
+      extraRules = [
+        {
+          commands = [
+            {
+              command = "/run/current-system/sw/bin/poweroff";
+              options = ["NOPASSWD"];
+            }
+            {
+              command = "/run/current-system/sw/bin/reboot";
+              options = ["NOPASSWD"];
+            }
+            {
+              command = "/run/current-system/sw/bin/nixos-rebuild";
+              options = ["NOPASSWD"];
+            }
+            {
+              command = "/run/current-system/sw/bin/nh";
+              options = ["NOPASSWD"];
+            }
+          ];
+          groups = ["wheel"];
+        }
+      ];
+    };
   };
 
   boot.kernel.sysctl = {
