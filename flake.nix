@@ -76,8 +76,8 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
     helix = {
-      # Fork of SoraTenshi's helix fork with typst support
-      url = "github:sioodmy/helix/add-typst";
+      # Fork of SoraTenshi's helix fork with typst support and some other "features"
+      url = "github:sioodmy/helix";
       inputs = {
         nixpkgs.follows = "nixpkgs";
         rust-overlay.follows = "rust-overlay";
