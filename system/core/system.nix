@@ -41,7 +41,6 @@
     btrfs-progs
     appimage-run
     starship # having starship here means pkgs.startship will be stored during build and not during promptInit
-    (writeScriptBin "sudo" ''exec doas "$@"'')
   ];
 
   time = {
