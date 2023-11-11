@@ -8,7 +8,7 @@
       packages = with pkgs; [dconf gcr udisks2];
       enable = true;
     };
-    udev.packages = with pkgs; [gnome.gnome-settings-daemon android-udev-rules ledger-udev-rules];
+    udev.packages = with pkgs; [gnome.gnome-settings-daemon android-udev-rules];
     journald.extraConfig = ''
       SystemMaxUse=50M
       RuntimeMaxUse=10M
