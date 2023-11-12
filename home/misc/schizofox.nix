@@ -31,6 +31,13 @@
           Method = "GET";
           URLTemplate = "https://search.ahwx.org/search.php?q={searchTerms}&p=0&t=0";
         }
+        {
+          Name = "Etherscan";
+          Description = "Checking balances";
+          Alias = "!eth";
+          Method = "GET";
+          URLTemplate = "https://etherscan.io/search?f=0&q={searchTerms}";
+        }
       ];
     };
   };
