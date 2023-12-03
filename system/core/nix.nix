@@ -38,6 +38,16 @@
     owner = "sioodmy";
     group = "users";
   };
+  age.secrets.syncthing-key = {
+    file = ../../secrets/syncthing-key.age;
+    owner = "sioodmy";
+    group = "users";
+  };
+  age.secrets.syncthing-cert = {
+    file = ../../secrets/syncthing-cert.age;
+    owner = "sioodmy";
+    group = "users";
+  };
 
   nh = {
     enable = true;
@@ -62,8 +72,7 @@
           "nvidia-x11"
           "nvidia-settings"
           # they got fossed recently so idk
-          "Anytype"
-          "Anytype-0.35.4"
+          "Anytype-0.35.25-beta"
         ];
       overlays = [
         inputs.nixpkgs-wayland.overlay

@@ -12,7 +12,6 @@
       postBuild = "wrapProgram $out/bin/ledger-live-desktop --add-flags --use-gl=desktop";
     })
     inputs.blahaj.packages.${pkgs.system}.default
-    anytype
     distrobox
     gnome.geary
     cargo-tauri
@@ -23,6 +22,8 @@
     caprine-bin
     pulseaudio
     onefetch
+    brave
+    session-desktop
     pfetch-rs
     qrcp
     nheko

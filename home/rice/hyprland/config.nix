@@ -319,7 +319,7 @@ in {
         animation = "fromTop";
       };
       spotify = {
-        command = "foot --title scratchpad-spotify -e spt";
+        command = "foot --title scratchpad-spotify -e sh -c 'systemctl --user restart spotifyd; sleep 1; spt'";
         margin = 50;
         unfocus = "hide";
         animation = "fromTop";
