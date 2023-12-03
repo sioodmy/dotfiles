@@ -27,7 +27,7 @@
     nix-super.url = "github:privatevoid-net/nix-super";
 
     schizofox = {
-      url = "github:schizofox/schizofox";
+      url = "github:schizofox/schizofox/wavefox";
       # url = "path:/home/sioodmy/dev/schizofox";
       inputs = {
         nixpkgs.follows = "nixpkgs";

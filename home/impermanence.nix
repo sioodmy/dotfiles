@@ -10,6 +10,7 @@ _: {
       "music"
       "dev"
       "docs"
+      ".keepass"
       "vids"
       "other"
       {
@@ -26,8 +27,8 @@ _: {
       ".cache/tealdeer"
       ".local/share/distrobox"
       ".cache/containers"
-      ".cache/flutter"
       ".config/syncthing"
+      ".cache/flutter"
       ".local/share/PrismLauncher"
       ".local/share/TelegramDesktop"
       ".local/share/keyrings"

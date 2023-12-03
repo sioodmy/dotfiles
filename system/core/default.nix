@@ -7,6 +7,7 @@
     ./system.nix
     ./schizo.nix
     ./network.nix
+    ./syncthing.nix
     ./impermanence.nix
     ./virtualisation.nix
     ./nix.nix
