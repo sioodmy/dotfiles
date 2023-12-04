@@ -10,6 +10,7 @@ _: {
       "music"
       "dev"
       "docs"
+      "pics"
       ".keepass"
       "vids"
       "other"

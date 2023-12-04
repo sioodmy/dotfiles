@@ -112,12 +112,6 @@
       url = "github:cachix/pre-commit-hooks.nix";
       inputs.nixpkgs.follows = "nixpkgs";
     };
-    # super usefull :3
-    blahaj = {
-      url = "github:sioodmy/blahaj";
-      inputs.nixpkgs.follows = "nixpkgs";
-      inputs.flake-parts.follows = "flake-parts";
-    };
   };
   outputs = {
     self,
