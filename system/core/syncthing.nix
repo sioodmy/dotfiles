@@ -43,6 +43,18 @@
             };
           };
         };
+        "docs" = {
+          id = "sdm7g-shhoa";
+          path = "${hm}/docs";
+          devices = ["methone"];
+          versioning = {
+            type = "staggered";
+            params = {
+              cleanInterval = "3600"; # 1 hour
+              maxAge = "1209600"; # 14 days
+            };
+          };
+        };
       };
     };
   };
