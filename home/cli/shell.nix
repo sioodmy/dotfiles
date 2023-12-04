@@ -134,7 +134,6 @@ in {
           comma "$@"
         }
 
-        :3
       '';
       history = {
         save = 100;

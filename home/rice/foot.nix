@@ -42,7 +42,7 @@
         uri-characters = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789-_.,~:;/?#@!$&%*+=\"'()[]";
       };
       colors = {
-        alpha = "0.8";
+        alpha = "0.6";
         foreground = "cdd6f4";
         background = "1e1e2e";
 

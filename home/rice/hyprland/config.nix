@@ -17,6 +17,7 @@ in {
       "$pavucontrol" = "class:^(pavucontrol)$";
 
       exec-once = [
+        "dbus-update-activation-environment --systemd WAYLAND_DISPLAY XDG_CURRENT_DESKTOP"
         # set cursor for HL itself
         "hyprctl setcursor ${pointer.name} ${toString pointer.size}"
 
