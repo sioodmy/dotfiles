@@ -27,17 +27,6 @@
     defaultPackages = [];
   };
 
-  # secrets
-  age.secrets.spotify-tui = {
-    file = ../../secrets/spotify-tui.age;
-    owner = "sioodmy";
-    group = "users";
-  };
-  age.secrets.spotify = {
-    file = ../../secrets/spotify.age;
-    owner = "sioodmy";
-    group = "users";
-  };
   age.secrets.syncthing-key = {
     file = ../../secrets/syncthing-key.age;
     owner = "sioodmy";
