@@ -27,16 +27,16 @@
     defaultPackages = [];
   };
 
-  age.secrets.syncthing-key = {
-    file = ../../secrets/syncthing-key.age;
-    owner = "sioodmy";
-    group = "users";
-  };
-  age.secrets.syncthing-cert = {
-    file = ../../secrets/syncthing-cert.age;
-    owner = "sioodmy";
-    group = "users";
-  };
+  # age.secrets.syncthing-key = {
+  #   file = ../../secrets/syncthing-key.age;
+  #   owner = "sioodmy";
+  #   group = "users";
+  # };
+  # age.secrets.syncthing-cert = {
+  #   file = ../../secrets/syncthing-cert.age;
+  #   owner = "sioodmy";
+  #   group = "users";
+  # };
 
   nh = {
     enable = true;

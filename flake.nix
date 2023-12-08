@@ -87,10 +87,6 @@
       url = "github:oxalica/rust-overlay";
       inputs.nixpkgs.follows = "nixpkgs";
     };
-    lanzaboote = {
-      url = "github:nix-community/lanzaboote";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
     shadower = {
       url = "github:n3oney/shadower";
       inputs.nixpkgs.follows = "nixpkgs";

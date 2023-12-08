@@ -42,16 +42,19 @@ in {
       ++ shared;
     specialArgs = {inherit inputs;};
   };
+
+  # thinkpad
   calypso = nixpkgs.lib.nixosSystem {
     system = "x86_64-linux";
     modules =
       [
         {networking.hostName = "calypso";}
-        ./calypso/hardware-configuration.nix
+        ./calypso
         bootloader
         nvidia
         wayland
         hmModule
+        hw.lenovo-thinkpad-x1-7th-gen
         {inherit home-manager;}
       ]
       ++ shared;

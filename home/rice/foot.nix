@@ -17,7 +17,7 @@
         title = "foot";
         locked-title = "no";
         term = "xterm-256color";
-        font = "monospace:size=13.5";
+        font = "monospace:size=10.5";
         vertical-letter-offset = "-0.75";
         pad = "32x32";
         notify = "notify-send -a \${app-id} -i \${app-id} \${title} \${body}";
