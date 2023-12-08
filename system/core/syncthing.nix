@@ -1,4 +1,4 @@
-{config, ...}: {
+{config, ... }: {
   networking.firewall.allowedTCPPorts = [8384];
   services.syncthing = let
     hm = "/home/sioodmy";

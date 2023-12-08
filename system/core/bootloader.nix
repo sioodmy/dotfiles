@@ -3,6 +3,7 @@
   lib,
   ...
 }: {
+
   environment.systemPackages = [
     # For debugging and troubleshooting Secure Boot.
     pkgs.sbctl
@@ -27,8 +28,10 @@
       "sysrq_always_enabled=1"
       "processor.max_cstate=5"
       "idle=nomwait"
+      "quiet"
       "rootflags=noatime"
       "iommu=pt"
+      "usbcore.autosuspend=-1"
       "sysrq_always_enabled=1"
       "lsm=landlock,lockdown,yama,apparmor,bpf"
       "loglevel=7"
@@ -43,6 +46,8 @@
     initrd.verbose = false;
     # switch from old ass lts kernel
     kernelPackages = lib.mkDefault pkgs.linuxPackages_xanmod_latest;
+    extraModprobeConfig = "options hid_apple fnmode=1";
+
     bootspec.enable = true;
     loader = {
       systemd-boot.enable = true;

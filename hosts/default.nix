@@ -51,6 +51,7 @@ in {
         {networking.hostName = "calypso";}
         ./calypso
         bootloader
+        nvidia
         wayland
         hmModule
         hw.lenovo-thinkpad-x1-7th-gen
