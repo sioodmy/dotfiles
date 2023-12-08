@@ -13,10 +13,10 @@ in ''
   window#waybar {
     background-color: rgba(24, 24, 37, 0.65);
     border-radius: 0px;
-    margin: 32px 16px;
+/*    margin: 32px 16px; */
     color: #cdd6f4;
     box-shadow: 2px 3px 2px 2px #151515;
-    font-size: 16px;
+    font-size: 13px;
     /* transition-property: background-color; */
     transition-property: background-color;
     transition-duration: 0.5s;
@@ -28,13 +28,6 @@ in ''
 
   #pulseaudio {
     color: #a6d189;
-    padding: 5px 0px 5px 0px;
-  }
-
-  #pulseaudio.source-muted,
-  #pulseaudio.muted {
-    padding: 16px 0px 16px 0px;
-    font-size: 15;
   }
 
   #custom-vpn,
@@ -48,9 +41,8 @@ in ''
 
   #clock {
     font-weight: 700;
-    font-size: 20px;
     font-family: "Iosevka Term";
-    padding: 5px 0px 5px 0px;
+    padding: 0px 5px 0px 5px;
   }
 
   #workspaces button {
@@ -70,9 +62,8 @@ in ''
 
   #custom-power {
       color: #f38ba8;
-      padding: 14px 0px 14px 0px;
+      padding: 0px 14px 0px 14px;
       margin-bottom: 20px;
-      font-size: 24px;
   }
 
   #workspaces button.active {
@@ -98,21 +89,14 @@ in ''
   #custom-crypto,
   #volume,
   #pulseaudio {
-    border-radius: 15px;
+    border-radius: 8px;
     background-color: rgba(49, 50, 68, 0.35);
-    padding: 14px 0px 14px 0px;
-    margin: 0px 7px 0px 7px;
+    padding: 0px 14px 0px 14px;
+    margin: 3px 0px 3px 0px;
   }
 
   #custom-swallow {
     color: #94e2d5;
-  }
-  #custom-weather {
-    padding-left: 6px;
-  }
-
-  #workspaces {
-    font-size: 18px;
   }
 
   #custom-crypto {
@@ -123,18 +107,11 @@ in ''
       color: #89b4fa;
   }
 
-  #custom-todo {
-    color: #bac2de;
-    padding-left: 2px;
-  }
-
   #custom-search {
     background-image: url("${snowflake}");
     background-size: 65%;
-    margin-top: 35px;
-    padding-top: 15px;
-    margin: 5px;
     background-position: center;
+    padding: 0 13px;
     background-repeat: no-repeat;
   }
   #backlight {

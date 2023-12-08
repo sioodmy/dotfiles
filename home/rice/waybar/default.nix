@@ -18,8 +18,8 @@ in {
     settings = {
       mainBar = {
         layer = "top";
-        position = "left";
-        width = 55;
+        position = "top";
+        height= 38;
         spacing = 7;
         fixed-center = false;
         margin-left = null;
@@ -31,16 +31,11 @@ in {
           "custom/search"
           "hyprland/workspaces"
           "custom/lock"
-          "custom/crypto"
           "backlight"
           "battery"
           # "custom/eth"
         ];
-        modules-center = [
-          "custom/weather"
-          "clock"
-        ];
-        modules-right = ["pulseaudio" "network" "custom/swallow" "custom/power"];
+        modules-right = ["custom/weather" "pulseaudio" "network" "clock" "custom/power"];
         "hyprland/workspaces" = {
           on-click = "activate";
           format = "{icon}";
@@ -146,15 +141,13 @@ in {
           format = "󰐥";
         };
         clock = {
-          format = ''
-            {:%H
-            %M}'';
+          format = "{:%H:%M}";
           tooltip-format = ''
             <big>{:%Y %B}</big>
             <tt><small>{calendar}</small></tt>'';
         };
         backlight = {
-          format = "{icon}";
+          format = "{icon}  {percent}%";
           format-icons = ["" "" "" "" "" "" "" "" ""];
         };
         cpu = {
@@ -167,15 +160,14 @@ in {
             critical = 15;
           };
           format = "{icon} {capacity}%";
-          format-charging = "";
-          format-plugged = "";
+          format-charging = "󰂄";
           format-alt = "{icon} {capacity}%";
-          format-icons = ["" "" "" "" "" "" "" "" "" "" "" ""];
+          format-icons = [ "󰂃" "󰁺" "󰁻" "󰁼" "󰁽" "󰁾" "󰁿" "󰂀" "󰂁" "󰂂" "󰁹"];
         };
         network = let
           nm-editor = "${pkgs.networkmanagerapplet}/bin/nm-connection-editor";
         in {
-          format-wifi = "󰤨";
+          format-wifi = "󰤨  {signalStrength}%";
           format-ethernet = "󰈀";
           format-alt = "󱛇";
           format-disconnected = "󰤭";
@@ -185,9 +177,9 @@ in {
         pulseaudio = {
           scroll-step = 5;
           tooltip = true;
-          tooltip-format = "{volume}";
+          tooltip-format = "{volume}%";
           on-click = "${pkgs.killall}/bin/killall pavucontrol || ${pkgs.pavucontrol}/bin/pavucontrol";
-          format = "{icon}";
+          format = "{icon} {volume}%";
           format-muted = "󰝟 ";
           format-icons = {
             default = ["" "" " "];

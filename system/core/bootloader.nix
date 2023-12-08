@@ -1,11 +1,8 @@
 {
-  config,
   pkgs,
   lib,
-  inputs,
   ...
 }: {
-  imports = [inputs.lanzaboote.nixosModules.lanzaboote];
 
   environment.systemPackages = [
     # For debugging and troubleshooting Secure Boot.
@@ -55,10 +52,6 @@
     loader = {
       systemd-boot.enable = true;
       timeout = 0;
-    };
-    lanzaboote = {
-      enable = false;
-      pkiBundle = "/etc/secureboot";
     };
     loader.efi.canTouchEfiVariables = true;
   };
