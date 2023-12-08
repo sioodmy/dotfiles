@@ -1,9 +1,4 @@
-{
-  config,
-  lib,
-  inputs,
-  ...
-}: {
+{inputs, ...}: {
   imports = [inputs.impermanence.nixosModule];
   fileSystems."/etc/ssh" = {
     depends = ["/persist"];
@@ -18,6 +13,7 @@
       "/var/lib"
       "/etc/nix"
       "/etc/ssh"
+      "/etc/mullvad-vpn"
       "/var/db/sudo"
       "/etc/secureboot"
 
@@ -27,6 +23,9 @@
       "/var/lib/bluetooth"
       "/var/lib/nixos"
       "/var/lib/pipewire"
+      "/var/cache/mullvad-vpn"
+      "/var/lib/fprint"
+      "/var/cache/powertop"
       "/var/lib/systemd/coredump"
       "/var/cache/tailscale"
       "/var/lib/tailscale"
