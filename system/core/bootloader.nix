@@ -12,6 +12,7 @@
     tmp.cleanOnBoot = true;
     # some kernel parameters, i dont remember what half of this shit does but who cares
     kernelParams = [
+      "mem_sleep_default=deep"
       "pti=on"
       "randomize_kstack_offset=on"
       "vsyscall=none"
@@ -27,7 +28,6 @@
       "sysrq_always_enabled=1"
       "processor.max_cstate=5"
       "idle=nomwait"
-      "quiet"
       "rootflags=noatime"
       "iommu=pt"
       "usbcore.autosuspend=-1"

@@ -1,12 +1,10 @@
-{pkgs, ...}:
-
-{
-  home.packages = with pkgs;[
+{pkgs, ...}: {
+  home.packages = with pkgs; [
     # Runs programs without installing them
-    comma 
+    comma
 
     # grep replacement
-    ripgrep  
+    ripgrep
 
     # ping, but with cool graph
     gping
@@ -42,7 +40,9 @@
     catimg
 
     # networking stuff
-    nmap rsync wget
+    nmap
+    rsync
+    wget
 
     # faster find
     fd
@@ -50,7 +50,7 @@
     # http request thingy
     xh
 
-    # generate regex 
+    # generate regex
     grex
 
     # todo app for acoustic people (wrriten by me :3)
@@ -64,6 +64,5 @@
 
     # syncthnig for acoustic people
     rsync
-    
   ];
 }
