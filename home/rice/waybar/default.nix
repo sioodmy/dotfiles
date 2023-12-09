@@ -19,7 +19,7 @@ in {
       mainBar = {
         layer = "top";
         position = "top";
-        height= 38;
+        height = 38;
         spacing = 7;
         fixed-center = false;
         margin-left = null;
@@ -162,7 +162,7 @@ in {
           format = "{icon} {capacity}%";
           format-charging = "󰂄";
           format-alt = "{icon} {capacity}%";
-          format-icons = [ "󰂃" "󰁺" "󰁻" "󰁼" "󰁽" "󰁾" "󰁿" "󰂀" "󰂁" "󰂂" "󰁹"];
+          format-icons = ["󰂃" "󰁺" "󰁻" "󰁼" "󰁽" "󰁾" "󰁿" "󰂀" "󰂁" "󰂂" "󰁹"];
         };
         network = let
           nm-editor = "${pkgs.networkmanagerapplet}/bin/nm-connection-editor";

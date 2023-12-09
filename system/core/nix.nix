@@ -60,6 +60,7 @@
           "spotify"
           "nvidia-x11"
           "nvidia-settings"
+          "intel-ocl"
           # they got fossed recently so idk
           "Anytype-0.35.25-beta"
         ];

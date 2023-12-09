@@ -3,7 +3,6 @@
   lib,
   ...
 }: {
-
   environment.systemPackages = [
     # For debugging and troubleshooting Secure Boot.
     pkgs.sbctl
@@ -45,7 +44,7 @@
     ];
     initrd.verbose = false;
     # switch from old ass lts kernel
-    kernelPackages = lib.mkDefault pkgs.linuxPackages_xanmod_latest;
+    kernelPackages = lib.mkDefault pkgs.linuxPackages_latest;
     extraModprobeConfig = "options hid_apple fnmode=1";
 
     bootspec.enable = true;

@@ -13,7 +13,10 @@
       enable = true;
       dns = "none";
       unmanaged = ["docker0" "rndis0"];
-      wifi.macAddress = "random";
+      wifi = {
+        macAddress = "random";
+        powersave = true;
+      };
     };
     firewall = {
       enable = true;

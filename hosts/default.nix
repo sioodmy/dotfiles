@@ -32,7 +32,7 @@ in {
     modules =
       [
         {networking.hostName = "anthe";}
-        ./anthe/hardware-configuration.nix
+        ./anthe
         bootloader
         nvidia
         wayland
@@ -51,7 +51,6 @@ in {
         {networking.hostName = "calypso";}
         ./calypso
         bootloader
-        nvidia
         wayland
         hmModule
         hw.lenovo-thinkpad-x1-7th-gen
