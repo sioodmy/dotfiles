@@ -33,7 +33,7 @@
     ]
     ++ config.boot.initrd.luks.cryptoModules;
   boot.initrd.kernelModules = [];
-  boot.kernelModules = ["kvm-amd"];
+  boot.kernelModules = [];
   boot.extraModulePackages = [];
 
   fileSystems."/" = {

@@ -1,7 +1,6 @@
 {
   config,
   lib,
-  inputs,
   pkgs,
   ...
 }: let
@@ -32,10 +31,6 @@ in {
   programs = {
     nix-index.enable = false;
     eza.enable = true;
-    zoxide = {
-      enable = true;
-      enableZshIntegration = true;
-    };
 
     dircolors = {
       enable = true;

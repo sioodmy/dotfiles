@@ -88,7 +88,7 @@ in {
         };
 
         # shadow config
-        drop_shadow = "yes";
+        drop_shadow = "no";
         shadow_range = 20;
         shadow_render_power = 5;
         "col.shadow" = "rgba(292c3cee)";
@@ -109,7 +109,7 @@ in {
       };
 
       animations = {
-        enabled = true; # we want animations, half the reason why we're on Hyprland innit
+        enabled = true;
 
         bezier = [
           "smoothOut, 0.36, 0, 0.66, -0.56"
@@ -179,13 +179,13 @@ in {
 
       binde = [
         # volume controls
-        ",XF86AudioRaiseVolume, exec, swayosd --output-volume raise"
-        ",XF86AudioLowerVolume, exec, swayosd --output-volume lower"
-        ",XF86AudioMute, exec, swayosd --output-volume mute-toggle"
+        ",XF86AudioRaiseVolume, exec, pamixer -i 5"
+        ",XF86AudioLowerVolume, exec, pamixer -d 5"
+        ",XF86AudioMute, exec, pamixer -t"
 
         # brightness controls
-        ",XF86MonBrightnessUp,exec,swayosd --brightness raise"
-        ",XF86MonBrightnessDownn,exec,swayosd --brightness lower"
+        ",XF86MonBrightnessUp, exec, brightnessctl set +10%"
+        ",XF86MonBrightnessDown, exec, brightnessctl set 10%-"
         "SUPERALT, L, resizeactive, 80 0"
         "SUPERALT, H, resizeactive, -80 0"
       ];
