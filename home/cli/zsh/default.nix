@@ -32,8 +32,8 @@
         SSH_AUTH_SOCK = "/run/user/1000/keyring/ssh";
       };
       history = {
-        save = 999999999;
-        size = 999999999;
+        save = 2137;
+        size = 2137;
         expireDuplicatesFirst = true;
         ignoreDups = true;
         ignoreSpace = true;
@@ -59,16 +59,6 @@
             repo = "zsh-nix-shell";
             rev = "v0.7.0";
             sha256 = "149zh2rm59blr2q458a5irkfh82y3dwdich60s9670kl3cl5h2m1";
-          };
-        }
-        {
-          name = "fast-syntax-highlighting";
-          file = "fast-syntax-highlighting.plugin.zsh";
-          src = pkgs.fetchFromGitHub {
-            owner = "zdharma-continuum";
-            repo = "fast-syntax-highlighting";
-            rev = "cf318e06a9b7c9f2219d78f41b46fa6e06011fd9";
-            sha256 = "sha256-RVX9ZSzjBW3LpFs2W86lKI6vtcvDWP6EPxzeTcRZua4=";
           };
         }
       ];

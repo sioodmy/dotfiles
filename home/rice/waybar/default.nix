@@ -160,7 +160,7 @@ in {
             critical = 15;
           };
           format = "{icon} {capacity}%";
-          format-charging = "󰂄";
+          format-charging = "󰂄 {capacity}%";
           format-alt = "{icon} {capacity}%";
           format-icons = ["󰂃" "󰁺" "󰁻" "󰁼" "󰁽" "󰁾" "󰁿" "󰂀" "󰂁" "󰂂" "󰁹"];
         };
