@@ -11,11 +11,6 @@
       enable = true;
       allowAnyUser = true;
     };
-    tor = {
-      enable = true;
-      client.enable = true;
-      torsocks.enable = true;
-    };
     dnscrypt-proxy2 = {
       enable = true;
       settings = {
@@ -74,6 +69,8 @@
   security = {
     protectKernelImage = true;
     lockKernelModules = false;
+    forcePageTableIsolation = true;
+
     rtkit.enable = true;
     apparmor = {
       enable = true;
@@ -131,32 +128,47 @@
   };
 
   boot.kernel.sysctl = {
-    "kernel.yama.ptrace_scope" = 2;
-    "kernel.kptr_restrict" = 2;
-    "kernel.sysrq" = 0;
-    "net.core.bpf_jit_enable" = false;
-    "kernel.ftrace_enabled" = false;
+    # Hide kernel pointers from processes without the CAP_SYSLOG capability.
+    "kernel.kptr_restrict" = 1;
+    # Prevent information leak from kernel logging to screen during boot.
+    "kernel.printk" = 3333;
+    # Restrict loading TTY line disciplines to the CAP_SYS_MODULE capability.
+    "dev.tty.ldisc_autoload" = 0;
+    # Make it so a user can only use the secure attention key which is required to access root securely.
+    "kernel.sysrq" = 4;
+    # Protect against SYN flooding.
+    "net.ipv4.tcp_syncookies" = 1;
+    # Protect against time-wait assasination.
+    "net.ipv4.tcp_rfc1337" = 1;
+
+    # Enable strict reverse path filtering (that is, do not attempt to route
+    # packets that "obviously" do not belong to the iface's network; dropped
+    # packets are logged as martians).
     "net.ipv4.conf.all.log_martians" = true;
     "net.ipv4.conf.all.rp_filter" = "1";
     "net.ipv4.conf.default.log_martians" = true;
     "net.ipv4.conf.default.rp_filter" = "1";
-    "net.ipv4.icmp_echo_ignore_broadcasts" = true;
+
+    # Protect against SMURF attacks and clock fingerprinting via ICMP timestamping.
+    "net.ipv4.icmp_echo_ignore_all" = "1";
+
+    # Ignore incoming ICMP redirects (note: default is needed to ensure that the
+    # setting is applied to interfaces added after the sysctls are set)
     "net.ipv4.conf.all.accept_redirects" = false;
     "net.ipv4.conf.all.secure_redirects" = false;
     "net.ipv4.conf.default.accept_redirects" = false;
     "net.ipv4.conf.default.secure_redirects" = false;
     "net.ipv6.conf.all.accept_redirects" = false;
     "net.ipv6.conf.default.accept_redirects" = false;
+
+    # Ignore outgoing ICMP redirects (this is ipv4 only)
     "net.ipv4.conf.all.send_redirects" = false;
     "net.ipv4.conf.default.send_redirects" = false;
-    "net.ipv6.conf.default.accept_ra" = 0;
-    "net.ipv6.conf.all.accept_ra" = 0;
-    "net.ipv4.tcp_syncookies" = 1;
-    "net.ipv4.tcp_timestamps" = 0;
-    "net.ipv4.tcp_rfc1337" = 1;
-    "net.ipv4.tcp_fastopen" = 3;
-    "net.ipv4.tcp_congestion_control" = "bbr";
-    "net.core.default_qdisc" = "cake";
+
+    # Restrict abritrary use of ptrace to the CAP_SYS_PTRACE capability.
+    "kernel.yama.ptrace_scope" = 2;
+    "net.core.bpf_jit_enable" = false;
+    "kernel.ftrace_enabled" = false;
   };
 
   # Security
@@ -192,7 +204,6 @@
     "udf"
     "bluetooth"
     "btusb"
-    "uvcvideo" # thats why your webcam not worky
     "hpfs"
     "jfs"
     "minix"

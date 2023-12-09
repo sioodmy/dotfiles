@@ -19,5 +19,6 @@
     gimp
     inkscape
     keepassxc
+    dconf
   ];
 }

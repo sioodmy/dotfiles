@@ -27,6 +27,13 @@ with pkgs; {
   la = "${getExe eza} -lah --tree";
   ls = "${getExe eza} -h --git --icons --color=auto --group-directories-first -s extension";
   tree = "${getExe eza} --tree --icons --tree";
+  kys = "shutdown now";
+  gpl = "curl https://www.gnu.org/licenses/gpl-3.0.txt -o LICENSE";
+  agpl = "curl https://www.gnu.org/licenses/agpl-3.0.txt -o LICENSE";
+  g = "git";
+  n = "nix";
+  mnt = "udisksctl mount -b";
+  umnt = "udisksctl unmount -b";
   burn = "pkill -9";
   diff = "diff --color=auto";
   ".." = "cd ..";

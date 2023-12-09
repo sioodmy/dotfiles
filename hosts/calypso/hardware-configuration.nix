@@ -22,7 +22,6 @@
 
   boot.resumeDevice = "/dev/disk/by-label/swap";
 
-
   boot.initrd.availableKernelModules =
     [
       "xhci_pci"
