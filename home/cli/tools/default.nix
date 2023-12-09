@@ -55,6 +55,7 @@
     while inotifywait -e close_write $1; do pandoc $@; done
   '';
 in {
+  imports = [./run-as-service.nix];
   home = {
     sessionPath = [
       "${config.home.homeDirectory}/.local/bin"
