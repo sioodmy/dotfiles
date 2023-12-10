@@ -26,7 +26,9 @@
       # disable obsolete vsyscalls
       "vsyscall=none"
 
-      "loglevel=6"
+      # shut up
+      "quiet"
+      "loglevel=0"
       # security
       "lsm=landlock,lockdown,yama,apparmor,bpf"
       # disable noisy audit log
