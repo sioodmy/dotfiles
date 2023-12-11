@@ -17,7 +17,7 @@
     };
     font = {
       name = "Lexend";
-      size = 13;
+      size = 11;
     };
     gtk3.extraConfig = {
       gtk-xft-antialias = 1;

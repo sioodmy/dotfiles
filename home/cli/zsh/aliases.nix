@@ -30,6 +30,7 @@ with pkgs; {
   kys = "shutdown now";
   gpl = "curl https://www.gnu.org/licenses/gpl-3.0.txt -o LICENSE";
   agpl = "curl https://www.gnu.org/licenses/agpl-3.0.txt -o LICENSE";
+  webcam = "ffplay /dev/video0";
   g = "git";
   n = "nix";
   mnt = "udisksctl mount -b";

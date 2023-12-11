@@ -62,7 +62,7 @@ in {
         gaps_out = 11;
 
         # border thiccness
-        border_size = 3;
+        border_size = 2;
 
         # active border color
         "col.active_border" = "rgb(89b4fa) rgb(cba6f7) 270deg";
@@ -98,9 +98,11 @@ in {
         # disable redundant renders
         disable_splash_rendering = true;
 
+        vfr = true;
+
         # window swallowing
         enable_swallow = true; # hide windows that spawn other windows
-        swallow_regex = "foot|thunar|nemo"; # windows for which swallow is applied
+        swallow_regex = "foot|footclient"; # windows for which swallow is applied
 
         # dpms
         mouse_move_enables_dpms = true; # enable dpms on mouse/touchpad action
@@ -110,6 +112,7 @@ in {
 
       animations = {
         enabled = true;
+        first_launch_animation = false;
 
         bezier = [
           "smoothOut, 0.36, 0, 0.66, -0.56"
@@ -168,6 +171,7 @@ in {
         "$MOD,mouse_up,workspace,e-1" # move to the previous ws
 
         "$MODSHIFT,S,exec,grimblast --notify --cursor copysave area" # screenshot and then pipe it to swappy
+        "$MOD,Print,exec, grimblast save area - | tee /home/sioodmy/pics/ss/$(date +'screenshot-%Y%m%d%H%M%S.png') | wl-copy && notify-send 'Screenshot taken'"
 
         "$MODSHIFT,L,exec,gtklock" # lock screen
       ];

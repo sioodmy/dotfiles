@@ -103,24 +103,12 @@
       enable = true;
       extraRules = [
         {
-          commands = [
-            {
-              command = "/run/current-system/sw/bin/poweroff";
+          commands =
+            builtins.map (command: {
+              command = "/run/current-system/sw/bin/${command}";
               options = ["NOPASSWD"];
-            }
-            {
-              command = "/run/current-system/sw/bin/reboot";
-              options = ["NOPASSWD"];
-            }
-            {
-              command = "/run/current-system/sw/bin/nixos-rebuild";
-              options = ["NOPASSWD"];
-            }
-            {
-              command = "/run/current-system/sw/bin/nh";
-              options = ["NOPASSWD"];
-            }
-          ];
+            })
+            ["poweroff" "reboot" "nixos-rebuild" "nh" "bandwhich"];
           groups = ["wheel"];
         }
       ];
@@ -130,8 +118,7 @@
   boot.kernel.sysctl = {
     # Hide kernel pointers from processes without the CAP_SYSLOG capability.
     "kernel.kptr_restrict" = 1;
-    # Prevent information leak from kernel logging to screen during boot.
-    "kernel.printk" = 3333;
+    "kernel.printk" = "3 3 3 3";
     # Restrict loading TTY line disciplines to the CAP_SYS_MODULE capability.
     "dev.tty.ldisc_autoload" = 0;
     # Make it so a user can only use the secure attention key which is required to access root securely.
@@ -209,7 +196,6 @@
     "minix"
     "nilfs2"
     "omfs"
-    "uvcvideo"
     "qnx4"
     "qnx6"
     "sysv"

@@ -1,9 +1,4 @@
-{
-  pkgs,
-  lib,
-  inputs,
-  ...
-}: {
+{pkgs, ...}: {
   imports = [./fonts ./services.nix ./pipewire.nix];
   environment.etc."greetd/environments".text = ''
     Hyprland

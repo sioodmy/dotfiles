@@ -1,10 +1,5 @@
-{
-  config,
-  pkgs,
-  lib,
-  ...
-}: {
-  environment.systemPackages = with pkgs; [speedtest-cli];
+{pkgs, ...}: {
+  environment.systemPackages = with pkgs; [speedtest-cli bandwhich];
   networking = {
     # dns
     nameservers = ["127.0.0.1" "::1"];

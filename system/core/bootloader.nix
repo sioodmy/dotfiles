@@ -26,9 +26,10 @@
       # disable obsolete vsyscalls
       "vsyscall=none"
 
-      # shut up
-      "quiet"
-      "loglevel=0"
+      "vga=current"
+      "rd.systemd.show_status=false"
+      "rd.udev.log_level=3"
+      "udev.log_priority=3"
       # security
       "lsm=landlock,lockdown,yama,apparmor,bpf"
       # disable noisy audit log
@@ -38,6 +39,7 @@
       # passthrough
       "iommu=pt"
     ];
+    consoleLogLevel = 0;
     initrd.verbose = false;
     # switch from old ass lts kernel
     kernelPackages = lib.mkDefault pkgs.linuxPackages_latest;

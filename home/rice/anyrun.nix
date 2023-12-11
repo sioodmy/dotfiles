@@ -17,7 +17,7 @@ in {
         inputs.cryptorun.packages.${pkgs.system}.default
       ];
 
-      width.fraction = 0.3;
+      width.fraction = 0.45;
       hidePluginInfo = true;
       closeOnClick = true;
       y.absolute = 15;
