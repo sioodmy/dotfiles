@@ -4,8 +4,15 @@
     mpv = {
       enable = true;
       defaultProfiles = ["gpu-hq"];
-      config.osc = false;
-      scripts = with pkgs.mpvScripts; [mpris thumbnail sponsorblock];
+      bindings = {
+        UP = "add volume +2";
+        DOWN = "add volume -2";
+      };
+      config = {
+        hwdec = "auto";
+        border = false;
+      };
+      scripts = with pkgs.mpvScripts; [mpris thumbnail sponsorblock ];
     };
 
     obs-studio = {

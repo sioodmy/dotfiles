@@ -1,9 +1,4 @@
-{
-  pkgs,
-  lib,
-  inputs,
-  ...
-}: {
+{pkgs, ...}: {
   imports = [./fonts ./services.nix ./pipewire.nix];
   environment.etc."greetd/environments".text = ''
     Hyprland
@@ -22,7 +17,8 @@
       DIRENV_LOG_FORMAT = "";
       WLR_DRM_NO_ATOMIC = "1";
       QT_AUTO_SCREEN_SCALE_FACTOR = "1";
-      QT_QPA_PLATFORM = "wayland";
+      QT_QPA_PLATFORM = "wayland;xcb";
+      DISABLE_QT_COMPAT = "0";
       QT_WAYLAND_DISABLE_WINDOWDECORATION = "1";
       MOZ_ENABLE_WAYLAND = "1";
       WLR_BACKEND = "vulkan";
@@ -42,15 +38,7 @@
   };
 
   hardware = {
-    opengl = {
-      enable = true;
-      driSupport = true;
-      driSupport32Bit = true;
-      extraPackages = with pkgs; [
-        vaapiVdpau
-        libvdpau-va-gl
-      ];
-    };
+    opengl.enable = true;
     pulseaudio.support32Bit = true;
   };
 
@@ -65,13 +53,5 @@
   sound = {
     enable = true;
     mediaKeys.enable = true;
-  };
-
-  programs.thunar = {
-    enable = true;
-    plugins = with pkgs.xfce; [
-      thunar-archive-plugin
-      thunar-media-tags-plugin
-    ];
   };
 }

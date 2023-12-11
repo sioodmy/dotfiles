@@ -18,9 +18,9 @@ in {
     settings = {
       mainBar = {
         layer = "top";
-        position = "left";
-        width = 55;
-        spacing = 7;
+        position = "top";
+        height = 38;
+        spacing = 6;
         fixed-center = false;
         margin-left = null;
         margin-top = null;
@@ -31,16 +31,10 @@ in {
           "custom/search"
           "hyprland/workspaces"
           "custom/lock"
-          "custom/crypto"
           "backlight"
           "battery"
-          # "custom/eth"
         ];
-        modules-center = [
-          "custom/weather"
-          "clock"
-        ];
-        modules-right = ["pulseaudio" "network" "custom/swallow" "custom/power"];
+        modules-right = ["cpu" "memory" "custom/weather" "pulseaudio" "network" "clock" "custom/power"];
         "hyprland/workspaces" = {
           on-click = "activate";
           format = "{icon}";
@@ -146,36 +140,60 @@ in {
           format = "󰐥";
         };
         clock = {
-          format = ''
-            {:%H
-            %M}'';
+          format = "{:%H:%M}";
           tooltip-format = ''
             <big>{:%Y %B}</big>
             <tt><small>{calendar}</small></tt>'';
+          calendar = {
+            mode = "year";
+            mode-mon-col = 3;
+            weeks-pos = "right";
+            on-scroll = 1;
+            on-click-right = "mode";
+            format = {
+              months = "<span color='#f5c2e7'><b>{}</b></span>";
+              days = "<span color='#cdd6f4'><b>{}</b></span>";
+              weeks = "<span color='#cba6f7'><b>T{:%U}</b></span>";
+              weekdays = "<span color='#eba0ac'><b>{}</b></span>";
+              today = "<span color='#a6e3a1'><b><u>{}</u></b></span>";
+            };
+            actions = {
+              on-click-right = "mode";
+              on-click-forward = "tz_up";
+              on-click-backward = "tz_down";
+              on-scroll-up = "shift_up";
+              on-scroll-down = "shift_down";
+            };
+          };
         };
         backlight = {
-          format = "{icon}";
+          format = "{icon}  {percent}%";
           format-icons = ["" "" "" "" "" "" "" "" ""];
         };
-        cpu = {
-          interval = 5;
+        memory = {
+          interval = 2;
           format = "  {}%";
+          max-length = 10;
+        };
+        cpu = {
+          interval = 2;
+          format = "󰍛 {}%";
+          max-length = 10;
         };
         battery = {
           states = {
             warning = 30;
             critical = 15;
           };
-          format = "{icon} {capacity}%";
-          format-charging = "";
-          format-plugged = "";
+          format = "{icon} {capacity}% 󱐋{power}";
+          format-charging = "󰚥{icon} {capacity}% 󱐋{power}";
           format-alt = "{icon} {capacity}%";
-          format-icons = ["" "" "" "" "" "" "" "" "" "" "" ""];
+          format-icons = ["󰂃" "󰁺" "󰁻" "󰁼" "󰁽" "󰁾" "󰁿" "󰂀" "󰂁" "󰂂" "󰁹"];
         };
         network = let
           nm-editor = "${pkgs.networkmanagerapplet}/bin/nm-connection-editor";
         in {
-          format-wifi = "󰤨";
+          format-wifi = "󰤨  {signalStrength}%";
           format-ethernet = "󰈀";
           format-alt = "󱛇";
           format-disconnected = "󰤭";
@@ -185,9 +203,9 @@ in {
         pulseaudio = {
           scroll-step = 5;
           tooltip = true;
-          tooltip-format = "{volume}";
+          tooltip-format = "{volume}%";
           on-click = "${pkgs.killall}/bin/killall pavucontrol || ${pkgs.pavucontrol}/bin/pavucontrol";
-          format = "{icon}";
+          format = "{icon} {volume}%";
           format-muted = "󰝟 ";
           format-icons = {
             default = ["" "" " "];

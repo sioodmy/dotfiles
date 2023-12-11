@@ -27,16 +27,16 @@
     defaultPackages = [];
   };
 
-  age.secrets.syncthing-key = {
-    file = ../../secrets/syncthing-key.age;
-    owner = "sioodmy";
-    group = "users";
-  };
-  age.secrets.syncthing-cert = {
-    file = ../../secrets/syncthing-cert.age;
-    owner = "sioodmy";
-    group = "users";
-  };
+  # age.secrets.syncthing-key = {
+  #   file = ../../secrets/syncthing-key.age;
+  #   owner = "sioodmy";
+  #   group = "users";
+  # };
+  # age.secrets.syncthing-cert = {
+  #   file = ../../secrets/syncthing-cert.age;
+  #   owner = "sioodmy";
+  #   group = "users";
+  # };
 
   nh = {
     enable = true;
@@ -50,7 +50,9 @@
       allowBroken = true;
       permittedInsecurePackages = [
         "openssl-1.1.1u"
+                "electron-25.9.0"
       ];
+
       allowUnfreePredicate = pkg:
         builtins.elem (lib.getName pkg) [
           "steam-run"
@@ -60,8 +62,6 @@
           "spotify"
           "nvidia-x11"
           "nvidia-settings"
-          # they got fossed recently so idk
-          "Anytype-0.35.25-beta"
         ];
       overlays = [
         inputs.nixpkgs-wayland.overlay
@@ -136,12 +136,14 @@
         "https://cache.nixos.org"
         "https://nix-community.cachix.org"
         "https://nixpkgs-unfree.cachix.org"
+        "https://anyrun.cachix.org"
       ];
 
       trusted-public-keys = [
         "cache.nixos.org-1:6NCHdD59X431o0gWypbMrAURkbJ16ZPMQFGspcDShjY="
         "nix-community.cachix.org-1:mB9FSh9qf2dCimDSUo8Zy7bkq5CX+/rkCWyvRCYg3Fs="
         "nixpkgs-unfree.cachix.org-1:hqvoInulhbV4nJ9yJOEr+4wxhDV4xq2d1DK7S6Nj6rs="
+        "anyrun.cachix.org-1:pqBobmOjI7nKlsUMV25u9QHa9btJK65/C8vnO3p346s="
       ];
     };
   };
