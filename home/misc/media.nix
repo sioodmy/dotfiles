@@ -12,7 +12,7 @@
         hwdec = "auto";
         border = false;
       };
-      scripts = with pkgs.mpvScripts; [mpris thumbnail sponsorblock ];
+      scripts = with pkgs.mpvScripts; [mpris thumbnail sponsorblock];
     };
 
     obs-studio = {

@@ -50,7 +50,7 @@
       allowBroken = true;
       permittedInsecurePackages = [
         "openssl-1.1.1u"
-                "electron-25.9.0"
+        "electron-25.9.0"
       ];
 
       allowUnfreePredicate = pkg:
