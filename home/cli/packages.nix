@@ -34,7 +34,7 @@
     imagemagick
 
     # premiere pro for acoustic people
-    ffmpeg
+    ffmpeg-full
 
     # preview images in terminal
     catimg
@@ -58,9 +58,6 @@
 
     # json thingy
     jq
-
-    # network traffic (track down Mossad spyware)
-    bandwhich
 
     # syncthnig for acoustic people
     rsync

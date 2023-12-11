@@ -39,6 +39,10 @@ in ''
       color: #ef9f76;
     }
 
+    #memory {
+      color: #fab387;
+    }
+
     #clock {
       font-weight: 700;
       font-family: "Iosevka Term";
