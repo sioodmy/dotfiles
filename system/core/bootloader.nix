@@ -1,12 +1,8 @@
 {
-  config,
   pkgs,
   lib,
-  inputs,
   ...
 }: {
-  imports = [inputs.lanzaboote.nixosModules.lanzaboote];
-
   environment.systemPackages = [
     # For debugging and troubleshooting Secure Boot.
     pkgs.sbctl
@@ -16,49 +12,43 @@
     tmp.cleanOnBoot = true;
     # some kernel parameters, i dont remember what half of this shit does but who cares
     kernelParams = [
-      "pti=on"
-      "randomize_kstack_offset=on"
-      "vsyscall=none"
-      "acpi_call"
-      "processor.max_cstate=5"
+      # increase security of heap
       "slab_nomerge"
-      "debugfs=off"
-      "module.sig_enforce=1"
-      "lockdown=confidentiality"
-      "page_poison=1"
+      # mitigate use-after-free vulnerabilities and erase sensitive information in memory
+      "init_on_alloc=1"
+      "init_on_free=1"
+      # make page allocations less predictable
       "page_alloc.shuffle=1"
-      "slub_debug=FZP"
-      "sysrq_always_enabled=1"
-      "processor.max_cstate=5"
-      "idle=nomwait"
-      "quiet"
-      "rootflags=noatime"
-      "iommu=pt"
-      "usbcore.autosuspend=-1"
-      "sysrq_always_enabled=1"
-      "lsm=landlock,lockdown,yama,apparmor,bpf"
-      "loglevel=7"
-      "rd.udev.log_priority=3"
-      "noresume"
-      "logo.nologo"
-      "rd.systemd.show_status=auto"
+      # prevent meltdown
+      "pti=on"
+      # CVE-2019-18683
+      "randomize_kstack_offset=on"
+      # disable obsolete vsyscalls
+      "vsyscall=none"
+
+      "vga=current"
+      "rd.systemd.show_status=false"
       "rd.udev.log_level=3"
-      "vt.global_cursor_default=0"
-      "fbcon=nodefer"
+      "udev.log_priority=3"
+      # security
+      "lsm=landlock,lockdown,yama,apparmor,bpf"
+      # disable noisy audit log
+      "audit=0"
+      # i dont use it
+      "ipv6.disable=1"
+      # passthrough
+      "iommu=pt"
     ];
+    consoleLogLevel = 0;
     initrd.verbose = false;
     # switch from old ass lts kernel
-    kernelPackages = lib.mkDefault pkgs.linuxPackages_xanmod_latest;
+    kernelPackages = lib.mkDefault pkgs.linuxPackages_latest;
     extraModprobeConfig = "options hid_apple fnmode=1";
 
     bootspec.enable = true;
     loader = {
       systemd-boot.enable = true;
       timeout = 0;
-    };
-    lanzaboote = {
-      enable = false;
-      pkiBundle = "/etc/secureboot";
     };
     loader.efi.canTouchEfiVariables = true;
   };

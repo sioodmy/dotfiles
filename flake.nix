@@ -27,8 +27,8 @@
     nix-super.url = "github:privatevoid-net/nix-super";
 
     schizofox = {
-      url = "github:schizofox/schizofox/wavefox";
-      # url = "path:/home/sioodmy/dev/schizofox";
+      # url = "github:schizofox/schizofox/wavefox";
+      url = "path:/home/sioodmy/dev/schizofox";
       inputs = {
         nixpkgs.follows = "nixpkgs";
         flake-parts.follows = "flake-parts";
@@ -85,10 +85,6 @@
     };
     rust-overlay = {
       url = "github:oxalica/rust-overlay";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
-    lanzaboote = {
-      url = "github:nix-community/lanzaboote";
       inputs.nixpkgs.follows = "nixpkgs";
     };
     shadower = {

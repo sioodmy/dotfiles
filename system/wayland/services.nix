@@ -37,11 +37,11 @@ in {
       gnome-keyring.enable = true;
     };
     logind = {
-      lidSwitch = "suspend-then-hibernate";
+      lidSwitch = "suspend";
       lidSwitchExternalPower = "lock";
       extraConfig = ''
-        HandlePowerKey=suspend-then-hibernate
-        HibernateDelaySec=3600
+        HandlePowerKey=suspend
+        HibernateDelaySec=1800
       '';
     };
 

@@ -1,9 +1,11 @@
 {...}: {
   imports = [
+    ./zsh
     ./helix.nix
+    ./starship.nix
     ./bottom.nix
     ./git.nix
-    ./shell.nix
     ./tools
+    ./packages.nix
   ];
 }

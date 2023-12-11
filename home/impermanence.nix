@@ -1,10 +1,6 @@
 _: {
   home.persistence."/persist/home/sioodmy" = {
     allowOther = true;
-    files = [
-      ".database.kdbx"
-      ".cache/anyrun-ha-assist.sqlite3"
-    ];
     directories = [
       "download"
       "music"
@@ -14,16 +10,8 @@ _: {
       ".keepass"
       "vids"
       "other"
-      {
-        directory = ".local/share/zoxide";
-        method = "symlink";
-      }
-      {
-        directory = ".steam";
-        method = "symlink";
-      }
-      ".local/share/Steam"
       ".ssh"
+      ".keepass"
       ".local/share/direnv"
       ".cache/tealdeer"
       ".local/share/distrobox"

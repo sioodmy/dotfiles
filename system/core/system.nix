@@ -75,6 +75,7 @@
     variant = "u24n";
   in {
     font = "${pkgs.terminus_font}/share/consolefonts/ter-${variant}.psf.gz";
+    earlySetup = true;
     keyMap = "pl";
   };
 

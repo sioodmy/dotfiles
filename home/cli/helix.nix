@@ -6,29 +6,29 @@
 }: {
   programs.helix = {
     enable = true;
-    package = inputs.helix.packages.${pkgs.hostPlatform.system}.default.overrideAttrs (self: {
-      makeWrapperArgs = with pkgs;
-        self.makeWrapperArgs
-        or []
-        ++ [
-          "--suffix"
-          "PATH"
-          ":"
-          (lib.makeBinPath [
-            clang-tools
-            nil
-            luajitPackages.lua-lsp
-            typst-lsp
-            nodePackages.bash-language-server
-            nodePackages.vscode-css-languageserver-bin
-            nodePackages.vscode-langservers-extracted
-            nodePackages.prettier
-            black
-            alejandra
-            shellcheck
-          ])
-        ];
-    });
+    # package = inputs.helix.packages.${pkgs.hostPlatform.system}.default.overrideAttrs (self: {
+    #   makeWrapperArgs = with pkgs;
+    #     self.makeWrapperArgs
+    #     or []
+    #     ++ [
+    #       "--suffix"
+    #       "PATH"
+    #       ":"
+    #       (lib.makeBinPath [
+    #         clang-tools
+    #         nil
+    #         luajitPackages.lua-lsp
+    #         typst-lsp
+    #         nodePackages.bash-language-server
+    #         nodePackages.vscode-css-languageserver-bin
+    #         nodePackages.vscode-langservers-extracted
+    #         nodePackages.prettier
+    #         black
+    #         alejandra
+    #         shellcheck
+    #       ])
+    #     ];
+    # });
 
     settings = {
       theme = "catppuccin_mocha_transparent";
@@ -57,19 +57,14 @@
         idle-timeout = 1;
         line-number = "relative";
         scrolloff = 5;
-        rainbow-brackets = true;
+        # rainbow-brackets = true;
         completion-replace = true;
-        cursor-word = true;
         bufferline = "always";
         true-color = true;
         rulers = [80];
         soft-wrap.enable = true;
         indent-guides = {
           render = true;
-        };
-        sticky-context = {
-          enable = false;
-          indicator = false;
         };
         lsp = {
           display-messages = true;
