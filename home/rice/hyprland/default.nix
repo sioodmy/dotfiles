@@ -46,6 +46,21 @@ in {
 
           kill $picker_proc
         '')
+      (
+        writeShellScriptBin "micmute"
+        ''
+          #!/bin/sh
+
+          # shellcheck disable=SC2091
+          if $(pamixer --default-source --get-mute); then
+            pamixer --default-source --unmute
+            sudo mic-light-off
+          else
+            pamixer --default-source --mute
+            sudo mic-light-on
+          fi
+        ''
+      )
       (pkgs.python3Packages.buildPythonPackage rec {
         pname = "pyprland";
         version = "1.4.1";

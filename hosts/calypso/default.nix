@@ -5,12 +5,22 @@
   ...
 }: let
   MHz = x: x * 1000;
+  mic-light-on = pkgs.writeShellScriptBin "mic-light-on" ''
+    #!bin/sh
+    echo 1 > /sys/class/leds/platform::micmute/brightness
+  '';
+  mic-light-off = pkgs.writeShellScriptBin "mic-light-off" ''
+    #!bin/sh
+    echo 0 > /sys/class/leds/platform::micmute/brightness
+  '';
   inherit (lib) mkDefault;
 in {
   imports = [./hardware-configuration.nix];
   environment.systemPackages = with pkgs; [
     acpi
     powertop
+    mic-light-on
+    mic-light-off
   ];
 
   services = {
@@ -80,8 +90,8 @@ in {
   hardware.trackpoint = {
     enable = true;
     emulateWheel = true;
-    speed = 30;
-    sensitivity = 60;
+    speed = 10;
+    sensitivity = 20;
   };
   hardware.opengl.extraPackages = with pkgs; [vaapiIntel libvdpau-va-gl vaapiVdpau];
 }
