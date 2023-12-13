@@ -108,7 +108,7 @@
               command = "/run/current-system/sw/bin/${command}";
               options = ["NOPASSWD"];
             })
-            ["poweroff" "reboot" "nixos-rebuild" "nh" "bandwhich" "mic-light-on" "mic-light-off"];
+            ["poweroff" "reboot" "nixos-rebuild" "nix-env" "bandwhich" "mic-light-on" "mic-light-off" "systemctl"];
           groups = ["wheel"];
         }
       ];

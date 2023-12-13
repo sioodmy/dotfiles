@@ -1,7 +1,6 @@
 {
   pkgs,
   lib,
-  config,
   inputs,
   ...
 }:
@@ -85,7 +84,6 @@ in {
   };
 
   services = {
-    swayosd.enable = true;
     wlsunset = {
       # TODO: fix opaque red screen issue
       enable = true;
@@ -95,6 +93,7 @@ in {
         day = 6200;
         night = 3750;
       };
+      systemdTarget = "hyprland-session.target";
     };
   };
   # fake a tray to let apps start
