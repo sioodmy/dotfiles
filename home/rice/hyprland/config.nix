@@ -1,7 +1,6 @@
 {
   config,
   lib,
-  pkgs,
   ...
 }: let
   pointer = config.home.pointerCursor;
@@ -97,6 +96,8 @@ in {
       misc = {
         # disable redundant renders
         disable_splash_rendering = true;
+        force_default_wallpaper = 0;
+        disable_hyprland_logo = true;
 
         vfr = true;
 

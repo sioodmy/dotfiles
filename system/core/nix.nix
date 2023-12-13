@@ -27,17 +27,6 @@
     defaultPackages = [];
   };
 
-  # age.secrets.syncthing-key = {
-  #   file = ../../secrets/syncthing-key.age;
-  #   owner = "sioodmy";
-  #   group = "users";
-  # };
-  # age.secrets.syncthing-cert = {
-  #   file = ../../secrets/syncthing-cert.age;
-  #   owner = "sioodmy";
-  #   group = "users";
-  # };
-
   nh = {
     enable = true;
     clean.enable = true;
@@ -62,17 +51,13 @@
           "spotify"
           "nvidia-x11"
           "nvidia-settings"
+          "anytype"
         ];
       overlays = [
         inputs.nixpkgs-wayland.overlay
         (
           _: prev: {
             nixSuper = inputs'.nix-super.packages.default;
-            # temp fix until https://github.com/NixOS/nixpkgs/pull/249382 is merged
-            gtklock = prev.gtklock.overrideAttrs (self: super: {
-              nativeBuildInputs = super.nativeBuildInputs ++ [prev.wrapGAppsHook];
-              buildInputs = super.buildInputs ++ [prev.librsvg];
-            });
           }
         )
       ];

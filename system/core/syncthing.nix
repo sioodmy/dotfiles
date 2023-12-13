@@ -1,4 +1,4 @@
-{config, ...}: {
+{...}: {
   networking.firewall.allowedTCPPorts = [8384];
   services.syncthing = let
     hm = "/home/sioodmy";
@@ -10,53 +10,8 @@
     dataDir = "${hm}/.config/syncthing";
     openDefaultPorts = true;
     guiAddress = "127.0.0.1:8384";
-    overrideDevices = true;
     overrideFolders = true;
-    key = config.age.secrets.syncthing-key.path;
-    cert = config.age.secrets.syncthing-cert.path;
-    settings = {
-      devices = {
-        "methone" = {id = "FDHPTFD-BJK2ER6-2C4A5DU-5VMUAOF-M4VGKM2-VZJS5IT-KP7ADOQ-UEFJLAU";};
-      };
-      folders = {
-        "photos" = {
-          id = "pixel_7_pro_6dj3-photos";
-          path = "${hm}/pics/cam";
-          devices = ["methone"];
-          versioning = {
-            type = "staggered";
-            params = {
-              cleanInterval = "3600"; # 1 hour
-              maxAge = "1209600"; # 14 days
-            };
-          };
-        };
-        "keepass" = {
-          id = "wwm5g-uhgoz";
-          path = "${hm}/.keepass";
-          devices = ["methone"];
-          versioning = {
-            type = "staggered";
-            params = {
-              cleanInterval = "3600"; # 1 hour
-              maxAge = "1209600"; # 14 days
-            };
-          };
-        };
-        "docs" = {
-          id = "sdm7g-shhoa";
-          path = "${hm}/docs";
-          devices = ["methone"];
-          versioning = {
-            type = "staggered";
-            params = {
-              cleanInterval = "3600"; # 1 hour
-              maxAge = "1209600"; # 14 days
-            };
-          };
-        };
-      };
-    };
+    overrideDevices = true;
   };
 
   # credits: Ramblurr
