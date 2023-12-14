@@ -2,11 +2,10 @@
   environment.systemPackages = with pkgs; [speedtest-cli bandwhich];
   networking = {
     # dns
-    nameservers = ["127.0.0.1" "::1"];
+    nameservers = ["1.1.1.1" "1.0.0.1"];
     dhcpcd.extraConfig = "nohook resolv.conf";
     networkmanager = {
       enable = true;
-      dns = "none";
       unmanaged = ["docker0" "rndis0"];
       wifi = {
         macAddress = "random";

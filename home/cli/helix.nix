@@ -158,8 +158,6 @@
 
   home.packages = with pkgs; [
     # some other lsp related packages / dev tools
-    typst
-    typst-lsp
     shellcheck
     lldb
     gopls

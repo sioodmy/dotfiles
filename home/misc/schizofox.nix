@@ -1,6 +1,6 @@
 {pkgs, ...}: {
   programs.schizofox = {
-    enable = true;
+    enable = false;
     package = pkgs.firefox-esr-115-unwrapped;
     security = {
       sanitizeOnShutdown = false;
@@ -26,11 +26,11 @@
       darkreader.enable = true;
     };
     search = {
-      searx-randomizer = {
-        enable = true;
-        instances = ["searx.be" "search.notashelf.dev" "searx.tiekoetter.com" "opnxng.com"];
-      };
-      defaultSearchEngine = "Searx";
+      # searxRandomizer = {
+      #   enable = true;
+      #   instances = ["searx.be" "search.notashelf.dev" "searx.tiekoetter.com" "opnxng.com"];
+      # };
+      defaultSearchEngine = "Google";
       removeEngines = ["Bing" "Amazon.com" "eBay" "Twitter" "Wikipedia"];
     };
     extensions.extraExtensions = {

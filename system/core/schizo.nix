@@ -12,7 +12,7 @@
       allowAnyUser = true;
     };
     dnscrypt-proxy2 = {
-      enable = true;
+      enable = false;
       settings = {
         ipv6_servers = true;
         require_dnssec = true;
@@ -29,6 +29,7 @@
     };
   };
   programs.ssh.startAgent = true;
+  programs.wireshark.enable = true;
   programs.firejail = let
     profiles = "${pkgs.firejail}/etc/firejail";
     inherit (lib) getBin;
