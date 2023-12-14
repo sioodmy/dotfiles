@@ -61,5 +61,10 @@
 
     # syncthnig for acoustic people
     rsync
+
+    # script kidde stuff
+    hcxdumptool hashcat
+    # tshark
+    # termshark
   ];
 }

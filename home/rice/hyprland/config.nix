@@ -173,6 +173,7 @@ in {
 
         "$MODSHIFT,S,exec,grimblast --notify --cursor copysave area" # screenshot and then pipe it to swappy
         "$MOD,Print,exec, grimblast save area - | tee /home/sioodmy/pics/ss/$(date +'screenshot-%Y%m%d%H%M%S.png') | wl-copy && notify-send 'Screenshot taken'"
+        ",Print,exec, grim - | wl-copy"
 
         "$MODSHIFT,L,exec,gtklock" # lock screen
       ];
@@ -271,6 +272,7 @@ in {
     };
     extraConfig = ''
       monitor=DP-1,1920x1080@144,0x0,1shad
+      monitor=HDMI-1,1920x1080@144,0x0,1shad
       # a submap for resizing windows
       bind = $MOD, S, submap, resize # enter resize window to resize the active window
 
