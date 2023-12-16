@@ -18,8 +18,6 @@
     allowDiscards = true;
   };
 
-  boot.tmp.useTmpfs = true;
-
   boot.initrd.availableKernelModules =
     [
       "xhci_pci"

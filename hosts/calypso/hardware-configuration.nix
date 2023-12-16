@@ -18,8 +18,6 @@
     allowDiscards = true;
   };
 
-  boot.tmp.useTmpfs = true;
-
   boot.resumeDevice = "/dev/disk/by-label/swap";
 
   boot.initrd.availableKernelModules =
