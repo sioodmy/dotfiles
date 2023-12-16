@@ -21,7 +21,6 @@ in {
       libnotify
       wf-recorder
       brightnessctl
-      xdg-desktop-portal-hyprland
       pamixer
       python39Packages.requests
       slurp
