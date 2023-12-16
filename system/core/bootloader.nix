@@ -9,7 +9,10 @@
   ];
   boot = {
     binfmt.emulatedSystems = ["aarch64-linux"];
-    tmp.cleanOnBoot = true;
+    tmp = {
+      cleanOnBoot = true;
+      useTmpfs = false;
+    };
     # some kernel parameters, i dont remember what half of this shit does but who cares
     kernelParams = [
       # increase security of heap

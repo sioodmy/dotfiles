@@ -7,6 +7,7 @@
     inputs.nix-index-db.hmModules.nix-index
     inputs.anyrun.homeManagerModules.default
     inputs.schizofox.homeManagerModule
+    inputs.crabpulsar.homeManagerModule
     inputs.impermanence.nixosModules.home-manager.impermanence
     ./packages.nix
     ./impermanence.nix
