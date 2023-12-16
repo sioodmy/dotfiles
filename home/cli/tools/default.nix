@@ -130,9 +130,6 @@ in {
       };
     };
   };
-  services.easyeffects = {
-    enable = true;
-  };
   xdg = {
     userDirs = {
       enable = true;

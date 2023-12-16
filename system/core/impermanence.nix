@@ -12,6 +12,9 @@
   environment.persistence."/persist" = {
     hideMounts = true;
     directories = [
+      # dirty fix for "no storage left on device" while rebuilding
+      # it gets wiped anyway
+      "/tmp"
       "/etc/nixos"
       "/etc/NetworkManager"
       "/var/log"
