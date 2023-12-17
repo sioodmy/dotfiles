@@ -1,5 +1,5 @@
 {pkgs, ...}: {
-  imports = [./fonts ./services.nix ./pipewire.nix];
+  imports = [./fonts ./services.nix ./pipewire.nix ./chromium.nix];
   environment.etc."greetd/environments".text = ''
     Hyprland
   '';

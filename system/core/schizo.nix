@@ -41,13 +41,9 @@
         executable = "${getBin thunderbird}/thunderbird";
         profile = "${profiles}/thunderbird.profile";
       };
-      spotify = {
-        executable = "${getBin spotify}/spotify";
-        profile = "${profiles}/spotify.profile";
-      };
-      brave = {
-        executable = "${getBin brave}/brave";
-        profile = "${profiles}/brave-browser-stable.profile";
+     chromium = {
+        executable = "${getBin ungoogled-chromium}/chromium";
+        profile = "${profiles}/chromium-browser-common-hardened.profile";
       };
       keepassxc = {
         executable = "${getBin keepassxc}/keepassxc";
