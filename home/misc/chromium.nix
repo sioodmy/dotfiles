@@ -46,6 +46,12 @@
         sha256 = "sha256:10f7szaf0al7i9i0kcfpwg7xz0ms1h9mpsm92mscvx24ydvdswki";
         version = "4.1";
       })
+      (createChromiumExtension {
+        # I still don't care about cookies
+        id = "edibdbjcniadpccecjdfdjjppcpchdlm";
+        sha256 = "sha256:1jv84z0186nblwq5977fcqcah729xkj25lir03jj1whn951nvkpb";
+        version = "1.1.1";
+      })
     ];
   };
 }

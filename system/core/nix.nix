@@ -1,6 +1,7 @@
 {
   config,
   pkgs,
+  cfg,
   lib,
   inputs,
   inputs',
@@ -35,6 +36,9 @@
 
   nixpkgs = {
     config = {
+      # Wolność kocham i rozumiem
+      # Wolności oddać nie umiem
+      # <3333
       allowUnfree = false;
       allowBroken = true;
       permittedInsecurePackages = [
@@ -42,17 +46,15 @@
         "electron-25.9.0"
       ];
 
-      allowUnfreePredicate = pkg:
-        builtins.elem (lib.getName pkg) [
-          "steam-run"
-          "steam"
-          "steam-original"
-          "vscode"
-          "spotify"
-          "nvidia-x11"
-          "nvidia-settings"
-          "anytype"
-        ];
+      allowUnfreePredicate =
+        lib.mkIf cfg.networking.hostName
+        == "anthe" (
+          pkg:
+            builtins.elem (lib.getName pkg) [
+              "nvidia-x11"
+              "nvidia-settings"
+            ]
+        );
       overlays = [
         inputs.nixpkgs-wayland.overlay
         (

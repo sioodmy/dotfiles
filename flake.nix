@@ -163,14 +163,6 @@
       url = "github:nix-community/nixpkgs-wayland";
       inputs.nixpkgs.follows = "nixpkgs";
     };
-    helix = {
-      # Fork of SoraTenshi's helix fork with typst support and some other "features"
-      url = "github:sioodmy/helix";
-      inputs = {
-        nixpkgs.follows = "nixpkgs";
-        rust-overlay.follows = "rust-overlay";
-      };
-    };
     rust-overlay = {
       url = "github:oxalica/rust-overlay";
       inputs.nixpkgs.follows = "nixpkgs";

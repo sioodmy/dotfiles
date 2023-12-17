@@ -6,7 +6,8 @@
       BrowserSignin = 0;
       DefaultBrowserSettingEnabled = false;
       DefaultSearchProviderEnabled = true;
-      DefaultSearchProviderSearchURL = "https://search.brave.com/search?q={searchTerms}&source=web";
+      DefaultSearchProviderSearchURL = "https://search.notashelf.dev/search?q={searchTerms}";
+      HomepageLocation = "https://search.notashelf.dev";
       PasswordManagerEnabled = false;
       ShowAppsShortcutInBookmarkBar = false;
       SyncDisabled = true;

@@ -41,7 +41,7 @@
         executable = "${getBin thunderbird}/thunderbird";
         profile = "${profiles}/thunderbird.profile";
       };
-     chromium = {
+      chromium = {
         executable = "${getBin ungoogled-chromium}/chromium";
         profile = "${profiles}/chromium-browser-common-hardened.profile";
       };
