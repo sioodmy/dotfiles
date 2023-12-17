@@ -2,6 +2,85 @@
   description = "My NixOS configuration";
   # https://dotfiles.sioodmy.dev
 
+  outputs = {
+    self,
+    nixpkgs,
+    flake-parts,
+    ...
+  } @ inputs:
+    flake-parts.lib.mkFlake {inherit inputs;} ({withSystem, ...}: {
+      systems = [
+        "x86_64-linux"
+        "aarch64-linux"
+      ];
+
+      imports = [
+        {config._module.args._inputs = inputs // {inherit (inputs) self;};}
+
+        inputs.flake-parts.flakeModules.easyOverlay
+        inputs.pre-commit-hooks.flakeModule
+        inputs.treefmt-nix.flakeModule
+      ];
+
+      perSystem = {
+        inputs',
+        config,
+        pkgs,
+        ...
+      }: {
+        # provide the formatter for nix fmt
+        formatter = pkgs.alejandra;
+
+        pre-commit = {
+          settings.excludes = ["flake.lock"];
+
+          settings.hooks = {
+            alejandra.enable = true;
+            prettier.enable = true;
+          };
+        };
+        devShells.default = let
+          extra = import ./devShell;
+        in
+          inputs'.devshell.legacyPackages.mkShell {
+            name = "dotfiles";
+            commands = extra.shellCommands;
+            env = extra.shellEnv;
+            packages = with pkgs; [
+              inputs'.agenix.packages.default # provide agenix CLI within flake shell
+              config.treefmt.build.wrapper # treewide formatter
+              nil # nix ls
+              alejandra # nix formatter
+              git # flakes require git, and so do I
+              glow # markdown viewer
+              statix # lints and suggestions
+              deadnix # clean up unused nix code
+              # some python stuff for waybar scripting
+            ];
+          };
+
+        # configure treefmt
+        treefmt = {
+          projectRootFile = "flake.nix";
+
+          programs = {
+            alejandra.enable = true;
+            black.enable = true;
+            deadnix.enable = false;
+            shellcheck.enable = true;
+            shfmt = {
+              enable = true;
+              indent_size = 4;
+            };
+          };
+        };
+      };
+
+      flake = {
+        nixosConfigurations = import ./hosts inputs;
+      };
+    });
+
   inputs = {
     nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
     nixos-hardware.url = "github:nixos/nixos-hardware";
@@ -118,84 +197,6 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
   };
-  outputs = {
-    self,
-    nixpkgs,
-    flake-parts,
-    ...
-  } @ inputs:
-    flake-parts.lib.mkFlake {inherit inputs;} ({withSystem, ...}: {
-      systems = [
-        "x86_64-linux"
-        "aarch64-linux"
-      ];
-
-      imports = [
-        {config._module.args._inputs = inputs // {inherit (inputs) self;};}
-
-        inputs.flake-parts.flakeModules.easyOverlay
-        inputs.pre-commit-hooks.flakeModule
-        inputs.treefmt-nix.flakeModule
-      ];
-
-      perSystem = {
-        inputs',
-        config,
-        pkgs,
-        ...
-      }: {
-        # provide the formatter for nix fmt
-        formatter = pkgs.alejandra;
-
-        pre-commit = {
-          settings.excludes = ["flake.lock"];
-
-          settings.hooks = {
-            alejandra.enable = true;
-            prettier.enable = true;
-          };
-        };
-        devShells.default = let
-          extra = import ./devShell;
-        in
-          inputs'.devshell.legacyPackages.mkShell {
-            name = "dotfiles";
-            commands = extra.shellCommands;
-            env = extra.shellEnv;
-            packages = with pkgs; [
-              inputs'.agenix.packages.default # provide agenix CLI within flake shell
-              config.treefmt.build.wrapper # treewide formatter
-              nil # nix ls
-              alejandra # nix formatter
-              git # flakes require git, and so do I
-              glow # markdown viewer
-              statix # lints and suggestions
-              deadnix # clean up unused nix code
-              # some python stuff for waybar scripting
-            ];
-          };
-
-        # configure treefmt
-        treefmt = {
-          projectRootFile = "flake.nix";
-
-          programs = {
-            alejandra.enable = true;
-            black.enable = true;
-            deadnix.enable = false;
-            shellcheck.enable = true;
-            shfmt = {
-              enable = true;
-              indent_size = 4;
-            };
-          };
-        };
-      };
-
-      flake = {
-        nixosConfigurations = import ./hosts inputs;
-      };
-    });
 }
 # see also:
 # - https://github.com/notashelf/nyx
