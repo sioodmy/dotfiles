@@ -62,8 +62,13 @@
     # syncthnig for acoustic people
     rsync
 
+    figlet
+    # Generate qr codes
+    qrcodegen
+
     # script kidde stuff
-    hcxdumptool hashcat
+    hcxdumptool
+    hashcat
     # tshark
     # termshark
   ];

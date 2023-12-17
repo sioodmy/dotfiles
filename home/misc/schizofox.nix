@@ -1,10 +1,10 @@
 {pkgs, ...}: {
   programs.schizofox = {
-    enable = false;
+    enable = true;
     package = pkgs.firefox-esr-115-unwrapped;
     security = {
       sanitizeOnShutdown = false;
-      sandbox = true;
+      sandbox = false;
       userAgent = "Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:106.0) Gecko/20100101 Firefox/106.0";
     };
 
@@ -16,9 +16,13 @@
       font = "Lexend";
       wavefox = {
         enable = true;
-        transparency = "High";
+        transparency = {
+          enable = true;
+          strength = "High";
+        };
         tabs = {
-          oneline = "NavBarFirst";
+          style = 3;
+          oneline.enable = true;
           shadowSaturation = "High";
         };
         menu.density = "Compact";

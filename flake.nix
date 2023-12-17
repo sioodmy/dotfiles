@@ -16,10 +16,6 @@
       url = "github:hyprwm/hyprpicker";
       inputs.nixpkgs.follows = "nixpkgs";
     };
-    thorium = {
-      url = "github:almahdi/nix-thorium/16cbc264b5e7baf09cb895e8c5a49f7d915399d8";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
 
     # project shells
     devshell = {
@@ -31,8 +27,8 @@
     nix-super.url = "github:privatevoid-net/nix-super";
 
     schizofox = {
-      url = "github:schizofox/schizofox/wavefox";
-      # url = "path:/home/sioodmy/dev/schizofox";
+      # url = "github:schizofox/schizofox/wavefox";
+      url = "path:/home/sioodmy/dev/schizofox";
       inputs = {
         nixpkgs.follows = "nixpkgs";
         flake-parts.follows = "flake-parts";

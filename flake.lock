@@ -1182,7 +1182,6 @@
         "rust-overlay": "rust-overlay",
         "schizofox": "schizofox",
         "shadower": "shadower",
-        "thorium": "thorium",
         "treefmt-nix": "treefmt-nix_2",
         "xdg-portal-hyprland": "xdg-portal-hyprland"
       }
@@ -1243,18 +1242,14 @@
         "wavefox": "wavefox"
       },
       "locked": {
-        "lastModified": 1702255905,
-        "narHash": "sha256-uRCoaXMJTcmyPBKQu1iA5a9oe11rPEwxBYhP5Ocx49c=",
-        "owner": "schizofox",
-        "repo": "schizofox",
-        "rev": "3a51548de78cb324b58b8f729175ca02fab781b1",
-        "type": "github"
+        "lastModified": 1702839860,
+        "narHash": "sha256-SzuaMd0pJPck65RKQ3I9lUVciRAG0OZajY15L/KExrY=",
+        "path": "/home/sioodmy/dev/schizofox",
+        "type": "path"
       },
       "original": {
-        "owner": "schizofox",
-        "ref": "wavefox",
-        "repo": "schizofox",
-        "type": "github"
+        "path": "/home/sioodmy/dev/schizofox",
+        "type": "path"
       }
     },
     "searx-randomizer": {
@@ -1421,27 +1416,6 @@
       "original": {
         "owner": "nix-systems",
         "repo": "default-linux",
-        "type": "github"
-      }
-    },
-    "thorium": {
-      "inputs": {
-        "nixpkgs": [
-          "nixpkgs"
-        ]
-      },
-      "locked": {
-        "lastModified": 1698576446,
-        "narHash": "sha256-wf7RJNnns1N1sk3KtrBsWAWGFVBp6snVqjTu/sFc7hM=",
-        "owner": "almahdi",
-        "repo": "nix-thorium",
-        "rev": "16cbc264b5e7baf09cb895e8c5a49f7d915399d8",
-        "type": "github"
-      },
-      "original": {
-        "owner": "almahdi",
-        "repo": "nix-thorium",
-        "rev": "16cbc264b5e7baf09cb895e8c5a49f7d915399d8",
         "type": "github"
       }
     },

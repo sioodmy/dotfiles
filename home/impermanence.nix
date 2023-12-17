@@ -28,6 +28,8 @@ _: {
       ".config/spotify-tui"
       ".cache/BraveSoftware/"
       ".cache/nix"
+      ".cache/chromium"
+      ".config/chromium"
       ".cache/thunderbird/"
       ".thunderbird"
       ".cache/spotifyd"
