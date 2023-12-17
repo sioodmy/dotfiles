@@ -203,6 +203,12 @@ in {
         ",XF86AudioPrev,exec,playerctl previous"
         ",XF86AudioNext,exec,playerctl next"
       ];
+      workspace = [
+        "6, monitor:HDMI-A-1"
+        "7, monitor:HDMI-A-1"
+        "8, monitor:HDMI-A-1"
+        "9, monitor:HDMI-A-1"
+      ];
       layerrule = [
         "blur, ^(gtk-layer-shell)$"
         "ignorezero, ^(gtk-layer-shell)$"
@@ -261,7 +267,6 @@ in {
         "workspace special silent, title:^(Firefox — Sharing Indicator)$"
         "workspace special silent, title:^(.*is sharing (your screen|a window)\.)$"
 
-        "workspace 5, class:^(anytype)$"
         "workspace 4, title:^(.*(Disc|WebC)ord.*)$"
         "tile, class:^(Spotify)$"
         "workspace 3, title:^(Spotify)$"
@@ -271,8 +276,8 @@ in {
       ];
     };
     extraConfig = ''
-      monitor=DP-1,1920x1080@144,0x0,1shad
-      monitor=HDMI-1,1920x1080@144,0x0,1shad
+      monitor=,highrr,auto,1
+
       # a submap for resizing windows
       bind = $MOD, S, submap, resize # enter resize window to resize the active window
 

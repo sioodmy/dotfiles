@@ -16,7 +16,7 @@ in ''
   /*    margin: 32px 16px; */
       color: #cdd6f4;
       box-shadow: 2px 3px 2px 2px #151515;
-      font-size: 13px;
+      font-size: 14px;
       /* transition-property: background-color; */
       transition-property: background-color;
       transition-duration: 0.5s;

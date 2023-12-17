@@ -12,7 +12,7 @@
       ${_ grim} -g "$(${_ slurp})" -t ppm - | ${_ tesseract5} - - | ${wl-clipboard}/bin/wl-copy
       ${_ libnotify} "$(${wl-clipboard}/bin/wl-paste)"
     '';
-  browser = ["brave.desktop"];
+  browser = ["chromium.desktop"];
 
   associations = {
     "text/html" = browser;
@@ -34,26 +34,7 @@
     "application/json" = browser;
     "application/pdf" = ["org.pwmt.zathura.desktop.desktop"];
     "x-scheme-handler/tg" = ["telegramdesktop.desktop"];
-    "x-scheme-handler/spotify" = ["spotify.desktop"];
-    "x-scheme-handler/discord" = ["WebCord.desktop"];
   };
-
-  texlive = pkgs.texlive.combine {
-    inherit
-      (pkgs.texlive)
-      scheme-small
-      noto
-      mweights
-      cm-super
-      cmbright
-      fontaxes
-      beamer
-      ;
-  };
-  pandoc-watch = pkgs.writeScriptBin "wpandoc" ''
-    #!/bin/sh
-    while inotifywait -e close_write $1; do pandoc $@; done
-  '';
 in {
   imports = [./run-as-service.nix];
   home = {
@@ -86,7 +67,7 @@ in {
       };
     };
 
-    packages = with pkgs; [ocrScript texlive pandoc pandoc-watch];
+    packages = [ocrScript];
   };
   services = {
     udiskie.enable = true;
