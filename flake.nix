@@ -78,13 +78,14 @@
 
       flake = {
         nixosConfigurations = import ./hosts inputs;
-        images.iapetus=   (self.nixosConfigurations.iapetus.extendModules {
-          modules = ["${inputs.nixpkgs}/nixos/modules/installer/sd-card/sd-image-aarch64.nix"];
-        })
-        .config
-        .system
-        .build
-        .sdImage;
+        images.iapetus =
+          (self.nixosConfigurations.iapetus.extendModules {
+            modules = ["${inputs.nixpkgs}/nixos/modules/installer/sd-card/sd-image-aarch64.nix"];
+          })
+          .config
+          .system
+          .build
+          .sdImage;
       };
     });
 
@@ -139,10 +140,6 @@
 
     anyrun = {
       url = "github:Kirottu/anyrun";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
-    nh = {
-      url = "github:viperML/nh";
       inputs.nixpkgs.follows = "nixpkgs";
     };
     agenix = {

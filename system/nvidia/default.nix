@@ -1,9 +1,4 @@
-{
-  config,
-  pkgs,
-  lib,
-  ...
-}: {
+{pkgs, ...}: {
   services.xserver.videoDrivers = ["nvidia"];
 
   environment.variables = {

@@ -1,8 +1,4 @@
-{
-  pkgs,
-  lib,
-  ...
-}:
+{pkgs, ...}:
 # this makes our system more secure
 # note that it might break some stuff, eg webcam
 {
@@ -30,39 +26,6 @@
   };
   programs.ssh.startAgent = true;
   programs.wireshark.enable = true;
-  programs.firejail = let
-    profiles = "${pkgs.firejail}/etc/firejail";
-    inherit (lib) getBin;
-  in {
-    enable = true;
-    wrappedBinaries = with pkgs; {
-      # FIXME: why did i think this was a good idea (too lazy to write a propper function tho)
-      thunderbird = {
-        executable = "${getBin thunderbird}/thunderbird";
-        profile = "${profiles}/thunderbird.profile";
-      };
-      chromium = {
-        executable = "${getBin ungoogled-chromium}/chromium";
-        profile = "${profiles}/chromium-browser-common-hardened.profile";
-      };
-      keepassxc = {
-        executable = "${getBin keepassxc}/keepassxc";
-        profile = "${profiles}/keepassxc.profile";
-      };
-      zathura = {
-        executable = "${getBin zathura}/zathura";
-        profile = "${profiles}/zathura.profile";
-      };
-      tor = {
-        executable = "${getBin tor}/tor";
-        profile = "${profiles}/tor.profile";
-      };
-      transmission-gtk = {
-        executable = "${getBin transmission-gtk}/transmission-gtk";
-        profile = "${profiles}/transmission-gtk.profile";
-      };
-    };
-  };
   security = {
     protectKernelImage = true;
     lockKernelModules = false;

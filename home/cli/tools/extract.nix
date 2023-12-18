@@ -1,8 +1,4 @@
-{
-  lib,
-  pkgs,
-  ...
-}: ''
+_: ''
    SAVEIFS=$IFS
   IFS="$(printf '\n\t')"
 

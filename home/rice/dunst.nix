@@ -1,7 +1,7 @@
 {pkgs, ...}: {
   services.dunst = {
     enable = true;
-    package = pkgs.dunst.overrideAttrs (oldAttrs: {
+    package = pkgs.dunst.overrideAttrs (_: {
       src = pkgs.fetchFromGitHub {
         owner = "sioodmy";
         repo = "dunst";

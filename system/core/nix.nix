@@ -7,7 +7,6 @@
   inputs',
   ...
 }: {
-  imports = [inputs.nh.nixosModules.default];
   environment = {
     # set channels (backwards compatibility)
     sessionVariables.FLAKE = "/home/sioodmy/dev/dotfiles";
@@ -21,17 +20,10 @@
       deadnix
       alejandra
       statix
-      inputs.nh.packages.${pkgs.system}.default
       nix-output-monitor
       inputs.agenix.packages."${system}".default
     ];
     defaultPackages = [];
-  };
-
-  nh = {
-    enable = true;
-    clean.enable = true;
-    clean.extraArgs = "--keep-since 4d --keep 3";
   };
 
   nixpkgs = {
@@ -58,12 +50,12 @@
       overlays = [
         inputs.nixpkgs-wayland.overlay
         # workaround for: https://github.com/NixOS/nixpkgs/issues/154163
-        (final: super: {
+        (_: super: {
           makeModulesClosure = x:
             super.makeModulesClosure (x // {allowMissing = true;});
         })
         (
-          _: prev: {
+          _: _: {
             nixSuper = inputs'.nix-super.packages.default;
           }
         )

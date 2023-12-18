@@ -1,9 +1,4 @@
-{
-  config,
-  lib,
-  inputs,
-  ...
-}: {
+{inputs, ...}: {
   imports = [inputs.impermanence.nixosModule];
   fileSystems."/etc/ssh" = {
     depends = ["/persist"];
