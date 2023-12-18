@@ -29,10 +29,23 @@
   boot.extraModulePackages = [];
 
   fileSystems."/" = {
+    device = "none";
+    fsType = "tmpfs";
+    options = ["size=8G" "mode=755"];
+  };
+
+  fileSystems."/persist" = {
     neededForBoot = true;
     device = "/dev/disk/by-label/NIXROOT";
     fsType = "btrfs";
-    options = ["noatime" "discard" "compress=zstd"];
+    options = ["noatime" "discard" "subvol=@persist" "compress=zstd"];
+  };
+
+  fileSystems."/nix" = {
+    neededForBoot = true;
+    device = "/dev/disk/by-label/NIXROOT";
+    fsType = "btrfs";
+    options = ["noatime" "discard" "subvol=@nix" "compress=zstd"];
   };
 
   fileSystems."/boot" = {
