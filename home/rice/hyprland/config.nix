@@ -174,6 +174,7 @@ in {
         "$MODSHIFT,S,exec,grimblast --notify --cursor copysave area" # screenshot and then pipe it to swappy
         "$MOD,Print,exec, grimblast save area - | tee /home/sioodmy/pics/ss/$(date +'screenshot-%Y%m%d%H%M%S.png') | wl-copy && notify-send 'Screenshot taken'"
         ",Print,exec, grim - | wl-copy"
+        "$MODSHIFT,O,exec,wl-ocr"
 
         "$MODSHIFT,L,exec,gtklock" # lock screen
       ];
@@ -204,6 +205,11 @@ in {
         ",XF86AudioNext,exec,playerctl next"
       ];
       workspace = [
+        "1, monitor:eDP-1"
+        "2, monitor:eDP-1"
+        "3, monitor:eDP-1"
+        "4, monitor:eDP-1"
+        "5, monitor:eDP-1"
         "6, monitor:HDMI-A-1"
         "7, monitor:HDMI-A-1"
         "8, monitor:HDMI-A-1"
@@ -277,6 +283,8 @@ in {
     };
     extraConfig = ''
       monitor=,highrr,auto,1
+      monitor=eDP-1,1920x1080,0x0,1
+      monitor=HDMI-A-1,1920x1080@144,0x-1080,1
 
       # a submap for resizing windows
       bind = $MOD, S, submap, resize # enter resize window to resize the active window

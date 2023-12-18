@@ -57,6 +57,11 @@
         );
       overlays = [
         inputs.nixpkgs-wayland.overlay
+        # workaround for: https://github.com/NixOS/nixpkgs/issues/154163
+          (final: super: {
+    makeModulesClosure = x:
+      super.makeModulesClosure (x // { allowMissing = true; });
+  })
         (
           _: prev: {
             nixSuper = inputs'.nix-super.packages.default;
