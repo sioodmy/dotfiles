@@ -7,7 +7,7 @@
   services.openssh = {
     enable = true;
     settings = {
-      PermitRootLogin = lib.mkForce "no";
+      PermitRootLogin = lib.mkForce "yes";
       UseDns = false;
       X11Forwarding = false;
       PasswordAuthentication = lib.mkForce false;
