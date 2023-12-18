@@ -109,8 +109,7 @@
       builders-use-substitutes = true;
       # allow sudo users to mark the following values as trusted
       allowed-users = ["@wheel"];
-      # only allow sudo users to manage the nix store
-      trusted-users = ["@wheel"];
+      trusted-users = ["@wheel" "sioodmy"];
       sandbox = true;
       max-jobs = "auto";
       # continue building derivations if one fails
@@ -132,6 +131,7 @@
         "nixpkgs-unfree.cachix.org-1:hqvoInulhbV4nJ9yJOEr+4wxhDV4xq2d1DK7S6Nj6rs="
         "anyrun.cachix.org-1:pqBobmOjI7nKlsUMV25u9QHa9btJK65/C8vnO3p346s="
       ];
+
     };
   };
   system.autoUpgrade.enable = false;
