@@ -1152,14 +1152,18 @@
         "wavefox": "wavefox"
       },
       "locked": {
-        "lastModified": 1702839860,
-        "narHash": "sha256-SzuaMd0pJPck65RKQ3I9lUVciRAG0OZajY15L/KExrY=",
-        "path": "/home/sioodmy/dev/schizofox",
-        "type": "path"
+        "lastModified": 1702840075,
+        "narHash": "sha256-G64EMzTW8hbb3jfnrLs/nh4DskUFN71NdgajHjWZo/Q=",
+        "owner": "schizofox",
+        "repo": "schizofox",
+        "rev": "707298d9dbd64a530c0dfc1b5f279d8397c47b9b",
+        "type": "github"
       },
       "original": {
-        "path": "/home/sioodmy/dev/schizofox",
-        "type": "path"
+        "owner": "schizofox",
+        "ref": "wavefox",
+        "repo": "schizofox",
+        "type": "github"
       }
     },
     "searx-randomizer": {
