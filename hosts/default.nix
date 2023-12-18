@@ -71,12 +71,11 @@ in {
 
   iapetus = nixpkgs.lib.nixosSystem {
     system = "aarch64";
-    modules =
-      [
-        {networking.hostName = "iapetus";}
-        hw.raspberry-pi-4
-        ./iapetus
-      ];
+    modules = [
+      {networking.hostName = "iapetus";}
+      hw.raspberry-pi-4
+      ./iapetus
+    ];
     specialArgs = {inherit inputs;};
   };
 }

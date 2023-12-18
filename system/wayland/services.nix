@@ -1,10 +1,4 @@
-{
-  config,
-  pkgs,
-  ...
-}: let
-  inherit (builtins) getEnv;
-in {
+{pkgs, ...}: {
   systemd.services = {
     seatd = {
       enable = true;

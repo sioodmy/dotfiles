@@ -751,26 +751,6 @@
         "type": "github"
       }
     },
-    "nh": {
-      "inputs": {
-        "nixpkgs": [
-          "nixpkgs"
-        ]
-      },
-      "locked": {
-        "lastModified": 1702567580,
-        "narHash": "sha256-lmO5UWwCyFD1WhwHru6Xb0zSRBGcIyqhyX3vVSGNTR0=",
-        "owner": "viperML",
-        "repo": "nh",
-        "rev": "bd225f25992098122d83b28579a710d4181e0008",
-        "type": "github"
-      },
-      "original": {
-        "owner": "viperML",
-        "repo": "nh",
-        "type": "github"
-      }
-    },
     "nix-eval-jobs": {
       "inputs": {
         "flake-parts": "flake-parts_4",
@@ -1081,7 +1061,6 @@
         "hyprland": "hyprland",
         "hyprpicker": "hyprpicker",
         "impermanence": "impermanence",
-        "nh": "nh",
         "nix-index-db": "nix-index-db",
         "nix-super": "nix-super",
         "nixos-hardware": "nixos-hardware",

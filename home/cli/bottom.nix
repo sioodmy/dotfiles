@@ -1,8 +1,4 @@
-{
-  config,
-  pkgs,
-  ...
-}: {
+{pkgs, ...}: {
   # universal aliases
   home.packages = with pkgs; [
     (writeScriptBin "htop" ''exec btm'')
