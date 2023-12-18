@@ -78,6 +78,13 @@
 
       flake = {
         nixosConfigurations = import ./hosts inputs;
+        images.iapetus=   (self.nixosConfigurations.iapetus.extendModules {
+          modules = ["${inputs.nixpkgs}/nixos/modules/installer/sd-card/sd-image-aarch64.nix"];
+        })
+        .config
+        .system
+        .build
+        .sdImage;
       };
     });
 
