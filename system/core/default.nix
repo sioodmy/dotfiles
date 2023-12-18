@@ -6,6 +6,7 @@
   imports = [
     ./system.nix
     ./schizo.nix
+    ./bootloader.nix
     ./network.nix
     ./secrets.nix
     ./syncthing.nix
