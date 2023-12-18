@@ -4,7 +4,6 @@
   ...
 }: let
   inherit (self) inputs;
-  bootloader = ../system/core/bootloader.nix;
   core = ../system/core;
   nvidia = ../system/nvidia;
   wayland = ../system/wayland;
@@ -33,7 +32,6 @@ in {
       [
         {networking.hostName = "anthe";}
         ./anthe
-        bootloader
         nvidia
         wayland
         hmModule
@@ -50,11 +48,22 @@ in {
       [
         {networking.hostName = "calypso";}
         ./calypso
-        bootloader
         wayland
         hmModule
         hw.lenovo-thinkpad-x1-7th-gen
         {inherit home-manager;}
+      ]
+      ++ shared;
+    specialArgs = {inherit inputs;};
+  };
+
+  # x86 home server
+  prometheus = nixpkgs.lib.nixosSystem {
+    system = "x86_64-linux";
+    modules =
+      [
+        {networking.hostName = "prometheus";}
+        ./prometheus
       ]
       ++ shared;
     specialArgs = {inherit inputs;};
