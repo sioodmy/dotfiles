@@ -1,6 +1,5 @@
 {
   config,
-  lib,
   pkgs,
   ...
 }: {
@@ -30,9 +29,10 @@
           "adbusers"
         ];
         uid = 1000;
-        shell = if config.services.greetd.enable then 
-        pkgs.zsh else
-        pkgs.bash;
+        shell =
+          if config.services.greetd.enable
+          then pkgs.zsh
+          else pkgs.bash;
         # changeme
         initialHashedPassword = "$y$j9T$OMptZfwbCi8wXqWho2Eca0$V7GNYVR6BFb0YHFBwSdJNGuGeLLv2R5zNWC/NL/R6aA";
         openssh.authorizedKeys.keys = [
