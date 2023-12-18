@@ -95,8 +95,7 @@
       };
     };
 
-    sudo.enable = lib.mkForce false;
-    sudo-rs = {
+    sudo = {
       enable = true;
       extraRules = [
         {
