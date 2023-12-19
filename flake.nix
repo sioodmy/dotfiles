@@ -110,19 +110,6 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
-    # feature-rich and convenient fork of the Nix package manager
-    nix-super.url = "github:privatevoid-net/nix-super";
-
-    schizofox = {
-      url = "github:schizofox/schizofox/wavefox";
-      # url = "path:/home/sioodmy/dev/schizofox";
-      inputs = {
-        nixpkgs.follows = "nixpkgs";
-        flake-parts.follows = "flake-parts";
-        nixpak.follows = "nixpak";
-      };
-    };
-
     crabpulsar = {
       url = "github:sioodmy/crabpulsar";
       # url = "path:/home/sioodmy/dev/crabpulsar";
