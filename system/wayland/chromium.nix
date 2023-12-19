@@ -2,7 +2,7 @@ _: {
   programs.chromium = {
     enable = true;
     extraOpts = {
-      BookmarkBarEnabled = true;
+      BookmarkBarEnabled = false;
       BrowserSignin = 0;
       DefaultBrowserSettingEnabled = false;
       DefaultSearchProviderEnabled = true;

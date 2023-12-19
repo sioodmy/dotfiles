@@ -54,11 +54,6 @@
           makeModulesClosure = x:
             super.makeModulesClosure (x // {allowMissing = true;});
         })
-        (
-          _: _: {
-            nixSuper = inputs'.nix-super.packages.default;
-          }
-        )
       ];
     };
   };
