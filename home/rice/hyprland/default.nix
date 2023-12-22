@@ -40,7 +40,7 @@ in {
           ${hyprpicker}/bin/hyprpicker -r -z &
           picker_proc=$!
 
-          ${grimblast}/bin/grimblast save area -
+          ${grimblast}/bin/grimblast save area - | tee ~/pics/ss$(date +'screenshot-%F') | wl-copy
 
           kill $picker_proc
         '')
