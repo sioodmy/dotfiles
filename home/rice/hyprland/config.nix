@@ -171,8 +171,7 @@ in {
         "$MOD,mouse_down,workspace,e+1" # move to the next ws
         "$MOD,mouse_up,workspace,e-1" # move to the previous ws
 
-        "$MODSHIFT,S,exec,grimblast --notify --cursor copysave area" # screenshot and then pipe it to swappy
-        "$MOD,Print,exec, grimblast save area - | tee /home/sioodmy/pics/ss/$(date +'screenshot-%Y%m%d%H%M%S.png') | wl-copy && notify-send 'Screenshot taken'"
+        "$MOD,Print,exec, pauseshot"
         ",Print,exec, grim - | wl-copy"
         "$MODSHIFT,O,exec,wl-ocr"
 
