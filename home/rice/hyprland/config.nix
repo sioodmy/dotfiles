@@ -49,12 +49,16 @@ in {
         # self explanatory, I hope?
         follow_mouse = 1;
         # do not imitate natural scroll
-        touchpad.natural_scroll = "no";
+
+        # sensitivity of the mouse cursor
+        sensitivity = 0.0;
+        touchpad = {
+          clickfinger_behavior = true;
+          scroll_factor = 0.5;
+        };
       };
 
       general = {
-        # sensitivity of the mouse cursor
-        sensitivity = 0.6;
 
         # gaps
         gaps_in = 6;
