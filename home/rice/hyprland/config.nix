@@ -59,7 +59,6 @@ in {
       };
 
       general = {
-
         # gaps
         gaps_in = 6;
         gaps_out = 11;
