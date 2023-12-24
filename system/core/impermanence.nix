@@ -1,4 +1,10 @@
-{inputs, ...}: {
+{
+  inputs,
+  lib,
+  ...
+}: let
+  inherit (lib) forEach;
+in {
   imports = [inputs.impermanence.nixosModule];
   fileSystems."/etc/ssh" = {
     depends = ["/persist"];
@@ -6,29 +12,16 @@
   };
   environment.persistence."/persist" = {
     hideMounts = true;
-    directories = [
-      # dirty fix for "no storage left on device" while rebuilding
-      # it gets wiped anyway
-      "/tmp"
-      "/etc/nixos"
-      "/etc/NetworkManager"
-      "/var/log"
-      "/var/lib"
-      "/etc/nix"
-      "/etc/ssh"
-      "/var/db/sudo"
-      "/etc/secureboot"
-
-      "/etc/NetworkManager/system-connections"
-      "/var/lib/flatpak"
-      "/var/lib/libvirt"
-      "/var/lib/bluetooth"
-      "/var/lib/nixos"
-      "/var/lib/pipewire"
-      "/var/lib/systemd/coredump"
-      "/var/cache/tailscale"
-      "/var/lib/tailscale"
-    ];
+    directories =
+      [
+        # dirty fix for "no storage left on device" while rebuilding
+        # it gets wiped anyway
+        "/tmp"
+        "/var/log"
+        "/var/db/sudo"
+      ]
+      ++ forEach ["nixos" "NetworkManager" "nix" "ssh" "secureboot"] (x: "/etc/${x}")
+      ++ forEach ["bluetooth" "nixos" "pipewire" "libvirt" "fail2ban" "fprint"] (x: "/var/lib/${x}");
     files = ["/etc/machine-id"];
   };
   # for some reason *this* is what makes networkmanager not get screwed completely instead of the impermanence module
