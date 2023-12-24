@@ -24,27 +24,6 @@
         "type": "github"
       }
     },
-    "anyrun": {
-      "inputs": {
-        "flake-parts": "flake-parts",
-        "nixpkgs": [
-          "nixpkgs"
-        ]
-      },
-      "locked": {
-        "lastModified": 1701453400,
-        "narHash": "sha256-hI9+KBShsSfvWX7bmRa/1VI20WGat3lDXmbceMZzMS4=",
-        "owner": "Kirottu",
-        "repo": "anyrun",
-        "rev": "e14da6c37337ffa3ee1bc66965d58ef64c1590e5",
-        "type": "github"
-      },
-      "original": {
-        "owner": "Kirottu",
-        "repo": "anyrun",
-        "type": "github"
-      }
-    },
     "crabpulsar": {
       "inputs": {
         "crane": "crane",
@@ -212,27 +191,6 @@
     "flake-parts": {
       "inputs": {
         "nixpkgs-lib": [
-          "anyrun",
-          "nixpkgs"
-        ]
-      },
-      "locked": {
-        "lastModified": 1696343447,
-        "narHash": "sha256-B2xAZKLkkeRFG5XcHHSXXcP7To9Xzr59KXeZiRf4vdQ=",
-        "owner": "hercules-ci",
-        "repo": "flake-parts",
-        "rev": "c9afaba3dfa4085dbd2ccb38dfade5141e33d9d4",
-        "type": "github"
-      },
-      "original": {
-        "owner": "hercules-ci",
-        "repo": "flake-parts",
-        "type": "github"
-      }
-    },
-    "flake-parts_2": {
-      "inputs": {
-        "nixpkgs-lib": [
           "nixpkgs"
         ]
       },
@@ -250,7 +208,7 @@
         "type": "github"
       }
     },
-    "flake-parts_3": {
+    "flake-parts_2": {
       "inputs": {
         "nixpkgs-lib": [
           "nixpak",
@@ -271,7 +229,7 @@
         "type": "github"
       }
     },
-    "flake-parts_4": {
+    "flake-parts_3": {
       "inputs": {
         "nixpkgs-lib": [
           "nixpkgs-wayland",
@@ -646,7 +604,7 @@
     },
     "nix-eval-jobs": {
       "inputs": {
-        "flake-parts": "flake-parts_4",
+        "flake-parts": "flake-parts_3",
         "nix-github-actions": "nix-github-actions",
         "nixpkgs": "nixpkgs_2",
         "treefmt-nix": "treefmt-nix"
@@ -724,7 +682,7 @@
     },
     "nixpak": {
       "inputs": {
-        "flake-parts": "flake-parts_3",
+        "flake-parts": "flake-parts_2",
         "hercules-ci-effects": "hercules-ci-effects",
         "nixpkgs": [
           "nixpkgs"
@@ -873,11 +831,10 @@
     "root": {
       "inputs": {
         "agenix": "agenix",
-        "anyrun": "anyrun",
         "crabpulsar": "crabpulsar",
         "cryptorun": "cryptorun",
         "devshell": "devshell",
-        "flake-parts": "flake-parts_2",
+        "flake-parts": "flake-parts",
         "home-manager": "home-manager_2",
         "home-manager-wsl": "home-manager-wsl",
         "hyprcontrib": "hyprcontrib",

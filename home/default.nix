@@ -5,7 +5,6 @@
   config.home.extraOutputsToInstall = ["doc" "devdoc"];
   imports = [
     inputs.nix-index-db.hmModules.nix-index
-    inputs.anyrun.homeManagerModules.default
     inputs.crabpulsar.homeManagerModule
     inputs.impermanence.nixosModules.home-manager.impermanence
     ./packages.nix

@@ -1,7 +1,6 @@
 {...}: {
   imports = [
     ./tofi
-    ./anyrun.nix
     ./foot.nix
     ./zathura.nix
     ./dunst.nix

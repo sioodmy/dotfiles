@@ -59,7 +59,7 @@ in {
         "custom/search" = {
           format = " ";
           tooltip = false;
-          on-click = "lib.getBin config.programs.anyrun.package}/anyrun";
+          on-click = "sh -c 'run-as-service $(tofi-drun)'";
         };
 
         "custom/weather" = let

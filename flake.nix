@@ -125,10 +125,6 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
-    anyrun = {
-      url = "github:Kirottu/anyrun";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
     agenix = {
       url = "github:ryantm/agenix";
       inputs.home-manager.follows = "home-manager";
