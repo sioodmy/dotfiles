@@ -228,6 +228,8 @@ in {
         "ignorezero, bar"
         "ignorezero, ^(gtk-layer-shell|anyrun)$"
         "blur, ^(gtk-layer-shell|anyrun)$"
+        "noanim, launcher"
+        "noanim, bar"
       ];
       windowrulev2 = [
         # only allow shadows for floating windows
