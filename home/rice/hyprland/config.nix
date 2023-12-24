@@ -146,7 +146,7 @@ in {
       bind = [
         ''$MOD,RETURN,exec,run-as-service footclient''
 
-        "$MOD,SPACE,exec,anyrun"
+        "$MOD,SPACE,exec,run-as-service $(tofi-drun)"
         "$MOD,C,killactive"
         "$MOD,P,pseudo"
 
@@ -177,6 +177,8 @@ in {
         "$MOD,Print,exec, pauseshot"
         ",Print,exec, grim - | wl-copy"
         "$MODSHIFT,O,exec,wl-ocr"
+
+        "$MOD,Period,exec, tofi-emoji"
 
         "$MODSHIFT,L,exec,gtklock" # lock screen
       ];
