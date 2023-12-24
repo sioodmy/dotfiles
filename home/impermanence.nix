@@ -1,45 +1,25 @@
-_: {
+{lib, ...}: let
+  inherit (lib) forEach;
+in {
   home.persistence."/persist/home/sioodmy" = {
     allowOther = true;
-    directories = [
-      "download"
-      "music"
-      "dev"
-      "docs"
-      "pics"
-      ".keepass"
-      "vids"
-      "other"
-      ".ssh"
-      ".keepass"
-      ".local/share/direnv"
-      ".cache/tealdeer"
-      ".local/share/distrobox"
-      ".cache/containers"
-      ".config/syncthing"
-      ".cache/flutter"
-      ".local/share/PrismLauncher"
-      ".local/share/TelegramDesktop"
-      ".local/share/keyrings"
-      ".config/Caprine"
-      ".cache/keepassxc"
-      ".config/WebCord"
-      ".config/BraveSoftware/"
-      ".cache/BraveSoftware/"
-      ".cache/nix"
-      ".cache/chromium"
-      ".config/chromium"
-      ".cache/thunderbird/"
-      ".thunderbird"
-      ".cache/starship"
-      ".config/VencordDesktop"
-      ".local/share/nheko"
-      ".cache/nheko"
-      ".config/nheko"
-      ".cache/nix-index"
-      ".config/obs-studio"
-      ".mozilla"
-      ".cache/mozilla"
-    ];
+    directories =
+      [
+        "download"
+        "music"
+        "dev"
+        "docs"
+        "pics"
+        "vids"
+        "other"
+      ]
+      ++ forEach ["syncthing" "Caprine" "chromium" "VencordDesktop" "obs-studio"] (
+        x: ".config/${x}"
+      )
+      ++ forEach ["tealdeer" "keepassxc" "nix" "chromium" "starship" "nix-index"] (
+        x: ".cache/${x}"
+      )
+      ++ forEach ["direnv" "TelegramDesktop" "PrismLauncher" "keyrings"] (x: ".local/share/${x}")
+      ++ [".ssh" ".keepass"];
   };
 }
