@@ -110,6 +110,15 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
+    schizofox = {
+      url = "path:/home/sioodmy/dev/schizofox";
+      inputs = {
+        nixpkgs.follows = "nixpkgs";
+        flake-parts.follows = "flake-parts";
+        nixpak.follows = "nixpak";
+      };
+    };
+
     crabpulsar = {
       url = "github:sioodmy/crabpulsar";
       # url = "path:/home/sioodmy/dev/crabpulsar";

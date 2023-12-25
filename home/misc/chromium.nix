@@ -3,6 +3,17 @@
   pkgs,
   ...
 }: {
+  home.packages = [
+    (pkgs.makeDesktopItem {
+      name = "Torium";
+      desktopName = "Torium";
+      genericName = "Web Browser";
+      exec = ''chromium --proxy-server "socks5://127.0.0.1:9050"'';
+      terminal = false;
+      categories = ["Application" "Network" "WebBrowser"];
+      mimeTypes = ["text/html" "text/xml"];
+    })
+  ];
   programs.chromium = {
     package = pkgs.ungoogled-chromium;
     enable = true;

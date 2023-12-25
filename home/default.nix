@@ -6,6 +6,7 @@
   imports = [
     inputs.nix-index-db.hmModules.nix-index
     inputs.crabpulsar.homeManagerModule
+    inputs.schizofox.homeManagerModule
     inputs.impermanence.nixosModules.home-manager.impermanence
     ./packages.nix
     ./impermanence.nix
