@@ -79,9 +79,10 @@
       flake = {
         nixosConfigurations = import ./hosts inputs;
         images.iapetus =
-          (self.nixosConfigurations.iapetus.extendModules {
-            modules = ["${inputs.nixpkgs}/nixos/modules/installer/sd-card/sd-image-aarch64.nix"];
-          })
+          (self.nixosConfigurations.iapetus.extendModules
+            {
+              modules = ["${nixpkgs}/nixos/modules/installer/sd-card/sd-image-aarch64-new-kernel-no-zfs-installer.nix"];
+            })
           .config
           .system
           .build
