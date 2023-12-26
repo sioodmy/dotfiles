@@ -5,7 +5,10 @@
 }: let
   inherit (self) inputs;
   core = ../system/core;
+  bootloader = ../system/core/bootloader.nix;
+  impermanence = ../system/core/impermanence.nix;
   nvidia = ../system/nvidia;
+  server = ../system/server;
   wayland = ../system/wayland;
   hw = inputs.nixos-hardware.nixosModules;
   agenix = inputs.agenix.nixosModules.age;
@@ -33,6 +36,8 @@ in {
         {networking.hostName = "anthe";}
         ./anthe
         nvidia
+        bootloader
+        impermanence
         wayland
         hmModule
         {inherit home-manager;}
@@ -50,6 +55,8 @@ in {
         ./calypso
         wayland
         hmModule
+        bootloader
+        impermanence
         hw.lenovo-thinkpad-x1-7th-gen
         {inherit home-manager;}
       ]
@@ -63,6 +70,7 @@ in {
     modules =
       [
         {networking.hostName = "prometheus";}
+        bootloader
         ./prometheus
       ]
       ++ shared;
@@ -71,11 +79,14 @@ in {
 
   iapetus = nixpkgs.lib.nixosSystem {
     system = "aarch64";
-    modules = [
-      {networking.hostName = "iapetus";}
-      hw.raspberry-pi-4
-      ./iapetus
-    ];
+    modules =
+      [
+        {networking.hostName = "iapetus";}
+        hw.raspberry-pi-4
+        server
+        ./iapetus
+      ]
+      ++ shared;
     specialArgs = {inherit inputs;};
   };
 }

@@ -5,18 +5,21 @@
 }: {
   networking = {
     hostName = "iapetus";
+    interfaces.eth0.ipv4.addresses = [ {
+      address = "192.168.21.69";
+      prefixLength = 24;
+    } ];
   };
 
   sdImage.compressImage = false;
 
   nixpkgs.overlays = [
     (self: super: let
-      dummy = pkgs.writeShellScriptBin "ihatemylife" "echo doesnt crosscompile";
+      # I hate cross compilation
+      dummy = pkgs.runCommandNoCC "neutered-firmware" {} "mkdir -p $out/lib/firmware";
     in {
-      # alsa-firmware = dummy;
-      alsa-firmware = pkgs.runCommandNoCC "neutered-firmware" {} "mkdir -p $out/lib/firmware";
-      crda = pkgs.runCommandNoCC "neutered-firmware" {} "mkdir -p $out/lib/firmware";
-      # crda = dummy;
+      alsa-firmware = dummy;
+      crda = dummy;
       # Regression caused by including a new package in the closure
       # Added in f1922cdbdc608b1f1f85a1d80310b54e89d0e9f3
       smartmontools = super.smartmontools.overrideAttrs (old: {
@@ -24,44 +27,6 @@
       });
     })
   ];
-  # use bash on the server
-  users.users = {
-    sioodmy = {
-      isNormalUser = true;
-      shell = pkgs.bash;
-      extraGroups = [
-        "wheel"
-        "gitea"
-        "docker"
-        "systemd-journal"
-        "vboxusers"
-        "audio"
-        "plugdev"
-        "wireshark"
-        "video"
-        "input"
-        "lp"
-        "networkmanager"
-        "power"
-        "nix"
-        "adbusers"
-      ];
-      uid = 1000;
-      initialHashedPassword = "$y$j9T$OMptZfwbCi8wXqWho2Eca0$V7GNYVR6BFb0YHFBwSdJNGuGeLLv2R5zNWC/NL/R6aA";
-      openssh.authorizedKeys.keys = [
-        "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIE9ExEl6WqtCI4yCqbSAhAGmzvVp/nYADbgy/Qi4AKQy sioodmy@anthe"
-        "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIH+S9LPxp3Mmha1keHlwc0iVq4CMbHvzAAwuYE2go7io sioodmy@calypso"
-      ];
-    };
-    root.
-        openssh.authorizedKeys.keys = [
-      "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIE9ExEl6WqtCI4yCqbSAhAGmzvVp/nYADbgy/Qi4AKQy sioodmy@anthe"
-      "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIH+S9LPxp3Mmha1keHlwc0iVq4CMbHvzAAwuYE2go7io sioodmy@calypso"
-    ];
-  };
-
-  # this is actually quite useful on servers
-  systemd.services.NetworkManager-wait-online.enable = lib.mkOverride 900 true;
 
   nixpkgs.hostPlatform = lib.mkDefault "aarch64-linux";
   # nixpkgs.localSystem.system = "aarch64-linux";
@@ -81,7 +46,7 @@
   services.xserver.desktopManager.xterm.enable = lib.mkForce false;
 
   # fails to build
-  security.polkit.enable = false;
+  security.polkit.enable = lib.mkForce false;
 
   fileSystems."/" = {
     device = "/dev/disk/by-label/NIXOS_SD";
