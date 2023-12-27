@@ -214,10 +214,10 @@ in {
         "3, monitor:eDP-1"
         "4, monitor:eDP-1"
         "5, monitor:eDP-1"
-        "6, monitor:HDMI-A-1"
-        "7, monitor:HDMI-A-1"
-        "8, monitor:HDMI-A-1"
-        "9, monitor:HDMI-A-1"
+        "6, monitor:DP-2"
+        "7, monitor:DP-2"
+        "8, monitor:DP-2"
+        "9, monitor:DP-2"
       ];
       layerrule = [
         "blur, ^(gtk-layer-shell)$"
@@ -290,7 +290,7 @@ in {
     extraConfig = ''
       monitor=,highrr,auto,1
       monitor=eDP-1,1920x1080,0x0,1
-      monitor=HDMI-A-1,1920x1080@144,0x-1080,1
+      monitor=DP-2,1920x1080@144,0x-1080,1
 
       # a submap for resizing windows
       bind = $MOD, S, submap, resize # enter resize window to resize the active window
