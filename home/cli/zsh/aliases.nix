@@ -31,7 +31,7 @@ with pkgs; {
   gpl = "curl https://www.gnu.org/licenses/gpl-3.0.txt -o LICENSE";
   agpl = "curl https://www.gnu.org/licenses/agpl-3.0.txt -o LICENSE";
   webcam = "ffplay /dev/video0";
-  deploy = "NIX_SSHOPTS=\" - p 2137 \" nixos-rebuild --target-host root@192.168.21.27 --flake .#iapetus switch";
+  deploy = "nixos-rebuild --target-host root@192.168.21.69 --flake .#iapetus switch";
   g = "git";
   n = "nix";
   mnt = "udisksctl mount -b";
