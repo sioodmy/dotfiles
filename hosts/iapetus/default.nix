@@ -11,8 +11,6 @@
     } ];
   };
 
-  sdImage.compressImage = false;
-
   nixpkgs.overlays = [
     (self: super: let
       # I hate cross compilation
