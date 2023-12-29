@@ -48,7 +48,7 @@
       (createChromiumExtension {
         # metamask
         id = "nkbihfbeogaeaoehlefnkodbefgpgknn";
-        sha256 = "sha256:1yxvjkpmnl9mpjs0ycj0wib16kzpw1xbsr9jmrrkap2kn2anzvin";
+        sha256 = "sha256:0dc7ai5mki4i9aqf3zjgm1a34j25kxr2mnxs0kg6ykfv9srjfp67";
         version = "11.7.0";
       })
       (createChromiumExtension {
