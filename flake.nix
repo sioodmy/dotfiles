@@ -112,8 +112,7 @@
     };
 
     schizofox = {
-      url = "github:schizofox/schizofox/profilefix";
-      # url = "path:/home/sioodmy/dev/schizofox";
+      url = "github:schizofox/schizofox";
       inputs = {
         nixpkgs.follows = "nixpkgs";
         flake-parts.follows = "flake-parts";
