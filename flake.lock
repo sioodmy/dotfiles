@@ -938,22 +938,6 @@
         "type": "github"
       }
     },
-    "nmd": {
-      "flake": false,
-      "locked": {
-        "lastModified": 1701431551,
-        "narHash": "sha256-5HPHG1u3koaWHG/TXHl5/YxYPYOuKc58104btrD8ypE=",
-        "owner": "~rycee",
-        "repo": "nmd",
-        "rev": "f18defadcc25e69e95b04493ee02682005472255",
-        "type": "sourcehut"
-      },
-      "original": {
-        "owner": "~rycee",
-        "repo": "nmd",
-        "type": "sourcehut"
-      }
-    },
     "pre-commit-hooks": {
       "inputs": {
         "flake-compat": "flake-compat_2",
@@ -1055,19 +1039,19 @@
         "nixpkgs": [
           "nixpkgs"
         ],
-        "nmd": "nmd",
         "searx-randomizer": "searx-randomizer"
       },
       "locked": {
-        "lastModified": 1703612155,
-        "narHash": "sha256-vcMjhfJmNkC2KTB7S5TxP+rXopxm1CnjtSMT+eVNlKY=",
+        "lastModified": 1703944243,
+        "narHash": "sha256-IIfmHF/ybw7asBfUCOx/rTvkNh0kLXIvLAeIAxMhr94=",
         "owner": "schizofox",
         "repo": "schizofox",
-        "rev": "36fb5fc89a19d11188246cf85ed7a28c7f95c88c",
+        "rev": "607fde5078ef28bea9aa6e14886404c0c13881fa",
         "type": "github"
       },
       "original": {
         "owner": "schizofox",
+        "ref": "profilefix",
         "repo": "schizofox",
         "type": "github"
       }

@@ -33,7 +33,7 @@
 
   environment.variables = {
     EDITOR = "hx";
-    BROWSER = "firefox";
+    BROWSER = "schizofox";
   };
   environment.systemPackages = with pkgs; [
     git

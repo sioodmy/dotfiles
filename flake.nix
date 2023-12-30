@@ -112,7 +112,8 @@
     };
 
     schizofox = {
-      url = "github:schizofox/schizofox";
+      url = "github:schizofox/schizofox/profilefix";
+      # url = "path:/home/sioodmy/dev/schizofox";
       inputs = {
         nixpkgs.follows = "nixpkgs";
         flake-parts.follows = "flake-parts";
@@ -183,7 +184,6 @@
     };
 
     simple-nixos-mailserver.url = "gitlab:simple-nixos-mailserver/nixos-mailserver/master";
-
   };
 }
 # see also:
