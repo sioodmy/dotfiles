@@ -5,10 +5,12 @@
 }: {
   networking = {
     hostName = "iapetus";
-    interfaces.eth0.ipv4.addresses = [ {
-      address = "192.168.21.69";
-      prefixLength = 24;
-    } ];
+    interfaces.eth0.ipv4.addresses = [
+      {
+        address = "192.168.21.69";
+        prefixLength = 24;
+      }
+    ];
   };
 
   nixpkgs.overlays = [

@@ -1,5 +1,4 @@
-{ pkgs, ...}: 
-let
+{pkgs, ...}: let
   traggo-server = pkgs.buildGoModule {
     pname = "traggo-server";
     version = "0.3.0";
@@ -10,15 +9,13 @@ let
       sha256 = "viwC2OpvAEpvDw6Cj9Os9dS7/6UlVR4Jq9ZBHL6ELSg=";
     };
     vendorHash = "";
-
   };
-in
-{
+in {
   environment = {
-    systemPackages = [ traggo-server];
+    systemPackages = [traggo-server];
     variables = {
       TRAGGO_DEFAULT_USER_NAME = "sioodmy";
-      TRAGGO_DEFAULT_USER_PASS= "sioodmy";
+      TRAGGO_DEFAULT_USER_PASS = "sioodmy";
     };
   };
 
@@ -26,14 +23,14 @@ in
 
   systemd.services.traggo = {
     description = "self-hosted tag-based time tracking";
-    wantedBy = [ "multi-user.target"];
+    wantedBy = ["multi-user.target"];
     wants = ["network.target"];
     after = [
       "network-online.target"
       "NetworkManager.service"
       "systemd-resolved.service"
     ];
-    serviceConfig= {
+    serviceConfig = {
       ExecStart = ''${traggo-server}/bin/traggo-server'';
       Restart = "always";
     };

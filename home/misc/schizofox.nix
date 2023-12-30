@@ -1,6 +1,7 @@
 {...}: {
   programs.schizofox = {
     enable = true;
+    security.sandbox = false;
     theme = {
       colors = {
         background-darker = "181825";
@@ -21,6 +22,5 @@
       searxUrl = "search.notashelf.dev";
       defaultSearchEngine = "Searx";
     };
-
   };
 }
