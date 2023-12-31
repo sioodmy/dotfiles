@@ -32,6 +32,7 @@ with pkgs; {
   agpl = "curl https://www.gnu.org/licenses/agpl-3.0.txt -o LICENSE";
   webcam = "ffplay /dev/video0";
   deploy = "nixos-rebuild --target-host root@192.168.21.69 --flake .#iapetus switch";
+  rebuild = "sudo nixos-rebuild switch --flake .#";
   g = "git";
   n = "nix";
   mnt = "udisksctl mount -b";
