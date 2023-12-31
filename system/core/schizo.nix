@@ -1,4 +1,8 @@
-{pkgs, ...}:
+{
+  pkgs,
+  lib,
+  ...
+}:
 # this makes our system more secure
 # note that it might break some stuff, eg webcam
 {
@@ -44,9 +48,13 @@
   programs.ssh.startAgent = true;
   programs.wireshark.enable = true;
   security = {
-    protectKernelImage = true;
+    # disables hibernation
+    protectKernelImage = false;
+
+    # brakes wireguard
     lockKernelModules = false;
     forcePageTableIsolation = true;
+    allowUserNamespaces = true;
 
     rtkit.enable = true;
     apparmor = {
@@ -91,89 +99,112 @@
     };
   };
 
+  # thanks to NotAShelf for commenting all of this :3
+
   boot.kernel.sysctl = {
-    # Hide kernel pointers from processes without the CAP_SYSLOG capability.
-    "kernel.kptr_restrict" = 1;
-    "kernel.printk" = "3 3 3 3";
-    # Restrict loading TTY line disciplines to the CAP_SYS_MODULE capability.
-    "dev.tty.ldisc_autoload" = 0;
-    # Make it so a user can only use the secure attention key which is required to access root securely.
-    "kernel.sysrq" = 4;
-    # Protect against SYN flooding.
-    "net.ipv4.tcp_syncookies" = 1;
-    # Protect against time-wait assasination.
-    "net.ipv4.tcp_rfc1337" = 1;
+    # The Magic SysRq key is a key combo that allows users connected to the
+    # system console of a Linux kernel to perform some low-level commands.
+    # Disable it, since we don't need it, and is a potential security concern.
+    "kernel.sysrq" = 0;
 
-    # Enable strict reverse path filtering (that is, do not attempt to route
-    # packets that "obviously" do not belong to the iface's network; dropped
-    # packets are logged as martians).
-    "net.ipv4.conf.all.log_martians" = true;
-    "net.ipv4.conf.all.rp_filter" = "1";
-    "net.ipv4.conf.default.log_martians" = true;
-    "net.ipv4.conf.default.rp_filter" = "1";
-
-    # Protect against SMURF attacks and clock fingerprinting via ICMP timestamping.
-    "net.ipv4.icmp_echo_ignore_all" = "1";
-
-    # Ignore incoming ICMP redirects (note: default is needed to ensure that the
-    # setting is applied to interfaces added after the sysctls are set)
-    "net.ipv4.conf.all.accept_redirects" = false;
-    "net.ipv4.conf.all.secure_redirects" = false;
-    "net.ipv4.conf.default.accept_redirects" = false;
-    "net.ipv4.conf.default.secure_redirects" = false;
-    "net.ipv6.conf.all.accept_redirects" = false;
-    "net.ipv6.conf.default.accept_redirects" = false;
-
-    # Ignore outgoing ICMP redirects (this is ipv4 only)
-    "net.ipv4.conf.all.send_redirects" = false;
-    "net.ipv4.conf.default.send_redirects" = false;
-
-    # Restrict abritrary use of ptrace to the CAP_SYS_PTRACE capability.
+    # Restrict ptrace() usage to processes with a pre-defined relationship
+    # (e.g., parent/child)
+    # FIXME: this breaks game launchers, find a way to launch them with privileges (steam)
+    # gamescope wrapped with the capabilities *might* solve the issue
     "kernel.yama.ptrace_scope" = 2;
+
+    # Hide kptrs even for processes with CAP_SYSLOG
+    # also prevents printing kernel pointers
+    "kernel.kptr_restrict" = 2;
+
+    # Disable bpf() JIT (to eliminate spray attacks)
     "net.core.bpf_jit_enable" = false;
+
+    # Disable ftrace debugging
     "kernel.ftrace_enabled" = false;
+
+    # Avoid kernel memory address exposures via dmesg (this value can also be set by CONFIG_SECURITY_DMESG_RESTRICT).
+    "kernel.dmesg_restrict" = 1;
+
+    # Prevent unintentional fifo writes
+    "fs.protected_fifos" = 2;
+
+    # Prevent unintended writes to already-created files
+    "fs.protected_regular" = 2;
+
+    # Disable SUID binary dump
+    "fs.suid_dumpable" = 0;
+
+    # Disallow profiling at all levels without CAP_SYS_ADMIN
+    "kernel.perf_event_paranoid" = 3;
+
+    # Require CAP_BPF to use bpf
+    "kernel.unprvileged_bpf_disabled" = 1;
   };
 
   # Security
-  boot.blacklistedKernelModules = [
+  boot.blacklistedKernelModules = lib.concatLists [
     # Obscure network protocols
-    "ax25"
-    "netrom"
-    "rose"
+    [
+      "dccp" # Datagram Congestion Control Protocol
+      "sctp" # Stream Control Transmission Protocol
+      "rds" # Reliable Datagram Sockets
+      "tipc" # Transparent Inter-Process Communication
+      "n-hdlc" # High-level Data Link Control
+      "netrom" # NetRom
+      "x25" # X.25
+      "ax25" # Amatuer X.25
+      "rose" # ROSE
+      "decnet" # DECnet
+      "econet" # Econet
+      "af_802154" # IEEE 802.15.4
+      "ipx" # Internetwork Packet Exchange
+      "appletalk" # Appletalk
+      "psnap" # SubnetworkAccess Protocol
+      "p8022" # IEEE 802.3
+      "p8023" # Novell raw IEEE 802.3
+      "can" # Controller Area Network
+      "atm" # ATM
+    ]
+
     # Old or rare or insufficiently audited filesystems
-    "adfs"
-    "affs"
-    "bfs"
-    "befs"
-    "cramfs"
-    "efs"
-    "erofs"
-    "exofs"
-    "freevxfs"
-    "f2fs"
-    "vivid"
-    "gfs2"
-    "ksmbd"
-    "nfsv4"
-    "nfsv3"
-    "cifs"
-    "nfs"
-    "cramfs"
-    "freevxfs"
-    "jffs2"
-    "hfs"
-    "hfsplus"
-    "squashfs"
-    "udf"
-    "bluetooth"
-    "btusb"
-    "hpfs"
-    "jfs"
-    "minix"
-    "nilfs2"
-    "omfs"
-    "qnx4"
-    "qnx6"
-    "sysv"
+    [
+      "adfs" # Active Directory Federation Services
+      "affs" # Amiga Fast File System
+      "befs" # "Be File System"
+      "bfs" # BFS, used by SCO UnixWare OS for the /stand slice
+      "cifs" # Common Internet File System
+      "cramfs" # compressed ROM/RAM file system
+      "efs" # Extent File System
+      "erofs" # Enhanced Read-Only File System
+      "exofs" # EXtended Object File System
+      "freevxfs" # Veritas filesystem driver
+      "f2fs" # Flash-Friendly File System
+      "vivid" # Virtual Video Test Driver (unnecessary)
+      "gfs2" # Global File System 2
+      "hpfs" # High Performance File System (used by OS/2)
+      "hfs" # Hierarchical File System (Macintosh)
+      "hfsplus" # " same as above, but with extended attributes
+      "jffs2" # Journalling Flash File System (v2)
+      "jfs" # Journaled File System - only useful for VMWare sessions
+      "ksmbd" # SMB3 Kernel Server
+      "minix" # minix fs - used by the minix OS
+      "nfsv3" # " (v3)
+      "nfsv4" # Network File System (v4)
+      "nfs" # Network File System
+      "nilfs2" # New Implementation of a Log-structured File System
+      "omfs" # Optimized MPEG Filesystem
+      "qnx4" #  extent-based file system used by the QNX4 and QNX6 OSes
+      "qnx6" # "
+      "squashfs" # compressed read-only file system (used by live CDs)
+      "sysv" # implements all of Xenix FS, SystemV/386 FS and Coherent FS.
+      "udf" # https://docs.kernel.org/5.15/filesystems/udf.html
+    ]
+
+    # Disable Thunderbolt and FireWire to prevent DMA attacks
+    [
+      "thunderbolt"
+      "firewire-core"
+    ]
   ];
 }

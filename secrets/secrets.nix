@@ -6,8 +6,12 @@ let
 
   calypso-host = "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIPhD+J2Iivt9mTVV2I79iGlqN+YQFb4PPkqle0brUKy4 root@calypso";
 
+  iapetus-host = "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAII6SEc5n1jdc9u9TLrpmZZ/3MqCrAxI/8enfkC2m/L4f root@iapetus";
+
   anthe = [anthe-user anthe-host];
   calypso = [calypso-user calypso-host];
+
+  iapetus = [anthe-user calypso-user iapetus-host];
 in {
   age.identityPaths = "/persist/home/sioodmy/.ssh/id_ed25519";
   "spotify.age".publicKeys = anthe;
@@ -16,4 +20,7 @@ in {
 
   "syncthing-calypso-key.age".publicKeys = calypso;
   "syncthing-calypso-cert.age".publicKeys = calypso;
+
+  "radicale.age".publicKeys = iapetus;
+  "radicale-pass.age".publicKeys = calypso ++ anthe;
 }

@@ -5,6 +5,7 @@
 }: {
   networking = {
     hostName = "iapetus";
+    defaultGateway = "192.168.21.1";
     interfaces.eth0.ipv4.addresses = [
       {
         address = "192.168.21.69";
