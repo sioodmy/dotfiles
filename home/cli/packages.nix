@@ -64,7 +64,7 @@
 
     figlet
     # Generate qr codes
-    qrcodegen
+    qrencode
 
     # script kidde stuff
     hcxdumptool
