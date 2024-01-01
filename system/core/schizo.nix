@@ -49,10 +49,10 @@
   programs.wireshark.enable = true;
   security = {
     # disables hibernation
-    protectKernelImage = false;
+    protectKernelImage = true;
 
     # brakes wireguard
-    lockKernelModules = false;
+    lockKernelModules = true;
     forcePageTableIsolation = true;
     allowUserNamespaces = true;
 
