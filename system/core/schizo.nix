@@ -44,7 +44,7 @@
   programs.ssh.startAgent = true;
   programs.wireshark.enable = true;
   security = {
-    protectKernelImage = true;
+    protectKernelImage = false;
     lockKernelModules = false;
     forcePageTableIsolation = true;
 

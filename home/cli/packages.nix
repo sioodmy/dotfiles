@@ -18,9 +18,6 @@
     # neofetch but for cpu's
     cpufetch
 
-    # neofetch but cooler
-    pfetch-rs
-
     # download from yt and other websites
     yt-dlp
 

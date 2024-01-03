@@ -20,7 +20,9 @@ in {
     initrd.verbose = false;
     # switch from old ass lts kernel
     kernelPackages = mkDefault pkgs.linuxPackages_latest;
-    extraModprobeConfig = "options hid_apple fnmode=1";
+    kernelParams = [
+      "psmouse.synaptics_intertouch=1"
+    ];
 
     bootspec.enable = mkDefault true;
     loader = {
