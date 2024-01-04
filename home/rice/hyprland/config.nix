@@ -106,7 +106,7 @@ in {
 
         # window swallowing
         enable_swallow = true; # hide windows that spawn other windows
-        swallow_regex = "foot|footclient"; # windows for which swallow is applied
+        swallow_regex = "^(foot)$";
 
         # dpms
         mouse_move_enables_dpms = true; # enable dpms on mouse/touchpad action
@@ -144,7 +144,7 @@ in {
       "$kw" = "dwindle:no_gaps_when_only";
 
       bind = [
-        ''$MOD,RETURN,exec,run-as-service footclient''
+        ''$MOD,RETURN,exec,run-as-service foot${lib.optionalString config.programs.foot.server.enable "client"}''
 
         "$MOD,SPACE,exec,run-as-service $(tofi-drun)"
         "$MOD,C,killactive"
