@@ -5,8 +5,7 @@
   ];
   programs.foot = {
     enable = true;
-    # doesnt work properly
-    server.enable = true;
+    server.enable = false;
     settings = {
       main = {
         app-id = "foot";
