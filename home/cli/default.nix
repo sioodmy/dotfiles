@@ -5,7 +5,7 @@
     ./starship.nix
     ./bottom.nix
     ./git.nix
-    ./tools
+    ./run-as-service.nix
     ./packages.nix
     ./xdg.nix
   ];
