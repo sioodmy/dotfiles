@@ -166,7 +166,7 @@
     "squashfs"
     "udf"
     "bluetooth"
-    "btusb"
+    # "btusb"
     "hpfs"
     "jfs"
     "minix"

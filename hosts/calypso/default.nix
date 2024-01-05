@@ -93,5 +93,12 @@ in {
     speed = 10;
     sensitivity = 20;
   };
-  hardware.opengl.extraPackages = with pkgs; [vaapiIntel libvdpau-va-gl vaapiVdpau];
+
+   hardware.bluetooth = {
+    enable = true;
+    package = pkgs.bluez5-experimental;
+  };
+  # https://github.com/NixOS/nixpkgs/issues/114222
+  systemd.user.services.telephony_client.enable = false;
+  hardware.opengl.extraPackages = with pkgs; [vaapiIntel libvdpau-va-gl vaapiVdpau  ocl-icd intel-compute-runtime ];
 }
