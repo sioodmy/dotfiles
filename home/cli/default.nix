@@ -7,5 +7,6 @@
     ./git.nix
     ./tools
     ./packages.nix
+    ./xdg.nix
   ];
 }

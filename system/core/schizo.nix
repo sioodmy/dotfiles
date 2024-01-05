@@ -42,10 +42,9 @@
   };
 
   programs.ssh.startAgent = true;
-  programs.wireshark.enable = true;
   security = {
-    protectKernelImage = false;
-    lockKernelModules = false;
+    protectKernelImage = true;
+    lockKernelModules = true;
     forcePageTableIsolation = true;
 
     rtkit.enable = true;
@@ -165,8 +164,6 @@
     "hfsplus"
     "squashfs"
     "udf"
-    "bluetooth"
-    # "btusb"
     "hpfs"
     "jfs"
     "minix"

@@ -206,6 +206,7 @@ in {
           tooltip-format = "{volume}%";
           on-click = "${pkgs.killall}/bin/killall pavucontrol || ${pkgs.pavucontrol}/bin/pavucontrol";
           format = "{icon} {volume}%";
+          format-bluetooth = "󰂯 {icon} {volume}%";
           format-muted = "󰝟 ";
           format-icons = {
             default = ["" "" " "];

@@ -162,6 +162,7 @@ in {
         "$MOD,K,movefocus,u"
         "$MOD,J,movefocus,d"
 
+        ",XF86Bluetooth, exec, bcn"
         "$MOD,M,exec,hyprctl keyword $kw $(($(hyprctl getoption $kw -j | jaq -r '.int') ^ 1))" # toggle no_gaps_when_only
         "$MOD,T,togglegroup," # group focused window
         "$MODSHIFT,G,changegroupactive," # switch within the active group
