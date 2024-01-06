@@ -38,7 +38,6 @@
 
     # networking stuff
     nmap
-    rsync
     wget
 
     # faster find

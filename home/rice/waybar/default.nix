@@ -203,7 +203,7 @@ in {
         pulseaudio = {
           scroll-step = 5;
           tooltip = true;
-          tooltip-format = "{volume}%";
+          tooltip-format = "{volume}% {format_source}";
           on-click = "${pkgs.killall}/bin/killall pavucontrol || ${pkgs.pavucontrol}/bin/pavucontrol";
           format = "{icon} {volume}%";
           format-bluetooth = "󰂯 {icon} {volume}%";
