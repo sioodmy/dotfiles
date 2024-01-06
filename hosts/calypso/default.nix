@@ -15,7 +15,7 @@
   '';
   inherit (lib) mkDefault;
 in {
-  imports = [./hardware-configuration.nix ./syncthing.nix];
+  imports = [./hardware-configuration.nix ];
   environment.systemPackages = with pkgs; [
     acpi
     powertop

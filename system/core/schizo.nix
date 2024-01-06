@@ -43,8 +43,8 @@
 
   programs.ssh.startAgent = true;
   security = {
-    protectKernelImage = true;
-    lockKernelModules = true;
+    protectKernelImage = false;
+    lockKernelModules = false;
     forcePageTableIsolation = true;
 
     rtkit.enable = true;
