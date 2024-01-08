@@ -19,7 +19,7 @@ in {
       unmanaged = ["docker0" "rndis0"];
       dns = mkIf dnscrypt "none";
       wifi = {
-        # macAddress = "random";
+        macAddress = "random";
         powersave = true;
       };
     };
