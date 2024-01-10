@@ -10,6 +10,7 @@
       };
       config = {
         hwdec = "auto";
+        osc = false;
         border = false;
       };
       scripts = with pkgs.mpvScripts; [mpris thumbnail sponsorblock];
