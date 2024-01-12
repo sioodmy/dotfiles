@@ -3,7 +3,6 @@
   programs = {
     mpv = {
       enable = true;
-      defaultProfiles = ["gpu-hq"];
       bindings = {
         UP = "add volume +2";
         DOWN = "add volume -2";

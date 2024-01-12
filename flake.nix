@@ -120,6 +120,14 @@
       };
     };
 
+    schizosearch = {
+      url = "github:sioodmy/schizosearch";
+      inputs = {
+        nixpkgs.follows = "nixpkgs";
+        flake-parts.follows = "flake-parts";
+      };
+    };
+
     crabpulsar = {
       url = "github:sioodmy/crabpulsar";
       # url = "path:/home/sioodmy/dev/crabpulsar";

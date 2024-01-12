@@ -3,6 +3,7 @@
   home.packages = with pkgs; [
     ledger-live-desktop
     ledger_agent
+    tdesktop
     calcurse
     caprine-bin
     pulseaudio
