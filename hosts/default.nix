@@ -84,6 +84,7 @@ in {
         {networking.hostName = "iapetus";}
         hw.raspberry-pi-4
         server
+        inputs.schizosearch.nixosModules.default
         ./iapetus
       ]
       ++ shared;
