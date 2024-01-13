@@ -16,7 +16,7 @@ in {
     ascii-input = false
     outline-width = 0
     border-width = 0
-    background-color = #1e1e2e
+    background-color = #1e1e2ecc
     text-color = #cdd6f4
     selection-color = #89b4fa
     min-input-width = 120
