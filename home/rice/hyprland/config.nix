@@ -26,9 +26,6 @@ in {
         # foot terminal server
         "${lib.optionalString config.programs.foot.server.enable ''run-as-service 'foot --server''}"
 
-        # scratchpads
-        "run-as-service pypr"
-
         # dirty fix for spotifyd
         "systemctl --user restart spotifyd.service"
       ];
@@ -54,6 +51,7 @@ in {
         sensitivity = 0.0;
         touchpad = {
           clickfinger_behavior = true;
+          tap-to-click = false;
           scroll_factor = 0.5;
         };
       };
@@ -150,13 +148,6 @@ in {
         "$MOD,C,killactive"
         "$MOD,P,pseudo"
 
-        # scratchpads
-        "ALT,code:9,exec, pypr toggle term && hyprctl dispatch bringactivetotop"
-        "$MOD,B,exec, pypr toggle btm && hyprctl dispatch bringactivetotop"
-        "$MOD,code:61,exec,pypr toggle spotify && hyprctl dispatch bringactivetotop"
-        "$MOD,code:21,exec,pypr zoom"
-        "$MOD,code:21,exec,hyprctl reload"
-
         "$MOD,H,movefocus,l"
         "$MOD,L,movefocus,r"
         "$MOD,K,movefocus,u"
@@ -181,7 +172,7 @@ in {
 
         "$MOD,Period,exec, tofi-emoji"
 
-        "$MODSHIFT,L,exec,gtklock" # lock screen
+        "$MODSHIFT,L,exec,swaylock --grace 0" # lock screen
       ];
 
       bindm = [
@@ -222,7 +213,9 @@ in {
       ];
       layerrule = [
         "blur, ^(gtk-layer-shell)$"
+        "blur, ^(launcher)$"
         "ignorezero, ^(gtk-layer-shell)$"
+        "ignorezero, ^(launcher)$"
         "blur, notifications"
         "ignorezero, notifications"
         "blur, bar"
@@ -330,29 +323,4 @@ in {
     '';
   };
 
-  xdg.configFile."hypr/pyprland.json".text = builtins.toJSON {
-    pyprland = {
-      plugins = ["scratchpads" "magnify"];
-    };
-    scratchpads = {
-      term = {
-        command = "foot --title scratchpad";
-        margin = 50;
-        unfocus = "hide";
-        animation = "fromTop";
-      };
-      btm = {
-        command = "foot --title scratchpad -e btm";
-        margin = 50;
-        unfocus = "hide";
-        animation = "fromTop";
-      };
-      spotify = {
-        command = "foot --title scratchpad-spotify -e sh -c 'systemctl --user restart spotifyd; sleep 1; spt'";
-        margin = 50;
-        unfocus = "hide";
-        animation = "fromTop";
-      };
-    };
-  };
 }

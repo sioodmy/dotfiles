@@ -19,7 +19,7 @@ in {
     consoleLogLevel = mkDefault 0;
     initrd.verbose = false;
     # switch from old ass lts kernel
-    kernelPackages = mkDefault pkgs.linuxPackages_latest;
+    kernelPackages = mkDefault pkgs.linuxPackages_xanmod_latest;
     kernelParams = [
       "psmouse.synaptics_intertouch=1"
     ];
