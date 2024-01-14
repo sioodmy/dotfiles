@@ -15,7 +15,10 @@
       ];
 
       imports = [
-        {config._module.args._inputs = inputs // {inherit (inputs) self;};}
+        {
+        config._module.args._inputs = inputs // {inherit (inputs) self;};
+        }
+
 
         inputs.flake-parts.flakeModules.easyOverlay
         inputs.pre-commit-hooks.flakeModule
