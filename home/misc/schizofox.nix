@@ -1,4 +1,4 @@
-{...}: {
+{theme, ...}: {
   programs.schizofox = {
     enable = true;
     security = {
@@ -6,11 +6,11 @@
       sandbox = false;
     };
     theme = {
-      colors = {
-        background-darker = "181825";
-        background = "1e1e2e";
-        foreground = "cdd6f4";
-        primary = "f5c2e7";
+      colors = with theme.colors; {
+        background-darker = mantle;
+        background = base;
+        foreground = text;
+        primary = accent;
       };
       font = "Lexend";
     };

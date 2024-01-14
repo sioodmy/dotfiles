@@ -1,4 +1,4 @@
-{pkgs, ...}: {
+{pkgs, theme, ...}: {
   home.packages = with pkgs; [
     libsixel
     # for displaying images
@@ -46,28 +46,28 @@
 
         uri-characters = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789-_.,~:;/?#@!$&%*+=\"'()[]";
       };
-      colors = {
+      colors = with theme.colors; {
         alpha = "0.8";
-        foreground = "cdd6f4";
-        background = "1e1e2e";
+        foreground = text;
+        background = base;
 
-        regular0 = "45475a";
-        regular1 = "f38ba8";
-        regular2 = "a6e3a1";
-        regular3 = "f9e2af";
-        regular4 = "89b4fa";
-        regular5 = "f5c2e7";
-        regular6 = "94e2d5";
-        regular7 = "bac2de";
+        regular0 = surface1;
+        regular1 = red;
+        regular2 = green;
+        regular3 = yellow;
+        regular4 = blue;
+        regular5 = pink;
+        regular6 = teal;
+        regular7 = subtext1;
 
-        bright0 = "585b70";
-        bright1 = "f38ba8";
-        bright2 = "a6e3a1";
-        bright3 = "f9e2af";
-        bright4 = "89b4fa";
-        bright5 = "f5c2e7";
-        bright6 = "94e2d5";
-        bright7 = "a6adc8";
+        bright0 = surface2;
+        bright1 = red;
+        bright2 = green;
+        bright3 = yellow;
+        bright4 = blue;
+        bright5 = pink;
+        bright6 = teal;
+        bright7 = subtext0;
       };
       mouse = {
         hide-when-typing = "yes";

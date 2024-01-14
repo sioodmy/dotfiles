@@ -23,7 +23,11 @@
       inherit inputs;
       inherit self;
     };
-    users.sioodmy = ../home;
+    users.sioodmy = {
+      imports = [ ../home];
+      
+   _module.args.theme = import ../theme;
+    };
   };
 in {
   # all my hosts are named after saturn moons btw
