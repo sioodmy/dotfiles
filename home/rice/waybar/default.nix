@@ -2,6 +2,7 @@
   pkgs,
   lib,
   config,
+  theme,
   ...
 }: let
   mullvad-status =
@@ -11,7 +12,7 @@
       mullvad status | awk '{print $1;}'
     '';
 in {
-  xdg.configFile."waybar/style.css".text = import ./style.nix;
+  xdg.configFile."waybar/style.css".text = import ./style.nix {inherit theme;};
   programs.waybar = {
     enable = true;
     package = pkgs.waybar;

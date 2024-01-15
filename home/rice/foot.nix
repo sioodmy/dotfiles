@@ -1,4 +1,8 @@
-{pkgs, theme, ...}: {
+{
+  pkgs,
+  theme,
+  ...
+}: {
   home.packages = with pkgs; [
     libsixel
     # for displaying images

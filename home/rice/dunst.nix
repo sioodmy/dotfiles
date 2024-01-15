@@ -1,4 +1,7 @@
-{pkgs, ...}: {
+{pkgs, theme, ...}: 
+let 
+  inherit (theme) x;
+in{
   services.dunst = {
     enable = true;
     package = pkgs.dunst.overrideAttrs (_: {
@@ -13,10 +16,10 @@
       package = pkgs.catppuccin-papirus-folders;
       name = "Papirus";
     };
-    settings = {
+    settings = with theme.colors; {
       global = {
-        frame_color = "#f4b8e495";
-        separator_color = "#f4b8e4";
+        frame_color = "#${pink}95";
+        separator_color = x pink;
         width = 220;
         height = 280;
         offset = "0x15";
@@ -38,23 +41,23 @@
         transparency = 10;
         progress_bar = true;
         progress_bar_frame_width = 0;
-        highlight = "#f4b8e4";
+        highlight = x pink;
       };
       fullscreen_delay_everything.fullscreen = "delay";
       urgency_low = {
-        background = "#1e1e2e83";
-        foreground = "#c6d0f5";
+        background = "#${base}83";
+        foreground = x text;
         timeout = 5;
       };
       urgency_normal = {
-        background = "#1e1e2e83";
+        background = "#${base}83";
         foreground = "#c6d0f5";
         timeout = 6;
       };
       urgency_critical = {
-        background = "#1e1e2e83";
-        foreground = "#c6d0f5";
-        frame_color = "#ea999c80";
+        background = "#${base}83";
+        foreground = x text;
+        frame_color = "#${red}80";
         timeout = 0;
       };
     };
