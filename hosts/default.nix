@@ -24,9 +24,9 @@
       inherit self;
     };
     users.sioodmy = {
-      imports = [ ../home];
-      
-   _module.args.theme = import ../theme;
+      imports = [../home];
+
+      _module.args.theme = import ../theme;
     };
   };
 in {

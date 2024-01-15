@@ -12,7 +12,6 @@
     fi
   '';
 in {
-
   programs.swaylock = {
     package = pkgs.swaylock-effects;
     settings = {
@@ -55,7 +54,7 @@ in {
   services.swayidle = {
     enable = true;
     events = [
-          {
+      {
         event = "before-sleep";
         command = "${pkgs.swaylock-effects}/bin/swaylock -fF";
       }

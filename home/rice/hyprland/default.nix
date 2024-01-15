@@ -2,6 +2,7 @@
   pkgs,
   lib,
   inputs,
+  theme,
   ...
 }:
 with lib; let
@@ -13,49 +14,48 @@ with lib; let
 in {
   imports = [./config.nix];
   home.packages = with pkgs;
-  with inputs.hyprcontrib.packages.${pkgs.system};
-  [
-      libnotify
-      wf-recorder
-      brightnessctl
-      pamixer
-      python39Packages.requests
-      slurp
-      grim
-      hyprpicker
-      swappy
-      grimblast
-      hyprpicker
-      wl-clip-persist
-      wl-clipboard
-      pngquant
-      cliphist
-      (writeShellScriptBin
-        "pauseshot"
-        ''
-          ${hyprpicker}/bin/hyprpicker -r -z &
-          picker_proc=$!
+  with inputs.hyprcontrib.packages.${pkgs.system}; [
+    libnotify
+    wf-recorder
+    brightnessctl
+    pamixer
+    python39Packages.requests
+    slurp
+    grim
+    hyprpicker
+    swappy
+    grimblast
+    hyprpicker
+    wl-clip-persist
+    wl-clipboard
+    pngquant
+    cliphist
+    (writeShellScriptBin
+      "pauseshot"
+      ''
+        ${hyprpicker}/bin/hyprpicker -r -z &
+        picker_proc=$!
 
-          ${grimblast}/bin/grimblast save area - | tee ~/pics/ss$(date +'screenshot-%F') | wl-copy
+        ${grimblast}/bin/grimblast save area - | tee ~/pics/ss$(date +'screenshot-%F') | wl-copy
 
-          kill $picker_proc
-        '')
-      (
-        writeShellScriptBin "micmute"
-        ''
-          #!/bin/sh
+        kill $picker_proc
+      '')
+    (
+      writeShellScriptBin "micmute"
+      ''
+        #!/bin/sh
 
-          # shellcheck disable=SC2091
-          if $(pamixer --default-source --get-mute); then
-            pamixer --default-source --unmute
-            sudo mic-light-off
-          else
-            pamixer --default-source --mute
-            sudo mic-light-on
-          fi
-        ''
-      )
-    ];
+        # shellcheck disable=SC2091
+        if $(pamixer --default-source --get-mute); then
+          pamixer --default-source --unmute
+          sudo mic-light-off
+        else
+          pamixer --default-source --mute
+          sudo mic-light-on
+        fi
+      ''
+    )
+  ];
 
   wayland.windowManager.hyprland = {
     enable = true;
@@ -91,7 +91,7 @@ in {
     swaybg = mkService {
       Unit.Description = "Wallpaper chooser";
       Service = {
-        ExecStart = "${lib.getExe pkgs.swaybg} -i ${./wall.png}";
+        ExecStart = "${lib.getExe pkgs.swaybg} -i ${theme.wallpaper}";
         Restart = "always";
       };
     };

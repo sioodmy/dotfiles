@@ -16,9 +16,8 @@
 
       imports = [
         {
-        config._module.args._inputs = inputs // {inherit (inputs) self;};
+          config._module.args._inputs = inputs // {inherit (inputs) self;};
         }
-
 
         inputs.flake-parts.flakeModules.easyOverlay
         inputs.pre-commit-hooks.flakeModule
@@ -175,25 +174,14 @@
       url = "github:oxalica/rust-overlay";
       inputs.nixpkgs.follows = "nixpkgs";
     };
-    shadower = {
-      url = "github:n3oney/shadower";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
     home-manager = {
       url = "github:nix-community/home-manager";
       inputs.nixpkgs.follows = "nixpkgs";
-    };
-    home-manager-wsl = {
-      url = "github:viperML/home-manager-wsl";
-      inputs.nixpkgs.follows = "nixpkgs";
-      inputs.home-manager.follows = "home-manager";
     };
     pre-commit-hooks = {
       url = "github:cachix/pre-commit-hooks.nix";
       inputs.nixpkgs.follows = "nixpkgs";
     };
-
-    simple-nixos-mailserver.url = "gitlab:simple-nixos-mailserver/nixos-mailserver/master";
   };
 }
 # see also:
