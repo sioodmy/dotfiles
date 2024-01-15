@@ -1,6 +1,6 @@
 {
   # convert rrggbb hex to #rrggbb
-  x = c: "#${c}";
+  x= c: "#${c}";
 
   colors = rec {
     rosewater = "f5e0dc";

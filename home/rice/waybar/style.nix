@@ -15,11 +15,9 @@ in
       window#waybar {
         background-color: rgba(24, 24, 37, 0.8);
         border-radius: 0px;
-    /*    margin: 32px 16px; */
-        color: #cdd6f4;
+        color: ${x text};
         box-shadow: 2px 3px 2px 2px #151515;
         font-size: 14px;
-        /* transition-property: background-color; */
         transition-property: background-color;
         transition-duration: 0.5s;
       }
