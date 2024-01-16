@@ -7,8 +7,11 @@
         UP = "add volume +2";
         DOWN = "add volume -2";
       };
+      # https://wiki.archlinux.org/title/mpv#Hardware_video_acceleration
       config = {
-        hwdec = "auto";
+        hwdec = "auto-safe";
+        gpu-context = "wayland";
+        profile = "gpu-hq";
         osc = false;
         border = false;
       };

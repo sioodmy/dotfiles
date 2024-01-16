@@ -5,16 +5,8 @@
 }: let
   pointer = config.home.pointerCursor;
 in {
-  # mostly borrwed from https://github.com/fufexan/dotfiles/blob/main/home/wayland/hyprland/config.nix (and raf)
-  # thanks fufie <3
   wayland.windowManager.hyprland = {
     settings = {
-      # define the mod key
-      "$MOD" = "SUPER";
-      "$scratchpad" = "title:^.*scratchpad.*$";
-      "$spotify" = "title:^.*scratchpad-spotify.*$";
-      "$pavucontrol" = "class:^(pavucontrol)$";
-
       exec-once = [
         "dbus-update-activation-environment --systemd WAYLAND_DISPLAY XDG_CURRENT_DESKTOP"
         # set cursor for HL itself
@@ -25,9 +17,6 @@ in {
 
         # foot terminal server
         "${lib.optionalString config.programs.foot.server.enable ''run-as-service 'foot --server''}"
-
-        # dirty fix for spotifyd
-        "systemctl --user restart spotifyd.service"
       ];
 
       gestures = {
@@ -43,11 +32,7 @@ in {
         # keyboard layout
         kb_layout = "pl";
         kb_options = "caps:escape";
-        # self explanatory, I hope?
         follow_mouse = 1;
-        # do not imitate natural scroll
-
-        # sensitivity of the mouse cursor
         sensitivity = 0.0;
         touchpad = {
           clickfinger_behavior = true;
@@ -62,7 +47,7 @@ in {
         gaps_out = 11;
 
         # border thiccness
-        border_size = 2;
+        border_size = 3;
 
         # active border color
         "col.active_border" = "rgb(89b4fa) rgb(cba6f7) 270deg";
@@ -141,65 +126,6 @@ in {
 
       "$kw" = "dwindle:no_gaps_when_only";
 
-      bind = [
-        ''$MOD,RETURN,exec,run-as-service foot${lib.optionalString config.programs.foot.server.enable "client"}''
-
-        "$MOD,SPACE,exec,run-as-service $(tofi-drun)"
-        "$MOD,C,killactive"
-        "$MOD,P,pseudo"
-
-        "$MOD,H,movefocus,l"
-        "$MOD,L,movefocus,r"
-        "$MOD,K,movefocus,u"
-        "$MOD,J,movefocus,d"
-
-        ",XF86Bluetooth, exec, bcn"
-        "$MOD,M,exec,hyprctl keyword $kw $(($(hyprctl getoption $kw -j | jaq -r '.int') ^ 1))" # toggle no_gaps_when_only
-        "$MOD,T,togglegroup," # group focused window
-        "$MODSHIFT,G,changegroupactive," # switch within the active group
-        "$MOD,V,togglefloating," # toggle floating for the focused window
-        "$MOD,F,fullscreen," # fullscreen focused window
-
-        # workspace controls
-        "$MODSHIFT,right,movetoworkspace,+1" # move focused window to the next ws
-        "$MODSHIFT,left,movetoworkspace,-1" # move focused window to the previous ws
-        "$MOD,mouse_down,workspace,e+1" # move to the next ws
-        "$MOD,mouse_up,workspace,e-1" # move to the previous ws
-
-        "$MOD,Print,exec, pauseshot"
-        ",Print,exec, grim - | wl-copy"
-        "$MODSHIFT,O,exec,wl-ocr"
-
-        "$MOD,Period,exec, tofi-emoji"
-
-        "$MODSHIFT,L,exec,swaylock --grace 0" # lock screen
-      ];
-
-      bindm = [
-        "$MOD,mouse:272,movewindow"
-        "$MOD,mouse:273,resizewindow"
-      ];
-
-      binde = [
-        # volume controls
-        ",XF86AudioRaiseVolume, exec, pamixer -i 5"
-        ",XF86AudioLowerVolume, exec, pamixer -d 5"
-        ",XF86AudioMute, exec, pamixer -t"
-        ",XF86AudioMicMute, exec, micmute"
-
-        # brightness controls
-        ",XF86MonBrightnessUp, exec, brightnessctl set +10%"
-        ",XF86MonBrightnessDown, exec, brightnessctl set 10%-"
-        "SUPERALT, L, resizeactive, 80 0"
-        "SUPERALT, H, resizeactive, -80 0"
-      ];
-      # binds that are locked, a.k.a will activate even while an input inhibitor is active
-      bindl = [
-        # media controls
-        ",XF86AudioPlay,exec,playerctl play-pause"
-        ",XF86AudioPrev,exec,playerctl previous"
-        ",XF86AudioNext,exec,playerctl next"
-      ];
       workspace = [
         "1, monitor:eDP-1"
         "2, monitor:eDP-1"
@@ -211,115 +137,11 @@ in {
         "8, monitor:DP-2"
         "9, monitor:DP-2"
       ];
-      layerrule = [
-        "blur, ^(gtk-layer-shell)$"
-        "blur, ^(launcher)$"
-        "ignorezero, ^(gtk-layer-shell)$"
-        "ignorezero, ^(launcher)$"
-        "blur, notifications"
-        "ignorezero, notifications"
-        "blur, bar"
-        "ignorezero, bar"
-        "ignorezero, ^(gtk-layer-shell|anyrun)$"
-        "blur, ^(gtk-layer-shell|anyrun)$"
-        "noanim, launcher"
-        "noanim, bar"
-      ];
-      windowrulev2 = [
-        # only allow shadows for floating windows
-        "noshadow, floating:0"
-        "tile, title:Spotify"
-        "fullscreen,class:wlogout"
-        "fullscreen,title:wlogout"
-
-        # scratchpad
-        "float,$scratchpad"
-        "size 80% 85%,$scratchpad"
-        "workspace special silent,$scratchpad"
-        "center,$scratchpad"
-
-        "bordercolor rgb(a6e3a1),$spotify"
-        "bordersize 4,$spotify"
-
-        # telegram media viewer
-        "float, title:^(Media viewer)$"
-
-        "idleinhibit focus, class:^(mpv)$"
-        "idleinhibit focus,class:foot"
-
-        "idleinhibit fullscreen, class:^(firefox)$"
-        "float, title:^(Picture-in-Picture)$"
-        "pin, title:^(Picture-in-Picture)$"
-
-        "float,class:udiskie"
-
-        "opacity 0.85 0.85,class:^(firefox)$"
-        "opacity 0.8 0.8,class:^(org.keepassxc.KeePassXC)$"
-
-        # pavucontrol
-        "float,$pavucontrol"
-        "size 86% 40%,$pavucontrol"
-        "move 50% 6%,$pavucontrol"
-        "workspace special silent,$pavucontrol"
-        "opacity 0.80,$pavucontrol"
-
-        "opacity 0.80,title:^(Spotify)$"
-
-        "opacity 0.9,class:^(org.keepassxc.KeePassXC)$"
-
-        "float, class:^(imv)$"
-
-        # throw sharing indicators away
-        "workspace special silent, title:^(Firefox — Sharing Indicator)$"
-        "workspace special silent, title:^(.*is sharing (your screen|a window)\.)$"
-
-        "workspace 4, title:^(.*(Disc|WebC)ord.*)$"
-        "tile, class:^(Spotify)$"
-        "workspace 3, title:^(Spotify)$"
-        "workspace 2, class:^(firefox)$"
-
-        "workspace 10 silent, class:^(Nextcloud)$"
+      monitor = [
+        ",highrr,auto,1"
+        "eDP-1,1920x1080,0x0,1"
+        "DP-2,1920x1080@144,0x-1080,1"
       ];
     };
-    extraConfig = ''
-      monitor=,highrr,auto,1
-      monitor=eDP-1,1920x1080,0x0,1
-      monitor=DP-2,1920x1080@144,0x-1080,1
-
-      # a submap for resizing windows
-      bind = $MOD, S, submap, resize # enter resize window to resize the active window
-
-      submap=resize
-      binde=,right,resizeactive,10 0
-      binde=,left,resizeactive,-10 0
-      binde=,up,resizeactive,0 -10
-      binde=,down,resizeactive,0 10
-      bind=,escape,submap,reset
-      submap=reset
-
-      # workspace binds
-      # binds * (asterisk) to special workspace
-      bind = $MOD, KP_Multiply, togglespecialworkspace
-      bind = $MODSHIFT, KP_Multiply, movetoworkspace, special
-
-      # and mod + [shift +] {1..10} to [move to] ws {1..10}
-      ${
-        builtins.concatStringsSep
-        "\n"
-        (builtins.genList (
-            x: let
-              ws = let
-                c = (x + 1) / 10;
-              in
-                builtins.toString (x + 1 - (c * 10));
-            in ''
-              bind = $MOD, ${ws}, workspace, ${toString (x + 1)}
-              bind = $MOD SHIFT, ${ws}, movetoworkspace, ${toString (x + 1)}
-            ''
-          )
-          10)
-      }
-
-    '';
   };
 }
