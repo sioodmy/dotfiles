@@ -84,57 +84,6 @@ in {
           exec = "${weather}/bin/weather";
           return-type = "json";
         };
-        "custom/crypto" = let
-          crypto = pkgs.stdenv.mkDerivation {
-            name = "waybar-wttr";
-            buildInputs = [
-              (pkgs.python39.withPackages
-                (pythonPackages: with pythonPackages; [requests]))
-            ];
-            unpackPhase = "true";
-            installPhase = ''
-              mkdir -p $out/bin
-              cp ${./crypto.py} $out/bin/crypto
-              chmod +x $out/bin/crypto
-            '';
-          };
-        in {
-          format = "{}";
-          tooltip = true;
-          interval = 30;
-          exec = "${crypto}/bin/crypto";
-          return-type = "json";
-        };
-        "custom/vpn" = {
-          format = " VPN {}";
-          tooltip = true;
-          interval = 1;
-          exec = "${lib.getBin mullvad-status}/mullvad-status";
-        };
-        "custom/lock" = {
-          tooltip = false;
-          on-click = "sh -c '(sleep 0.5s; ${pkgs.gtklock}/bin/gtklock)' & disown";
-          format = "";
-        };
-        "custom/swallow" = {
-          tooltip = false;
-          on-click = let
-            hyprctl = config.wayland.windowManager.hyprland.package + "/bin/hyprctl";
-            notify-send = pkgs.libnotify + "/bin/notify-send";
-            rg = pkgs.ripgrep + "/bin/rg";
-          in
-            pkgs.writeShellScript "waybar-swallow" ''
-              #!/bin/sh
-              if ${hyprctl} getoption misc:enable_swallow | ${rg}/bin/rg -q "int: 1"; then
-              	${hyprctl} keyword misc:enable_swallow false >/dev/null &&
-              		${notify-send} "Hyprland" "Turned off swallowing"
-              else
-              	${hyprctl} keyword misc:enable_swallow true >/dev/null &&
-              		${notify-send} "Hyprland" "Turned on swallowing"
-              fi
-            '';
-          format = "󰘻";
-        };
         "custom/power" = {
           tooltip = false;
           # TODO
