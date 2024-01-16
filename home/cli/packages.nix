@@ -21,6 +21,9 @@
     # download from yt and other websites
     yt-dlp
 
+    # man pages for tiktok attention span mfs
+    tealdeer
+
     # markdown previewer
     glow
 
