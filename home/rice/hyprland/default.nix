@@ -12,7 +12,7 @@ with lib; let
     Install.WantedBy = ["graphical-session.target"];
   };
 in {
-  imports = [./config.nix];
+  imports = [./config.nix ./binds.nix ./rules.nix];
   home.packages = with pkgs;
   with inputs.hyprcontrib.packages.${pkgs.system}; [
     libnotify
@@ -60,12 +60,16 @@ in {
   wayland.windowManager.hyprland = {
     enable = true;
     package = inputs.hyprland.packages.${pkgs.system}.default;
-    systemd.enable = true;
+    systemd = {
+      variables = ["--all"];
+      extraCommands = [
+        "systemctl --user stop graphical-session.target"
+        "systemctl --user start hyprland-session.target"
+      ];
+    };
   };
 
   services = {
-    # TODO
-    crabpulsar.enable = false;
     wlsunset = {
       # TODO: fix opaque red screen issue
       enable = true;
@@ -92,13 +96,6 @@ in {
       Unit.Description = "Wallpaper chooser";
       Service = {
         ExecStart = "${lib.getExe pkgs.swaybg} -i ${theme.wallpaper}";
-        Restart = "always";
-      };
-    };
-    cliphist = mkService {
-      Unit.Description = "Clipboard history";
-      Service = {
-        ExecStart = "${pkgs.wl-clipboard}/bin/wl-paste --watch ${lib.getBin pkgs.cliphist}/cliphist store";
         Restart = "always";
       };
     };
