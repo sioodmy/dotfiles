@@ -9,7 +9,11 @@
       };
       # https://wiki.archlinux.org/title/mpv#Hardware_video_acceleration
       config = {
+        hwdec = "auto-safe";
         gpu-context = "wayland";
+        vo = "gpu";
+        profile = "gpu-hq";
+
         osc = false;
         border = false;
       };

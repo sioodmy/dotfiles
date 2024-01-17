@@ -131,8 +131,8 @@
     };
 
     crabpulsar = {
-      url = "github:sioodmy/crabpulsar";
-      # url = "path:/home/sioodmy/dev/crabpulsar";
+      # url = "github:sioodmy/crabpulsar";
+      url = "path:/home/sioodmy/dev/barbie";
       inputs = {
         nixpkgs.follows = "nixpkgs";
         flake-parts.follows = "flake-parts";

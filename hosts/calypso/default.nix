@@ -100,5 +100,11 @@ in {
   };
   # https://github.com/NixOS/nixpkgs/issues/114222
   systemd.user.services.telephony_client.enable = false;
-  hardware.opengl.extraPackages = with pkgs; [vaapiIntel libvdpau-va-gl vaapiVdpau ocl-icd intel-compute-runtime];
+  hardware.opengl = {
+    extraPackages = with pkgs; [vaapiIntel libva libvdpau-va-gl vaapiVdpau ocl-icd intel-compute-runtime];
+    extraPackages32 = with pkgs.pkgsi686Linux; [
+      vaapiVdpau
+      libvdpau-va-gl
+    ];
+  };
 }
