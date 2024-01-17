@@ -70,6 +70,7 @@ in {
   };
 
   services = {
+    crabpulsar.enable = true;
     wlsunset = {
       # TODO: fix opaque red screen issue
       enable = true;

@@ -38,17 +38,14 @@
         ]
       },
       "locked": {
-        "lastModified": 1702837593,
-        "narHash": "sha256-vatpLNDxiIqHSaOhwLwxUY7vf3nnJEKLrk1IyYteU+0=",
-        "owner": "sioodmy",
-        "repo": "crabpulsar",
-        "rev": "86a656b364261eddb0c08e2fca6a0b2f76d7b6ff",
-        "type": "github"
+        "lastModified": 1705448741,
+        "narHash": "sha256-caIT1JdR3UxZ09Q4ivFpvNrwpu5FuB6QcKGtxeJjJik=",
+        "path": "/home/sioodmy/dev/barbie",
+        "type": "path"
       },
       "original": {
-        "owner": "sioodmy",
-        "repo": "crabpulsar",
-        "type": "github"
+        "path": "/home/sioodmy/dev/barbie",
+        "type": "path"
       }
     },
     "crane": {

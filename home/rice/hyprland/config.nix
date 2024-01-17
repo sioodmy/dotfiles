@@ -12,9 +12,6 @@ in {
         # set cursor for HL itself
         "hyprctl setcursor ${pointer.name} ${toString pointer.size}"
 
-        # bar
-        "run-as-service waybar"
-
         # foot terminal server
         "${lib.optionalString config.programs.foot.server.enable ''run-as-service 'foot --server''}"
       ];
