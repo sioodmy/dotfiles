@@ -2,13 +2,14 @@
   # credits: neoney
   xdg.configFile."VencordDesktop/VencordDesktop/themes/Catppuccin.theme.css".source = ./theme.css;
   home.packages = [
-    (pkgs.vesktop.overrideAttrs (old: {
-      patches = (old.patches or []) ++ [./readonlyFix.patch];
-      postFixup = ''
-        wrapProgram $out/bin/vencorddesktop \
-          --add-flags "--enable-features=UseOzonePlatform --ozone-platform=wayland"
-      '';
-    }))
+    pkgs.vesktop
+    # (pkgs.vesktop.overrideAttrs (old: {
+    #   patches = (old.patches or []) ++ [./readonlyFix.patch];
+    #   postFixup = ''
+    #     wrapProgram $out/bin/vencorddesktop \
+    #       --add-flags "--enable-features=UseOzonePlatform --ozone-platform=wayland"
+    #   '';
+    # }))
   ];
 
   xdg.configFile."VencordDesktop/VencordDesktop/settings.json".text = builtins.toJSON {
