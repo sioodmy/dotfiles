@@ -9,7 +9,7 @@
   config.home.extraOutputsToInstall = ["doc" "devdoc"];
   imports = [
     inputs.nix-index-db.hmModules.nix-index
-    inputs.crabpulsar.homeManagerModule
+    inputs.barbie.homeManagerModule
     inputs.schizofox.homeManagerModule
     inputs.impermanence.nixosModules.home-manager.impermanence
     ./packages.nix

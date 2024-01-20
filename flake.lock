@@ -38,14 +38,17 @@
         ]
       },
       "locked": {
-        "lastModified": 1705750929,
-        "narHash": "sha256-+PEqsk/RU4iWLLavhOpnLYxzjkW7d4qlIoJJw5RVuZM=",
-        "path": "/home/sioodmy/dev/barbie",
-        "type": "path"
+        "lastModified": 1705790858,
+        "narHash": "sha256-qkVy5EofsU3MjkBznEwvF1lxxOCYKts+HAtpbsz5AXU=",
+        "owner": "sioodmy",
+        "repo": "barbie",
+        "rev": "a00d42135deca2ee813da3421106f4db6ab50af4",
+        "type": "github"
       },
       "original": {
-        "path": "/home/sioodmy/dev/barbie",
-        "type": "path"
+        "owner": "sioodmy",
+        "repo": "barbie",
+        "type": "github"
       }
     },
     "crane": {
@@ -559,11 +562,11 @@
         "xdph": "xdph"
       },
       "locked": {
-        "lastModified": 1705738587,
-        "narHash": "sha256-oIt4bUVXRR7qnBPizcPA7fTiZl4xz9QaSdzLNukjtkw=",
+        "lastModified": 1705782792,
+        "narHash": "sha256-AnNvfQK3BQtri7JUmTsaAWAOBzCxEf5t3VaGm0Kezjk=",
         "owner": "hyprwm",
         "repo": "Hyprland",
-        "rev": "f40e382fc6208d4fe2e53581ea27510cb62417dd",
+        "rev": "4d403dac3244aab217fb9bf17a68e9a009fcadd8",
         "type": "github"
       },
       "original": {
@@ -821,11 +824,11 @@
     },
     "nixpkgs": {
       "locked": {
-        "lastModified": 1705496572,
-        "narHash": "sha256-rPIe9G5EBLXdBdn9ilGc0nq082lzQd0xGGe092R/5QE=",
+        "lastModified": 1705677747,
+        "narHash": "sha256-eyM3okYtMgYDgmYukoUzrmuoY4xl4FUujnsv/P6I/zI=",
         "owner": "nixos",
         "repo": "nixpkgs",
-        "rev": "842d9d80cfd4560648c785f8a4e6f3b096790e19",
+        "rev": "bbe7d8f876fbbe7c959c90ba2ae2852220573261",
         "type": "github"
       },
       "original": {
@@ -894,11 +897,11 @@
         ]
       },
       "locked": {
-        "lastModified": 1705767577,
-        "narHash": "sha256-30YJynNwoOSgb/xXt76yBivpDU+MRIc9aSDH9M3ASWI=",
+        "lastModified": 1705788875,
+        "narHash": "sha256-Bq2eSJkJbPFFdR55REZQ/80DZISuaL7LmUMHGJYzexQ=",
         "owner": "nix-community",
         "repo": "nixpkgs-wayland",
-        "rev": "8746c828fc9a1e52903063203e330cd62cbee402",
+        "rev": "e2a53b769952c6a695e52408cf1cd392bc644208",
         "type": "github"
       },
       "original": {

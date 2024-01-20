@@ -130,9 +130,8 @@
       };
     };
 
-    crabpulsar = {
-      # url = "github:sioodmy/crabpulsar";
-      url = "path:/home/sioodmy/dev/barbie";
+    barbie = {
+      url = "github:sioodmy/barbie";
       inputs = {
         nixpkgs.follows = "nixpkgs";
         flake-parts.follows = "flake-parts";
