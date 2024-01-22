@@ -64,14 +64,14 @@ in {
 
     binde = [
       # volume controls
-      ",XF86AudioRaiseVolume, exec, pamixer -i 5"
-      ",XF86AudioLowerVolume, exec, pamixer -d 5"
+      ",XF86AudioRaiseVolume, exec, nc -U /tmp/barbie-vol.sock; pamixer -i 5"
+      ",XF86AudioLowerVolume, exec, nc -U /tmp/barbie-vol.sock; pamixer -d 5"
       ",XF86AudioMute, exec, pamixer -t"
       ",XF86AudioMicMute, exec, micmute"
 
       # brightness controls
-      ",XF86MonBrightnessUp, exec, brightnessctl set +10%"
-      ",XF86MonBrightnessDown, exec, brightnessctl set 10%-"
+      ",XF86MonBrightnessUp, exec, nc -U /tmp/barbie-bl.sock; brightnessctl set +10%"
+      ",XF86MonBrightnessDown, exec, nc -U /tmp/barbie-bl.sock; brightnessctl set 10%-"
       "SUPERALT, L, resizeactive, 80 0"
       "SUPERALT, H, resizeactive, -80 0"
     ];
