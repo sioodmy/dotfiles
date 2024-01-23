@@ -33,5 +33,5 @@
     accent = pink;
   };
 
-  wallpaper = ./wall.png;
+  wallpaper = ./wall.jpg;
 }

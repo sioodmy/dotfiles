@@ -44,7 +44,7 @@ in {
         gaps_out = 11;
 
         # border thiccness
-        border_size = 3;
+        border_size = 2;
 
         # active border color
         "col.active_border" = "rgb(89b4fa) rgb(cba6f7) 270deg";
