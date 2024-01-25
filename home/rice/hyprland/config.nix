@@ -1,11 +1,12 @@
 {
   config,
+  theme,
   lib,
   ...
 }: let
   pointer = config.home.pointerCursor;
 in {
-  wayland.windowManager.hyprland = {
+  wayland.windowManager.hyprland = with theme.colors; {
     settings = {
       exec-once = [
         "dbus-update-activation-environment --systemd WAYLAND_DISPLAY XDG_CURRENT_DESKTOP"
@@ -47,7 +48,8 @@ in {
         border_size = 2;
 
         # active border color
-        "col.active_border" = "rgb(89b4fa) rgb(cba6f7) 270deg";
+        "col.active_border" = "rgb(${accent})";
+        "col.inactive_border" = "rgb(${surface0})";
 
         # whether to apply the sensitivity to raw input (e.g. used by games where you aim using your mouse)
         apply_sens_to_raw = 0;
@@ -55,7 +57,7 @@ in {
 
       decoration = {
         # fancy corners
-        rounding = 7;
+        rounding = 0;
 
         # blur
         blur = {
@@ -139,6 +141,20 @@ in {
         "eDP-1,1920x1080,0x0,1"
         "DP-2,1920x1080@144,0x-1080,1"
       ];
+         "plugin:borders-plus-plus" = {
+      add_borders = 1; # 0 - 9
+
+      # you can add up to 9 borders
+      "col.border_1" = "rgb(${theme.colors.base})";
+      "col.border_2" = "rgb(${theme.colors.base})";
+
+      # -1 means "default" as in the one defined in general:border_size
+      border_size_1 = 10;
+      border_size_2 = -1;
+
+      # makes outer edges match rounding of the parent. Turn on / off to better understand. Default = on.
+      natural_rounding = "yes";
+    };
     };
   };
 }

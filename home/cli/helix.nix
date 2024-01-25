@@ -6,7 +6,7 @@
   programs.helix = {
     enable = true;
     settings = {
-      theme = "catppuccin_mocha_transparent";
+      theme = "catppuccin_mocha";
       keys.normal = {
         "{" = "goto_prev_paragraph";
         "}" = "goto_next_paragraph";
@@ -71,18 +71,6 @@
           normal = "block";
           select = "block";
         };
-      };
-    };
-
-    # override catppuccin theme and remove background to fix transparency
-    themes = {
-      catppuccin_mocha_transparent = {
-        "inherits" = "catppuccin_mocha";
-        "ui.virtual.inlay-hint" = {
-          fg = "surface1";
-          modifiers = ["italic"];
-        };
-        "ui.background" = "{}";
       };
     };
 

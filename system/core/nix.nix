@@ -101,7 +101,7 @@
       builders-use-substitutes = true;
       # allow sudo users to mark the following values as trusted
       allowed-users = ["@wheel"];
-      trusted-users = ["@wheel" "sioodmy"];
+      trusted-users = ["@wheel"];
       sandbox = true;
       max-jobs = "auto";
       # continue building derivations if one fails
