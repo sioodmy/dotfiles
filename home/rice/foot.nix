@@ -51,7 +51,7 @@
         uri-characters = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789-_.,~:;/?#@!$&%*+=\"'()[]";
       };
       colors = with theme.colors; {
-        alpha = "0.8";
+        alpha = "1.0";
         foreground = text;
         background = base;
 

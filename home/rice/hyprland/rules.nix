@@ -28,12 +28,7 @@
 
       "float,class:udiskie"
 
-      "opacity 0.85 0.85,class:^(firefox)$"
-
       "workspace special silent,class:^(pavucontrol)$"
-      "opacity 0.80,class:^(pavucontrol)$"
-
-      "opacity 0.80,title:^(Spotify)$"
 
       "float, class:^(imv)$"
 
