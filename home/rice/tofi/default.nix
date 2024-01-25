@@ -7,29 +7,30 @@
     #!/bin/sh
     cat ${./emojis} | tofi --prompt-text "Emoji: " | awk '{print $1}' | tr -d '\n' | tee >(wl-copy) >(xargs -I % notify-send "% Emoji" "Emoji copied to clipboard")
   '';
-  inherit (theme) x;
 in {
   home.packages = [pkgs.tofi tofi-emoji];
   xdg.configFile."tofi/config".text = with theme.colors; ''
-    anchor = top
-    width = 100%
-    height = 38
-    horizontal = true
+    anchor = center
+    width = 500
+    height = 300
+    horizontal = false
     font-size = 14
-    prompt-text = "Run  "
+    prompt-text = "Run "
     font = monospace
     ascii-input = false
-    outline-width = 0
-    border-width = 0
-    background-color = #${base}cc
-    text-color = ${x text}
-    selection-color = #89b4fa
+    outline-width = 5
+    outline-color = #${surface0}
+    border-width = 2
+    border-color = #${accent}
+    background-color = #${base}
+    text-color = #${text}
+    selection-color = #${accent}
     min-input-width = 120
     late-keyboard-init = true
-    result-spacing = 15
-    padding-top = 5
-    padding-bottom = 0
-    padding-left = 5
-    padding-right = 0
+    result-spacing = 10
+    padding-top = 15
+    padding-bottom = 15
+    padding-left = 15
+    padding-right = 15
   '';
 }
