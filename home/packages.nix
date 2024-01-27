@@ -5,7 +5,6 @@
     ledger_agent
     tdesktop
     calcurse
-    caprine-bin
     pulseaudio
     signal-desktop
     transmission-gtk
