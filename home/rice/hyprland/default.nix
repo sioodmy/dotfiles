@@ -68,7 +68,14 @@ in {
       ];
     };
     plugins = with  inputs.hyprland-plugins.packages.${pkgs.system}; [
-      borders-plus-plus
+      (borders-plus-plus.overrideAttrs (_: {
+        patchPhase = ''
+          runHook prePatch
+          sed -i '/addNotification/d' main.cpp
+          sed -i '/CColor/d' main.cpp
+          runHook postPatch
+        '';
+      }))
     ];
   };
 
