@@ -48,7 +48,6 @@
             ]
         );
       overlays = [
-        inputs.nixpkgs-wayland.overlay
         # workaround for: https://github.com/NixOS/nixpkgs/issues/154163
         (_: super: {
           makeModulesClosure = x:
