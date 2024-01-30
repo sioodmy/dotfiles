@@ -21,6 +21,7 @@ in {
     kernelPackages = mkDefault pkgs.linuxPackages_latest;
     kernelParams = [
       "psmouse.synaptics_intertouch=1"
+      "intel_pstate=disable"
     ];
     extraModprobeConfig = ''
       options snd-intel-dspcfg dsp_driver=1
