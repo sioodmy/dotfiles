@@ -3,7 +3,7 @@
       <br>
   
   sioodmy's dotfiles <br>
-  <img src="https://raw.githubusercontent.com/catppuccin/catppuccin/main/assets/palette/mocha.png" width="600px" /> <br>
+  <img src="https://raw.githubusercontent.com/catppuccin/catppuccin/main/assets/palette/macchiato.png" width="600px" /> <br>
   <div align="center">
 
   <div align="center">
