@@ -22,6 +22,9 @@ in {
     kernelParams = [
       "psmouse.synaptics_intertouch=1"
     ];
+    extraModprobeConfig = ''
+      options snd-intel-dspcfg dsp_driver=1
+    '';
 
     bootspec.enable = mkDefault true;
     loader = {
