@@ -50,6 +50,8 @@
       overlays = [
         # workaround for: https://github.com/NixOS/nixpkgs/issues/154163
         (_: super: {
+          coreutils = super.uutils-coreutils-noprefix;
+          coreutils-full = super.uutils-coreutils-noprefix;
           makeModulesClosure = x:
             super.makeModulesClosure (x // {allowMissing = true;});
         })
