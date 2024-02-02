@@ -24,7 +24,8 @@ in {
       "intel_pstate=disable"
     ];
     extraModprobeConfig = ''
-      options snd-intel-dspcfg dsp_driver=1
+      options i915 enable_fbc=1 enable_guc=2
+      options snd_hda_intel enable=0,1 power_save=1 power_save_controller=Y
     '';
 
     bootspec.enable = mkDefault true;
