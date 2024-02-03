@@ -149,5 +149,6 @@
     nodePackages.yarn
     nodePackages.vscode-langservers-extracted
     cargo
+    go
   ];
 }
