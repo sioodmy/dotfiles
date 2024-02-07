@@ -1,5 +1,7 @@
 {pkgs, ...}: {
   home.packages = with pkgs; [
+    # Tbh should be preinstalled
+    gnumake
     # Runs programs without installing them
     comma
 
