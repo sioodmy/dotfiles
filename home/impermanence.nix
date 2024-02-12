@@ -16,7 +16,7 @@ in {
       ++ forEach ["syncthing" "Caprine" "VencordDesktop" "obs-studio" "Signal"] (
         x: ".config/${x}"
       )
-      ++ forEach ["tealdeer" "keepassxc" "nix" "starship" "nix-index" "mozilla"] (
+      ++ forEach ["tealdeer" "keepassxc" "nix" "starship" "nix-index" "mozilla" "go-build"] (
         x: ".cache/${x}"
       )
       ++ forEach ["direnv" "TelegramDesktop" "PrismLauncher" "keyrings"] (x: ".local/share/${x}")
