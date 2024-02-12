@@ -70,6 +70,8 @@
     # script kidde stuff
     hcxdumptool
     hashcat
+
+    unzip
     # tshark
     # termshark
   ];
