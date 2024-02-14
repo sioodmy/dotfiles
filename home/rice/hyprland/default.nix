@@ -67,7 +67,7 @@ in {
         "systemctl --user start hyprland-session.target"
       ];
     };
-    plugins = with  inputs.hyprland-plugins.packages.${pkgs.system}; [
+    plugins = with inputs.hyprland-plugins.packages.${pkgs.system}; [
       (borders-plus-plus.overrideAttrs (_: {
         patchPhase = ''
           runHook prePatch
