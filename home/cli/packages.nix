@@ -1,5 +1,25 @@
-{pkgs, ...}: {
+{pkgs, ...}: let
+  texlive = pkgs.texlive.combine {
+    inherit
+      (pkgs.texlive)
+      scheme-small
+      noto
+      mweights
+      cm-super
+      cmbright
+      fontaxes
+      beamer
+      ;
+  };
+  pandoc-watch = pkgs.writeScriptBin "wpandoc" ''
+    #!/bin/sh
+    while inotifywait -e close_write $1; do pandoc $@; done
+  '';
+in {
   home.packages = with pkgs; [
+    texlive
+    pandoc-watch
+    pandoc
     # Tbh should be preinstalled
     gnumake
     # Runs programs without installing them
