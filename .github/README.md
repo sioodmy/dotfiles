@@ -37,7 +37,6 @@
 ## Notable features
 - 🔒 Luks disk encryption with btrfs
 - 🤫 Opt-in impermanence
-- 🚀 Secureboot
 - 🟢 Fully functional Wayland + Nvidia setup
 - 👮 Schizo options enabled (this will get you on CIA watchlist for sure lmao)
 - 🐱 Catppuccin themed (everything)
