@@ -17,8 +17,6 @@
     allowDiscards = true;
   };
 
-  boot.resumeDevice = "/dev/disk/by-label/swap";
-
   boot.initrd.availableKernelModules =
     [
       "xhci_pci"
@@ -60,8 +58,6 @@
     fsType = "vfat";
     options = ["noatime" "discard"];
   };
-
-  swapDevices = [{device = "/dev/disk/by-label/swap";}];
 
   hardware.cpu.intel.updateMicrocode =
     lib.mkDefault config.hardware.enableRedistributableFirmware;
