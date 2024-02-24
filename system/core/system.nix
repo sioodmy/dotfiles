@@ -27,7 +27,7 @@
 
   # compress half of the ram to use as swap
   zramSwap = {
-    enable = false;
+    enable = lib.mkDefault true;
     algorithm = "zstd";
   };
 
