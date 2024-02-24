@@ -1,6 +1,7 @@
 {pkgs, ...}: {
   nixpkgs.config.allowUnfree = false;
   home.packages = with pkgs; [
+  waybar
     ledger-live-desktop
     ledger_agent
     tdesktop
