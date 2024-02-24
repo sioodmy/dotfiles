@@ -6,5 +6,6 @@
     ./dunst.nix
     ./gtk.nix
     ./hyprland
+    ./waybar
   ];
 }
