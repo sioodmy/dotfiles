@@ -31,7 +31,7 @@
       gnome-keyring.enable = true;
     };
     logind = {
-      lidSwitch = "suspend-then-hibernate";
+      lidSwitch = "suspend";
       lidSwitchExternalPower = "lock";
       extraConfig = ''
         HandlePowerKey=suspend
