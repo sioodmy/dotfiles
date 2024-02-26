@@ -2,6 +2,7 @@
   nixpkgs.config.allowUnfree = false;
   home.packages = with pkgs; [
   waybar
+  libreoffice-fresh
     ledger-live-desktop
     ledger_agent
     tdesktop

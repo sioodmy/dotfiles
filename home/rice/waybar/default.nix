@@ -17,10 +17,14 @@ let
 
 in {
 
-    xdg.configFile."waybar/style.css".text = import ./style.nix;
     home.packages = [ waybar-wttr ];
     programs.waybar = {
       enable = true;
+      style = import ./style.nix;
+           systemd ={
+          enable = true;
+          target = "hyprland-session.target";
+        };
       settings = {
         mainBar = {
           layer = "top";
@@ -61,7 +65,7 @@ in {
           "custom/search" = {
             format = " ";
             tooltip = false;
-            on-click = "killall rofi || rofi -show drun";
+            on-click = "${pkgs.tofi}/bin/tofi-drun";
           };
 
           "custom/weather" = {

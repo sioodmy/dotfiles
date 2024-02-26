@@ -71,7 +71,7 @@ in {
 
   services = {
     # yeah, I could've just used waybar, but coding this thing was fun. both use pretty much same libs so memory usage is comparable
-    barbie.enable = true;
+    barbie.enable = false;
     wlsunset = {
       # TODO: fix opaque red screen issue
       enable = true;
