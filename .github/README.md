@@ -67,6 +67,8 @@ If you would like to support me you can sponsor me via ko-fi
 
 Ethereum/EVM compatible: `0x2fa1e5e90c011d08bba1f6dbdc317fd293311c0d`
 
+[![Star History Chart](https://api.star-history.com/svg?repos=sioodmy/dotfiles&type=Date)](https://star-history.com/#sioodmy/dotfiles&Date)
+
 ## ❤️ Special thanks tto (I love you guys)
 
 [notusknot](https://github.com/notusknot) -
