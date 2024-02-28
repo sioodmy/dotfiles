@@ -34,9 +34,11 @@
   boot.extraModulePackages = [];
 
   #  btrfs filesystem mkswapfile --size 16g --uuid clear /persist/swap
-     swapDevices = [ {
-    device = "/persist/swap";
-  } ];
+  swapDevices = [
+    {
+      device = "/persist/swap";
+    }
+  ];
 
   fileSystems."/" = {
     device = "none";
