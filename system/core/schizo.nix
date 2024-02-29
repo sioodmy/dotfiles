@@ -6,6 +6,11 @@
     physlock = {
       enable = true;
       allowAnyUser = true;
+
+      lockOn = {
+        suspend = false;
+        hibernate = false;
+      };
     };
     tor = {
       enable = true;
