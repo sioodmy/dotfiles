@@ -29,7 +29,7 @@ in {
     power-profiles-daemon.enable = true;
     undervolt = {
       enable = true;
-      coreOffset = -100;
+      coreOffset = -95;
       gpuOffset = -80;
       tempBat = 65;
     };
