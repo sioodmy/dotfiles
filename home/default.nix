@@ -12,6 +12,8 @@
     inputs.barbie.homeManagerModule
     inputs.schizofox.homeManagerModule
     inputs.impermanence.nixosModules.home-manager.impermanence
+    inputs.hyprlock.homeManagerModules.default
+    inputs.hypridle.homeManagerModules.default
     ./packages.nix
     ./impermanence.nix
 

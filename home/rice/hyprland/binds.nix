@@ -53,7 +53,7 @@ in {
 
         "${mod},Period,exec, tofi-emoji"
 
-        "${modshift},L,exec,swaylock --grace 0" # lock screen
+        "${modshift},L,exec,hyprlock"
       ]
       ++ workspaces;
 
