@@ -4,6 +4,6 @@
     ./vencord
     ./schizofox.nix
     ./rnnoise.nix
-    ./swayidle.nix
+    ./lock.nix
   ];
 }

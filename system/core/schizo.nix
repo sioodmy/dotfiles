@@ -59,7 +59,7 @@
       packages = [pkgs.apparmor-profiles];
     };
     pam = {
-      services.swaylock.text = "auth include login";
+      services.hyprlock.text = "auth include login";
       loginLimits = [
         {
           domain = "@wheel";

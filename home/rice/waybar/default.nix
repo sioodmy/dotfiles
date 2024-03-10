@@ -78,7 +78,7 @@ in {
         };
         "custom/lock" = {
           tooltip = false;
-          on-click = "sh -c '(sleep 0.5s; swaylock)' & disown";
+          on-click = "sh -c '(sleep 0.5s; hyprlock)' & disown";
           format = "";
         };
         "custom/power" = {
