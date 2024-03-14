@@ -21,6 +21,10 @@
         "webextension@metamask.io".install_url = "https://addons.mozilla.org/firefox/downloads/latest/ether-metamask/latest.xpi";
       };
     };
+    settings = {
+      # fixes clipboard issues
+      "dom.event.clipboardevents.enabled" = true;
+    };
     search = rec {
       defaultSearchEngine = "Searx";
       # removeEngines = ["Bing" "Amazon.com" "eBay" "Twitter" "Wikipedia" "LibRedirect" "DuckDuckGo"];
