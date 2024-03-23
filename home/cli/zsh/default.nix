@@ -8,7 +8,7 @@
 
   programs.zsh = {
     enable = true;
-    enableAutosuggestions = true;
+    autosuggestion.enable = true;
     syntaxHighlighting.enable = true;
     sessionVariables = {
       LC_ALL = "en_US.UTF-8";
