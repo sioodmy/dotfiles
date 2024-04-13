@@ -2,7 +2,6 @@
   nixpkgs.config.allowUnfree = false;
   home.packages = with pkgs; [
     libreoffice-fresh
-    brave
     inkscape
     ledger-live-desktop
     ledger_agent
