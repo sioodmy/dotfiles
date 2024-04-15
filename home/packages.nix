@@ -2,6 +2,7 @@
   nixpkgs.config.allowUnfree = false;
   home.packages = with pkgs; [
     libreoffice-fresh
+    prismlauncher
     inkscape
     ledger-live-desktop
     ledger_agent
