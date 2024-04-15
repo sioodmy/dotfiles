@@ -46,11 +46,11 @@
     defaults.email = "hello@sioodmy.dev";
   };
 
-  services.schizosearch = {
-    enable = true;
-    openFirewall = true;
-    settings.port = 3000;
-  };
+  # services.schizosearch = {
+  #   enable = true;
+  #   openFirewall = true;
+  #   settings.port = 3000;
+  # };
 
   services.radicale = {
     enable = true;
