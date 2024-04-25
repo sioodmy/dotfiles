@@ -3,6 +3,7 @@
   home.packages = with pkgs; [
     libreoffice-fresh
     prismlauncher
+    brave
     inkscape
     ledger-live-desktop
     ledger_agent
