@@ -1,60 +1,29 @@
 {
-  config,
-  lib,
   modulesPath,
+  lib,
   ...
 }: {
-  imports = [(modulesPath + "/installer/scan/not-detected.nix")];
+  imports = [(modulesPath + "/profiles/qemu-guest.nix")];
 
-  fileSystems."/etc/ssh" = {
-    depends = ["/persist"];
-    neededForBoot = true;
-  };
 
   boot.initrd.availableKernelModules =
     [
+      "ata_piix"
+      "virtio_pci"
+      "virtio_scsi"
       "xhci_pci"
-      "ahci"
-      "usbhid"
       "sd_mod"
-      "dm_mod"
-      "dm_crypt"
-      "cryptd"
-      "input_leds"
-    ]
-    ++ config.boot.initrd.luks.cryptoModules;
+      "sr_mod"
+    ];
   boot.initrd.kernelModules = [];
-  boot.kernelModules = ["kvm-amd"];
+  boot.kernelModules = [];
   boot.extraModulePackages = [];
 
   fileSystems."/" = {
-    device = "none";
-    fsType = "tmpfs";
-    options = ["size=8G" "mode=755"];
+    device = "/dev/disk/by-label/nixos";
+    fsType = "ext4";
   };
+  swapDevices = [];
+  nixpkgs.hostPlatform = lib.mkdefault "x86_64-linux";
 
-  fileSystems."/persist" = {
-    neededForBoot = true;
-    device = "/dev/disk/by-label/NIXROOT";
-    fsType = "btrfs";
-    options = ["noatime" "discard" "subvol=@persist" "compress=zstd"];
-  };
-
-  fileSystems."/nix" = {
-    neededForBoot = true;
-    device = "/dev/disk/by-label/NIXROOT";
-    fsType = "btrfs";
-    options = ["noatime" "discard" "subvol=@nix" "compress=zstd"];
-  };
-
-  fileSystems."/boot" = {
-    device = "/dev/disk/by-label/NIXBOOT";
-    fsType = "vfat";
-    options = ["noatime" "discard"];
-  };
-
-  swapDevices = [{device = "/dev/disk/by-label/swap";}];
-
-  hardware.cpu.amd.updateMicrocode =
-    lib.mkDefault config.hardware.enableRedistributableFirmware;
 }
