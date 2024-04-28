@@ -30,9 +30,6 @@
         pkgs,
         ...
       }: {
-        # provide the formatter for nix fmt
-        formatter = pkgs.alejandra;
-
         pre-commit = {
           settings.excludes = ["flake.lock"];
 
@@ -136,6 +133,21 @@
       inputs = {
         nixpkgs.follows = "nixpkgs";
         flake-parts.follows = "flake-parts";
+      };
+    };
+    sioodmy-dev = {
+      url = "github:sioodmy/sioodmy.github.io";
+      inputs = {
+        nixpkgs.follows = "nixpkgs";
+        flake-parts.follows = "flake-parts";
+      };
+    };
+    schizosearch = {
+      url = "github:sioodmy/schizosearch";
+      inputs = {
+        nixpkgs.follows = "nixpkgs";
+        flake-parts.follows = "flake-parts";
+        treefmt-nix.follows = "treefmt-nix";
       };
     };
 
