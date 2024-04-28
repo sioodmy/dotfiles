@@ -76,6 +76,7 @@ in {
         {networking.hostName = "prometheus";
           boot.loader.grub.devices = [ "/dev/sda" ];
         }
+        server
         ./prometheus
       ]
       ++ shared;

@@ -1,10 +1,11 @@
 {
   pkgs,
-  config,
+  inputs,
   ...
 }:
 # TODO
 {
+imports = [inputs.schizosearch.nixosModules.default];
   services.nginx = {
     enable = true;
     package = pkgs.nginx.override {openssl = pkgs.libressl;};
@@ -27,8 +28,8 @@
       add_header X-Frame-Options DENY;
       add_header X-Content-Type-Options nosniff;
     '';
-    virtualHosts."search.sioodmy.dev" = {
-      locations."/".proxyPass = "http://127.0.0.1:3000";
+     virtualHosts."search.sioodmy.dev" = {
+      locations."/".proxyPass = "http://0.0.0.0:3000";
       extraConfig = ''
         access_log /dev/null;
         error_log /dev/null;
@@ -39,8 +40,16 @@
       addSSL = true;
       enableACME = true;
     };
+    virtualHosts = {
+      "sioodmy.dev" = {
+        root = inputs.sioodmy-dev.packages.${pkgs.system}.website;
+        enableACME = true;
+        forceSSL = true;
+      };
+    };
   };
 
+  services.schizosearch.enable = true;
   security.acme = {
     acceptTerms = true;
     defaults.email = "hello@sioodmy.dev";
@@ -52,28 +61,9 @@
   #   settings.port = 3000;
   # };
 
-  services.radicale = {
-    enable = true;
-    settings = {
-      server.hosts = ["0.0.0.0:5232"];
-      auth = {
-        type = "htpasswd";
-        htpasswd_filename = config.age.secrets.radicale.path;
-        htpasswd_encryption = "bcrypt";
-      };
-      storage = {
-        filesystem_folder = "/data/radicale/collections";
-      };
-    };
-  };
-
   networking.firewall = {
     allowedUDPPorts = [51820 5232];
     allowedTCPPorts = [5232 80 3000];
   };
 
-  boot.kernelModules = ["wireguard"];
-  networking.wireguard = {
-    enable = true;
-  };
 }
