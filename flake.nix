@@ -123,21 +123,6 @@
       };
     };
 
-    # schizosearch = {
-    #   url = "github:sioodmy/schizosearch";
-    #   inputs = {
-    #     nixpkgs.follows = "nixpkgs";
-    #     flake-parts.follows = "flake-parts";
-    #   };
-    # };
-
-    barbie = {
-      url = "github:sioodmy/barbie";
-      inputs = {
-        nixpkgs.follows = "nixpkgs";
-        flake-parts.follows = "flake-parts";
-      };
-    };
     sioodmy-dev = {
       url = "github:sioodmy/sioodmy.github.io";
       inputs = {
