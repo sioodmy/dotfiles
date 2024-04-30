@@ -3,18 +3,16 @@
   lib,
   theme,
   ...
-}:
-let
+}: let
   mkService = lib.recursiveUpdate {
     Unit.PartOf = ["graphical-session.target"];
     Unit.After = ["graphical-session.target"];
     Install.WantedBy = ["graphical-session.target"];
   };
 in {
-
-home.packages = with pkgs;[pamixer];
-xdg.configFile."niri/config.kdl".text = import ./config.nix theme;
-services = {
+  home.packages = with pkgs; [pamixer];
+  xdg.configFile."niri/config.kdl".text = import ./config.nix theme;
+  services = {
     wlsunset = {
       # TODO: fix opaque red screen issue
       enable = true;
@@ -31,17 +29,17 @@ services = {
     # fake a tray to let apps start
     # https://github.com/nix-community/home-manager/issues/2064
     tray = {
-        Unit = {
-          Description = "Home Manager System Tray";
-          Requires = ["graphical-session-pre.target"];
-        };
+      Unit = {
+        Description = "Home Manager System Tray";
+        Requires = ["graphical-session-pre.target"];
       };
+    };
     niri = {
-        Unit = {
-          Description = "Niri";
-          Requires = ["graphical-session-pre.target"];
-        };
+      Unit = {
+        Description = "Niri";
+        Requires = ["graphical-session-pre.target"];
       };
+    };
   };
 
   systemd.user.services = {

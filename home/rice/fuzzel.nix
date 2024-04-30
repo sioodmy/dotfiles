@@ -1,6 +1,8 @@
-{ pkgs, theme, ...}:
-
 {
+  pkgs,
+  theme,
+  ...
+}: {
   programs.fuzzel = {
     enable = true;
     settings = {

@@ -96,7 +96,7 @@
     impermanence.url = "github:nix-community/impermanence";
 
     niri = {
-      url ="github:YaLTeR/niri";
+      url = "github:YaLTeR/niri";
       inputs.nixpkgs.follows = "nixpkgs";
     };
     nixpak = {

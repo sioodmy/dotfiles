@@ -1,4 +1,8 @@
-{pkgs, inputs, ...}: {
+{
+  pkgs,
+  inputs,
+  ...
+}: {
   imports = [./fonts.nix ./services.nix ./pipewire.nix];
   environment.etc."greetd/environments".text = ''
     niri --session

@@ -5,7 +5,7 @@
 }:
 # TODO
 {
-imports = [inputs.schizosearch.nixosModules.default];
+  imports = [inputs.schizosearch.nixosModules.default];
   services.nginx = {
     enable = true;
     # package = pkgs.nginx.override {openssl = pkgs.libressl;};
@@ -15,11 +15,11 @@ imports = [inputs.schizosearch.nixosModules.default];
     # sslCiphers = "EECDH+aRSA+AESGCM:EDH+aRSA:EECDH+aRSA:+AES256:+AES128:+SHA1:!CAMELLIA:!SEED:!3DES:!DES:!RC4:!eNULL";
     # sslProtocols = "TLSv1.3 TLSv1.2";
 
-     virtualHosts = {
-      "sioodmy.dev" = {          
-          root = "${inputs.sioodmy-dev.packages.${pkgs.system}.website}/";
-          enableACME = true;
-          forceSSL = true;
+    virtualHosts = {
+      "sioodmy.dev" = {
+        root = "${inputs.sioodmy-dev.packages.${pkgs.system}.website}/";
+        enableACME = true;
+        forceSSL = true;
       };
       "search.sioodmy.dev" = {
         locations."/" = {
@@ -48,5 +48,4 @@ imports = [inputs.schizosearch.nixosModules.default];
     allowedUDPPorts = [51820 5232];
     allowedTCPPorts = [5232 80 3000];
   };
-
 }
