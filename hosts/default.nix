@@ -7,7 +7,6 @@
   core = ../system/core;
   bootloader = ../system/core/bootloader.nix;
   impermanence = ../system/core/impermanence.nix;
-  nvidia = ../system/nvidia;
   server = ../system/server;
   wayland = ../system/wayland;
   hw = inputs.nixos-hardware.nixosModules;
@@ -31,24 +30,6 @@
   };
 in {
   # all my hosts are named after saturn moons btw
-
-  # desktop
-  anthe = nixpkgs.lib.nixosSystem {
-    system = "x86_64-linux";
-    modules =
-      [
-        {networking.hostName = "anthe";}
-        ./anthe
-        nvidia
-        bootloader
-        impermanence
-        wayland
-        hmModule
-        {inherit home-manager;}
-      ]
-      ++ shared;
-    specialArgs = {inherit inputs;};
-  };
 
   # thinkpad
   calypso = nixpkgs.lib.nixosSystem {
@@ -90,8 +71,6 @@ in {
       [
         {networking.hostName = "iapetus";}
         hw.raspberry-pi-4
-        server
-        inputs.schizosearch.nixosModules.default
         ./iapetus
       ]
       ++ shared;

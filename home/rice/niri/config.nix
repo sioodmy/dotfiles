@@ -15,7 +15,7 @@ with theme.colors; ''
           natural-scroll
           click-method "clickfinger"
       }
-    
+
       trackpoint {
           accel-speed 0.001
        }
