@@ -93,9 +93,12 @@
   inputs = {
     nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
     nixos-hardware.url = "github:nixos/nixos-hardware";
-    xdg-portal-hyprland.url = "github:hyprwm/xdg-desktop-portal-hyprland";
     impermanence.url = "github:nix-community/impermanence";
 
+    niri = {
+      url ="github:YaLTeR/niri";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
     nixpak = {
       url = "github:nixpak/nixpak";
       inputs.nixpkgs.follows = "nixpkgs";
@@ -162,24 +165,12 @@
       inputs.home-manager.follows = "home-manager";
       inputs.nixpkgs.follows = "nixpkgs";
     };
-    hyprland = {
-      url = "github:hyprwm/Hyprland/";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
     hyprlock = {
       url = "github:hyprwm/hyprlock";
       inputs.nixpkgs.follows = "nixpkgs";
     };
     hypridle = {
       url = "github:hyprwm/hypridle";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
-    hyprland-plugins = {
-      url = "github:hyprwm/hyprland-plugins";
-      inputs.hyprland.follows = "hyprland";
-    };
-    hyprcontrib = {
-      url = "github:hyprwm/contrib";
       inputs.nixpkgs.follows = "nixpkgs";
     };
     nix-index-db = {
