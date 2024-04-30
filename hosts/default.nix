@@ -73,8 +73,9 @@ in {
     system = "x86_64-linux";
     modules =
       [
-        {networking.hostName = "prometheus";
-          boot.loader.grub.devices = [ "/dev/sda" ];
+        {
+          networking.hostName = "prometheus";
+          boot.loader.grub.devices = ["/dev/sda"];
         }
         server
         ./prometheus
