@@ -24,7 +24,7 @@ in {
     style = import ./style.nix;
     systemd = {
       enable = true;
-      target = "hyprland-session.target";
+      target = "niri.target";
     };
     settings = {
       mainBar = {
@@ -34,7 +34,6 @@ in {
         spacing = 7;
         modules-left = [
           "custom/search"
-          "hyprland/workspaces"
           "custom/lock"
           "custom/weather"
           "backlight"
@@ -42,27 +41,6 @@ in {
         ];
         modules-center = [];
         modules-right = ["pulseaudio" "network" "clock" "custom/power"];
-        "hyprland/workspaces" = {
-          on-click = "activate";
-          format = "{icon}";
-          active-only = false;
-          format-icons = {
-            "1" = "一";
-            "2" = "二";
-            "3" = "三";
-            "4" = "四";
-            "5" = "五";
-            "6" = "六";
-            "7" = "七";
-            "8" = "八";
-            "9" = "九";
-            "10" = "十";
-          };
-
-          persistent_workspaces = {
-            "*" = 5;
-          };
-        };
         "custom/search" = {
           format = " ";
           tooltip = false;

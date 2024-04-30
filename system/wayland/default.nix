@@ -1,7 +1,11 @@
-{pkgs, ...}: {
+{
+  pkgs,
+  inputs,
+  ...
+}: {
   imports = [./fonts.nix ./services.nix ./pipewire.nix];
   environment.etc."greetd/environments".text = ''
-    Hyprland
+    niri --session
   '';
 
   environment = {
@@ -34,6 +38,11 @@
       eval $(gnome-keyring-daemon --start --components=ssh,secrets)
       eval $(ssh-agent)
     '';
+    systemPackages = with pkgs; [
+      inputs.niri.packages.${pkgs.system}.default
+      pamixer
+      brightnessctl
+    ];
   };
 
   hardware = {
@@ -44,9 +53,9 @@
   xdg.portal = {
     enable = true;
     config.common.default = "*";
-    extraPortals = [
-      pkgs.xdg-desktop-portal-gtk
-      pkgs.xdg-desktop-portal-hyprland
+    extraPortals = with pkgs; [
+      xdg-desktop-portal-gtk
+      xdg-desktop-portal-gnome
     ];
   };
 

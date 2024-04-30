@@ -19,7 +19,7 @@
       enable = true;
       settings = rec {
         initial_session = {
-          command = "Hyprland";
+          command = "niri --session";
           user = "sioodmy";
         };
         default_session = initial_session;
