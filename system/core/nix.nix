@@ -38,15 +38,6 @@
         "electron-25.9.0"
       ];
 
-      allowUnfreePredicate =
-        lib.mkIf cfg.networking.hostName
-        == "anthe" (
-          pkg:
-            builtins.elem (lib.getName pkg) [
-              "nvidia-x11"
-              "nvidia-settings"
-            ]
-        );
       overlays = [
         # workaround for: https://github.com/NixOS/nixpkgs/issues/154163
         (_: super: {

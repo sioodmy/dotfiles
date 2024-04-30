@@ -48,21 +48,22 @@ in {
       };
       fullscreen_delay_everything.fullscreen = "delay";
       urgency_low = {
-        background = "#${base}83";
+        background = "#${base}ff";
         foreground = x text;
         timeout = 5;
       };
       urgency_normal = {
-        background = "#${base}83";
+        background = "#${base}ff";
         foreground = "#c6d0f5";
         timeout = 6;
       };
       urgency_critical = {
-        background = "#${base}83";
+        background = "#${base}ff";
         foreground = x text;
-        frame_color = "#${red}80";
+        frame_color = "#${red}ff";
         timeout = 0;
       };
     };
   };
+  home.packages = [pkgs.libnotify];
 }
