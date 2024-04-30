@@ -10,8 +10,15 @@ with theme.colors; ''
 
       touchpad {
           tap
+          dwt
+          dwtp
           natural-scroll
+          click-method "clickfinger"
       }
+    
+      trackpoint {
+          accel-speed 0.001
+       }
 
       warp-mouse-to-focus
       focus-follows-mouse
