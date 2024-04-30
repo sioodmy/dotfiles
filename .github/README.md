@@ -35,6 +35,7 @@
 </p>
 
 ## Notable features
+
 - 🔒 Luks disk encryption with btrfs
 - 🤫 Opt-in impermanence
 - 🟢 Fully functional Wayland + Nvidia setup
@@ -55,7 +56,6 @@
   - [iapetus](hosts/iapetus) 🍓 Raspberry pi server [🚧]
   - [io](hosts/io) 💻 Configs for my future framework laptop ([currently im kinda broke](https://en.liberapay.com/sioodmy/)) [🚧]
 - [pkgs](pkgs) 💿 exported packages
-
 
 ## 💛 Donate
 

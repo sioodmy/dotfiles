@@ -5,7 +5,6 @@
 }:
 # TODO
 {
-  imports = [inputs.schizosearch.nixosModules.default];
   services.nginx = {
     enable = true;
     # package = pkgs.nginx.override {openssl = pkgs.libressl;};
@@ -32,17 +31,10 @@
     };
   };
 
-  services.schizosearch.enable = true;
   security.acme = {
     acceptTerms = true;
     defaults.email = "hello@sioodmy.dev";
   };
-
-  # services.schizosearch = {
-  #   enable = true;
-  #   openFirewall = true;
-  #   settings.port = 3000;
-  # };
 
   networking.firewall = {
     allowedUDPPorts = [51820 5232];

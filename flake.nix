@@ -130,14 +130,6 @@
         flake-parts.follows = "flake-parts";
       };
     };
-    schizosearch = {
-      url = "github:sioodmy/schizosearch";
-      inputs = {
-        nixpkgs.follows = "nixpkgs";
-        flake-parts.follows = "flake-parts";
-        treefmt-nix.follows = "treefmt-nix";
-      };
-    };
 
     # a tree-wide formatter
     treefmt-nix = {
