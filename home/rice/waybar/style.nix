@@ -5,7 +5,7 @@
   }
 
   window#waybar {
-    background-color: rgba(48, 52, 70, 0.88);
+    background-color: #303446;
     border-radius: 0px;
     color: #c6d0f5;
     font-size: 20px;
@@ -80,7 +80,7 @@
   #pulseaudio {
     border-radius: 15px;
     margin: 0px 7px 0px 7px;
-    background-color: rgba(65, 69, 89, 0.9);
+    background-color: #414559;
     padding: 10px 0px 10px 0px;
   }
 
