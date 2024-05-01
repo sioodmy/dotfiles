@@ -22,6 +22,7 @@ with theme.colors; ''
 
       warp-mouse-to-focus
       focus-follows-mouse
+      workspace-auto-back-and-forth
   }
 
   output "eDP-1" {
