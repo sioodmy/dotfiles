@@ -170,6 +170,10 @@
       url = "github:lighttigerXIV/catppuccinifier";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+    website = {
+      url = "github:sioodmy/website";
+      flake = false;
+    };
   };
 }
 # see also:

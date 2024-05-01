@@ -776,7 +776,8 @@
         "pre-commit-hooks": "pre-commit-hooks",
         "schizofox": "schizofox",
         "sioodmy-dev": "sioodmy-dev",
-        "treefmt-nix": "treefmt-nix"
+        "treefmt-nix": "treefmt-nix",
+        "website": "website"
       }
     },
     "rust-analyzer-src": {
@@ -1081,6 +1082,22 @@
       "original": {
         "owner": "numtide",
         "repo": "treefmt-nix",
+        "type": "github"
+      }
+    },
+    "website": {
+      "flake": false,
+      "locked": {
+        "lastModified": 1714517902,
+        "narHash": "sha256-eZ5HG1cxq32SCegfVTPhbeO0I1bR5fwXbHVkkqtIm78=",
+        "owner": "sioodmy",
+        "repo": "website",
+        "rev": "1347dcb0c450690161a6bcdbe3edbfcafef848e6",
+        "type": "github"
+      },
+      "original": {
+        "owner": "sioodmy",
+        "repo": "website",
         "type": "github"
       }
     }
