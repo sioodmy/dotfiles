@@ -123,14 +123,6 @@
       };
     };
 
-    sioodmy-dev = {
-      url = "github:sioodmy/sioodmy.github.io";
-      inputs = {
-        nixpkgs.follows = "nixpkgs";
-        flake-parts.follows = "flake-parts";
-      };
-    };
-
     # a tree-wide formatter
     treefmt-nix = {
       url = "github:numtide/treefmt-nix";
@@ -172,7 +164,10 @@
     };
     website = {
       url = "github:sioodmy/website";
-      flake = false;
+      inputs = {
+        nixpkgs.follows = "nixpkgs";
+        flake-parts.follows = "flake-parts";
+      };
     };
   };
 }

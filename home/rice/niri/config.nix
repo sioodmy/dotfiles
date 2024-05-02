@@ -90,10 +90,8 @@ with theme.colors; ''
       // Suggested binds for running programs: terminal, app launcher, screen locker.
       Mod+Return { spawn "foot"; }
       Mod+Space { spawn "fuzzel"; }
+      Mod+Shift+Period { spawn "emoji"; }
       Super+Shift+L { spawn "swaylock"; }
-
-      // You can also use a shell:
-      // Mod+T { spawn "bash" "-c" "notify-send hello && exec alacritty"; }
 
       // Example volume keys mappings for PipeWire & WirePlumber.
       // The allow-when-locked=true property makes them work even when the session is locked.
@@ -112,8 +110,8 @@ with theme.colors; ''
       Mod+Up    { focus-window-up; }
       Mod+Right { focus-column-right; }
       Mod+H     { focus-column-left; }
-      Mod+J     { focus-window-down; }
-      Mod+K     { focus-window-up; }
+      Mod+J     { focus-window-or-workspace-down; }
+      Mod+K     { focus-window-or-workspace-up; }
       Mod+L     { focus-column-right; }
 
       Mod+Ctrl+Left  { move-column-left; }
@@ -121,16 +119,9 @@ with theme.colors; ''
       Mod+Ctrl+Up    { move-window-up; }
       Mod+Ctrl+Right { move-column-right; }
       Mod+Ctrl+H     { move-column-left; }
-      Mod+Ctrl+J     { move-window-down; }
-      Mod+Ctrl+K     { move-window-up; }
+      Mod+Ctrl+J     { move-window-down-or-to-workspace-down; }
+      Mod+Ctrl+K     { move-window-up-or-to-workspace-up; }
       Mod+Ctrl+L     { move-column-right; }
-
-      // Alternative commands that move across workspaces when reaching
-      // the first or last window in a column.
-      // Mod+J     { focus-window-or-workspace-down; }
-      // Mod+K     { focus-window-or-workspace-up; }
-      // Mod+Ctrl+J     { move-window-down-or-to-workspace-down; }
-      // Mod+Ctrl+K     { move-window-up-or-to-workspace-up; }
 
       Mod+Home { focus-column-first; }
       Mod+End  { focus-column-last; }

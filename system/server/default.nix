@@ -29,7 +29,7 @@
 
     virtualHosts = {
       "sioodmy.dev" = {
-        root = inputs.website;
+        root = inputs.website.packages.${pkgs.system}.website;
         enableACME = true;
         locations."/" = {
         tryFiles = "$uri $uri.html $uri/ =404";
