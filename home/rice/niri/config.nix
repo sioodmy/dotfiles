@@ -68,6 +68,10 @@ with theme.colors; ''
   screenshot-path "~/pics/ss/ss%Y-%m-%d %H-%M-%S.png"
 
   window-rule {
+      geometry-corner-radius 8
+      clip-to-geometry true
+  }
+  window-rule {
       match app-id="firefox"
       default-column-width { proportion 1.0;}
   }
