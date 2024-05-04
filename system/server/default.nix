@@ -32,11 +32,12 @@
         root = inputs.website.packages.${pkgs.system}.website;
         enableACME = true;
         locations."/" = {
-        tryFiles = "$uri $uri.html $uri/ =404";
+        tryFiles = "$uri/index.html $uri.html $uri/ $uri =404";
         extraConfig = ''
-          if ($request_uri ~ ^/(.*)\.html$) {
-            return 302 /$1;
-          }
+          rewrite ^(/.*)\.html(\?.*)?$ $1$2 permanent;
+          rewrite ^/(.*)/$ /$1 permanent;
+
+          error_page 404 /404.html;
         '';
         };
         
