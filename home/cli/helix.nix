@@ -1,10 +1,30 @@
 {
   pkgs,
   lib,
+  inputs,
   ...
 }: {
   programs.helix = {
     enable = true;
+    package = inputs.helix.packages.${pkgs.system}.default.overrideAttrs (old: {
+      makeWrapperArgs = with pkgs;
+        old.makeWrapperArgs
+        or []
+        ++ [
+          "--suffix"
+          "PATH"
+          ":"
+          (lib.makeBinPath [
+            clang-tools
+            marksman
+            nil
+            nodePackages.bash-language-server
+            nodePackages.vscode-css-languageserver-bin
+            nodePackages.vscode-langservers-extracted
+            shellcheck
+          ])
+        ];
+    });
     settings = {
       theme = "catppuccin_frappe";
       keys.normal = {
@@ -32,7 +52,7 @@
         idle-timeout = 1;
         line-number = "relative";
         scrolloff = 5;
-        # rainbow-brackets = true;
+        rainbow-brackets = true;
         completion-replace = true;
         bufferline = "always";
         true-color = true;
@@ -45,13 +65,16 @@
           display-messages = true;
           display-inlay-hints = true;
         };
+        sticky-context = {
+          enable = true;
+          indicator = false;
+        };
+
         gutters = ["diagnostics" "line-numbers" "spacer" "diff"];
         statusline = {
-          # mode-separator = "";
-          # separator = "";
           left = ["mode" "selections" "spinner" "file-name" "total-line-numbers"];
-          center = [];
-          right = ["diagnostics" "file-encoding" "file-line-ending" "file-type" "position-percentage" "position"];
+          center = ["position-percentage"];
+          right = ["diagnostics" "file-encoding" "file-line-ending" "file-type" "position"];
           mode = {
             normal = "NORMAL";
             insert = "INSERT";
@@ -69,7 +92,7 @@
         cursor-shape = {
           insert = "bar";
           normal = "block";
-          select = "block";
+          select = "underline";
         };
       };
     };
