@@ -88,6 +88,10 @@ with theme.colors; ''
       max-height 0
   }
 
+  hotkey-overlay {
+      skip-at-startup
+  }
+
   binds {
       Mod+Shift+Slash { show-hotkey-overlay; }
 
