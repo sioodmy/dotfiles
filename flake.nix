@@ -47,7 +47,7 @@
             env = extra.shellEnv;
             packages = with pkgs; [
               inputs'.agenix.packages.default # provide agenix CLI within flake shell
-              inputs'.catppuccinifier.packages.cli
+              # inputs'.catppuccinifier.packages.cli
               config.treefmt.build.wrapper # treewide formatter
               nil # nix ls
               alejandra # nix formatter
@@ -91,7 +91,8 @@
     });
 
   inputs = {
-    nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
+    nixpkgs.url = "github:nixos/nixpkgs/58a1abdbae3217ca6b702f03d3b35125d88a2994";
+    nixpkgs-small.url = "github:NixOS/nixpkgs/nixos-unstable-small"; # moves faster, has less packages
     nixos-hardware.url = "github:nixos/nixos-hardware";
     impermanence.url = "github:nix-community/impermanence";
 
@@ -165,6 +166,10 @@
     catppuccinifier = {
       url = "github:lighttigerXIV/catppuccinifier";
       inputs.nixpkgs.follows = "nixpkgs";
+    };
+    simple-nixos-mailserver = {
+      url = "gitlab:simple-nixos-mailserver/nixos-mailserver/master";
+      inputs.nixpkgs.follows = "nixpkgs-small";
     };
     website = {
       url = "github:sioodmy/website";
