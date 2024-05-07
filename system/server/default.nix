@@ -5,6 +5,9 @@
 }:
 # TODO
 {
+  imports = [
+    ./mail.nix
+  ];
   services.nginx = {
     enable = true;
     # package = pkgs.nginx.override {openssl = pkgs.libressl;};
@@ -20,7 +23,7 @@
     sslCiphers = "EECDH+aRSA+AESGCM:EDH+aRSA:EECDH+aRSA:+AES256:+AES128:+SHA1:!CAMELLIA:!SEED:!3DES:!DES:!RC4:!eNULL";
     sslProtocols = "TLSv1.3 TLSv1.2";
 
-        commonHttpConfig = ''
+    commonHttpConfig = ''
       #real_ip_header CF-Connecting-IP;
       add_header 'Referrer-Policy' 'origin-when-cross-origin';
       add_header X-Frame-Options DENY;
@@ -32,15 +35,15 @@
         root = inputs.website.packages.${pkgs.system}.website;
         enableACME = true;
         locations."/" = {
-        tryFiles = "$uri/index.html $uri.html $uri/ $uri =404";
-        extraConfig = ''
-          rewrite ^(/.*)\.html(\?.*)?$ $1$2 permanent;
-          rewrite ^/(.*)/$ /$1 permanent;
+          tryFiles = "$uri/index.html $uri.html $uri/ $uri =404";
+          extraConfig = ''
+            rewrite ^(/.*)\.html(\?.*)?$ $1$2 permanent;
+            rewrite ^/(.*)/$ /$1 permanent;
 
-          error_page 404 /404.html;
-        '';
+            error_page 404 /404.html;
+          '';
         };
-        
+
         forceSSL = true;
       };
       "search.sioodmy.dev" = {
