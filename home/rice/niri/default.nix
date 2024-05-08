@@ -10,8 +10,8 @@
     Install.WantedBy = ["graphical-session.target"];
   };
 in {
+imports = [./config.nix];
   home.packages = with pkgs; [pamixer];
-  xdg.configFile."niri/config.kdl".text = import ./config.nix theme;
   services = {
     wlsunset = {
       # TODO: fix opaque red screen issue
@@ -22,8 +22,9 @@ in {
         day = 6200;
         night = 3750;
       };
-      systemdTarget = "graphical-session.target";
+      systemdTarget = "niri.service";
     };
+    cliphist.enable = true;
   };
   systemd.user.targets = {
     # fake a tray to let apps start
@@ -34,19 +35,13 @@ in {
         Requires = ["graphical-session-pre.target"];
       };
     };
-    niri = {
-      Unit = {
-        Description = "Niri";
-        Requires = ["graphical-session-pre.target"];
-      };
-    };
   };
 
   systemd.user.services = {
     swaybg = mkService {
       Unit = {
         Description = "Wallpaper chooser";
-        After = "niri.target";
+        After = "niri.service";
       };
       Service = {
         ExecStart = "${lib.getExe pkgs.swaybg} -i ${theme.wallpaper}";

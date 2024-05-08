@@ -13,13 +13,13 @@ in {
         "vids"
         "other"
       ]
-      ++ forEach ["syncthing" "Caprine" "VencordDesktop" "obs-studio" "Signal" "niri"] (
+      ++ forEach ["syncthing" "Caprine" "VencordDesktop" "obs-studio" "Signal" "niri" "BraveSoftware"] (
         x: ".config/${x}"
       )
-      ++ forEach ["tealdeer" "keepassxc" "nix" "starship" "nix-index" "mozilla" "go-build"] (
+      ++ forEach ["tealdeer" "keepassxc" "nix" "starship" "nix-index" "mozilla" "go-build" "BraveSoftware"] (
         x: ".cache/${x}"
       )
       ++ forEach ["direnv" "TelegramDesktop" "PrismLauncher" "keyrings"] (x: ".local/share/${x}")
-      ++ [".ssh" ".keepass" ".mozilla"];
+      ++ [".ssh" ".keepass" ".mozilla" ".thunderbird"];
   };
 }

@@ -1,235 +1,166 @@
-theme:
-with theme.colors; ''
-  input {
-      keyboard {
-          xkb {
-              layout "pl"
-              options "caps:escape"
-          }
+{
+  pkgs,
+  theme,
+  config,
+  ...
+}:
+with theme.colors; {
+  programs.niri.settings = {
+    outputs."eDP-1".position = {
+      x = 0;
+      y = 0;
+    };
+    outputs."DP-2" = {
+      mode = {
+        width = 1920;
+        height = 1080;
+        refresh = 144.001;
+      };
+      position = {
+        x = 0;
+        y = -1080;
+      };
+    };
+
+    input = {
+      keyboard.xkb = {
+        layout = "pl";
+        options = "caps:escape";
+      };
+      touchpad = {
+        # disable when typing /trackpointing
+        dwt = true;
+        dwtp = true;
+        natural-scroll = true;
+        click-method = "clickfinger";
+      };
+      focus-follows-mouse = true;
+      warp-mouse-to-focus = true;
+      trackpoint.accel-speed = 0.001;
+    };
+
+    layout = {
+      gaps = 16;
+      center-focused-column = "never";
+      preset-column-widths = [
+        {proportion = 0.333;}
+        {proportion = 0.5;}
+        {proportion = 0.666;}
+      ];
+      default-column-width = {proportion = 0.5;};
+
+      focus-ring = {
+        enable = true;
+        width = 2;
+        active.color = "#${accent}";
+        inactive.color = "#${overlay0}";
+      };
+    };
+
+    animations = let
+      butter = {
+        spring = {
+          damping-ratio = 0.75;
+          epsilon = 0.00010;
+          stiffness = 400;
+        };
+      };
+      smooth = {
+        spring = {
+          damping-ratio = 0.58;
+          epsilon = 0.00010;
+          stiffness = 735;
+        };
+      };
+    in {
+      slowdown = 1.3;
+      horizontal-view-movement = butter;
+      window-movement = butter;
+      workspace-switch = butter;
+      window-open = smooth;
+      window-close = smooth;
+    };
+
+    window-rules = [
+      {
+        geometry-corner-radius = let radius =8.0; in{
+          bottom-left = radius;
+          bottom-right = radius;
+          top-left = radius;
+          top-right = radius;
+      };
+        clip-to-geometry= true;
       }
+    ];
 
-      touchpad {
-          tap
-          dwt
-          dwtp
-          natural-scroll
-          click-method "clickfinger"
-      }
+    binds = with config.lib.niri.actions; let
+      sh = spawn "sh" "-c";
+    in {
+      "Mod+Return" = {
+        action = spawn "${pkgs.foot}/bin/foot";
+        cooldown-ms = 500;
+      };
+      "Mod+Space".action = spawn "${pkgs.fuzzel}/bin/fuzzel";
+      "Mod+V".action = sh "${pkgs.cliphist}/bin/cliphist list | fuzzel --dmenu | cliphist decode | wl-copy";
+      "Mod+Shift+Period".action = spawn "emoji";
 
-      trackpoint {
-          accel-speed 0.001
-       }
+      "XF86AudioRaiseVolume".action = spawn "pamixer" "-i" "5";
+      "XF86AudioLowerVolume".action = spawn "pamixer" "-d" "5";
+      "XF86AudioMute".action = spawn "pamixer" "-t";
+      "XF86AudioMicMute".action = spawn "micmute";
 
-      warp-mouse-to-focus
-      focus-follows-mouse
-      workspace-auto-back-and-forth
-  }
+      "XF86MonBrightnessUp".action = spawn "brightnessctl" "set" "+5%";
+      "XF86MonBrightnessDown".action = spawn "brightnessctl" "set" "5%-";
 
-  output "eDP-1" {
-      mode "1920x1080@120.0"
-      scale 1.0
-      position x=0 y=0
+      "Super+WheelScrollDown".action = focus-workspace-down;
+      "Super+WheelScrollDown".cooldown-ms = 500;
+      "Super+WheelScrollUp".action = focus-workspace-up;
+      "Super+WheelScrollUp".cooldown-ms = 500;
+      "Super+WheelScrollRight".action = focus-column-right;
+      "Super+WheelScrollLeft".action = focus-column-left;
 
-  }
+      "Super+H".action = focus-column-left;
+      "Super+L".action = focus-column-right;
+      "Super+J".action = focus-workspace-down;
+      "Super+K".action = focus-workspace-up;
+      "Super+Left".action = focus-column-left;
+      "Super+Right".action = focus-column-right;
+      "Super+Down".action = focus-window-down;
+      "Super+Up".action = focus-window-up;
 
-  output "DP-2" {
-      scale 1.0
-      mode "1920x1080@144.001"
+      "Super+Ctrl+H".action = move-column-left;
+      "Super+Ctrl+J".action = move-window-down;
+      "Super+Ctrl+K".action = move-window-up;
+      "Super+Ctrl+L".action = move-column-right;
 
-      position x=0 y=-1080
-  }
+      "Super+U".action = move-workspace-down;
+      "Super+I".action = move-workspace-up;
 
-  layout {
-      gaps 16
+      "Super+Minus".action = set-column-width "-10%";
+      "Super+Equal".action = set-column-width "+10%";
+      "Super+Shift+Minus".action = set-window-height "-10%";
+      "Super+Shift+Equal".action = set-window-height "+10%";
 
-      center-focused-column "never"
+      "Super+Shift+H".action = focus-monitor-left;
+      "Super+Shift+J".action = focus-monitor-down;
+      "Super+Shift+K".action = focus-monitor-up;
+      "Super+Shift+L".action = focus-monitor-right;
 
-      preset-column-widths {
-          proportion 0.33333
-          proportion 0.5
-          proportion 0.66667
-      }
+      "Super+Shift+Ctrl+H".action = move-column-to-monitor-left;
+      "Super+Shift+Ctrl+J".action = move-column-to-monitor-down;
+      "Super+Shift+Ctrl+K".action = move-column-to-monitor-up;
+      "Super+Shift+Ctrl+L".action = move-column-to-monitor-right;
 
-      default-column-width { proportion 0.5; }
+      "Super+R".action = switch-preset-column-width;
+      "Super+F".action = maximize-column;
+      "Super+Shift+F".action = fullscreen-window;
+      "Super+C".action = center-column;
 
-      focus-ring {
-          width 2
-          active-color "#${accent}"
-          inactive-color "#${overlay0}"
-      }
-  }
+      "Mod+Q".action = close-window;
+    };
 
-  spawn-at-startup "systemctl" "--user" "start" "niri.target"
-  // TODO: Find a better way
-  spawn-at-startup "systemctl" "--user" "restart" "swaybg.service"
-
-  prefer-no-csd
-
-  screenshot-path "~/pics/ss/ss%Y-%m-%d %H-%M-%S.png"
-
-  window-rule {
-      geometry-corner-radius 8
-      clip-to-geometry true
-  }
-  window-rule {
-      match app-id="firefox"
-      default-column-width { proportion 1.0;}
-  }
-
-  window-rule {
-      match app-id=r#"^org\.keepassxc\.KeePassXC$"#
-      match app-id=r#"^org\.gnome\.World\.Secrets$"#
-      block-out-from "screen-capture"
-  }
-
-  window-rule {
-      match title="Firefox — Sharing Indicator"
-      max-width 0
-      max-height 0
-  }
-
-  hotkey-overlay {
-      skip-at-startup
-  }
-
-  binds {
-      Mod+Shift+Slash { show-hotkey-overlay; }
-
-      // Suggested binds for running programs: terminal, app launcher, screen locker.
-      Mod+Return { spawn "foot"; }
-      Mod+Space { spawn "fuzzel"; }
-      Mod+Shift+Period { spawn "emoji"; }
-      Super+Shift+L { spawn "swaylock"; }
-
-      // Example volume keys mappings for PipeWire & WirePlumber.
-      // The allow-when-locked=true property makes them work even when the session is locked.
-      XF86AudioRaiseVolume allow-when-locked=true { spawn "pamixer" "-i" "5"; }
-      XF86AudioLowerVolume allow-when-locked=true { spawn "pamixer" "-d" "5"; }
-      XF86AudioMute        allow-when-locked=true { spawn "pamixer" "-t"; }
-      XF86AudioMicMute     allow-when-locked=true { spawn "micmute"; }
-
-      XF86MonBrightnessUp allow-when-locked=true { spawn "brightnessctl" "set" "+5%"; }
-      XF86MonBrightnessDown allow-when-locked=true { spawn "brightnessctl" "set" "5%-"; }
-
-      Mod+Q { close-window; }
-
-      Mod+Left  { focus-column-left; }
-      Mod+Down  { focus-window-down; }
-      Mod+Up    { focus-window-up; }
-      Mod+Right { focus-column-right; }
-      Mod+H     { focus-column-left; }
-      Mod+J     { focus-window-or-workspace-down; }
-      Mod+K     { focus-window-or-workspace-up; }
-      Mod+L     { focus-column-right; }
-
-      Mod+Ctrl+Left  { move-column-left; }
-      Mod+Ctrl+Down  { move-window-down; }
-      Mod+Ctrl+Up    { move-window-up; }
-      Mod+Ctrl+Right { move-column-right; }
-      Mod+Ctrl+H     { move-column-left; }
-      Mod+Ctrl+J     { move-window-down-or-to-workspace-down; }
-      Mod+Ctrl+K     { move-window-up-or-to-workspace-up; }
-      Mod+Ctrl+L     { move-column-right; }
-
-      Mod+Home { focus-column-first; }
-      Mod+End  { focus-column-last; }
-      Mod+Ctrl+Home { move-column-to-first; }
-      Mod+Ctrl+End  { move-column-to-last; }
-
-      Mod+Shift+Left  { focus-monitor-left; }
-      Mod+Shift+Down  { focus-monitor-down; }
-      Mod+Shift+Up    { focus-monitor-up; }
-      Mod+Shift+Right { focus-monitor-right; }
-      Mod+Shift+H     { focus-monitor-left; }
-      Mod+Shift+J     { focus-monitor-down; }
-      Mod+Shift+K     { focus-monitor-up; }
-      Mod+Shift+L     { focus-monitor-right; }
-
-      Mod+Shift+Ctrl+Left  { move-column-to-monitor-left; }
-      Mod+Shift+Ctrl+Down  { move-column-to-monitor-down; }
-      Mod+Shift+Ctrl+Up    { move-column-to-monitor-up; }
-      Mod+Shift+Ctrl+Right { move-column-to-monitor-right; }
-      Mod+Shift+Ctrl+H     { move-column-to-monitor-left; }
-      Mod+Shift+Ctrl+J     { move-column-to-monitor-down; }
-      Mod+Shift+Ctrl+K     { move-column-to-monitor-up; }
-      Mod+Shift+Ctrl+L     { move-column-to-monitor-right; }
-
-      Mod+Page_Down      { focus-workspace-down; }
-      Mod+Page_Up        { focus-workspace-up; }
-      Mod+U              { focus-workspace-down; }
-      Mod+I              { focus-workspace-up; }
-      Mod+Ctrl+Page_Down { move-column-to-workspace-down; }
-      Mod+Ctrl+Page_Up   { move-column-to-workspace-up; }
-      Mod+Ctrl+U         { move-column-to-workspace-down; }
-      Mod+Ctrl+I         { move-column-to-workspace-up; }
-
-      Mod+Shift+Page_Down { move-workspace-down; }
-      Mod+Shift+Page_Up   { move-workspace-up; }
-      Mod+Shift+U         { move-workspace-down; }
-      Mod+Shift+I         { move-workspace-up; }
-
-      Mod+WheelScrollDown      cooldown-ms=150 { focus-workspace-down; }
-      Mod+WheelScrollUp        cooldown-ms=150 { focus-workspace-up; }
-      Mod+Ctrl+WheelScrollDown cooldown-ms=150 { move-column-to-workspace-down; }
-      Mod+Ctrl+WheelScrollUp   cooldown-ms=150 { move-column-to-workspace-up; }
-
-      Mod+WheelScrollRight      { focus-column-right; }
-      Mod+WheelScrollLeft       { focus-column-left; }
-      Mod+Ctrl+WheelScrollRight { move-column-right; }
-      Mod+Ctrl+WheelScrollLeft  { move-column-left; }
-
-      Mod+Shift+WheelScrollDown      { focus-column-right; }
-      Mod+Shift+WheelScrollUp        { focus-column-left; }
-      Mod+Ctrl+Shift+WheelScrollDown { move-column-right; }
-      Mod+Ctrl+Shift+WheelScrollUp   { move-column-left; }
-
-      Mod+1 { focus-workspace 1; }
-      Mod+2 { focus-workspace 2; }
-      Mod+3 { focus-workspace 3; }
-      Mod+4 { focus-workspace 4; }
-      Mod+5 { focus-workspace 5; }
-      Mod+6 { focus-workspace 6; }
-      Mod+7 { focus-workspace 7; }
-      Mod+8 { focus-workspace 8; }
-      Mod+9 { focus-workspace 9; }
-      Mod+Ctrl+1 { move-column-to-workspace 1; }
-      Mod+Ctrl+2 { move-column-to-workspace 2; }
-      Mod+Ctrl+3 { move-column-to-workspace 3; }
-      Mod+Ctrl+4 { move-column-to-workspace 4; }
-      Mod+Ctrl+5 { move-column-to-workspace 5; }
-      Mod+Ctrl+6 { move-column-to-workspace 6; }
-      Mod+Ctrl+7 { move-column-to-workspace 7; }
-      Mod+Ctrl+8 { move-column-to-workspace 8; }
-      Mod+Ctrl+9 { move-column-to-workspace 9; }
-
-      // Alternatively, there are commands to move just a single window:
-      // Mod+Ctrl+1 { move-window-to-workspace 1; }
-
-      // Switches focus between the current and the previous workspace.
-      // Mod+Tab { focus-workspace-previous; }
-
-      Mod+Comma  { consume-window-into-column; }
-      Mod+Period { expel-window-from-column; }
-
-      // There are also commands that consume or expel a single window to the side.
-      // Mod+BracketLeft  { consume-or-expel-window-left; }
-      // Mod+BracketRight { consume-or-expel-window-right; }
-
-      Mod+R { switch-preset-column-width; }
-      Mod+F { maximize-column; }
-      Mod+Shift+F { fullscreen-window; }
-      Mod+C { center-column; }
-
-      Mod+Minus { set-column-width "-10%"; }
-      Mod+Equal { set-column-width "+10%"; }
-
-      Mod+Shift+Minus { set-window-height "-10%"; }
-      Mod+Shift+Equal { set-window-height "+10%"; }
-
-      Super+Print { screenshot; }
-      Ctrl+Print { screenshot-screen; }
-      Alt+Print { screenshot-window; }
-
-      Mod+Shift+P { power-off-monitors; }
-  }
-''
+    prefer-no-csd = true;
+    hotkey-overlay.skip-at-startup = true;
+    screenshot-path = "~/pics/ss/ss%Y-%m-%d %H-%M-%S.png";
+  };
+}

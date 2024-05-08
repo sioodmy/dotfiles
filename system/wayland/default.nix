@@ -2,12 +2,9 @@
   pkgs,
   inputs,
   ...
-}: {
-  imports = [./fonts.nix ./services.nix ./pipewire.nix];
-  environment.etc."greetd/environments".text = ''
-    niri --session
-  '';
-
+}:
+ {
+  imports = [./fonts.nix ./services.nix ./pipewire.nix inputs.niri.nixosModules.niri];
   environment = {
     variables = {
       NIXOS_OZONE_WL = "1";
@@ -39,9 +36,9 @@
       eval $(ssh-agent)
     '';
     systemPackages = with pkgs; [
-      inputs.niri.packages.${pkgs.system}.default
       pamixer
       brightnessctl
+      wl-clipboard
     ];
   };
 
@@ -50,12 +47,11 @@
     pulseaudio.support32Bit = true;
   };
 
+  programs.niri.enable = true;
   xdg.portal = {
     enable = true;
-    config.common.default = "*";
     extraPortals = with pkgs; [
       xdg-desktop-portal-gtk
-      xdg-desktop-portal-gnome
     ];
   };
 

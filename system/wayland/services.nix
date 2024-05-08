@@ -1,4 +1,9 @@
-{pkgs, ...}: {
+{
+  pkgs,
+  inputs,
+  config,
+  ...
+}: {
   systemd.services = {
     seatd = {
       enable = true;
@@ -13,13 +18,17 @@
     };
   };
 
+  programs.niri = {
+    enable = true;
+    package = inputs.niri.packages.${pkgs.system}.niri-unstable;
+  };
   services = {
     mullvad-vpn.enable = true;
     greetd = {
       enable = true;
       settings = rec {
         initial_session = {
-          command = "niri --session";
+          command = "${config.programs.niri.package}/bin/niri-session";
           user = "sioodmy";
         };
         default_session = initial_session;
