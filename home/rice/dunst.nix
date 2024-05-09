@@ -7,14 +7,14 @@
 in {
   services.dunst = {
     enable = true;
-    package = pkgs.dunst.overrideAttrs (_: {
-      src = pkgs.fetchFromGitHub {
-        owner = "sioodmy";
-        repo = "dunst";
-        rev = "6477864bd870dc74f9cf76bb539ef89051554525";
-        sha256 = "FCoGrYipNOZRvee6Ks5PQB5y2IvN+ptCAfNuLXcD8Sc=";
-      };
-    });
+    # package = pkgs.dunst.overrideAttrs (_: {
+    #   src = pkgs.fetchFromGitHub {
+    #     owner = "sioodmy";
+    #     repo = "dunst";
+    #     rev = "6477864bd870dc74f9cf76bb539ef89051554525";
+    #     sha256 = "FCoGrYipNOZRvee6Ks5PQB5y2IvN+ptCAfNuLXcD8Sc=";
+    #   };
+    # });
     iconTheme = {
       package = pkgs.catppuccin-papirus-folders;
       name = "Papirus";

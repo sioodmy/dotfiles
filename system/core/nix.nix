@@ -39,6 +39,14 @@
       ];
 
       overlays = [
+        (self: super: {
+          # temporary fix until upstream applies the fix we have used
+          # which is just to add wrapGAppsNoGuiHook to the nativeBuildInputs
+          # See: <https://github.com/NixOS/nixpkgs/pull/309315>
+          networkd-dispatcher = super.networkd-dispatcher.overrideAttrs (oldAttrs: {
+            nativeBuildInputs = (oldAttrs.nativeBuildInputs or []) ++ [pkgs.wrapGAppsNoGuiHook];
+          });
+        })
         # workaround for: https://github.com/NixOS/nixpkgs/issues/154163
         (_: super: {
           coreutils = super.uutils-coreutils-noprefix;
@@ -64,7 +72,7 @@
       dates = "daily";
       options = "--delete-older-than 3d";
     };
-    # package = pkgs.nixVersions.git;
+    package = pkgs.nixVersions.git;
 
     # Make builds run with low priority so my system stays responsive
     daemonCPUSchedPolicy = "idle";
