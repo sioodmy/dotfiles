@@ -128,6 +128,10 @@ with theme.colors; {
       "Super+Down".action = focus-window-down;
       "Super+Up".action = focus-window-up;
 
+      "Super+Print".action = screenshot-window;
+      "Super+Shift+Print".action = screenshot-screen;
+      "Super+Shift+S".action = screenshot;
+
       "Super+Ctrl+H".action = move-column-left;
       "Super+Ctrl+J".action = move-window-down;
       "Super+Ctrl+K".action = move-window-up;
