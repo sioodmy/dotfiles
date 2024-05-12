@@ -104,10 +104,6 @@
       url = "github:nixpak/nixpak";
       inputs.nixpkgs.follows = "nixpkgs";
     };
-    hyprpicker = {
-      url = "github:hyprwm/hyprpicker";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
 
     # project shells
     devshell = {
@@ -135,16 +131,8 @@
       inputs.home-manager.follows = "home-manager";
       inputs.nixpkgs.follows = "nixpkgs";
     };
-    hyprlock = {
-      url = "github:hyprwm/hyprlock";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
     helix = {
       url = "github:SoraTenshi/helix/new-daily-driver";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
-    hypridle = {
-      url = "github:hyprwm/hypridle";
       inputs.nixpkgs.follows = "nixpkgs";
     };
     nix-index-db = {
