@@ -1,6 +1,5 @@
 {
   inputs,
-  config,
   ...
 }:
 # glue all configs together
