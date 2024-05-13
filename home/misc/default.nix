@@ -3,6 +3,6 @@
     ./media.nix
     ./schizofox.nix
     ./rnnoise.nix
-    # ./lock.nix
+    ./lock.nix
   ];
 }
