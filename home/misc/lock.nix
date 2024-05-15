@@ -12,8 +12,53 @@
       ${pkgs.systemd}/bin/systemctl suspend
     fi
   '';
-  font_family = "Lexend";
 in {
+  programs.swaylock = {
+    package = pkgs.swaylock-effects;
+    settings = with theme.colors; {
+      clock = true;
+      font = "Lexend";
+      show-failed-attempts = false;
+      screenshots = true;
+      effect-blur = "10x5";
+      effect-vignette = "0.5:0.5";
+      indicator = true;
+      indicator-radius = 200;
+      indicator-thickness = 20;
+      ring-color = surface1;
+      key-hl-color = accent;
+      text-color = text;
+      text-caps-lock-color = "";
+      ring-ver-color = accent;
+      text-ver-color = text;
+      ring-wrong-color = red;
+      text-wrong-color = red;
+      text-clear-color = blue;
+      ring-clear-color = blue;
+      bs-hl-color = red;
+
+      inside-color = "00000000";
+      inside-clear-color = "00000000";
+      inside-caps-lock-color = "00000000";
+      inside-ver-color = "00000000";
+      inside-wrong-color = "00000000";
+      layout-bg-color = "00000000";
+      layout-border-color = "00000000";
+      line-color = "00000000";
+      line-clear-color = "00000000";
+      line-caps-lock-color = "00000000";
+      line-ver-color = "00000000";
+      line-wrong-color = "00000000";
+      separator-color = "00000000";
+      line-uses-ring = false;
+      grace = 2;
+      grace-no-mouse = true;
+      grace-no-touch = true;
+      datestr = "%d.%m";
+      fade-in = "0.1";
+      ignore-empty-password = true;
+    };
+  };
   services.swayidle = {
     enable = true;
     events = [
@@ -23,7 +68,7 @@ in {
       }
       {
         event = "lock";
-        command = "${pkgs.gtklock}/bin/gtklock";
+        command = "${config.programs.swaylock.package}/bin/swaylock";
       }
     ];
     timeouts = [
@@ -33,35 +78,4 @@ in {
       }
     ];
   };
-    home.packages = with pkgs; [gtklock];
-
-  xdg.configFile."gtklock/style.css".text = ''
-    window {
-      background: rgba(0,0,0,.5);
-      font-family: Product Sans;
-    }
-
-    grid > label {
-      color: transparent;
-      margin: -20rem;
-    }
-
-    button {
-      all: unset;
-      color: transparent;
-      margin: -20rem;
-    }
-
-    #clock-label {
-      font-size: 6rem;
-      margin-bottom: 4rem;
-      text-shadow: 0px 2px 10px rgba(0,0,0,.1);
-    }
-
-    entry {
-      border-radius: 16px;
-      margin: 6rem;
-      box-shadow: 0 1px 3px rgba(0,0,0,.1);
-    }
-  '';
 }
