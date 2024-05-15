@@ -22,6 +22,7 @@
             nodePackages.vscode-css-languageserver-bin
             nodePackages.vscode-langservers-extracted
             shellcheck
+            typst-lsp
           ])
         ];
     });
@@ -147,6 +148,9 @@
     shellcheck
     lldb
     gopls
+    typst
+    typstfmt
+    typst-live
     rust-analyzer
     clang-tools
     nodejs

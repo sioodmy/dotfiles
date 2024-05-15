@@ -5,7 +5,7 @@ _: {
       font = "Iosevka 15";
 
       default-fg = "#CDD6F4";
-      default-bg = "rgba(30, 30, 46, 0.8)";
+      default-bg = "rgba(30, 30, 46, 1.0)";
 
       completion-bg = "#313244";
       completion-fg = "#CDD6F4";
