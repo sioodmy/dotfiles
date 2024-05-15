@@ -1,50 +1,50 @@
-_: {
+{theme, ...}: {
   programs.zathura = {
     enable = true;
-    options = {
+    options = with theme.colors; {
       font = "Iosevka 15";
 
-      default-fg = "#CDD6F4";
-      default-bg = "rgba(30, 30, 46, 1.0)";
+      default-fg = "#${text}";
+      default-bg = "#${base}";
 
-      completion-bg = "#313244";
-      completion-fg = "#CDD6F4";
+      completion-bg = "#${surface0}";
+      completion-fg = "#${text}";
       completion-highlight-bg = "#575268";
-      completion-highlight-fg = "#CDD6F4";
-      completion-group-bg = "#313244";
-      completion-group-fg = "#89B4FA";
+      completion-highlight-fg = "#${text}";
+      completion-group-bg = "#${surface0}";
+      completion-group-fg = "#${text}";
 
-      statusbar-fg = "#CDD6F4";
-      statusbar-bg = "#313244";
+      statusbar-bg = "#${base}";
+      statusbar-fg = "#${text}";
       statusbar-h-padding = 10;
       statusbar-v-padding = 10;
 
-      notification-bg = "#313244";
-      notification-fg = "#CDD6F4";
-      notification-error-bg = "#313244";
-      notification-error-fg = "#F38BA8";
-      notification-warning-bg = "#313244";
-      notification-warning-fg = "#FAE3B0";
+      notification-bg = "#${surface0}";
+      notification-fg = "#${text}";
+      notification-error-bg = "#${surface0}";
+      notification-error-fg = "#${red}";
+      notification-warning-bg = "#${base}";
+      notification-warning-fg = "#${yellow}";
       selection-notification = true;
 
-      inputbar-fg = "#CDD6F4";
-      inputbar-bg = "rgba(30, 30, 46, 0.8)";
+      inputbar-fg = "#${text}";
+      inputbar-bg = "#${base}";
 
       recolor = true;
       recolor-lightcolor = "rgba(0,0,0,0)";
-      recolor-darkcolor = "#CDD6F4";
+      recolor-darkcolor = "#${text}";
 
-      index-fg = "#CDD6F4";
-      index-bg = "rgba(30, 30, 46, 0.8)";
-      index-active-fg = "#CDD6F4";
-      index-active-bg = "#313244";
+      index-fg = "#${text}";
+      index-bg = "#${base}";
+      index-active-fg = "#${text}";
+      index-active-bg = "#${surface0}";
 
-      render-loading-bg = "rgba(30, 30, 46, 0.8)";
-      render-loading-fg = "#CDD6F4";
+      render-loading-bg = "#${base}";
+      render-loading-fg = "#${text}";
 
-      highlight-color = "#575268";
-      highlight-active-color = "#F5C2E7";
-      highlight-fg = "#F5C2E7";
+      highlight-color = "#${mauve}";
+      highlight-active-color = "#${accent}";
+      highlight-fg = "#${text}";
 
       selection-clipboard = "clipboard";
       adjust-open = "best-fit";

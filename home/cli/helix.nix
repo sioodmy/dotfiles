@@ -109,6 +109,11 @@
           };
         }
         {
+          name = "typst";
+          auto-format = true;
+          formatter.command = "${pkgs.typstfmt}/bin/typstfmt";
+        }
+        {
           name = "html";
           file-types = ["html" "tera"];
         }
