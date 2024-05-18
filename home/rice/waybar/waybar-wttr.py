@@ -97,7 +97,7 @@ if tempint >= 0 and tempint < 10:
 data["text"] = (
     " "
     + WEATHER_CODES[weather["current_condition"][0]["weatherCode"]]
-    + "\n "
+    + " "
     + extrachar
     + weather["current_condition"][0]["FeelsLikeC"]
     + "°"

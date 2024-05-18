@@ -1,6 +1,7 @@
 {
   pkgs,
   lib,
+  theme,
   ...
 }:
 with lib; let
@@ -21,26 +22,25 @@ in {
   home.packages = [waybar-wttr];
   programs.waybar = {
     enable = true;
-    style = import ./style.nix;
+    style = import ./style.nix theme;
     systemd = {
       enable = true;
-      target = "niri.target";
+      target = "niri.service";
     };
     settings = {
       mainBar = {
         layer = "top";
-        position = "left";
-        width = 57;
-        spacing = 7;
+        position = "top";
+        height = 30;
+        spacing = 5;
         modules-left = [
           "custom/search"
-          "custom/lock"
           "custom/weather"
           "backlight"
           "battery"
         ];
         modules-center = [];
-        modules-right = ["pulseaudio" "network" "clock" "custom/power"];
+        modules-right = ["pulseaudio" "network" "clock"];
         "custom/search" = {
           format = " ";
           tooltip = false;
@@ -54,26 +54,14 @@ in {
           exec = "waybar-wttr";
           return-type = "json";
         };
-        "custom/lock" = {
-          tooltip = false;
-          on-click = "sh -c '(sleep 0.5s; hyprlock)' & disown";
-          format = "";
-        };
-        "custom/power" = {
-          tooltip = false;
-          on-click = "wlogout &";
-          format = "";
-        };
         clock = {
-          format = ''
-            {:%H
-            %M}'';
+          format = "{:%H:%M}";
           tooltip-format = ''
             <big>{:%Y %B}</big>
             <tt><small>{calendar}</small></tt>'';
         };
         backlight = {
-          format = "{icon}";
+          format = "{icon} {percent}%";
           format-icons = ["" "" "" "" "" "" "" "" ""];
         };
         battery = {
@@ -81,14 +69,14 @@ in {
             warning = 30;
             critical = 15;
           };
-          format = "{icon}";
-          format-charging = "{icon}\n󰚥";
-          tooltip-format = "{timeTo} {capacity}% 󱐋{power}";
+          format = "{icon} {capacity}% {power} 󱐋";
+          format-charging = "{icon} 󰚥 {capacity} %";
+          tooltip-format = "{timeTo}";
           format-icons = ["󰂃" "󰁺" "󰁻" "󰁼" "󰁽" "󰁾" "󰁿" "󰂀" "󰂁" "󰂂" "󰁹"];
         };
         network = {
-          format-wifi = "󰤨";
-          format-ethernet = "󰤨";
+          format-wifi = "󰤨  {essid} {signalStrength}";
+          format-ethernet = "󰈀";
           format-alt = "󰤨";
           format-disconnected = "󰤭";
           tooltip-format = "{ipaddr}/{ifname} via {gwaddr} ({signalStrength}%)";
@@ -98,7 +86,7 @@ in {
           tooltip = true;
           tooltip-format = "{volume}% {format_source}";
           on-click = "${pkgs.killall}/bin/killall pavucontrol || ${pkgs.pavucontrol}/bin/pavucontrol";
-          format = " {icon}\n{volume}%";
+          format = " {icon} {volume}%";
           format-bluetooth = "󰂯 {icon} {volume}%";
           format-muted = "󰝟 ";
           format-icons = {

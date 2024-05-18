@@ -6,6 +6,12 @@
 }:
 with theme.colors; {
   programs.niri.settings = {
+    spawn-at-startup = [{
+      command = [
+        "run-as-service"
+        "waybar"
+      ];
+    }];
     outputs."eDP-1".position = {
       x = 0;
       y = 0;
@@ -162,6 +168,8 @@ with theme.colors; {
       "Super+C".action = center-column;
 
       "Mod+Q".action = close-window;
+
+      "Mod+Shift+P".action = power-off-monitors;
     };
 
     prefer-no-csd = true;
