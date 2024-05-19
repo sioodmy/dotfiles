@@ -32,6 +32,7 @@
           user = "sioodmy";
         };
         default_session = initial_session;
+        terminal.vt = 1;
       };
     };
 

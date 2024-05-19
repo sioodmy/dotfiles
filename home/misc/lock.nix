@@ -1,10 +1,4 @@
-{
-  pkgs,
-  lib,
-  config,
-  theme,
-  ...
-}: let
+{pkgs, ...}: let
   suspendScript = pkgs.writeShellScript "suspend-script" ''
     ${pkgs.pipewire}/bin/pw-cli i all | ${pkgs.ripgrep}/bin/rg running
     # only suspend if audio isn't running
@@ -13,52 +7,6 @@
     fi
   '';
 in {
-  programs.swaylock = {
-    package = pkgs.swaylock-effects;
-    settings = with theme.colors; {
-      clock = true;
-      font = "Lexend";
-      show-failed-attempts = false;
-      screenshots = true;
-      effect-blur = "10x5";
-      effect-vignette = "0.5:0.5";
-      indicator = true;
-      indicator-radius = 200;
-      indicator-thickness = 20;
-      ring-color = surface1;
-      key-hl-color = accent;
-      text-color = text;
-      text-caps-lock-color = "";
-      ring-ver-color = accent;
-      text-ver-color = text;
-      ring-wrong-color = red;
-      text-wrong-color = red;
-      text-clear-color = blue;
-      ring-clear-color = blue;
-      bs-hl-color = red;
-
-      inside-color = "00000000";
-      inside-clear-color = "00000000";
-      inside-caps-lock-color = "00000000";
-      inside-ver-color = "00000000";
-      inside-wrong-color = "00000000";
-      layout-bg-color = "00000000";
-      layout-border-color = "00000000";
-      line-color = "00000000";
-      line-clear-color = "00000000";
-      line-caps-lock-color = "00000000";
-      line-ver-color = "00000000";
-      line-wrong-color = "00000000";
-      separator-color = "00000000";
-      line-uses-ring = false;
-      grace = 2;
-      grace-no-mouse = true;
-      grace-no-touch = true;
-      datestr = "%d.%m";
-      fade-in = "0.1";
-      ignore-empty-password = true;
-    };
-  };
   services.swayidle = {
     enable = true;
     events = [
@@ -68,7 +16,7 @@ in {
       }
       {
         event = "lock";
-        command = "${config.programs.swaylock.package}/bin/swaylock";
+        command = "${pkgs.gtklock}/bin/gtklock";
       }
     ];
     timeouts = [
@@ -78,4 +26,51 @@ in {
       }
     ];
   };
+  home.packages = with pkgs; [gtklock];
+
+  xdg.configFile."gtklock/config.ini".text = ''
+    [main]
+    modules = ${pkgs.gtklock-powerbar-module}/lib/gtklock/powerbar-module.so;
+  '';
+  xdg.configFile."gtklock/style.css".text = ''
+    * {
+      color: white;
+    }
+    window {
+      background: black;
+      font-family: Product Sans;
+    }
+
+    grid > label {
+      color: transparent;
+      margin: -20rem;
+    }
+
+    button {
+      all: unset;
+      padding: 3rem;
+    }
+    #unlock-button label{
+      color: transparent;
+    }
+    #message-box {
+      all: unset;
+      background-color: black;
+    }
+
+    #clock-label {
+      font-size: 10rem;
+      margin-bottom: 4rem;
+      color: white;
+    }
+
+    entry {
+      all: unset;
+      border-radius: 30px;
+      border: 2px solid white;
+      padding: 2rem;
+      font-size: 2rem;
+      background-color: black;
+    }
+  '';
 }
