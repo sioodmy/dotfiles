@@ -59,7 +59,11 @@
       packages = [pkgs.apparmor-profiles];
     };
     pam = {
-      services.swaylock.text = "auth include login";
+      services.gtklock.text = ''
+      auth            sufficient      pam_unix.so try_first_pass likeauth nullok
+      auth            sufficient      pam_fprintd.so
+      auth            include         login
+    '';
       loginLimits = [
         {
           domain = "@wheel";

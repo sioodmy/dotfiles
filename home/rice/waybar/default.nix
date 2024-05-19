@@ -39,8 +39,8 @@ in {
           "backlight"
           "battery"
         ];
-        modules-center = [];
-        modules-right = ["pulseaudio" "network" "clock"];
+        modules-center = ["clock"];
+        modules-right = ["pulseaudio" "network"];
         "custom/search" = {
           format = " ";
           tooltip = false;

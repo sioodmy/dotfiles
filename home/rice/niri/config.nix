@@ -109,7 +109,7 @@ with theme.colors; {
       "Mod+Space".action = spawn "${pkgs.fuzzel}/bin/fuzzel";
       "Mod+V".action = sh "${pkgs.cliphist}/bin/cliphist list | fuzzel --dmenu | cliphist decode | wl-copy";
       "Mod+Shift+Period".action = spawn "emoji";
-      "Mod+Shift+L".action = spawn "swaylock" "--grace" "0";
+      "Mod+Shift+L".action = spawn "gtklock";
 
       "XF86AudioRaiseVolume".action = spawn "pamixer" "-i" "5";
       "XF86AudioLowerVolume".action = spawn "pamixer" "-d" "5";
