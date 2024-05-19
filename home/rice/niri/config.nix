@@ -6,12 +6,14 @@
 }:
 with theme.colors; {
   programs.niri.settings = {
-    spawn-at-startup = [{
-      command = [
-        "run-as-service"
-        "waybar"
-      ];
-    }];
+    spawn-at-startup = [
+      {
+        command = [
+          "run-as-service"
+          "waybar"
+        ];
+      }
+    ];
     outputs."eDP-1".position = {
       x = 0;
       y = 0;
@@ -89,13 +91,15 @@ with theme.colors; {
 
     window-rules = [
       {
-        geometry-corner-radius = let radius =8.0; in{
+        geometry-corner-radius = let
+          radius = 8.0;
+        in {
           bottom-left = radius;
           bottom-right = radius;
           top-left = radius;
           top-right = radius;
-      };
-        clip-to-geometry= true;
+        };
+        clip-to-geometry = true;
       }
     ];
 

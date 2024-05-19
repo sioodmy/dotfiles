@@ -2,8 +2,7 @@
   pkgs,
   inputs,
   ...
-}:
- {
+}: {
   imports = [./fonts.nix ./services.nix ./pipewire.nix inputs.niri.nixosModules.niri];
   environment = {
     variables = {

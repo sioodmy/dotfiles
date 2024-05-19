@@ -10,7 +10,7 @@
     Install.WantedBy = ["graphical-session.target"];
   };
 in {
-imports = [./config.nix];
+  imports = [./config.nix];
   home.packages = with pkgs; [pamixer];
   services = {
     wlsunset = {
