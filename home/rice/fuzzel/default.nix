@@ -2,7 +2,7 @@
   pkgs,
   theme,
   ...
-}:let
+}: let
   emoji = pkgs.writeShellScriptBin "emoji" ''
     #!/bin/sh
     cat ${./emojis} | fuzzel -p"Emoji: " -d | awk '{print $1}' | tr -d '\n' | tee >(wl-copy) >(xargs -I % notify-send "% Emoji" "Emoji copied to clipboard")

@@ -41,7 +41,7 @@ in {
       };
     };
   };
-  
+
   services.radicale = {
     enable = true;
     settings = {
@@ -53,8 +53,8 @@ in {
       };
     };
   };
-    networking.firewall.allowedTCPPorts = [ 5232];
-    services.nginx = {
+  networking.firewall.allowedTCPPorts = [5232];
+  services.nginx = {
     virtualHosts = {
       "cal.sioodmy.dev" = {
         forceSSL = true;

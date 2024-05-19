@@ -1,5 +1,4 @@
 let
-
   calypso-user = "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIH+S9LPxp3Mmha1keHlwc0iVq4CMbHvzAAwuYE2go7io sioodmy@calypso";
 
   calypso-host = "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIPhD+J2Iivt9mTVV2I79iGlqN+YQFb4PPkqle0brUKy4 root@calypso";
@@ -10,7 +9,7 @@ let
 
   calypso = [calypso-user calypso-host];
 
-  prometheus = [ calypso-user prometheus-host];
+  prometheus = [calypso-user prometheus-host];
   iapetus = [calypso-user iapetus-host];
 in {
   age.identityPaths = "/persist/home/sioodmy/.ssh/id_ed25519";

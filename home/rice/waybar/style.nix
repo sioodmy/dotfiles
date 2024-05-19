@@ -1,4 +1,5 @@
-theme: with theme.colors; ''
+theme:
+with theme.colors; ''
   * {
     font-family: Material Design Icons, Iosevka Nerd Font;
     padding: 0;
