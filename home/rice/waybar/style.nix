@@ -27,6 +27,7 @@ with theme.colors; ''
   }
   #network {
     color: #${blue};
+    margin-right: 6px;
   }
   #backlight {
     color: #${yellow};
@@ -49,9 +50,6 @@ with theme.colors; ''
     margin-left: 6px;
     background-position: center;
     background-repeat: no-repeat;
-  }
-  #clock {
-    margin-right: 6px;
   }
 
   tooltip {
