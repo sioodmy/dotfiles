@@ -7,6 +7,7 @@
 {
   imports = [
     ./mail.nix
+    inputs.lyricsapi.nixosModules.default
   ];
   services.nginx = {
     enable = true;
@@ -46,7 +47,7 @@
 
         forceSSL = true;
       };
-      "search.sioodmy.dev" = {
+      "lyrics.sioodmy.dev" = {
         locations."/" = {
           proxyPass = "http://127.0.0.1:3000";
         };
@@ -56,6 +57,7 @@
       };
     };
   };
+  services.lyricsapi.enable = true;
 
   security.acme = {
     acceptTerms = true;

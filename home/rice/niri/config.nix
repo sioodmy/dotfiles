@@ -120,6 +120,8 @@ with theme.colors; {
       "XF86AudioMute".action = spawn "pamixer" "-t";
       "XF86AudioMicMute".action = spawn "micmute";
 
+      "XF86Bluetooth".action = spawn "bt";
+
       "XF86MonBrightnessUp".action = spawn "brightnessctl" "set" "+5%";
       "XF86MonBrightnessDown".action = spawn "brightnessctl" "set" "5%-";
 
