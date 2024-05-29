@@ -16,4 +16,5 @@ in {
 
   "mailserver.age".publicKeys = prometheus;
   "caldav.age".publicKeys = prometheus;
+  "discordtoken.age".publicKeys = prometheus;
 }

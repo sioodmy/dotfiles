@@ -155,7 +155,7 @@
       url = "github:lighttigerXIV/catppuccinifier";
       inputs.nixpkgs.follows = "nixpkgs";
     };
-    lyricsapi= {
+    lyricsapi = {
       url = "github:sioodmy/lyricsapi";
       inputs.nixpkgs.follows = "nixpkgs";
     };
@@ -168,6 +168,15 @@
       inputs = {
         nixpkgs.follows = "nixpkgs";
         flake-parts.follows = "flake-parts";
+      };
+    };
+    bitcoinstatus = {
+      # url = "github:sioodmy/bitcoinstatus";
+      url = "path:/home/sioodmy/dev/bitcoinstatus";
+      inputs = {
+        nixpkgs.follows = "nixpkgs";
+        flake-parts.follows = "flake-parts";
+        treefmt-nix.follows = "treefmt-nix";
       };
     };
   };
