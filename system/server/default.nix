@@ -1,13 +1,18 @@
 {
   pkgs,
   inputs,
+  config,
   ...
 }:
+let
+  inherit (config.age) secrets;
+  in
 # TODO
 {
   imports = [
     ./mail.nix
     inputs.lyricsapi.nixosModules.default
+    inputs.bitcoinstatus.nixosModules.default
   ];
   services.nginx = {
     enable = true;
@@ -58,6 +63,10 @@
     };
   };
   services.lyricsapi.enable = true;
+  services.bitcoinstatus = {
+    enable = true;
+    tokenFile = secrets.discordtoken.path;
+  };
 
   security.acme = {
     acceptTerms = true;
