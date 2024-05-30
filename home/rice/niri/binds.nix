@@ -3,18 +3,21 @@
   pkgs,
   lib,
   ...
-}: {
+}: let
+  inherit (lib) getExe;
+in{
   programs.niri.settings.binds = with config.lib.niri.actions; let
     sh = spawn "sh" "-c";
+    run = x: spawn "run-as-service" (builtins.toString (getExe x));
   in
     {
       "Mod+Return" = {
-        action = spawn "${pkgs.foot}/bin/foot";
+        action = run config.programs.foot.package;
         cooldown-ms = 500;
       };
-      "Mod+Space".action = spawn "${pkgs.fuzzel}/bin/fuzzel";
+      "Mod+Space".action = run config.programs.fuzzel.package;
       "Mod+V".action = sh "${pkgs.cliphist}/bin/cliphist list | fuzzel --dmenu | cliphist decode | wl-copy";
-      "Mod+Shift+Period".action = spawn "emoji";
+      "Mod+semicolon".action = spawn "emoji";
       "Mod+Shift+L".action = sh "niri msg action power-off-monitors; gtklock";
 
       "XF86AudioRaiseVolume".action = spawn "pamixer" "-i" "5";

@@ -1,15 +1,32 @@
-{
-  theme,
-  ...
-}:
+{theme, pkgs, ...}:
 with theme.colors; {
-  imports = [ ./binds.nix ];
+  imports = [./binds.nix];
   programs.niri.settings = {
     spawn-at-startup = [
       {
         command = [
           "run-as-service"
           "waybar"
+        ];
+      }
+      {
+        command = [
+          "${pkgs.dbus}/bin/dbus-update-activation-environment"
+          "--systemd"
+          "DISPLAY"
+          "WAYLAND_DISPLAY"
+          "SWAYSOCK"
+          "XDG_CURRENT_DESKTOP"
+          "XDG_SESSION_TYPE"
+          "NIXOS_OZONE_WL"
+          "XCURSOR_THEME"
+          "XCURSOR_SIZE"
+          "XDG_DATA_DIRS"
+        ];
+      }
+      {
+        command = [
+          "/usr/libexec/polkit-gnome-authentication-agent-1"
         ];
       }
     ];
@@ -102,9 +119,9 @@ with theme.colors; {
       }
     ];
 
-
     prefer-no-csd = true;
     hotkey-overlay.skip-at-startup = true;
     screenshot-path = "~/pics/ss/ss%Y-%m-%d %H-%M-%S.png";
   };
+
 }
