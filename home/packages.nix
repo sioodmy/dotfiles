@@ -4,7 +4,7 @@
     libreoffice-fresh
     thunderbird
     fuzzel
-    prismlauncher
+    gnome.gnome-calculator
     brave
     inkscape
     ledger-live-desktop
