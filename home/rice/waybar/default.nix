@@ -75,7 +75,7 @@ in {
           format-icons = ["󰂃" "󰁺" "󰁻" "󰁼" "󰁽" "󰁾" "󰁿" "󰂀" "󰂁" "󰂂" "󰁹"];
         };
         network = {
-          format-wifi = "󰤨  {essid} {signalStrength}";
+          format-wifi = "󰤨  {essid} {signalStrength}%";
           format-ethernet = "󰈀";
           format-alt = "󰤨";
           format-disconnected = "󰤭";
