@@ -5,7 +5,7 @@
   ...
 }: let
   inherit (lib) getExe;
-in{
+in {
   programs.niri.settings.binds = with config.lib.niri.actions; let
     sh = spawn "sh" "-c";
     run = x: spawn "run-as-service" (builtins.toString (getExe x));

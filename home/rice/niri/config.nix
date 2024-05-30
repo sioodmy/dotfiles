@@ -1,4 +1,8 @@
-{theme, pkgs, ...}:
+{
+  theme,
+  pkgs,
+  ...
+}:
 with theme.colors; {
   imports = [./binds.nix];
   programs.niri.settings = {
@@ -123,5 +127,4 @@ with theme.colors; {
     hotkey-overlay.skip-at-startup = true;
     screenshot-path = "~/pics/ss/ss%Y-%m-%d %H-%M-%S.png";
   };
-
 }
