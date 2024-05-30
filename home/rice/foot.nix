@@ -16,13 +16,12 @@
         title = "foot";
         locked-title = "no";
         term = "xterm-256color";
-        font = "monospace:size=10.5";
+        font = "monospace:size=9";
         vertical-letter-offset = "-0.75";
         pad = "12x21 center";
         resize-delay-ms = 100;
         notify = "notify-send -a \${app-id} -i \${app-id} \${title} \${body}";
         selection-target = "primary";
-        # box-drawings-uses-font-glyphs = "yes";
         dpi-aware = "yes";
         bold-text-in-bright = "no";
         word-delimiters = ",│`|:\"'()[]{}<>";
@@ -89,7 +88,6 @@
         select-extend-character-wise = "Control+BTN_RIGHT";
         select-word = "BTN_LEFT-2";
         select-word-whitespace = "Control+BTN_LEFT-2";
-        #select-row = "BTN_LEFT-3";
       };
     };
   };
