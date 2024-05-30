@@ -18,6 +18,9 @@ in {
       "Mod+Space".action = run config.programs.fuzzel.package;
       "Mod+V".action = sh "${pkgs.cliphist}/bin/cliphist list | fuzzel --dmenu | cliphist decode | wl-copy";
       "Mod+semicolon".action = spawn "emoji";
+
+      "XF86Keyboard".action = run pkgs.gnome.gnome-calculator;
+
       "Mod+Shift+L".action = sh "niri msg action power-off-monitors; gtklock";
 
       "XF86AudioRaiseVolume".action = spawn "pamixer" "-i" "5";

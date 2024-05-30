@@ -121,6 +121,10 @@ with theme.colors; {
         };
         clip-to-geometry = true;
       }
+      {
+        matches = [{app-id = "^firefox$";}];
+        open-on-workspace = "2";
+      }
     ];
 
     prefer-no-csd = true;
