@@ -11,7 +11,6 @@
     ./packages.nix
     ./impermanence.nix
 
-    ./cli
     ./scripts
     ./rice
     ./misc

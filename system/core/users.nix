@@ -1,8 +1,4 @@
-{
-  config,
-  pkgs,
-  ...
-}: {
+{pkgs, ...}: {
   programs.zsh.enable = true;
   services.openssh = {
     enable = true;
@@ -25,6 +21,7 @@
       root.hashedPasswordFile = "/persist/secrets/root";
       sioodmy = {
         isNormalUser = true;
+        shell = pkgs.bashInteractive;
         hashedPasswordFile = "/persist/secrets/sioodmy";
         extraGroups = [
           "wheel"
@@ -44,21 +41,21 @@
           "adbusers"
         ];
         uid = 1000;
-        shell =
-          if config.services.greetd.enable
-          then pkgs.zsh
-          else pkgs.bash;
         openssh.authorizedKeys.keys = [
           "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIE9ExEl6WqtCI4yCqbSAhAGmzvVp/nYADbgy/Qi4AKQy sioodmy@anthe"
           "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIH+S9LPxp3Mmha1keHlwc0iVq4CMbHvzAAwuYE2go7io sioodmy@calypso"
         ];
       };
 
-      root.
+      root = {
         openssh.authorizedKeys.keys = [
-        "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIE9ExEl6WqtCI4yCqbSAhAGmzvVp/nYADbgy/Qi4AKQy sioodmy@anthe"
-        "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIH+S9LPxp3Mmha1keHlwc0iVq4CMbHvzAAwuYE2go7io sioodmy@calypso"
-      ];
+          "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIE9ExEl6WqtCI4yCqbSAhAGmzvVp/nYADbgy/Qi4AKQy sioodmy@anthe"
+          "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIH+S9LPxp3Mmha1keHlwc0iVq4CMbHvzAAwuYE2go7io sioodmy@calypso"
+        ];
+        # we don't want to mess around with noshell as root
+        # less mess and reduces the attack surface
+        shell = pkgs.bashInteractive;
+      };
     };
   };
 }

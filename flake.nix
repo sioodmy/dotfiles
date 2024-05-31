@@ -110,6 +110,10 @@
       url = "github:numtide/devshell";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+    helix = {
+      url = "github:SoraTenshi/helix/new-daily-driver";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
 
     schizofox = {
       url = "github:schizofox/schizofox";
@@ -131,10 +135,14 @@
       inputs.home-manager.follows = "home-manager";
       inputs.nixpkgs.follows = "nixpkgs";
     };
-    helix = {
-      url = "github:SoraTenshi/helix/new-daily-driver";
-      inputs.nixpkgs.follows = "nixpkgs";
+    seashell = {
+      url = "github:sioodmy/seashell";
+      inputs = {
+        nixpkgs.follows = "nixpkgs";
+        flake-parts.follows = "flake-parts";
+      };
     };
+
     nix-index-db = {
       url = "github:Mic92/nix-index-database";
       inputs.nixpkgs.follows = "nixpkgs";

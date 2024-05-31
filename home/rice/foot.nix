@@ -1,10 +1,14 @@
 {
   pkgs,
   theme,
+  inputs,
   ...
-}: {
+}: let
+  seashell = inputs.seashell.packages.${pkgs.system}.default;
+in {
   home.packages = with pkgs; [
     libsixel
+    seashell
     # for displaying images
   ];
   programs.foot = {
@@ -17,6 +21,7 @@
         locked-title = "no";
         term = "xterm-256color";
         font = "monospace:size=9";
+        shell = "${seashell}/bin/seashell";
         vertical-letter-offset = "-0.75";
         pad = "12x21 center";
         resize-delay-ms = 100;
