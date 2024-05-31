@@ -3,6 +3,7 @@
   home.packages = with pkgs; [
     libreoffice-fresh
     thunderbird
+    nicotine-plus
     fuzzel
     gnome.gnome-calculator
     brave
