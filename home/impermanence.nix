@@ -13,7 +13,7 @@ in {
         "vids"
         "other"
       ]
-      ++ forEach ["syncthing" "Caprine" "VencordDesktop" "obs-studio" "Signal" "niri" "BraveSoftware" "nicotine"] (
+      ++ forEach ["syncthing" "Caprine" "VencordDesktop" "obs-studio" "Signal" "niri" "BraveSoftware" "nicotine" "ags"] (
         x: ".config/${x}"
       )
       ++ forEach ["tealdeer" "keepassxc" "nix" "starship" "nix-index" "mozilla" "go-build" "BraveSoftware"] (

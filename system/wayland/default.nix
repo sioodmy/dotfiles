@@ -34,10 +34,14 @@
       eval $(gnome-keyring-daemon --start --components=ssh,secrets)
       eval $(ssh-agent)
     '';
-    systemPackages = with pkgs; [
+    systemPackages = with pkgs;
+    with inputs.andromeda.packages.${pkgs.system}; [
       pamixer
       brightnessctl
       wl-clipboard
+      andromeda
+      andromeda-niri
+      nucleus
     ];
   };
 

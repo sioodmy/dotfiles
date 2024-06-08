@@ -124,6 +124,11 @@
       };
     };
 
+    ags = {
+      url = "github:Aylur/ags";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+
     # a tree-wide formatter
     treefmt-nix = {
       url = "github:numtide/treefmt-nix";
@@ -135,8 +140,9 @@
       inputs.home-manager.follows = "home-manager";
       inputs.nixpkgs.follows = "nixpkgs";
     };
-    seashell = {
-      url = "github:sioodmy/seashell";
+    andromeda = {
+      # url = "github:sioodmy/andromeda";
+      url = "path:/home/sioodmy/dev/andromeda";
       inputs = {
         nixpkgs.follows = "nixpkgs";
         flake-parts.follows = "flake-parts";
@@ -179,8 +185,7 @@
       };
     };
     bitcoinstatus = {
-      # url = "github:sioodmy/bitcoinstatus";
-      url = "path:/home/sioodmy/dev/bitcoinstatus";
+      url = "github:sioodmy/bitcoinstatus";
       inputs = {
         nixpkgs.follows = "nixpkgs";
         flake-parts.follows = "flake-parts";
