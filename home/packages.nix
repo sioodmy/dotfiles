@@ -1,6 +1,13 @@
-{pkgs, ...}: {
+{pkgs, inputs, ...}: {
   nixpkgs.config.allowUnfree = false;
   home.packages = with pkgs; [
+    inputs.ags.packages.${pkgs.system}.default
+
+    #ags
+    overskride
+    dart-sass
+
+    
     libreoffice-fresh
     thunderbird
     nicotine-plus

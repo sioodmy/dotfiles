@@ -62,7 +62,7 @@ with theme.colors; {
         natural-scroll = true;
         click-method = "clickfinger";
       };
-      focus-follows-mouse = true;
+      focus-follows-mouse = false;
       warp-mouse-to-focus = true;
       trackpoint.accel-speed = 0.001;
     };

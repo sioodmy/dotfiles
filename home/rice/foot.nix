@@ -4,12 +4,11 @@
   inputs,
   ...
 }: let
-  seashell = inputs.seashell.packages.${pkgs.system}.default;
+  nucleus = inputs.andromeda.packages.${pkgs.system}.nucleus;
 in {
-  home.packages = with pkgs; [
-    libsixel
-    seashell
-    # for displaying images
+  home.packages = [
+    pkgs.libsixel
+    nucleus
   ];
   programs.foot = {
     enable = true;
@@ -21,7 +20,7 @@ in {
         locked-title = "no";
         term = "xterm-256color";
         font = "monospace:size=9";
-        shell = "${seashell}/bin/seashell";
+        shell = "${nucleus}/bin/nucleus";
         vertical-letter-offset = "-0.75";
         pad = "12x21 center";
         resize-delay-ms = 100;
