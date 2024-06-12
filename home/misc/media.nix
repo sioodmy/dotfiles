@@ -2,7 +2,7 @@
   home.packages = with pkgs; [playerctl pavucontrol pulsemixer imv];
   programs = {
     mpv = {
-      enable = true;
+      enable = false;
       bindings = {
         UP = "add volume +2";
         DOWN = "add volume -2";
