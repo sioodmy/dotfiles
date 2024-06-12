@@ -47,7 +47,7 @@
             env = extra.shellEnv;
             packages = with pkgs; [
               inputs'.agenix.packages.default # provide agenix CLI within flake shell
-              # inputs'.catppuccinifier.packages.cli
+              inputs'.disko.packages.disko-install
               config.treefmt.build.wrapper # treewide formatter
               nil # nix ls
               alejandra # nix formatter
@@ -55,7 +55,6 @@
               glow # markdown viewer
               statix # lints and suggestions
               deadnix # clean up unused nix code
-              # some python stuff for waybar scripting
             ];
           };
 
@@ -110,8 +109,9 @@
       url = "github:numtide/devshell";
       inputs.nixpkgs.follows = "nixpkgs";
     };
-    helix = {
-      url = "github:SoraTenshi/helix/new-daily-driver";
+
+    disko = {
+      url = "github:nix-community/disko";
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
