@@ -15,7 +15,7 @@
   '';
   inherit (lib) mkDefault;
 in {
-  imports = [./hardware-configuration.nix];
+  imports = [./hardware-configuration.nix ./disko.nix];
   environment.systemPackages = with pkgs; [
     acpi
     powertop
