@@ -47,7 +47,6 @@
             env = extra.shellEnv;
             packages = with pkgs; [
               inputs'.agenix.packages.default # provide agenix CLI within flake shell
-              inputs'.disko.packages.disko-install
               config.treefmt.build.wrapper # treewide formatter
               nil # nix ls
               alejandra # nix formatter
@@ -107,11 +106,6 @@
     # project shells
     devshell = {
       url = "github:numtide/devshell";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
-
-    disko = {
-      url = "github:nix-community/disko";
       inputs.nixpkgs.follows = "nixpkgs";
     };
 

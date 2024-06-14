@@ -67,11 +67,8 @@
   };
 
   nix = {
-    gc = {
-      automatic = true;
-      dates = "daily";
-      options = "--delete-older-than 3d";
-    };
+    # gc kills ssds
+    gc.automatic = lib.mkDefault false;
     package = pkgs.nixVersions.git;
 
     # Make builds run with low priority so my system stays responsive
