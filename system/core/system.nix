@@ -32,8 +32,8 @@
   };
 
   environment.variables = {
-    EDITOR = "hx";
-    BROWSER = "schizofox";
+    EDITOR = "v";
+    BROWSER = "brave";
   };
   environment.systemPackages = with pkgs; [
     git

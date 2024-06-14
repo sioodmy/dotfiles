@@ -11,10 +11,9 @@
   wayland = ../system/wayland;
   hw = inputs.nixos-hardware.nixosModules;
   agenix = inputs.agenix.nixosModules.age;
-  disko = inputs.disko.nixosModules.default;
   hmModule = inputs.home-manager.nixosModules.home-manager;
 
-  shared = [core agenix disko];
+  shared = [core agenix];
 
   home-manager = {
     useUserPackages = true;
