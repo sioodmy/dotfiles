@@ -26,7 +26,6 @@ in {
   services = {
     fprintd.enable = true;
     thermald.enable = true;
-    power-profiles-daemon.enable = true;
     undervolt = {
       enable = true;
       coreOffset = -95;
