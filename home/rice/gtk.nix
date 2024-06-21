@@ -1,6 +1,6 @@
 {pkgs, ...}: {
   gtk = {
-    enable = true;
+    enable = false;
     theme = {
       name = "Catppuccin-Frappe-Compact-Pink-Dark";
       package = pkgs.catppuccin-gtk.override {

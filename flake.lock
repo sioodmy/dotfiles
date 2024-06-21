@@ -80,8 +80,8 @@
         "wrapper-manager": "wrapper-manager"
       },
       "locked": {
-        "lastModified": 1718571638,
-        "narHash": "sha256-/6BorIlIXcOzC/kyxAPqSjddJUkAALBiDb4mqYOagPo=",
+        "lastModified": 1718838463,
+        "narHash": "sha256-2HNpsJI2tLJjgNtiW5qVRJBUB+k7UvwmIgY99gL+AQI=",
         "path": "/home/sioodmy/dev/andromeda",
         "type": "path"
       },
