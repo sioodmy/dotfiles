@@ -3,7 +3,16 @@
   inputs,
   ...
 }: {
-  imports = [./fonts.nix ./services.nix ./pipewire.nix inputs.niri.nixosModules.niri];
+  imports = [
+    ./fonts.nix
+    ./services.nix
+    ./pipewire.nix
+    inputs.niri.nixosModules.niri
+    inputs.andromeda.nixosModules.default
+  ];
+  programs.andromeda = {
+    enable = true;
+  };
   environment = {
     variables = {
       NIXOS_OZONE_WL = "1";
@@ -34,14 +43,10 @@
       eval $(gnome-keyring-daemon --start --components=ssh,secrets)
       eval $(ssh-agent)
     '';
-    systemPackages = with pkgs;
-    with inputs.andromeda.packages.${pkgs.system}; [
+    systemPackages = with pkgs; [
       pamixer
       brightnessctl
       wl-clipboard
-      andromeda
-      andromeda-niri
-      nucleus
     ];
   };
 

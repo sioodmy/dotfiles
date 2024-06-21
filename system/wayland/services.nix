@@ -29,7 +29,7 @@
       settings = rec {
         initial_session = {
           # command = "${config.programs.niri.package}/bin/niri-session";
-          command = "${inputs.andromeda.packages.${pkgs.system}.andromeda-niri}/bin/niri";
+          command = "niri";
           user = "sioodmy";
         };
         default_session = initial_session;
