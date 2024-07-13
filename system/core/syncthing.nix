@@ -1,4 +1,4 @@
-{...}: {
+_: {
   services.syncthing = {
     enable = true;
     user = "sioodmy";

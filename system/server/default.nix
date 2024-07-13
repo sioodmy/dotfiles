@@ -61,10 +61,12 @@ in
         };
       };
     };
-    services.lyricsapi.enable = true;
-    services.bitcoinstatus = {
-      enable = true;
-      tokenFile = secrets.discordtoken.path;
+    services = {
+      lyricsapi.enable = true;
+      bitcoinstatus = {
+        enable = true;
+        tokenFile = secrets.discordtoken.path;
+      };
     };
 
     security.acme = {
