@@ -94,10 +94,12 @@
   in {
     inherit extraConfig;
     user = {inherit extraConfig;};
-    services."getty@tty1".enable = false;
-    services."autovt@tty1".enable = false;
-    services."getty@tty7".enable = false;
-    services."autovt@tty7".enable = false;
+    services = {
+      "getty@tty1".enable = false;
+      "autovt@tty1".enable = false;
+      "getty@tty7".enable = false;
+      "autovt@tty7".enable = false;
+    };
     # Systemd OOMd
     # Fedora enables these options by default. See the 10-oomd-* files here:
     # https://src.fedoraproject.org/rpms/systemd/tree/acb90c49c42276b06375a66c73673ac3510255

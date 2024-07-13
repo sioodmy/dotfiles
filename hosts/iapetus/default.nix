@@ -3,15 +3,20 @@
   pkgs,
   ...
 }: {
-  services.openssh.enable = true;
-  services.fail2ban = {
-    enable = true;
-    maxretry = 3;
-    ignoreIP = [
-      "127.0.0.0/8"
-      "10.0.0.0/8"
-      "192.168.0.0/16"
-    ];
+  services = {
+    openssh.enable = true;
+    fail2ban = {
+      enable = true;
+      maxretry = 3;
+      ignoreIP = [
+        "127.0.0.0/8"
+        "10.0.0.0/8"
+        "192.168.0.0/16"
+      ];
+    };
+    # `xterm` is being included even though this is GUI-less.
+    # → https://github.com/NixOS/nixpkgs/pull/62852
+    xserver.desktopManager.xterm.enable = lib.mkForce false;
   };
   networking = {
     hostName = "iapetus";
@@ -25,7 +30,7 @@
   };
 
   nixpkgs.overlays = [
-    (self: super: let
+    (_: super: let
       # I hate cross compilation
       dummy = pkgs.runCommandNoCC "neutered-firmware" {} "mkdir -p $out/lib/firmware";
     in {
@@ -33,7 +38,7 @@
       crda = dummy;
       # Regression caused by including a new package in the closure
       # Added in f1922cdbdc608b1f1f85a1d80310b54e89d0e9f3
-      smartmontools = super.smartmontools.overrideAttrs (old: {
+      smartmontools = super.smartmontools.overrideAttrs (_: {
         configureFlags = [];
       });
     })
@@ -51,10 +56,6 @@
     kernelModules = lib.mkForce ["bridge" "macvlan" "tap" "tun" "loop" "atkbd" "ctr"];
     supportedFilesystems = lib.mkForce ["btrfs" "ext4" "vfat"];
   };
-
-  # `xterm` is being included even though this is GUI-less.
-  # → https://github.com/NixOS/nixpkgs/pull/62852
-  services.xserver.desktopManager.xterm.enable = lib.mkForce false;
 
   # fails to build
   security.polkit.enable = lib.mkForce false;
