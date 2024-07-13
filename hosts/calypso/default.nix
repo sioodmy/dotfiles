@@ -16,12 +16,15 @@
   inherit (lib) mkDefault;
 in {
   imports = [./hardware-configuration.nix];
-  environment.systemPackages = with pkgs; [
-    acpi
-    powertop
-    mic-light-on
-    mic-light-off
-  ];
+  environment.systemPackages =
+    (with pkgs; [
+      acpi
+      powertop
+    ])
+    ++ [
+      mic-light-on
+      mic-light-off
+    ];
 
   services = {
     fprintd.enable = true;
@@ -47,7 +50,7 @@ in {
         battery = {
           governor = "powersave";
           scaling_min_freq = mkDefault (MHz 1800);
-          scaling_max_freq = mkDefault (MHz 3600);
+          scaling_max_freq = mkDefault (MHz 3900);
           turbo = "never";
         };
         charger = {
@@ -78,11 +81,11 @@ in {
 
   boot = {
     kernelModules = ["acpi_call"];
-    extraModulePackages = with config.boot.kernelPackages;
-      [
+    extraModulePackages =
+      (with config.boot.kernelPackages; [
         acpi_call
         cpupower
-      ]
+      ])
       ++ [pkgs.cpupower-gui];
   };
   security.pam.services.login.fprintAuth = true;
@@ -99,7 +102,7 @@ in {
   };
   # https://github.com/NixOS/nixpkgs/issues/114222
   systemd.user.services.telephony_client.enable = false;
-  hardware.opengl = {
+  hardware.graphics = {
     extraPackages = with pkgs; [vaapiIntel libva libvdpau-va-gl vaapiVdpau ocl-icd intel-compute-runtime];
     extraPackages32 = with pkgs.pkgsi686Linux; [
       vaapiVdpau

@@ -3,6 +3,7 @@
     packages = with pkgs; [
       material-icons
       material-design-icons
+      emacs-all-the-icons-fonts
       roboto
       work-sans
       comic-neue

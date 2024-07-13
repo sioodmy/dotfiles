@@ -1,28 +1,26 @@
 {
   config,
   pkgs,
-  cfg,
   lib,
   inputs,
-  inputs',
   ...
 }: {
   environment = {
     # set channels (backwards compatibility)
     sessionVariables.FLAKE = "/home/sioodmy/dev/dotfiles";
-    etc = {
-      "nix/flake-channels/nixpkgs".source = inputs.nixpkgs;
-      "nix/flake-channels/home-manager".source = inputs.home-manager;
-    };
+    etc."nix/flake-channels/nixpkgs".source = inputs.nixpkgs;
 
-    systemPackages = with pkgs; [
-      git
-      deadnix
-      alejandra
-      statix
-      nix-output-monitor
-      inputs.agenix.packages."${system}".default
-    ];
+    systemPackages =
+      (with pkgs; [
+        git
+        deadnix
+        alejandra
+        statix
+        nix-output-monitor
+      ])
+      ++ [
+        inputs.agenix.packages."${pkgs.system}".default
+      ];
     defaultPackages = [];
   };
 
@@ -39,15 +37,6 @@
       ];
 
       overlays = [
-        (self: super: {
-          # temporary fix until upstream applies the fix we have used
-          # which is just to add wrapGAppsNoGuiHook to the nativeBuildInputs
-          # See: <https://github.com/NixOS/nixpkgs/pull/309315>
-          networkd-dispatcher = super.networkd-dispatcher.overrideAttrs (oldAttrs: {
-            nativeBuildInputs = (oldAttrs.nativeBuildInputs or []) ++ [pkgs.wrapGAppsNoGuiHook];
-          });
-        })
-        # workaround for: https://github.com/NixOS/nixpkgs/issues/154163
         (_: super: {
           coreutils = super.uutils-coreutils-noprefix;
           coreutils-full = super.uutils-coreutils-noprefix;
@@ -66,10 +55,18 @@
     dev.enable = false;
   };
 
+  # nixos-rebuild helper
+  programs.nh = {
+    enable = true;
+    flake = "/home/sioodmy/dev/dotfiles";
+  };
+
   nix = {
     # gc kills ssds
     gc.automatic = lib.mkDefault false;
-    package = pkgs.nixVersions.git;
+
+    # nix but cooler
+    package = pkgs.lix;
 
     # Make builds run with low priority so my system stays responsive
     daemonCPUSchedPolicy = "idle";
