@@ -1,13 +1,6 @@
-{
-  pkgs,
-  inputs,
-  ...
-}: {
+{pkgs, ...}: {
   nixpkgs.config.allowUnfree = false;
-  home.packages = with pkgs; [
-    inputs.ags.packages.${pkgs.system}.default
-
-    #ags
+  environment.systemPackages = with pkgs; [
     overskride
     dart-sass
 

@@ -11,23 +11,8 @@
   wayland = ../system/wayland;
   hw = inputs.nixos-hardware.nixosModules;
   agenix = inputs.agenix.nixosModules.age;
-  hmModule = inputs.home-manager.nixosModules.home-manager;
 
   shared = [core agenix];
-
-  home-manager = {
-    useUserPackages = true;
-    useGlobalPkgs = true;
-    extraSpecialArgs = {
-      inherit inputs;
-      inherit self;
-    };
-    users.sioodmy = {
-      imports = [../home];
-
-      _module.args.theme = import ../theme;
-    };
-  };
 in {
   # all my hosts are named after saturn moons btw
 
@@ -39,11 +24,9 @@ in {
         {networking.hostName = "calypso";}
         ./calypso
         wayland
-        hmModule
         bootloader
         impermanence
         hw.lenovo-thinkpad-x1-7th-gen
-        {inherit home-manager;}
       ]
       ++ shared;
     specialArgs = {inherit inputs;};

@@ -131,7 +131,6 @@
 
     agenix = {
       url = "github:ryantm/agenix";
-      inputs.home-manager.follows = "home-manager";
       inputs.nixpkgs.follows = "nixpkgs";
     };
     andromeda = {
@@ -143,17 +142,16 @@
       };
     };
 
-    nix-index-db = {
-      url = "github:Mic92/nix-index-database";
-      inputs.nixpkgs.follows = "nixpkgs";
+    homix = {
+      url = "github:sioodmy/homix";
+      inputs = {
+        nixpkgs.follows = "nixpkgs";
+      };
     };
+
     flake-parts = {
       url = "github:hercules-ci/flake-parts";
       inputs.nixpkgs-lib.follows = "nixpkgs";
-    };
-    home-manager = {
-      url = "github:nix-community/home-manager";
-      inputs.nixpkgs.follows = "nixpkgs";
     };
     pre-commit-hooks = {
       url = "github:cachix/pre-commit-hooks.nix";

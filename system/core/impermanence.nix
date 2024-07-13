@@ -13,7 +13,31 @@ in {
   environment.persistence."/persist" = {
     hideMounts = true;
     directories =
-      [
+      # persist directories in user directory (stolen from n3oney)
+      builtins.map (v: {
+        directory = "/home/sioodmy/${v}";
+        user = "sioodmy";
+        group = "users";
+      }) (
+        [
+          "download"
+          "music"
+          "dev"
+          "docs"
+          "pics"
+          "vids"
+          "other"
+        ]
+        ++ forEach ["syncthing" "obs-studio" "Signal" "niri" "BraveSoftware" "nicotine" "ags"] (
+          x: ".config/${x}"
+        )
+        ++ forEach ["tealdeer" "keepassxc" "nix" "starship" "nix-index" "mozilla" "go-build" "BraveSoftware" "zsh" "nvim"] (
+          x: ".cache/${x}"
+        )
+        ++ forEach ["direnv" "TelegramDesktop" "PrismLauncher" "keyrings" "nicotine" "zoxide"] (x: ".local/share/${x}")
+        ++ [".ssh" ".keepass" ".mozilla" ".thunderbird"]
+      )
+      ++ [
         # dirty fix for "no storage left on device" while rebuilding
         # it gets wiped anyway
         "/tmp"

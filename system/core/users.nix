@@ -1,4 +1,12 @@
-{pkgs, ...}: {
+{
+  pkgs,
+  inputs,
+  ...
+}: {
+  imports = [
+    inputs.homix.nixosModules.default
+  ];
+
   programs.zsh.enable = true;
   services.openssh = {
     enable = true;
@@ -21,6 +29,7 @@
       root.hashedPasswordFile = "/persist/secrets/root";
       sioodmy = {
         isNormalUser = true;
+        homix = true;
         shell = pkgs.bashInteractive;
         hashedPasswordFile = "/persist/secrets/sioodmy";
         extraGroups = [

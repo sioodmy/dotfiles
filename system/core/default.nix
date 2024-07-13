@@ -6,6 +6,8 @@
     ./secrets.nix
     ./nix.nix
     ./users.nix
+    ./git.nix
     ./openssh.nix
+    ./syncthing.nix
   ];
 }

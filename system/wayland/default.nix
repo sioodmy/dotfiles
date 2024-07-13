@@ -7,6 +7,7 @@
     ./fonts.nix
     ./services.nix
     ./pipewire.nix
+    ./packages.nix
     inputs.niri.nixosModules.niri
     inputs.andromeda.nixosModules.default
   ];
