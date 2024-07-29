@@ -26,6 +26,8 @@ in {
     firewall = {
       enable = true;
       allowPing = false;
+      # for chromecast
+      allowedUDPPorts = [10008];
       logReversePathDrops = true;
     };
   };

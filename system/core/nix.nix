@@ -17,6 +17,7 @@
         alejandra
         statix
         nix-output-monitor
+        nvfetcher
       ])
       ++ [
         inputs.agenix.packages."${pkgs.system}".default
@@ -34,6 +35,7 @@
       permittedInsecurePackages = [
         "openssl-1.1.1u"
         "electron-25.9.0"
+        "python3.12-youtube-dl-2021.12.17"
       ];
 
       overlays = [
@@ -83,7 +85,6 @@
     extraOptions = ''
       experimental-features = nix-command flakes recursive-nix
       keep-outputs = true
-      warn-dirty = false
       keep-derivations = true
       min-free = ${toString (100 * 1024 * 1024)}
       max-free = ${toString (1024 * 1024 * 1024)}
@@ -96,6 +97,12 @@
       # allow sudo users to mark the following values as trusted
       allowed-users = ["@wheel"];
       trusted-users = ["@wheel"];
+      commit-lockfile-summary = "chore: Update flake.lock";
+      accept-flake-config = true;
+      keep-derivations = true;
+      keep-outputs = true;
+      warn-dirty = false;
+
       sandbox = true;
       max-jobs = "auto";
       # continue building derivations if one fails
@@ -108,12 +115,14 @@
         "https://cache.nixos.org"
         "https://nix-community.cachix.org"
         "https://nixpkgs-unfree.cachix.org"
+        "https://nyx.chaotic.cx"
       ];
 
       trusted-public-keys = [
         "cache.nixos.org-1:6NCHdD59X431o0gWypbMrAURkbJ16ZPMQFGspcDShjY="
         "nix-community.cachix.org-1:mB9FSh9qf2dCimDSUo8Zy7bkq5CX+/rkCWyvRCYg3Fs="
         "nixpkgs-unfree.cachix.org-1:hqvoInulhbV4nJ9yJOEr+4wxhDV4xq2d1DK7S6Nj6rs="
+        "chaotic-nyx.cachix.org-1:HfnXSw4pj95iI/n17rIDy40agHj12WfF+Gqk6SonIT8="
       ];
     };
   };

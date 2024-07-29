@@ -28,7 +28,7 @@ in {
           "vids"
           "other"
         ]
-        ++ forEach ["syncthing" "obs-studio" "Signal" "niri" "BraveSoftware" "nicotine" "ags"] (
+        ++ forEach ["syncthing" "obs-studio" "Signal" "niri" "BraveSoftware" "nicotine" "river" "emacs"] (
           x: ".config/${x}"
         )
         ++ forEach ["tealdeer" "keepassxc" "nix" "starship" "nix-index" "mozilla" "go-build" "BraveSoftware" "zsh" "nvim"] (

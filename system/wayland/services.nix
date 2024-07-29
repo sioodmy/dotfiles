@@ -17,18 +17,13 @@
     };
   };
 
-  programs.niri = {
-    enable = true;
-    package = inputs.niri.packages.${pkgs.system}.niri-unstable;
-  };
   services = {
     mullvad-vpn.enable = true;
     greetd = {
       enable = true;
       settings = rec {
         initial_session = {
-          # command = "${config.programs.niri.package}/bin/niri-session";
-          command = "niri";
+          command = "river";
           user = "sioodmy";
         };
         default_session = initial_session;
@@ -36,13 +31,10 @@
       };
     };
 
-    gnome = {
-      glib-networking.enable = true;
-      gnome-keyring.enable = true;
-    };
+    gnome.glib-networking.enable = true;
     logind = {
       lidSwitch = "suspend";
-      lidSwitchExternalPower = "lock";
+      lidSwitchExternalPower = "suspend";
       extraConfig = ''
         HandlePowerKey=suspend
         HibernateDelaySec=3600
