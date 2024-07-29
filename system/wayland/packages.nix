@@ -1,7 +1,17 @@
-{pkgs, ...}: {
+{
+  pkgs,
+  inputs,
+  ...
+}: {
   nixpkgs.config.allowUnfree = false;
   environment.systemPackages = with pkgs; [
+    river
+    mpv
+    emacs
+    mako
+    firefox-esr-128
     overskride
+    libnotify
     dart-sass
 
     libreoffice-fresh
@@ -20,5 +30,6 @@
     gimp
     wireshark
     keepassxc
+    go
   ];
 }

@@ -12,38 +12,8 @@
         hibernate = false;
       };
     };
-    tor = {
-      enable = true;
-      client.enable = true;
-    };
-    networkd-dispatcher = {
-      enable = true;
-      rules."restart-tor" = {
-        onState = ["routable" "off"];
-        script = ''
-          #!${pkgs.runtimeShell}
-          if [[ $IFACE == "wlan0" && $AdministrativeState == "configured" ]]; then
-            echo "Restarting Tor ..."
-            systemctl restart tor
-          fi
-          exit 0
-        '';
-      };
-    };
-  };
-
-  programs.proxychains = {
-    enable = true;
-    quietMode = false;
-    proxyDNS = true;
-    package = pkgs.proxychains-ng;
-    proxies = {
-      tor = {
-        type = "socks5";
-        host = "127.0.0.1";
-        port = 9050;
-      };
-    };
+    dbus.packages = [pkgs.seahorse];
+    networkd-dispatcher.enable = true;
   };
 
   programs.ssh.startAgent = true;
@@ -51,6 +21,7 @@
     protectKernelImage = false;
     lockKernelModules = false;
     forcePageTableIsolation = true;
+    polkit.enable = true;
 
     rtkit.enable = true;
     apparmor = {

@@ -23,6 +23,7 @@
 
   programs = {
     bash.promptInit = ''eval "$(${pkgs.starship}/bin/starship init bash)"'';
+    nano.enable = false;
   };
 
   # compress half of the ram to use as swap
