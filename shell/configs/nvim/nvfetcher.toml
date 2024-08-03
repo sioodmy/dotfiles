@@ -1,0 +1,27 @@
+[org-bullets]
+src.git="https://github.com/nvim-orgmode/org-bullets.nvim"
+fetch.github="nvim-orgmode/org-bullets.nvim"
+
+[neotree]
+src.git="https://github.com/nvim-neo-tree/neo-tree.nvim"
+fetch.github="nvim-neo-tree/neo-tree.nvim"
+
+[telescope-orgmode]
+src.git="https://github.com/nvim-orgmode/telescope-orgmode.nvim"
+fetch.github="nvim-orgmode/telescope-orgmode.nvim"
+
+[nvim-base-16]
+src.git = "https://github.com/RRethy/nvim-base16"
+fetch.github = "RRethy/nvim-base16"
+
+[incline]
+src.git = "https://github.com/b0o/incline.nvim"
+fetch.github = "b0o/incline.nvim"
+
+[scope]
+src.git = "https://github.com/tiagovla/scope.nvim"
+fetch.github = "tiagovla/scope.nvim"
+
+[recession]
+src.git = "https://github.com/stevearc/resession.nvim"
+fetch.github = "stevearc/resession.nvim"
