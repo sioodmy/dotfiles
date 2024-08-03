@@ -47,16 +47,4 @@ in {
       ++ shared;
     specialArgs = {inherit inputs;};
   };
-
-  iapetus = nixpkgs.lib.nixosSystem {
-    system = "aarch64";
-    modules =
-      [
-        {networking.hostName = "iapetus";}
-        hw.raspberry-pi-4
-        ./iapetus
-      ]
-      ++ shared;
-    specialArgs = {inherit inputs;};
-  };
 }

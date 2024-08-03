@@ -37,15 +37,6 @@
         "electron-25.9.0"
         "python3.12-youtube-dl-2021.12.17"
       ];
-
-      overlays = [
-        (_: super: {
-          coreutils = super.uutils-coreutils-noprefix;
-          coreutils-full = super.uutils-coreutils-noprefix;
-          makeModulesClosure = x:
-            super.makeModulesClosure (x // {allowMissing = true;});
-        })
-      ];
     };
   };
 

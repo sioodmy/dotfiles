@@ -17,17 +17,8 @@ in {
       useTmpfs = false;
     };
     # some kernel parameters, i dont remember what half of this shit does but who cares
-    consoleLogLevel = mkDefault 0;
     initrd.verbose = false;
     kernelPackages = mkDefault pkgs.linuxPackages_latest;
-    kernelParams = [
-      "psmouse.synaptics_intertouch=1"
-      "intel_pstate=disable"
-    ];
-    extraModprobeConfig = ''
-      options i915 enable_fbc=1 enable_guc=2
-      options snd_hda_intel enable=0,1 power_save=1 power_save_controller=Y
-    '';
 
     bootspec.enable = mkDefault true;
     loader = {
