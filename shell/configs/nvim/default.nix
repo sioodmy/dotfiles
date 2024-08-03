@@ -88,6 +88,7 @@ in {
     gleam
     nodePackages.typescript-language-server
     nodePackages.prettier
+    clang-tools
     shellcheck
     cargo
     nixd

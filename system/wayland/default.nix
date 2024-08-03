@@ -7,7 +7,6 @@
     ./fonts.nix
     ./services.nix
     ./pipewire.nix
-    ./packages.nix
     ./desktop
   ];
   environment = {
