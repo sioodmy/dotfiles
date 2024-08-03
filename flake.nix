@@ -38,24 +38,20 @@
             prettier.enable = true;
           };
         };
-        devShells.default = let
-          extra = import ./devShell;
-        in
-          inputs'.devshell.legacyPackages.mkShell {
-            name = "dotfiles";
-            commands = extra.shellCommands;
-            env = extra.shellEnv;
-            packages = with pkgs; [
-              inputs'.agenix.packages.default # provide agenix CLI within flake shell
-              config.treefmt.build.wrapper # treewide formatter
-              nil # nix ls
-              alejandra # nix formatter
-              git # flakes require git, and so do I
-              glow # markdown viewer
-              statix # lints and suggestions
-              deadnix # clean up unused nix code
-            ];
-          };
+        devShells.default = pkgs.mkShell {
+          buildInputs = let
+            colors = inputs.nix-colors.colorSchemes.catppuccin-frappe.palette;
+          in
+            [
+              inputs'.agenix.packages.default
+              config.treefmt.build.wrapper
+              (pkgs.callPackage ./shell {inherit pkgs inputs colors;})
+            ]
+            ++ (import ./shell/packages.nix {inherit pkgs;});
+          shellHook = ''
+            nucleus
+          '';
+        };
 
         # configure treefmt
         treefmt = {
@@ -93,15 +89,18 @@
 
     nixos-hardware.url = "github:nixos/nixos-hardware";
     impermanence.url = "github:nix-community/impermanence";
+    nix-colors.url = "github:Misterio77/nix-colors";
 
-    nixpak = {
-      url = "github:nixpak/nixpak";
+    wrapper-manager = {
+      url = "github:viperML/wrapper-manager";
       inputs.nixpkgs.follows = "nixpkgs";
     };
-
-    # project shells
-    devshell = {
-      url = "github:numtide/devshell";
+    noshell = {
+      url = "github:viperML/noshell";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+    nixpak = {
+      url = "github:nixpak/nixpak";
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
@@ -123,14 +122,6 @@
     agenix = {
       url = "github:ryantm/agenix";
       inputs.nixpkgs.follows = "nixpkgs";
-    };
-    andromeda = {
-      # url = "github:sioodmy/andromeda";
-      url = "path:/home/sioodmy/dev/andromeda";
-      inputs = {
-        nixpkgs.follows = "nixpkgs";
-        flake-parts.follows = "flake-parts";
-      };
     };
 
     homix = {
@@ -174,6 +165,10 @@
         flake-parts.follows = "flake-parts";
         treefmt-nix.follows = "treefmt-nix";
       };
+    };
+    zsh-auto-notify = {
+      url = "github:MichaelAquilina/zsh-auto-notify";
+      flake = false;
     };
   };
 }

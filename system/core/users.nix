@@ -1,10 +1,12 @@
 {
   pkgs,
   inputs,
+  config,
   ...
 }: {
   imports = [
     inputs.homix.nixosModules.default
+    inputs.noshell.nixosModules.default
   ];
 
   programs.zsh.enable = true;
@@ -23,6 +25,7 @@
       }
     ];
   };
+
   users = {
     mutableUsers = false;
     users = {
@@ -30,7 +33,11 @@
       sioodmy = {
         isNormalUser = true;
         homix = true;
-        shell = pkgs.bashInteractive;
+        shell = let
+          colors = config.colorScheme.palette;
+        in
+          pkgs.callPackage ../../shell {inherit pkgs inputs colors;};
+
         hashedPasswordFile = "/persist/secrets/sioodmy";
         extraGroups = [
           "wheel"
