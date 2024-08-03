@@ -15,12 +15,7 @@
       ];
 
       imports = [
-        {
-          config._module.args._inputs = inputs // {inherit (inputs) self;};
-        }
-
         inputs.flake-parts.flakeModules.easyOverlay
-        inputs.pre-commit-hooks.flakeModule
         inputs.treefmt-nix.flakeModule
       ];
 
@@ -30,14 +25,6 @@
         pkgs,
         ...
       }: {
-        pre-commit = {
-          settings.excludes = ["flake.lock"];
-
-          settings.hooks = {
-            alejandra.enable = true;
-            prettier.enable = true;
-          };
-        };
         devShells.default = pkgs.mkShell {
           buildInputs = let
             colors = inputs.nix-colors.colorSchemes.catppuccin-frappe.palette;
@@ -72,15 +59,6 @@
 
       flake = {
         nixosConfigurations = import ./hosts inputs;
-        images.iapetus =
-          (self.nixosConfigurations.iapetus.extendModules
-            {
-              modules = ["${nixpkgs}/nixos/modules/installer/sd-card/sd-image-aarch64-new-kernel-no-zfs-installer.nix"];
-            })
-          .config
-          .system
-          .build
-          .sdImage;
       };
     });
 
@@ -94,23 +72,6 @@
     wrapper-manager = {
       url = "github:viperML/wrapper-manager";
       inputs.nixpkgs.follows = "nixpkgs";
-    };
-    noshell = {
-      url = "github:viperML/noshell";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
-    nixpak = {
-      url = "github:nixpak/nixpak";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
-
-    schizofox = {
-      url = "github:schizofox/schizofox";
-      inputs = {
-        nixpkgs.follows = "nixpkgs";
-        flake-parts.follows = "flake-parts";
-        nixpak.follows = "nixpak";
-      };
     };
 
     # a tree-wide formatter
@@ -135,14 +96,6 @@
       url = "github:hercules-ci/flake-parts";
       inputs.nixpkgs-lib.follows = "nixpkgs";
     };
-    pre-commit-hooks = {
-      url = "github:cachix/pre-commit-hooks.nix";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
-    catppuccinifier = {
-      url = "github:lighttigerXIV/catppuccinifier";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
     lyricsapi = {
       url = "github:sioodmy/lyricsapi";
       inputs.nixpkgs.follows = "nixpkgs";
@@ -165,10 +118,6 @@
         flake-parts.follows = "flake-parts";
         treefmt-nix.follows = "treefmt-nix";
       };
-    };
-    zsh-auto-notify = {
-      url = "github:MichaelAquilina/zsh-auto-notify";
-      flake = false;
     };
   };
 }
