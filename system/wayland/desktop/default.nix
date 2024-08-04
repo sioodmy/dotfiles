@@ -6,24 +6,24 @@
 }: {
   imports = [
     inputs.nix-colors.homeManagerModules.default
+    ./gtk
   ];
 
   colorScheme = inputs.nix-colors.colorSchemes.rose-pine-moon;
 
   environment.systemPackages =
     (import ./wrapped.nix {inherit pkgs inputs config;})
-    ++ [(import ./firefox {inherit pkgs;})]
     ++ (with pkgs; [
       mpv
       libnotify
       dart-sass
 
+      librewolf
       libreoffice-fresh
       ytmdl
       thunderbird
       nicotine-plus
       gnome.gnome-calculator
-      brave
       inkscape
       ledger-live-desktop
       ledger_agent
