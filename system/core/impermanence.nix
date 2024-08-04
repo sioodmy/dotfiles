@@ -31,11 +31,11 @@ in {
         ++ forEach ["syncthing" "obs-studio" "Signal" "niri" "BraveSoftware" "nicotine" "river" "emacs"] (
           x: ".config/${x}"
         )
-        ++ forEach ["tealdeer" "keepassxc" "nix" "starship" "nix-index" "mozilla" "go-build" "BraveSoftware" "zsh" "nvim"] (
+        ++ forEach ["tealdeer" "keepassxc" "nix" "starship" "nix-index" "librewolf" "go-build" "BraveSoftware" "zsh" "nvim"] (
           x: ".cache/${x}"
         )
         ++ forEach ["direnv" "TelegramDesktop" "PrismLauncher" "keyrings" "nicotine" "zoxide"] (x: ".local/share/${x}")
-        ++ [".ssh" ".keepass" ".mozilla" ".thunderbird"]
+        ++ [".ssh" ".keepass" ".librewolf"]
       )
       ++ [
         # dirty fix for "no storage left on device" while rebuilding

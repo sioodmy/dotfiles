@@ -8,6 +8,7 @@
     ./users.nix
     ./git.nix
     ./openssh.nix
+    ./devpkgs.nix
     ./syncthing.nix
   ];
 }

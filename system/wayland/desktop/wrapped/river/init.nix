@@ -12,15 +12,17 @@ in
 
     ${init-binds}
 
-    TOUCHPAD=$(riverctl list-inputs | rg Touchpad)
-    TRACKPOINT=$(riverctl list-inputs | rg TrackPoint)
+    TOUCHPAD="pointer-1739-52619-SYNA8004:00_06CB:CD8B_Touchpad"
+    TRACKPOINT="pointer-2-10-TPPS/2_Elan_TrackPoint"
 
-    riverctl input $TOUCHPAD pointer-accel 0.5
-    riverctl input $TOUCHPAD accel-profile flat
-    riverctl input $TOUCHPAD natural-scroll enabled
+    riverctl input $TOUCHPAD pointer-accel 0.1
+    riverctl input $TOUCHPAD accel-profile adaptive
     riverctl input $TOUCHPAD click-method clickfinger
+    riverctl input $TOUCHPAD drag disabled
+    riverctl input $TOUCHPAD natural-scroll enabled
     riverctl input $TOUCHPAD tap enabled
-    riverctl input $TOUCHPAD disable-when-typing enabled
+    riverctl input $TOUCHPAD tap-button-map left-right-middle
+    riverctl input $TOUCHPAD scroll-method two-finger
 
     riverctl input $TRACKPOINT pointer-accel -0.3
 
