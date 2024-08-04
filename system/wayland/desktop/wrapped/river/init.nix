@@ -40,5 +40,10 @@ in
     signal-desktop &
     kanshi &
 
-
+    swayidle -w \
+      timeout 130 "brightnessctl s 5%" \
+      timeout 135 "gtklock" \
+      timeout 600 "systemctl suspend" \
+      before-sleep "gtklock" \
+      lock "gtklock"
   ''
