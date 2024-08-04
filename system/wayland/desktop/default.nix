@@ -23,7 +23,7 @@
       ytmdl
       thunderbird
       nicotine-plus
-      gnome.gnome-calculator
+      gnome-calculator
       inkscape
       ledger-live-desktop
       ledger_agent
