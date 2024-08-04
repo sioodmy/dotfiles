@@ -36,8 +36,6 @@
     };
     loginShellInit = ''
       dbus-update-activation-environment --systemd DISPLAY
-      eval $(gnome-keyring-daemon --start --components=ssh,secrets)
-      eval $(ssh-agent)
     '';
     systemPackages = with pkgs; [
       pamixer
@@ -54,12 +52,13 @@
   # '';
 
   hardware = {
-    opengl.enable = true;
+    graphics.enable = true;
     pulseaudio.support32Bit = true;
   };
 
   xdg.portal = {
     enable = true;
+    config.common.default = "*";
     extraPortals = with pkgs; [
       xdg-desktop-portal-gtk
     ];
