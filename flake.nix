@@ -84,7 +84,6 @@
       url = "github:mitchellh/zig-overlay";
       inputs = {
         nixpkgs.follows = "nixpkgs";
-        flake-parts.follows = "flake-parts";
       };
     };
 
