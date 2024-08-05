@@ -45,5 +45,5 @@ in
       timeout 135 "gtklock" \
       timeout 600 "systemctl suspend" \
       before-sleep "gtklock" \
-      lock "gtklock"
+      lock "gtklock" &
   ''

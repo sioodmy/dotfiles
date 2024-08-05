@@ -80,6 +80,4 @@ with pkgs; [
   qrencode
 
   unzip
-
-  zig
 ]

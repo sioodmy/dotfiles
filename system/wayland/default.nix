@@ -1,8 +1,4 @@
-{
-  pkgs,
-  inputs,
-  ...
-}: {
+{pkgs, ...}: {
   imports = [
     ./fonts.nix
     ./services.nix
@@ -36,6 +32,7 @@
     };
     loginShellInit = ''
       dbus-update-activation-environment --systemd DISPLAY
+      sudo mic-light-off
     '';
     systemPackages = with pkgs; [
       pamixer
