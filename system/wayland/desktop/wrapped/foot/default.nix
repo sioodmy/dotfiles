@@ -45,7 +45,7 @@
       app-id=foot
       bold-text-in-bright=no
       dpi-aware=yes
-      font=monospace:size=8
+      font=monospace:size=9
       locked-title=no
       notify=notify-send -a $/{app-id} -i $/{app-id} $/{title} $/{body}
       pad=12x21 center
