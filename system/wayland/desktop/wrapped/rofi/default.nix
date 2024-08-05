@@ -7,10 +7,8 @@
 in {
   basePackage = pkgs.rofi-wayland.override {
     plugins = with pkgs; [
+      rofi-emoji-wayland
       (rofi-calc.override {
-        rofi-unwrapped = rofi-wayland-unwrapped;
-      })
-      (rofi-emoji.override {
         rofi-unwrapped = rofi-wayland-unwrapped;
       })
     ];
