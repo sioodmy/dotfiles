@@ -9,7 +9,7 @@
     ./gtk
   ];
 
-  colorScheme = inputs.nix-colors.colorSchemes.rose-pine-moon;
+  colorScheme = inputs.nix-colors.colorSchemes.everforest;
 
   environment.systemPackages =
     (import ./wrapped.nix {inherit pkgs inputs config;})
@@ -17,23 +17,16 @@
       mpv
       libnotify
       dart-sass
-
       librewolf
       libreoffice-fresh
       ytmdl
-      thunderbird
       nicotine-plus
-      gnome-calculator
       inkscape
       ledger-live-desktop
       ledger_agent
-      tdesktop
-      calcurse
       pulseaudio
       signal-desktop
       gimp
-      wireshark
       keepassxc
-      go
     ]);
 }
