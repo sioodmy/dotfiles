@@ -18,7 +18,6 @@
   };
 
   services = {
-    mullvad-vpn.enable = true;
     greetd = {
       enable = true;
       settings = rec {
