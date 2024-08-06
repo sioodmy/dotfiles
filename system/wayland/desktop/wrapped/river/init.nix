@@ -36,11 +36,13 @@ in
     riverctl default-layout rivertile
     rivertile -view-padding 3 -outer-padding 3 &
 
+    # TODO: Make systemd user services instead
+
     mako-wrapped &
     signal-desktop &
     kanshi &
 
-    swayidle -w \
+    swayidle \
       timeout 130 "brightnessctl s 5%" \
       timeout 135 "gtklock" \
       timeout 600 "systemctl suspend" \
