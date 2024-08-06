@@ -4,6 +4,7 @@
   ...
 }: let
   init-binds = import ./binds.nix {inherit pkgs;};
+  e = pkg: pkgs.lib.getExe pkgs.${pkg};
 in
   pkgs.writeShellScript "river-init" ''
     #!/bin/sh
@@ -42,10 +43,13 @@ in
     signal-desktop &
     kanshi &
 
-    swayidle \
+    ${e "swayidle"} \
       timeout 130 "brightnessctl s 5%" \
       timeout 135 "gtklock" \
       timeout 600 "systemctl suspend" \
       before-sleep "gtklock" \
       lock "gtklock" &
+
+    # your eyes and your sleep schedule will thank you
+    ${e "wlsunset"} -l 50.2597 -L 19.0211 &
   ''
