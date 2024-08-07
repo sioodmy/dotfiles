@@ -2,7 +2,8 @@
   inherit (builtins) concatStringsSep map;
   inherit (pkgs.lib) getExe;
   binds-normal = [
-    "Super+Shift Return spawn foot"
+    # note that we call footclient from vanilla unwrapped foot package
+    "Super+Shift Return spawn ${pkgs.foot}/bin/footclient"
     "None XF86Favorites spawn infoscript"
     "None XF86Display spawn gtklock"
     "None XF86Keyboard spawn 'launcher -show emoji'"
@@ -21,11 +22,14 @@
     # yoinks focused view into top of layout stack
     "Super Return zoom"
 
-    "Super H send-layout-cmd rivertile 'main-ratio -0.05'"
-    "Super L send-layout-cmd rivertile 'main-ratio +0.05'"
+    "Super H send-layout-cmd rivercarro 'main-ratio -0.05'"
+    "Super L send-layout-cmd rivercarro 'main-ratio +0.05'"
 
-    "Super+Shift H send-layout-cmd rivertile 'main-count +1'"
-    "Super+Shift L send-layout-cmd rivertile 'main-count -1'"
+    "Super+Shift H send-layout-cmd rivercarro 'main-count +1'"
+    "Super+Shift L send-layout-cmd rivercarro 'main-count -1'"
+
+    # toggle layouts
+    "Super M send-layout-cmd rivercarro 'main-location-cycle left,monocle'"
 
     # move floating windows around
     "Super+Alt H move left 50"
@@ -42,10 +46,10 @@
     "Super V toggle-float"
     "Super F toggle-fullscreen"
 
-    "Super Up send-layout-cmd rivertile 'main-location top'"
-    "Super Right send-layout-cmd rivertile 'main-location right'"
-    "Super Down send-layout-cmd rivertile 'main-location bottom'"
-    "Super Left send-layout-cmd rivertile 'main-location left'"
+    "Super Up send-layout-cmd rivercarro 'main-location top'"
+    "Super Right send-layout-cmd rivercarro 'main-location right'"
+    "Super Down send-layout-cmd rivercarro 'main-location bottom'"
+    "Super Left send-layout-cmd rivercarro 'main-location left'"
   ];
 in
   pkgs.writeShellScript "river-init-binds" ''
@@ -68,7 +72,7 @@ in
     do
         tags=$((1 << ($i - 1)))
 
-        riverctl map normal Super $i set-focused-tags $tags
+        riverctl map normal Super $i spawn "${getExe pkgs.river-bnf} $tags"
 
         # Super+Shift+[1-9] to tag focused view with tag [0-8]
         riverctl map normal Super+Shift $i set-view-tags $tags
