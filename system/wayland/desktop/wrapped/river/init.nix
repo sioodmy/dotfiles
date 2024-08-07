@@ -4,7 +4,11 @@
   ...
 }: let
   init-binds = import ./binds.nix {inherit pkgs;};
-  e = pkg: pkgs.lib.getExe pkgs.${pkg};
+  inherit (pkgs.lib) getExe;
+
+  # river does not support zwp_idle_inhibit_manager_v1 protocol,
+  # so instead I used this oneliner combined with swayidle
+  idle = x: "sh -c '${getExe pkgs.playerctl} status || ${x}'";
 in
   pkgs.writeShellScript "river-init" ''
     #!/bin/sh
@@ -34,22 +38,23 @@ in
     riverctl border-color-focused "0x${colors.base04}"
     riverctl border-color-unfocused "0x${colors.base02}"
 
-    riverctl default-layout rivertile
-    rivertile -view-padding 3 -outer-padding 3 &
+    riverctl default-layout rivercarro
+    ${getExe pkgs.rivercarro} -inner-gaps 3 -outer-gaps 3 -per-tag &
 
     # TODO: Make systemd user services instead
 
+    foot --server &
     mako-wrapped &
     signal-desktop &
     kanshi &
 
-    ${e "swayidle"} \
-      timeout 130 "brightnessctl s 5%" \
-      timeout 135 "gtklock" \
-      timeout 600 "systemctl suspend" \
-      before-sleep "gtklock" \
+    ${getExe pkgs.swayidle} \
+      timeout 130 ${idle "brightnessctl s 5%"} \
+      timeout 135 ${idle "gtklock"} \
+      timeout 600 ${idle "systemctl suspend"} \
+      before-sleep ${idle "gtklock"} \
       lock "gtklock" &
 
     # your eyes and your sleep schedule will thank you
-    ${e "wlsunset"} -l 50.2597 -L 19.0211 &
+    ${getExe pkgs.wlsunset} -l 50.2597 -L 19.0211 &
   ''
