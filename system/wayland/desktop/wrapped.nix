@@ -13,10 +13,9 @@ in [
         wrappers = {
           foot = import ./wrapped/foot {inherit inputs pkgs colors;};
 
-          gtklock = import ./wrapped/gtklock {inherit pkgs;};
+          waylock = import ./wrapped/waylock {inherit pkgs colors;};
           mako = import ./wrapped/mako {inherit pkgs colors;};
           rofi = import ./wrapped/rofi {inherit pkgs colors;};
-          swayidle = import ./wrapped/swayidle {inherit pkgs;};
         };
       }
     ];
