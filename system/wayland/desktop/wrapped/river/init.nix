@@ -8,7 +8,7 @@
 
   # river does not support zwp_idle_inhibit_manager_v1 protocol,
   # so instead I used this oneliner combined with swayidle
-  idle = x: "sh -c '${getExe pkgs.playerctl} status || ${x}'";
+  idle = x: ''"sh -c \"${getExe pkgs.playerctl} status || ${x}\""'';
 in
   pkgs.writeShellScript "river-init" ''
     #!/bin/sh
