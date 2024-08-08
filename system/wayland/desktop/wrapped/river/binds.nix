@@ -5,7 +5,7 @@
     # note that we call footclient from vanilla unwrapped foot package
     "Super+Shift Return spawn ${pkgs.foot}/bin/footclient"
     "None XF86Favorites spawn infoscript"
-    "None XF86Display spawn gtklock"
+    "None XF86Display spawn waylock"
     "None XF86Keyboard spawn 'launcher -show emoji'"
     "Super Space spawn 'launcher -show drun'"
     "Super+Shift S spawn '${getExe pkgs.slurp} | ${getExe pkgs.grim} -g - - | ${pkgs.wl-clipboard}/bin/wl-copy'"

@@ -50,10 +50,10 @@ in
 
     ${getExe pkgs.swayidle} \
       timeout 130 ${idle "brightnessctl s 5%"} \
-      timeout 135 ${idle "gtklock"} \
+      timeout 135 ${idle "waylock"} \
       timeout 600 ${idle "systemctl suspend"} \
-      before-sleep ${idle "gtklock"} \
-      lock "gtklock" &
+      before-sleep ${idle "waylock"} \
+      lock "waylock" &
 
     # your eyes and your sleep schedule will thank you
     ${getExe pkgs.wlsunset} -l 50.2597 -L 19.0211 &
