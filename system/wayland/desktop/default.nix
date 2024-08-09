@@ -18,6 +18,8 @@
       libnotify
       dart-sass
       librewolf
+      tor-browser
+      tdesktop
       libreoffice-fresh
       ytmdl
       nicotine-plus
