@@ -26,7 +26,7 @@
 in {
   basePackage = pkgs.bottom;
   flags = [
-    "--config"
+    "--config_location"
     (toml.generate "config.toml" settings)
   ];
 }
