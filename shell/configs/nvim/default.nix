@@ -67,6 +67,9 @@
         nvim-treesitter.withAllGrammars
 
         orgmode
+        vimwiki
+        cmp-vimwiki-tags
+        mattn-calendar-vim
 
         nui-nvim
         plenary-nvim
@@ -94,8 +97,8 @@ in {
     nixd
     typst-lsp
     stylua
+
+    # required for my goofy ahh plugin :3
+    libsixel
   ];
-  renames = {
-    "nvim" = "v";
-  };
 }
