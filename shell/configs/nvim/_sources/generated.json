@@ -101,7 +101,7 @@
     },
     "scope": {
         "cargoLocks": null,
-        "date": "2024-03-31",
+        "date": "2024-07-30",
         "extract": null,
         "name": "scope",
         "passthru": null,
@@ -113,15 +113,35 @@
             "name": null,
             "owner": "tiagovla",
             "repo": "scope.nvim",
-            "rev": "86a0f5b594b08b2ad65f470ffdee81654942b6ac",
-            "sha256": "sha256-8Bd1DI6nuUxkTCx0wCfWKHdi6UXQNuDygj5UuSGypLs=",
+            "rev": "5e3f5ead970317b2f276d38dc031cb4bc5742cd4",
+            "sha256": "sha256-JisbhQ5oRPBl+C33xbRu6GzK71DstSOHrHwLwpecnVA=",
             "type": "github"
         },
-        "version": "86a0f5b594b08b2ad65f470ffdee81654942b6ac"
+        "version": "5e3f5ead970317b2f276d38dc031cb4bc5742cd4"
+    },
+    "sixelpreview": {
+        "cargoLocks": null,
+        "date": "2024-08-11",
+        "extract": null,
+        "name": "sixelpreview",
+        "passthru": null,
+        "pinned": false,
+        "src": {
+            "deepClone": false,
+            "fetchSubmodules": false,
+            "leaveDotGit": false,
+            "name": null,
+            "owner": "sioodmy",
+            "repo": "sixelpreview.nvim",
+            "rev": "6292991a005e1a367095f4d404405a626c82b49f",
+            "sha256": "sha256-0jwSRuLHSHzeCKk+EdyhhlNLsZYRfJI6hxW4UCNn3uc=",
+            "type": "github"
+        },
+        "version": "6292991a005e1a367095f4d404405a626c82b49f"
     },
     "telescope-orgmode": {
         "cargoLocks": null,
-        "date": "2024-07-07",
+        "date": "2024-08-01",
         "extract": null,
         "name": "telescope-orgmode",
         "passthru": null,
@@ -133,10 +153,10 @@
             "name": null,
             "owner": "nvim-orgmode",
             "repo": "telescope-orgmode.nvim",
-            "rev": "b1d0fab19fafeb7de0fd78b16d4c023021c01765",
-            "sha256": "sha256-46R9HO6kmGmWzBXAiL+SeR44uj0P716vwOfUTI8ec7E=",
+            "rev": "2cd2ea778726c6e44429fef82f23b63197dbce1b",
+            "sha256": "sha256-yeGdy1aip4TZKp++MuSo+kxo+XhFsOT0yv+9xJpKEps=",
             "type": "github"
         },
-        "version": "b1d0fab19fafeb7de0fd78b16d4c023021c01765"
+        "version": "2cd2ea778726c6e44429fef82f23b63197dbce1b"
     }
 }

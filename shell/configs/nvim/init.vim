@@ -22,6 +22,11 @@ set shiftwidth=4
 set splitright
 set splitbelow
 
+" use sane markdown format for vimwiki
+let g:vimwiki_list = [{'path': '~/docs/notes/',
+                      \ 'syntax': 'markdown', 'ext': 'md'}]
+
+
 nnoremap <leader>ff <cmd>Telescope find_files<cr>
 nnoremap <leader><leader> <cmd>Telescope git_files<cr>
 nnoremap <leader>fg <cmd>Telescope live_grep<cr>
@@ -39,6 +44,8 @@ nnoremap <leader>w <cmd>update <cr>
 
 nnoremap <C-d> <C-d>zz
 nnoremap <C-u> <C-u>zz
+
+nnoremap <leader><cr> <cmd>lua require("sixelpreview").current_line()<cr>
 
 nnoremap <M-h> <cmd>bprevious<cr>
 nnoremap <M-l> <cmd>bnext<cr>

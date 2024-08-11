@@ -25,3 +25,7 @@ fetch.github = "tiagovla/scope.nvim"
 [recession]
 src.git = "https://github.com/stevearc/resession.nvim"
 fetch.github = "stevearc/resession.nvim"
+
+[sixelpreview]
+src.git = "https://github.com/sioodmy/sixelpreview.nvim"
+fetch.github = "sioodmy/sixelpreview.nvim"
