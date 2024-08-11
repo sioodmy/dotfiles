@@ -33,8 +33,8 @@
   };
 
   environment.variables = {
-    EDITOR = "v";
-    BROWSER = "brave";
+    EDITOR = "nvim";
+    BROWSER = "librewolf";
   };
   environment.systemPackages = with pkgs; [
     git
