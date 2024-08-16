@@ -42,6 +42,7 @@
         nvim-autopairs
         neoformat
         comment-nvim
+        nvim-colorizer-lua
         vim-speeddating
         luasnip
         vim-startuptime
@@ -52,7 +53,7 @@
         sniprun
         vim-table-mode
         trouble-nvim
-        bufferline-nvim
+        nvim-cokeline
         fidget-nvim
         nvim-notify
 
@@ -66,7 +67,6 @@
 
         nvim-treesitter.withAllGrammars
 
-        orgmode
         vimwiki
         cmp-vimwiki-tags
         mattn-calendar-vim
@@ -95,7 +95,6 @@ in {
     shellcheck
     cargo
     nixd
-    typst-lsp
     stylua
 
     # required for my goofy ahh plugin :3
