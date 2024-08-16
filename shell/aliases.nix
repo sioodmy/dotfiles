@@ -7,15 +7,16 @@ in rec {
   ls = l;
   la = e;
 
-  m = "mkdir";
+  m = "mkdir -vp";
 
   g = "git";
   n = "nix";
   v = "nvim";
 
-  ytmp3 = "yt-dlp -x --embed-metadata --audio-quality 0 --audio-format mp3";
+  # imagine using mp3
+  ytopus = "yt-dlp -x --embed-metadata --audio-quality 0 --audio-format opus --embed-metadata --embed-thumbnail";
 
-  cat = "${getExe pkgs.bat}";
+  cat = "${getExe pkgs.bat} --plain";
   fzf = "${getExe pkgs.skim}";
 
   kys = "shutdown now";
