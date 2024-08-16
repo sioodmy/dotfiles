@@ -7,7 +7,7 @@
   dnscrypt = config.services.dnscrypt-proxy2.enable;
   inherit (lib) mkIf;
 in {
-  environment.systemPackages = with pkgs; [speedtest-cli bandwhich];
+  environment.systemPackages = with pkgs; [speedtest-cli];
   networking = {
     nameservers =
       if dnscrypt
