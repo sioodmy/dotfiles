@@ -1,5 +1,4 @@
 {
-  inputs,
   pkgs,
   colors,
   ...
@@ -26,7 +25,7 @@
 
       initial-window-size-chars = "104x36";
       initial-window-mode = "windowed";
-      pad = "5x5 center";
+      pad = "8x8 center";
       resize-delay-ms = 100;
 
       bold-text-in-bright = "no";
@@ -53,7 +52,7 @@
       uri-characters = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789-_.,~:;/?#@!$&%*+=\"'()[]";
     };
     cursor = {
-      style = "block";
+      style = "beam";
       blink = "no";
     };
     mouse = {
