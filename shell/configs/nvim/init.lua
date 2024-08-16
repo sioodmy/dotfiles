@@ -1,3 +1,28 @@
+--     NOO YOU CANT JUST PUT
+--     ALL OF YOUR NVIM CONFIG
+--     IN A SINGLE UNSTRUCTURED
+--     FILE
+-- ⠀⠀⠘⡀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⡜⠀⠀⠀
+-- ⠀⠀⠀⠑⡀⠀⠀⠀⠀⠀ ⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⡔⠁⠀⠀⠀
+-- ⠀⠀⠀⠀⠈⠢⢄⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⣀⠴⠊⠀⠀⠀⠀⠀
+-- ⠀⠀⠀⠀⠀⠀⠀⢸⠀⠀⠀⢀⣀⣀⣀⣀⣀⡀⠤⠄⠒⠈⠀⠀⠀⠀⠀⠀⠀⠀
+-- ⠀⠀⠀⠀⠀⠀⠀⠘⣀⠄⠊⠁⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀
+-- ⠀⠀⠀⠀⠀⠀⠀⠀⠀⢀⡠⠔⠒⠒⠒⠒⠒⠢⠤⣀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀
+-- ⠀⠀⠀⠀⠀⠀⠀⡰⠉⠁⠀⠀⠀⠀⠀⠀⠀⠀⠀⠈⠑⢄⡀⠀⠀⠀⠀⠀⠀⠀
+-- ⠀⠀⠀⠀⠀⠀⡸⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⡀⠀⠀⠀⠀⠙⠄⠀⠀⠀⠀⠀⠀
+-- ⠀⠀⠀⠀⠀⢀⠁⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠃⠀⢠⠂⠀⠀⠘⡄⠀⠀⠀⠀⠀
+-- ⠀⠀⠀⠀⠀⢸⠀⠀⠀⠀⠀⠀⠀⠀⠈⢤⡀⢂⠀⢨⠀⢀⡠⠈⢣⠀⠀⠀⠀⠀
+-- ⠀⠀⠀⠀⠀⢀⢀⡖⠒⠶⠤⠭⢽⣟⣗⠲⠖⠺⣖⣴⣆⡤⠤⠤⠼⡄⠀⠀⠀⠀
+-- ⠀⠀⠀⠀⠀⠘⡈⠃⠀⠀⠀⠘⣺⡟⢻⠻⡆⠀⡏⠀⡸⣿⢿⢞⠄⡇⠀⠀⠀⠀
+-- ⠀⠀⠀⠀⠀⠀⢣⡀⠤⡀⡀⡔⠉⣏⡿⠛⠓⠊⠁⠀⢎⠛⡗⡗⢳⡏⠀⠀⠀⠀
+-- ⠀⠀⠀⠀⠀⠀⠀⢱⠀⠨⡇⠃⠀⢻⠁⡔⢡⠒⢀⠀⠀⡅⢹⣿⢨⠇⠀⠀⠀⠀
+-- ⠀⠀⠀⠀⠀⠀⠀⢸⠀⠠⢼⠀⠀⡎⡜⠒⢀⠭⡖⡤⢭⣱⢸⢙⠆⠀⠀⠀⠀⠀
+-- ⠀⠀⠀⠀⠀⠀⠀⡸⠀⠀⠸⢁⡀⠿⠈⠂⣿⣿⣿⣿⣿⡏⡍⡏⠀⠀⠀⠀⠀⠀
+-- ⠀⠀⠀⠀⠀⠀⢀⠇⠀⠀⠀⠀⠸⢢⣫⢀⠘⣿⣿⡿⠏⣼⡏⠀⠀⠀⠀⠀⠀⠀
+-- ⠀⠀⠀⠀⣀⣠⠊⠀⣀⠎⠁⠀⠀⠀⠙⠳⢴⡦⡴⢶⣞⣁⣀⣀⡀⠀⠀⠀⠀⠀
+-- ⠀⠐⠒⠉⠀⠀⠀⠀⠀⠀⠀⠀⠀⠠⠀⢀⠤⠀⠀⠀⠀⠀⠀⠀⠈⠉⠀⠀⠀
+-- it works tho
+
 vim.loader.enable()
 
 vim.opt.termguicolors = true
@@ -6,12 +31,50 @@ require("incline").setup({})
 require("fidget").setup({})
 require("scope").setup({})
 
-require("bufferline").setup({
-	options = {
-		right_mouse_command = nil,
-		middle_mouse_command = "bdelete! %d",
-		indicator = {
-			style = " ",
+local get_hex = require("cokeline.hlgroups").get_hl_attr
+
+require("cokeline").setup({
+	default_hl = {
+		fg = function(buffer)
+			return buffer.is_focused and get_hex("ColorColumn", "bg") or get_hex("Normal", "fg")
+		end,
+		bg = function(buffer)
+			return buffer.is_focused and get_hex("Normal", "fg") or get_hex("ColorColumn", "bg")
+		end,
+	},
+
+	components = {
+		{
+			text = function(buffer)
+				return " " .. buffer.devicon.icon
+			end,
+			fg = function(buffer)
+				return buffer.devicon.color
+			end,
+		},
+		{
+			text = function(buffer)
+				return buffer.unique_prefix
+			end,
+			fg = get_hex("Comment", "fg"),
+			italic = true,
+		},
+		{
+			text = function(buffer)
+				return buffer.filename .. " "
+			end,
+			underline = function(buffer)
+				return buffer.is_hovered and not buffer.is_focused
+			end,
+		},
+		{
+			text = "|",
+			on_click = function(_, _, _, _, buffer)
+				buffer:delete()
+			end,
+		},
+		{
+			text = " ",
 		},
 	},
 })
@@ -157,7 +220,6 @@ cmp.setup({
 		{ name = "path", option = { trailing_slash = true } },
 		{ name = "treesitter" },
 		{ name = "vimwiki-tags" },
-		{ name = "orgmode" },
 	}),
 })
 
@@ -240,13 +302,6 @@ telescope.setup({})
 telescope.load_extension("harpoon")
 telescope.load_extension("scope")
 
-local orgmode = require("orgmode")
-orgmode.setup({
-	org_agenda_files = { "~/docs/notes/*.org" },
-	org_default_notes_file = "~/docs/notes/Refile.org",
-})
-require("org-bullets").setup()
-
 require("Comment").setup()
 
 vim.filetype.add({
@@ -254,3 +309,5 @@ vim.filetype.add({
 		[".envrc"] = "bash",
 	},
 })
+
+require("colorizer").setup()

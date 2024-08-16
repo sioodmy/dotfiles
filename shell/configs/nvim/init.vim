@@ -26,6 +26,9 @@ set splitbelow
 let g:vimwiki_list = [{'path': '~/docs/notes/',
                       \ 'syntax': 'markdown', 'ext': 'md'}]
 
+let g:vimwiki_listsyms = '✗○◐●✓'
+let g:vimwiki_table_mappings = 0
+
 
 nnoremap <leader>ff <cmd>Telescope find_files<cr>
 nnoremap <leader><leader> <cmd>Telescope git_files<cr>
