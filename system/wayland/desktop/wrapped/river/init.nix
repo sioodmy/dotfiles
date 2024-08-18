@@ -39,7 +39,7 @@ in
     riverctl border-color-unfocused "0x${colors.base02}"
 
     riverctl default-layout rivercarro
-    ${getExe pkgs.rivercarro} -inner-gaps 3 -outer-gaps 3 -per-tag &
+    ${getExe pkgs.rivercarro} -inner-gaps 5 -outer-gaps 3 -per-tag &
 
     # TODO: Make systemd user services instead
 

@@ -15,11 +15,11 @@ in [
 
           waylock = import ./wrapped/waylock {inherit pkgs colors;};
           mako = import ./wrapped/mako {inherit pkgs colors;};
-          rofi = import ./wrapped/rofi {inherit pkgs colors;};
         };
       }
     ];
   })
   # wrapper-manager incorrectly wraps river
   (import ./wrapped/river {inherit pkgs colors;})
+  (import ./wrapped/tofi {inherit pkgs colors;})
 ]
