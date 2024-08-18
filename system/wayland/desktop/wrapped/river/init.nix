@@ -31,6 +31,15 @@ in
 
     riverctl input $TRACKPOINT pointer-accel -0.3
 
+    riverctl rule-add -title "Open As" float
+    riverctl rule-add -title "Open File" float
+    riverctl rule-add -title "Open Folder" float
+    riverctl rule-add -title "Open" float
+    riverctl rule-add -title "Save As" float
+    riverctl rule-add -title "Save File" float
+    riverctl rule-add -title "Save Folder" float
+    riverctl rule-add -title "Save" float
+
     riverctl keyboard-layout -options "caps:escape" pl
     riverctl set-repeat 30 350
 
