@@ -31,7 +31,7 @@
 </div>
 
 <p align="center">
-<img src="https://media.discordapp.net/attachments/1020403449092911186/1024341925630844939/unknown.png?width=1122&height=631" width="600" alt="" />
+<img src="./assets/desktop.png" width="600" alt="" />
 </p>
 
 ## Notable features
