@@ -54,6 +54,29 @@ in [
 
   (
     mkTofi {
+      name = "power";
+      script = ''
+        #!/bin/sh
+
+        menu="Cancel\nShutdown\nSuspend\nHibernate\nReboot"
+
+        pick=$(echo -e "$menu" | tofi)
+
+        case "$pick" in
+            "Cancel") exit ;;
+            "Shutdown") sudo poweroff ;;
+            "Suspend") systemctl suspend ;;
+            "Hibernate") sudo systemctl hibernate ;;
+            "Reboot") sudo reboot ;;
+        esac
+
+      '';
+      makeDesktop = true;
+    }
+  )
+
+  (
+    mkTofi {
       name = "emoji";
       script = ''
         #!/bin/sh
