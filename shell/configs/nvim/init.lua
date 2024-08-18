@@ -68,12 +68,6 @@ require("cokeline").setup({
 			end,
 		},
 		{
-			text = "|",
-			on_click = function(_, _, _, _, buffer)
-				buffer:delete()
-			end,
-		},
-		{
 			text = " ",
 		},
 	},
@@ -178,6 +172,36 @@ npairs.setup({
 
 local cmp_autopairs = require("nvim-autopairs.completion.cmp")
 
+local kind_icons = {
+	Text = "󰉿",
+	Method = "m",
+	Function = "󰊕",
+	Constructor = "",
+	Field = "",
+	Variable = "󰆧",
+	Class = "󰌗",
+	Interface = "",
+	Module = "",
+	Property = "",
+	Unit = "",
+	Value = "󰎠",
+	Enum = "",
+	Keyword = "󰌋",
+	Snippet = "",
+	Color = "󰏘",
+	File = "󰈙",
+	Reference = "",
+	Folder = "󰉋",
+	EnumMember = "",
+	Constant = "󰇽",
+	Struct = "",
+	Event = "",
+	Operator = "󰆕",
+	TypeParameter = "󰊄",
+	Codeium = "󰚩",
+	Copilot = "",
+}
+
 local cmp = require("cmp")
 local luasnip = require("luasnip")
 
@@ -211,6 +235,21 @@ cmp.setup({
 	snippet = {
 		expand = function(args)
 			luasnip.lsp_expand(args.body)
+		end,
+	},
+	formatting = {
+		fields = { "kind", "abbr", "menu" },
+		format = function(entry, vim_item)
+			vim_item.kind = kind_icons[vim_item.kind]
+			vim_item.menu = ({
+				nvim_lsp = "",
+				nvim_lua = "",
+				luasnip = "",
+				buffer = "",
+				path = "",
+				emoji = "",
+			})[entry.source.name]
+			return vim_item
 		end,
 	},
 	sources = cmp.config.sources({
