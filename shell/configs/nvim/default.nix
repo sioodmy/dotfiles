@@ -43,6 +43,8 @@
         neoformat
         comment-nvim
         nvim-colorizer-lua
+        which-key-nvim
+        undotree
         vim-speeddating
         luasnip
         vim-startuptime

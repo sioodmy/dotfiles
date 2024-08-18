@@ -324,6 +324,12 @@ nvim_lsp.rust_analyzer.setup({
 	},
 })
 
+require("which-key").setup({
+	icons = {
+		mappings = false,
+	},
+})
+
 require("nvim-treesitter.configs").setup({
 	highlight = {
 		enable = true,
