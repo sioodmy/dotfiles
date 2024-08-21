@@ -9,10 +9,17 @@ HISTFILE=~/.cache/zsh/history
 export AUTO_NOTIFY_THRESHOLD=40
 export AUTO_NOTIFY_EXPIRE_TIME=5000
 
+eval "$(fzf --zsh)"
 
 # Basic auto/tab complete:
 autoload -U compinit
 zstyle ':completion:*' menu select
+zstyle ':completion:*' matcher-list '' 'm:{a-zA-Z}={A-Za-z}' 'r:|[._-]=* r:|=*' 'l:|=* r:|=*'
+
+zstyle ':completion:*:git-checkout:*' sort false
+zstyle ':completion:*:descriptions' format '[%d]'
+zstyle ':completion:*' list-colors ${(s.:.)LS_COLORS}
+
 zmodload zsh/complist
 zsh-defer compinit
 _comp_options+=(globdots)		# Include hidden files.
