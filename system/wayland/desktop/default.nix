@@ -22,6 +22,7 @@
       tdesktop
       libreoffice-fresh
       ytmdl
+      sent
       nicotine-plus
       inkscape
       ledger-live-desktop

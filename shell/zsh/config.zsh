@@ -44,6 +44,11 @@ function zle-keymap-select {
     echo -ne '\e[5 q'
   fi
 }
+
+function flake-init {
+    nix flake init --template "https://flakehub.com/f/the-nix-way/dev-templates/*#$1"
+}
+
 zle -N zle-keymap-select
 zle-line-init() {
     zle -K viins # initiate `vi insert` as keymap (can be removed if `bindkey -V` has been set elsewhere)

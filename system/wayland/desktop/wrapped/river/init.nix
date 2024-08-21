@@ -50,6 +50,8 @@ in
     riverctl default-layout rivercarro
     ${getExe pkgs.rivercarro} -inner-gaps 5 -outer-gaps 3 -per-tag &
 
+    riverctl xcursor-theme "Bibata-Modern-Classic" 18
+
     # TODO: Make systemd user services instead
 
     foot --server &
