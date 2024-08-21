@@ -85,8 +85,8 @@ vmap <C-x> "+c
 vmap <C-v> c<ESC>"+p
 imap <C-v> <C-r><C-o>+
 
-" mouse support
-set mouse=a
+" we aint doing no mouse in nvim
+set mouse=
 
 " Set the cursor to a line after leaving
 au VimLeave * set guicursor=a:ver100
