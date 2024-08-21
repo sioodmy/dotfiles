@@ -2,8 +2,9 @@
 with pkgs; [
   # better cd
   zoxide
-  # drop in replacement for fzf
-  skim
+  fzf
+
+  eza
 
   # Tbh should be preinstalled
   gnumake
