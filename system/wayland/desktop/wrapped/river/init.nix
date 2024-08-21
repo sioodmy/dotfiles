@@ -46,6 +46,7 @@ in
     riverctl background-color "0x${colors.base01}"
     riverctl border-color-focused "0x${colors.base04}"
     riverctl border-color-unfocused "0x${colors.base02}"
+    riverctl border-width 4
 
     riverctl default-layout rivercarro
     ${getExe pkgs.rivercarro} -inner-gaps 5 -outer-gaps 3 -per-tag &
