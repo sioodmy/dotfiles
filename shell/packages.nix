@@ -1,6 +1,6 @@
 {pkgs, ...}:
 with pkgs; [
-  # better cd
+  chatgpt-cli
   zoxide
   fzf
 
