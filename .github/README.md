@@ -1,5 +1,5 @@
 <h1 align="center">
-      <img src="https://raw.githubusercontent.com/NixOS/nixos-artwork/master/logo/nix-snowflake.svg" width="96px" height="96px" />
+      <img src="https://raw.githubusercontent.com/NixOS/nixos-artwork/master/logo/nix-snowflake-rainbow.svg" width="96px" height="96px" />
       <br>
   
   sioodmy's dotfiles <br>
@@ -33,29 +33,6 @@
 <p align="center">
 <img src="./assets/desktop.png" width="600" alt="" />
 </p>
-
-## Notable features
-
-- 🔒 Luks disk encryption with btrfs
-- 🤫 Opt-in impermanence
-- 🟢 Fully functional Wayland + Nvidia setup
-- 👮 Schizo options enabled (this will get you on CIA watchlist for sure lmao)
-- 🐱 Catppuccin themed (everything)
-- 🦀 Rust alternatives
-
-## 📦 Contents
-
-- [modules](modules) 🍱 modularized NixOS configs
-  - [home](modules/home) 🏠 my [Home-Manager](https://github.com/nix-community/home-manager) config
-  - [core](modules/core) 🧠 Core NixOS configuration
-  - [nvidia](modules/nvidia) 💚 My next GPU won't be NVIDIA
-  - [server](modules/server) ☁️ Server stuff for selfhosting on pi4
-  - [wayland](modules/wayland) 🚀 Wayland configs and rice
-- [hosts](hosts) 🌳 per-host configuration (All named after saturn moons 🪐)
-  - [anthe](hosts/anthe) 🖥️ My desktop with nvidia gpu
-  - [iapetus](hosts/iapetus) 🍓 Raspberry pi server [🚧]
-  - [io](hosts/io) 💻 Configs for my future framework laptop ([currently im kinda broke](https://en.liberapay.com/sioodmy/)) [🚧]
-- [pkgs](pkgs) 💿 exported packages
 
 ## 💛 Donate
 
