@@ -1,7 +1,6 @@
 {
   pkgs,
   lib,
-  inputs,
   ...
 }: let
   inherit (lib) mkDefault;
@@ -11,18 +10,25 @@ in {
     pkgs.sbctl
   ];
   boot = {
-    binfmt.emulatedSystems = ["aarch64-linux"];
+    binfmt.emulatedSystems = ["aarch64-linux" "riscv64-linux"];
     tmp = {
       cleanOnBoot = true;
-      useTmpfs = false;
+      useTmpfs = true;
     };
-    # some kernel parameters, i dont remember what half of this shit does but who cares
-    initrd.verbose = false;
-    kernelPackages = mkDefault pkgs.linuxPackages_latest;
+    initrd = {
+      verbose = false;
+      systemd.enable = true;
+    };
+    kernelPackages = mkDefault pkgs.linuxPackages_xanmod_latest;
 
     bootspec.enable = mkDefault true;
     loader = {
-      systemd-boot.enable = mkDefault true;
+      systemd-boot = {
+        enable = mkDefault true;
+        memtest86.enable = true;
+        configurationLimit = 10;
+        editor = false;
+      };
       # spam space to get to boot menu
       timeout = 0;
     };

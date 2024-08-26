@@ -5,10 +5,14 @@
 }: {
   services = {
     dbus = {
-      packages = with pkgs; [dconf gcr udisks2];
+      packages = with pkgs; [dconf gcr udisks2 seahorse];
+      implementation = "broker";
       enable = true;
     };
     udev.packages = with pkgs; [gnome.gnome-settings-daemon android-udev-rules];
+    # "irqbalance(1) - distribute hardware interrupts across processors on a multiprocessor system"
+    irqbalance.enable = true;
+    fstrim.enable = true;
     journald.extraConfig = ''
       SystemMaxUse=50M
       RuntimeMaxUse=10M

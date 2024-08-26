@@ -20,14 +20,13 @@ in {
       dns = mkIf dnscrypt "none";
       wifi = {
         macAddress = "random";
+        backend = "iwd";
         powersave = true;
       };
     };
     firewall = {
       enable = true;
       allowPing = false;
-      # for chromecast
-      allowedUDPPorts = [10008];
       logReversePathDrops = true;
     };
   };

@@ -25,6 +25,18 @@
     defaultPackages = [];
   };
 
+  # WE DONT WANT TO BUILD STUFF ON TMPFS
+  # ITS NOT A GOOD IDEA
+  systemd.services.nix-daemon = {
+    environment.TMPDIR = "/var/tmp";
+  };
+
+  # this makes rebuilds little faster
+  system.switch = {
+    enable = false;
+    enableNg = true;
+  };
+
   nixpkgs = {
     config = {
       # Wolność kocham i rozumiem
