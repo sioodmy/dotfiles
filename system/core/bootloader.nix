@@ -19,7 +19,7 @@ in {
       verbose = false;
       systemd.enable = true;
     };
-    kernelPackages = mkDefault pkgs.linuxPackages_xanmod_latest;
+    kernelPackages = mkDefault pkgs.linuxPackages_latest;
 
     bootspec.enable = mkDefault true;
     loader = {
