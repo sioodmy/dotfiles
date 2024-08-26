@@ -9,6 +9,8 @@ HISTFILE=~/.cache/zsh/history
 export AUTO_NOTIFY_THRESHOLD=40
 export AUTO_NOTIFY_EXPIRE_TIME=5000
 
+zvm_after_init_commands+=('eval "$(fzf --zsh)"')
+
 eval "$(fzf --zsh)"
 
 # Basic auto/tab complete:
