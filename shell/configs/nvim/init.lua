@@ -204,6 +204,7 @@ local kind_icons = {
 
 local cmp = require("cmp")
 local luasnip = require("luasnip")
+require("luasnip.loaders.from_vscode").lazy_load()
 
 cmp.setup({
 	mapping = cmp.mapping.preset.insert({
@@ -219,6 +220,8 @@ cmp.setup({
 			"i",
 		}),
 		["<CR>"] = cmp.mapping.confirm({ select = true }),
+		["<C-u>"] = cmp.mapping.scroll_docs(-4),
+		["<C-d>"] = cmp.mapping.scroll_docs(4),
 
 		["<S-Tab>"] = cmp.mapping(function(fallback)
 			if vim.fn.pumvisible() == 1 then
@@ -261,6 +264,14 @@ cmp.setup({
 		{ name = "vimwiki-tags" },
 	}),
 })
+
+vim.diagnostic.config({
+	virtual_text = false,
+})
+
+-- Show line diagnostics automatically in hover window
+vim.o.updatetime = 250
+vim.cmd([[autocmd CursorHold,CursorHoldI * lua vim.diagnostic.open_float(nil, {focus=false})]])
 
 cmp.event:on("confirm_done", cmp_autopairs.on_confirm_done())
 
