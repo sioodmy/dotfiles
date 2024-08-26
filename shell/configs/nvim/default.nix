@@ -62,6 +62,7 @@
         # Language support
         nvim-lspconfig
         nvim-cmp
+        friendly-snippets
         cmp-cmdline
         cmp-nvim-lsp
         cmp-buffer
