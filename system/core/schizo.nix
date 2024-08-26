@@ -12,7 +12,6 @@
         hibernate = false;
       };
     };
-    dbus.packages = [pkgs.seahorse];
     networkd-dispatcher.enable = true;
   };
 
