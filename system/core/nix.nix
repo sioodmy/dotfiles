@@ -10,18 +10,14 @@
     sessionVariables.FLAKE = "/home/sioodmy/dev/dotfiles";
     etc."nix/flake-channels/nixpkgs".source = inputs.nixpkgs;
 
-    systemPackages =
-      (with pkgs; [
-        git
-        deadnix
-        alejandra
-        statix
-        nix-output-monitor
-        nvfetcher
-      ])
-      ++ [
-        inputs.agenix.packages."${pkgs.system}".default
-      ];
+    systemPackages = with pkgs; [
+      git
+      deadnix
+      alejandra
+      statix
+      nix-output-monitor
+      nvfetcher
+    ];
     defaultPackages = [];
   };
 

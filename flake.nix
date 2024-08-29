@@ -25,7 +25,6 @@
             colors = inputs.nix-colors.colorSchemes.catppuccin-frappe.palette;
           in
             [
-              inputs'.agenix.packages.default
               config.treefmt.build.wrapper
               (pkgs.callPackage ./shell {inherit pkgs inputs colors;})
             ]
@@ -75,18 +74,6 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
-    agenix = {
-      url = "github:ryantm/agenix";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
-
-    zig-overlay = {
-      url = "github:mitchellh/zig-overlay";
-      inputs = {
-        nixpkgs.follows = "nixpkgs";
-      };
-    };
-
     homix = {
       url = "github:sioodmy/homix";
       inputs = {
@@ -97,29 +84,6 @@
     flake-parts = {
       url = "github:hercules-ci/flake-parts";
       inputs.nixpkgs-lib.follows = "nixpkgs";
-    };
-    lyricsapi = {
-      url = "github:sioodmy/lyricsapi";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
-    simple-nixos-mailserver = {
-      url = "gitlab:simple-nixos-mailserver/nixos-mailserver/master";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
-    website = {
-      url = "github:sioodmy/website";
-      inputs = {
-        nixpkgs.follows = "nixpkgs";
-        flake-parts.follows = "flake-parts";
-      };
-    };
-    bitcoinstatus = {
-      url = "github:sioodmy/bitcoinstatus";
-      inputs = {
-        nixpkgs.follows = "nixpkgs";
-        flake-parts.follows = "flake-parts";
-        treefmt-nix.follows = "treefmt-nix";
-      };
     };
   };
 }
