@@ -6,7 +6,7 @@
     "Super+Shift Return spawn ${pkgs.foot}/bin/footclient"
     "None XF86Favorites spawn infoscript"
     "None XF86Keyboard spawn tofi-emoji"
-    "None XF86Display spawn waylock"
+    "None XF86Display spawn swaylock"
     "Super Space spawn 'tofi-drun | xargs -0 riverctl spawn'"
     "Super+Shift S spawn '${getExe pkgs.slurp} | ${getExe pkgs.grim} -g - - | ${pkgs.wl-clipboard}/bin/wl-copy'"
 
