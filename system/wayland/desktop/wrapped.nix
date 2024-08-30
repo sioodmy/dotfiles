@@ -13,7 +13,7 @@ in [
         wrappers = {
           foot = import ./wrapped/foot {inherit inputs pkgs colors;};
 
-          waylock = import ./wrapped/waylock {inherit pkgs colors;};
+          swaylock = import ./wrapped/swaylock {inherit pkgs colors;};
           mako = import ./wrapped/mako {inherit pkgs colors;};
         };
       }

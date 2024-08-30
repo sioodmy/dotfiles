@@ -61,11 +61,10 @@ in
     kanshi &
 
     ${getExe pkgs.swayidle} \
-      timeout 130 ${idle "brightnessctl s 5%"} \
-      timeout 135 ${idle "waylock"} \
+      timeout 135 ${idle "swaylock --grace 5"} \
       timeout 600 ${idle "systemctl suspend"} \
-      before-sleep ${idle "waylock"} \
-      lock "waylock" &
+      before-sleep ${idle "swaylock"} \
+      lock "swaylock" &
 
     # your eyes and your sleep schedule will thank you
     ${getExe pkgs.wlsunset} -l 50.2597 -L 19.0211 &
