@@ -15,7 +15,6 @@
       ];
 
       perSystem = {
-        inputs',
         config,
         pkgs,
         ...
@@ -57,7 +56,9 @@
     });
 
   inputs = {
-    nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
+    # unstable-small moves faster than unstable
+    # I find it more reliable than unstable
+    nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable-small";
 
     nixos-hardware.url = "github:nixos/nixos-hardware";
     impermanence.url = "github:nix-community/impermanence";
