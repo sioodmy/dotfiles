@@ -33,11 +33,15 @@
       packages = [pkgs.apparmor-profiles];
     };
     pam = {
-      services.swaylock.text = ''
-        auth            sufficient      pam_unix.so try_first_pass likeauth nullok
-        auth            sufficient      pam_fprintd.so
-        auth            include         login
-      '';
+      services = {
+        login = {
+          enableGnomeKeyring = true;
+          fprintAuth = true;
+        };
+        sudo.fprintAuth = true;
+        swaylock.fprintAuth = true;
+      };
+
       loginLimits = [
         {
           domain = "@wheel";
@@ -52,9 +56,6 @@
           value = "1048576";
         }
       ];
-      services = {
-        login.enableGnomeKeyring = true;
-      };
     };
 
     sudo = {
