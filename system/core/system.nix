@@ -9,7 +9,8 @@
       implementation = "broker";
       enable = true;
     };
-    udev.packages = with pkgs; [gnome.gnome-settings-daemon android-udev-rules];
+    udev.packages = [pkgs.android-udev-rules];
+
     # "irqbalance(1) - distribute hardware interrupts across processors on a multiprocessor system"
     irqbalance.enable = true;
     fstrim.enable = true;

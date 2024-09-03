@@ -1,84 +1,90 @@
-{pkgs, ...}:
-with pkgs; [
-  chatgpt-cli
-  zoxide
-  fzf
+{pkgs, ...}: let
+  # i dont like agenix :<
+  chatgpt = pkgs.writeShellScriptBin "chatgpt" ''
+    #!/bin/sh
+    OPENAI_API_KEY="$(cat /persist/secrets/openai)" ${pkgs.lib.getExe pkgs.chatgpt-cli}
+  '';
+in
+  (with pkgs; [
+    zoxide
+    fzf
 
-  eza
+    eza
 
-  # Tbh should be preinstalled
-  gnumake
-  # Runs programs without installing them
-  comma
+    # Tbh should be preinstalled
+    gnumake
+    # Runs programs without installing them
+    comma
 
-  # grep replacement
-  ripgrep
+    # grep replacement
+    ripgrep
 
-  # ping, but with cool graph
-  gping
+    # ping, but with cool graph
+    gping
 
-  # dns client
-  dogdns
+    # dns client
+    dogdns
 
-  # neofetch but for git repos
-  onefetch
+    # neofetch but for git repos
+    onefetch
 
-  git
+    git
 
-  # neofetch but for cpu's
-  cpufetch
+    # neofetch but for cpu's
+    cpufetch
 
-  # download from yt and other websites
-  yt-dlp
+    # download from yt and other websites
+    yt-dlp
 
-  # man pages for tiktok attention span mfs
-  tealdeer
+    # man pages for tiktok attention span mfs
+    tealdeer
 
-  # markdown previewer
-  glow
+    # markdown previewer
+    glow
 
-  # profiling tool
-  hyperfine
+    # profiling tool
+    hyperfine
 
-  # gimp for acoustic people
-  imagemagick
+    # gimp for acoustic people
+    imagemagick
 
-  # premiere pro for acoustic people
-  ffmpeg-full
+    # premiere pro for acoustic people
+    ffmpeg-full
 
-  # preview images in terminal
-  catimg
+    # preview images in terminal
+    catimg
 
-  # networking stuff
-  nmap
-  wget
+    # networking stuff
+    nmap
+    wget
 
-  # faster find
-  fd
+    # faster find
+    fd
 
-  # http request thingy
-  xh
+    # http request thingy
+    xh
 
-  # generate regex
-  grex
+    # generate regex
+    grex
 
-  # todo app for acoustic people (wrriten by me :3)
-  todo
+    # todo app for acoustic people (wrriten by me :3)
+    todo
 
-  # json thingy
-  jq
+    # json thingy
+    jq
 
-  # docs
-  pandoc
+    # docs
+    pandoc
 
-  # syncthnig for acoustic people
-  rsync
+    # syncthnig for acoustic people
+    rsync
 
-  dconf
+    dconf
 
-  figlet
-  # Generate qr codes
-  qrencode
+    figlet
+    # Generate qr codes
+    qrencode
 
-  unzip
-]
+    unzip
+  ])
+  ++ [chatgpt]
