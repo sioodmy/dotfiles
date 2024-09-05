@@ -15,11 +15,11 @@
       title = "foot";
       locked-title = "no";
 
-      font = "monospace:size=16";
+      font = "monospace:size=14";
       line-height = 20;
       letter-spacing = 0;
       horizontal-letter-offset = 0;
-      vertical-letter-offset = -0.75;
+      vertical-letter-offset = 0;
       box-drawings-uses-font-glyphs = "no";
       dpi-aware = "no";
 
