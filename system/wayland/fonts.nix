@@ -15,12 +15,11 @@
       lexend
       jost
       dejavu_fonts
-      iosevka-bin
       noto-fonts
       noto-fonts-cjk
       noto-fonts-emoji
       jetbrains-mono
-      (nerdfonts.override {fonts = ["Iosevka" "JetBrainsMono"];})
+      (nerdfonts.override {fonts = ["JetBrainsMono"];})
     ];
 
     enableDefaultPackages = false;
@@ -29,9 +28,8 @@
     fontconfig = {
       defaultFonts = {
         monospace = [
-          "Iosevka Term"
-          "Iosevka Term Nerd Font Complete Mono"
-          "Iosevka Nerd Font"
+          "JetBrainsMono"
+          "JetBrainsMono Nerd Font"
           "Noto Color Emoji"
         ];
         sansSerif = ["Lexend" "Noto Color Emoji"];
