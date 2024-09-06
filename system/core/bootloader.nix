@@ -20,6 +20,11 @@ in {
       systemd.enable = true;
     };
     kernelPackages = mkDefault pkgs.linuxPackages_latest;
+    kernelParams = [
+      # fix for suspend issues
+      # see: https://www.reddit.com/r/archlinux/comments/e5oe4p/comment/fa8mzft/
+      "snd_hda_intel.dmic_detect=0"
+    ];
 
     bootspec.enable = mkDefault true;
     loader = {
