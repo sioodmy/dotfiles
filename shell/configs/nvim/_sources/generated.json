@@ -21,7 +21,7 @@
     },
     "neotree": {
         "cargoLocks": null,
-        "date": "2024-06-11",
+        "date": "2024-09-05",
         "extract": null,
         "name": "neotree",
         "passthru": null,
@@ -33,11 +33,11 @@
             "name": null,
             "owner": "nvim-neo-tree",
             "repo": "neo-tree.nvim",
-            "rev": "206241e451c12f78969ff5ae53af45616ffc9b72",
-            "sha256": "sha256-eNGuQEjAKsPuRDGaw95kCVOmP64ZDnUuFBppqtcrhZ4=",
+            "rev": "0774fa2085c62a147fcc7b56f0ac37053cc80217",
+            "sha256": "sha256-pLMXK53xA+UelkRLGBmPjRkYXo4kP0c9rClY3Q+w21k=",
             "type": "github"
         },
-        "version": "206241e451c12f78969ff5ae53af45616ffc9b72"
+        "version": "0774fa2085c62a147fcc7b56f0ac37053cc80217"
     },
     "nvim-base-16": {
         "cargoLocks": null,
@@ -58,46 +58,6 @@
             "type": "github"
         },
         "version": "6ac181b5733518040a33017dde654059cd771b7c"
-    },
-    "org-bullets": {
-        "cargoLocks": null,
-        "date": "2024-07-09",
-        "extract": null,
-        "name": "org-bullets",
-        "passthru": null,
-        "pinned": false,
-        "src": {
-            "deepClone": false,
-            "fetchSubmodules": false,
-            "leaveDotGit": false,
-            "name": null,
-            "owner": "nvim-orgmode",
-            "repo": "org-bullets.nvim",
-            "rev": "7e76e04827ac3fb13fc645a6309ac14203c4ca6a",
-            "sha256": "sha256-bxiL88uUa0Zd/HL7RcC/XVhbkgdlFr6MmlQfkpxFybE=",
-            "type": "github"
-        },
-        "version": "7e76e04827ac3fb13fc645a6309ac14203c4ca6a"
-    },
-    "recession": {
-        "cargoLocks": null,
-        "date": "2024-07-01",
-        "extract": null,
-        "name": "recession",
-        "passthru": null,
-        "pinned": false,
-        "src": {
-            "deepClone": false,
-            "fetchSubmodules": false,
-            "leaveDotGit": false,
-            "name": null,
-            "owner": "stevearc",
-            "repo": "resession.nvim",
-            "rev": "e087ebeef81df25a12fcc4ec067ca73e2bb54c4a",
-            "sha256": "sha256-Id7rJwxvH81TnBKHAsPuP8nmu7SS6b5PiLoE2UzeRX0=",
-            "type": "github"
-        },
-        "version": "e087ebeef81df25a12fcc4ec067ca73e2bb54c4a"
     },
     "scope": {
         "cargoLocks": null,
