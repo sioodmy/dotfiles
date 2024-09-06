@@ -20,7 +20,6 @@
       librewolf
       tor-browser
       tdesktop
-      libreoffice-fresh
       ytmdl
       sent
       nicotine-plus
