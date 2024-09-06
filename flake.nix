@@ -56,9 +56,7 @@
     });
 
   inputs = {
-    # unstable-small moves faster than unstable
-    # I find it more reliable than unstable
-    nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable-small";
+    nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
 
     nixos-hardware.url = "github:nixos/nixos-hardware";
     impermanence.url = "github:nix-community/impermanence";
