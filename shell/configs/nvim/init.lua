@@ -30,6 +30,7 @@ vim.opt.termguicolors = true
 require("incline").setup({})
 require("fidget").setup({})
 require("scope").setup({})
+require("nvim-treeclimber").setup()
 
 local get_hex = require("cokeline.hlgroups").get_hl_attr
 

@@ -59,6 +59,26 @@
         },
         "version": "6ac181b5733518040a33017dde654059cd771b7c"
     },
+    "nvim-treeclimber": {
+        "cargoLocks": null,
+        "date": "2024-09-04",
+        "extract": null,
+        "name": "nvim-treeclimber",
+        "passthru": null,
+        "pinned": false,
+        "src": {
+            "deepClone": false,
+            "fetchSubmodules": false,
+            "leaveDotGit": false,
+            "name": null,
+            "owner": "Dkendal",
+            "repo": "nvim-treeclimber",
+            "rev": "3f367db688e8012269ca17400d72229f206aefa9",
+            "sha256": "sha256-qHjum1IpHCwOAU7T4HVCGricGTG5ehhkLoyt7KVMR60=",
+            "type": "github"
+        },
+        "version": "3f367db688e8012269ca17400d72229f206aefa9"
+    },
     "scope": {
         "cargoLocks": null,
         "date": "2024-07-30",

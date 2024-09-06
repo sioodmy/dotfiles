@@ -37,6 +37,18 @@
     };
     date = "2024-05-23";
   };
+  nvim-treeclimber = {
+    pname = "nvim-treeclimber";
+    version = "3f367db688e8012269ca17400d72229f206aefa9";
+    src = fetchFromGitHub {
+      owner = "Dkendal";
+      repo = "nvim-treeclimber";
+      rev = "3f367db688e8012269ca17400d72229f206aefa9";
+      fetchSubmodules = false;
+      sha256 = "sha256-qHjum1IpHCwOAU7T4HVCGricGTG5ehhkLoyt7KVMR60=";
+    };
+    date = "2024-09-04";
+  };
   scope = {
     pname = "scope";
     version = "5e3f5ead970317b2f276d38dc031cb4bc5742cd4";
