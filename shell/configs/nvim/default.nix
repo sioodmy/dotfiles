@@ -70,10 +70,6 @@
 
         nvim-treesitter.withAllGrammars
 
-        vimwiki
-        cmp-vimwiki-tags
-        mattn-calendar-vim
-
         nui-nvim
         plenary-nvim
       ]);

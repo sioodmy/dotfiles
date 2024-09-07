@@ -21,7 +21,3 @@ fetch.github = "tiagovla/scope.nvim"
 [sixelpreview]
 src.git = "https://github.com/sioodmy/sixelpreview.nvim"
 fetch.github = "sioodmy/sixelpreview.nvim"
-
-[nvim-treeclimber]
-src.git = "https://github.com/Dkendal/nvim-treeclimber"
-fetch.github = "Dkendal/nvim-treeclimber"

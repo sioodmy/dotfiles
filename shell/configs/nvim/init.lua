@@ -30,7 +30,6 @@ vim.opt.termguicolors = true
 require("incline").setup({})
 require("fidget").setup({})
 require("scope").setup({})
-require("nvim-treeclimber").setup()
 
 local get_hex = require("cokeline.hlgroups").get_hl_attr
 
@@ -89,7 +88,8 @@ dashboard.section.header.val = {
 dashboard.section.header.opts.hl = "Keyword"
 dashboard.section.buttons.val = {
 	dashboard.button("e", "  New file", ":ene <BAR> startinsert <CR>"),
-	dashboard.button("n", "  Notebook", ":VimwikiIndex <CR>"),
+	dashboard.button("nf", "  Note Files", ":NoteFiles <CR>"),
+	dashboard.button("ng", "  Search Notes", ":NoteText <CR>"),
 	dashboard.button("c", "  Calendar", ":Calendar <CR>"),
 	dashboard.button("f", "  Find file", ":Telescope find_files <CR>"),
 	dashboard.button("g", "󰺄  Live grep", ":Telescope live_grep <CR>"),
@@ -215,7 +215,6 @@ cmp.setup({
 		{ name = "luasnip", keyword_length = 2 },
 		{ name = "path", option = { trailing_slash = true } },
 		{ name = "treesitter" },
-		{ name = "vimwiki-tags" },
 	}),
 })
 
@@ -311,6 +310,14 @@ local telescope = require("telescope")
 telescope.setup({})
 telescope.load_extension("harpoon")
 telescope.load_extension("scope")
+
+vim.api.nvim_create_user_command("NoteFiles", function()
+	require("telescope.builtin").find_files({ cwd = "~/docs/notes" })
+end, {})
+
+vim.api.nvim_create_user_command("NoteText", function()
+	require("telescope.builtin").live_grep({ cwd = "~/docs/notes" })
+end, {})
 
 require("Comment").setup()
 
