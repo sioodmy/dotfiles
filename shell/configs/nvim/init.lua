@@ -255,7 +255,7 @@ nvim_lsp.html.setup({
 	capabilities = capabilities,
 })
 nvim_lsp.nixd.setup({})
-nvim_lsp.tsserver.setup({})
+nvim_lsp.ts_ls.setup({})
 nvim_lsp.cssls.setup({})
 nvim_lsp.bashls.setup({})
 nvim_lsp.clangd.setup({})
