@@ -1,38 +1,47 @@
-<h1 align="center">
-      <img src="https://raw.githubusercontent.com/NixOS/nixos-artwork/master/logo/nix-snowflake-rainbow.svg" width="96px" height="96px" />
-      <br>
-  
-  sioodmy's dotfiles <br>
-  <img src="https://raw.githubusercontent.com/catppuccin/catppuccin/main/assets/palette/macchiato.png" width="600px" /> <br>
-  <div align="center">
+# Nixus
 
-  <div align="center">
-   <p></p>
-   <a href="">
-      <img src="https://img.shields.io/github/issues/sioodmy/dotfiles?color=fab387&labelColor=303446&style=for-the-badge">
-   </a>
-   <a href="https://github.com/sioodmy/dotfiles/stargazers">
-      <img src="https://img.shields.io/github/stars/sioodmy/dotfiles?color=ca9ee6&labelColor=303446&style=for-the-badge">
-   </a>
-   <a href="https://github.com/sioodmy/dotfiles/">
-      <img src="https://img.shields.io/github/repo-size/sioodmy/dotfiles?color=ea999c&labelColor=303446&style=for-the-badge">
-   </a>
-   <a href="https://github.com/sioodmy/dotfiles/blob/main/LICENSE">
-    <img src="https://img.shields.io/static/v1.svg?style=for-the-badge&label=License&message=GPL-3&logoColor=ca9ee6&colorA=313244&colorB=cba6f7"/>
-   </a>
-      <a = href="https://nixos.org">
-      <img src="https://img.shields.io/badge/NixOS-unstable-blue.svg?style=for-the-badge&labelColor=303446&logo=NixOS&logoColor=white&color=91D7E3">
-    </a>
-   <br>
-</div>
-</h1>
+## Contents
 
-<br>
-</div>
+This repo contains my reorganized and rewritten NixOS configuration.
+It might not be widely considered _correct_ or whatever, because I used some of my braincells to come up with this autistic design philosophy:
 
-<p align="center">
-<img src="./assets/desktop.png" width="600" alt="" />
-</p>
+- **Do not overengineer** - Yeah, we get it, you are good at Nix, but you don't really need to overcomplicate everything. You sacrifice both readability and evaluation times in exchange for absolutely nothing
+  > An idiot admires complexity, a genius admires simplicity, a physicist tries to make it simple, for an idiot anything the more complicated it is the more he will admire it, if you make something so clusterfucked he can't understand it he's gonna think you're a god cause you made it so complicated nobody can understand it. That's how they write journals in Academics, they try to make it so complicated people think you're a genius
+  > ~ Terry Davis, Creator of Temple OS
+- **No inputs other than nixpkgs** - This is probably the most controversial one, for me it's just a proof of concept that you can achieve behaviour provided by external modules in a much simpler way. Just straight up rawdogging nix
+- Wrap binaries rather than creating user modifable files in home directory, just to be _pure_ ™️
+- Avoid `with` keyword at ALL COST
+- Disk partitioning should not be declarative, I don't like the way disko does it. I use same partition layout for all of my hosts, and that's enough.
+- I like to keep my secrets in one place that is not my repo
+
+## Flake outputs
+
+- **NixOS modules** - including $HOME management, impermanence and some laptop specific things
+- **Dev shell** - shell containing my entire terminal workflow, with fully configured neovim and stuff. 
+- **Packages** - Mostly unmodified packages from nixpkgs, wrapped with my configs, themed via base16 attribute set
+- **Theme** - which outputs my current base16 theme as an attrset 
+
+# Why I don't use some of the popular NixOS modules?
+
+## Home-manager
+
+I don't like it. I prefer to wrap my binaries. Much better solution.
+
+Everyone in nix community will tell you that hm is a mess.
+
+## Flake-parts
+
+Actually I have nothing against using flake-parts, although I don't see the use case in my NixOS configuration since I only use one cpu architecture.
+
+Trust me, I tried. It never compiles on ARM anyway
+
+## Impermanence
+
+I found it needlessly overcomplicated and unreliable.
+
+## Nix-colors
+
+It's just a glorified attribute set
 
 ## 💛 Donate
 
@@ -45,17 +54,3 @@ If you would like to support me you can sponsor me via ko-fi
 Ethereum/EVM compatible: `0x2fa1e5e90c011d08bba1f6dbdc317fd293311c0d`
 
 [![Star History Chart](https://api.star-history.com/svg?repos=sioodmy/dotfiles&type=Date)](https://star-history.com/#sioodmy/dotfiles&Date)
-
-## ❤️ Special thanks tto (I love you guys)
-
-[notusknot](https://github.com/notusknot) -
-[siduck](https://github.com/siduck) -
-[rxyhn](https://github.com/rxyhn) -
-[fufexan](https://github.com/fufexan) -
-[hlissner](https://github.com/hlissner) -
-[owl4ce](https://github.com/owl4ce) -
-[luca.py](https://gitlab.com/luca.py/) -
-[FromSyntax](https://github.com/FromSyntax) -
-[pupbrained](https://github.com/pupbrained) -
-[ini](https://github.com/InioX) -
-[ozwaldorf.eth](https://ossian.dev/) - [NotAShelf](https://github.com/NotAShelf)
