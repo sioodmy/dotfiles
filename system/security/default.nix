@@ -2,8 +2,8 @@
   services.networkd-dispatcher.enable = true;
 
   security = {
-    protectKernelImage = false;
-    lockKernelModules = false;
+    protectKernelImage = true;
+    lockKernelModules = true;
     forcePageTableIsolation = true;
     polkit.enable = true;
 
