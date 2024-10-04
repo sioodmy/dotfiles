@@ -1,21 +1,22 @@
 # Nixus
 
-## Contents
+## About
 
 This repo contains my reorganized and rewritten NixOS configuration.
 It might not be widely considered _correct_ or whatever, because I used some of my braincells to come up with this autistic design philosophy:
 
-- **Do not overengineer** - Yeah, we get it, you are good at Nix, but you don't really need to overcomplicate everything. You sacrifice both readability and evaluation times in exchange for absolutely nothing
-  > An idiot admires complexity, a genius admires simplicity, a physicist tries to make it simple, for an idiot anything the more complicated it is the more he will admire it, if you make something so clusterfucked he can't understand it he's gonna think you're a god cause you made it so complicated nobody can understand it. That's how they write journals in Academics, they try to make it so complicated people think you're a genius
-  > ~ Terry Davis, Creator of Temple OS
-- **No inputs other than nixpkgs** - This is probably the most controversial one, for me it's just a proof of concept that you can achieve behaviour provided by external modules in a much simpler way. Just straight up rawdogging nix
-- Wrap binaries rather than creating user modifable files in home directory, just to be _pure_ ™️
-- Avoid `with` keyword at ALL COST
-- Disk partitioning should not be declarative, I don't like the way disko does it. I use same partition layout for all of my hosts, and that's enough.
-- I like to keep my secrets in one place that is not my repo
+- nixpkgs as the only input, just straight up rawdogging nix
+- wrap binaries instead of putting files in home dir
+- do not copy from others
+- try to avoid `with` keyword as much as possible
 
-## Flake outputs
+## But why?
 
+Idk, but I like it, probably IKEA effect. Also my config probably moggs yours in terms of evaluation times. Clean install in under 10 minutes. 
+
+## Contents
+
+- **NixOS hosts** - currently only my twinkpad x1
 - **NixOS modules** - including $HOME management, impermanence and some laptop specific things
 - **Dev shell** - shell containing my entire terminal workflow, with fully configured neovim and stuff. 
 - **Packages** - Mostly unmodified packages from nixpkgs, wrapped with my configs, themed via base16 attribute set
