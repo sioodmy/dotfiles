@@ -1,0 +1,50 @@
+{pkgs, ...}: let
+  inherit (builtins) attrValues;
+in {
+  environment.systemPackages = attrValues {
+    inherit
+      (pkgs)
+      wl-clipboard
+      librewolf
+      mpv
+      tdesktop
+      ytmdl
+      yt-dlp
+      ledger-live-desktop
+      transmission_4-qt
+      ledger_agent
+      signal-desktop
+      gimp
+      keepassxc
+      clang
+      gnumake
+      cargo
+      go
+      gcc
+      git
+      ripgrep
+      zoxide
+      fzf
+      eza
+      gping
+      dogdns
+      onefetch
+      cpufetch
+      microfetch
+      tealdeer
+      glow
+      hyperfine
+      imagemagick
+      ffmpeg-full
+      catimg
+      nmap
+      xh
+      grex
+      jq
+      rsync
+      figlet
+      qrencode
+      unzip
+      ;
+  };
+}
