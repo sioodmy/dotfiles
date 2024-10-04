@@ -17,7 +17,6 @@
       foot = callPackage ./foot {inherit theme;};
       tofi = callPackage ./tofi {inherit theme;};
       mako = callPackage ./mako {inherit theme;};
-      zathura = callPackage ./zathura {inherit theme;};
       swaylock = callPackage ./swaylock {inherit theme;};
     };
   };
