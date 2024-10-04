@@ -1,63 +1,64 @@
-{pkgs, ...}: {
-  imports = [
-    ./fonts.nix
-    ./services.nix
-    ./pipewire.nix
-    ./desktop
-  ];
-  environment = {
-    variables = {
-      NIXOS_OZONE_WL = "1";
-      __GL_GSYNC_ALLOWED = "0";
-      __GL_VRR_ALLOWED = "0";
-      _JAVA_AWT_WM_NONEREPARENTING = "1";
-      SSH_AUTH_SOCK = "/run/user/1000/keyring/ssh";
-      DISABLE_QT5_COMPAT = "0";
-      GDK_BACKEND = "wayland,x11";
-      ANKI_WAYLAND = "1";
-      DIRENV_LOG_FORMAT = "";
-      WLR_DRM_NO_ATOMIC = "1";
-      QT_AUTO_SCREEN_SCALE_FACTOR = "1";
-      QT_QPA_PLATFORM = "wayland";
-      DISABLE_QT_COMPAT = "0";
-      QT_WAYLAND_DISABLE_WINDOWDECORATION = "1";
-      MOZ_ENABLE_WAYLAND = "1";
-      WLR_BACKEND = "vulkan";
-      WLR_RENDERER = "vulkan";
-      XDG_SESSION_TYPE = "wayland";
-      SDL_VIDEODRIVER = "wayland";
-      XDG_CACHE_HOME = "/home/sioodmy/.cache";
-      CLUTTER_BACKEND = "wayland";
-      WLR_DRM_DEVICES = "/dev/dri/card1:/dev/dri/card0";
+{pkgs, ...}: let
+  inherit (builtins) attrValues;
+in {
+  hardware.graphics = {
+    enable = true;
+    extraPackages = attrValues {
+      inherit
+        (pkgs)
+        vaapiIntel
+        libva
+        libvdpau-va-gl
+        vaapiVdpau
+        ocl-icd
+        intel-compute-runtime
+        ;
     };
-    loginShellInit = ''
-      dbus-update-activation-environment --systemd DISPLAY
-      sudo mic-light-off
-    '';
-    systemPackages = with pkgs; [
-      pamixer
-      brightnessctl
-      wl-clipboard
-      kanshi
-    ];
   };
 
-  # homix.".config/kanshi/config".text = ''
-  #   profile {
-  #     output eDP-1 enable scale 1.0
-  #   }
-  # '';
+  systemd.services = {
+    seatd = {
+      enable = true;
+      description = "Seat management daemon";
+      script = "${pkgs.seatd}/bin/seatd -g wheel";
+      serviceConfig = {
+        Type = "simple";
+        Restart = "always";
+        RestartSec = "1";
+      };
+      wantedBy = ["multi-user.target"];
+    };
+  };
 
-  hardware = {
-    graphics.enable = true;
-    pulseaudio.support32Bit = true;
+  services = {
+    greetd = {
+      enable = true;
+      settings = rec {
+        initial_session = {
+          command = "river";
+          user = "sioodmy";
+        };
+        default_session = initial_session;
+        terminal.vt = 1;
+      };
+    };
+
+    gnome.glib-networking.enable = true;
+    logind = {
+      lidSwitch = "suspend";
+      lidSwitchExternalPower = "suspend";
+      extraConfig = ''
+        HandlePowerKey=suspend
+        HibernateDelaySec=3600
+      '';
+    };
   };
 
   xdg.portal = {
     enable = true;
     config.common.default = "*";
-    extraPortals = with pkgs; [
-      xdg-desktop-portal-gtk
+    extraPortals = [
+      pkgs.xdg-desktop-portal-gtk
     ];
   };
 }
