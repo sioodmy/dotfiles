@@ -11,7 +11,7 @@ in {
       ytmdl
       yt-dlp
       ledger-live-desktop
-      transmission_4-qt
+      transmission_4-gtk
       ledger_agent
       signal-desktop
       gimp
