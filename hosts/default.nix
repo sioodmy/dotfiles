@@ -7,15 +7,12 @@
   mkHost = name: system:
     nixpkgs.lib.nixosSystem {
       inherit system;
-      modules = [
-        {networking.hostName = name;}
-        ./${name}
-        self.nixosModules.system
-        self.nixosModules.homix
-        self.nixosModules.staypls
-        self.nixosModules.user
-        self.nixosModules.laptop
-      ];
+      modules =
+        [
+          {networking.hostName = name;}
+          ./${name}
+        ]
+        ++ builtins.attrValues self.nixosModules;
 
       # This allows to easily access flake inputs and outputs
       # from nixos modules, so it's a little bit cleaner
