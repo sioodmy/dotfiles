@@ -13,6 +13,8 @@ in {
       ledger-live-desktop
       transmission_4-gtk
       ledger_agent
+      nicotine-plus
+      imv
       signal-desktop
       gimp
       keepassxc
