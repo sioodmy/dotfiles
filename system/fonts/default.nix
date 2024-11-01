@@ -20,7 +20,7 @@ in {
           jost
           dejavu_fonts
           noto-fonts
-          noto-fonts-cjk
+          noto-fonts-cjk-sans
           noto-fonts-emoji
           jetbrains-mono
           ;
