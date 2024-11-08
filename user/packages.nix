@@ -10,7 +10,6 @@ in {
       tdesktop
       ytmdl
       yt-dlp
-      ledger-live-desktop
       transmission_4-gtk
       ledger_agent
       nicotine-plus
