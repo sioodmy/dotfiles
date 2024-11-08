@@ -1,20 +1,5 @@
-{pkgs, ...}: let
-  inherit (builtins) attrValues;
-in {
-  hardware.graphics = {
-    enable = true;
-    extraPackages = attrValues {
-      inherit
-        (pkgs)
-        vaapiIntel
-        libva
-        libvdpau-va-gl
-        vaapiVdpau
-        ocl-icd
-        intel-compute-runtime
-        ;
-    };
-  };
+{pkgs, ...}: {
+  hardware.graphics.enable = true;
 
   systemd.services = {
     seatd = {

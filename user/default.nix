@@ -1,9 +1,5 @@
-{
-  pkgs,
-  theme,
-  ...
-}: rec {
-  packages = let
+theme: rec {
+  packages = pkgs: let
     inherit (pkgs) callPackage;
   in {
     cli =
@@ -21,14 +17,14 @@
     };
   };
 
-  shell = pkgs.mkShell {
-    name = "sioodmy-devshell";
-    buildInputs = builtins.attrValues packages.cli;
-  };
-
-  module = {
+  shell = pkgs:
+    pkgs.mkShell {
+      name = "sioodmy-devshell";
+      buildInputs = builtins.attrValues (packages pkgs).cli;
+    };
+  module = {pkgs, ...}: {
     config = {
-      environment.systemPackages = builtins.concatLists (map (x: builtins.attrValues x) (builtins.attrValues packages));
+      environment.systemPackages = builtins.concatLists (map (x: builtins.attrValues x) (builtins.attrValues (packages pkgs)));
     };
     imports = [
       ./packages.nix

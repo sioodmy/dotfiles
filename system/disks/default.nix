@@ -19,7 +19,9 @@
   fileSystems."/" = {
     device = "none";
     fsType = "tmpfs";
-    options = ["size=8G" "mode=755"];
+    # if you need more than 1GB for root then
+    # you are doing something wrong
+    options = ["size=1G" "mode=755"];
   };
 
   fileSystems."/nix" = {
@@ -27,6 +29,12 @@
     device = "/dev/disk/by-label/NIXROOT";
     fsType = "btrfs";
     options = ["noatime" "discard" "subvol=@nix" "compress=zstd"];
+  };
+
+  fileSystems."/tmp" = {
+    device = "/dev/disk/by-label/NIXROOT";
+    fsType = "btrfs";
+    options = ["noatime" "discard" "subvol=@tmp"];
   };
 
   fileSystems."/persist" = {
@@ -43,16 +51,11 @@
     options = ["noatime" "discard" "subvol=@home" "compress=zstd"];
   };
 
-  fileSystems."/boot" = {
-    device = "/dev/disk/by-label/NIXBOOT";
-    fsType = "vfat";
-    options = ["noatime" "discard"];
-  };
-
   #  btrfs filesystem mkswapfile --size 16g --uuid clear /persist/swap
   swapDevices = [
     {
       device = "/persist/swap";
+      size = 8 * 1024;
     }
   ];
 }

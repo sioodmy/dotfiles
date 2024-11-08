@@ -1,7 +1,10 @@
 {
   description = "Consequence of allowing autistic people on the internet. Stay mad one-proper-config-structure purists :3";
 
-  outputs = inputs @ {flake-parts, ...}:
+  outputs = inputs @ {flake-parts, ...}: let
+    theme = import ./theme;
+    user = import ./user theme;
+  in
     flake-parts.lib.mkFlake {inherit inputs;} {
       flake = {
         nixosModules =
@@ -10,11 +13,7 @@
             # it's just so I can easily avoid ../../../../../ mess
             system = import ./system;
 
-            user = let
-              theme = import ./theme;
-              user = import ./user {inherit theme;};
-            in
-              user.module;
+            user = user.module;
 
             # place for my home brew modules
           }
@@ -25,15 +24,10 @@
         "x86_64-linux"
         "aarch64-linux"
       ];
-      perSystem = {pkgs, ...}: let
-        theme = import ./theme;
-        user = import ./user {
-          inherit pkgs theme;
-        };
-      in {
+      perSystem = {pkgs, ...}: {
         formatter = pkgs.alejandra;
-        packages = user.packages;
-        devShells.default = user.shell;
+        packages = user.packages pkgs;
+        devShells.default = user.shell pkgs;
       };
     };
 
