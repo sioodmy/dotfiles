@@ -4,6 +4,11 @@
   inputs,
   ...
 }: {
+  fileSystems."/boot" = {
+    device = "/dev/disk/by-uuid/6A3B-1D00";
+    fsType = "vfat";
+    options = ["noatime" "discard"];
+  };
   imports = [
     inputs.apple-silicon-support.nixosModules.apple-silicon-support
 
@@ -20,6 +25,7 @@
   };
 
   boot = {
+    binfmt.emulatedSystems = ["x86_64-linux"];
     loader = {
       systemd-boot.enable = true;
       efi.canTouchEfiVariables = lib.mkForce false;
