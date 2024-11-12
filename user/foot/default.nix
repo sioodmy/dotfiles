@@ -15,7 +15,7 @@
       title = "foot";
       locked-title = "no";
 
-      font = "monospace:size=14";
+      font = "monospace:size=13";
       line-height = 20;
       letter-spacing = 0;
       horizontal-letter-offset = 0;
