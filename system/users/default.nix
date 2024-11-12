@@ -10,7 +10,7 @@
       sioodmy = {
         isNormalUser = true;
         homix = true;
-        # shell = flake.packages.${pkgs.system}.cli.zsh;
+        shell = flake.packages.${pkgs.system}.zsh;
 
         hashedPasswordFile = "/persist/secrets/sioodmy";
         extraGroups = [
@@ -56,7 +56,7 @@
           fprintAuth = true;
         };
         sudo.fprintAuth = true;
-        swaylock.fprintAuth = true;
+        hyprlock.fprintAuth = true;
       };
 
       loginLimits = [
