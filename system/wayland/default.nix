@@ -1,6 +1,10 @@
 {pkgs, ...}: {
   hardware.graphics.enable = true;
 
+  environment.sessionVariables = {
+    FREETYPE_PROPERTIES = "cff:no-stem-darkening=0 autofitter:no-stem-darkening=0";
+  };
+
   systemd.services = {
     seatd = {
       enable = true;
@@ -31,10 +35,11 @@
     gnome.glib-networking.enable = true;
     logind = {
       lidSwitch = "suspend";
-      lidSwitchExternalPower = "suspend";
+      lidSwitchExternalPower = "hibernate";
       extraConfig = ''
         HandlePowerKey=suspend
-        HibernateDelaySec=3600
+        HibernateDelaySec=600
+        SuspendState=mem
       '';
     };
   };
