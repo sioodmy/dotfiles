@@ -1,4 +1,4 @@
-{...}: {
+{pkgs, ...}: {
   services.pipewire = {
     enable = true;
     alsa = {
@@ -22,5 +22,12 @@
     jack.enable = true;
   };
 
-  hardware.pulseaudio.support32Bit = true;
+  hardware = {
+    pulseaudio.support32Bit = true;
+
+    bluetooth = {
+      enable = true;
+      package = pkgs.bluez5-experimental;
+    };
+  };
 }

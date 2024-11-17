@@ -1,37 +1,30 @@
+theme: rec
 {
-  pkgs,
-  theme,
-  ...
-}: rec {
-  packages = let
+  packages = pkgs: let
     inherit (pkgs) callPackage;
-  in {
-    cli =
-      {
-        nvim = callPackage ./nvim {inherit theme;};
-        zsh = callPackage ./zsh {};
-      }
-      // (import ./misc-scripts {inherit pkgs;});
-    desktop = {
-      river = callPackage ./river {inherit theme;};
+  in
+    {
+      nvim = callPackage ./nvim {inherit theme;};
+      zsh = callPackage ./zsh {};
       foot = callPackage ./foot {inherit theme;};
       tofi = callPackage ./tofi {inherit theme;};
+      waybar = callPackage ./waybar {inherit pkgs;};
       mako = callPackage ./mako {inherit theme;};
-      swaylock = callPackage ./swaylock {inherit theme;};
+    }
+    // (import ./misc-scripts {inherit pkgs;});
+
+  shell = pkgs:
+    pkgs.mkShell {
+      name = "sioodmy-devshell";
+      buildInputs = builtins.attrValues (packages pkgs);
     };
-  };
-
-  shell = pkgs.mkShell {
-    name = "sioodmy-devshell";
-    buildInputs = builtins.attrValues packages.cli;
-  };
-
-  module = {
+  module = {pkgs, ...}: {
     config = {
-      environment.systemPackages = builtins.concatLists (map (x: builtins.attrValues x) (builtins.attrValues packages));
+      environment.systemPackages = builtins.attrValues (packages pkgs);
     };
     imports = [
       ./packages.nix
+      ./hyprland
       ./git
       ./gtk
     ];

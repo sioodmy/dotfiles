@@ -1,4 +1,8 @@
-{flake, ...}: {
+{
+  flake,
+  pkgs,
+  ...
+}: {
   users = {
     mutableUsers = false;
     users = {
@@ -6,7 +10,7 @@
       sioodmy = {
         isNormalUser = true;
         homix = true;
-        shell = flake.packages.x86_64-linux.cli.zsh;
+        shell = flake.packages.${pkgs.system}.zsh;
 
         hashedPasswordFile = "/persist/secrets/sioodmy";
         extraGroups = [
@@ -52,7 +56,7 @@
           fprintAuth = true;
         };
         sudo.fprintAuth = true;
-        swaylock.fprintAuth = true;
+        hyprlock.fprintAuth = true;
       };
 
       loginLimits = [

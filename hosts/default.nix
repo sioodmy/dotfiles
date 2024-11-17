@@ -26,4 +26,5 @@
     };
 in {
   calypso = mkHost "calypso" "x86_64-linux";
+  pandora = mkHost "pandora" "aarch64-linux";
 }

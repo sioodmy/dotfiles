@@ -5,12 +5,14 @@ in {
     inherit
       (pkgs)
       wl-clipboard
+      hyprlock
+      brightnessctl
+      ttyper
       librewolf
       mpv
       tdesktop
       ytmdl
       yt-dlp
-      ledger-live-desktop
       transmission_4-gtk
       ledger_agent
       nicotine-plus

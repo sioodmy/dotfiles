@@ -1,19 +1,9 @@
-{pkgs, ...}: let
-  inherit (builtins) attrValues;
-in {
-  hardware.graphics = {
-    enable = true;
-    extraPackages = attrValues {
-      inherit
-        (pkgs)
-        vaapiIntel
-        libva
-        libvdpau-va-gl
-        vaapiVdpau
-        ocl-icd
-        intel-compute-runtime
-        ;
-    };
+{pkgs, ...}: {
+  hardware.graphics.enable = true;
+
+  environment.sessionVariables = {
+    FREETYPE_PROPERTIES = "cff:no-stem-darkening=0 autofitter:no-stem-darkening=0";
+    NIXOS_OZONE_WL = 1;
   };
 
   systemd.services = {
@@ -35,7 +25,7 @@ in {
       enable = true;
       settings = rec {
         initial_session = {
-          command = "river";
+          command = "Hyprland";
           user = "sioodmy";
         };
         default_session = initial_session;
@@ -46,10 +36,11 @@ in {
     gnome.glib-networking.enable = true;
     logind = {
       lidSwitch = "suspend";
-      lidSwitchExternalPower = "suspend";
+      lidSwitchExternalPower = "hibernate";
       extraConfig = ''
         HandlePowerKey=suspend
-        HibernateDelaySec=3600
+        HibernateDelaySec=600
+        SuspendState=mem
       '';
     };
   };
