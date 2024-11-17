@@ -6,11 +6,10 @@ theme: rec
     {
       nvim = callPackage ./nvim {inherit theme;};
       zsh = callPackage ./zsh {};
-      river = callPackage ./river {inherit theme;};
       foot = callPackage ./foot {inherit theme;};
       tofi = callPackage ./tofi {inherit theme;};
+      waybar = callPackage ./waybar {inherit pkgs;};
       mako = callPackage ./mako {inherit theme;};
-      swaylock = callPackage ./swaylock {inherit theme;};
     }
     // (import ./misc-scripts {inherit pkgs;});
 

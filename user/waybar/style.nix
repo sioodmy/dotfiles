@@ -35,7 +35,7 @@ in
     #pulseaudio.source-muted,
     #pulseaudio.muted {
       padding: 16px 0px 16px 0px;
-      font-size: 15;
+      font-size: 15px;
     }
 
     #custom-vpn,
