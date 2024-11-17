@@ -5,6 +5,9 @@ in {
     inherit
       (pkgs)
       wl-clipboard
+      hyprlock
+      brightnessctl
+      ttyper
       librewolf
       mpv
       tdesktop
