@@ -45,7 +45,8 @@
   };
 
   inputs = {
-    nixpkgs.url = "github:nixos/nixpkgs/nixos-24.11";
+    #nixpkgs.url = "github:nixos/nixpkgs/nixos-24.11";
+    nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
     apple-silicon-support.url = "github:tpwrules/nixos-apple-silicon";
     zen-browser = {
       url = "github:youwen5/zen-browser-flake";
