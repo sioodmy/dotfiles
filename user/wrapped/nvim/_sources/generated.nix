@@ -15,27 +15,27 @@
   };
   nvim-base-16 = {
     pname = "nvim-base-16";
-    version = "6ac181b5733518040a33017dde654059cd771b7c";
+    version = "2fdd4e53286dbb8978699b5e1cd09835362a70f3";
     src = fetchFromGitHub {
       owner = "RRethy";
       repo = "nvim-base16";
-      rev = "6ac181b5733518040a33017dde654059cd771b7c";
+      rev = "2fdd4e53286dbb8978699b5e1cd09835362a70f3";
       fetchSubmodules = false;
-      sha256 = "sha256-GRF/6AobXHamw8TZ3FjL7SI6ulcpwpcohsIuZeCSh2A=";
+      sha256 = "sha256-Hs272gEgYj29XJ4FnMRXExtnbYqRGXIGaRZXo9I2P58=";
     };
-    date = "2024-05-23";
+    date = "2025-02-09";
   };
   org-bullets = {
     pname = "org-bullets";
-    version = "46ae687e22192fb806b5977d664ec98af9cf74f6";
+    version = "21437cfa99c70f2c18977bffd423f912a7b832ea";
     src = fetchFromGitHub {
       owner = "nvim-orgmode";
       repo = "org-bullets.nvim";
-      rev = "46ae687e22192fb806b5977d664ec98af9cf74f6";
+      rev = "21437cfa99c70f2c18977bffd423f912a7b832ea";
       fetchSubmodules = false;
-      sha256 = "sha256-cRcO0TDY0v9c/H5vQ1v96WiEkIhJDZkPcw+P58XNL9w=";
+      sha256 = "sha256-/l8IfvVSPK7pt3Or39+uenryTM5aBvyJZX5trKNh0X0=";
     };
-    date = "2024-09-02";
+    date = "2025-01-23";
   };
   org-checkbox = {
     pname = "org-checkbox";
@@ -63,15 +63,15 @@
   };
   orgmode = {
     pname = "orgmode";
-    version = "7092f817ac8acfd70169c92c7c1fa4d67da00b16";
+    version = "af90f8f8146fd56d9f7d0f0862b07a1c5c01cd6c";
     src = fetchFromGitHub {
       owner = "nvim-orgmode";
       repo = "orgmode";
-      rev = "7092f817ac8acfd70169c92c7c1fa4d67da00b16";
+      rev = "af90f8f8146fd56d9f7d0f0862b07a1c5c01cd6c";
       fetchSubmodules = false;
-      sha256 = "sha256-pLbjEl62R3pTxQjOH9yr/f3bF/Du/yhniAShVf5szYk=";
+      sha256 = "sha256-aob892QYPC45BilrDsabkfhp3xt+VXHpmTHSWp2tNuY=";
     };
-    date = "2025-01-20";
+    date = "2025-02-09";
   };
   scope = {
     pname = "scope";
@@ -96,17 +96,5 @@
       sha256 = "sha256-0jwSRuLHSHzeCKk+EdyhhlNLsZYRfJI6hxW4UCNn3uc=";
     };
     date = "2024-08-11";
-  };
-  telescope-orgmode = {
-    pname = "telescope-orgmode";
-    version = "2cd2ea778726c6e44429fef82f23b63197dbce1b";
-    src = fetchFromGitHub {
-      owner = "nvim-orgmode";
-      repo = "telescope-orgmode.nvim";
-      rev = "2cd2ea778726c6e44429fef82f23b63197dbce1b";
-      fetchSubmodules = false;
-      sha256 = "sha256-yeGdy1aip4TZKp++MuSo+kxo+XhFsOT0yv+9xJpKEps=";
-    };
-    date = "2024-08-01";
   };
 }

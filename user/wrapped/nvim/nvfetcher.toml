@@ -10,10 +10,6 @@ fetch.github = "nvim-orgmode/org-bullets.nvim"
 src.git = "https://github.com/nvim-orgmode/orgmode"
 fetch.github = "nvim-orgmode/orgmode"
 
-[telescope-orgmode]
-src.git = "https://github.com/nvim-orgmode/telescope-orgmode.nvim"
-fetch.github = "nvim-orgmode/telescope-orgmode.nvim"
-
 [org-modern]
 src.git = "https://github.com/danilshvalov/org-modern.nvim"
 fetch.github = "danilshvalov/org-modern.nvim"

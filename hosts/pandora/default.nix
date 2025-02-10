@@ -26,6 +26,13 @@
   hardware.graphics.enable32Bit = lib.mkForce false;
 
   boot = {
+    # https://rdx.overdevs.com/comments.html?url=https://www.reddit.com/r/AsahiLinux/comments/1gy0t86/psa_transitioning_from_zramswap_to_zswap/
+    kernelParams = [
+      "zswap.enabled=1"
+      "zswap.compressor=zstd"
+      "zswap.zpool=zsmalloc"
+      "zswap.max_pool_percent=50"
+    ];
     binfmt.emulatedSystems = ["x86_64-linux"];
     loader = {
       systemd-boot.enable = true;

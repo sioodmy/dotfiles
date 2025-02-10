@@ -73,7 +73,7 @@ pkgs: rec {
     enable = true;
     # uses generated base16 theme if set to false
 
-    package = pkgs.nordic;
-    name = "Nordic";
+    package = pkgs.catppuccin-gtk;
+    name = "catppuccin-frappe-blue-standard+default";
   };
 }

@@ -25,8 +25,8 @@ in {
           ;
       }
       ++ [
-        # pkgs.nerd-fonts.jetbrains-mono
-        (pkgs.nerdfonts.override {fonts = ["JetBrainsMono"];})
+        pkgs.nerd-fonts.jetbrains-mono
+        # (pkgs.nerdfonts.override {fonts = ["JetBrainsMono"];})
       ];
 
     enableDefaultPackages = false;
