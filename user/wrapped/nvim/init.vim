@@ -29,14 +29,15 @@ highlight @tag.attribute guifg=#B48EAD
 
 highlight @function gui=italic guifg=#81A1C1
 
-nnoremap <leader>ff <cmd>Telescope find_files<cr>
-nnoremap <leader><leader> <cmd>Telescope git_files<cr>
+nnoremap <leader>ff <cmd>Telescope git_files<cr>
+nnoremap <leader><leader> <cmd>Telescope find_files<cr>
 nnoremap <leader>fg <cmd>Telescope live_grep<cr>
 nnoremap <leader>fb <cmd>Telescope buffers<cr>
 nnoremap <leader>fn <cmd>Telescope orgmode search_headings<cr>
 nnoremap <leader>fh <cmd>Telescope harpoon marks<cr>
 nnoremap <leader>z  <cmd>ZenMode <cr>
 nnoremap <leader>b  <cmd>Neotree toggle<cr>
+nnoremap <leader>s  <cmd>Neoformat <cr><cr>
 nnoremap <leader>g <cmd>Git <cr>
 nnoremap <leader>u <cmd>UndotreeToggle <cr>
 
@@ -54,12 +55,6 @@ nnoremap <M-h> <cmd>bprevious<cr>
 nnoremap <M-l> <cmd>bnext<cr>
 
 xnoremap <leader>p "\"_dP
-
-" Autoformat on save 
-augroup fmt
-  autocmd!
-  autocmd BufWritePre * undojoin | Neoformat
-augroup END
 
 " Per language
 augroup indentation

@@ -183,6 +183,11 @@ local kind_icons = {
 	Copilot = "",
 }
 
+local markview = require("markview")
+markview.setup({
+	headings = require("markview.presets").headings.glow_labels,
+})
+
 local cmp = require("cmp")
 local luasnip = require("luasnip")
 require("luasnip.loaders.from_vscode").lazy_load()
@@ -216,6 +221,12 @@ cmp.setup({
 			"i",
 		}),
 	}),
+	window = {
+		documentation = cmp.config.window.bordered(),
+		completion = cmp.config.window.bordered({
+			winhighlight = "Normal:CmpPmenu,CursorLine:PmenuSel,Search:None",
+		}),
+	},
 	snippet = {
 		expand = function(args)
 			luasnip.lsp_expand(args.body)
@@ -236,6 +247,14 @@ cmp.setup({
 			return vim_item
 		end,
 	},
+	view = {
+		docs = { auto_open = false },
+		entries = {
+			name = "custom",
+			selection_order = "near_cursor",
+			follow_cursor = true,
+		},
+	},
 	sources = cmp.config.sources({
 		{ name = "nvim_lsp", keyword_length = 1 },
 		{ name = "buffer", keyword_length = 3 },
@@ -248,10 +267,6 @@ cmp.setup({
 vim.diagnostic.config({
 	virtual_text = false,
 })
-
--- Show line diagnostics automatically in hover window
-vim.o.updatetime = 250
-vim.cmd([[autocmd CursorHold,CursorHoldI * lua vim.diagnostic.open_float(nil, {focus=false})]])
 
 cmp.event:on("confirm_done", cmp_autopairs.on_confirm_done())
 
@@ -338,7 +353,6 @@ vim.o.timeoutlen = 500
 local telescope = require("telescope")
 telescope.setup({})
 telescope.load_extension("harpoon")
-telescope.load_extension("orgmode")
 telescope.load_extension("scope")
 
 vim.api.nvim_create_user_command("NoteFiles", function()

@@ -57,6 +57,8 @@
           comment-nvim
           nvim-colorizer-lua
           which-key-nvim
+          markview-nvim
+          lsp_lines-nvim
           undotree
           vim-speeddating
           luasnip
