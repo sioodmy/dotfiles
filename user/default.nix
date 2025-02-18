@@ -32,7 +32,10 @@ rec
   module = {pkgs, ...}: {
     config = {
       environment.systemPackages = builtins.attrValues (packages pkgs);
-      programs.hyprland.enable = true;
+      programs.hyprland = {
+        enable = true;
+        withUWSM = true;
+      };
       programs.direnv.enable = true;
     };
     imports = [
