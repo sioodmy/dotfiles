@@ -266,6 +266,7 @@ cmp.setup({
 
 vim.diagnostic.config({
 	virtual_text = false,
+    virtual_lines = true,
 })
 
 cmp.event:on("confirm_done", cmp_autopairs.on_confirm_done())
