@@ -105,6 +105,7 @@ in
           gopls
           prettierd
           go
+          pyright
           python3
           nil
           rust-analyzer
@@ -113,7 +114,6 @@ in
           emmet-language-server
           bash-language-server
           zls
-          gleam
           clang-tools
           shellcheck
           cargo
