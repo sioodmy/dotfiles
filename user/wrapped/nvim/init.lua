@@ -305,7 +305,8 @@ nvim_lsp.eslint.setup({})
 nvim_lsp.bashls.setup({})
 nvim_lsp.clangd.setup({})
 nvim_lsp.zls.setup({})
-nvim_lsp.gleam.setup({})
+nvim_lsp.pyright.setup({})
+
 
 local on_attach = function(client)
 	require("completion").on_attach(client)
