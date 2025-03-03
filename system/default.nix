@@ -6,6 +6,7 @@
     ./fonts
     ./audio
     ./users
+    ./printing
     ./wayland
     ./nix
     #    ./security
