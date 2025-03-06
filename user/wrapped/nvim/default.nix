@@ -81,6 +81,7 @@
           cmp-nvim-lsp
           cmp-buffer
           cmp-path
+          tailwind-tools-nvim
           nui-nvim
           plenary-nvim
           ;
@@ -117,6 +118,7 @@ in
           clang-tools
           shellcheck
           cargo
+          tailwindcss-language-server
           cargo-tauri
           trunk
           nixd
