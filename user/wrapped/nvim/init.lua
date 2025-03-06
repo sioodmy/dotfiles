@@ -116,33 +116,6 @@ require("lualine").setup({
 	},
 })
 
-local Menu = require("org-modern.menu")
-
-require("orgmode").setup({
-	org_agenda_files = "~/Documents/org/**/*",
-	org_default_notes_file = "~/Documents/org/refile.org",
-	ui = {
-		menu = {
-			handler = function(data)
-				Menu:new({
-					window = {
-						margin = { 1, 0, 1, 0 },
-						padding = { 0, 1, 0, 1 },
-						title_pos = "center",
-						border = "single",
-						zindex = 1000,
-					},
-					icons = {
-						separator = "➜",
-					},
-				}):open(data)
-			end,
-		},
-	},
-})
-
-require("orgcheckbox").setup()
-
 local npairs = require("nvim-autopairs")
 local Rule = require("nvim-autopairs.rule")
 
@@ -264,6 +237,9 @@ cmp.setup({
 	}),
 })
 
+require("tailwind-tools").setup({})
+
+require("lsp_lines").setup()
 vim.diagnostic.config({
 	virtual_text = false,
     virtual_lines = true,
