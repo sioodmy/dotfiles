@@ -1,79 +1,75 @@
-pkgs: rec {
+pkgs: {
   opacity = 1.0;
-  background = "2e3440";
+  background = "232136";
 
-  text = "d8dee9";
+  text = "e0def4";
 
   regular = {
-    background = "3b4252";
+    background = "2a273f";
 
-    red = "bf616a";
-    green = "a3be8c";
-    yellow = "ebcb8b";
-    blue = "81a1c1";
-    purple = "b48ead";
-    cyan = "88c0d0";
-    white = "e5e9f0";
+    red = "eb6f92";
+    green = "3e8fb0";
+    yellow = "f6c177";
+    blue = "9ccfd8";
+    purple = "c4a7e7";
+    cyan = "ea9a97";
+    white = "e0def4";
   };
 
   bright = {
-    background = "4c566a";
-    white = "eceff4";
-    cyan = "8fbcbb";
-    purple = "b48ead";
-    blue = "81a1c1";
-    yellow = "ebcb8b";
-    green = "a3be8c";
-    red = "bf616a";
+    background = "393552";
+    white = "e0def4";
+    cyan = "ea9a97";
+    purple = "c4a7e7";
+    blue = "";
+    yellow = "f6c177";
+    green = "3e8fb0";
+    red = "eb6f92";
   };
 
-  base00 = "2E3440";
-  base01 = "3B4252";
-  base02 = "434C5E";
-  base03 = "4C566A";
-  base04 = "D8DEE9";
-  base05 = "E5E9F0";
-  base06 = "ECEFF4";
-  base07 = "8FBCBB";
-  base08 = "88C0D0";
-  base09 = "81A1C1";
-  base0A = "5E81AC";
-  base0B = "BF616A";
-  base0C = "D08770";
-  base0D = "EBCB8B";
-  base0E = "A3BE8C";
-  base0F = "B48EAD";
+  base00 = "232136";
+  base01 = "2a273f";
+  base02 = "393552";
+  base03 = "6e6a86";
+  base04 = "908caa";
+  base05 = "e0def4";
+  base06 = "e0def4";
+  base07 = "56526e";
+  base08 = "eb6f92";
+  base09 = "f6c177";
+  base0A = "ea9a97";
+  base0B = "3e8fb0";
+  base0C = "9ccfd8";
+  base0D = "c4a7e7";
+  base0E = "f6c177";
+  base0F = "56526e";
 
-  accent = regular.blue;
+  accent = "c4a7e7";
   wallpaper = let
-    path = "nord/2.png";
+    path = "rosepine/clouds.jpg";
     wallpapers = (pkgs.callPackages ./_sources/generated.nix {}).wallpapers;
   in "${wallpapers.src}/${path}";
 
   bat = "Nord";
+  cursor = {
+    package = pkgs.rose-pine-hyprcursor;
+    name = "rose-pine-hyprcursor";
+  };
 
   nvim = {
     enable = true;
     # uses generated base16 them if set to false
 
-    package = pkgs.vimPlugins.nord-nvim;
-    name = "nord";
-    configExtra = ''
-      -- Fix HTML highlight
-      vim.cmd [[highlight @tag gui=bold guifg=#81A1C1]]
-      vim.cmd [[highlight @tag.delimiter gui=bold guifg=#616E88]]
-      vim.cmd [[highlight @tag.attribute guifg=#B48EAD]]
-
-      -- Fix elixir syntax
-      vim.cmd [[highlight @function gui=italic guifg=#81A1C1]]
-    '';
+    package = pkgs.vimPlugins.rose-pine;
+    name = "rose-pine-moon";
+    configExtra = "";
   };
 
   gtk = {
     enable = true;
     # uses generated base16 theme if set to false
 
-    package = pkgs.catppuccin-gtk;
-    name = "catppuccin-frappe-blue-standard+default";
+    package = pkgs.rose-pine-gtk-theme;
+    name = "rose-pine-gtk";
   };
 }
