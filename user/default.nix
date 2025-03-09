@@ -36,7 +36,10 @@ rec
         enable = true;
         withUWSM = true;
       };
-      programs.direnv.enable = true;
+      programs.direnv = {
+        enable = true;
+        enableFishIntegration = false;
+      };
     };
     imports = [
       ./packages.nix

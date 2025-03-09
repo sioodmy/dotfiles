@@ -18,6 +18,7 @@ theme: let
 in {
   env = [
     "QT_WAYLAND_DISABLE_WINDOWDECORATION,1"
+    "HYPRCURSOR_THEME,${theme.cursor.name}"
   ];
   exec-once = [
     "swaybg -i ${theme.wallpaper}"
@@ -29,9 +30,9 @@ in {
   general = {
     gaps_in = 5;
     gaps_out = 5;
-    border_size = 1;
-    "col.active_border" = "rgba(88888888)";
-    "col.inactive_border" = "rgba(00000088)";
+    border_size = 2;
+    "col.active_border" = "#${theme.accent}";
+    "col.inactive_border" = "#${theme.regular.background}";
 
     allow_tearing = true;
     resize_on_border = true;
@@ -54,7 +55,7 @@ in {
   debug.disable_logs = false;
 
   decoration = {
-    rounding = 6;
+    rounding = 0;
     blur = {
       enabled = true;
       brightness = 1.0;
