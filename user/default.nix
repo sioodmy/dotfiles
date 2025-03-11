@@ -37,7 +37,7 @@ rec
         withUWSM = true;
       };
       programs.direnv = {
-        enable = true;
+        enable = false;
         enableFishIntegration = false;
       };
     };
