@@ -76,7 +76,7 @@
       on-click = "${pkgs.killall}/bin/killall pavucontrol || ${pkgs.pavucontrol}/bin/pavucontrol";
       format = "{icon}  {volume}%";
       format-muted = "󰝟 ";
-      format-bluetooth = "󰂯";
+      format-bluetooth = "󰂯 {volume}%";
       format-icons = {
         default = ["" "" " "];
       };
