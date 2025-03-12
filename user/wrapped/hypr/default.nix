@@ -13,7 +13,7 @@ in
       paths = let
         pname = lib.strings.toLower x;
       in
-        [pkgs.${pname}] ++ import ./packages.nix pkgs;
+        [pkgs.${pname}] ++ import ./packages.nix pkgs ++ [ theme.cursor.package ];
       buildInputs = [pkgs.makeWrapper];
       postBuild = let
         config = pkgs.writeText "${x}.conf" (toHyprConf {
