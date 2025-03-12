@@ -31,6 +31,7 @@ in {
       gtk-xft-hinting = 1;
       gtk-xft-hintstyle = "hintslight";
       gtk-xft-rgba = "rgb";
+      gtk-cursor-theme-name = theme.cursor.x.name;
     };
   in
     {
@@ -52,13 +53,14 @@ in {
 
   environment = {
     systemPackages = [
-      pkgs.bibata-cursors
+      theme.cursor.x.package
       (
         if theme.gtk.enable
         then theme.gtk.package
         else pkgs.adw-gtk3
       )
       pkgs.adw-gtk3
+      pkgs.papirus-icon-theme
     ];
     variables = {
       GTK_THEME = gtk-theme-name;

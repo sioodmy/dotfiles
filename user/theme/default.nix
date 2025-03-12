@@ -52,8 +52,14 @@ pkgs: {
 
   bat = "Nord";
   cursor = {
-    package = pkgs.rose-pine-hyprcursor;
-    name = "rose-pine-hyprcursor";
+    hypr = {
+      package = pkgs.rose-pine-hyprcursor;
+      name = "rose-pine-hyprcursor";
+    };
+    x = {
+      package = pkgs.rose-pine-hyprcursor;
+      name = "rose-pine-hyprcursor";
+    };
   };
 
   nvim = {

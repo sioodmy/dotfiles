@@ -18,7 +18,7 @@ theme: let
 in {
   env = [
     "QT_WAYLAND_DISABLE_WINDOWDECORATION,1"
-    "HYPRCURSOR_THEME,${theme.cursor.name}"
+    "HYPRCURSOR_THEME,${theme.cursor.hypr.name}"
   ];
   exec-once = [
     "swaybg -i ${theme.wallpaper}"
