@@ -3,6 +3,9 @@
   flake,
   ...
 }: {
+  imports = [
+    ./kbd_backlight.nix
+  ];
   hardware = {
     graphics.enable = true;
     brillo.enable = true;

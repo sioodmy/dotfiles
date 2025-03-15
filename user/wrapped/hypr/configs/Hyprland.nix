@@ -18,7 +18,6 @@ theme: let
 in {
   env = [
     "QT_WAYLAND_DISABLE_WINDOWDECORATION,1"
-    "HYPRCURSOR_THEME,${theme.cursor.hypr.name}"
   ];
   exec-once = [
     "swaybg -i ${theme.wallpaper}"
@@ -136,6 +135,8 @@ in {
     # backlight
     ", XF86MonBrightnessUp, exec, brillo -q -A 5"
     ", XF86MonBrightnessDown, exec, brillo -q -U 5"
+    "${mod}, XF86MonBrightnessUp, exec, keylit"
+    "${mod}, XF86MonBrightnessDown, exec, keylit"
   ];
   bind =
     [

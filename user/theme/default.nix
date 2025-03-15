@@ -57,8 +57,8 @@ pkgs: {
       name = "rose-pine-hyprcursor";
     };
     x = {
-      package = pkgs.rose-pine-hyprcursor;
-      name = "rose-pine-hyprcursor";
+      package = pkgs.rose-pine-cursor;
+      name = "BreezeX-RoséPine";
     };
   };
 

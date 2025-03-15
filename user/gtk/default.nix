@@ -62,8 +62,15 @@ in {
       pkgs.adw-gtk3
       pkgs.papirus-icon-theme
     ];
-    variables = {
+    variables = let
+      cursorSize = 24;
+    in {
       GTK_THEME = gtk-theme-name;
+      XCURSOR_THEME = theme.cursor.x.name;
+      XCURSOR_SIZE = cursorSize;
+
+      HYPRCURSOR_THEME = theme.cursor.hypr.name;
+      HYPRCURSOR_SIZE = cursorSize;
     };
   };
 }

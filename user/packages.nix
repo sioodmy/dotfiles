@@ -20,6 +20,7 @@ in {
         nicotine-plus
         imv
         signal-desktop
+        vesktop
         gimp
         keepassxc
         clang

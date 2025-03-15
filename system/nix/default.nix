@@ -63,9 +63,6 @@
 
   nixpkgs = {
     config = {
-      # Wolność kocham i rozumiem
-      # Wolności oddać nie umiem
-      # <3333
       allowUnfree = false;
       allowBroken = true;
     };
