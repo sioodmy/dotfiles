@@ -47,7 +47,11 @@
   inputs = {
     #nixpkgs.url = "github:nixos/nixpkgs/nixos-24.11";
     nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
-    apple-silicon-support.url = "github:tpwrules/nixos-apple-silicon";
+    #apple-silicon-support.url = "github:tpwrules/nixos-apple-silicon";
+
+    # https://github.com/tpwrules/nixos-apple-silicon/pull/284#issuecomment-2733107093
+    apple-silicon-support.url = "github:marcin-serwin/nixos-apple-silicon/push-nwvktpxoswts";
+
     zen-browser = {
       url = "github:youwen5/zen-browser-flake";
       inputs.nixpkgs.follows = "nixpkgs";
