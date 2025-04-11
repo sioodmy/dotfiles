@@ -50,7 +50,7 @@
     #apple-silicon-support.url = "github:tpwrules/nixos-apple-silicon";
 
     # https://github.com/tpwrules/nixos-apple-silicon/pull/284#issuecomment-2733107093
-    apple-silicon-support.url = "github:marcin-serwin/nixos-apple-silicon/push-nwvktpxoswts";
+    apple-silicon-support.url = "github:sioodmy/nixos-apple-silicon";
 
     zen-browser = {
       url = "github:youwen5/zen-browser-flake";
