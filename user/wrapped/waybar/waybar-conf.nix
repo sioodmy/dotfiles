@@ -64,10 +64,10 @@
         warning = 30;
         critical = 15;
       };
-      format = "{icon} {capacity}%";
+      format = "{icon}";
       format-charging = "󰂄 {capacity}%";
       format-plugged = "󰂄 {capacity}%";
-      format-alt = "{icon}";
+      tooltip-format = "{capacity}% {timeTo} // {power}";
       format-icons = ["󰂃" "󰁺" "󰁻" "󰁼" "󰁽" "󰁾" "󰁿" "󰂀" "󰂁" "󰂂" "󰁹"];
     };
     pulseaudio = {

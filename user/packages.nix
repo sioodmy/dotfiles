@@ -12,6 +12,9 @@ in {
         ttyper
         mpv
         tdesktop
+        flare-signal
+        prismlauncher
+        libreoffice-fresh
         caprine
         ytmdl
         yt-dlp

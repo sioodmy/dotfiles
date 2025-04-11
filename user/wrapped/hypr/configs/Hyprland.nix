@@ -138,6 +138,12 @@ in {
     "${mod}, XF86MonBrightnessUp, exec, keylit"
     "${mod}, XF86MonBrightnessDown, exec, keylit"
   ];
+  bindm = [
+    "${mod}, mouse:272, movewindow"
+    "${mod}, Control_L, movewindow"
+    "${mod}, mouse:273, resizewindow"
+    "${mod}, ALT_L, resizewindow"
+  ];
   bind =
     [
       "${mod}, minus, killactive"

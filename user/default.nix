@@ -21,6 +21,9 @@ rec
   shell = pkgs:
     pkgs.mkShell {
       name = "sioodmy-devshell";
+      shellHook = ''
+        zsh
+      '';
       buildInputs = builtins.attrValues {
         inherit
           (packages pkgs)
