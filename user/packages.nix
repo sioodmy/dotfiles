@@ -22,7 +22,7 @@ in {
         ledger_agent
         nicotine-plus
         imv
-        signal-desktop
+        signal-desktop-source
         vesktop
         gimp
         keepassxc
