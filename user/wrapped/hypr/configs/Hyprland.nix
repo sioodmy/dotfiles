@@ -185,7 +185,7 @@ in {
     "workspace 2, class:(firefox|librewolf|brave)"
     "workspace 4 silent, class:(signal|vesktop)"
     "suppressevent maximize, class:.*"
-    #"scrolltouchpad 0.1, class:^(zen|firefox|brave|chromium-browser|chrome-.*)$"
+    "scrolltouchpad 0.2, class:^(zen|firefox|brave|chromium-browser|chrome-.*)$"
     "nofocus,class:^$,title:^$,xwayland:1,floating:1,fullscreen:0,pinned:0"
   ];
 }
