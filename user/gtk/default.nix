@@ -18,7 +18,7 @@
   gtk-theme-name =
     if theme.gtk.enable
     then theme.gtk.name
-    else "adw-gtk3";
+    else "adw-gtk3-dark";
 in {
   homix = let
     css = import ./colors.nix {inherit theme;};
@@ -66,6 +66,7 @@ in {
       cursorSize = 24;
     in {
       GTK_THEME = gtk-theme-name;
+      GSK_RENDERER="gl";
       XCURSOR_THEME = theme.cursor.x.name;
       XCURSOR_SIZE = cursorSize;
 

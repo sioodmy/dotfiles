@@ -15,6 +15,8 @@ in {
         flare-signal
         prismlauncher
         libreoffice-fresh
+        brave
+        rnote
         caprine
         ytmdl
         yt-dlp
@@ -22,7 +24,7 @@ in {
         ledger_agent
         nicotine-plus
         imv
-        signal-desktop-source
+        signal-desktop
         vesktop
         gimp
         keepassxc
