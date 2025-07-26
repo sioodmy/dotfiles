@@ -15,18 +15,19 @@ in {
         flare-signal
         prismlauncher
         libreoffice-fresh
+        vencord
+        thunderbird-unwrapped
         brave
         rnote
         caprine
         ytmdl
         yt-dlp
         transmission_4-gtk
-        ledger_agent
         nicotine-plus
         imv
         signal-desktop
         vesktop
-        gimp
+        gimp3
         keepassxc
         clang
         gnumake

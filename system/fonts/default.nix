@@ -27,6 +27,7 @@ in {
       }
       ++ [
         pkgs.nerd-fonts.jetbrains-mono
+        pkgs.maple-mono.NF
         # (pkgs.nerdfonts.override {fonts = ["JetBrainsMono"];})
       ];
 
@@ -36,8 +37,7 @@ in {
     fontconfig = {
       defaultFonts = {
         monospace = [
-          "JetBrainsMono"
-          "JetBrainsMono Nerd Font"
+          "Maple Mono NF"
           "Noto Color Emoji"
         ];
         sansSerif = ["Lexend" "Noto Color Emoji"];

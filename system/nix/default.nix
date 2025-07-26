@@ -11,6 +11,7 @@
     daemonCPUSchedPolicy = "idle";
     daemonIOSchedClass = "idle";
 
+
     settings = {
       flake-registry = "/etc/nix/registry.json";
       auto-optimise-store = true;
@@ -53,12 +54,6 @@
   # ITS NOT A GOOD IDEA
   systemd.services.nix-daemon = {
     environment.TMPDIR = "/var/tmp";
-  };
-
-  # this makes rebuilds little faster
-  system.switch = {
-    enable = false;
-    enableNg = true;
   };
 
   nixpkgs = {
