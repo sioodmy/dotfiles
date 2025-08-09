@@ -48,8 +48,6 @@
       launch = "${xdg-open} \${url}";
       label-letters = "sadfjklewcmpgh";
       osc8-underline = "always";
-      protocols = "http, https, ftp, ftps, file, gemini, gopher, irc, ircs";
-      uri-characters = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789-_.,~:;/?#@!$&%*+=\"'()[]";
     };
     cursor = {
       style = "beam";

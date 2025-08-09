@@ -21,7 +21,7 @@ pkgs: {
     white = "e0def4";
     cyan = "ea9a97";
     purple = "c4a7e7";
-    blue = "";
+    blue = "9ccfd8";
     yellow = "f6c177";
     green = "3e8fb0";
     red = "eb6f92";

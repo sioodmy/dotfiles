@@ -9,6 +9,7 @@ in {
     attrValues {
       inherit
         (pkgs)
+        niri
         ttyper
         mpv
         tdesktop

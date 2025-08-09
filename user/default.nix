@@ -9,13 +9,15 @@ rec
     zsh = callPackage ./wrapped/zsh {};
     tmux = callPackage ./wrapped/tmux {inherit theme;};
     foot = callPackage ./wrapped/foot {inherit theme;};
+    kitty = callPackage ./wrapped/kitty {};
+    helix = callPackage ./wrapped/helix {inherit theme;};
     tofi = callPackage ./wrapped/tofi {inherit theme;};
     anyrun = callPackage ./wrapped/anyrun {inherit theme;};
     waybar = callPackage ./wrapped/waybar {inherit theme;};
     mako = callPackage ./wrapped/mako {inherit theme;};
     bat = callPackage ./wrapped/bat {inherit theme;};
     hypr = callPackage ./wrapped/hypr {inherit theme;};
-    zathura = callPackage ./wrapped/zathura {inherit theme;};
+    zathura = callPackage ./wrapped/zathura {};
   };
 
   shell = pkgs:

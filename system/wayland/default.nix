@@ -12,8 +12,25 @@
   };
 
   environment = {
-    sessionVariables.NIXOS_OZONE_WL = 1;
+    sessionVariables = {
+      NIXOS_OZONE_WL = 1;
+      XDG_CURRENT_DESKTOP = "niri";
+      XDG_SESSION_TYPE = "wayland";
+      XDG_SESSION_DESKTOP = "niri";
+
+      SDL_VIDEODRIVER = "wayland";
+
+      _JAVA_AWT_WM_NONEREPARENTING = "1";
+
+      CLUTTER_BACKEND = "wayland";
+
+      GDK_BACKEND = "wayland";
+
+      QT_QPA_PLATFORM = "wayland";
+    };
   };
+
+  niri-flake.cache.enable = true;
 
   systemd.services = {
     seatd = {
@@ -34,7 +51,8 @@
       enable = true;
       settings = rec {
         initial_session = {
-          command = "${flake.packages.${pkgs.system}.hypr}/bin/Hyprland";
+          # command = "${flake.packages.${pkgs.system}.hypr}/bin/Hyprland";
+          command = "niri-session";
           user = "sioodmy";
         };
         default_session = initial_session;
@@ -52,6 +70,11 @@
         SuspendState=mem
       '';
     };
+  };
+
+  programs.niri = {
+    enable = true;
+    package = pkgs.niri-unstable;
   };
 
   xdg.portal = {

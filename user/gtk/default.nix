@@ -5,7 +5,7 @@
   ...
 }: let
   inherit (builtins) toString isBool;
-  inherit (lib) boolToString escape generators optionalAttrs;
+  inherit (lib) boolToString escape generators;
 
   toGtk3Ini = generators.toINI {
     mkKeyValue = key: value: let
@@ -15,15 +15,11 @@
         else toString value;
     in "${escape ["="] key}=${value'}";
   };
-  gtk-theme-name =
-    if theme.gtk.enable
-    then theme.gtk.name
-    else "adw-gtk3-dark";
+  themepkg = pkgs.nordic;
 in {
   homix = let
-    css = import ./colors.nix {inherit theme;};
     gtkINI = {
-      inherit gtk-theme-name;
+      gtk-theme-name = "Nordic";
       gtk-application-prefer-dark-theme = 1;
       gtk-font-name = "Lexend 11";
       gtk-icon-theme-name = "Papirus";
@@ -31,47 +27,48 @@ in {
       gtk-xft-hinting = 1;
       gtk-xft-hintstyle = "hintslight";
       gtk-xft-rgba = "rgb";
-      gtk-cursor-theme-name = theme.cursor.x.name;
+      gtk-cursor-theme-name = "Bibata-Modern-Classic";
     };
-  in
-    {
-      ".config/gtk-3.0/settings.ini".text = toGtk3Ini {
-        Settings = gtkINI;
-      };
-      ".config/gtk-4.0/settings.ini".text = toGtk3Ini {
-        Settings =
-          gtkINI
-          // {
-            gtk-application-prefer-dark-theme = 1;
-          };
-      };
-    }
-    // optionalAttrs theme.gtk.enable {
-      ".config/gtk-3.0/gtk.css".text = css;
-      ".config/gtk-4.0/gtk.css".text = css;
+  in {
+    ".config/gtk-3.0/settings.ini".text = toGtk3Ini {
+      Settings =
+        gtkINI
+        // {
+          gtk-application-prefer-dark-theme = 1;
+        };
     };
+    ".config/gtk-4.0/settings.ini".text = toGtk3Ini {
+      Settings = gtkINI;
+      AdwStyleManager = {
+        color-scheme = "ADW_COLOR_SCHEME_PREFER_DARK";
+      };
+    };
+    ".config/gtk-4.0/gtk.css".text = ''
+      /**
+       * GTK 4 reads the theme configured by gtk-theme-name, but ignores it.
+       * It does however respect user CSS, so import the theme from here.
+      **/
+      @import url("file://${themepkg}/share/themes/Nordic/gtk-4.0/gtk.css");
+    '';
+  };
 
   environment = {
     systemPackages = [
-      theme.cursor.x.package
-      (
-        if theme.gtk.enable
-        then theme.gtk.package
-        else pkgs.adw-gtk3
-      )
+      pkgs.bibata-cursors
+      pkgs.nordic
       pkgs.adw-gtk3
       pkgs.papirus-icon-theme
     ];
-    variables = let
-      cursorSize = 24;
-    in {
-      GTK_THEME = gtk-theme-name;
-      GSK_RENDERER="gl";
-      XCURSOR_THEME = theme.cursor.x.name;
-      XCURSOR_SIZE = cursorSize;
+    variables =  {
+      GTK_THEME = "Nordic";
+      GSK_RENDERER = "gl";
+      QT_AUTO_SCREEN_SCALE_FACTOR = "1";
+      QT_QPA_PLATFORMTHEME = "gtk3";
+      QT_WAYLAND_DISABLE_WINDOWDECORATION = "1";
+      DISABLE_QT_COMPAT = "0";
 
-      HYPRCURSOR_THEME = theme.cursor.hypr.name;
-      HYPRCURSOR_SIZE = cursorSize;
+      XCURSOR_THEME = "Bibata-Modern-Classic";
+      XCURSOR_SIZE = 24;
     };
   };
 }

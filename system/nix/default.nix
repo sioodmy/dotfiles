@@ -1,4 +1,8 @@
-{pkgs, ...}: {
+{
+  pkgs,
+  inputs,
+  ...
+}: {
   environment.systemPackages = [pkgs.nvfetcher];
   nix = {
     # gc kills ssds
@@ -10,7 +14,6 @@
     # Make builds run with low priority so my system stays responsive
     daemonCPUSchedPolicy = "idle";
     daemonIOSchedClass = "idle";
-
 
     settings = {
       flake-registry = "/etc/nix/registry.json";
@@ -57,6 +60,9 @@
   };
 
   nixpkgs = {
+    overlays = [
+      inputs.niri-flake.overlays.niri
+    ];
     config = {
       allowUnfree = false;
       allowBroken = true;

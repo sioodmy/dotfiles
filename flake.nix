@@ -45,11 +45,12 @@
   };
 
   inputs = {
-    #nixpkgs.url = "github:nixos/nixpkgs/nixos-24.11";
     nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
-    #apple-silicon-support.url = "github:tpwrules/nixos-apple-silicon";
+    niri-flake = {
+      url = "github:sodiboo/niri-flake";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
 
-    # https://github.com/tpwrules/nixos-apple-silicon/pull/284#issuecomment-2733107093
     apple-silicon-support.url = "github:nix-community/nixos-apple-silicon";
 
     zen-browser = {

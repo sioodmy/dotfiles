@@ -16,7 +16,7 @@ in ''
     padding: 12px 14px;
     border-radius: 12px;
 
-    color: white;
+    color: #eceff4;
     margin-top: 4px;
     border: 2px solid transparent;
     transition: all 0.3s ease;
@@ -51,8 +51,8 @@ in ''
 
   #match.activatable:selected, #match.activatable:hover:selected {
     background: rgba(255,255,255,0.1);
-    border: 2px solid #${accent};
-    border-top: 2px solid #${accent};
+    border: 2px solid #5e81ac;
+    border-top: 2px solid #5e81ac;
   }
 
   #match, #plugin {
@@ -60,14 +60,14 @@ in ''
   }
 
   #entry {
-    color: white;
+    color: #eceff4;
     box-shadow: none;
     border-radius: 12px;
-    border: 2px solid #${accent};
+    border: 2px solid #5e81ac;
   }
 
   box#main {
-    background: rgba(36, 39, 58, 0.7);
+    background: rgba(67, 76, 94, 0.96);
     border-radius: 16px;
     padding: 8px;
     box-shadow: 0px 2px 33px -5px rgba(0, 0, 0, 0.5);
