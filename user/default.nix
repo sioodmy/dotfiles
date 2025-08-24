@@ -13,10 +13,8 @@ rec
     helix = callPackage ./wrapped/helix {inherit theme;};
     tofi = callPackage ./wrapped/tofi {inherit theme;};
     anyrun = callPackage ./wrapped/anyrun {inherit theme;};
-    waybar = callPackage ./wrapped/waybar {inherit theme;};
     mako = callPackage ./wrapped/mako {inherit theme;};
     bat = callPackage ./wrapped/bat {inherit theme;};
-    hypr = callPackage ./wrapped/hypr {inherit theme;};
     zathura = callPackage ./wrapped/zathura {};
   };
 
@@ -37,10 +35,6 @@ rec
   module = {pkgs, ...}: {
     config = {
       environment.systemPackages = builtins.attrValues (packages pkgs);
-      programs.hyprland = {
-        enable = true;
-        withUWSM = true;
-      };
       programs.direnv = {
         enable = false;
         enableFishIntegration = false;

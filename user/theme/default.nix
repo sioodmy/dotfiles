@@ -52,10 +52,6 @@ pkgs: {
 
   bat = "Nord";
   cursor = {
-    hypr = {
-      package = pkgs.rose-pine-hyprcursor;
-      name = "rose-pine-hyprcursor";
-    };
     x = {
       package = pkgs.rose-pine-cursor;
       name = "BreezeX-RoséPine";

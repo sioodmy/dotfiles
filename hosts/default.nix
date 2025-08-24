@@ -8,7 +8,6 @@
     nixpkgs.lib.nixosSystem {
       modules =
         [
-        inputs.niri-flake.nixosModules.niri
           {
             networking.hostName = name;
             nixpkgs.hostPlatform = system;

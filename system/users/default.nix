@@ -67,7 +67,7 @@
           fprintAuth = fprint;
           u2fAuth = true;
         };
-        hyprlock.fprintAuth = fprint;
+        swaylock.fprintAuth = fprint;
       };
 
       loginLimits = [

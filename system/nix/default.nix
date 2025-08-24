@@ -1,6 +1,6 @@
 {
   pkgs,
-  inputs,
+  lib,
   ...
 }: {
   environment.systemPackages = [pkgs.nvfetcher];
@@ -60,9 +60,19 @@
   };
 
   nixpkgs = {
-    overlays = [
-      inputs.niri-flake.overlays.niri
-    ];
+    # overlays = [
+    #   (final: prev: {
+    #     # this is not a proper way to fix it
+    #     # but it works so idc that much
+    #     mesa = prev.mesa.overrideAttrs (oldAttrs: {
+    #       mesonFlags =
+    #         lib.filter
+    #         (flag: !lib.hasPrefix "-Dgallium-mediafoundation=" flag)
+    #         (oldAttrs.mesonFlags or []);
+    #     });
+    #   })
+    # ];
+
     config = {
       allowUnfree = false;
       allowBroken = true;

@@ -10,7 +10,10 @@ in {
       inherit
         (pkgs)
         niri
+        audacity
         ttyper
+        ladybird
+        quickshell
         mpv
         tdesktop
         flare-signal
@@ -22,6 +25,7 @@ in {
         rnote
         caprine
         ytmdl
+        swaybg
         yt-dlp
         transmission_4-gtk
         nicotine-plus

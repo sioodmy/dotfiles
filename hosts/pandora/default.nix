@@ -20,8 +20,6 @@
     extractPeripheralFirmware = true;
     peripheralFirmwareDirectory = ./firmware;
     setupAsahiSound = true;
-    useExperimentalGPUDriver = true;
-    experimentalGPUInstallMode = "replace";
   };
   hardware.graphics.enable32Bit = lib.mkForce false;
   zramSwap = {

@@ -30,8 +30,6 @@
     };
   };
 
-  niri-flake.cache.enable = true;
-
   systemd.services = {
     seatd = {
       enable = true;
@@ -51,7 +49,6 @@
       enable = true;
       settings = rec {
         initial_session = {
-          # command = "${flake.packages.${pkgs.system}.hypr}/bin/Hyprland";
           command = "niri-session";
           user = "sioodmy";
         };
@@ -70,11 +67,6 @@
         SuspendState=mem
       '';
     };
-  };
-
-  programs.niri = {
-    enable = true;
-    package = pkgs.niri-unstable;
   };
 
   xdg.portal = {
