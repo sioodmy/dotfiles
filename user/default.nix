@@ -5,15 +5,13 @@ rec
     inherit (pkgs) callPackage;
     theme = import ./theme pkgs;
   in {
-    nvim = callPackage ./wrapped/nvim {inherit theme;};
     zsh = callPackage ./wrapped/zsh {};
     tmux = callPackage ./wrapped/tmux {inherit theme;};
     foot = callPackage ./wrapped/foot {inherit theme;};
-    kitty = callPackage ./wrapped/kitty {};
     helix = callPackage ./wrapped/helix {inherit theme;};
     tofi = callPackage ./wrapped/tofi {inherit theme;};
-    anyrun = callPackage ./wrapped/anyrun {inherit theme;};
     mako = callPackage ./wrapped/mako {inherit theme;};
+    dunst = callPackage ./wrapped/dunst {inherit theme;};
     bat = callPackage ./wrapped/bat {inherit theme;};
     zathura = callPackage ./wrapped/zathura {};
   };

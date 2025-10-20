@@ -9,19 +9,24 @@ in {
     attrValues {
       inherit
         (pkgs)
+        clang-tools
+        bear
         niri
         audacity
+        geteduroam-cli
+        libreoffice-qt6-fresh
         ttyper
-        ladybird
+        pavucontrol
+        librewolf
+        grim
+        slurp
+        wl-clipboard
         quickshell
         mpv
         tdesktop
         flare-signal
-        prismlauncher
-        libreoffice-fresh
         vencord
-        thunderbird-unwrapped
-        brave
+        evolution
         rnote
         caprine
         ytmdl
@@ -33,6 +38,7 @@ in {
         signal-desktop
         vesktop
         gimp3
+        inkscape
         keepassxc
         clang
         gnumake
@@ -54,7 +60,6 @@ in {
         hyperfine
         imagemagick
         ffmpeg-full
-        catimg
         nmap
         xh
         grex
@@ -64,6 +69,5 @@ in {
         qrencode
         unzip
         ;
-    }
-    ++ [inputs.zen-browser.packages.${pkgs.system}.default];
+    } ++ [ inputs.helium-browser.packages."${pkgs.system}".helium];
 }

@@ -27,7 +27,7 @@
 
     bluetooth = {
       enable = true;
-      powerOnBoot = false;
+      powerOnBoot = true;
       package = pkgs.bluez5-experimental;
     };
   };

@@ -59,7 +59,7 @@
         fprint = ! config.hardware.asahi.enable;
       in {
         login = {
-          enableGnomeKeyring = true;
+          enableGnomeKeyring = false;
           fprintAuth = fprint;
           u2fAuth = true;
         };

@@ -4,7 +4,7 @@
   scan_timeout = 3;
   character = {
     error_symbol = "[󰊠](bold red)";
-    success_symbol = "[󰊠](bold green)";
+    success_symbol = "[󰊠](bold blue)";
     vicmd_symbol = "[󰊠](bold yellow)";
     format = "$symbol [|](bold bright-black) ";
   };

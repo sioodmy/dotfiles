@@ -8,7 +8,8 @@
     width = 500;
     height = 300;
     horizontal = false;
-    font-size = 14;
+    # ?????? uhm what
+    font-size = 35;
     prompt-text = "> ";
     font = "monospace";
     ascii-input = false;

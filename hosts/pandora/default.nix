@@ -2,6 +2,7 @@
   modulesPath,
   lib,
   inputs,
+  pkgs,
   ...
 }: {
   fileSystems."/boot" = {
@@ -21,6 +22,8 @@
     peripheralFirmwareDirectory = ./firmware;
     setupAsahiSound = true;
   };
+
+  environment.systemPackages = [ pkgs.asahi-bless];
   hardware.graphics.enable32Bit = lib.mkForce false;
   zramSwap = {
     enable = true;

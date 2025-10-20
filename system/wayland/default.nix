@@ -59,13 +59,12 @@
 
     gnome.glib-networking.enable = true;
     logind = {
-      lidSwitch = "suspend";
-      lidSwitchExternalPower = "hibernate";
-      extraConfig = ''
-        HandlePowerKey=poweroff
-        HibernateDelaySec=600
-        SuspendState=mem
-      '';
+      settings.Login = {
+        HandleLidSwitchExternalPower = "suspend";
+        # TODO: switch to hibernate once available on asahi
+        # prolly not coming soon tho :c
+        HandleLidSwitch = "suspend";
+      };
     };
   };
 

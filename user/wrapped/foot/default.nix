@@ -58,7 +58,7 @@
       alternate-scroll-mode = "yes";
     };
     csd = {
-      preferred = "server";
+      preferred = "none";
     };
     key-bindings = {
       scrollback-up-half-page = "Control+k";
@@ -79,26 +79,26 @@
     desktop-notifications = {
       command = "${notify-send} -a \${app-id} -i \${app-id} \${title} \${body}";
     };
-    colors = with theme; {
+    colors = {
       alpha = theme.opacity;
-      background = background;
-      foreground = text;
-      bright0 = bright.background;
-      bright1 = bright.red;
-      bright2 = bright.green;
-      bright3 = bright.yellow;
-      bright4 = bright.blue;
-      bright5 = bright.purple;
-      bright6 = bright.cyan;
-      bright7 = bright.white;
-      regular0 = regular.background;
-      regular1 = regular.red;
-      regular2 = regular.green;
-      regular3 = regular.yellow;
-      regular4 = regular.blue;
-      regular5 = regular.purple;
-      regular6 = regular.cyan;
-      regular7 = regular.white;
+      background = "232136";
+      foreground = "e0def4";
+      bright0 = "5c5776";
+      bright1 = "ff98ba";
+      bright2 = "c5f9ff";
+      bright3 = "ffeb9e";
+      bright4 = "6ab7d9";
+      bright5 = "eed0ff";
+      bright6 = "ffc3bf";
+      bright7 = "fefcff";
+      regular0 = "393552";
+      regular1 = "eb6f92";
+      regular2 = "9ccfd8";
+      regular3 = "f6c177";
+      regular4 = "3e8fb0";
+      regular5 = "c4a7e7";
+      regular6 = "ea9a97";
+      regular7 = "e0def4";
     };
   });
 in

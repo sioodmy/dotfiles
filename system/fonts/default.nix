@@ -10,6 +10,9 @@ in {
           material-icons
           material-design-icons
           roboto
+          roboto-mono
+          roboto-slab
+          roboto-serif
           work-sans
           comic-neue
           source-sans
@@ -28,7 +31,6 @@ in {
       ++ [
         pkgs.nerd-fonts.jetbrains-mono
         pkgs.maple-mono.NF
-        # (pkgs.nerdfonts.override {fonts = ["JetBrainsMono"];})
       ];
 
     enableDefaultPackages = false;

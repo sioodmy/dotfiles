@@ -1,15 +1,21 @@
 {
   pkgs,
-  lib,
   ...
 }: {
-  environment.systemPackages = [pkgs.nvfetcher];
+  environment.systemPackages = builtins.attrValues {
+    inherit (pkgs)
+      nvfetcher
+
+      nix-eval-jobs
+      nix-fast-build
+      ;
+  };
   nix = {
     # gc kills ssds
     gc.automatic = false;
 
     # nix but cooler
-    package = pkgs.lix;
+    package = pkgs.lixPackageSets.git.lix;
 
     # Make builds run with low priority so my system stays responsive
     daemonCPUSchedPolicy = "idle";
@@ -34,15 +40,17 @@
       # continue building derivations if one fails
       keep-going = true;
       log-lines = 20;
-      extra-experimental-features = ["flakes" "nix-command" "recursive-nix" "ca-derivations"];
+      extra-experimental-features = ["flakes" "nix-command"];
 
       # use binary cache, its not gentoo
       substituters = [
         "https://cache.nixos.org"
+        "https://nixos-apple-silicon.cachix.org"
       ];
 
       trusted-public-keys = [
         "cache.nixos.org-1:6NCHdD59X431o0gWypbMrAURkbJ16ZPMQFGspcDShjY="
+        "nixos-apple-silicon.cachix.org-1:8psDu5SA5dAD7qA0zMy5UT292TxeEPzIz8VVEr2Js20="
       ];
     };
   };
@@ -60,18 +68,8 @@
   };
 
   nixpkgs = {
-    # overlays = [
-    #   (final: prev: {
-    #     # this is not a proper way to fix it
-    #     # but it works so idc that much
-    #     mesa = prev.mesa.overrideAttrs (oldAttrs: {
-    #       mesonFlags =
-    #         lib.filter
-    #         (flag: !lib.hasPrefix "-Dgallium-mediafoundation=" flag)
-    #         (oldAttrs.mesonFlags or []);
-    #     });
-    #   })
-    # ];
+
+
 
     config = {
       allowUnfree = false;

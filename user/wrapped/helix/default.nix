@@ -5,7 +5,7 @@
 }: let
 
   settings = {
-    theme = "catppuccin_frappe";
+    theme = "rose_pine_moon";
     keys.normal = {
       "{" = "goto_prev_paragraph";
       "}" = "goto_next_paragraph";
@@ -17,8 +17,10 @@
       "C-q" = ":xa";
       space.u = {
         f = ":format"; # format using LSP formatter
-        w = ":set whitespace.render all";
-        W = ":set whitespace.render none";
+        W = ":set whitespace.render all";
+        w = ":set whitespace.render none";
+        G= ":set indent-guide.render true";
+        g= ":set indent-guide.render false";
       };
     };
     keys.select = {
@@ -37,7 +39,7 @@
       rulers = [80];
       soft-wrap.enable = true;
       indent-guides = {
-        render = true;
+        render = false;
       };
       lsp = {
         display-messages = true;
