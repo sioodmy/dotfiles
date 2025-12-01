@@ -40,7 +40,7 @@
       # continue building derivations if one fails
       keep-going = true;
       log-lines = 20;
-      extra-experimental-features = ["flakes" "nix-command"];
+      extra-experimental-features = ["flakes" "nix-command" "pipe-operator"];
 
       # use binary cache, its not gentoo
       substituters = [

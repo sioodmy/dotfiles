@@ -6,17 +6,34 @@
         "nixpkgs": "nixpkgs"
       },
       "locked": {
-        "lastModified": 1759818599,
-        "narHash": "sha256-4Go3gVl3E+geWMcFQ+06qlkO/lJlSvS9dyhYiXLWYq0=",
+        "lastModified": 1763596466,
+        "narHash": "sha256-CTSUc4Fk1lHMQZMJ5LczPDYGLq5UjXDFKLSpuA3mKmI=",
         "owner": "nix-community",
         "repo": "nixos-apple-silicon",
-        "rev": "24ab28e47b586f741910b3a2f0428f3523a0fff3",
+        "rev": "73b7103c4e3996e3e20868d510b0e8797f279323",
         "type": "github"
       },
       "original": {
         "owner": "nix-community",
         "repo": "nixos-apple-silicon",
         "type": "github"
+      }
+    },
+    "dwl": {
+      "inputs": {
+        "nixpkgs": [
+          "nixpkgs"
+        ]
+      },
+      "locked": {
+        "lastModified": 1763580880,
+        "narHash": "sha256-7TKMqepZdOpfPl+ZeXKFtAJwiY5fNNZARO5cOOUVuRo=",
+        "path": "/home/sioodmy/dev/dwl",
+        "type": "path"
+      },
+      "original": {
+        "path": "/home/sioodmy/dev/dwl",
+        "type": "path"
       }
     },
     "flake-compat": {
@@ -64,11 +81,11 @@
         "treefmt-nix": "treefmt-nix"
       },
       "locked": {
-        "lastModified": 1760214518,
-        "narHash": "sha256-fKpx+nJF5m5s/8acYcRMQRWOKcDkWToD/51q5PlfXms=",
+        "lastModified": 1763627727,
+        "narHash": "sha256-Z2fI8oTUxFXDJ2a6pOUPh4Y+V20WbHkkaS16s6a+10A=",
         "owner": "ominit",
         "repo": "helium-browser-flake",
-        "rev": "ca3c34b1731f2122258e86034e6634c15b5b18ae",
+        "rev": "5e40c4fb1183b15cec3a5dbf9efe7fea9104dfc1",
         "type": "github"
       },
       "original": {
@@ -79,15 +96,15 @@
     },
     "nixpkgs": {
       "locked": {
-        "lastModified": 1759756860,
-        "narHash": "sha256-7QLUQZein1TbpouPOAsTka8vQLujHRmmTqze2IkdrqY=",
+        "lastModified": 1762977756,
+        "narHash": "sha256-4PqRErxfe+2toFJFgcRKZ0UI9NSIOJa+7RXVtBhy4KE=",
         "owner": "NixOS",
         "repo": "nixpkgs",
-        "rev": "d3baaf296366efdea6737124f05b65d1cf25fa7c",
+        "rev": "c5ae371f1a6a7fd27823bc500d9390b38c05fa55",
         "type": "github"
       },
       "original": {
-        "owner": "nixos",
+        "owner": "NixOS",
         "ref": "nixos-unstable",
         "repo": "nixpkgs",
         "type": "github"
@@ -95,11 +112,11 @@
     },
     "nixpkgs_2": {
       "locked": {
-        "lastModified": 1760284886,
-        "narHash": "sha256-TK9Kr0BYBQ/1P5kAsnNQhmWWKgmZXwUQr4ZMjCzWf2c=",
+        "lastModified": 1764242076,
+        "narHash": "sha256-sKoIWfnijJ0+9e4wRvIgm/HgE27bzwQxcEmo2J/gNpI=",
         "owner": "nixos",
         "repo": "nixpkgs",
-        "rev": "cf3f5c4def3c7b5f1fc012b3d839575dbe552d43",
+        "rev": "2fad6eac6077f03fe109c4d4eb171cf96791faa4",
         "type": "github"
       },
       "original": {
@@ -112,6 +129,7 @@
     "root": {
       "inputs": {
         "apple-silicon-support": "apple-silicon-support",
+        "dwl": "dwl",
         "helium-browser": "helium-browser",
         "nixpkgs": "nixpkgs_2"
       }

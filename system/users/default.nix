@@ -12,6 +12,8 @@
         isNormalUser = true;
         homix = true;
         shell = flake.packages.${pkgs.system}.zsh;
+        ignoreShellProgramCheck = true;
+
 
         hashedPasswordFile = "/persist/secrets/sioodmy";
         extraGroups = [
@@ -36,7 +38,7 @@
 
   security = {
     sudo = {
-      enable = true;
+      enable = false;
       extraRules = [
         {
           commands =
@@ -67,6 +69,10 @@
           fprintAuth = fprint;
           u2fAuth = true;
         };
+        systemd-user = {
+   setEnvironment = true;
+   pamMount = false;
+};
         swaylock.fprintAuth = fprint;
       };
 

@@ -17,7 +17,7 @@ fi
 
 TIME="$(date +%H:%M)"
 
-dunstify -h string:x-canonical-private-synchronous:bar "$TIME" "$BATTERY_LABEL"
+dunstify -t 550 -h string:x-canonical-private-synchronous:bar "$TIME" "$BATTERY_LABEL"
 
   '')
 ]

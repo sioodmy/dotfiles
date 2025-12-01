@@ -1,6 +1,8 @@
 {
   pkgs,
   flake,
+  lib,
+  inputs,
   ...
 }: {
   imports = [
@@ -28,6 +30,9 @@
 
       QT_QPA_PLATFORM = "wayland";
     };
+    systemPackages = [
+inputs.dwl.packages.${pkgs.system}.default
+];
   };
 
   systemd.services = {
@@ -48,8 +53,8 @@
     greetd = {
       enable = true;
       settings = rec {
-        initial_session = {
-          command = "niri-session";
+        initial_session ={
+          command = "${pkgs.niri}/bin/niri-session";
           user = "sioodmy";
         };
         default_session = initial_session;
@@ -73,6 +78,7 @@
     config.common.default = "*";
     extraPortals = [
       pkgs.xdg-desktop-portal-gtk
+      pkgs.xdg-desktop-portal-wlr
     ];
   };
 }

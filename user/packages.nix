@@ -3,7 +3,13 @@
   inputs,
   ...
 }: let
-  inherit (builtins) attrValues;
+  inherit (builtins) attrValues readDir readFile attrNames;
+  inherit (pkgs.lib) forEach;
+  scripts = readDir ./scripts |>
+            attrNames |>
+            map (x:
+              pkgs.writeShellScriptBin x (readFile ./scripts/${x})
+            );
 in {
   environment.systemPackages =
     attrValues {
@@ -11,22 +17,28 @@ in {
         (pkgs)
         clang-tools
         bear
+        nixfmt-rfc-style
+        yazi
+        alejandra
+        wmenu
+        ollama
+        pandoc
+        texliveMedium
+        texlab
+        powershell
         niri
         audacity
         geteduroam-cli
         libreoffice-qt6-fresh
         ttyper
         pavucontrol
-        librewolf
         grim
         slurp
         wl-clipboard
         quickshell
         mpv
-        tdesktop
         flare-signal
         vencord
-        evolution
         rnote
         caprine
         ytmdl
@@ -69,5 +81,5 @@ in {
         qrencode
         unzip
         ;
-    } ++ [ inputs.helium-browser.packages."${pkgs.system}".helium];
+    } ++ scripts ++ [ inputs.helium-browser.packages."${pkgs.system}".helium];
 }

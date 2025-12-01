@@ -52,6 +52,10 @@
     nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
 
     apple-silicon-support.url = "github:nix-community/nixos-apple-silicon";
+    dwl = {
+      url = "path:///home/sioodmy/dev/dwl";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
     helium-browser = {
       url = "github:ominit/helium-browser-flake";
       inputs.nixpkgs.follows = "nixpkgs";

@@ -8,7 +8,6 @@
     adjust-open = "best-fit";
     pages-per-row = 1;
     scroll-page-aware = true;
-    smooth-scroll = true;
     selection-clipboard = "clipboard";
     guioptions = "";
     zoom-min = 10;
