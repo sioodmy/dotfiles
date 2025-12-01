@@ -8,7 +8,9 @@
     vicmd_symbol = "[󰊠](bold yellow)";
     format = "$symbol [|](bold bright-black) ";
   };
-  git_commit = {commit_hash_length = 7;};
+  git_commit = {
+    commit_hash_length = 7;
+  };
   line_break.disabled = false;
   lua.symbol = "[](blue) ";
   python.symbol = "[](blue) ";

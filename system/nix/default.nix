@@ -1,7 +1,8 @@
 {
   pkgs,
   ...
-}: {
+}:
+{
   environment.systemPackages = builtins.attrValues {
     inherit (pkgs)
       nvfetcher
@@ -27,8 +28,8 @@
       # use binary cache, its not gentoo
       builders-use-substitutes = true;
       # allow sudo users to mark the following values as trusted
-      allowed-users = ["@wheel"];
-      trusted-users = ["@wheel"];
+      allowed-users = [ "@wheel" ];
+      trusted-users = [ "@wheel" ];
       commit-lockfile-summary = "chore: Update flake.lock";
       accept-flake-config = true;
       keep-derivations = true;
@@ -40,7 +41,11 @@
       # continue building derivations if one fails
       keep-going = true;
       log-lines = 20;
-      extra-experimental-features = ["flakes" "nix-command" "pipe-operator"];
+      extra-experimental-features = [
+        "flakes"
+        "nix-command"
+        "pipe-operator"
+      ];
 
       # use binary cache, its not gentoo
       substituters = [
@@ -68,8 +73,6 @@
   };
 
   nixpkgs = {
-
-
 
     config = {
       allowUnfree = false;

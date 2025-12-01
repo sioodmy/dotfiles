@@ -1,4 +1,5 @@
-{pkgs, ...}: let
+{ pkgs, ... }:
+let
   keylit = pkgs.writeScriptBin "keylit" ''
     #!${pkgs.python3}/bin/python3
 
@@ -17,7 +18,8 @@
         change(max_brightness)
 
   '';
-in {
+in
+{
   environment.systemPackages = [
     keylit
   ];

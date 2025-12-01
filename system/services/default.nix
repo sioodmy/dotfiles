@@ -1,4 +1,5 @@
-{pkgs, ...}: {
+{ pkgs, ... }:
+{
   services.syncthing = {
     enable = true;
     user = "sioodmy";

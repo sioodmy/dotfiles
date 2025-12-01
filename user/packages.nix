@@ -2,22 +2,26 @@
   pkgs,
   inputs,
   ...
-}: let
-  inherit (builtins) attrValues readDir readFile attrNames;
+}:
+let
+  inherit (builtins)
+    attrValues
+    readDir
+    readFile
+    attrNames
+    ;
   inherit (pkgs.lib) forEach;
-  scripts = readDir ./scripts |>
-            attrNames |>
-            map (x:
-              pkgs.writeShellScriptBin x (readFile ./scripts/${x})
-            );
-in {
+  scripts =
+    readDir ./scripts |> attrNames |> map (x: pkgs.writeShellScriptBin x (readFile ./scripts/${x}));
+in
+{
   environment.systemPackages =
     attrValues {
-      inherit
-        (pkgs)
+      inherit (pkgs)
         clang-tools
         bear
         nixfmt-rfc-style
+        nixfmt-tree
         yazi
         alejandra
         wmenu
@@ -81,5 +85,7 @@ in {
         qrencode
         unzip
         ;
-    } ++ scripts ++ [ inputs.helium-browser.packages."${pkgs.system}".helium];
+    }
+    ++ scripts
+    ++ [ inputs.helium-browser.packages."${pkgs.system}".helium ];
 }

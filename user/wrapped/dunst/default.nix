@@ -2,8 +2,9 @@
   pkgs,
   theme,
   ...
-}: let
-    
+}:
+let
+
   inherit (pkgs) lib;
   toDunstIni = lib.generators.toINI {
     mkKeyValue =
@@ -24,7 +25,7 @@
     global = {
       width = 400;
       offset = "5x5";
-    
+
       progress_bar_min_width = 380;
       progress_bar_max_width = 380;
       progress_bar_corner_radius = 2;
@@ -65,14 +66,14 @@
     };
   });
 in
-  pkgs.symlinkJoin {
-    name = "dunst-wrapped";
-    paths =
-      [
-        pkgs.dunst
-      ] ++ (import ./scripts.nix { inherit pkgs; });
-    buildInputs = [pkgs.makeWrapper];
-    postBuild = ''
-      wrapProgram $out/bin/dunst --add-flags "-config ${config}";
-    '';
-  }
+pkgs.symlinkJoin {
+  name = "dunst-wrapped";
+  paths = [
+    pkgs.dunst
+  ]
+  ++ (import ./scripts.nix { inherit pkgs; });
+  buildInputs = [ pkgs.makeWrapper ];
+  postBuild = ''
+    wrapProgram $out/bin/dunst --add-flags "-config ${config}";
+  '';
+}

@@ -4,7 +4,8 @@
   lib,
   inputs,
   ...
-}: {
+}:
+{
   imports = [
     ./kbd_backlight.nix
   ];
@@ -31,8 +32,8 @@
       QT_QPA_PLATFORM = "wayland";
     };
     systemPackages = [
-inputs.dwl.packages.${pkgs.system}.default
-];
+      inputs.dwl.packages.${pkgs.system}.default
+    ];
   };
 
   systemd.services = {
@@ -45,7 +46,7 @@ inputs.dwl.packages.${pkgs.system}.default
         Restart = "always";
         RestartSec = "1";
       };
-      wantedBy = ["multi-user.target"];
+      wantedBy = [ "multi-user.target" ];
     };
   };
 
@@ -53,7 +54,7 @@ inputs.dwl.packages.${pkgs.system}.default
     greetd = {
       enable = true;
       settings = rec {
-        initial_session ={
+        initial_session = {
           command = "${pkgs.niri}/bin/niri-session";
           user = "sioodmy";
         };

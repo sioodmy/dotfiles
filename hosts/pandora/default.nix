@@ -4,11 +4,15 @@
   inputs,
   pkgs,
   ...
-}: {
+}:
+{
   fileSystems."/boot" = {
     device = "/dev/disk/by-uuid/6A3B-1D00";
     fsType = "vfat";
-    options = ["noatime" "discard"];
+    options = [
+      "noatime"
+      "discard"
+    ];
   };
   imports = [
     inputs.apple-silicon-support.nixosModules.apple-silicon-support
@@ -24,7 +28,7 @@
   };
 
   environment = {
-    systemPackages = [ pkgs.asahi-bless];
+    systemPackages = [ pkgs.asahi-bless ];
   };
   hardware.graphics.enable32Bit = lib.mkForce false;
   zramSwap = {
@@ -39,7 +43,7 @@
     kernelParams = [
       "zswap.zpool=zsmalloc"
     ];
-    binfmt.emulatedSystems = ["x86_64-linux"];
+    binfmt.emulatedSystems = [ "x86_64-linux" ];
     loader = {
       systemd-boot.enable = true;
       efi.canTouchEfiVariables = lib.mkForce false;
@@ -68,7 +72,14 @@
     #   }
     # ];
 
-    initrd.availableKernelModules = ["usbhid" "usb_storage" "sd_mod"];
-    initrd.kernelModules = ["usbhid" "dm-snapshot"];
+    initrd.availableKernelModules = [
+      "usbhid"
+      "usb_storage"
+      "sd_mod"
+    ];
+    initrd.kernelModules = [
+      "usbhid"
+      "dm-snapshot"
+    ];
   };
 }

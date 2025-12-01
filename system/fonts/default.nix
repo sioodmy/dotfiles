@@ -1,12 +1,13 @@
-{pkgs, ...}: let
+{ pkgs, ... }:
+let
   inherit (builtins) attrValues;
-in {
+in
+{
   environment.sessionVariables.FREETYPE_PROPERTIES = "cff:no-stem-darkening=0 autofitter:no-stem-darkening=0";
   fonts = {
     packages =
       attrValues {
-        inherit
-          (pkgs)
+        inherit (pkgs)
           material-icons
           material-design-icons
           roboto
@@ -42,9 +43,15 @@ in {
           "Maple Mono NF"
           "Noto Color Emoji"
         ];
-        sansSerif = ["Lexend" "Noto Color Emoji"];
-        serif = ["Noto Serif" "Noto Color Emoji"];
-        emoji = ["Noto Color Emoji"];
+        sansSerif = [
+          "Lexend"
+          "Noto Color Emoji"
+        ];
+        serif = [
+          "Noto Serif"
+          "Noto Color Emoji"
+        ];
+        emoji = [ "Noto Color Emoji" ];
       };
     };
   };

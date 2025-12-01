@@ -3,39 +3,41 @@
   theme,
   lib,
   ...
-}: let
+}:
+let
   inherit (builtins) toString isBool;
   inherit (lib) boolToString escape generators;
 
   toGtk3Ini = generators.toINI {
-    mkKeyValue = key: value: let
-      value' =
-        if isBool value
-        then boolToString value
-        else toString value;
-    in "${escape ["="] key}=${value'}";
+    mkKeyValue =
+      key: value:
+      let
+        value' = if isBool value then boolToString value else toString value;
+      in
+      "${escape [ "=" ] key}=${value'}";
   };
   themepkg = pkgs.nordic;
-in {
-  homix = let
-    gtkINI = {
-      gtk-font-name = "Lexend 11";
-      # gtk-icon-theme-name = "Papirus-Dark";
-      gtk-xft-antialias = 1;
-      gtk-xft-hinting = 1;
-      gtk-xft-hintstyle = "hintslight";
-      gtk-xft-rgba = "rgb";
-      gtk-cursor-theme-name = "Bibata-Modern-Classic";
-    };
-  in {
-    ".config/gtk-3.0/settings.ini".text = toGtk3Ini {
-      Settings =
-        gtkINI
-        // {
+in
+{
+  homix =
+    let
+      gtkINI = {
+        gtk-font-name = "Lexend 11";
+        # gtk-icon-theme-name = "Papirus-Dark";
+        gtk-xft-antialias = 1;
+        gtk-xft-hinting = 1;
+        gtk-xft-hintstyle = "hintslight";
+        gtk-xft-rgba = "rgb";
+        gtk-cursor-theme-name = "Bibata-Modern-Classic";
+      };
+    in
+    {
+      ".config/gtk-3.0/settings.ini".text = toGtk3Ini {
+        Settings = gtkINI // {
           gtk-application-prefer-dark-theme = 1;
         };
+      };
     };
-  };
 
   environment = {
     systemPackages = [
@@ -43,7 +45,7 @@ in {
       pkgs.adw-gtk3
       pkgs.papirus-icon-theme
     ];
-    variables =  {
+    variables = {
       GSK_RENDERER = "gl";
       QT_AUTO_SCREEN_SCALE_FACTOR = "1";
       QT_QPA_PLATFORMTHEME = "gtk3";

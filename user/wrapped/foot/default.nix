@@ -2,111 +2,114 @@
   pkgs,
   theme,
   ...
-}: let
+}:
+let
   inherit (pkgs.lib.meta) getExe getExe';
 
   notify-send = getExe pkgs.libnotify;
   xdg-open = getExe' pkgs.xdg-utils "xdg-open";
 
-  config = pkgs.writeText "foot.ini" (pkgs.lib.generators.toINI {} {
-    main = {
-      term = "foot";
-      app-id = "foot";
-      title = "foot";
-      locked-title = "no";
+  config = pkgs.writeText "foot.ini" (
+    pkgs.lib.generators.toINI { } {
+      main = {
+        term = "foot";
+        app-id = "foot";
+        title = "foot";
+        locked-title = "no";
 
-      font = "monospace:size=11";
-      line-height = 20;
-      letter-spacing = 0;
-      horizontal-letter-offset = 0;
-      vertical-letter-offset = 0;
-      box-drawings-uses-font-glyphs = "no";
-      dpi-aware = "no";
+        font = "monospace:size=11";
+        line-height = 20;
+        letter-spacing = 0;
+        horizontal-letter-offset = 0;
+        vertical-letter-offset = 0;
+        box-drawings-uses-font-glyphs = "no";
+        dpi-aware = "no";
 
-      initial-window-size-chars = "104x36";
-      initial-window-mode = "windowed";
-      pad = "8x8 center";
-      resize-delay-ms = 100;
+        initial-window-size-chars = "104x36";
+        initial-window-mode = "windowed";
+        pad = "8x8 center";
+        resize-delay-ms = 100;
 
-      bold-text-in-bright = "no";
-      word-delimiters = ",│`|:\"'()[]{}<>";
-      selection-target = "primary";
-    };
-    bell = {
-      urgent = "yes";
-      notify = "yes";
-      command = "${notify-send} bell";
-      command-focused = "no";
-    };
-    scrollback = {
-      lines = 100000;
-      multiplier = 10.0;
-      indicator-position = "relative";
-      indicator-format = "line";
-    };
-    url = {
-      launch = "${xdg-open} \${url}";
-      label-letters = "sadfjklewcmpgh";
-      osc8-underline = "always";
-    };
-    cursor = {
-      style = "beam";
-      blink = "no";
-    };
-    mouse = {
-      hide-when-typing = "yes";
-      alternate-scroll-mode = "yes";
-    };
-    csd = {
-      preferred = "none";
-    };
-    key-bindings = {
-      scrollback-up-half-page = "Control+k";
-      scrollback-up-page = "Control+Shift+k";
-      scrollback-down-half-page = "Control+j";
-      scrollback-down-page = "Control+Shift+j";
-    };
-    mouse-bindings = {
-      selection-override-modifiers = "Shift";
-      primary-paste = "BTN_MIDDLE";
-      select-begin = "BTN_LEFT";
-      select-begin-block = "Control+BTN_LEFT";
-      select-extend = "BTN_RIGHT";
-      select-extend-character-wise = "Control+BTN_RIGHT";
-      select-word = "BTN_LEFT-2";
-      select-word-whitespace = "Control+BTN_LEFT-2";
-    };
-    desktop-notifications = {
-      command = "${notify-send} -a \${app-id} -i \${app-id} \${title} \${body}";
-    };
-    colors = {
-      alpha = theme.opacity;
-      background = "232136";
-      foreground = "e0def4";
-      bright0 = "5c5776";
-      bright1 = "ff98ba";
-      bright2 = "c5f9ff";
-      bright3 = "ffeb9e";
-      bright4 = "6ab7d9";
-      bright5 = "eed0ff";
-      bright6 = "ffc3bf";
-      bright7 = "fefcff";
-      regular0 = "393552";
-      regular1 = "eb6f92";
-      regular2 = "9ccfd8";
-      regular3 = "f6c177";
-      regular4 = "3e8fb0";
-      regular5 = "c4a7e7";
-      regular6 = "ea9a97";
-      regular7 = "e0def4";
-    };
-  });
+        bold-text-in-bright = "no";
+        word-delimiters = ",│`|:\"'()[]{}<>";
+        selection-target = "primary";
+      };
+      bell = {
+        urgent = "yes";
+        notify = "yes";
+        command = "${notify-send} bell";
+        command-focused = "no";
+      };
+      scrollback = {
+        lines = 100000;
+        multiplier = 10.0;
+        indicator-position = "relative";
+        indicator-format = "line";
+      };
+      url = {
+        launch = "${xdg-open} \${url}";
+        label-letters = "sadfjklewcmpgh";
+        osc8-underline = "always";
+      };
+      cursor = {
+        style = "beam";
+        blink = "no";
+      };
+      mouse = {
+        hide-when-typing = "yes";
+        alternate-scroll-mode = "yes";
+      };
+      csd = {
+        preferred = "none";
+      };
+      key-bindings = {
+        scrollback-up-half-page = "Control+k";
+        scrollback-up-page = "Control+Shift+k";
+        scrollback-down-half-page = "Control+j";
+        scrollback-down-page = "Control+Shift+j";
+      };
+      mouse-bindings = {
+        selection-override-modifiers = "Shift";
+        primary-paste = "BTN_MIDDLE";
+        select-begin = "BTN_LEFT";
+        select-begin-block = "Control+BTN_LEFT";
+        select-extend = "BTN_RIGHT";
+        select-extend-character-wise = "Control+BTN_RIGHT";
+        select-word = "BTN_LEFT-2";
+        select-word-whitespace = "Control+BTN_LEFT-2";
+      };
+      desktop-notifications = {
+        command = "${notify-send} -a \${app-id} -i \${app-id} \${title} \${body}";
+      };
+      colors = {
+        alpha = theme.opacity;
+        background = "232136";
+        foreground = "e0def4";
+        bright0 = "5c5776";
+        bright1 = "ff98ba";
+        bright2 = "c5f9ff";
+        bright3 = "ffeb9e";
+        bright4 = "6ab7d9";
+        bright5 = "eed0ff";
+        bright6 = "ffc3bf";
+        bright7 = "fefcff";
+        regular0 = "393552";
+        regular1 = "eb6f92";
+        regular2 = "9ccfd8";
+        regular3 = "f6c177";
+        regular4 = "3e8fb0";
+        regular5 = "c4a7e7";
+        regular6 = "ea9a97";
+        regular7 = "e0def4";
+      };
+    }
+  );
 in
-  pkgs.symlinkJoin {
-    name = "foot-wrapped";
-    paths = [pkgs.foot];
-    buildInputs = [pkgs.makeWrapper];
-    postBuild = ''
-      wrapProgram $out/bin/foot --add-flags "--config=${config}"
-    '';
-  }
+pkgs.symlinkJoin {
+  name = "foot-wrapped";
+  paths = [ pkgs.foot ];
+  buildInputs = [ pkgs.makeWrapper ];
+  postBuild = ''
+    wrapProgram $out/bin/foot --add-flags "--config=${config}"
+  '';
+}

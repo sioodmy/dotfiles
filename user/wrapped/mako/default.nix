@@ -5,8 +5,8 @@
 }:
 pkgs.symlinkJoin {
   name = "mako-wrapped";
-  paths = [pkgs.mako];
-  buildInputs = [pkgs.makeWrapper];
+  paths = [ pkgs.mako ];
+  buildInputs = [ pkgs.makeWrapper ];
   postBuild = ''
     wrapProgram $out/bin/mako --add-flags "\
     --font 'Lexend 11' \

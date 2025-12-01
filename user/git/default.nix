@@ -1,4 +1,5 @@
-{...}: {
+{ ... }:
+{
   programs.git = {
     enable = true;
     lfs.enable = true;
@@ -8,7 +9,9 @@
         name = "sioodmy";
         signingKey = "056CFD15A9F99B0E";
       };
-      init = {defaultBranch = "main";};
+      init = {
+        defaultBranch = "main";
+      };
       branch.autosetupmerge = "true";
       push.default = "current";
       merge.stat = "true";

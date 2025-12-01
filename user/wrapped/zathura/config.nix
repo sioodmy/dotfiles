@@ -1,6 +1,7 @@
 {
   lib,
-}: let
+}:
+let
   inherit (lib) isBool concatStringsSep mapAttrsToList;
 
   options = {
@@ -52,16 +53,11 @@
     recolor-darkcolor = "#ECEFF4";
   };
 
-  formatLine = n: v: let
-    formatValue = v:
-      if isBool v
-      then
-        (
-          if v
-          then "true"
-          else "false"
-        )
-      else toString v;
-  in ''set ${n}	"${formatValue v}"'';
+  formatLine =
+    n: v:
+    let
+      formatValue = v: if isBool v then (if v then "true" else "false") else toString v;
+    in
+    ''set ${n}	"${formatValue v}"'';
 in
-  concatStringsSep "\n" (mapAttrsToList formatLine options) + "\n"
+concatStringsSep "\n" (mapAttrsToList formatLine options) + "\n"

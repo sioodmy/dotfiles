@@ -1,6 +1,8 @@
-{pkgs, ...}: let
+{ pkgs, ... }:
+let
   inherit (pkgs.lib) getExe;
-in rec {
+in
+rec {
   l = "${getExe pkgs.eza} --icons";
   e = "${getExe pkgs.eza} --icons -lha --git";
 

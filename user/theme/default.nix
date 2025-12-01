@@ -45,10 +45,12 @@ pkgs: {
   base0F = "56526e";
 
   accent = "c4a7e7";
-  wallpaper = let
-    path = "rosepine/clouds.jpg";
-    wallpapers = (pkgs.callPackages ./_sources/generated.nix {}).wallpapers;
-  in "${wallpapers.src}/${path}";
+  wallpaper =
+    let
+      path = "rosepine/clouds.jpg";
+      wallpapers = (pkgs.callPackages ./_sources/generated.nix { }).wallpapers;
+    in
+    "${wallpapers.src}/${path}";
 
   bat = "Nord";
   cursor = {
