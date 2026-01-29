@@ -31,9 +31,6 @@
 
       QT_QPA_PLATFORM = "wayland";
     };
-    systemPackages = [
-      inputs.dwl.packages.${pkgs.system}.default
-    ];
   };
 
   systemd.services = {

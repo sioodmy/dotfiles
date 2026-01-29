@@ -6,29 +6,21 @@
 let
   config = pkgs.writeText "tofi-config" (
     pkgs.lib.generators.toKeyValue { } {
-      anchor = "center";
-      width = 500;
-      height = 300;
-      horizontal = false;
-      # ?????? uhm what
-      font-size = 35;
       prompt-text = "> ";
       font = "monospace";
       ascii-input = false;
-      outline-width = 5;
-      outline-color = "#${theme.base02}";
-      border-width = 2;
-      border-color = "#${theme.base05}";
-      background-color = "#${theme.base00}";
-      text-color = "#${theme.base05}";
-      selection-color = "#${theme.base0B}";
-      min-input-width = 120;
-      late-keyboard-init = true;
-      result-spacing = 10;
-      padding-top = 15;
-      padding-bottom = 15;
-      padding-left = 15;
-      padding-right = 15;
+      width = "100%";
+      height = "100%";
+      border-width = 0;
+      outline-width = 0;
+      padding-left = "35%";
+      padding-top = "35%";
+      result-spacing = 25;
+      num-results = 5;
+      background-color = "#000A";
+      default-result-color = "#e0def4";
+      prompt-color = "#e0def4";
+      selection-color = "#c4a7e7";
     }
   );
 in

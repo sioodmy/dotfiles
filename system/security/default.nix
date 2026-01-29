@@ -1,7 +1,5 @@
 { pkgs, ... }:
 {
-  environment.systemPackages = [ (pkgs.writeShellScriptBin "sudo" "run0 --background= $@") ];
-
   services = {
     networkd-dispatcher.enable = true;
     pcscd.enable = true;

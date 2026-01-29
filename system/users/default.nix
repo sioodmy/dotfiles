@@ -38,7 +38,7 @@
 
   security = {
     sudo = {
-      enable = false;
+      enable = true;
       extraRules = [
         {
           commands =

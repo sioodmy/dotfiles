@@ -19,7 +19,10 @@ in
     attrValues {
       inherit (pkgs)
         clang-tools
+        rust-analyzer
+        firefox-devedition
         bear
+        pastel
         nixfmt-rfc-style
         nixfmt-tree
         yazi
@@ -28,6 +31,9 @@ in
         ollama
         pandoc
         texliveMedium
+        vscode-langservers-extracted
+        tectonic-unwrapped
+        typst
         texlab
         powershell
         niri
@@ -67,7 +73,6 @@ in
         fzf
         eza
         gping
-        dogdns
         onefetch
         cpufetch
         microfetch
@@ -86,6 +91,6 @@ in
         unzip
         ;
     }
-    ++ scripts
-    ++ [ inputs.helium-browser.packages."${pkgs.system}".helium ];
+    ++ scripts;
+    # ++ [ inputs.helium-browser.packages."${pkgs.system}".helium ];
 }

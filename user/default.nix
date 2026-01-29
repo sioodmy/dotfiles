@@ -1,7 +1,7 @@
 rec {
   theme = import ./theme;
   packages =
-    pkgs:
+  pkgs:
     let
       inherit (pkgs) callPackage;
       theme = import ./theme pkgs;

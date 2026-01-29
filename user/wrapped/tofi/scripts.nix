@@ -29,20 +29,6 @@ let
 in
 [
   (mkTofi {
-    name = "calc";
-    script = ''
-      #!/bin/sh
-      set -e
-
-      INPUT=$(echo | tofi --require-match false --prompt-text "calc: " --height 80)
-      OUTPUT="$(echo "scale=2; $INPUT" | ${getExe' pkgs.bc "bc"} -s)"
-
-      notify-send "$OUTPUT" "$INPUT"
-    '';
-    makeDesktop = true;
-  })
-
-  (mkTofi {
     name = "confirm";
     script = ''
       #!/bin/sh

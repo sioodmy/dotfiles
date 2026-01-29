@@ -96,13 +96,19 @@ let
 
   toml = pkgs.formats.toml { };
 
-  config = toml.generate "config.toml" settings;
+  config = pkgs.writeTextDir "/helix/config.toml" (builtins.readFile (toml.generate "/config.toml" settings));
+  languages = pkgs.writeTextDir "/helix/langauges.toml" (builtins.readFile (import ./languages.nix {inherit pkgs;}));
+
+  xdgconfig = pkgs.buildEnv{
+    name = "helix-config-xdg";
+    paths = [ config languages];
+  };
 in
 pkgs.symlinkJoin {
   name = "helix-wrapped";
   paths = [ pkgs.helix ];
   buildInputs = [ pkgs.makeWrapper ];
   postBuild = ''
-    wrapProgram $out/bin/hx --add-flags "--config ${config}"
+    wrapProgram $out/bin/hx --set XDG_CONFIG_HOME "${xdgconfig}"
   '';
 }

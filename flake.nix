@@ -60,9 +60,8 @@
   inputs = {
     nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
 
-    apple-silicon-support.url = "github:nix-community/nixos-apple-silicon";
-    dwl = {
-      url = "path:///home/sioodmy/dev/dwl";
+    apple-silicon-support = {
+      url = "github:nix-community/nixos-apple-silicon";
       inputs.nixpkgs.follows = "nixpkgs";
     };
     helium-browser = {
