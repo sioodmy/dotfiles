@@ -1,4 +1,5 @@
 {
+  inputs,
   pkgs,
   theme,
   ...
@@ -106,6 +107,7 @@ let
 in
 pkgs.symlinkJoin {
   name = "helix-wrapped";
+  # paths = [ inputs.helix.packages.${pkgs.system}.default ];
   paths = [ pkgs.helix ];
   buildInputs = [ pkgs.makeWrapper ];
   postBuild = ''

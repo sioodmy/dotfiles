@@ -6,7 +6,7 @@
   # and provide the recipe for bigos.
 
   outputs =
-    inputs@{ nixpkgs, ... }:
+    inputs@{ self, nixpkgs, helix, ... }:
     let
       user = import ./user;
 
@@ -23,7 +23,7 @@
         let
           pkgs = nixpkgs.legacyPackages.${system};
         in
-        (user.packages pkgs)
+        (user.packages {inherit pkgs inputs;})
       );
 
       formatter = forAllSystems (
@@ -31,7 +31,7 @@
         let
           pkgs = nixpkgs.legacyPackages.${system};
         in
-        pkgs.nixfmt-rfc-style
+        pkgs.nixfmt
       );
 
       devShells = forAllSystems (
@@ -62,6 +62,10 @@
 
     apple-silicon-support = {
       url = "github:nix-community/nixos-apple-silicon";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+    helix = {
+      url = "github:helix-editor/helix";
       inputs.nixpkgs.follows = "nixpkgs";
     };
     helium-browser = {

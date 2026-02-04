@@ -1,7 +1,7 @@
 rec {
   theme = import ./theme;
   packages =
-  pkgs:
+  {pkgs, inputs}: 
     let
       inherit (pkgs) callPackage;
       theme = import ./theme pkgs;
@@ -10,7 +10,7 @@ rec {
       zsh = callPackage ./wrapped/zsh { };
       tmux = callPackage ./wrapped/tmux { inherit theme; };
       foot = callPackage ./wrapped/foot { inherit theme; };
-      helix = callPackage ./wrapped/helix { inherit theme; };
+      helix = callPackage ./wrapped/helix { inherit theme inputs; };
       tofi = callPackage ./wrapped/tofi { inherit theme; };
       mako = callPackage ./wrapped/mako { inherit theme; };
       dunst = callPackage ./wrapped/dunst { inherit theme; };
@@ -33,10 +33,10 @@ rec {
       };
     };
   module =
-    { pkgs, ... }:
+    { pkgs, inputs, ... }:
     {
       config = {
-        environment.systemPackages = builtins.attrValues (packages pkgs);
+        environment.systemPackages = builtins.attrValues (packages { inherit pkgs inputs;});
         programs.direnv = {
           enable = false;
           enableFishIntegration = false;

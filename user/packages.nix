@@ -18,12 +18,14 @@ in
   environment.systemPackages =
     attrValues {
       inherit (pkgs)
+        waybar
+        anki
         clang-tools
         rust-analyzer
         firefox-devedition
         bear
         pastel
-        nixfmt-rfc-style
+        nixfmt
         nixfmt-tree
         yazi
         alejandra
