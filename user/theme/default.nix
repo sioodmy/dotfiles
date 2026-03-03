@@ -64,7 +64,7 @@ pkgs: {
 
   nvim = {
     enable = true;
-    # uses generated base16 them if set to false
+    # uses generated base16 theme if set to false
 
     package = pkgs.vimPlugins.rose-pine;
     name = "rose-pine-moon";
