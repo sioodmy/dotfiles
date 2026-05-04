@@ -38,7 +38,7 @@
       use-xdg-base-directories = true;
 
       sandbox = true;
-      max-jobs = "auto";
+      max-jobs = 2;
       # continue building derivations if one fails
       keep-going = true;
       log-lines = 20;
@@ -70,6 +70,8 @@
 #   curl
 #   glib
 # ];
+
+  environment.etc."current-flake".source = self;
   programs.nh = {
     enable = true;
     flake = "/home/sioodmy/dev/dotfiles";

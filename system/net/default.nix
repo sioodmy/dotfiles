@@ -31,6 +31,11 @@ in
     };
   };
 
+  # pwr moment
+  security.pki.certificateFiles = [
+    ./pwr-eduroam-cert.pem
+  ];
+
   # encrypted dns
   services.dnscrypt-proxy = {
     enable = true;

@@ -13,6 +13,8 @@ in
           roboto
           roboto-mono
           roboto-slab
+          vista-fonts
+          corefonts
           roboto-serif
           work-sans
           comic-neue

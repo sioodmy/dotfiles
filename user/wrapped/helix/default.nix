@@ -7,7 +7,7 @@
 let
 
   settings = {
-    theme = "rose_pine_moon";
+    theme = "everforest_dark";
     keys.normal = {
       "{" = "goto_prev_paragraph";
       "}" = "goto_next_paragraph";

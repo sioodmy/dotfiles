@@ -4,18 +4,9 @@ let
 languages = {
     language =
       let
-        deno = lang: {
-          command = lib.getExe pkgs.deno;
-          args = [
-            "fmt"
-            "-"
-            "--ext"
-            lang
-          ];
-        };
 
         prettier = lang: {
-          command = lib.getExe pkgs.nodePackages.prettier;
+          command = lib.getExe pkgs.prettier;
           args = [
             "--parser"
             lang
@@ -62,7 +53,6 @@ languages = {
           name = "css";
           formatter = prettier "css";
           language-servers = [
-            "vscode-css-language-server"
             "tailwindcss-ls"
           ];
         }
@@ -74,14 +64,9 @@ languages = {
           ];
         }
         {
-          name = "json";
-          formatter = deno "json";
-        }
-        {
           name = "html";
           formatter = prettier "html";
           language-servers = [
-            "vscode-html-language-server"
             "tailwindcss-ls"
           ];
         }
@@ -118,7 +103,6 @@ languages = {
           name = "scss";
           formatter = prettier "scss";
           language-servers = [
-            "vscode-css-language-server"
             "tailwindcss-ls"
           ];
         }
@@ -150,6 +134,13 @@ languages = {
     language-server = {
       basedpyright.command = "${pkgs.basedpyright}/bin/basedpyright-langserver";
 
+      vscode-css-language-server= {
+        command = "${pkgs.vscode-langservers-extracted}/bin/vscode-css-language-server";
+      };
+      vscode-html-language-server= {
+        command = "${pkgs.vscode-langservers-extracted}/bin/vscode-html-language-server";
+      };
+
       bash-language-server = {
         command = lib.getExe pkgs.bash-language-server;
         args = [ "start" ];
@@ -162,31 +153,6 @@ languages = {
 
       cmake-language-server = {
         command = lib.getExe pkgs.cmake-language-server;
-      };
-
-      deno-lsp = {
-        command = lib.getExe pkgs.deno;
-        args = [ "lsp" ];
-        environment.NO_COLOR = "1";
-        config.deno = {
-          enable = true;
-          lint = true;
-          unstable = true;
-          suggest = {
-            completeFunctionCalls = false;
-            imports = {
-              hosts."https://deno.land" = true;
-            };
-          };
-          inlayHints = {
-            enumMemberValues.enabled = true;
-            functionLikeReturnTypes.enabled = true;
-            parameterNames.enabled = "all";
-            parameterTypes.enabled = true;
-            propertyDeclarationTypes.enabled = true;
-            variableTypes.enabled = true;
-          };
-        };
       };
 
       dprint = {
@@ -227,41 +193,12 @@ languages = {
         };
       };
 
-      typescript-language-server = {
-        command = lib.getExe pkgs.nodePackages.typescript-language-server;
-        args = [ "--stdio" ];
-        config = {
-          typescript-language-server.source = {
-            addMissingImports.ts = true;
-            fixAll.ts = true;
-            organizeImports.ts = true;
-            removeUnusedImports.ts = true;
-            sortImports.ts = true;
-          };
-          plugins = [
-            {
-              name = "@vue/typescript-plugin";
-              location = "${pkgs.vue-language-server}/lib/node_modules/@vue/language-server";
-              languages = [ "vue" ];
-            }
-          ];
-        };
-      };
 
       uwu-colors = {
         command = "${pkgs.uwu-colors}/bin/uwu_colors";
         # command = "uwu_colors"; # useful for testing
       };
 
-      vscode-css-language-server = {
-        command = "${pkgs.nodePackages.vscode-langservers-extracted}/bin/vscode-css-language-server";
-        args = [ "--stdio" ];
-        config = {
-          provideFormatter = true;
-          css.validate.enable = true;
-          scss.validate.enable = true;
-        };
-      };
     };
   };
 

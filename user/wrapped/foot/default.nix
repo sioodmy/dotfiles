@@ -81,26 +81,26 @@ let
       desktop-notifications = {
         command = "${notify-send} -a \${app-id} -i \${app-id} \${title} \${body}";
       };
-      colors = {
+      colors-dark = {
         alpha = theme.opacity;
-        background = "232136";
-        foreground = "e0def4";
-        bright0 = "5c5776";
-        bright1 = "ff98ba";
-        bright2 = "c5f9ff";
-        bright3 = "ffeb9e";
-        bright4 = "6ab7d9";
-        bright5 = "eed0ff";
-        bright6 = "ffc3bf";
-        bright7 = "fefcff";
-        regular0 = "393552";
-        regular1 = "eb6f92";
-        regular2 = "9ccfd8";
-        regular3 = "f6c177";
-        regular4 = "3e8fb0";
-        regular5 = "c4a7e7";
-        regular6 = "ea9a97";
-        regular7 = "e0def4";
+        background = "323d43";
+        foreground = "d3c6aa";
+        bright0 = "4b565c";
+        bright1 = "e67e80";
+        bright2 = "a7c080";
+        bright3 = "dbbc7f";
+        bright4 = "7fbbb3";
+        bright5 = "d699b6";
+        bright6 = "83c092";
+        bright7 = "d3c6aa";
+        regular0 = "4b565c";
+        regular1 = "e67e80";
+        regular2 = "a7c080";
+        regular3 = "dbbc7f";
+        regular4 = "7fbbb3";
+        regular5 = "d699b6";
+        regular6 = "83c092";
+        regular7 = "d3c6aa";
       };
     }
   );

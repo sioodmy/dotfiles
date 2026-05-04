@@ -38,7 +38,7 @@ rec {
       config = {
         environment.systemPackages = builtins.attrValues (packages { inherit pkgs inputs;});
         programs.direnv = {
-          enable = false;
+          enable = true;
           enableFishIntegration = false;
         };
       };

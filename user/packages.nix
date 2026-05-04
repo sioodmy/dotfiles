@@ -19,8 +19,14 @@ in
     attrValues {
       inherit (pkgs)
         waybar
-        anki
+        ags
         clang-tools
+        prismlauncher
+        ironbar
+        glfw3-minecraft
+        jdk17
+        jre21_minimal
+        brave
         rust-analyzer
         firefox-devedition
         bear
@@ -48,14 +54,11 @@ in
         slurp
         wl-clipboard
         quickshell
-        mpv
         flare-signal
         vencord
         rnote
         caprine
-        ytmdl
         swaybg
-        yt-dlp
         transmission_4-gtk
         nicotine-plus
         imv
@@ -92,7 +95,6 @@ in
         qrencode
         unzip
         ;
-    }
+    } ++ [pkgs.jetbrains.idea] ++ [inputs.helium-browser.packages.${pkgs.system}.default] 
     ++ scripts;
-    # ++ [ inputs.helium-browser.packages."${pkgs.system}".helium ];
 }
