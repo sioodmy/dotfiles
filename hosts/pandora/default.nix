@@ -16,6 +16,7 @@
   };
   imports = [
     inputs.apple-silicon-support.nixosModules.apple-silicon-support
+    # ./kernel.nix
 
     (modulesPath + "/installer/scan/not-detected.nix")
   ];
@@ -27,19 +28,19 @@
     setupAsahiSound = true;
   };
 
-  # systemd.packages = [ pkgs.speakersafetyd ];
-  # services.udev.packages = [ pkgs.speakersafetyd ];
+  systemd.packages = [ pkgs.speakersafetyd ];
+  services.udev.packages = [ pkgs.speakersafetyd ];
 
   services.upower.enable = true;
 
   environment = {
     systemPackages = lib.attrValues {
       inherit (pkgs)
-       asahi-audio
-      asahi-bless
-      asahi-fwextract
-      ;
-      
+        asahi-audio
+        asahi-bless
+        asahi-fwextract
+        ;
+
     };
   };
   hardware.graphics.enable32Bit = lib.mkForce false;

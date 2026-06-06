@@ -1,7 +1,7 @@
-{pkgs, ...}:
+{ pkgs, ... }:
 let
   lib = pkgs.lib;
-languages = {
+  languages = {
     language =
       let
 
@@ -134,10 +134,10 @@ languages = {
     language-server = {
       basedpyright.command = "${pkgs.basedpyright}/bin/basedpyright-langserver";
 
-      vscode-css-language-server= {
+      vscode-css-language-server = {
         command = "${pkgs.vscode-langservers-extracted}/bin/vscode-css-language-server";
       };
-      vscode-html-language-server= {
+      vscode-html-language-server = {
         command = "${pkgs.vscode-langservers-extracted}/bin/vscode-html-language-server";
       };
 
@@ -192,7 +192,6 @@ languages = {
           formatterPrintWidth = 80;
         };
       };
-
 
       uwu-colors = {
         command = "${pkgs.uwu-colors}/bin/uwu_colors";

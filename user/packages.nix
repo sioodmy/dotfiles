@@ -43,11 +43,11 @@ in
         tectonic-unwrapped
         typst
         texlab
+        antigravity
         powershell
         niri
         audacity
         geteduroam-cli
-        libreoffice-qt6-fresh
         ttyper
         pavucontrol
         grim
@@ -95,6 +95,14 @@ in
         qrencode
         unzip
         ;
-    } ++ [pkgs.jetbrains.idea] ++ [inputs.helium-browser.packages.${pkgs.system}.default] 
+      inherit (inputs.glide-browser.packages.${pkgs.stdenv.system})
+        glide-browser-bin
+        ;
+      inherit (inputs.vim.packages.${pkgs.stdenv.system})
+        default
+        ;
+    }
+    ++ [ pkgs.jetbrains.idea ]
+    ++ [ inputs.helium-browser.packages.${pkgs.system}.default ]
     ++ scripts;
 }

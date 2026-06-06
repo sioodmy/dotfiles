@@ -17,7 +17,7 @@ let
         title = "foot";
         locked-title = "no";
 
-        font = "monospace:size=11";
+        font = "monospace:size=10.5";
         line-height = 20;
         letter-spacing = 0;
         horizontal-letter-offset = 0;

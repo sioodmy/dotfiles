@@ -97,12 +97,19 @@ let
 
   toml = pkgs.formats.toml { };
 
-  config = pkgs.writeTextDir "/helix/config.toml" (builtins.readFile (toml.generate "/config.toml" settings));
-  languages = pkgs.writeTextDir "/helix/langauges.toml" (builtins.readFile (import ./languages.nix {inherit pkgs;}));
+  config = pkgs.writeTextDir "/helix/config.toml" (
+    builtins.readFile (toml.generate "/config.toml" settings)
+  );
+  languages = pkgs.writeTextDir "/helix/langauges.toml" (
+    builtins.readFile (import ./languages.nix { inherit pkgs; })
+  );
 
-  xdgconfig = pkgs.buildEnv{
+  xdgconfig = pkgs.buildEnv {
     name = "helix-config-xdg";
-    paths = [ config languages];
+    paths = [
+      config
+      languages
+    ];
   };
 in
 pkgs.symlinkJoin {

@@ -12,57 +12,88 @@ let
       let
         value' =
           if lib.isBool value then
-            (lib.hm.booleans.yesNo value)
+            if value then "yes" else "no"
           else if lib.isString value then
-            ''"${value}"''
+            lib.strings.escapeNixString value
           else
             toString value;
       in
       "${key}=${value'}";
   };
 
+  # credits: poz
   config = pkgs.writeText "dunst-config" (toDunstIni {
     global = {
-      width = 400;
-      offset = "5x5";
-
-      progress_bar_min_width = 380;
-      progress_bar_max_width = 380;
-      progress_bar_corner_radius = 2;
-
+      monitor = 1;
+      follow = "none";
+      width = 300;
+      height = 300;
+      origin = "top-center";
+      offset = "0x15";
+      scale = 0;
+      notification_limit = 3;
+      idle_threshold = 120;
+      progress_bar = true;
+      progress_bar_height = 10;
+      progress_bar_frame_width = 0;
+      progress_bar_min_width = 150;
+      progress_bar_max_width = 300;
+      indicate_hidden = "yes";
+      transparency = 10;
+      separator_height = 2;
       padding = 10;
-      horizontal_padding = 10;
-      frame_width = 2;
-      gap_size = 3;
-      font = "Roboto Condensed 14";
-
-      icon_theme = "rose-pine-icons";
-      enable_recursive_icon_lookup = "yes";
-      corner_radius = 2;
-
-      background = "#393552";
-      foreground = "#e0def4";
+      frame_width = 3;
+      frame_color = "#A7C080";
+      separator_color = "frame";
+      highlight = "#D3C6AA";
+      sort = "yes";
+      font = "monospace 16";
+      line_height = 0;
+      markup = "full";
+      format = "<b>%s</b>\n%b";
+      alignment = "right";
+      vertical_alignment = "center";
+      show_age_threshold = 60;
+      ellipsize = "middle";
+      ignore_newline = "no";
+      stack_duplicates = true;
+      hide_duplicate_count = false;
+      show_indicators = "yes";
+      icon_position = "left";
+      min_icon_size = 0;
+      max_icon_size = 32;
+      sticky_history = "yes";
+      history_length = 20;
+      browser = lib.getExe' pkgs.xdg-utils "xdg-open";
+      always_run_script = true;
+      title = "Dunst";
+      class = "dunst";
+      corner_radius = 10;
+      ignore_dbusclose = false;
+      force_xwayland = false;
+      force_xinerama = false;
+      mouse_left_click = "do_action, close_current";
+      mouse_middle_click = "context";
+      mouse_right_click = "close_all";
+    };
+    experimental = {
+      per_monitor_dpi = false;
     };
     urgency_low = {
-      background = "#393955";
-      highlight = "#3e8fb0";
-      frame_color = "#3e8fb0";
-      default_icon = "dialog-information";
-      format = ''<b><span foreground='#3e8fb0'>%s</span></b>\n%b'';
+      background = "#4D5960";
+      foreground = "#D3C6AA";
+      timeout = 5;
     };
     urgency_normal = {
-      background = "#443c53";
-      highlight = "#f6c177";
-      frame_color = "#f6c177";
-      default_icon = "dialog-warning";
-      format = ''<b><span foreground='#f6c177'>%s</span></b>\n%b'';
+      background = "#4D5960";
+      foreground = "#D3C6AA";
+      timeout = 6;
     };
     urgency_critical = {
-      background = "#433754";
-      highlight = "#eb6f92";
-      frame_color = "#eb6f92";
-      default_icon = "dialog-error";
-      format = ''<b><span foreground='#eb6f92'>%s</span></b>\n%b'';
+      background = "#4D5960";
+      foreground = "#D3C6AA";
+      frame_color = "#E67E80";
+      timeout = 0;
     };
   });
 in

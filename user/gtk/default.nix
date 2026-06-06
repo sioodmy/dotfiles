@@ -7,7 +7,6 @@
 let
   inherit (builtins) toString isBool;
   inherit (lib) boolToString escape generators;
-  everforest-gtk-theme = pkgs.callPackage ./package.nix { };
 
   toGtk3Ini = generators.toINI {
     mkKeyValue =
@@ -31,16 +30,20 @@ in
         gtk-xft-rgba = "rgb";
         gtk-cursor-theme-name = "Bibata-Modern-Classic";
       };
-       cssPath = gtkVersion: let
-            version = toString gtkVersion;
-            css34 = "/share/themes/Everforest-Dark/gtk-${version}.0/gtk-dark.css";
-        in {
-            "2" = "/share/themes/Everforest-Dark/gtk-2.0/gtkrc";
-            "3" = css34;
-            "4" = css34;
-        }.${version};
+      cssPath =
+        gtkVersion:
+        let
+          version = toString gtkVersion;
+          css34 = "/share/themes/Everforest-Dark/gtk-${version}.0/gtk-dark.css";
+        in
+        {
+          "2" = "/share/themes/Everforest-Dark/gtk-2.0/gtkrc";
+          "3" = css34;
+          "4" = css34;
+        }
+        .${version};
       css = gtkVersion: ''
-      @import url("file://${everforest-gtk-theme}${cssPath gtkVersion}");
+        @import url("file://${pkgs.everforest-gtk-theme}${cssPath gtkVersion}");
       '';
     in
     {
@@ -50,7 +53,8 @@ in
         };
       };
       ".config/gtk-4.0/settings.ini".text = toGtk3Ini {
-        Settings = gtkINI;       };
+        Settings = gtkINI;
+      };
       ".config/gtk-3.0/gtk.css".text = css 3;
       ".config/gtk-4.0/gtk.css".text = css 4;
     };
@@ -58,7 +62,7 @@ in
   environment = {
     systemPackages = [
       pkgs.bibata-cursors
-      everforest-gtk-theme
+      pkgs.everforest-gtk-theme
       pkgs.papirus-icon-theme
 
     ];

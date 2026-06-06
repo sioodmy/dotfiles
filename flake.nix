@@ -6,7 +6,11 @@
   # and provide the recipe for bigos.
 
   outputs =
-    inputs@{ self, nixpkgs, helix, ... }:
+    inputs@{
+      self,
+      nixpkgs,
+      ...
+    }:
     let
       user = import ./user;
 
@@ -23,7 +27,7 @@
         let
           pkgs = nixpkgs.legacyPackages.${system};
         in
-        (user.packages {inherit pkgs inputs;})
+        (user.packages { inherit pkgs inputs; })
       );
 
       formatter = forAllSystems (
@@ -31,7 +35,7 @@
         let
           pkgs = nixpkgs.legacyPackages.${system};
         in
-        pkgs.nixfmt
+        pkgs.nixfmt-tree
       );
 
       devShells = forAllSystems (
@@ -64,12 +68,17 @@
       url = "github:nix-community/nixos-apple-silicon";
       inputs.nixpkgs.follows = "nixpkgs";
     };
-    helix = {
-      url = "github:helix-editor/helix";
+    vim = {
+      url = "path:/home/sioodmy/dev/vim/";
+      # url = "github:sioodmy/vim";
       inputs.nixpkgs.follows = "nixpkgs";
     };
     helium-browser = {
       url = "github:ominit/helium-browser-flake";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+    glide-browser = {
+      url = "github:glide-browser/glide.nix";
       inputs.nixpkgs.follows = "nixpkgs";
     };
 

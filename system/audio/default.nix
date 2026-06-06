@@ -30,6 +30,7 @@
     jack.enable = true;
   };
 
+  programs.noisetorch.enable = true;
   hardware = {
     pulseaudio.support32Bit = true;
 

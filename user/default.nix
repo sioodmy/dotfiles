@@ -1,7 +1,7 @@
 rec {
   theme = import ./theme;
   packages =
-  {pkgs, inputs}: 
+    { pkgs, inputs }:
     let
       inherit (pkgs) callPackage;
       theme = import ./theme pkgs;
@@ -36,7 +36,9 @@ rec {
     { pkgs, inputs, ... }:
     {
       config = {
-        environment.systemPackages = builtins.attrValues (packages { inherit pkgs inputs;});
+        environment.systemPackages = builtins.attrValues (packages {
+          inherit pkgs inputs;
+        });
         programs.direnv = {
           enable = true;
           enableFishIntegration = false;

@@ -1,5 +1,6 @@
 {
   pkgs,
+  inputs,
   ...
 }:
 {
@@ -29,7 +30,10 @@
       builders-use-substitutes = true;
       # allow sudo users to mark the following values as trusted
       allowed-users = [ "@wheel" ];
-      trusted-users = [ "root" "sioodmy" ];
+      trusted-users = [
+        "root"
+        "sioodmy"
+      ];
       commit-lockfile-summary = "chore: Update flake.lock";
       accept-flake-config = true;
       keep-derivations = true;
@@ -46,8 +50,6 @@
         "flakes"
         "nix-command"
         "pipe-operator"
-        # "no-url-literals"
-        # "ca-derivations"
       ];
 
       # use binary cache, its not gentoo
@@ -64,14 +66,13 @@
   };
 
   programs.nix-ld.enable = false;
-#   programs.nix-ld.libraries = with pkgs; [
-#   stdenv.cc.cc
-#   openssl
-#   curl
-#   glib
-# ];
+  #   programs.nix-ld.libraries = with pkgs; [
+  #   stdenv.cc.cc
+  #   openssl
+  #   curl
+  #   glib
+  # ];
 
-  environment.etc."current-flake".source = self;
   programs.nh = {
     enable = true;
     flake = "/home/sioodmy/dev/dotfiles";
