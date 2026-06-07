@@ -16,12 +16,18 @@ let
       in
       "${escape [ "=" ] key}=${value'}";
   };
+
+  themepkg = pkgs.catppuccin-gtk.override {
+        size = "compact";
+        accents = ["mauve"];
+        variant = "macchiato";
+      };
 in
 {
   homix =
     let
       gtkINI = {
-        gtk-theme-name = "Everforest-Dark";
+        gtk-theme-name = "Catppuccin-Macchiato-Compact-Mauve-dark";
         gtk-font-name = "Lexend 11";
         gtk-icon-theme-name = "Papirus-Dark";
         gtk-xft-antialias = 1;
@@ -34,16 +40,16 @@ in
         gtkVersion:
         let
           version = toString gtkVersion;
-          css34 = "/share/themes/Everforest-Dark/gtk-${version}.0/gtk-dark.css";
+          css34 = "/share/themes/catppuccin-macchiato-mauve-compact/gtk-${version}.0/gtk-dark.css";
         in
         {
-          "2" = "/share/themes/Everforest-Dark/gtk-2.0/gtkrc";
+          # "2" = "/share/themes/catppuccin-macchiato-mauve-compact/gtk-2.0/gtkrc";o-mauve-compact/gtk-2.0/gtkrc";
           "3" = css34;
           "4" = css34;
         }
         .${version};
       css = gtkVersion: ''
-        @import url("file://${pkgs.everforest-gtk-theme}${cssPath gtkVersion}");
+        @import url("file://${themepkg}${cssPath gtkVersion}");
       '';
     in
     {
@@ -72,7 +78,7 @@ in
       QT_QPA_PLATFORMTHEME = "gtk3";
       QT_WAYLAND_DISABLE_WINDOWDECORATION = "1";
       DISABLE_QT_COMPAT = "0";
-      GTK_THEME = "Everforest-Dark";
+      GTK_THEME =  "Catppuccin-Macchiato-Compact-Mauve-dark";
 
       XCURSOR_THEME = "Bibata-Modern-Classic";
       XCURSOR_SIZE = 24;

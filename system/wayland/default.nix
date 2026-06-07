@@ -15,6 +15,19 @@
   };
 
   environment = {
+    systemPackages = let
+
+        run-as-service = pkgs.writeShellScriptBin "run-as-service" ''
+    exec ${pkgs.systemd}/bin/systemd-run \
+      --slice=app-manual.slice \
+      --property=ExitType=cgroup \
+      --user \
+      --wait \
+      bash -lc "exec $@"
+  '';
+      in [
+        run-as-service
+    ];
     sessionVariables = {
       NIXOS_OZONE_WL = 1;
       XDG_CURRENT_DESKTOP = "niri";

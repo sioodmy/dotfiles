@@ -51,9 +51,9 @@ in
         ttyper
         pavucontrol
         grim
+        cliphist
         slurp
         wl-clipboard
-        quickshell
         flare-signal
         vencord
         rnote
@@ -97,6 +97,9 @@ in
         ;
       inherit (inputs.glide-browser.packages.${pkgs.stdenv.system})
         glide-browser-bin
+        ;
+      inherit (inputs.qml-niri.packages.${pkgs.stdenv.system})
+        quickshell
         ;
       inherit (inputs.vim.packages.${pkgs.stdenv.system})
         default

@@ -11,6 +11,7 @@ rec {
       tmux = callPackage ./wrapped/tmux { inherit theme; };
       foot = callPackage ./wrapped/foot { inherit theme; };
       helix = callPackage ./wrapped/helix { inherit theme inputs; };
+      quickshell = callPackage ./wrapped/quickshell { inherit theme inputs; };
       tofi = callPackage ./wrapped/tofi { inherit theme; };
       mako = callPackage ./wrapped/mako { inherit theme; };
       dunst = callPackage ./wrapped/dunst { inherit theme; };
