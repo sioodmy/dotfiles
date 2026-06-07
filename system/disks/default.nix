@@ -1,4 +1,5 @@
-{...}: {
+{ ... }:
+{
   # I know that this part will make some people mad
 
   # My configuraton is designed to be used only on desktops and laptops
@@ -7,7 +8,14 @@
 
   staypls = {
     enable = true;
-    dirs = ["/etc/ssh" "/etc/NetworkManager" "/etc/nix" "/var/lib/fprint" "/var/lib/pipewire" "/var/lib/bluetooth"];
+    dirs = [
+      "/etc/ssh"
+      "/etc/NetworkManager"
+      "/etc/nix"
+      "/var/lib/fprint"
+      "/var/lib/pipewire"
+      "/var/lib/bluetooth"
+    ];
   };
 
   boot.initrd.luks.devices.luksroot = {
@@ -22,34 +30,56 @@
     fsType = "tmpfs";
     # if you need more than 1GB for root then
     # you are doing something wrong
-    options = ["size=1G" "mode=755"];
+    options = [
+      "size=1G"
+      "mode=755"
+    ];
   };
 
   fileSystems."/nix" = {
     neededForBoot = true;
     device = "/dev/disk/by-label/NIXROOT";
     fsType = "btrfs";
-    options = ["noatime" "discard" "subvol=@nix" "compress=zstd"];
+    options = [
+      "noatime"
+      "discard"
+      "subvol=@nix"
+      "compress=zstd"
+    ];
   };
 
   fileSystems."/tmp" = {
     device = "/dev/disk/by-label/NIXROOT";
     fsType = "btrfs";
-    options = ["noatime" "discard" "subvol=@tmp"];
+    options = [
+      "noatime"
+      "discard"
+      "subvol=@tmp"
+    ];
   };
 
   fileSystems."/persist" = {
     neededForBoot = true;
     device = "/dev/disk/by-label/NIXROOT";
     fsType = "btrfs";
-    options = ["noatime" "discard" "subvol=@persist" "compress=zstd"];
+    options = [
+      "noatime"
+      "discard"
+      "subvol=@persist"
+      "compress=zstd"
+    ];
   };
 
   fileSystems."/home" = {
     neededForBoot = true;
     device = "/dev/disk/by-label/NIXROOT";
     fsType = "btrfs";
-    options = ["noatime" "discard" "subvol=@home" "compress=zstd"];
+    options = [
+      "noatime"
+      "discard"
+      "subvol=@home"
+      "compress=zstd"
+    ];
   };
 
   #  btrfs filesystem mkswapfile --size 16g --uuid clear /persist/swap

@@ -1,14 +1,15 @@
 # some history settings
-export HISTFILESIZE=1000000000
-export HISTSIZE=1000000000
+export HISTFILESIZE=20000
+export HISTSIZE=20000
 setopt INC_APPEND_HISTORY
-setopt HIST_FIND_NO_DUPS
-setopt HIST_IGNORE_ALL_DUPS
+setopt appendhistory
 setopt SHARE_HISTORY
-HISTFILE=~/.cache/zsh-history
+HISTFILE=~/.zsh-history
 
 export AUTO_NOTIFY_THRESHOLD=40
 export AUTO_NOTIFY_EXPIRE_TIME=5000
+export ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE='fg=102'
+export ZSH_AUTOSUGGEST_STRATEGY=(history completion)
 
 zvm_after_init_commands+=('eval "$(fzf --zsh)"')
 
@@ -43,6 +44,10 @@ bindkey -v '^?' backward-delete-char
 autoload edit-command-line; zle -N edit-command-line
 bindkey '^e' edit-command-line
 
+function pochuj {
+  nix why-depends /run/current-system nixpkgs#${1}
+}
+
 # Change cursor shape for different vi modes.
 function zle-keymap-select {
   if [[ ${KEYMAP} == vicmd ]] ||
@@ -54,10 +59,6 @@ function zle-keymap-select {
        [[ $1 = 'beam' ]]; then
     echo -ne '\e[5 q'
   fi
-}
-
-function flake-init {
-    nix flake init --template "https://flakehub.com/f/the-nix-way/dev-templates/*#$1"
 }
 
 zle -N zle-keymap-select

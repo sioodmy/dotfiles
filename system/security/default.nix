@@ -1,30 +1,62 @@
-{pkgs, ...}: {
+{ pkgs, ... }:
+{
   services = {
     networkd-dispatcher.enable = true;
     pcscd.enable = true;
     yubikey-touch-detector.enable = true;
+    chrony = {
+      enable = true;
+      enableNTS = true;
+      servers = [
+        "server time.cloudflare.com iburst nts"
+        "server ntppool1.time.nl iburst nts"
+        "server nts.netnod.se iburst nts"
+        "server ptbtime1.ptb.de iburst nts"
+        "server time.dfm.dk iburst nts"
+        "server time.cifelli.xyz iburst nts"
+      ];
+    };
   };
   security = {
+    polkit = {
+      enable = true;
+      extraConfig = ''
+        polkit.addRule(function(action, subject) {
+          if (subject.user == "sioodmy") {
+            if (action.id.indexOf("org.freedesktop.systemd1.manage-units") == 0) {
+              polkit.log("Caching admin authentication for single NixOS operation");
+              return polkit.Result.AUTH_ADMIN_KEEP;
+            }
+          }
+        });
+      '';
+    };
     protectKernelImage = false;
     lockKernelModules = false;
     forcePageTableIsolation = true;
     polkit.enable = true;
-    sudo.package = pkgs.sudo.override {withInsults = true;};
+    sudo.package = pkgs.sudo.override { withInsults = true; };
 
     rtkit.enable = true;
     apparmor = {
       enable = true;
       killUnconfinedConfinables = true;
-      packages = [pkgs.apparmor-profiles];
+      packages = [ pkgs.apparmor-profiles ];
     };
   };
   # credits: poz
-  fileSystems = let
-    defaults = ["nodev" "nosuid" "noexec"];
-  in {
-    "/boot".options = defaults;
-    "/var/log".options = defaults;
-  };
+  fileSystems =
+    let
+      defaults = [
+        "nodev"
+        "nosuid"
+        "noexec"
+      ];
+    in
+    {
+      "/boot".options = defaults;
+      "/var/log".options = defaults;
+    };
   boot = {
     blacklistedKernelModules = [
       # Obscure network protocols

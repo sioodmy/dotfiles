@@ -1,6 +1,8 @@
-{pkgs, ...}: let
+{ pkgs, ... }:
+let
   inherit (pkgs.lib) getExe;
-in rec {
+in
+rec {
   l = "${getExe pkgs.eza} --icons";
   e = "${getExe pkgs.eza} --icons -lha --git";
 
@@ -11,7 +13,8 @@ in rec {
 
   g = "git";
   n = "nix";
-  v = "nvim";
+
+  macos = "sudo asahi-bless -n --set-boot-macos";
 
   # imagine using mp3
   ytopus = "yt-dlp -x --embed-metadata --audio-quality 0 --audio-format opus --embed-metadata --embed-thumbnail";

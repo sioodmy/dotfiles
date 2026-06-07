@@ -2,32 +2,70 @@
   pkgs,
   inputs,
   ...
-}: let
-  inherit (builtins) attrValues;
-in {
+}:
+let
+  inherit (builtins)
+    attrValues
+    readDir
+    readFile
+    attrNames
+    ;
+  inherit (pkgs.lib) forEach;
+  scripts =
+    readDir ./scripts |> attrNames |> map (x: pkgs.writeShellScriptBin x (readFile ./scripts/${x}));
+in
+{
   environment.systemPackages =
     attrValues {
-      inherit
-        (pkgs)
-        ttyper
-        mpv
-        tdesktop
-        flare-signal
+      inherit (pkgs)
+        waybar
+        ags
+        clang-tools
         prismlauncher
-        libreoffice-fresh
-        vencord
-        thunderbird-unwrapped
+        ironbar
+        glfw3-minecraft
+        jdk17
+        jre21_minimal
         brave
+        rust-analyzer
+        firefox-devedition
+        bear
+        pastel
+        nixfmt
+        nixfmt-tree
+        yazi
+        alejandra
+        wmenu
+        ollama
+        pandoc
+        texliveMedium
+        vscode-langservers-extracted
+        tectonic-unwrapped
+        typst
+        texlab
+        antigravity
+        powershell
+        niri
+        audacity
+        geteduroam-cli
+        ttyper
+        pavucontrol
+        grim
+        cliphist
+        slurp
+        wl-clipboard
+        flare-signal
+        vencord
         rnote
         caprine
-        ytmdl
-        yt-dlp
+        swaybg
         transmission_4-gtk
         nicotine-plus
         imv
         signal-desktop
         vesktop
         gimp3
+        inkscape
         keepassxc
         clang
         gnumake
@@ -40,7 +78,6 @@ in {
         fzf
         eza
         gping
-        dogdns
         onefetch
         cpufetch
         microfetch
@@ -49,7 +86,6 @@ in {
         hyperfine
         imagemagick
         ffmpeg-full
-        catimg
         nmap
         xh
         grex
@@ -59,6 +95,17 @@ in {
         qrencode
         unzip
         ;
+      inherit (inputs.glide-browser.packages.${pkgs.stdenv.system})
+        glide-browser-bin
+        ;
+      inherit (inputs.qml-niri.packages.${pkgs.stdenv.system})
+        quickshell
+        ;
+      inherit (inputs.vim.packages.${pkgs.stdenv.system})
+        default
+        ;
     }
-    ++ [inputs.zen-browser.packages.${pkgs.system}.default];
+    ++ [ pkgs.jetbrains.idea ]
+    ++ [ inputs.helium-browser.packages.${pkgs.system}.default ]
+    ++ scripts;
 }

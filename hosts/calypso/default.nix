@@ -3,8 +3,9 @@
   modulesPath,
   pkgs,
   ...
-}: {
-  imports = [(modulesPath + "/installer/scan/not-detected.nix")];
+}:
+{
+  imports = [ (modulesPath + "/installer/scan/not-detected.nix") ];
   boot = {
     loader = {
       systemd-boot = {
@@ -26,24 +27,26 @@
       "acpi_osi=linux"
       "nowatchdog"
     ];
-    initrd.availableKernelModules =
-      [
-        "xhci_pci"
-        "ahci"
-        "usbhid"
-        "sd_mod"
-        "dm_mod"
-        "dm_crypt"
-        "cryptd"
-        "input_leds"
-      ]
-      ++ config.boot.initrd.luks.cryptoModules;
+    initrd.availableKernelModules = [
+      "xhci_pci"
+      "ahci"
+      "usbhid"
+      "sd_mod"
+      "dm_mod"
+      "dm_crypt"
+      "cryptd"
+      "input_leds"
+    ]
+    ++ config.boot.initrd.luks.cryptoModules;
   };
 
   fileSystems."/boot" = {
     device = "/dev/disk/by-label/NIXBOOT";
     fsType = "vfat";
-    options = ["noatime" "discard"];
+    options = [
+      "noatime"
+      "discard"
+    ];
   };
 
   # For some reason my mic light indicator refuses to turn off on its own
@@ -51,7 +54,7 @@
   # so stay mad I guess
   systemd.services.micmute-led-off = {
     description = "Turn off mic mute LED";
-    wantedBy = ["multi-user.target"];
+    wantedBy = [ "multi-user.target" ];
     serviceConfig = {
       Type = "oneshot";
       ExecStart = "${pkgs.bash}/bin/bash -c 'echo 0 > /sys/class/leds/platform::micmute/brightness'";
@@ -61,8 +64,7 @@
 
   hardware.cpu.intel.updateMicrocode = true;
   hardware.graphics.extraPackages = builtins.attrValues {
-    inherit
-      (pkgs)
+    inherit (pkgs)
       vaapiIntel
       libva
       libvdpau-va-gl

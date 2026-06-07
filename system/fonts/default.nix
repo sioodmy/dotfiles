@@ -1,15 +1,21 @@
-{pkgs, ...}: let
+{ pkgs, ... }:
+let
   inherit (builtins) attrValues;
-in {
+in
+{
   environment.sessionVariables.FREETYPE_PROPERTIES = "cff:no-stem-darkening=0 autofitter:no-stem-darkening=0";
   fonts = {
     packages =
       attrValues {
-        inherit
-          (pkgs)
+        inherit (pkgs)
           material-icons
           material-design-icons
           roboto
+          roboto-mono
+          roboto-slab
+          vista-fonts
+          corefonts
+          roboto-serif
           work-sans
           comic-neue
           source-sans
@@ -22,13 +28,12 @@ in {
           dejavu_fonts
           noto-fonts
           noto-fonts-cjk-sans
-          noto-fonts-emoji
+          noto-fonts-color-emoji
           ;
       }
       ++ [
         pkgs.nerd-fonts.jetbrains-mono
         pkgs.maple-mono.NF
-        # (pkgs.nerdfonts.override {fonts = ["JetBrainsMono"];})
       ];
 
     enableDefaultPackages = false;
@@ -40,9 +45,15 @@ in {
           "Maple Mono NF"
           "Noto Color Emoji"
         ];
-        sansSerif = ["Lexend" "Noto Color Emoji"];
-        serif = ["Noto Serif" "Noto Color Emoji"];
-        emoji = ["Noto Color Emoji"];
+        sansSerif = [
+          "Lexend"
+          "Noto Color Emoji"
+        ];
+        serif = [
+          "Noto Serif"
+          "Noto Color Emoji"
+        ];
+        emoji = [ "Noto Color Emoji" ];
       };
     };
   };

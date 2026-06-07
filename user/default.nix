@@ -1,53 +1,54 @@
-rec
-{
+rec {
   theme = import ./theme;
-  packages = pkgs: let
-    inherit (pkgs) callPackage;
-    theme = import ./theme pkgs;
-  in {
-    nvim = callPackage ./wrapped/nvim {inherit theme;};
-    zsh = callPackage ./wrapped/zsh {};
-    tmux = callPackage ./wrapped/tmux {inherit theme;};
-    foot = callPackage ./wrapped/foot {inherit theme;};
-    tofi = callPackage ./wrapped/tofi {inherit theme;};
-    anyrun = callPackage ./wrapped/anyrun {inherit theme;};
-    waybar = callPackage ./wrapped/waybar {inherit theme;};
-    mako = callPackage ./wrapped/mako {inherit theme;};
-    bat = callPackage ./wrapped/bat {inherit theme;};
-    hypr = callPackage ./wrapped/hypr {inherit theme;};
-    zathura = callPackage ./wrapped/zathura {inherit theme;};
-  };
+  packages =
+    { pkgs, inputs }:
+    let
+      inherit (pkgs) callPackage;
+      theme = import ./theme pkgs;
+    in
+    {
+      zsh = callPackage ./wrapped/zsh { };
+      tmux = callPackage ./wrapped/tmux { inherit theme; };
+      foot = callPackage ./wrapped/foot { inherit theme; };
+      helix = callPackage ./wrapped/helix { inherit theme inputs; };
+      quickshell = callPackage ./wrapped/quickshell { inherit theme inputs; };
+      tofi = callPackage ./wrapped/tofi { inherit theme; };
+      mako = callPackage ./wrapped/mako { inherit theme; };
+      dunst = callPackage ./wrapped/dunst { inherit theme; };
+      bat = callPackage ./wrapped/bat { inherit theme; };
+      zathura = callPackage ./wrapped/zathura { };
+    };
 
-  shell = pkgs:
+  shell =
+    pkgs:
     pkgs.mkShell {
       name = "sioodmy-devshell";
       shellHook = ''
         zsh
       '';
       buildInputs = builtins.attrValues {
-        inherit
-          (packages pkgs)
+        inherit (packages pkgs)
           nvim
           zsh
           ;
       };
     };
-  module = {pkgs, ...}: {
-    config = {
-      environment.systemPackages = builtins.attrValues (packages pkgs);
-      programs.hyprland = {
-        enable = true;
-        withUWSM = true;
+  module =
+    { pkgs, inputs, ... }:
+    {
+      config = {
+        environment.systemPackages = builtins.attrValues (packages {
+          inherit pkgs inputs;
+        });
+        programs.direnv = {
+          enable = true;
+          enableFishIntegration = false;
+        };
       };
-      programs.direnv = {
-        enable = false;
-        enableFishIntegration = false;
-      };
+      imports = [
+        ./packages.nix
+        ./git
+        ./gtk
+      ];
     };
-    imports = [
-      ./packages.nix
-      ./git
-      ./gtk
-    ];
-  };
 }

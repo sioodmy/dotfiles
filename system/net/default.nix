@@ -2,17 +2,25 @@
   lib,
   config,
   ...
-}: let
+}:
+let
   inherit (lib) mkIf;
-in {
+in
+{
   networking = {
-    nameservers = ["1.1.1.1" "1.0.0.1"];
+    nameservers = [
+      "1.1.1.1"
+      "1.0.0.1"
+    ];
     dhcpcd.extraConfig = "nohook resolv.conf";
     networkmanager = {
       enable = true;
-      unmanaged = ["docker0" "rndis0"];
+      unmanaged = [
+        "docker0"
+        "rndis0"
+      ];
       wifi = {
-        macAddress = mkIf (! config.hardware.asahi.enable) "random";
+        macAddress = mkIf (!config.hardware.asahi.enable) "random";
         powersave = true;
       };
     };
@@ -23,8 +31,13 @@ in {
     };
   };
 
+  # pwr moment
+  security.pki.certificateFiles = [
+    ./pwr-eduroam-cert.pem
+  ];
+
   # encrypted dns
-  services.dnscrypt-proxy2 = {
+  services.dnscrypt-proxy = {
     enable = true;
     settings = {
       require_dnssec = true;

@@ -1,8 +1,11 @@
 {
   pkgs,
   flake,
+  lib,
+  inputs,
   ...
-}: {
+}:
+{
   imports = [
     ./kbd_backlight.nix
   ];
@@ -12,7 +15,35 @@
   };
 
   environment = {
-    sessionVariables.NIXOS_OZONE_WL = 1;
+    systemPackages = let
+
+        run-as-service = pkgs.writeShellScriptBin "run-as-service" ''
+    exec ${pkgs.systemd}/bin/systemd-run \
+      --slice=app-manual.slice \
+      --property=ExitType=cgroup \
+      --user \
+      --wait \
+      bash -lc "exec $@"
+  '';
+      in [
+        run-as-service
+    ];
+    sessionVariables = {
+      NIXOS_OZONE_WL = 1;
+      XDG_CURRENT_DESKTOP = "niri";
+      XDG_SESSION_TYPE = "wayland";
+      XDG_SESSION_DESKTOP = "niri";
+
+      SDL_VIDEODRIVER = "wayland";
+
+      _JAVA_AWT_WM_NONEREPARENTING = "1";
+
+      CLUTTER_BACKEND = "wayland";
+
+      GDK_BACKEND = "wayland";
+
+      QT_QPA_PLATFORM = "wayland";
+    };
   };
 
   systemd.services = {
@@ -25,7 +56,7 @@
         Restart = "always";
         RestartSec = "1";
       };
-      wantedBy = ["multi-user.target"];
+      wantedBy = [ "multi-user.target" ];
     };
   };
 
@@ -34,7 +65,7 @@
       enable = true;
       settings = rec {
         initial_session = {
-          command = "${flake.packages.${pkgs.system}.hypr}/bin/Hyprland";
+          command = "${pkgs.niri}/bin/niri-session";
           user = "sioodmy";
         };
         default_session = initial_session;
@@ -44,21 +75,24 @@
 
     gnome.glib-networking.enable = true;
     logind = {
-      lidSwitch = "suspend";
-      lidSwitchExternalPower = "hibernate";
-      extraConfig = ''
-        HandlePowerKey=poweroff
-        HibernateDelaySec=600
-        SuspendState=mem
-      '';
+      settings.Login = {
+        HandleLidSwitchExternalPower = "suspend";
+        # TODO: switch to hibernate once available on asahi
+        # prolly not coming soon tho :c
+        HandleLidSwitch = "suspend";
+      };
     };
   };
 
   xdg.portal = {
     enable = true;
-    config.common.default = "*";
+    config.common.default = [
+      "gtk"
+      "gnome"
+    ];
     extraPortals = [
       pkgs.xdg-desktop-portal-gtk
+      pkgs.xdg-desktop-portal-gnome
     ];
   };
 }

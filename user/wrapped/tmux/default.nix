@@ -2,11 +2,16 @@
   pkgs,
   theme,
   ...
-}: let
+}:
+let
   inherit (theme) accent text;
   black = theme.bright.background;
   inherit (theme.regular) background;
-  plugins = ["vim-tmux-navigator" "sensible" "yank"];
+  plugins = [
+    "vim-tmux-navigator"
+    "sensible"
+    "yank"
+  ];
   tmuxconf = pkgs.writeText "tmux.conf" ''
     set -g mouse on
 
@@ -25,7 +30,9 @@
     set-window-option -g pane-base-index 1
     set-option -g renumber-windows on
 
-    ${builtins.concatStringsSep "\n" (map (x: "run-shell ${pkgs.tmuxPlugins.${x}}/share/tmux-plugins/${x}.tmux") plugins)}
+    ${builtins.concatStringsSep "\n" (
+      map (x: "run-shell ${pkgs.tmuxPlugins.${x}}/share/tmux-plugins/${x}.tmux") plugins
+    )}
 
     # set vi-mode
     set-window-option -g mode-keys vi
@@ -53,11 +60,11 @@
     set -ga status-right '#[fg=#${text},bg=#${black}] %a %H:%M:%S #[fg=#${text},bg=#${accent}] %Y-%m-%d '
   '';
 in
-  pkgs.symlinkJoin {
-    name = "tmux-wrapped";
-    paths = [pkgs.tmux];
-    buildInputs = [pkgs.makeWrapper];
-    postBuild = ''
-      wrapProgram $out/bin/tmux --add-flags "-f ${tmuxconf}"
-    '';
-  }
+pkgs.symlinkJoin {
+  name = "tmux-wrapped";
+  paths = [ pkgs.tmux ];
+  buildInputs = [ pkgs.makeWrapper ];
+  postBuild = ''
+    wrapProgram $out/bin/tmux --add-flags "-f ${tmuxconf}"
+  '';
+}
