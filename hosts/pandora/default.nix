@@ -28,15 +28,15 @@
     setupAsahiSound = true;
   };
 
-  systemd.packages = [ pkgs.speakersafetyd ];
-  services.udev.packages = [ pkgs.speakersafetyd ];
+  # systemd.packages = [ pkgs.speakersafetyd ];
+  # services.udev.packages = [ pkgs.speakersafetyd ];
 
   services.upower.enable = true;
+  services.fwupd.enable = lib.mkForce false;
 
   environment = {
     systemPackages = lib.attrValues {
       inherit (pkgs)
-        asahi-audio
         asahi-bless
         asahi-fwextract
         ;

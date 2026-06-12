@@ -869,40 +869,40 @@ in {
                 "USB_XHCI_TEGRA"
             ];
         }
-        {
-            name = "Disable random bullshit";
-            patch = null;
-            structuredExtraConfig = {
-                INFINIBAND = no;
-                GREYBUS = no;
-                VHOST_MENU = no;
-                # repeated question
-                # W1 = no;
-                W1 = mkForce unset; # UNSET!!!!!!!!!!!!!!!!!
-                MEMSTICK = no;
-                COMEDI = no;
-                CORESIGHT = no;
-                SOUNDWIRE = no;
-                IIO = no; # maybe enable this later on?
-                # option not set correctly
-                # SCSI = no;
-                SCSI = mkForce unset; # UNSET!!!!!!!!!!!!!!!!!
-                WWAN = no;
-                FIREWIRE = no;
-                ATA = no;
-                CAN_DEV = no;
-
-                TEGRA_HOST1X = mkForce unset; # UNSET!!!!!!!!!!!!!!!!!
-            };
-        }
-        {
-            name = "Remove unused sounds stuff";
-            patch = null;
-            structuredExtraConfig = {
-                SND_FIREWIRE = mkForce unset; # UNSET!!!!!!!!!!!!!!!!!
-                SND_ISA = mkForce unset; # UNSET!!!!!!!!!!!!!!!!!
-                SND_MIPS = mkForce unset; # UNSET!!!!!!!!!!!!!!!!!
-            };
-        }
+        # {
+        #     name = "Disable random bullshit";
+        #     patch = null;
+        #     structuredExtraConfig = {
+        #         INFINIBAND = no;
+        #         GREYBUS = no;
+        #         VHOST_MENU = no;
+        #         # repeated question
+        #         # W1 = no;
+        #         W1 = mkForce unset; # UNSET!!!!!!!!!!!!!!!!!
+        #         MEMSTICK = no;
+        #         COMEDI = no;
+        #         CORESIGHT = no;
+        #         SOUNDWIRE = no;
+        #         # IIO = no; # maybe enable this later on? (Required for speakersafetyd)
+        #         # option not set correctly
+        #         # SCSI = no;
+        #         SCSI = mkForce unset; # UNSET!!!!!!!!!!!!!!!!!
+        #         WWAN = no;
+        #         FIREWIRE = no;
+        #         ATA = no;
+        #         CAN_DEV = no;
+        #
+        #         TEGRA_HOST1X = mkForce unset; # UNSET!!!!!!!!!!!!!!!!!
+        #     };
+        # }
+        # {
+        #     name = "Remove unused sounds stuff";
+        #     patch = null;
+        #     structuredExtraConfig = {
+        #         SND_FIREWIRE = mkForce unset; # UNSET!!!!!!!!!!!!!!!!!
+        #         SND_ISA = mkForce unset; # UNSET!!!!!!!!!!!!!!!!!
+        #         SND_MIPS = mkForce unset; # UNSET!!!!!!!!!!!!!!!!!
+        #     };
+        # }
     ];
 }

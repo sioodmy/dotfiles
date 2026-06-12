@@ -82,7 +82,7 @@ let
         command = "${notify-send} -a \${app-id} -i \${app-id} \${title} \${body}";
       };
       colors-dark = {
-        alpha = theme.opacity;
+        alpha = 0.91;
         background = "24273a";
         foreground = "cad3f5";
         bright0 = "5b6078";

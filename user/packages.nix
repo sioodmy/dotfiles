@@ -20,7 +20,11 @@ in
       inherit (pkgs)
         waybar
         ags
+        deluge
         clang-tools
+        antigravity
+        code-cursor
+        rink
         prismlauncher
         ironbar
         glfw3-minecraft
@@ -43,13 +47,12 @@ in
         tectonic-unwrapped
         typst
         texlab
-        antigravity
         powershell
         niri
         audacity
         geteduroam-cli
         ttyper
-        pavucontrol
+        pwvucontrol
         grim
         cliphist
         slurp
@@ -105,7 +108,6 @@ in
         default
         ;
     }
-    ++ [ pkgs.jetbrains.idea ]
     ++ [ inputs.helium-browser.packages.${pkgs.system}.default ]
     ++ scripts;
 }
