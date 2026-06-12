@@ -17,17 +17,26 @@ let
       "${escape [ "=" ] key}=${value'}";
   };
 
+  themeName = "catppuccin-macchiato-mauve-compact";
+
   themepkg = pkgs.catppuccin-gtk.override {
-        size = "compact";
-        accents = ["mauve"];
-        variant = "macchiato";
-      };
+    size = "compact";
+    accents = [ "mauve" ];
+    variant = "macchiato";
+  };
+
+  kvantumThemeName = "catppuccin-macchiato-mauve";
+
+  kvantumPkg = pkgs.catppuccin-kvantum.override {
+    accent = "mauve";
+    variant = "macchiato";
+  };
 in
 {
   homix =
     let
       gtkINI = {
-        gtk-theme-name = "Catppuccin-Macchiato-Compact-Mauve-dark";
+        gtk-theme-name = themeName;
         gtk-font-name = "Lexend 11";
         gtk-icon-theme-name = "Papirus-Dark";
         gtk-xft-antialias = 1;
@@ -40,10 +49,9 @@ in
         gtkVersion:
         let
           version = toString gtkVersion;
-          css34 = "/share/themes/catppuccin-macchiato-mauve-compact/gtk-${version}.0/gtk-dark.css";
+          css34 = "/share/themes/${themeName}/gtk-${version}.0/gtk-dark.css";
         in
         {
-          # "2" = "/share/themes/catppuccin-macchiato-mauve-compact/gtk-2.0/gtkrc";o-mauve-compact/gtk-2.0/gtkrc";
           "3" = css34;
           "4" = css34;
         }
@@ -63,22 +71,47 @@ in
       };
       ".config/gtk-3.0/gtk.css".text = css 3;
       ".config/gtk-4.0/gtk.css".text = css 4;
+
+      ".config/Kvantum/kvantum.kvconfig".text = ''
+        [General]
+        theme=${kvantumThemeName}
+      '';
+
+      ".config/qt5ct/qt5ct.conf".text = ''
+        [Appearance]
+        style=kvantum
+        color_scheme_path=
+        icon_theme=Papirus-Dark
+      '';
+
+      ".config/qt6ct/qt6ct.conf".text = ''
+        [Appearance]
+        style=kvantum
+        color_scheme_path=
+        icon_theme=Papirus-Dark
+      '';
     };
 
   environment = {
     systemPackages = [
+      themepkg
+      kvantumPkg
+      pkgs.libsForQt5.qt5ct
+      pkgs.kdePackages.qt6ct
+      pkgs.libsForQt5.qtstyleplugin-kvantum
+      pkgs.kdePackages.qtstyleplugin-kvantum
       pkgs.bibata-cursors
-      pkgs.everforest-gtk-theme
       pkgs.papirus-icon-theme
-
     ];
     variables = {
       GSK_RENDERER = "gl";
       QT_AUTO_SCREEN_SCALE_FACTOR = "1";
-      QT_QPA_PLATFORMTHEME = "gtk3";
+      QT_QPA_PLATFORMTHEME = "qt5ct";
+      QT_PLUGIN_PATH = "/run/current-system/sw/lib/qt-5.15.18/plugins:/run/current-system/sw/lib/qt-6/plugins";
+      QT_STYLE_OVERRIDE = "kvantum";
       QT_WAYLAND_DISABLE_WINDOWDECORATION = "1";
       DISABLE_QT_COMPAT = "0";
-      GTK_THEME =  "Catppuccin-Macchiato-Compact-Mauve-dark";
+      GTK_THEME = themeName;
 
       XCURSOR_THEME = "Bibata-Modern-Classic";
       XCURSOR_SIZE = 24;
