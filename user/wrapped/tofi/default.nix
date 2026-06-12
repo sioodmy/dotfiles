@@ -1,6 +1,5 @@
 {
   pkgs,
-  theme,
   ...
 }:
 let
@@ -18,9 +17,9 @@ let
       result-spacing = 25;
       num-results = 5;
       background-color = "#000A";
-      default-result-color = "#e0def4";
-      prompt-color = "#e0def4";
-      selection-color = "#c4a7e7";
+      default-result-color = "#cad3f5";
+      prompt-color = "#cad3f5";
+      selection-color = "#c6a0f6";
     }
   );
 in

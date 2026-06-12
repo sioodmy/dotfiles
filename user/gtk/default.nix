@@ -1,6 +1,5 @@
 {
   pkgs,
-  theme,
   lib,
   ...
 }:
@@ -107,7 +106,6 @@ in
       GSK_RENDERER = "gl";
       QT_AUTO_SCREEN_SCALE_FACTOR = "1";
       QT_QPA_PLATFORMTHEME = "qt5ct";
-      QT_PLUGIN_PATH = "/run/current-system/sw/lib/qt-5.15.18/plugins:/run/current-system/sw/lib/qt-6/plugins";
       QT_STYLE_OVERRIDE = "kvantum";
       QT_WAYLAND_DISABLE_WINDOWDECORATION = "1";
       DISABLE_QT_COMPAT = "0";

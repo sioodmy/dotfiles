@@ -1,12 +1,12 @@
 {
   pkgs,
-  theme,
   ...
 }:
 let
-  inherit (theme) accent text;
-  black = theme.bright.background;
-  inherit (theme.regular) background;
+  accent = "c6a0f6";
+  text = "cad3f5";
+  black = "363a4f";
+  background = "24273a";
   plugins = [
     "vim-tmux-navigator"
     "sensible"

@@ -1,6 +1,5 @@
 {
   pkgs,
-  theme,
   ...
 }:
 pkgs.symlinkJoin {
@@ -8,6 +7,6 @@ pkgs.symlinkJoin {
   paths = [ pkgs.bat ];
   buildInputs = [ pkgs.makeWrapper ];
   postBuild = ''
-    wrapProgram $out/bin/bat --add-flags "--theme=${theme.bat}"
+    wrapProgram $out/bin/bat
   '';
 }

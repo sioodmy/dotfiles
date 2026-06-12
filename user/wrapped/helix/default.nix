@@ -1,13 +1,12 @@
 {
   inputs,
   pkgs,
-  theme,
   ...
 }:
 let
 
   settings = {
-    theme = "everforest_dark";
+    theme = "catppuccin_macchiato";
     keys.normal = {
       "{" = "goto_prev_paragraph";
       "}" = "goto_next_paragraph";

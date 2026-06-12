@@ -1,19 +1,17 @@
 rec {
-  theme = import ./theme;
   packages =
     { pkgs, inputs }:
     let
       inherit (pkgs) callPackage;
-      theme = import ./theme pkgs;
     in
     {
       zsh = callPackage ./wrapped/zsh { };
-      tmux = callPackage ./wrapped/tmux { inherit theme; };
-      foot = callPackage ./wrapped/foot { inherit theme; };
-      helix = callPackage ./wrapped/helix { inherit theme inputs; };
-      quickshell = callPackage ./wrapped/quickshell { inherit theme inputs; };
-      tofi = callPackage ./wrapped/tofi { inherit theme; };
-      bat = callPackage ./wrapped/bat { inherit theme; };
+      tmux = callPackage ./wrapped/tmux { };
+      foot = callPackage ./wrapped/foot { };
+      helix = callPackage ./wrapped/helix { inherit inputs; };
+      quickshell = callPackage ./wrapped/quickshell { inherit inputs; };
+      tofi = callPackage ./wrapped/tofi { };
+      bat = callPackage ./wrapped/bat { };
       zathura = callPackage ./wrapped/zathura { };
     };
 

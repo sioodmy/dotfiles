@@ -13,6 +13,7 @@ rec {
 
   g = "git";
   n = "nix";
+  v = "nvim";
 
   macos = "sudo asahi-bless -n --set-boot-macos";
 
