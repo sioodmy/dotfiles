@@ -7,7 +7,7 @@
 }:
 {
   fileSystems."/boot" = {
-    device = "/dev/disk/by-uuid/6A3B-1D00";
+    device = "/dev/disk/by-uuid/36D6-1718";
     fsType = "vfat";
     options = [
       "noatime"
@@ -16,8 +16,6 @@
   };
   imports = [
     inputs.apple-silicon-support.nixosModules.apple-silicon-support
-    # ./kernel.nix
-
     (modulesPath + "/installer/scan/not-detected.nix")
   ];
 
@@ -28,11 +26,16 @@
     setupAsahiSound = true;
   };
 
-  # systemd.packages = [ pkgs.speakersafetyd ];
-  # services.udev.packages = [ pkgs.speakersafetyd ];
-
   services.upower.enable = true;
   services.fwupd.enable = lib.mkForce false;
+      services.pipewire.extraConfig.pipewire = {
+        # https://www.reddit.com/r/linux_gaming/comments/1gy347h/comment/lylqijj/
+        "10-clock-min-quantum" = {
+            "context.properties" = {
+                "default.clock.min-quantum" = "1024";
+            };
+        };
+    };
 
   environment = {
     systemPackages = lib.attrValues {
